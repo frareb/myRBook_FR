@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Se former au logiciel R : initiation et perfectionnement</title>
+  <meta name="description" content="Un guide pour acquérir des bases solides en programmation avec R et conduire efficacement sa gestion et analyse de données.">
+  <meta name="generator" content="bookdown 0.7 and GitBook 2.6.7">
+
+  <meta property="og:title" content="Se former au logiciel R : initiation et perfectionnement" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="Un guide pour acquérir des bases solides en programmation avec R et conduire efficacement sa gestion et analyse de données." />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Se former au logiciel R : initiation et perfectionnement" />
+  
+  <meta name="twitter:description" content="Un guide pour acquérir des bases solides en programmation avec R et conduire efficacement sa gestion et analyse de données." />
+  
+
+<meta name="author" content="François Rebaudo">
+
+
+<meta name="date" content="2018-06-25">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+<link rel="prev" href="intro.html">
+<link rel="next" href="IDE.html">
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Se former au logiciel R : initiation et perfectionnement</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Remerciements</a></li>
+<li class="chapter" data-level="2" data-path="licence.html"><a href="licence.html"><i class="fa fa-check"></i><b>2</b> Licence</a></li>
+<li class="chapter" data-level="3" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>3</b> Introduction</a><ul>
+<li class="chapter" data-level="3.1" data-path="intro.html"><a href="intro.html#pourquoi-se-former-a-r"><i class="fa fa-check"></i><b>3.1</b> Pourquoi se former à R</a></li>
+<li class="chapter" data-level="3.2" data-path="intro.html"><a href="intro.html#ce-livre"><i class="fa fa-check"></i><b>3.2</b> Ce livre</a></li>
+<li class="chapter" data-level="3.3" data-path="intro.html"><a href="intro.html#lectures-complementaires-en-francais"><i class="fa fa-check"></i><b>3.3</b> Lectures complémentaires en français</a></li>
+</ul></li>
+<li class="part"><span><b>I Concepts de base</b></span></li>
+<li class="chapter" data-level="4" data-path="premiersPas.html"><a href="premiersPas.html"><i class="fa fa-check"></i><b>4</b> Premiers pas</a><ul>
+<li class="chapter" data-level="4.1" data-path="premiersPas.html"><a href="premiersPas.html#installation-de-r"><i class="fa fa-check"></i><b>4.1</b> Installation de R</a></li>
+<li class="chapter" data-level="4.2" data-path="premiersPas.html"><a href="premiersPas.html#r-comme-calculatrice"><i class="fa fa-check"></i><b>4.2</b> R comme calculatrice</a></li>
+<li class="chapter" data-level="4.3" data-path="premiersPas.html"><a href="premiersPas.html#la-notion-dobjet"><i class="fa fa-check"></i><b>4.3</b> La notion d’objet</a></li>
+<li class="chapter" data-level="4.4" data-path="premiersPas.html"><a href="premiersPas.html#les-scripts"><i class="fa fa-check"></i><b>4.4</b> Les scripts</a><ul>
+<li class="chapter" data-level="4.4.1" data-path="premiersPas.html"><a href="premiersPas.html#creer-un-script-et-le-documenter"><i class="fa fa-check"></i><b>4.4.1</b> Créer un script et le documenter</a></li>
+<li class="chapter" data-level="4.4.2" data-path="premiersPas.html"><a href="premiersPas.html#executer-un-script"><i class="fa fa-check"></i><b>4.4.2</b> Exécuter un script</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="IDE.html"><a href="IDE.html"><i class="fa fa-check"></i><b>5</b> Choisir un environnement de développement</a><ul>
+<li class="chapter" data-level="5.1" data-path="IDE.html"><a href="IDE.html#editeurs-de-texte-et-environnement-de-developpement"><i class="fa fa-check"></i><b>5.1</b> Editeurs de texte et environnement de développement</a></li>
+<li class="chapter" data-level="5.2" data-path="IDE.html"><a href="IDE.html#rstudio"><i class="fa fa-check"></i><b>5.2</b> RStudio</a></li>
+<li class="chapter" data-level="5.3" data-path="IDE.html"><a href="IDE.html#notepad-avec-npp2r"><i class="fa fa-check"></i><b>5.3</b> Notepad++ avec Npp2R</a></li>
+<li class="chapter" data-level="5.4" data-path="IDE.html"><a href="IDE.html#geany"><i class="fa fa-check"></i><b>5.4</b> Geany</a></li>
+<li class="chapter" data-level="5.5" data-path="IDE.html"><a href="IDE.html#autres-solutions"><i class="fa fa-check"></i><b>5.5</b> Autres solutions</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="dataType1.html"><a href="dataType1.html"><i class="fa fa-check"></i><b>6</b> Les types de données</a><ul>
+<li class="chapter" data-level="6.1" data-path="dataType1.html"><a href="dataType1.html#le-type-numeric"><i class="fa fa-check"></i><b>6.1</b> Le type <code>numeric</code></a></li>
+<li class="chapter" data-level="6.2" data-path="dataType1.html"><a href="dataType1.html#le-type-character"><i class="fa fa-check"></i><b>6.2</b> Le type <code>character</code></a></li>
+<li class="chapter" data-level="6.3" data-path="dataType1.html"><a href="dataType1.html#le-type-factor"><i class="fa fa-check"></i><b>6.3</b> Le type <code>factor</code></a></li>
+<li class="chapter" data-level="6.4" data-path="dataType1.html"><a href="dataType1.html#le-type-logical"><i class="fa fa-check"></i><b>6.4</b> Le type <code>logical</code></a></li>
+<li class="chapter" data-level="6.5" data-path="dataType1.html"><a href="dataType1.html#un-point-sur-na-et-null"><i class="fa fa-check"></i><b>6.5</b> Un point sur NA et NULL</a></li>
+<li class="chapter" data-level="6.6" data-path="dataType1.html"><a href="dataType1.html#les-operateurs-conditionnels"><i class="fa fa-check"></i><b>6.6</b> Les opérateurs conditionnels</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="dataType2.html"><a href="dataType2.html"><i class="fa fa-check"></i><b>7</b> Les conteneurs de données</a><ul>
+<li class="chapter" data-level="7.1" data-path="dataType2.html"><a href="dataType2.html#le-conteneur-vector"><i class="fa fa-check"></i><b>7.1</b> Le conteneur vector</a></li>
+<li class="chapter" data-level="7.2" data-path="dataType2.html"><a href="dataType2.html#le-conteneur-list"><i class="fa fa-check"></i><b>7.2</b> Le conteneur list</a></li>
+<li class="chapter" data-level="7.3" data-path="dataType2.html"><a href="dataType2.html#le-conteneur-data.frame"><i class="fa fa-check"></i><b>7.3</b> Le conteneur data.frame</a></li>
+<li class="chapter" data-level="7.4" data-path="dataType2.html"><a href="dataType2.html#le-conteneur-matrix"><i class="fa fa-check"></i><b>7.4</b> Le conteneur matrix</a></li>
+<li class="chapter" data-level="7.5" data-path="dataType2.html"><a href="dataType2.html#le-conteneur-array"><i class="fa fa-check"></i><b>7.5</b> Le conteneur array</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="fonctions.html"><a href="fonctions.html"><i class="fa fa-check"></i><b>8</b> Les fonctions</a><ul>
+<li class="chapter" data-level="8.1" data-path="fonctions.html"><a href="fonctions.html#quest-ce-quune-fonction"><i class="fa fa-check"></i><b>8.1</b> Quest-ce qu’une fonction</a></li>
+<li class="chapter" data-level="8.2" data-path="fonctions.html"><a href="fonctions.html#les-fonctions-les-plus-courantes"><i class="fa fa-check"></i><b>8.2</b> Les fonctions les plus courantes</a><ul>
+<li class="chapter" data-level="8.2.1" data-path="fonctions.html"><a href="fonctions.html#visualiser-les-donnees"><i class="fa fa-check"></i><b>8.2.1</b> Visualiser les données</a></li>
+<li class="chapter" data-level="8.2.2" data-path="fonctions.html"><a href="fonctions.html#fonctions-mathematiques"><i class="fa fa-check"></i><b>8.2.2</b> fonctions mathématiques</a></li>
+<li class="chapter" data-level="8.2.3" data-path="fonctions.html"><a href="fonctions.html#statistiques-descriptives"><i class="fa fa-check"></i><b>8.2.3</b> Statistiques descriptives</a></li>
+</ul></li>
+<li class="chapter" data-level="8.3" data-path="fonctions.html"><a href="fonctions.html#autres-fonctions-utiles"><i class="fa fa-check"></i><b>8.3</b> Autres fonctions utiles</a></li>
+<li class="chapter" data-level="8.4" data-path="fonctions.html"><a href="fonctions.html#ecrire-une-fonction"><i class="fa fa-check"></i><b>8.4</b> Ecrire une fonction</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="import.html"><a href="import.html"><i class="fa fa-check"></i><b>9</b> Importer et exporter des données</a><ul>
+<li class="chapter" data-level="9.1" data-path="import.html"><a href="import.html#lire-des-donnees-depuis-un-fichier-tableur"><i class="fa fa-check"></i><b>9.1</b> Lire des données depuis un fichier tableur</a></li>
+<li class="chapter" data-level="9.2" data-path="import.html"><a href="import.html#sauver-des-donnees-pour-r"><i class="fa fa-check"></i><b>9.2</b> Sauver des données pour R</a></li>
+<li class="chapter" data-level="9.3" data-path="import.html"><a href="import.html#exporter-des-donnees"><i class="fa fa-check"></i><b>9.3</b> Exporter des données</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="loops.html"><a href="loops.html"><i class="fa fa-check"></i><b>10</b> Les boucles</a><ul>
+<li class="chapter" data-level="10.1" data-path="loops.html"><a href="loops.html#pourquoi-faire-des-boucles"><i class="fa fa-check"></i><b>10.1</b> Pourquoi faire des boucles</a></li>
+<li class="chapter" data-level="10.2" data-path="loops.html"><a href="loops.html#la-boucle-if"><i class="fa fa-check"></i><b>10.2</b> La boucle if</a></li>
+<li class="chapter" data-level="10.3" data-path="loops.html"><a href="loops.html#la-boucle-switch"><i class="fa fa-check"></i><b>10.3</b> La boucle switch</a></li>
+<li class="chapter" data-level="10.4" data-path="loops.html"><a href="loops.html#la-boucle-for"><i class="fa fa-check"></i><b>10.4</b> La boucle for</a></li>
+<li class="chapter" data-level="10.5" data-path="loops.html"><a href="loops.html#la-boucle-while"><i class="fa fa-check"></i><b>10.5</b> La boucle while</a></li>
+<li class="chapter" data-level="10.6" data-path="loops.html"><a href="loops.html#repeat-next-break-stop"><i class="fa fa-check"></i><b>10.6</b> repeat, next, break, stop</a></li>
+<li class="chapter" data-level="10.7" data-path="loops.html"><a href="loops.html#les-boucles-de-la-famille-apply"><i class="fa fa-check"></i><b>10.7</b> Les boucles de la famille apply</a><ul>
+<li class="chapter" data-level="10.7.1" data-path="loops.html"><a href="loops.html#apply"><i class="fa fa-check"></i><b>10.7.1</b> apply</a></li>
+<li class="chapter" data-level="10.7.2" data-path="loops.html"><a href="loops.html#sapply"><i class="fa fa-check"></i><b>10.7.2</b> sapply</a></li>
+<li class="chapter" data-level="10.7.3" data-path="loops.html"><a href="loops.html#lapply"><i class="fa fa-check"></i><b>10.7.3</b> lapply</a></li>
+<li class="chapter" data-level="10.7.4" data-path="loops.html"><a href="loops.html#tapply"><i class="fa fa-check"></i><b>10.7.4</b> tapply</a></li>
+<li class="chapter" data-level="10.7.5" data-path="loops.html"><a href="loops.html#mapply"><i class="fa fa-check"></i><b>10.7.5</b> mapply</a></li>
+</ul></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Se former au logiciel R : initiation et perfectionnement</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="premiersPas" class="section level1">
+<h1><span class="header-section-number"> 4</span> Premiers pas</h1>
+<div id="installation-de-r" class="section level2">
+<h2><span class="header-section-number">4.1</span> Installation de R</h2>
+<p>Le logiciel R peut être téléchargé depuis cette page : <a href="https://www.r-project.org/" class="uri">https://www.r-project.org/</a>. Sur le site de R il faut au préalable choisir un mirroir CRAN (serveur depuis lequel télécharger R ; sauf cas particulier le plus proche de sa localisation géographique), puis télécharger le fichier <em>base</em>. Les utilisateurs de Linux pourront préférer un <code>sudo apt-get install r-base</code>.</p>
+<div class="rmdnote">
+<p>
+Le logiciel R peut être téléchargé depuis de nombreux serveurs du CRAN (Comprehensive R Archive Network) à travers le monde. Ces serveurs s’appellent des miroirs. Le choix du miroir est manuel. Les informations complémentaires comme cette note seront toujours représentées avec ce pictogramme <em>information</em>.
+</p>
+</div>
+</div>
+<div id="r-comme-calculatrice" class="section level2">
+<h2><span class="header-section-number">4.2</span> R comme calculatrice</h2>
+<p>Une fois le programme lancé, une fenêtre apparaît dont l’aspect peut varier en fonction de votre système d’exploitation (Figure <a href="premiersPas.html#fig:screenCapConsole">4.1</a>). Cette fenêtre est dénommée la <em>console</em>.</p>
+<div class="figure"><span id="fig:screenCapConsole"></span>
+<img src="myFigures/screencap_rConsoleFR.png" alt="Capture d'écran de la console R sous windows.\label{fig:screenCapConsole}"  />
+<p class="caption">
+Figure 4.1: Capture d’écran de la console R sous windows.
+</p>
+</div>
+<p>La console correspond à l’interface où va être interprété le code, c’est à dire à l’endroit où le code va être transformé en langage machine, éxécuter par l’ordinateur, puis retransmis sous une forme lisible par des humains. Cela correspond à l’écran d’affichage d’une calculatrice. C’est de cette manière que R va être utilisé dans la suite de cette section.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="dv">5</span> <span class="op">+</span><span class="st"> </span><span class="dv">5</span></code></pre></div>
+<pre><code>## [1] 10</code></pre>
+<p>Si nous écrivons <code>5 + 5</code> dans la console puis <code>Entrée</code>, le résultat apparaît précédé du chiffre [1] entre crochets. Ce chiffre correspond au numéro du résultat (dans notre cas, il n’y a qu’un seul résultat ; nous reviendrons sur cet aspect plus tard). Nous pouvons également noter dans cet exemple l’utilisation d’espaces avant et après le signe <code>+</code>. Ces espaces ne sont pas nécessaires mais permettent au code d’être plus lisible par les humains (i.e., plus agréable à lire pour nous comme pour les personnes avec qui nous serons amenés à partager notre code). Les opérateurs aritmétiques disponibles sous R sont résumés dans la table <a href="premiersPas.html#tab:tabOpAri">4.1</a>.</p>
+<table>
+<caption><span id="tab:tabOpAri">Table 4.1: </span>Opérateurs arithmétiques.</caption>
+<thead>
+<tr class="header">
+<th align="left">Label</th>
+<th align="left">Operateur</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Addition</td>
+<td align="left">+</td>
+</tr>
+<tr class="even">
+<td align="left">Soustraction</td>
+<td align="left">-</td>
+</tr>
+<tr class="odd">
+<td align="left">Multiplication</td>
+<td align="left">*</td>
+</tr>
+<tr class="even">
+<td align="left">Division</td>
+<td align="left">/</td>
+</tr>
+<tr class="odd">
+<td align="left">Puissance</td>
+<td align="left">^</td>
+</tr>
+<tr class="even">
+<td align="left">Modulo</td>
+<td align="left">%%</td>
+</tr>
+<tr class="odd">
+<td align="left">Quotien Décimal</td>
+<td align="left">%/%</td>
+</tr>
+</tbody>
+</table>
+<p>Classiquement, les multiplications et les divisions sont prioritaires sur les additions et les soustractions. Au besoin nous pouvons utiliser des parenthèses.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="dv">5</span> <span class="op">+</span><span class="st"> </span><span class="dv">5</span> <span class="op">*</span><span class="st"> </span><span class="dv">2</span></code></pre></div>
+<pre><code>## [1] 15</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">(<span class="dv">5</span> <span class="op">+</span><span class="st"> </span><span class="dv">5</span>) <span class="op">*</span><span class="st"> </span><span class="dv">2</span></code></pre></div>
+<pre><code>## [1] 20</code></pre>
+<p>L’opérateur modulo correspond au reste de la division euclidienne. Il est souvent utilisé en informatique par exemple pour savoir si un nombre est pair ou impair (un nombre modulo 2 va renvoyer 1 si il est impair et 0 si il est pair).</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="dv">451</span> <span class="op">%%</span><span class="st"> </span><span class="dv">2</span></code></pre></div>
+<pre><code>## [1] 1</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="dv">288</span> <span class="op">%%</span><span class="st"> </span><span class="dv">2</span></code></pre></div>
+<pre><code>## [1] 0</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">(<span class="dv">5</span> <span class="op">+</span><span class="st"> </span><span class="dv">5</span> <span class="op">*</span><span class="st"> </span><span class="dv">2</span>) <span class="op">%%</span><span class="st"> </span><span class="dv">2</span></code></pre></div>
+<pre><code>## [1] 1</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">((<span class="dv">5</span> <span class="op">+</span><span class="st"> </span><span class="dv">5</span>) <span class="op">*</span><span class="st"> </span><span class="dv">2</span>) <span class="op">%%</span><span class="st"> </span><span class="dv">2</span></code></pre></div>
+<pre><code>## [1] 0</code></pre>
+<p>R intègre également certaines constantes dont <code>pi</code>. Par ailleurs le signe infini est représenté par <code>Inf</code></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">pi</code></pre></div>
+<pre><code>## [1] 3.141593</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">pi <span class="op">*</span><span class="st"> </span><span class="dv">5</span><span class="op">^</span><span class="dv">2</span></code></pre></div>
+<pre><code>## [1] 78.53982</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="dv">1</span><span class="op">/</span><span class="dv">0</span></code></pre></div>
+<pre><code>## [1] Inf</code></pre>
+<div class="rmdstyle">
+<p>
+le <em>style</em> du code est important car le code est destiné à être lisible par nous plus tard et par d’autres personnes de manière générale. Pour avoir un style lisible il est recommandé de mettre des espaces avant et après les opérateurs arithmétiques. Les informations concernant le <em>style</em> seront toujours représentées avec ce pictogramme afin qu’elles soient facilement identifiables.
+</p>
+</div>
+</div>
+<div id="la-notion-dobjet" class="section level2">
+<h2><span class="header-section-number">4.3</span> La notion d’objet</h2>
+<p>Un aspect important de la programmation avec R, mais aussi de la programmation en général est la notion d’objet. Comme indiqué sur la page web de wikipedia (<a href="https://fr.wikipedia.org/wiki/Objet_(informatique)" class="uri">https://fr.wikipedia.org/wiki/Objet_(informatique)</a>), en informatique, un objet est un <em>conteneur</em>, c’est à dire quelque chose qui va contenir de l’information. L’inforamtion contenue dans un objet peut être très diverse, mais pour le moment nous allons contenir dans un objet le chiffre 5. Pour ce faire (et pour pouvoir le réutiliser par la suite), il nous faut donner un nom à notre objet. Avec R le nom des objets ne doit pas comprendre de caractères spéciaux comme <em>^$?|+()[]}{</em>, ne doit pas commencer par un chiffre ni contenir d’espaces. Le nom de l’objet doit être représentatif de ce qu’il contient, tout en étant ni trop court ni trop long. Imaginons que notre chiffre 5 corresponde au nombre de répétitions d’une expérience. Nous voudrions lui donner un nom faisant référence à <em>nombre</em> et à <em>répétition</em>, que nous pourrions réduire à <em>nbr</em> et <em>rep</em>, respectivement. Il existe plusieurs possibilités qui sont toutes assez répandues sous R :</p>
+<ul>
+<li>la séparation au moyen du caractère <em>tiret bas</em> : <code>nbr_rep</code></li>
+<li>la séparation au moyen du caractère <em>point</em> : <code>nbr.rep</code></li>
+<li>l’utilisation de lettres minuscules : <code>nbrrep</code></li>
+<li>le style <em>lowerCamelCase</em> consistant en un premier mot en minuscules et des suivants avec une majuscule : <code>nbrRep</code></li>
+<li>le style <em>UpperCamelCase</em> consistant à mettre une majuscule au début de chacun des mots : <code>NbrRep</code></li>
+</ul>
+<p>Toutes ces formes de nommer un objet sont équivalentes. Dans ce livre nous utiliserons le style <em>lowerCamelCase</em>. De manière générale il faut éviter les noms trop longs comme <code>leNombreDeRepetitions</code> ou trop courts comme <code>nR</code>, et les noms ne permettant pas d’identifier le contenu comme <code>maVariable</code> ou <code>monChiffre</code>, mais aussi <code>a</code> ou <code>b</code>…</p>
+<div class="rmdstyle">
+<p>
+Il existe différentes façons de définir un nom pour les objets que nous allons créer avec R. Dans ce livre il est utilisé le style <em>lowerCamelCase</em>. L’important n’est pas le choix du style mais la consistence dans son choix. L’objectif est d’avoir un code fonctionnel mais également un code facile et agréable à lire.
+</p>
+</div>
+<p>Maintenant que nous avons choisi un nom pour notre objet, il faut le créer et faire comprendre à R que notre objet doit contenir le chiffre 5. Il existe trois façons de créer un objet sous R:</p>
+<ul>
+<li>avec le signe <code>&lt;-</code></li>
+<li>avec le signe <code>=</code></li>
+<li>avec le signe <code>-&gt;</code></li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">nbrRep &lt;-<span class="st"> </span><span class="dv">5</span>
+nbrRep =<span class="st"> </span><span class="dv">5</span>
+<span class="dv">5</span> -&gt;<span class="st"> </span>nbrRep</code></pre></div>
+<p>Dans ce livre nous utiliserons toujours la forme <code>&lt;-</code> par souci de consistence et aussi parce que c’est la forme la plus répendue.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">nbrRep &lt;-<span class="st"> </span><span class="dv">5</span></code></pre></div>
+<p>Nous venons de créer un objet <code>nbrRep</code> et de lui affecter la valeur 5. Cet objet est désormais disponible dans notre environnement de calcul et peut donc être utilisé. Voici quelques exemples :</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">nbrRep <span class="op">+</span><span class="st"> </span><span class="dv">2</span></code></pre></div>
+<pre><code>## [1] 7</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">nbrRep <span class="op">*</span><span class="st"> </span><span class="dv">5</span> <span class="op">-</span><span class="st"> </span><span class="dv">45</span><span class="op">/</span><span class="dv">56</span></code></pre></div>
+<pre><code>## [1] 24.19643</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">pi <span class="op">*</span><span class="st"> </span>nbrRep<span class="op">^</span><span class="dv">2</span></code></pre></div>
+<pre><code>## [1] 78.53982</code></pre>
+<p>La valeur associée à notre objet <code>nbrRep</code> peut être modifiée de la même manière que lors de sa création :</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">nbrRep &lt;-<span class="st"> </span><span class="dv">5</span>
+nbrRep <span class="op">+</span><span class="st"> </span><span class="dv">2</span></code></pre></div>
+<pre><code>## [1] 7</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">nbrRep &lt;-<span class="st"> </span><span class="dv">10</span>
+nbrRep <span class="op">+</span><span class="st"> </span><span class="dv">2</span></code></pre></div>
+<pre><code>## [1] 12</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">nbrRep &lt;-<span class="st"> </span><span class="dv">5</span> <span class="op">*</span><span class="st"> </span><span class="dv">2</span> <span class="op">+</span><span class="st"> </span><span class="dv">7</span><span class="op">/</span><span class="dv">3</span>
+nbrRep <span class="op">+</span><span class="st"> </span><span class="dv">2</span></code></pre></div>
+<pre><code>## [1] 14.33333</code></pre>
+<p>L’utilisation des objets prend tout son sens lorsque nous avons des opérations complexes à réaliser et rend le code plus agréable à lire et à comprendre.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">(<span class="dv">5</span> <span class="op">+</span><span class="st"> </span><span class="dv">9</span><span class="op">^</span><span class="dv">2</span> <span class="op">-</span><span class="st"> </span><span class="dv">1</span><span class="op">/</span><span class="dv">18</span>) <span class="op">/</span><span class="st"> </span>(<span class="dv">32</span> <span class="op">*</span><span class="st"> </span><span class="dv">45</span><span class="op">/</span><span class="dv">8</span> <span class="op">+</span><span class="st"> </span><span class="dv">3</span>)</code></pre></div>
+<pre><code>## [1] 0.4696418</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">terme01 &lt;-<span class="st"> </span><span class="dv">5</span> <span class="op">+</span><span class="st"> </span><span class="dv">9</span><span class="op">^</span><span class="dv">2</span> <span class="op">-</span><span class="st"> </span><span class="dv">1</span><span class="op">/</span><span class="dv">18</span>
+terme02 &lt;-<span class="st"> </span><span class="dv">32</span> <span class="op">*</span><span class="st"> </span><span class="dv">45</span><span class="op">/</span><span class="dv">8</span> <span class="op">+</span><span class="st"> </span><span class="dv">3</span>
+terme01 <span class="op">/</span><span class="st"> </span>terme02</code></pre></div>
+<pre><code>## [1] 0.4696418</code></pre>
+</div>
+<div id="les-scripts" class="section level2">
+<h2><span class="header-section-number">4.4</span> Les scripts</h2>
+<p>R est un langage de programmation souvent dénommé <em>langage de script</em>. Cela fait référence au fait que la plupart des utilisateurs vont écrire des petits bouts de code plutôt que des programmes entiers. R peut être utilisé comme une simple calculatrice, et dans ce cas il ne sera pas nécessaire de conserver un historique des opérations qui ont été réalisées. Mais si les opérations à réliser sont longues et complexes, il peut devenir nécessaire de pouvoir sauvegarder ce qui a été fait à un moment donné pour pouvoir poursuivre plus tard. Le fichier dans lequel seront conservées les opérations consitue ce que l’on appelle communement le script. Un script est donc un fichier contenant une succession d’informations compréhensibles par R et qu’il est possible d’éxécuter.</p>
+<div id="creer-un-script-et-le-documenter" class="section level3">
+<h3><span class="header-section-number">4.4.1</span> Créer un script et le documenter</h3>
+<p>Pour ouvrir un nouveau script il suffit de créer un fichier texte vide qui sera édité par un éditeur de texte comme le bloc note sous Windows ou Mac OS, ou encore Gedit ou même nano sous Linux. Par convention ce fichier prend l’extension “.r” ou plus souvent “.R”. C’est cette dernière convention qui sera utilisée dans ce livre. Depuis l’interface graphique de R il est possible de créer un nouveux script sous Mac OS et Windows via <em>fichier</em> puis <em>nouveau script</em> et <em>enregistrer sous</em>. Tout comme le nom des objets, le nom du script est important pour que nous puissions facilement identifier son contenu. Par exemple nous pourrions créer un fichier <code>formRConceptsBase.R</code> contenant les objets que nous venons de créer et les calculs effectués. Mais même avec des noms de variables et un nom de fichier bien définis, il sera difficile de se rappeler le sens de cce fichier sans une documentation accompagnant ce script. Pour docummenter un script nous allons utiliser des <em>commentaires</em>. Les commentaires sont des éléments qui seront identifiés par R comme tel et qui ne seront pas éxécutés. Pour spécifier à R que nous allons faire un commentaire, il faut utiliser le caractère octothorpe (croisillon) <code>#</code>. Les commentaires peuvent être insérés sur une nouvelle ligne ou en fin de ligne.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># creation objet nombre de repetitions</span>
+nbrRep &lt;-<span class="st"> </span><span class="dv">5</span> <span class="co"># commentaire de fin de ligne</span></code></pre></div>
+<p>Les commentaires peuvent aussi être utilisé pour qu’une ligne ne soit plus éxécutée.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">nbrRep &lt;-<span class="st"> </span><span class="dv">5</span>
+<span class="co"># nbrRep + 5</span></code></pre></div>
+<p>Pour en revenir à la documentation du script, il est recommandé de commencer chacun de ses scripts par une brève description de son contenu, puis lorsque le script devient long, de le structurer en différentes parties pour faciliter sa lecture.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># ------------------------------------------------------------</span>
+<span class="co"># Voici un script pour acquérir les concepts de base </span>
+<span class="co"># avec R</span>
+<span class="co"># date de création : 25/06/2018</span>
+<span class="co"># auteur : François Rebaudo</span>
+<span class="co"># ------------------------------------------------------------</span>
+
+<span class="co"># [1] création de l&#39;objet nombre de répétitions</span>
+<span class="co"># ------------------------------------------------------------</span>
+
+nbrRep &lt;-<span class="st"> </span><span class="dv">5</span>
+
+<span class="co"># [2] calculs simples</span>
+<span class="co"># ------------------------------------------------------------</span>
+
+pi <span class="op">*</span><span class="st"> </span>nbrRep<span class="op">^</span><span class="dv">2</span></code></pre></div>
+<pre><code>## [1] 78.53982</code></pre>
+<div class="rmdstyle">
+<p>
+Pour aller plus loin sur le style de code, un guide complet de recommandations est disponible en ligne (en anglais ; <a href="http://style.tidyverse.org/" class="uri">http://style.tidyverse.org/</a>).
+</p>
+</div>
+</div>
+<div id="executer-un-script" class="section level3">
+<h3><span class="header-section-number">4.4.2</span> Exécuter un script</h3>
+<p>Depuis que nous avons un script, nous ne travaillons plus directement dans la console. Or seule la console est capable d’interpérter le code R et de nous renvoyer les résultats que nous souhaitons obtenir. Pour l’instant la technique la plus simple consiste à copier-coller les lignes que nous souhaitons éxécuter depuis notre script vers la console. A partir de maintenant nous n’allons plus utiliser les éditeurs de texte comme le bloc note mais des éditeurs spécialisés pour la confection de scripts R. C’est l’objet du chapitre suivant.</p>
+
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="intro.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="IDE.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"linkedin": false,
+"weibo": false,
+"instapper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>
