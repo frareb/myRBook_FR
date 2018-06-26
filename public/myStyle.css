@@ -1,13 +1,31 @@
-div.rmdnote {
+.rmdnote {
   padding: 1em 1em 1em 4em;
   margin-bottom: 5px;
   background: #f5f5f5 5px center/3em no-repeat;
-  background-image: url("../myIcons/information.png");
+  position:relative;
+  /* background-image: url("../myIcons/information.png"); */
+}
+.rmdnote:before {
+  content: "\f075";
+  font-family: FontAwesome;
+  left:10px;
+  position:absolute;
+  top:0px;
+  font-size: 45px;
 }
 
-div.rmdstyle {
+.rmdstyle {
   padding: 1em 1em 1em 4em;
   margin-bottom: 5px;
   background: #f5f5f5 5px center/3em no-repeat;
-  background-image: url("../myIcons/style.png");
+  position:relative;
+  /* background-image: url("../myIcons/style.png"); */
+}
+.rmdstyle:before {
+  content: "\f044";
+  font-family: FontAwesome;
+  left:10px;
+  position:absolute;
+  top:0px;
+  font-size: 45px;
 }
