@@ -17,5 +17,10 @@ script:
 
 deploy:
   provider: script
-  script: netlify deploy -t $NETLIFY_TOKEN
+  script: 
+    if [ ! -z "$ACCESS_TOKEN" ] ; then
+      netlify deploy --access-token $NETLIFY_TOKEN
+    else
+      netlify deploy
+    fi  
   skip_cleanup: true
