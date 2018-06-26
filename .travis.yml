@@ -17,5 +17,5 @@ script:
 
 deploy:
   provider: script
-  script: netlify deploy
+  script: netlify deploy -t $NETLIFY_TOKEN
   skip_cleanup: true
