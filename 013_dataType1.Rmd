@@ -1,25 +1,160 @@
 # Les types de données {#dataType1}
 
+Nous avons vu précédement comment créer un objet. Un objet est comme une boîte dans laquelle nous allons *stocker* de l'information. Jusqu'à présent nous n'avons stocké que des nombres mais dans ce chapitre nous allons voir qu'il est possible de stocker d'autres informations et nous allons nous attarder sur les types les plus courants. Dans ce chapitre nous allons utiliser des **fonctions** sur lesquelles nous reviendrons plus tard. 
+
 ## Le type `numeric`
 
-XXXfloat et intger
+Le type `numeric` correspond à ce que nous avons fait jusqu'à présent, stocker des nombres. Il existe deux principaux types de nombres avec R: les nombres entiers (*integers*), et les nombres à virgule (*double*). Par défaut R considère tous les nombres comme des nombres à virgule et attribue le type `double`.
+Pour vérifier le type de données nous allons utiliser la fonction `typeof()` qui prend comme argument un objet (ou directement l'information que nous souhaitons tester). Nous pouvons également utiliser la fonction `is.double()` qui va renvoyer `TRUE` si le nombre est au format `double` et `FALSE` dans le cas contraire. La fonction générique `is.numeric()` va quant à elle renvoyer `TRUE` si l'objet est au format `numeric` et `FALSE` dans le cas contraire.
+
+```{r}
+nbrRep <- 5
+typeof(nbrRep)
+typeof(5.32)
+is.numeric(5)
+is.double(5)
+```
+
+Si nous voulons spécifier à R que nous allons travailler avec un nombre entier, alors il nous faut transformer notre nombre à virgule en nombre entier avec la fonction `as.integer()`. Nous pouvons également utiliser la fonction `is.integer()` qui va renvoyer `TRUE` si le nombre est au format `integer` et `FALSE` dans le cas contraire.
+
+```{r}
+nbrRep <- as.integer(5)
+typeof(nbrRep)
+typeof(5.32)
+typeof(as.integer(5.32))
+as.integer(5.32)
+as.integer(5.99)
+is.numeric(nbrRep)
+```
+
+Nous voyons ici que transformer un nombre comme `5.99` au format `integer` va renvoyer uniquement la partie entière, soit `5`.
+
+```{r}
+is.integer(5)
+is.numeric(5)
+is.integer(as.integer(5))
+is.numeric(as.integer(5))
+```
+
+La somme d'un nombre entier et d'un nombre à virgule renvoie un nombre à virgule.
+
+```{r}
+sumIntDou <- as.integer(5) + 5.2
+typeof(sumIntDou)
+sumIntInt <- as.integer(5) + as.integer(5)
+typeof(sumIntInt)
+```
+
+Pour résumer, le type `numeric` contient deux sous-types, les types `intger` pour les nombres entiers et le type `double` pour les nombres à virgule. Par défaut R attribue le type `double` aux nombres.
 
 ## Le type `character`
 
-XXXstring
+Le type `character` correspond au texte. En effet, R permet de travailler avec du texte. pour spécifier à R que l'information contenue dans un objet est au format texte (ou de manière générale pour tous les textes), il faut utiliser les guillemets doubles (`"`), ou simples (`'`).
+
+```{r}
+myText <- "azerty"
+myText2 <- 'azerty'
+myText3 <- 'azerty uiop qsdfg hjklm'
+typeof(myText3)
+```
+
+Les guillemets doubles ou simples sont utiles si l'on souhaite mettre des guillemets dans notre texte. Nous pouvons également *échapper* un caractère spécial comme un guillemet grâce au signe backslash `\`.
+
+```{r}
+myText <- "a 'ze' 'rt' y"
+myText2 <- 'a "zert" y'
+myText3 <- 'azerty uiop qsdfg hjklm'
+myText4 <- "qwerty \" azerty "
+myText5 <- "qwerty \\ azerty "
+```
+
+Par défaut lorsque nous créons un objet, son contenu n'est pas renvoyé par la console. Sur Internet ou dans de nombreux ouvrages nous pouvons retrouver le nom de l'objet sur une ligne pour renvoyer son contenu:
+
+```{r}
+myText <- "a 'ze' 'rt' y"
+myText
+```
+
+Dans ce livre nous n'utiliserons jamais cette façon de faire et préfèrerons l'utilisation de la fonction `print()`, qui permet d'afficher dans la console le contenu d'un objet. Le résultat est le même mais le code est alors plus facile à lire et plus explicite sur ce qui est fait.
+
+```{r}
+myText <- "a 'ze' 'rt' y"
+print(myText)
+nbrRep <- 5
+print(nbrRep)
+```
+
+Nous pouvons également mettre des chiffres au format texte, mais il ne faut pas oublier de mettre des guillemets pour spécifier le type `character` ou utiliser la fonction `as.character()`. Une opération entre du texte et un nombre renvoie une erreur. Par exemple si l'on ajoute `10` à `"5"`, R nous signale qu'un **argument** de la **fonction** `+` n'est pas de type `numeric` et que donc l'opération n'est pas possible. Nous ne pouvons pas non plus ajouter du texte a du texte, mais verrons plus tard comment *concaténer* deux *chaines de texte*.
+
+```{r}
+myText <- "qwerty"
+typeof(myText)
+myText2 <- 5
+typeof(myText2)
+myText3 <- "5"
+typeof(myText3)
+myText2 + 10
+as.character(5)
+# myText3 + 10 # Error in myText3 + 10 : non-numeric argument to binary operator
+# "a" + "b" # Error in "a" + "b" : non-numeric argument to binary operator
+```
+
+Pour résumer, le type `character` permet la saisie de texte, nous pouvons le reconnaître grâce aux guillemets simples ou doubles. 
 
 ## Le type `factor`
 
-XXXstring
+Le type `factor` correspond aux facteurs. Les facteurs sont un choix parmi une liste finie de possibilités. Par exemple les pays sont des facteurs car il y a une liste finie de pays dans le monde à un temps donné. Un facteur peut être défini avec la fonction `factor()` ou transformé en utilisant la fonction `as.factor()`. Comme pour les autres types de donnée nous pouvons utiliser la fonction `is.factor()` pour vérifier le type de donnée. Pour avoir la liste de toutes les possibilités, il existe la fonction `levels()` (cette fonction prendra plus de sens quand nous aurons abordé les types de conteneur de l'information).
+
+```{r}
+factor01 <- factor("aaa")
+print(factor01)
+typeof(factor01)
+is.factor(factor01)
+levels(factor01)
+```
+
+Un facteur peut être transformé en texte avec la fonction `as.character()` mais également en nombre avec `as.numeric()`. Lors de la transformation en nombre chaque facteur prend la valeur de sa position dans la liste des possibilités. Dans notre cas il n'y a qu'une seule possibilité donc la fonction `as.numeric()` va renvoyer `1`:
+
+```{r}
+factor01 <- factor("aaa")
+as.character(factor01)
+as.numeric(factor01)
+```
 
 ## Le type `logical`
 
-XXXboolean
+Le type `logical` correspond aux valeurs `TRUE` et `FALSE` (et `NA`) que nous avons déjà vu avec les opérateurs de comparaison. 
 
-## Un point sur NA et NULL
+```{r}
+aLogic <- TRUE
+print(aLogic)
+typeof(aLogic)
+is.logical(aLogic)
+aLogic + 1
+as.numeric(aLogic)
+as.character(aLogic)
+```
 
-XXX
+## A propos de `NA`
 
-## Les opérateurs conditionnels
+La valeur `NA` peut être utilisée pour spécifier l'absence de données ou les données manquantes. Par défaut `NA` est de type `logical` mais il peut être utilisé pour du texte, ou des nombres.
 
-XXX
+```{r}
+print(NA)
+typeof(NA)
+typeof(as.integer(NA))
+typeof(as.character(NA))
+NA == TRUE
+NA == FALSE
+NA > 1
+NA + 1
+```
+
+## Conclusion
+
+Felicitations, nous sommes arrivés au bout de ce chapitre sur les type de données. Nous savons désormais :
+
+* Reconnaîte et faire des objets dans les principaux types de données
+* Transformer les types de données d'un type à un autre
+
+Ce chapitre un peu fastidieux est la base pour aborder le prochain chapitre sur les conteneurs des données.

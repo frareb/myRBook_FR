@@ -1,21 +1,395 @@
 # Les conteneurs de données {#dataType2}
 
-## Le conteneur vector
+Jusqu'à présent nous avons fait des objets simples ne contenant qu'une seule valeur. Nous avons néanmoins pu voir qu'un objet avait différents attributs, comme sa valeur, mais aussi le type de donnée contenue. maintenant nous allons voir qu'il existe différents types de conteneurs permettant de stocker plusieurs données.
+
+## Le conteneur `vector`
+
+Dans R, un `vector` est une combinaison de données avec la particularité que toutes les données contenues dans un `vector` sont du même type. Nous pouvons donc stocker plusieurs `numeric` ou `character` dans un `vector`, mais pas les deux. Le conteneur `vector` est important car c'est l'élément de base de R. 
+
+### Créer un `vector`
+
+Pour créer un `vector` nous allons utiliser la fonction `c()` qui permet de combiner des éléments en un `vector`. Les éléments à combiner doivent être séparés par des virgules.
+
+```{r}
+miVec01 <- c(1, 2, 3, 4) # un vecteur de 4 éléments de type numeric ; double
+print(miVec01)
+typeof(miVec01)
+is.vector(miVec01)
+```
+
+La fonction `is.vector()` permet de vérifier le type de conteneur. 
+
+```{r}
+miVec02 <- c("a", "b", "c") 
+print(miVec02)
+typeof(miVec02)
+is.vector(miVec02)
+
+miVec03 <- c(TRUE, FALSE, FALSE, TRUE)
+print(miVec03)
+typeof(miVec03)
+is.vector(miVec03)
+
+miVecNA <- c(1, NA, 3, NA, 5)
+print(miVecNA)
+typeof(miVecNA)
+is.vector(miVecNA)
+
+miVec04 <- c(1, "a")
+print(miVec04)
+typeof(miVec04)
+is.vector(miVec04)
+```
+
+Si l'on combine différents types de données, par défaut R va chercher à transformer les éléments en un seul type. Si comme ici dans l'objet `miVec03` nous avons des `character` et des `numeric`, R va transformer tous les éléments en `character`. 
+
+```{r}
+miVec05 <- c(factor("abc"), "def")
+print(miVec05)
+typeof(miVec05)
+miVec06 <- c(TRUE, "def")
+print(miVec06)
+typeof(miVec06)
+miVec07 <- c(factor("abc"), 55)
+print(miVec07)
+typeof(miVec07)
+miVec08 <- c(TRUE, 55)
+print(miVec08)
+typeof(miVec08)
+```
+
+Nous pouvons aussi combiner des objets existants au sein d'un `vector`.
+
+```{r}
+miVec09 <- c(miVec02, "d", "e", "f")
+print(miVec09)
+miVec10 <- c("aaa", "aa", miVec09, "d", "e", "f")
+print(miVec10)
+miVec11 <- c(789, miVec01 , 564)
+print(miVec11)
+```
+
+### Opérations sur un `vector`
+
+Nous pouvons également effectuer des opération sur un `vector`.
+
+```{r}
+print(miVec01)
+miVec01 + 1
+miVec01 - 1
+miVec01 * 2
+miVec01 /10
+```
+
+Les opérations d'un `vector` sur un autre sont aussi possibles, mais il faut veiller à ce que le nombre d'éléments d'un `vector` soit le même que l'autre, sinon R va effectuer le calcul en repartant du début. Voici un exemple pour illustrer ce que R fait:
+
+```{r}
+miVec12 <- c(1, 1, 1, 1, 1, 1, 1, 1, 1)
+print(miVec12)
+miVec13 <- c(10, 20, 30)
+print(miVec13)
+miVec12 + miVec13 # vecteurs de tailles différentes : attention au résultat
+miVec14 <- c(10, 20, 30, 40, 50, 60, 70, 80, 90)
+print(miVec14)
+miVec12 + miVec14 # les vecteurs sont de la même longueur
+miVec15 <- c(1, 1, 1, 1)
+print(miVec15)
+miVec15 + miVec13 # vecteurs de tailles différentes et non multiples
+```
+
+### Accèder aux valeurs d'un `vector`
+
+Il souvent nécessaire de pouvoir accèder aux valeurs d'un `vector`, c'est à dire de récupérer une valeur ou un groupe de valeurs au sein d'un `vector`. Pour à un élément dans un `vector` nous utilisons les crochets `[]`. Entre les crochets, nous pouvons utiliser un numéro correspondant au numéro de l'élément dans le `vector`.
+
+```{r}
+miVec20 <- c(10, 20, 30, 40, 50, 60, 70, 80, 90)
+miVec21 <- c("a", "b", "c", "d", "e", "f", "g", "h", "i")
+print(miVec20)
+print(miVec21)
+
+print(miVec20[1])
+print(miVec21[3])
+```
+
+Nous pouvons aussi utiliser la combinaison de différents éléments (un autre `vector`).
+
+```{r}
+print(miVec20[c(1, 5, 9)])
+print(miVec21[c(4, 3, 1)])
+print(miVec21[c(4, 4, 3, 4, 3, 2, 5)])
+```
+
+Nous pouvons aussi selectionner des éléments en utilisant un opérateur de comparaison ou un opérateur logique.
+
+```{r}
+print(miVec20[miVec20 >= 50])
+print(miVec20[(miVec20 >= 50) & ((miVec20 < 80))])
+print(miVec20[miVec20 != 50])
+print(miVec20[miVec20 == 30])
+print(miVec20[(miVec20 == 30) | (miVec20 == 50)])
+
+print(miVec21[miVec21 == "a"])
+```
+
+Une autre fonctionnalité intéressante est de conditionner les éléments à sélectionner dans un `vector` en fonction d'un autre `vector`.
+
+```{r}
+print(miVec21[miVec20 >= 50])
+print(miVec21[(miVec20 >= 50) & ((miVec20 < 80))])
+print(miVec21[miVec20 != 50])
+print(miVec21[miVec20 == 30])
+print(miVec21[(miVec20 == 30) | (miVec20 == 50)])
+print(miVec21[(miVec20 == 30) | (miVec21 == "h")])
+```
+
+Il est aussi possible d'exclure certains éléments plutôt que de les sélectionner.
+
+```{r}
+print(miVec20[-1])
+print(miVec21[-5])
+print(miVec20[-c(1, 2, 5)])
+print(miVec21[-c(1, 2, 5)])
+```
+
+Les éléments d'un `vector` peuvent aussi être sélectionné sur la base d'un `vector` de type `logical`. Dans ce cas seuls les éléments avec une valeur `TRUE` seront sélectionnés.
+
+```{r}
+miVec22 <- c(TRUE, TRUE, FALSE, TRUE, FALSE, TRUE, FALSE, TRUE, TRUE)
+print(miVec21[miVec22])
+```
+
+### Nommer les éléments d'un `vector`
+
+Les éléments d'un `vector` peuvent être nommé pour pouvoir s'y référer par la suite et opérer une sélection. La fonction `names()` permet de récupérer les noms des éléments d'un vecteur.
+
+```{r}
+miVec23 <- c(aaa = 10, bbb = 20, ccc = 30, ddd = 40, eee = 50)
+print(miVec23)
+print(miVec23["bbb"])
+print(miVec23[c("bbb", "ccc", "bbb")])
+names(miVec23)
+```
+
+### Modifier les éléments d'un `vector`
+
+Pour modifier un vecteur, nous opérons de la même façon que pour modifier un objet simple, avec le signe `<-` et l'élément ou les éléments à modifier entre crochets.
+
+```{r}
+print(miVec21)
+miVec21[3] <- "zzz"
+print(miVec21)
+miVec21[(miVec20 >= 50) & ((miVec20 < 80))] <- "qwerty"
+print(miVec21)
+
+print(miVec23)
+miVec23["ccc"] <- miVec23["ccc"] + 100
+print(miVec23)
+```
+
+Nous pouvons aussi changer les noms associés aux éléments d'un `vector`.
+
+```{r}
+print(miVec23)
+names(miVec23)[2] <- "bb_bb"
+print(miVec23)
+```
+
+Nous pouvons faire bien plus avec un `vector` et reviendrons sur leur manipulations et les opérations lors du chapitre sur les fonctions.
+
+## Le conteneur `list`
+
+Le deuxième type de conteneur que nous allons introduire est le conteneur `list`, qui est également le deuxième conteneur après le type `vector` de part son importance dans la programmation avec R. Le conteneur de type `list` permet de stocker une **liste** d'éléments. Contrairement à ce que nous avons vu précédement avec le type `vector`, les éléments du type `list` peuvent être différents (par exemple un `vector` de type `numeric`, puis un vecteur de type `character`). Les éléments du type `list` peuvent aussi être des conteneurs différents (par exemple un `vector`, puis une `list`). Le type de conteneur `list` prendra tout son sens lorsque nous aurons étudié les **boucles** et les **fonctions** de la famille `apply`.
+
+### Créer une `list`
+
+Pour créer une `list` nous allons utiliser la fonction `list()` qui prend comme argument des éléments (objets). 
+
+```{r}
+miList01 <- list()
+print(miList01)
+miList02 <- list(5, "qwerty", c(4, 5, 6), c("a", "b", "c"))
+print(miList02)
+miList03 <- list(5, "qwerty", list(c(4, 5, 6), c("a", "b", "c")))
+print(miList03)
+```
+
+La fonction `is.list()` permet de tester si nous avons bien créer un objet de type `list`.
+
+```{r}
+is.list(miList02)
+typeof(miList02)
+```
+
+### Accéder aux valeurs d'une `list`
+
+Les éléments du conteneur `list` sont identifiables grâce aux double crochets `[[ ]]`. 
+
+```{r}
+print(miList02)
+```
+
+Dans l'objet `miList02` de type `list`, il y a quatre éléments identifiables avec `[[1]]`, `[[2]]`, `[[3]]`, et `[[4]]`. Chacun des éléments est de type `vector` de taille 1 et de type `double` pour le premier élément, de taille 1 et de type `character` pour le deuxième élément, de taille 3 et de type `double` pour le troisième élément, et de taille 3 et de type `character` pour le quatrième élément.
+
+```{r}
+typeof(miList02)
+print(miList02[[1]])
+typeof(miList02[[1]])
+print(miList02[[2]])
+typeof(miList02[[2]])
+print(miList02[[3]])
+typeof(miList02[[3]])
+print(miList02[[4]])
+typeof(miList02[[4]])
+```
+
+L'accès au deuxième élément du `vector` situé en quatrième position de la liste se fait donc avec `miList02[[4]][2]`. Nous utilisons un double crochet pour le quatrième élément de la `list`, puis un simple crochet pour le deuxième élément du `vector`.
+
+```{r}
+print(miList02[[4]][2])
+```
+
+Comme une `list` peut contenir elle même une ou plusieurs `list`, nous pouvons accéder à l'information recherchée en combinant les doubles crochets. l'objet `miList04` est une `list` de deux éléments, les `list` `miList02` et `miList03`. L'objet `miList03` contient lui même une `list` comme élément en troisième position. Pour accéder au premier élément du `vector` en première position de l'élément en troisième position du deuxième élément de la `list` `miList04`, nous pouvons utiliser `miList04[[2]][[3]][[1]][1]`. Il n'y a pas de limite quant à la profondeur des `list` mais dans la pratique il n'y que rarement besoin de faire des `list` de `list` de `list`.
+
+```{r}
+miList04 <- list(miList02, miList03)
+print(miList04)
+print(miList04[[2]][[3]][[1]][1])
+```
+
+Pour rendre concret l'exemple précédent, nous pouvons imaginer des espèces de foreurs de maïs (*Sesamia nonagrioides* et *Ostrinia nubilalis*), échantillonées dans différents sites, avec différentes abondances à quatre dates. Ici nous allons donner des noms aux éléments des listes.
+
+```{r}
+bddInsect <- list(Snonagrioides = list(site01 = c(12, 5, 8, 7), site02 = c(5, 23, 4, 41), site03 = c(12, 0, 0, 0)), Onubilalis = list(site01 = c(12, 1, 2, 3), site02 = c(0, 0, 0, 1), site03 = c(1, 1, 2, 3)))
+print(bddInsect)
+```
+
+```{block, type='rmdstyle'}
+La lecture d'une ligne de code longue comme celle de la création de l'objet `bddInsect` est difficile à lire car la profondeur des éléments ne peuvent se déduire que grâce aux parenthèses. C'est pourquoi nous allons reorganiser le code pour lui donner plus de lisibilité grâce à l'**indentation**. L'indentation consiste à mettre l'information à des niveaux différents de telle manière que nous puissions rapidement identifier les différents niveaux d'un code. L'indentation se fait au moyen de la touche de tabulation du clavier. Nous reviendrons sur l'indentation avec plus de précisions lors du chapitre sur les **boucles**. Nous retiendrons pour le moment que si une ligne de code est trop longue, nous gagnons en lisibilité en passant à la ligne et que R va lire l'ensemble comme une seule ligne de code.
+```
+
+```{r}
+bddInsect <- list(
+  Snonagrioides = list(
+    site01 = c(12, 5, 8, 7), 
+    site02 = c(5, 23, 4, 41), 
+    site03 = c(12, 0, 0, 0)
+  ), 
+  Onubilalis = list(
+    site01 = c(12, 1, 2, 3), 
+    site02 = c(0, 0, 0, 1), 
+    site03 = c(1, 1, 2, 3)
+  )
+)
+```
+
+Nous pouvons sélectionner les données d'abondance du deuxième site de la première espèce comme précédemment `bddInsect[[1]][[2]]`, ou alternativement en utilisant les noms des éléments `bddInsect$Snonagrioides$site02`. Pour ce faire nous utilisons le signe `$`, ou alors le nom des éléments avec des guillemets simples ou doubles `bddInsect[['Snonagrioides']][['site02']]`.
+
+```{r}
+print(bddInsect[[1]][[2]])
+print(bddInsect$Snonagrioides$site02)
+print(bddInsect[['Snonagrioides']][['site02']])
+```
+
+Comme pour les vecteurs nous pouvons récupérer les noms des éléments avec la fonction `names()`.
+
+```{r}
+names(bddInsect)
+names(bddInsect[[1]])
+```
+
+Lorsque nous utilisons les doubles crochets `[[]]` ou le signe `$`, R renvoie le contenu de l'élément sélectionné. Dans notre exemple les données d'abondance sont contenues sous la forme d'un `vector`, donc R renvoie un élément de type `vector`. Si nous souhaitons sélectionner un élément d'une `list` mais en conservant le format `list`, alors nous pouvons utiliser les crochets simples `[]`.
+
+```{r}
+print(bddInsect[[1]][[2]])
+typeof(bddInsect[[1]][[2]])
+is.list(bddInsect[[1]][[2]])
+
+print(bddInsect[[1]][2])
+typeof(bddInsect[[1]][2])
+is.list(bddInsect[[1]][2])
+```
+
+L'utilisation des crochets simples `[]` est utile lorsque nous souhaitons récupérer plusieurs éléments d'une liste. Par exemple pour sélectionner les abondances d'insectes des deux premiers sites de la première espèce, nous utiliserons `bddInsect[[1]][c(1, 2)]` ou alternativement `bddInsect[[1]][c("site01", "site02")]`. 
+
+```{r}
+print(bddInsect[[1]][c(1, 2)])
+print(bddInsect[[1]][c("site01", "site02")])
+```
+
+### Modification d'une `list`
+
+Une liste peut être modifiée de la même façon que pour le conteneur `vector`, c'est à dire en se réferrant avec des crochets à l'élément que nous souhaitons modifier.
+
+```{r}
+print(miList02)
+miList02[[1]] <- 12
+print(miList02)
+miList02[[4]] <- c("d", "e", "f")
+print(miList02)
+miList02[[4]] <- c("a", "b", "c", miList02[[4]], "g", "h", "i")
+print(miList02)
+miList02[[4]][5] <- "eee"
+print(miList02)
+miList02[[3]] <- miList02[[3]] * 10 - 1
+print(miList02)
+miList02[[3]][2] <- miList02[[1]] * 100
+print(miList02)
+
+print(bddInsect)
+bddInsect[['Snonagrioides']][['site02']] <- c(2, 4, 6, 8)
+print(bddInsect)
+```
+
+Pour combiner deux `list`, il suffit d'utiliser la fonction `c()` que nous avions utilisée pour créer un `vector`.
+
+```{r}
+miList0203 <- c(miList02, miList03)
+print(miList0203)
+```
+
+Un objet de type `list` peut être transformé en `vector` avec la fonction `unlist()` si le format des éléments de la liste le permet (un `vector` ne peut contenir que des élément du même type).
+
+```{r}
+miList05 <- list("a", c("b", "c"), "d")
+print(miList05)
+miVec24 <- unlist(miList05)
+print(miVec24)
+miList06 <- list(c(1, 2, 3), c(4, 5, 6, 7), 8, 9, c(10, 11))
+print(miList06)
+miVec25 <- unlist(miList06)
+print(miVec25)
+```
+
+Pour ajouter un élément à une `list`, nous pouvons utiliser la fonction `c()` ou alors les crochets doubles `[[]]`.
+
+```{r}
+print(miList05)
+miList05 <- c(miList05, "e")
+print(miList05)
+miList05[[5]] <- c("fgh", "ijk")
+print(miList05)
+```
+
+Pour supprimer un élément à une `list`, la technique la plus rapide consiste à attribuer la valeur `NULL` à l'élément à supprimer.
+
+```{r}
+print(miList05)
+miList05[[2]] <- NULL
+print(miList05)
+```
+
+## Le conteneur `data.frame`
 
 XXX
 
-## Le conteneur list
+## Le conteneur `matrix`
 
 XXX
 
-## Le conteneur data.frame
+## Le conteneur `array`
 
 XXX
 
-## Le conteneur matrix
+## Plus d'information sur les objets
 
-XXX
-
-## Le conteneur array
-
-XXX
+XXX rm ls ...

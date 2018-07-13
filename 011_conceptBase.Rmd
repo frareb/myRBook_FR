@@ -18,11 +18,16 @@ Une fois le programme lancé, une fenêtre apparaît dont l'aspect peut varier e
 knitr::include_graphics("myFigures/screencap_rConsoleFR.png")
 ```
 
-La console correspond à l'interface où va être interprété le code, c'est à dire à l'endroit où le code va être transformé en langage machine, éxécuter par l'ordinateur, puis retransmis sous une forme lisible par des humains. Cela correspond à l'écran d'affichage d'une calculatrice. C'est de cette manière que R va être utilisé dans la suite de cette section.
+La console correspond à l'interface où va être interprété le code, c'est à dire à l'endroit où le code va être transformé en langage machine, éxécuter par l'ordinateur, puis retransmis sous une forme lisible par des humains. Cela correspond à l'écran d'affichage d'une calculatrice (Figure \@ref(fig:screenCapConsoleCal)). C'est de cette manière que R va être utilisé dans la suite de cette section.
 
 ```{block, type='rmdnote'}
 Tout au long de ce livre, les exemples de code R apparaîtront sur fond en gris. Ils peuvent être copiés et collés directement dans la console, bien qu'il soit préférable de reproduire soit même les exemples dans la console (ou plus tard dans les scripts). Le résultat de ce qui est envoyé dans la console apparaîtra également sur fond en gris avec `##` devant le code afin de bien faire la distinction entre le code et le résultat du code.
 ```
+
+```{r screenCapConsoleCal, fig.cap = "Capture d'écran de la console R sous Windows avec la calculatrice Windows.\\label{fig:screenCapConsoleCal}", echo = FALSE}
+knitr::include_graphics("myFigures/screencap_rConsoleCalculatrice.png")
+```
+### Les opérateurs arithmétiques
 
 ```{r}
 5 + 5
@@ -65,6 +70,119 @@ pi * 5^2
 ```{block, type='rmdstyle'}
 le *style* du code est important car le code est destiné à être lisible par nous plus tard et par d'autres personnes de manière générale. Pour avoir un style lisible il est recommandé de mettre des espaces avant et après les opérateurs arithmétiques. Les informations concernant le *style* seront toujours représentées avec ce pictogramme afin qu'elles soient facilement identifiables.
 ```
+
+### Les opérateurs de comparaison
+
+R est cependant bien plus qu'une simple calculatrice puisque'il permet un autre type d'opérateurs : les opérateurs de comparaison. Ils servent comme leur nom l'indique à *comparer* des valeurs entre elles (Table \@ref(tab:tabOpCom)).
+
+```{r tabOpCom, echo = FALSE}
+opAriDf <- data.frame(Label = c("plus petit que", "plus grand que", "plus petit ou égal à",  "plus grand ou égal à", "égal à", "différent de"), 
+  Operador = c("<", ">", "<=", ">=", "==", "!="))
+knitr::kable(opAriDf, caption = "Opérateurs de comparaison.\\label{tab:tabOpCom}")
+```
+
+Par exemple si nous voulons savoir si un chiffre est plus grand qu'un autre, nous pouvons écrire :
+
+```{r}
+5 > 3 
+```
+
+R renvoie la valeur `TRUE` si la comparasion est vraie et `FALSE` si la comparaison est fausse.
+
+```{r}
+5 > 3
+2 < 1.5
+2 <= 2
+3.2 >= 1.5
+```
+
+Nous pouvons combiner les opérateurs arithmétiques avec les opérateurs de comparasion.
+
+```{r}
+(5 + 8) > (3 * 45/2) 
+```
+
+```{block, type='rmdstyle'}
+Dans la comparasion `(5 + 8) > (3 * 45/2)` les parenthèses ne sont pas nécessaires mais elles permettent au code d'être plus facile à lire.
+```
+
+Un opérateur de comparaison particulier est *égal à*. Nous verrons dans la section suivante que le signe `=` est réservé à un autre usage : il permet d'affecter une valeur à un objet. L'opérateur de comparaison *égal à* doit donc être différent, c'est pour cela que R utilise `==`. 
+
+```{r}
+42 == 53
+58 == 58
+```
+
+Un autre opérateur particulier est *différent de*. Il est utilisé avec *un point d'intérrogation* suivi de *égal*, `!=`. Cet opérateur permet de d'obtenir la réponse inverse à `==`.
+
+```{r}
+42 == 53
+42 != 53
+(3 + 2) != 5
+10/2 == 5
+```
+
+R utilise `TRUE` et `FALSE` qui sont aussi des valeurs qui peuvent être testées avec les opérateurs de comparasion. Mais R attribue également une valeur à `TRUE` et `FALSE` :
+
+```{r}
+TRUE == TRUE
+TRUE > FALSE
+1 == TRUE
+0 == FALSE
+TRUE + 1
+FALSE + 1
+(FALSE + 1) == TRUE
+```
+
+La valeur de `TRUE` est de 1 et la valeur de `FALSE` est de 0. Nous verrons plus tard comment utiliser cette information dans les prochains chapitres.
+
+R est aussi un langage relativement permissif, cela veut dire qu'il admet une certaine flexibilité dans la manière de rédiger le code. Débattre du bien fondé de cette flexibilité sort du cadre de ce livre mais nous pourrons trouver dans du code R sur Internet ou dans d'autres ouvrages le raccourcis `T` pour `TRUE` et `F` pour `FALSE`. 
+
+```{r}
+T == TRUE
+F == FALSE
+T == 1
+F == 0
+(F + 1) == TRUE
+```
+
+Bien que cette façon de se référer à `TRUE` et `FALSE` par `T` et `F` soit assez répandue, dans ce livre nous utiliserons toujours `TRUE` et `FALSE` afin que le code soit plus facile à lire. Encore une fois l'objectif d'un code est de non seuleument être fonctionnel mais aussi d'être facile à lire et à relire.
+
+### Les opérateurs logiques
+
+Il existe un dernier type d'opérateur, les opérateurs logiques. Ils sont utiles pour combiner des opérateurs de comparaison (Table \@ref(tab:tabOpLog)). 
+
+```{r tabOpLog, echo = FALSE}
+opAriDf <- data.frame(Label = c("n'est pas", "et", "ou", "ou exclusif"), 
+  Operador = c("!", "&", "|", "xor()"))
+knitr::kable(opAriDf, caption = "Opérateurs logiques.\\label{tab:tabOpLog}")
+```
+
+```{r}
+!TRUE
+!FALSE
+((3 + 2) == 5) & ((3 + 3) == 5)
+((3 + 2) == 5) & ((3 + 3) == 6)
+(3 < 5) & (5 < 5)
+(3 < 5) & (5 <= 5)
+```
+
+L'opérateur logique `xor()` correspond à un *ou exclusif*. C'est à dire que l'un des deux **arguments** de la **fonction** `xor()` doit être vrai, mais pas les deux. Nous reviendrons plus tard sur les **fonctions** et leurs **arguments**, mais retenons que l'on identifie une fonction par ses parenthèses qui contiennent des arguments séparés par des virgules.
+
+```{r}
+xor((3 + 2) == 5, (3 + 3) == 6)
+xor((3 + 2) == 5, (3 + 2) == 6)
+xor((3 + 3) == 5, (3 + 2) == 6)
+xor((3 + 3) == 5, (3 + 3) == 6)
+```
+
+```{block, type='rmdstyle'}
+Il est recommandé que les virgules `,` soient suivies par un espace afin que le code soit plus agréable à lire.
+```
+
+### Aide sur les opérateurs
+
+Le fichier d'aideen anglais sur les opérateurs arithmétiques peut être obtenue avec la commande `?'+'` celui sur les opérateurs de comparaison avec la commande `?'=='` et celui sur les opérateurs logiques avec la commande `?'&'`.
 
 ## La notion d'objet
 
