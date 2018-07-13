@@ -309,7 +309,7 @@ typeof(bddInsect[[1]][2])
 is.list(bddInsect[[1]][2])
 ```
 
-L'utilisation des crochets simples `[]` est utile lorsque nous souhaitons récupérer plusieurs éléments d'une liste. Par exemple pour sélectionner les abondances d'insectes des deux premiers sites de la première espèce, nous utiliserons `bddInsect[[1]][c(1, 2)]` ou alternativement `bddInsect[[1]][c("site01", "site02")]`. 
+L'utilisation des crochets simples `[]` est utile lorsque nous souhaitons récupérer plusieurs éléments d'une `list`. Par exemple pour sélectionner les abondances d'insectes des deux premiers sites de la première espèce, nous utiliserons `bddInsect[[1]][c(1, 2)]` ou alternativement `bddInsect[[1]][c("site01", "site02")]`. 
 
 ```{r}
 print(bddInsect[[1]][c(1, 2)])
@@ -318,7 +318,7 @@ print(bddInsect[[1]][c("site01", "site02")])
 
 ### Modification d'une `list`
 
-Une liste peut être modifiée de la même façon que pour le conteneur `vector`, c'est à dire en se réferrant avec des crochets à l'élément que nous souhaitons modifier.
+Une `list` peut être modifiée de la même façon que pour le conteneur `vector`, c'est à dire en se réferrant avec des crochets à l'élément que nous souhaitons modifier.
 
 ```{r}
 print(miList02)
