@@ -25,7 +25,7 @@
 <meta name="author" content="François Rebaudo">
 
 
-<meta name="date" content="2018-07-13">
+<meta name="date" content="2018-07-17">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -173,6 +173,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="8.4" data-path="dataType2.html"><a href="dataType2.html#le-conteneur-matrix"><i class="fa fa-check"></i><b>8.4</b> Le conteneur <code>matrix</code></a><ul>
 <li class="chapter" data-level="8.4.1" data-path="dataType2.html"><a href="dataType2.html#creer-une-matrix"><i class="fa fa-check"></i><b>8.4.1</b> Créer une <code>matrix</code></a></li>
 <li class="chapter" data-level="8.4.2" data-path="dataType2.html"><a href="dataType2.html#manipuler-et-faire-des-operations-sur-une-matrix"><i class="fa fa-check"></i><b>8.4.2</b> Manipuler et faire des opérations sur une <code>matrix</code></a></li>
+<li class="chapter" data-level="8.4.3" data-path="dataType2.html"><a href="dataType2.html#acceder-aux-elements-dune-matrix"><i class="fa fa-check"></i><b>8.4.3</b> Accèder aux éléments d’une <code>matrix</code></a></li>
 </ul></li>
 <li class="chapter" data-level="8.5" data-path="dataType2.html"><a href="dataType2.html#le-conteneur-array"><i class="fa fa-check"></i><b>8.5</b> Le conteneur <code>array</code></a><ul>
 <li class="chapter" data-level="8.5.1" data-path="dataType2.html"><a href="dataType2.html#creer-un-array"><i class="fa fa-check"></i><b>8.5.1</b> Créer un <code>array</code></a></li>
@@ -934,7 +935,7 @@ La lecture d’une ligne de code longue comme celle de la création de l’objet
 </div>
 <div id="le-conteneur-data.frame" class="section level2">
 <h2><span class="header-section-number">8.3</span> Le conteneur <code>data.frame</code></h2>
-<p>Le conteneur <code>data.frame</code> peut être assimilé à un <em>tableau</em>. Il s’agit en fait d’un cas particulier de <code>list</code> où tous les élément de la <code>list</code> ont la même longueur.</p>
+<p>Le conteneur <code>data.frame</code> peut être assimilé à un <em>tableau</em>. Il s’agit en fait d’un cas particulier de <code>list</code> où tous les éléments de la <code>list</code> ont la même longueur.</p>
 <div id="creer-un-data.frame" class="section level3">
 <h3><span class="header-section-number">8.3.1</span> Créer un <code>data.frame</code></h3>
 <p>Pour créer un <code>data.frame</code> nous allons utiliser la fonction <code>data.frame()</code> qui prend comme arguments les éléments du tableau que nous souhaitons créer. Les éléments sont de type <code>vector</code> et font tous la même taille. Nous pouvons donner un nom à chaque <em>colonne</em> (<code>vector</code>) de notre <em>tableau</em> (<code>data.frame</code>).</p>
@@ -1150,7 +1151,7 @@ miMat &lt;-<span class="st"> </span><span class="kw">matrix</span>(vecForMatrix,
 ## row1    1    2    3    4
 ## row2    5    6    7    8
 ## row3    9   10   11   12</code></pre>
-<p>Il est possible de créer une <code>matrix</code> à partir d’un <code>data.frame</code> avec la fonction <code>as.data.frame</code> sous réserve que le <code>data.frame</code> ne contienne que des élément de même type (par exemple que des éléments de type <code>numeric</code>).</p>
+<p>Il est possible de créer une <code>matrix</code> à partir d’un <code>data.frame</code> avec la fonction <code>as.matrix()</code> sous réserve que le <code>data.frame</code> ne contienne que des élément de même type (par exemple que des éléments de type <code>numeric</code>).</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">vecForMat01 &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>, <span class="dv">7</span>, <span class="dv">8</span>, <span class="dv">9</span>, <span class="dv">10</span>, <span class="dv">11</span>, <span class="dv">12</span>)
 vecForMat02 &lt;-<span class="st"> </span>vecForMat01 <span class="op">*</span><span class="st"> </span><span class="dv">10</span>
 vecForMat03 &lt;-<span class="st"> </span>vecForMat01 <span class="op">/</span><span class="st"> </span><span class="dv">10</span>
@@ -1187,23 +1188,203 @@ dfForMat &lt;-<span class="st"> </span><span class="kw">data.frame</span>(vecFor
 ## [12,]          12         120         1.2</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">is.matrix</span>(<span class="kw">as.matrix</span>(dfForMat))</code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
-<p>XXX XXX XXX XXX XXX XXX XXX XXX XXX EN COURS XXX XXX XXX XXX XXX XXX XXX XXX XXX</p>
+<p>Nous pouvons aussi créer une <code>matrix</code> à partir d’un <code>vector</code> avec la fonction <code>as.matrix()</code> (matrice de une seule colonne).</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">as.matrix</span>(vecForMat01)</code></pre></div>
+<pre><code>##       [,1]
+##  [1,]    1
+##  [2,]    2
+##  [3,]    3
+##  [4,]    4
+##  [5,]    5
+##  [6,]    6
+##  [7,]    7
+##  [8,]    8
+##  [9,]    9
+## [10,]   10
+## [11,]   11
+## [12,]   12</code></pre>
 </div>
 <div id="manipuler-et-faire-des-operations-sur-une-matrix" class="section level3">
 <h3><span class="header-section-number">8.4.2</span> Manipuler et faire des opérations sur une <code>matrix</code></h3>
-<p>XXX XXX XXX XXX XXX XXX XXX XXX XXX EN COURS XXX XXX XXX XXX XXX XXX XXX XXX XXX</p>
+<p>Toutes les opérations terme à terme sont possibles sur les <code>matrix</code>.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># opérations terme à terme</span>
+miMat01 &lt;-<span class="st"> </span><span class="kw">matrix</span>(vecForMat01, <span class="dt">ncol =</span> <span class="dv">3</span>)
+miVecOp &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">10</span>, <span class="dv">100</span>, <span class="dv">1000</span>)
+miMat01 <span class="op">*</span><span class="st"> </span>miVecOp</code></pre></div>
+<pre><code>##      [,1] [,2]  [,3]
+## [1,]    1    5     9
+## [2,]   20   60   100
+## [3,]  300  700  1100
+## [4,] 4000 8000 12000</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">miMat01 <span class="op">+</span><span class="st"> </span>miVecOp</code></pre></div>
+<pre><code>##      [,1] [,2] [,3]
+## [1,]    2    6   10
+## [2,]   12   16   20
+## [3,]  103  107  111
+## [4,] 1004 1008 1012</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">miMat01 <span class="op">/</span><span class="st"> </span>miMat01</code></pre></div>
+<pre><code>##      [,1] [,2] [,3]
+## [1,]    1    1    1
+## [2,]    1    1    1
+## [3,]    1    1    1
+## [4,]    1    1    1</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">miMat01 <span class="op">-</span><span class="st"> </span><span class="dv">10</span></code></pre></div>
+<pre><code>##      [,1] [,2] [,3]
+## [1,]   -9   -5   -1
+## [2,]   -8   -4    0
+## [3,]   -7   -3    1
+## [4,]   -6   -2    2</code></pre>
+<p>Pour effectuer des opérations algébriques nous pouvons utiliser la fonction <code>%*%</code>.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># opérations algébriques</span>
+miVecConf &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">10</span>, <span class="dv">100</span>)
+miMat01 <span class="op">%*%</span><span class="st"> </span>miVecConf</code></pre></div>
+<pre><code>##      [,1]
+## [1,]  951
+## [2,] 1062
+## [3,] 1173
+## [4,] 1284</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">miMat02 &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>, <span class="dv">7</span>, <span class="dv">8</span>, <span class="dv">9</span>), <span class="dt">ncol =</span> <span class="dv">3</span>)
+<span class="kw">print</span>(miMat02)</code></pre></div>
+<pre><code>##      [,1] [,2] [,3]
+## [1,]    1    4    7
+## [2,]    2    5    8
+## [3,]    3    6    9</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">miMat02 <span class="op">%*%</span><span class="st"> </span>miMat02</code></pre></div>
+<pre><code>##      [,1] [,2] [,3]
+## [1,]   30   66  102
+## [2,]   36   81  126
+## [3,]   42   96  150</code></pre>
+<p>La diagonale d’une <code>matrix</code> peut être obtenue avec la fonction <code>diag()</code>, et le déterminant d’une <code>matrix</code> avec la fonction <code>det()</code>.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">print</span>(miMat02)</code></pre></div>
+<pre><code>##      [,1] [,2] [,3]
+## [1,]    1    4    7
+## [2,]    2    5    8
+## [3,]    3    6    9</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">diag</span>(miMat02)</code></pre></div>
+<pre><code>## [1] 1 5 9</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">det</span>(miMat02)</code></pre></div>
+<pre><code>## [1] 0</code></pre>
+<p>Il est souvent utile de pouvoir tansposer une <code>matrix</code> (colonnes en lignes ou lignes en colonnes). Pour cela il existe les fonctions <code>aperm()</code> ou <code>t()</code>. la fonction <code>t()</code> est plus générique et fonctionne aussi sur les <code>data.frame</code>.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">aperm</span>(miMat01)</code></pre></div>
+<pre><code>##      [,1] [,2] [,3] [,4]
+## [1,]    1    2    3    4
+## [2,]    5    6    7    8
+## [3,]    9   10   11   12</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">t</span>(miMat01)</code></pre></div>
+<pre><code>##      [,1] [,2] [,3] [,4]
+## [1,]    1    2    3    4
+## [2,]    5    6    7    8
+## [3,]    9   10   11   12</code></pre>
+</div>
+<div id="acceder-aux-elements-dune-matrix" class="section level3">
+<h3><span class="header-section-number">8.4.3</span> Accèder aux éléments d’une <code>matrix</code></h3>
+<p>Comme pour un <code>data.frame</code>, nous pouvons accèder aux éléments d’une matrice en spécifiant un numéro de ligne et un numéro de colonne entre crochets simples <code>[ ]</code>, et séparés par une virgule. Si <code>i</code> est le numéro de ligne et <code>j</code> le numéro de colonne, alors <code>miMat01[i, j]</code> renvoie l’élément situé à la ligne <code>i</code> et à la colonne <code>j</code>. <code>miMat01[i, ]</code> renvoie tous les éléments de la ligne <code>i</code>, et <code>miMat01[, j]</code> tous les éléments de la colonne <code>j</code>. Les sélections multiples sont possibles. Nous pouvons également accèder à un élément en fonction de sa position dans la matrice entre crochets simples <code>[ ]</code> en comptant par colonne puis par ligne. Dans notre exemple la valeur du dixième élément est 10.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">i &lt;-<span class="st"> </span><span class="dv">2</span>
+j &lt;-<span class="st"> </span><span class="dv">1</span>
+<span class="kw">print</span>(miMat01[i, j])</code></pre></div>
+<pre><code>## [1] 2</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">print</span>(miMat01[i, ])</code></pre></div>
+<pre><code>## [1]  2  6 10</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">print</span>(miMat01[, j])</code></pre></div>
+<pre><code>## [1] 1 2 3 4</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">print</span>(miMat01[<span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>), <span class="kw">c</span>(<span class="dv">2</span>, <span class="dv">3</span>)])</code></pre></div>
+<pre><code>##      [,1] [,2]
+## [1,]    5    9
+## [2,]    6   10</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">print</span>(miMat01[<span class="dv">10</span>])</code></pre></div>
+<pre><code>## [1] 10</code></pre>
 </div>
 </div>
 <div id="le-conteneur-array" class="section level2">
 <h2><span class="header-section-number">8.5</span> Le conteneur <code>array</code></h2>
-<p>Le conteneur de type <code>array</code> est une généralisation du conteneur de type <code>matrix</code>. Là où le type <code>matrix</code> a deux dimensions (les lignes et les colonnes), le type <code>array</code> a un nombre indéfini de dimensions.</p>
+<p>Le conteneur de type <code>array</code> est une généralisation du conteneur de type <code>matrix</code>. Là où le type <code>matrix</code> a deux dimensions (les lignes et les colonnes), le type <code>array</code> a un nombre indéfini de dimensions. Nous pouvons connaître le nombre de dimensions d’un <code>array</code> (et donc d’une <code>matrix</code>) avec la fonction <code>dim()</code>.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">dim</span>(miMat01)</code></pre></div>
+<pre><code>## [1] 4 3</code></pre>
 <div id="creer-un-array" class="section level3">
 <h3><span class="header-section-number">8.5.1</span> Créer un <code>array</code></h3>
-<p>XXX XXX XXX XXX XXX XXX XXX XXX XXX EN COURS XXX XXX XXX XXX XXX XXX XXX XXX XXX</p>
+<p>La création d’un <code>array</code> est similaire à celle d’une <code>matrix</code> avec une dimension supplémentaire.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">miVecArr &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>, <span class="dv">7</span>, <span class="dv">8</span>, <span class="dv">9</span>)
+miArray &lt;-<span class="st"> </span><span class="kw">array</span>(miVecArr, <span class="dt">dim =</span> <span class="kw">c</span>(<span class="dv">3</span>, <span class="dv">3</span>, <span class="dv">2</span>))
+<span class="kw">print</span>(miArray)</code></pre></div>
+<pre><code>## , , 1
+## 
+##      [,1] [,2] [,3]
+## [1,]    1    4    7
+## [2,]    2    5    8
+## [3,]    3    6    9
+## 
+## , , 2
+## 
+##      [,1] [,2] [,3]
+## [1,]    1    4    7
+## [2,]    2    5    8
+## [3,]    3    6    9</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">dim</span>(miArray)</code></pre></div>
+<pre><code>## [1] 3 3 2</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">is.array</span>(miArray)</code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">miVecArr02 &lt;-<span class="st"> </span><span class="dv">10</span> <span class="op">*</span><span class="st"> </span>miVecArr
+miArray02 &lt;-<span class="st"> </span><span class="kw">array</span>(<span class="kw">c</span>(miVecArr, miVecArr02), <span class="dt">dim =</span> <span class="kw">c</span>(<span class="dv">3</span>, <span class="dv">3</span>, <span class="dv">2</span>))
+<span class="kw">print</span>(miArray02)</code></pre></div>
+<pre><code>## , , 1
+## 
+##      [,1] [,2] [,3]
+## [1,]    1    4    7
+## [2,]    2    5    8
+## [3,]    3    6    9
+## 
+## , , 2
+## 
+##      [,1] [,2] [,3]
+## [1,]   10   40   70
+## [2,]   20   50   80
+## [3,]   30   60   90</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">dim</span>(miArray02)</code></pre></div>
+<pre><code>## [1] 3 3 2</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">is.array</span>(miArray02)</code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+<p>Nous pouvons donner des noms aux lignes et aux colonnes, mais aussi aux éléments.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">miArray02 &lt;-<span class="st"> </span><span class="kw">array</span>(
+  <span class="kw">c</span>(miVecArr, miVecArr02), 
+  <span class="dt">dim =</span> <span class="kw">c</span>(<span class="dv">3</span>, <span class="dv">3</span>, <span class="dv">2</span>), 
+  <span class="dt">dimnames =</span> <span class="kw">list</span>(
+    <span class="kw">c</span>(<span class="st">&quot;r1&quot;</span>, <span class="st">&quot;r2&quot;</span>, <span class="st">&quot;r3&quot;</span>), 
+    <span class="kw">c</span>(<span class="st">&quot;c1&quot;</span>, <span class="st">&quot;c2&quot;</span>, <span class="st">&quot;c3&quot;</span>), 
+    <span class="kw">c</span>(<span class="st">&quot;matrix1&quot;</span>, <span class="st">&quot;matrix2&quot;</span>)
+  )
+)
+<span class="kw">print</span>(miArray02)</code></pre></div>
+<pre><code>## , , matrix1
+## 
+##    c1 c2 c3
+## r1  1  4  7
+## r2  2  5  8
+## r3  3  6  9
+## 
+## , , matrix2
+## 
+##    c1 c2 c3
+## r1 10 40 70
+## r2 20 50 80
+## r3 30 60 90</code></pre>
 </div>
 <div id="manipuler-un-array" class="section level3">
 <h3><span class="header-section-number">8.5.2</span> Manipuler un <code>array</code></h3>
-<p>XXX XXX XXX XXX XXX XXX XXX XXX XXX EN COURS XXX XXX XXX XXX XXX XXX XXX XXX XXX</p>
+<p>La manipulation d’un <code>array</code> se fait de la même façon que pour une <code>matrix</code>. pour accèder aux différents éléments d’un <code>array</code>, il suffit de spécifier la ligne <code>i</code>, la colonne <code>j</code>, et la <code>matrix</code> <code>k</code>.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">i &lt;-<span class="st"> </span><span class="dv">2</span>
+j &lt;-<span class="st"> </span><span class="dv">1</span>
+k &lt;-<span class="st"> </span><span class="dv">1</span>
+<span class="kw">print</span>(miArray02[i, j, k])</code></pre></div>
+<pre><code>## [1] 2</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">print</span>(miArray02[, j, k])</code></pre></div>
+<pre><code>## r1 r2 r3 
+##  1  2  3</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">print</span>(miArray02[i, , k])</code></pre></div>
+<pre><code>## c1 c2 c3 
+##  2  5  8</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">print</span>(miArray02[i, j, ])</code></pre></div>
+<pre><code>## matrix1 matrix2 
+##       2      20</code></pre>
 </div>
 </div>
 <div id="conclusion-2" class="section level2">
