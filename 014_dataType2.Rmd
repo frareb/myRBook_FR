@@ -378,23 +378,9 @@ miList05[[2]] <- NULL
 print(miList05)
 ```
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 ## Le conteneur `data.frame`
 
-Le conteneur `data.frame` peut être assimilé à un *tableau*. Il s'agit en fait d'un cas particulier de `list` où tous les élément de la `list` ont la même longueur. 
+Le conteneur `data.frame` peut être assimilé à un *tableau*. Il s'agit en fait d'un cas particulier de `list` où tous les éléments de la `list` ont la même longueur. 
 
 ### Créer un `data.frame`
 
@@ -544,7 +530,7 @@ rownames(miMat) <- c("row1", "row2", "row3")
 print(miMat)
 ```
 
-Il est possible de créer une `matrix` à partir d'un `data.frame` avec la fonction `as.data.frame` sous réserve que le `data.frame` ne contienne que des élément de même type (par exemple que des éléments de type `numeric`).
+Il est possible de créer une `matrix` à partir d'un `data.frame` avec la fonction `as.matrix()` sous réserve que le `data.frame` ne contienne que des élément de même type (par exemple que des éléments de type `numeric`).
 
 ```{r}
 vecForMat01 <- c(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12)
@@ -557,40 +543,119 @@ as.matrix(dfForMat)
 is.matrix(as.matrix(dfForMat))
 ```
 
-XXX XXX  XXX XXX
-XXX XXX  XXX XXX
-XXX EN COURS XXX
-XXX XXX  XXX XXX
-XXX XXX  XXX XXX
+Nous pouvons aussi créer une `matrix` à partir d'un `vector` avec la fonction `as.matrix()` (matrice de une seule colonne).
 
+```{r}
+as.matrix(vecForMat01)
+```
 
 ### Manipuler et faire des opérations sur une `matrix`
 
-XXX XXX  XXX XXX
-XXX XXX  XXX XXX
-XXX EN COURS XXX
-XXX XXX  XXX XXX
-XXX XXX  XXX XXX
+Toutes les opérations terme à terme sont possibles sur les `matrix`. 
+
+```{r}
+# opérations terme à terme
+miMat01 <- matrix(vecForMat01, ncol = 3)
+miVecOp <- c(1, 10, 100, 1000)
+miMat01 * miVecOp
+miMat01 + miVecOp
+miMat01 / miMat01
+miMat01 - 10
+```
+
+Pour effectuer des opérations algébriques nous pouvons utiliser la fonction `%*%`.
+
+```{r}
+# opérations algébriques
+miVecConf <- c(1, 10, 100)
+miMat01 %*% miVecConf
+miMat02 <- matrix(c(1, 2, 3, 4, 5, 6, 7, 8, 9), ncol = 3)
+print(miMat02)
+miMat02 %*% miMat02
+```
+
+La diagonale d'une `matrix` peut être obtenue avec la fonction `diag()`, et le déterminant d'une `matrix` avec la fonction `det()`.
+
+```{r}
+print(miMat02)
+diag(miMat02)
+det(miMat02)
+```
+
+Il est souvent utile de pouvoir tansposer une `matrix` (colonnes en lignes ou lignes en colonnes). Pour cela il existe les fonctions `aperm()` ou `t()`. la fonction `t()` est plus générique et fonctionne aussi sur les `data.frame`.
+
+```{r}
+aperm(miMat01)
+t(miMat01)
+```
+
+### Accèder aux éléments d'une `matrix`
+
+Comme pour un `data.frame`, nous pouvons accèder aux éléments d'une matrice en spécifiant un numéro de ligne et un numéro de colonne entre crochets simples `[ ]`, et séparés par une virgule. Si `i` est le numéro de ligne et `j` le numéro de colonne, alors `miMat01[i, j]` renvoie l'élément situé à la ligne `i` et à la colonne `j`. `miMat01[i, ]` renvoie tous les éléments de la ligne `i`, et `miMat01[, j]` tous les éléments de la colonne `j`. Les sélections multiples sont possibles. Nous pouvons également accèder à un élément en fonction de sa position dans la matrice entre crochets simples `[ ]` en comptant par colonne puis par ligne. Dans notre exemple la valeur du dixième élément est 10.
+
+```{r}
+i <- 2
+j <- 1
+print(miMat01[i, j])
+print(miMat01[i, ])
+print(miMat01[, j])
+print(miMat01[c(1, 2), c(2, 3)])
+print(miMat01[10])
+```
 
 ## Le conteneur `array`
 
-Le conteneur de type `array` est une généralisation du conteneur de type `matrix`. Là où le type `matrix` a deux dimensions (les lignes et les colonnes), le type `array` a un nombre indéfini de dimensions.
+Le conteneur de type `array` est une généralisation du conteneur de type `matrix`. Là où le type `matrix` a deux dimensions (les lignes et les colonnes), le type `array` a un nombre indéfini de dimensions. Nous pouvons connaître le nombre de dimensions d'un `array` (et donc d'une `matrix`) avec la fonction `dim()`.
+
+```{r}
+dim(miMat01)
+```
 
 ### Créer un `array`
 
-XXX XXX  XXX XXX
-XXX XXX  XXX XXX
-XXX EN COURS XXX
-XXX XXX  XXX XXX
-XXX XXX  XXX XXX
+La création d'un `array` est similaire à celle d'une `matrix` avec une dimension supplémentaire.
+
+```{r}
+miVecArr <- c(1, 2, 3, 4, 5, 6, 7, 8, 9)
+miArray <- array(miVecArr, dim = c(3, 3, 2))
+print(miArray)
+dim(miArray)
+is.array(miArray)
+miVecArr02 <- 10 * miVecArr
+miArray02 <- array(c(miVecArr, miVecArr02), dim = c(3, 3, 2))
+print(miArray02)
+dim(miArray02)
+is.array(miArray02)
+```
+
+Nous pouvons donner des noms aux lignes et aux colonnes, mais aussi aux éléments.
+
+```{r}
+miArray02 <- array(
+  c(miVecArr, miVecArr02), 
+  dim = c(3, 3, 2), 
+  dimnames = list(
+    c("r1", "r2", "r3"), 
+    c("c1", "c2", "c3"), 
+    c("matrix1", "matrix2")
+  )
+)
+print(miArray02)
+```
 
 ### Manipuler un `array`
 
-XXX XXX  XXX XXX
-XXX XXX  XXX XXX
-XXX EN COURS XXX
-XXX XXX  XXX XXX
-XXX XXX  XXX XXX
+La manipulation d'un `array` se fait de la même façon que pour une `matrix`. pour accèder aux différents éléments d'un `array`, il suffit de spécifier la ligne `i`, la colonne `j`, et la `matrix` `k`.
+
+```{r}
+i <- 2
+j <- 1
+k <- 1
+print(miArray02[i, j, k])
+print(miArray02[, j, k])
+print(miArray02[i, , k])
+print(miArray02[i, j, ])
+```
 
 ## Conclusion
 
