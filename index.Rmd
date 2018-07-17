@@ -18,18 +18,28 @@ Ce livre est incomplet pour le moment et vous visualisez sa version préliminair
 
 Dernières modifications:
 
+**17/07/2018**
+
+* Les conteneurs de données (partie 4/5) : les matrix
+* Les conteneurs de données (partie 5/5) : les array
+
 **13/07/2018**
 
 * mise en ligne du contenu en français sur la base du livre en espagnol
-* Les conteneurs de données (partie 3) : les data.frame
+* Les conteneurs de données (partie 3/5) : les data.frame
 
 # Remerciements {#remerciements}
 
-Je remercie tous les contributeurs qui ont participé à améliorer ce livre par leurs conseils, leurs suggestions de modifications et leurs corrections : 
+Je remercie tous les contributeurs qui ont participé à améliorer ce livre par leurs conseils, leurs suggestions de modifications et leurs corrections (par ordre alphabétique) : 
 
-=> liste à mettre à jour (attente de confirmation écrite des contributeurs)
-
-* Camila Benavides Frias (Bolivia)
-* EQ ()
+```{r echo = FALSE}
+contrib <- t(data.frame(c("Camila", "Benavides Frias", "Bolivia"), c("Estefania", "Quenta Herrera",  "Bolivia"), c("Susi", "Loza Herrera", "Bolivia")))
+contrib <- contrib[order(contrib[, 2]),]
+msg <- "Contributeurs :\r"
+for(i in seq_along(contrib[, 2])){
+  msg <- c(msg, paste0(contrib[i, 1], " ",contrib[i, 2], " (", contrib[i, 3],")\r"))
+}
+for(i in msg){cat(i, sep = "")}
+```
 
 Les versions gitbook, html et epub de ce livre utilisent les icônes open source de Font Awesome (https://fontawesome.com). La version PDF utilise les icônes issues du projet Tango disponibles depuis openclipart (https://openclipart.org/). Ce livre a été écrit avec le package R bookdown (https://bookdown.org/). Le code source est disponible sur GitHub (https://github.com/frareb/myRBook_FR). La compilation utilise Travis CI (https://travis-ci.org). La version en ligne est hébergée et mise à jour grâce à Netlify (http://myrbookfr.netlify.com/).
