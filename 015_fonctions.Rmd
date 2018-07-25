@@ -2,10 +2,10 @@
 
 ## Qu'est-ce qu'une fonction
 
-Avec ce chapitre nous allons avoir un premier apperçu de la puissance de R avec les fonctions. Une fonction est un ensemble de lignes de code permettant d'exécuter une tâche particulière. Nous avons vu de nombreuses fonctions lors des précédents chapitres, la plus simple étant la fonction `+` permettant d'ajouter deux nombres entre eux, ou d'autres plus complexes comme `c()` ou `data.frame()` permettant de créer un `vector` ou un `data.frame`. Dans tous les cas une fonction se reconnait grâce aux parenthèses qui la suive dans laquelle nous allons renseigner des **arguments**. Les arguments correspondent aux informations que nous souhaitons transmettre à notre fonction pour qu'elle exécute la tâche que nous souhaitons réaliser. 
+Avec ce chapitre nous allons avoir un premier apperçu de la puissance de R grâce aux fonctions. Une fonction est un ensemble de lignes de code permettant d'exécuter une tâche particulière. Nous avons vu de nombreuses fonctions lors des précédents chapitres, la plus simple étant la fonction `+` permettant d'ajouter deux nombres entre eux, ou d'autres plus complexes comme `c()` ou `data.frame()` permettant de créer un `vector` ou un `data.frame`. Dans tous les cas une fonction se reconnait grâce aux parenthèses qui la suive dans laquelle nous allons renseigner des **arguments**. Les arguments correspondent aux informations que nous souhaitons transmettre à notre fonction pour qu'elle exécute la tâche que nous souhaitons réaliser. 
 
 ```{block, type='rmdnote'}
-Pour les fonctions les plus simples comme `+`, les guillemets ont été supprimés pour que le code soit plus facile à lire, mais il s'agit bien d'une fonction qui peut s'utiliser avec des parenthèses si nous utilisons le signe `+` entre guillemets.
+Pour les fonctions les plus simples comme `+`, les guillemets ont été supprimés pour que le code soit plus facile à lire, mais il s'agit bien d'une fonction qui peut s'utiliser avec des parenthèses si nous utilisons le signe `+` entre guillemets. Les arguments sont les chiffres que nous souhaitons ajouter.
 ```
 
 ```{r}
@@ -13,88 +13,587 @@ Pour les fonctions les plus simples comme `+`, les guillemets ont été supprim�
 '+'(5, 2)
 ```
 
-Dans ce chapitre nous allons nous focaliser sur les fonctions les plus courantes de façon à ce que ce chapitre soit consultable comme un dictionnaire. Il ne s'agit donc pas de tout apprendre par coeur mais bien de savoir que ces fonctions existent et de pouvoir consulter ce chapitre plus tard comme référence. Avec le temps et la pratique nous finirons par les connaître par coeur ! Il y a plus de 1000 fonctions à ce jour dans la version de base de R, et plus de 10000 packages complémentaires pouvant être installés, chacun contenant plusieurs dizaines de fonctions, alors avant de nous lancer dans l'écriture d'une nouvelle fonction, il faudra toujours vérifier qu'elle n'existe pas déjà.
+Dans ce chapitre nous allons nous focaliser sur les fonctions les plus courantes de façon à ce que ce chapitre soit consultable comme un dictionnaire. Il ne s'agit donc pas de tout apprendre par coeur mais bien de savoir que ces fonctions existent et de pouvoir consulter ce chapitre plus tard comme référence. Avec le temps et la pratique nous finirons par les connaître par coeur ! Il y a plus de 1000 fonctions à ce jour dans la version de base de R, et plus de 10000 packages complémentaires pouvant être installés, chacun contenant plusieurs dizaines de fonctions. Avant de nous lancer dans l'écriture d'une nouvelle fonction, il faudra toujours vérifier qu'elle n'existe pas déjà.
 
 ## Les fonctions les plus courantes
 
-Pour travailler avec les fonctions nous allons utiliser le jeu de données `iris` qui est inclu avec la version de base de R et qui correspond à la longeur et à la largeur des sépales et des pétales de différentes espèces d'iris. Le jeu de données est sous la forme d'un `data.frame` de 5 colonnes et de 150 lignes.
+Pour travailler avec les fonctions nous allons utiliser le jeu de données `iris` qui est inclu avec la version de base de R et qui correspond à la longeur et à la largeur des sépales et des pétales de différentes espèces d'iris. Le jeu de données est sous la forme d'un `data.frame` de 5 colonnes et de 150 lignes. Pour plus d'information sur le jeu de données `iris` nous pouvons consulter la documentation de R avec la fonction `help(iris)`. L'accès à la documentation est l'objet de la section ci-dessous.
 
-### La fonction indispensable : l'aide de R
+### L'accès à la documentation
 
-help
-? => ?base
-??
+#### `help()`
+
+La fonction indispensable de R est celle permettant d'accèder à la documentation. Toutes les fonctions et tous les jeux de données de R possèdent une documentation. Nous pouvons accéder à la documentation avec la fonction `help()` ou en utilisant le raccourci `?`. 
+
+```{r}
+help(matrix) # équivalent à ?matrix
+```
+
+La documentation est toujours structurée de la même manière. Tout d'abord nous avons le nom de la fonction recherchée `matrix`, suivie entre accolades par le nom du package R dont la fonction dépend. Nous verrons comment installer des packages additionnels plus tard. Pour l'instant nous disposons de ceux fournis avec la version de base de R. Ici nous pouvons voir que la fonction `matrix()` dépend du package `base`.
+
+Ensuite nous pouvons voir le libellé de la fonction (`Matrices`), suivi des paragraphes `Description`, `Usage`, et `Arguments`. Parfois vient s'ajouter les paragraphes `Details`, `Note`, `References`, et `See also`. Le dernier paragraphe est `Examples`. La dernière ligne de la documentation permet de revenir à l'index du package dont dépend la fonction consultée. 
+
+En copiant collant `help(matrix)` dans notre console R, nous pouvons voir que le paragraphe `Description` indique ce que fait la fonction. Dans le cas de `help(matrix)`, il y a trois fonctions qui sont présentées : `matrix()`, `as.matrix()`, et `is.matrix()`.
+
+```{r}
+# Description
+# matrix creates a matrix from the given set of values.
+# as.matrix attempts to turn its argument into a matrix.
+# is.matrix tests if its argument is a (strict) matrix.
+```
+
+Le paragraphe `Usage` explique comment utiliser la fonction et quels sont les valeurs par défaut éventuelles pour chacun des paramètres.
+
+```{r}
+# Usage
+# matrix(data = NA, nrow = 1, ncol = 1, byrow = FALSE,
+#        dimnames = NULL)
+```
+
+La fonction `matrix()` peut prendre 5 arguments : `data`, `nrow`, `ncol`, `byrow`, et `dimnames`. Nous pouvons voir que par défaut une `matrix` sera composée d'une seule ligne et d'une seule colonne, et que les informations serons renseignées par colonne.
+
+Le paragraphe `Arguments` détaille les valeurs et le type de conteneur de chacun des arguments de notre fonction. Par exemple nous pouvons voir que l'argument `dimnames` doit être de type `list`. C'est pouquoi nous avons utilisé ce format lors de la section sur les `matrix`. 
+
+```{r}
+# Arguments
+# data      an optional data vector (including a list or expression vector). 
+#           Non-atomic classed R objects are coerced by as.vector and all 
+#           attributes discarded.
+# nrow	    the desired number of rows.
+# ncol	    the desired number of columns.
+# byrow	    logical. If FALSE (the default) the matrix is filled by columns, 
+#           otherwise the matrix is filled by rows.
+# dimnames	A dimnames attribute for the matrix: NULL or a list of length 2 
+#           giving the row and column names respectively. An empty list is 
+#           treated as NULL, and a list of length one as row names. The 
+#           list can be named, and the list names will be used as names for 
+#           the dimensions.
+```
+
+Le paragraphe `Details` apporte des éléments complémentaires sur la fonction. Le paragraphe `Examples` procure des exemples reproductibles dans la console.
+
+```{r}
+## Example of setting row and column names
+mdat <- matrix(c(1,2,3, 11,12,13), nrow = 2, ncol = 3, byrow = TRUE,
+               dimnames = list(c("row1", "row2"),
+                               c("C.1", "C.2", "C.3")))
+mdat
+```
+
+```{block, type='rmdstyle'}
+Le nom des arguments n'est pas nécessaire pour qu'une fonction soit correctement interprété par R. Néanmoins par soucis de clarté il est préférable d'utiliser le nom des arguments suivi du signe `=` pour que le code soit plus lisible. 
+```
+
+```{r}
+# bon exemple
+mdat <- matrix(c(1,2,3, 11,12,13), nrow = 2, ncol = 3, byrow = TRUE)
+# mauvais exemple
+mdat <- matrix(c(1,2,3, 11,12,13), 2, 3, TRUE)
+```
+
+#### `help.search()`
+
+La fonction `help.search()` ou `??` permet de rechercher une expression dans l'ensemble de la documentation. Elle est utile lorsque l'on cherche une fonctionnalité sans connaître le nom de la fonction sous R.
+
+```{r}
+help.search("average")
+```
+
+La fonction `help.search()` renvoie vers une page contenant la liste des pages où l'expression a été retrouvée sous la forme `nom-du-package::nom-de-la-fonction`.
 
 ### Visualiser les données
 
-str
-head
-tail
-names
-cat
-print
+#### `str()`
+
+La fonction `str()` permet de visualiser la structure interne d'un objet, comme indiqué dans la documentation que nous pouvons consulter avec `help(str)`.
+
+```{r}
+str(iris)
+```
+
+La fonction `str()` renvoie le type d'objet (`data.frame`), le nombre d'observations (150), le nombre de variables (5), le nom de chacune des variables (`Sepal.Length`, `Sepal.Width`, `Petal.Length`, `Petal.Width`, et `Species`), le type de chacune des variables (`num`, `Factor`), et les premières valeurs de chacunes des variables. C'est une fonction utile pour avoir un apperçu d'un jeu de données, mais aussi pour contrôler que les données sont du type voulu avant de procéder à des analyses statistiques.
+
+#### `head()` et `tail()`
+
+La fonction `head()` renvoie les premières valeurs d'un objet, et la fonction `tail()` les dernières valeurs d'un objet. Par défaut six valeurs sont retournées, l'argument `n` contrôle le nombre de valeurs à retourner. 
+
+```{r}
+head(iris)
+tail(iris)
+head(iris, n = 2)
+```
+
+#### `names()`
+
+Nous avons déjà vu la fonction `names()` qui permet à la fois de connaître le nom des éléments d'un objet, mais aussi d'assigner des noms aux éléments d'un objet.
+
+```{r}
+names(iris)
+irisCopy <- iris
+names(irisCopy) <- c("a", "b", "c", "d", "e")
+names(irisCopy)
+```
+
+#### `cat()` et `print()`
+
+La fonction `cat()` permet d'afficher le contenu d'un objet alors que la fonction `print()` retourne la valeur d'un objet avec la possibilité d'effectuer des conversions.
+
+```{r}
+cat(names(iris))
+print(names(iris))
+cat(iris[1, 1])
+print(iris[1, 1])
+print(iris[1, 1], digits = 0)
+```
 
 ### Manipuler les données 
 
-%in%
-rank
-order
-sort
-append
-cbind
-rbind
-paste et paste0
-rev
+#### `rank()`
+
+La fonction `rank()` renvoie pour un ensemble d'éléments le numéro de la position de chacun des éléments. En cas d'éléments de même valeur, l'argument `ties.method` permet de faire un choix sur le classement. Comme pour toutes les fonctions, les détails sont présents dans la documentation.
+
+```{r}
+vecManip <- c(10, 20, 30, 70, 60, 50, 40)
+rank(vecManip)
+vecManip2 <- c(10, 20, 30, 10, 50, 10, 40)
+rank(vecManip2)
+rank(vecManip2, ties.method = "first")
+rank(vecManip2, ties.method = "min")
+print(iris[, 1])
+rank(iris[, 1], ties.method = "average")
+# help(rank)
+# ...
+# Usage
+# rank(x, na.last = TRUE,
+#     ties.method = c("average", "first", "last", 
+#       "random", "max", "min"))
+```
+
+#### `order()`
+
+La fonction `order()` retourne le numéro du réarrangment des éléments en focntion de leur position. Elle est très utile par exemple pour trier un `data.frame` en focntion d'une colonne.
+
+```{r}
+print(vecManip2)
+rank(vecManip2)
+order(vecManip2)
+print(iris[, 1])
+rank(iris[, 1])
+order(iris[, 1])
+head(iris[order(iris[, 1]),], n = 10)
+```
+
+#### `sort()`
+
+La fonction `sort()` permet de trier les éléments d'un objet. Elle ne permet pas de trier selon plusieurs variables comme c'est le cas avec `order()`.
+
+```{r}
+print(vecManip2)
+sort(vecManip2)
+print(iris[, 1])
+sort(iris[, 1])
+```
+
+#### `append()`
+
+Cette fonction permet d'ajouter un élément à un `vector` à une position déterminée par l'argument `after`. Cette fonction est aussi plus rapide que son alternative consistant à utiliser la fonction `c()`.
+
+```{r}
+print(vecManip2)
+append(vecManip2, 5)
+append(vecManip2, 5, after = 2)
+```
+
+#### `cbind()` et `rbind()`
+
+Les fonctions `cbind()` et `rbind()` permettent de combiner des éléments par colonne ou par ligne.
+
+```{r}
+cbind(vecManip2, vecManip2)
+rbind(vecManip2, vecManip2)
+```
+
+#### `paste()` et `paste0()`
+
+Voilà deux fonctions que nous allons beaucoup utiliser par la suite. Les fonctions `paste()` et `paste0()` permettent de concaténer des chaines de caractère. La fonction `paste0()` est équivalente à `paste()` sans proposer de séparateur entre les éléments à concaténer. Elle est aussi plus rapide.
+
+```{r}
+paste(1, "a")
+paste0(1, "a")
+paste(1, "a", sep = "_")
+paste0("prefix_", vecManip2, "_suffix")
+paste(vecManip2, rank(vecManip2), sep = "_")
+```
+
+#### `rev()`
+
+La fonction `rev()` renvoie les éléments d'un objet dans l'ordre inverse.
+
+```{r}
+print(vecManip2)
+rev(vecManip2)
+```
+
+#### `%in%()`
+
+La fonction `%in%()` peut être assimilée à un opérateur de comparaison. Cette fonction prend deux objets comme arguments et renvoie `TRUE` ou `FALSE` pour chacun des éléments du premier objet en fonction de leur présence ou absence dans le second objet. Pour accéder à la documentation de la fonction, il faut utiliser des guillemets `help('%in%')`.
+
+```{r}
+print(vecManip)
+print(vecManip2)
+vecManip %in% vecManip2
+vecManip2 %in% vecManip
+```
 
 ### Fonctions mathématiques
 
-exp
-sqrt
-t
-abs
-sin
-cos
-tan
-log
-log10
-acos
-asin
-atan
+Nous avons déjà vu les fonctions `+`, `-`, `*`, `/`, `^`, `%%` et autres opérateurs arithmétiques. R possède également les fonctions mathématiques de base comme exponetielle `exp()`, racine carrée `sqrt()`, valeur absolue `abs()`, sinus `sin()`, cosinus `cos()`, tangente `tan()`, logarithme népérien `log()`, logarithme décimal `log10()`, arc cosinus `acos()`, arc sinus `asin()`, et arc tangente `atan()`.
+
+```{r}
+print(vecManip2)
+exp(vecManip2)
+sqrt(vecManip2)
+abs(-vecManip2)
+sin(vecManip2)
+cos(vecManip2)
+tan(vecManip2)
+log(vecManip2)
+log10(vecManip2)
+acos(vecManip2/100)
+asin(vecManip2/100)
+atan(vecManip2/100)
+```
 
 ### Statistiques descriptives
 
-mean
-sd
-max
-min
-quartile
-summary
-median
-length
-nrow
-ncol
-round
-ceiling
-floor
-rowSums
-colSums
-rowMeans
-colMeans
-aggregate
-range
-unique
+Nous pouvons également effectuer des statistiques descriptives très simplement à partir d'un jeu de données.
+
+#### `mean()`
+
+La fonction `mean()` renvoie la moyenne. Pour ignorer les valeurs manquantes `NA`, il faut donner la valeur `TRUE` à l'argument `na.rm()`.
+
+```{r}
+mean(iris[, 1])
+vecManip3 <- c(1, 5, 6, 8, NA, 45, NA, 14)
+mean(vecManip3)
+mean(vecManip3, na.rm = TRUE)
+```
+
+#### `sd()`
+
+La fonction `sd()` renvoie l'écart type.
+
+```{r}
+sd(iris[, 1])
+print(vecManip3)
+sd(vecManip3)
+sd(vecManip3, na.rm = TRUE)
+```
+
+#### `max()`
+
+La fonction `max()` renvoie la valeur maximale et `min()` la valeur minimale.
+
+```{r}
+max(iris[, 1])
+print(vecManip3)
+max(vecManip3)
+max(vecManip3, na.rm = TRUE)
+
+min(iris[, 1])
+min(vecManip3)
+min(vecManip3, na.rm = TRUE)
+```
+
+#### `quantile()`
+
+La fonction `quantile()` renvoie le quantile défini par l'argument `probs`.
+
+```{r}
+quantile(iris[, 1])
+quantile(iris[, 1], probs = c(0, 0.25, 0.5, 0.75, 1))
+quantile(iris[, 1], probs = c(0, 0.1, 0.5, 0.9, 1))
+```
+
+#### `summary()`
+
+La fonction `summary()` renvoie un résumé composé du minimum, premier quartile, médiane, moyenne, troisième quartile et maximum.
+
+```{r}
+summary(iris[, 1])
+```
+
+#### `median()`
+
+La fonction `median()` renvoie la médiane.
+
+```{r}
+median(iris[, 1])
+print(vecManip3)
+median(vecManip3)
+median(vecManip3, na.rm = TRUE)
+```
+
+#### `length()`
+
+La fonction `length()` renvoie la taille d'un objet (nombre d'éléments).
+
+```{r}
+length(iris[, 1])
+print(vecManip3)
+length(vecManip3)
+```
+
+#### `nrow()` et `ncol()`
+
+La fonction `nrow()` renvoie le nombre de lignes et la fonction `ncol()` le nombre de colonnes d'un objet.
+
+```{r}
+nrow(iris)
+ncol(iris)
+```
+
+#### `round()`, `ceiling()`, `floor()`, et `trunc()`
+
+La fonction `round()` permet de sélectionner un certain nombre de décimales (0 par défaut)
+
+```{r}
+round(5.56874258564)
+round(5.56874258564, digits = 2)
+```
+
+La fonction `ceiling()` renvoie le plus petit nombre entier qui ne soit pas inférieure à la valeur rensignée.
+
+```{r}
+ceiling(5.9999)
+ceiling(5.0001)
+```
+
+La fonction `floor()` renvoie le plus grand nombre entier qui ne soit pas supérieure à la valeur renseignée.
+
+```{r}
+floor(5.9999)
+floor(5.0001)
+```
+
+La fonction `trunc()` renvoie la partie entière de la valeur rensignée.
+
+```{r}
+trunc(5.9999)
+trunc(5.0001)
+```
+
+#### `rowSums()` et `colSums()`
+
+Les fonctions `rowSums()` et `colSums()` calculent la somme des lignes et des colonnes.
+
+```{r}
+rowSums(iris[, c(1, 2, 3, 4)])
+colSums(iris[, c(1, 2, 3, 4)])
+```
+
+#### `rowMeans()` et `colMeans()`
+
+Les fonctions `rowMeans()` et `colMeans()` calculent la moyenne des lignes et des colonnes.
+
+```{r}
+rowMeans(iris[, c(1, 2, 3, 4)])
+colMeans(iris[, c(1, 2, 3, 4)])
+```
+
+#### `aggregate()`
+
+La fonction `aggregate()` permet de grouper les éléments d'un objet en fonction d'une valeur. L'argument `by` définit l'élément sur lequel est effectué le regroupement. Il doit être de type `list`.
+
+```{r}
+aggregate(iris[, c(1, 2, 3, 4)], by = list(iris$Species), FUN = mean)
+aggregate(iris[, c(1, 2)], by = list(iris$Species), FUN = summary)
+```
+
+#### `range()`
+
+La fonction `range()` renvoie le minimum et le maximum.
+
+```{r}
+range(iris[, 1])
+print(vecManip3)
+range(vecManip3)
+range(vecManip3, na.rm = TRUE)
+```
+
+#### `unique()`
+
+La fonction `unique()` renvoie les valeurs uniques d'un objet (sans les doublons).
+
+```{r}
+unique(iris[, 1])
+print(vecManip3)
+unique(vecManip3)
+```
 
 ## Autres fonctions utiles
 
-getwd
-setwd
-seq_along
-:
-rep
-seq
-ls
-rm
+Nous ne pouvons aborder toutes les fonctions utiles, ici nous ne ferons qu'aborder certaines fonctions. Tout au long de ce livre de nouvelles fonctions seront utilisées. Lorsqu'une nouvelle fonction est utilisée, notre réflexe doit être toujours le même : consulter la documentation avec la fonction `help()`.
+
+### `seq_along()`
+
+La fonction `seq_along()` permet de créer un `vector` de la taille de l'objet renseigné et prenant comme valeurs les chiffres de 1 à N (N correspondant aux nombres d'éléments de l'objet). Cette fonction nous servira beaucoup lors du chapitre sur les boucles.
+
+```{r}
+print(vecManip3)
+seq_along(vecManip3)
+```
+
+### `:`
+
+La fonction `:` permet de créer une séquence de `a` à `b` par pas de 1, avec `a` et `b` le début et la fin de la séquence souhaitée. Il a été difficile d'écrire les chaiptres précédents sans y avoir recours tant cette fonction est utile. Voici quelques exemples.
+
+```{r}
+5:10
+head(iris[, c(1, 2, 3, 4)])
+head(iris[, 1:4]) # ;-)
+miVec01 <- c(1, 2, 3, 4)
+miVec01 <- 1:4 # ;-)
+-10:12
+5:-5
+paste("X", 1:10, sep = "_")
+```
+
+### `rep()`
+
+la fonction `rep()` permet de répéter des éléments.
+
+```{r}
+miVec12 <- c(1, 1, 1, 1, 1, 1, 1, 1, 1)
+miVec12 <- rep(1, times = 9) # ;-)
+rep("Hola", times = 3)
+rep(1:3, time = 3)
+rep(1:3, length.out = 10)
+rep(1:3, each = 3)
+```
+
+### `seq()`
+
+la fonction `seq()` permet de créer une séquence personnalisée.
+
+```{r}
+seq(from = 0, to = 1, by = 0.2)
+seq(from = 20, to = 10, length.out = 10)
+letters[seq(from = 1, to = 26, by = 2)]
+rep(seq(from = 1, to = 2, by = 0.5), times = 3)
+```
+
+### `getwd()`
+
+La fonction `getwd()` définit le répertoire de travail. Cela correspond à l'endroit relatif à partir duquel R se positionne pour identifier les fichiers. Ce concept prendra son sens lorsque nous verrons comment importer et exporter des données.
+
+```{r}
+getwd()
+```
+
+### `setwd()`
+
+La fonction `setwd()` permet de définir un nouveau répertoire de travail.
+
+```{r}
+oldWd <- getwd()
+print(oldWd)
+setwd("..")
+getwd()
+setwd(oldWd)
+getwd()
+```
+
+### `list.files()`
+
+La fonction `list.files()` permet de faire la liste de tous les fichiers présents dans le répertoire de travail. 
+
+```{r}
+list.files(pattern = "(pdf)$") # pdf
+```
+
+### `ls()`
+
+Tout comme la fonction `list.files()` permet de faire la liste de tous les fichiers présents dans le répertoire de travail, la fonction `ls()` permet de faire la liste de tous les objets présents dans l'environnement de travail de R.
+
+```{r}
+ls()
+zzz <- "a new object"
+ls()
+```
+
+### `rm()`
+
+La fonction `rm()` permet de supprimer un objet présent dans l'environnement de travail de R.
+
+```{r}
+rm(zzz)
+ls()
+```
+
+## Quelques exercices
+
+Voici quelques exercices pour se perfectionner dans l'usage des fonctions et en apprendre de nouvelles grâce à la documentation. Certains exercices sont difficiles, nous pourrons y revenir plus tard.
+
+### Séquences
+
+Reproduisons les séquences suivantes :
+
+-3 -4 -5 -6 -7 -8 -9 -10 –11
+
+-3 -1 1 3 5 7 9 11
+
+3.0 3.2 3.4 3.6 3.8 4.0
+
+20 18 16 14 12 10 8 6
+
+"a" "f" "k" "p" "u" "z"
+
+"a" "a" "a" "a" "a" "f" "f" "f" "f" "f" "k" "k" "k" "k" "k" "p" "p" "p" "p" "p" "u" "u" "u" "u" "u" "z" "z" "z" "z" "z"
+
+Solutions possibles (car il y a toujours plusieurs solutions) : 
+
+```{r}
+-3:-11
+seq(from = -3, to = 11, by = 2)
+seq(from = 3.0, to = 4.0, by = 0.2)
+letters[seq(from = 1, to = 26, by = 5)]
+letters[rep(seq(from = 1, to = 26, by = 5), each = 5)]
+```
+
+### Statistiques descriptives
+
+Dans le jeu de données `iris`, combien de valeurs de largeur de sépales sont supérieures à 3 ? Entre 2.8 et 3.2 ? 
+
+Comment peut-on visualiser la distribution des données (fonction `table`) ? 
+
+Quelles sont les 10 valeurs les plus petites ?
+
+Comment calculer un intervalle contenant 90% des valeurs ?
+
+Si la distribution des données était Normale, quelle serait la valeur théorique de cet intervalle de 90% (fonction `qnorm`) ?
+
+Solutions :
+
+```{r}
+length(iris$Sepal.Width[iris$Sepal.Width > 3])
+length(iris$Sepal.Width[iris$Sepal.Width > 2.8 & 
+  iris$Sepal.Width < 3.2])
+table(iris$Sepal.Width)
+table(round(iris$Sepal.Width))
+irisSepWCopy <- iris$Sepal.Width
+irisSepWCopy <- irisSepWCopy[order(irisSepWCopy)]
+head(irisSepWCopy, n = 10)
+quantile(irisSepWCopy, probs = c(0.05, 0.95))
+qnorm(
+  p = c(0.05, 0.95), 
+  mean = mean(irisSepWCopy), 
+  sd = sd(irisSepWCopy)
+)
+```
 
 ## Ecrire une fonction
 
 XXX
+
+## Conclusion
