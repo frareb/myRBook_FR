@@ -18,22 +18,30 @@ Ce livre est incomplet pour le moment et vous visualisez sa version préliminair
 
 Dernières modifications:
 
+**25/07/2018**
+
+* Les fonctions (partie 1/3) : les fonctions les plus courantes
+
 **17/07/2018**
 
-* Les conteneurs de données (partie 4/5) : les matrix
-* Les conteneurs de données (partie 5/5) : les array
+* Les conteneurs de données (partie 4/5) : matrix
+* Les conteneurs de données (partie 5/5) : array
 
 **13/07/2018**
 
 * mise en ligne du contenu en français sur la base du livre en espagnol
-* Les conteneurs de données (partie 3/5) : les data.frame
+* Les conteneurs de données (partie 3/5) : data.frame
 
 # Remerciements {#remerciements}
 
 Je remercie tous les contributeurs qui ont participé à améliorer ce livre par leurs conseils, leurs suggestions de modifications et leurs corrections (par ordre alphabétique) : 
 
 ```{r echo = FALSE}
-contrib <- t(data.frame(c("Camila", "Benavides Frias", "Bolivia"), c("Estefania", "Quenta Herrera",  "Bolivia"), c("Susi", "Loza Herrera", "Bolivia")))
+contrib <- unname(t(data.frame(
+  c("Camila", "Benavides Frias", "Bolivia"), 
+  c("Estefania", "Quenta Herrera",  "Bolivia"), 
+  c("Susi", "Loza Herrera", "Bolivia")
+)))
 contrib <- contrib[order(contrib[, 2]),]
 msg <- "Contributeurs :\r"
 for(i in seq_along(contrib[, 2])){
