@@ -21,7 +21,7 @@ Pour travailler avec les fonctions nous allons utiliser le jeu de données `iris
 
 ### L'accès à la documentation
 
-#### `help()`
+#### `help()` {#l015help}
 
 La fonction indispensable de R est celle permettant d'accèder à la documentation. Toutes les fonctions et tous les jeux de données de R possèdent une documentation. Nous pouvons accéder à la documentation avec la fonction `help()` ou en utilisant le raccourci `?`. 
 
@@ -52,7 +52,7 @@ Le paragraphe `Usage` explique comment utiliser la fonction et quels sont les va
 
 La fonction `matrix()` peut prendre 5 arguments : `data`, `nrow`, `ncol`, `byrow`, et `dimnames`. Nous pouvons voir que par défaut une `matrix` sera composée d'une seule ligne et d'une seule colonne, et que les informations serons renseignées par colonne.
 
-Le paragraphe `Arguments` détaille les valeurs et le type de conteneur de chacun des arguments de notre fonction. Par exemple nous pouvons voir que l'argument `dimnames` doit être de type `list`. C'est pouquoi nous avons utilisé ce format lors de la section sur les `matrix`. 
+Le paragraphe `Arguments` détaille les valeurs et le type de conteneur de chacun des arguments de notre fonction. Par exemple nous pouvons voir que l'argument `dimnames` doit être de type `list`. C'est pouquoi nous avons utilisé ce format lors de la section sur les  [`matrix`](#l014matrix). 
 
 ```{r}
 # Arguments
@@ -91,7 +91,7 @@ mdat <- matrix(c(1,2,3, 11,12,13), nrow = 2, ncol = 3, byrow = TRUE)
 mdat <- matrix(c(1,2,3, 11,12,13), 2, 3, TRUE)
 ```
 
-#### `help.search()`
+#### `help.search()` {#l015helpsearch}
 
 La fonction `help.search()` ou `??` permet de rechercher une expression dans l'ensemble de la documentation. Elle est utile lorsque l'on cherche une fonctionnalité sans connaître le nom de la fonction sous R.
 
@@ -103,7 +103,7 @@ La fonction `help.search()` renvoie vers une page contenant la liste des pages o
 
 ### Visualiser les données
 
-#### `str()`
+#### `str()` {#l015str}
 
 La fonction `str()` permet de visualiser la structure interne d'un objet, comme indiqué dans la documentation que nous pouvons consulter avec `help(str)`.
 
@@ -113,7 +113,7 @@ str(iris)
 
 La fonction `str()` renvoie le type d'objet (`data.frame`), le nombre d'observations (150), le nombre de variables (5), le nom de chacune des variables (`Sepal.Length`, `Sepal.Width`, `Petal.Length`, `Petal.Width`, et `Species`), le type de chacune des variables (`num`, `Factor`), et les premières valeurs de chacunes des variables. C'est une fonction utile pour avoir un apperçu d'un jeu de données, mais aussi pour contrôler que les données sont du type voulu avant de procéder à des analyses statistiques.
 
-#### `head()` et `tail()`
+#### `head()` et `tail()` {#l015head}
 
 La fonction `head()` renvoie les premières valeurs d'un objet, et la fonction `tail()` les dernières valeurs d'un objet. Par défaut six valeurs sont retournées, l'argument `n` contrôle le nombre de valeurs à retourner. 
 
@@ -123,9 +123,9 @@ tail(iris)
 head(iris, n = 2)
 ```
 
-#### `names()`
+#### `names()` {#l015names}
 
-Nous avons déjà vu la fonction `names()` qui permet à la fois de connaître le nom des éléments d'un objet, mais aussi d'assigner des noms aux éléments d'un objet.
+Nous avons déjà vu la fonction `names()` qui permet à la fois de connaître le nom des éléments d'un objet, mais aussi d'assigner des noms aux éléments d'un objet comme une [`matrix`](#l014matrix), une [`list`](#l014list) ou un [`data.frame`](#l014dataframe).
 
 ```{r}
 names(iris)
@@ -134,7 +134,7 @@ names(irisCopy) <- c("a", "b", "c", "d", "e")
 names(irisCopy)
 ```
 
-#### `cat()` et `print()`
+#### `cat()` et `print()` {#l015print}
 
 La fonction `cat()` permet d'afficher le contenu d'un objet alors que la fonction `print()` retourne la valeur d'un objet avec la possibilité d'effectuer des conversions.
 
@@ -148,7 +148,7 @@ print(iris[1, 1], digits = 0)
 
 ### Manipuler les données 
 
-#### `rank()`
+#### `rank()` {#l015rank}
 
 La fonction `rank()` renvoie pour un ensemble d'éléments le numéro de la position de chacun des éléments. En cas d'éléments de même valeur, l'argument `ties.method` permet de faire un choix sur le classement. Comme pour toutes les fonctions, les détails sont présents dans la documentation.
 
@@ -169,9 +169,9 @@ rank(iris[, 1], ties.method = "average")
 #       "random", "max", "min"))
 ```
 
-#### `order()`
+#### `order()` {#l015order}
 
-La fonction `order()` retourne le numéro du réarrangment des éléments en focntion de leur position. Elle est très utile par exemple pour trier un `data.frame` en focntion d'une colonne.
+La fonction `order()` retourne le numéro du réarrangement des éléments en focntion de leur position. Elle est très utile par exemple pour trier un `data.frame` en focntion d'une colonne.
 
 ```{r}
 print(vecManip2)
@@ -183,7 +183,7 @@ order(iris[, 1])
 head(iris[order(iris[, 1]),], n = 10)
 ```
 
-#### `sort()`
+#### `sort()` {#l015sort}
 
 La fonction `sort()` permet de trier les éléments d'un objet. Elle ne permet pas de trier selon plusieurs variables comme c'est le cas avec `order()`.
 
@@ -194,9 +194,9 @@ print(iris[, 1])
 sort(iris[, 1])
 ```
 
-#### `append()`
+#### `append()` {#l015append}
 
-Cette fonction permet d'ajouter un élément à un `vector` à une position déterminée par l'argument `after`. Cette fonction est aussi plus rapide que son alternative consistant à utiliser la fonction `c()`.
+Cette fonction permet d'ajouter un élément à un `vector` à une position déterminée par l'argument `after`. Cette fonction est aussi plus rapide que son alternative consistant à utiliser la fonction [`c()`](#l014vector).
 
 ```{r}
 print(vecManip2)
@@ -204,7 +204,7 @@ append(vecManip2, 5)
 append(vecManip2, 5, after = 2)
 ```
 
-#### `cbind()` et `rbind()`
+#### `cbind()` et `rbind()` {#l015cbind}
 
 Les fonctions `cbind()` et `rbind()` permettent de combiner des éléments par colonne ou par ligne.
 
@@ -213,7 +213,7 @@ cbind(vecManip2, vecManip2)
 rbind(vecManip2, vecManip2)
 ```
 
-#### `paste()` et `paste0()`
+#### `paste()` et `paste0()` {#l015paste}
 
 Voilà deux fonctions que nous allons beaucoup utiliser par la suite. Les fonctions `paste()` et `paste0()` permettent de concaténer des chaines de caractère. La fonction `paste0()` est équivalente à `paste()` sans proposer de séparateur entre les éléments à concaténer. Elle est aussi plus rapide.
 
@@ -225,7 +225,7 @@ paste0("prefix_", vecManip2, "_suffix")
 paste(vecManip2, rank(vecManip2), sep = "_")
 ```
 
-#### `rev()`
+#### `rev()` {#l015rev}
 
 La fonction `rev()` renvoie les éléments d'un objet dans l'ordre inverse.
 
@@ -234,9 +234,9 @@ print(vecManip2)
 rev(vecManip2)
 ```
 
-#### `%in%()`
+#### `%in%()` {#l015in}
 
-La fonction `%in%()` peut être assimilée à un opérateur de comparaison. Cette fonction prend deux objets comme arguments et renvoie `TRUE` ou `FALSE` pour chacun des éléments du premier objet en fonction de leur présence ou absence dans le second objet. Pour accéder à la documentation de la fonction, il faut utiliser des guillemets `help('%in%')`.
+La fonction `%in%()` peut être assimilée à un [opérateur de comparaison](#l011opcomp). Cette fonction prend deux objets comme arguments et renvoie `TRUE` ou `FALSE` pour chacun des éléments du premier objet en fonction de leur présence ou absence dans le second objet. Pour accéder à la documentation de la fonction, il faut utiliser des guillemets `help('%in%')`.
 
 ```{r}
 print(vecManip)
@@ -247,7 +247,7 @@ vecManip2 %in% vecManip
 
 ### Fonctions mathématiques
 
-Nous avons déjà vu les fonctions `+`, `-`, `*`, `/`, `^`, `%%` et autres opérateurs arithmétiques. R possède également les fonctions mathématiques de base comme exponetielle `exp()`, racine carrée `sqrt()`, valeur absolue `abs()`, sinus `sin()`, cosinus `cos()`, tangente `tan()`, logarithme népérien `log()`, logarithme décimal `log10()`, arc cosinus `acos()`, arc sinus `asin()`, et arc tangente `atan()`.
+Nous avons déjà vu les fonctions `+`, `-`, `*`, `/`, `^`, `%%` et autres [opérateurs arithmétiques](#l011opari). R possède également les fonctions mathématiques de base comme exponetielle `exp()`, racine carrée `sqrt()`, valeur absolue `abs()`, sinus `sin()`, cosinus `cos()`, tangente `tan()`, logarithme népérien `log()`, logarithme décimal `log10()`, arc cosinus `acos()`, arc sinus `asin()`, et arc tangente `atan()`.
 
 ```{r}
 print(vecManip2)
@@ -268,7 +268,7 @@ atan(vecManip2/100)
 
 Nous pouvons également effectuer des statistiques descriptives très simplement à partir d'un jeu de données.
 
-#### `mean()`
+#### `mean()` {#l015mean}
 
 La fonction `mean()` renvoie la moyenne. Pour ignorer les valeurs manquantes `NA`, il faut donner la valeur `TRUE` à l'argument `na.rm()`.
 
@@ -279,7 +279,7 @@ mean(vecManip3)
 mean(vecManip3, na.rm = TRUE)
 ```
 
-#### `sd()`
+#### `sd()` {#l015sd}
 
 La fonction `sd()` renvoie l'écart type.
 
@@ -290,7 +290,7 @@ sd(vecManip3)
 sd(vecManip3, na.rm = TRUE)
 ```
 
-#### `max()`
+#### `max()` et `min()` {#l015max}
 
 La fonction `max()` renvoie la valeur maximale et `min()` la valeur minimale.
 
@@ -305,7 +305,7 @@ min(vecManip3)
 min(vecManip3, na.rm = TRUE)
 ```
 
-#### `quantile()`
+#### `quantile()` {#l015quantile}
 
 La fonction `quantile()` renvoie le quantile défini par l'argument `probs`.
 
@@ -315,7 +315,7 @@ quantile(iris[, 1], probs = c(0, 0.25, 0.5, 0.75, 1))
 quantile(iris[, 1], probs = c(0, 0.1, 0.5, 0.9, 1))
 ```
 
-#### `summary()`
+#### `summary()` {#l015summary}
 
 La fonction `summary()` renvoie un résumé composé du minimum, premier quartile, médiane, moyenne, troisième quartile et maximum.
 
@@ -323,7 +323,7 @@ La fonction `summary()` renvoie un résumé composé du minimum, premier quartil
 summary(iris[, 1])
 ```
 
-#### `median()`
+#### `median()` {#l015median}
 
 La fonction `median()` renvoie la médiane.
 
@@ -334,7 +334,7 @@ median(vecManip3)
 median(vecManip3, na.rm = TRUE)
 ```
 
-#### `length()`
+#### `length()` {#l015length}
 
 La fonction `length()` renvoie la taille d'un objet (nombre d'éléments).
 
@@ -344,7 +344,7 @@ print(vecManip3)
 length(vecManip3)
 ```
 
-#### `nrow()` et `ncol()`
+#### `nrow()` et `ncol()` {#l015nrow}
 
 La fonction `nrow()` renvoie le nombre de lignes et la fonction `ncol()` le nombre de colonnes d'un objet.
 
@@ -353,7 +353,7 @@ nrow(iris)
 ncol(iris)
 ```
 
-#### `round()`, `ceiling()`, `floor()`, et `trunc()`
+#### `round()`, `ceiling()`, `floor()`, et `trunc()` {#l015round}
 
 La fonction `round()` permet de sélectionner un certain nombre de décimales (0 par défaut)
 
@@ -383,7 +383,7 @@ trunc(5.9999)
 trunc(5.0001)
 ```
 
-#### `rowSums()` et `colSums()`
+#### `rowSums()` et `colSums()` {#l015rowsums}
 
 Les fonctions `rowSums()` et `colSums()` calculent la somme des lignes et des colonnes.
 
@@ -392,7 +392,7 @@ rowSums(iris[, c(1, 2, 3, 4)])
 colSums(iris[, c(1, 2, 3, 4)])
 ```
 
-#### `rowMeans()` et `colMeans()`
+#### `rowMeans()` et `colMeans()` {#l015rowmeans}
 
 Les fonctions `rowMeans()` et `colMeans()` calculent la moyenne des lignes et des colonnes.
 
@@ -401,16 +401,16 @@ rowMeans(iris[, c(1, 2, 3, 4)])
 colMeans(iris[, c(1, 2, 3, 4)])
 ```
 
-#### `aggregate()`
+#### `aggregate()` {#l015aggregate}
 
-La fonction `aggregate()` permet de grouper les éléments d'un objet en fonction d'une valeur. L'argument `by` définit l'élément sur lequel est effectué le regroupement. Il doit être de type `list`.
+La fonction `aggregate()` permet de grouper les éléments d'un objet en fonction d'une valeur. L'argument `by` définit l'élément sur lequel est effectué le regroupement. Il doit être de type [`list`](#l014list).
 
 ```{r}
 aggregate(iris[, c(1, 2, 3, 4)], by = list(iris$Species), FUN = mean)
 aggregate(iris[, c(1, 2)], by = list(iris$Species), FUN = summary)
 ```
 
-#### `range()`
+#### `range()` {#l015range}
 
 La fonction `range()` renvoie le minimum et le maximum.
 
@@ -421,7 +421,7 @@ range(vecManip3)
 range(vecManip3, na.rm = TRUE)
 ```
 
-#### `unique()`
+#### `unique()` {#l015unique}
 
 La fonction `unique()` renvoie les valeurs uniques d'un objet (sans les doublons).
 
@@ -433,9 +433,9 @@ unique(vecManip3)
 
 ## Autres fonctions utiles
 
-Nous ne pouvons aborder toutes les fonctions utiles, ici nous ne ferons qu'aborder certaines fonctions. Tout au long de ce livre de nouvelles fonctions seront utilisées. Lorsqu'une nouvelle fonction est utilisée, notre réflexe doit être toujours le même : consulter la documentation avec la fonction `help()`.
+Nous ne pouvons aborder toutes les fonctions utiles, ici nous ne ferons qu'aborder certaines fonctions. Tout au long de ce livre de nouvelles fonctions seront utilisées. Lorsqu'une nouvelle fonction est utilisée, notre réflexe doit être toujours le même : **consulter la documentation** avec la fonction `help()`.
 
-### `seq_along()`
+### `seq_along()` {#l015seqalong}
 
 La fonction `seq_along()` permet de créer un `vector` de la taille de l'objet renseigné et prenant comme valeurs les chiffres de 1 à N (N correspondant aux nombres d'éléments de l'objet). Cette fonction nous servira beaucoup lors du chapitre sur les boucles.
 
@@ -444,9 +444,9 @@ print(vecManip3)
 seq_along(vecManip3)
 ```
 
-### `:`
+### `:` {#l0152points}
 
-La fonction `:` permet de créer une séquence de `a` à `b` par pas de 1, avec `a` et `b` le début et la fin de la séquence souhaitée. Il a été difficile d'écrire les chaiptres précédents sans y avoir recours tant cette fonction est utile. Voici quelques exemples.
+La fonction `:` permet de créer une séquence de `a` à `b` par pas de 1, avec `a` et `b` le début et la fin de la séquence souhaitée. Il a été difficile d'écrire les chapitres précédents sans y avoir recours tant cette fonction est utile. Voici quelques exemples.
 
 ```{r}
 5:10
@@ -459,9 +459,9 @@ miVec01 <- 1:4 # ;-)
 paste("X", 1:10, sep = "_")
 ```
 
-### `rep()`
+### `rep()` {#l015rep}
 
-la fonction `rep()` permet de répéter des éléments.
+La fonction `rep()` permet de répéter des éléments.
 
 ```{r}
 miVec12 <- c(1, 1, 1, 1, 1, 1, 1, 1, 1)
@@ -472,9 +472,9 @@ rep(1:3, length.out = 10)
 rep(1:3, each = 3)
 ```
 
-### `seq()`
+### `seq()` {#l015seq}
 
-la fonction `seq()` permet de créer une séquence personnalisée.
+La fonction `seq()` permet de créer une séquence personnalisée.
 
 ```{r}
 seq(from = 0, to = 1, by = 0.2)
@@ -483,7 +483,7 @@ letters[seq(from = 1, to = 26, by = 2)]
 rep(seq(from = 1, to = 2, by = 0.5), times = 3)
 ```
 
-### `getwd()`
+### `getwd()` {#l015getwd}
 
 La fonction `getwd()` définit le répertoire de travail. Cela correspond à l'endroit relatif à partir duquel R se positionne pour identifier les fichiers. Ce concept prendra son sens lorsque nous verrons comment importer et exporter des données.
 
@@ -491,7 +491,7 @@ La fonction `getwd()` définit le répertoire de travail. Cela correspond à l'e
 getwd()
 ```
 
-### `setwd()`
+### `setwd()` {#l015setwd}
 
 La fonction `setwd()` permet de définir un nouveau répertoire de travail.
 
@@ -504,15 +504,16 @@ setwd(oldWd)
 getwd()
 ```
 
-### `list.files()`
+### `list.files()` {#l015listfiles}
 
 La fonction `list.files()` permet de faire la liste de tous les fichiers présents dans le répertoire de travail. 
 
 ```{r}
+list.files(pattern = "(html)$") # html
 list.files(pattern = "(pdf)$") # pdf
 ```
 
-### `ls()`
+### `ls()` {#l015ls}
 
 Tout comme la fonction `list.files()` permet de faire la liste de tous les fichiers présents dans le répertoire de travail, la fonction `ls()` permet de faire la liste de tous les objets présents dans l'environnement de travail de R.
 
@@ -522,7 +523,7 @@ zzz <- "a new object"
 ls()
 ```
 
-### `rm()`
+### `rm()` {#l015rm}
 
 La fonction `rm()` permet de supprimer un objet présent dans l'environnement de travail de R.
 
@@ -537,7 +538,7 @@ Voici quelques exercices pour se perfectionner dans l'usage des fonctions et en 
 
 ### Séquences
 
-Reproduisons les séquences suivantes :
+#### Reproduisons les séquences suivantes :
 
 -3 -4 -5 -6 -7 -8 -9 -10 –11
 
@@ -551,7 +552,7 @@ Reproduisons les séquences suivantes :
 
 "a" "a" "a" "a" "a" "f" "f" "f" "f" "f" "k" "k" "k" "k" "k" "p" "p" "p" "p" "p" "u" "u" "u" "u" "u" "z" "z" "z" "z" "z"
 
-Solutions possibles (car il y a toujours plusieurs solutions) : 
+#### Solutions possibles (car il y a toujours plusieurs solutions) : 
 
 ```{r}
 -3:-11
@@ -565,13 +566,13 @@ letters[rep(seq(from = 1, to = 26, by = 5), each = 5)]
 
 Dans le jeu de données `iris`, combien de valeurs de largeur de sépales sont supérieures à 3 ? Entre 2.8 et 3.2 ? 
 
-Comment peut-on visualiser la distribution des données (fonction `table`) ? 
+Comment peut-on visualiser la distribution des données (fonction `table()`) ? 
 
 Quelles sont les 10 valeurs les plus petites ?
 
 Comment calculer un intervalle contenant 90% des valeurs ?
 
-Si la distribution des données était Normale, quelle serait la valeur théorique de cet intervalle de 90% (fonction `qnorm`) ?
+Si la distribution des données était Normale, quelle serait la valeur théorique de cet intervalle de 90% (fonction `qnorm()`) ?
 
 Solutions :
 
