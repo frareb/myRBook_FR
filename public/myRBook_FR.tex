@@ -125,7 +125,7 @@
   \postauthor{\par}
       \predate{\centering\large\emph}
   \postdate{\par}
-    \date{2018-07-25}
+    \date{2018-07-27}
 
 \usepackage{booktabs}
 \usepackage{longtable}
@@ -252,6 +252,15 @@ ou si vous connaissez GitHub sur le site du projet
 disponible en espagnol (\url{http://myrbooksp.netlify.com/}).
 
 Dernières modifications:
+
+\textbf{27/07/2018}
+
+\begin{itemize}
+\tightlist
+\item
+  Etude de cas : Obtenir le numéro WOS d'un article scientifique à
+  partir de son numéro DOI
+\end{itemize}
 
 \textbf{25/07/2018}
 
@@ -5232,11 +5241,11 @@ arguments correspondent aux informations que nous souhaitons transmettre
 réaliser.
 
 \begin{rmdnote}
-Pour les fonctions les plus simples comme \texttt{+}, les guillemets ont
-été supprimés pour que le code soit plus facile à lire, mais il s'agit
-bien d'une fonction qui peut s'utiliser avec des parenthèses si nous
-utilisons le signe \texttt{+} entre guillemets. Les arguments sont les
-chiffres que nous souhaitons ajouter.
+Pour les fonctions les plus simples comme \texttt{+}, les parenthèses
+ont été supprimés pour que le code soit plus facile à lire, mais il
+s'agit bien d'une fonction qui peut s'utiliser avec des parenthèses si
+nous utilisons le signe \texttt{+} entre guillemets. Les arguments sont
+les chiffres que nous souhaitons ajouter.
 \end{rmdnote}
 
 \begin{Shaded}
@@ -7526,7 +7535,260 @@ xxx
 \part{Etude de cas}\label{part-etude-de-cas}
 
 \chapter{Analyser des données de datalogger de
-température}\label{studyCase1}
+température}\label{studyCase001}
+
+\chapter{Obtenir le numéro WOS d'un article scientifique à partir de son
+numéro DOI}\label{studyCase002}
+
+Il peut être intéressant d'obtenir le numéro WOS d'un article
+scientifique. Ce numéro est cependant fastidieux à obtenir, d'autant
+plus si nous souhaitons le récupérer pour une liste d'articles ! Par
+chance \emph{The Kitchin Research Group} dans leur blog de juin 2015
+(\url{http://kitchingroup.cheme.cmu.edu/blog/2015/06/08/Getting-a-WOS-Accession-number-from-a-DOI/})
+propose une méthode pour récupérer le numéro WOS à partir du numéro DOI.
+C'est cette méthode que nous allons utiliser avec R et le package
+\texttt{httr}. En bref, cette méthode consite à interroger le site web
+du WOS à partir du numéro DOI. Le site web du WOS va répondre en
+spécifiant qu'il faut se connecter pour accéder à l'article. Il y a pour
+cela une redirection vers une page web dont l'URL contient le numéro
+WOS. Il suffit alors d'extraire le numéro WOS de l'URL de la page web.
+\textbf{Si nous utilisons un proxy pour accéder au site web du WOS, il
+faut donc le désactiver pour que la méthode fonctionne}.
+
+Tout d'abord si cela n'est pas déjà fait il faut installer le package
+\texttt{httr} avec \texttt{install.packages("httr")}, puis le charger
+avec \texttt{library("httr")}. Une autre solution consiste à utiliser la
+fonction suivante qui va vérifier si le package est installé puis le
+charger (il existe de nombreuses déclinaisons de cette fonction sur
+internet, il s'agit ici d'un mélange de multiples sources).
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{pkgCheck <-}\StringTok{ }\ControlFlowTok{function}\NormalTok{(packages)\{}
+    \ControlFlowTok{for}\NormalTok{(x }\ControlFlowTok{in}\NormalTok{ packages)\{}
+        \KeywordTok{try}\NormalTok{(}\ControlFlowTok{if}\NormalTok{ (}\OperatorTok{!}\KeywordTok{require}\NormalTok{(x, }\DataTypeTok{character.only =} \OtherTok{TRUE}\NormalTok{))\{}
+            \KeywordTok{install.packages}\NormalTok{(x, }\DataTypeTok{dependencies =} \OtherTok{TRUE}\NormalTok{)}
+            \ControlFlowTok{if}\NormalTok{(}\OperatorTok{!}\KeywordTok{require}\NormalTok{(x, }\DataTypeTok{character.only =} \OtherTok{TRUE}\NormalTok{)) \{}
+                \KeywordTok{stop}\NormalTok{()}
+\NormalTok{            \}}
+\NormalTok{        \})}
+\NormalTok{    \}}
+\NormalTok{\}}
+\KeywordTok{pkgCheck}\NormalTok{(}\StringTok{"httr"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+La liste des numéros DOI est la suivante (contenu dans un
+\texttt{vector}) :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{myDOIs <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\StringTok{"10.1111/2041-210X.12935"}\NormalTok{, }\StringTok{"10.1007/s13355-017-0480-5"}\NormalTok{)}
+\KeywordTok{print}\NormalTok{(myDOIs)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "10.1111/2041-210X.12935"   "10.1007/s13355-017-0480-5"
+\end{verbatim}
+
+Pour chaque DOI, nous allons interroger le site web du WOS, récupérer
+l'URL de redirection, puis récupérer le numéro WOS. Nous allons donc
+faire une boucle sur notre \texttt{vector} contenant les DOI. Nous
+utilisons la fonction \texttt{seq\_along()} qui va prendre comme valeurs
+les éléments d'une séquence de 1 à la taille de l'objet \texttt{myDOIs},
+soit : \texttt{i\ =\ 1}, puis \texttt{i\ =\ 2}.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ControlFlowTok{for}\NormalTok{(i }\ControlFlowTok{in} \KeywordTok{seq_along}\NormalTok{(myDOIs))\{}
+  \CommentTok{# ...}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+Dans la boucle, le DOI que nous allons traiter est donc
+\texttt{myDOIs{[}i{]}} que nous allons appeler \texttt{myDOI}. La page
+d'interrogation du WOS correspond à la concaténation de l'URL du WOS
+avec le numéro WOS (l'URL est présentée sur plusieurs lignes pour
+respecter la largeur de page de ce livre).
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ControlFlowTok{for}\NormalTok{(i }\ControlFlowTok{in} \KeywordTok{seq_along}\NormalTok{(myDOIs))\{}
+\NormalTok{  myDOI <-}\StringTok{ }\NormalTok{myDOIs[i]}
+\NormalTok{  myWebPage <-}\StringTok{ }\KeywordTok{paste0}\NormalTok{(}
+    \StringTok{"http://ws.isiknowledge.com/"}\NormalTok{, }
+    \StringTok{"cps/openurl/service?url_ver=Z39.88-2004"}\NormalTok{, }
+    \StringTok{"&rft_id=info:doi/"}\NormalTok{, myDOI)}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+Maintenant nous allons utiliser la fonction \texttt{GET()} du package
+\texttt{httr} pour récupérer l'URL.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ControlFlowTok{for}\NormalTok{(i }\ControlFlowTok{in} \KeywordTok{seq_along}\NormalTok{(myDOIs))\{}
+\NormalTok{  myDOI <-}\StringTok{ }\NormalTok{myDOIs[i]}
+\NormalTok{  myWebPage <-}\StringTok{ }\KeywordTok{paste0}\NormalTok{(}
+    \StringTok{"http://ws.isiknowledge.com/"}\NormalTok{, }
+    \StringTok{"cps/openurl/service?url_ver=Z39.88-2004"}\NormalTok{, }
+    \StringTok{"&rft_id=info:doi/"}\NormalTok{, myDOI)}
+\NormalTok{  r <-}\StringTok{ }\KeywordTok{GET}\NormalTok{(myWebPage)}
+\NormalTok{  urlWOS <-}\StringTok{ }\NormalTok{r[[}\DecValTok{1}\NormalTok{]]}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+Il se peut que pour un article, il n'y ait pas de numéro WOS
+correspondant. Pour que notre script ne soit pas arrêté en cas d'erreur
+il faut donc \textbf{gérer cette exception}. Nous allons créer un objet
+\texttt{tryExtract} qui va prendre comme valeur une chaîne de caractères
+vide \texttt{""}. Ensuite nous allons essayer avec la fonction
+\texttt{try()} d'extraire le numéro WOS avec la fonction
+\texttt{substr()}. Le numéro WOS se situe depuis le caractère numéro 117
+jusqu'au caractère numéro 131 de l'URL.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ControlFlowTok{for}\NormalTok{(i }\ControlFlowTok{in} \KeywordTok{seq_along}\NormalTok{(myDOIs))\{}
+\NormalTok{  myDOI <-}\StringTok{ }\NormalTok{myDOIs[i]}
+\NormalTok{  myWebPage <-}\StringTok{ }\KeywordTok{paste0}\NormalTok{(}
+    \StringTok{"http://ws.isiknowledge.com/"}\NormalTok{, }
+    \StringTok{"cps/openurl/service?url_ver=Z39.88-2004"}\NormalTok{, }
+    \StringTok{"&rft_id=info:doi/"}\NormalTok{, myDOI)}
+\NormalTok{  r <-}\StringTok{ }\KeywordTok{GET}\NormalTok{(myWebPage)}
+\NormalTok{  urlWOS <-}\StringTok{ }\NormalTok{r[[}\DecValTok{1}\NormalTok{]]}
+\NormalTok{  tryExtract <-}\StringTok{ ""}
+  \KeywordTok{try}\NormalTok{(tryExtract <-}\StringTok{ }\KeywordTok{substr}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ urlWOS, }\DataTypeTok{start =} \DecValTok{117}\NormalTok{, }\DataTypeTok{stop =} \DecValTok{131}\NormalTok{), }\DataTypeTok{silent =} \OtherTok{TRUE}\NormalTok{)}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+Nous pouvons ensuite vérifier que l'extraction correspond bien à un
+numéro en utilisant une \textbf{expression régulière}. Ici nous allons
+simplement vérifier que l'extraction ne contient que des chiffres. Dans
+le cas contraire \texttt{tryExtract} reprendra sa valeur initiale
+\texttt{""}.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ControlFlowTok{for}\NormalTok{(i }\ControlFlowTok{in} \KeywordTok{seq_along}\NormalTok{(myDOIs))\{}
+\NormalTok{  myDOI <-}\StringTok{ }\NormalTok{myDOIs[i]}
+\NormalTok{  myWebPage <-}\StringTok{ }\KeywordTok{paste0}\NormalTok{(}
+    \StringTok{"http://ws.isiknowledge.com/"}\NormalTok{, }
+    \StringTok{"cps/openurl/service?url_ver=Z39.88-2004"}\NormalTok{, }
+    \StringTok{"&rft_id=info:doi/"}\NormalTok{, myDOI)}
+\NormalTok{  r <-}\StringTok{ }\KeywordTok{GET}\NormalTok{(myWebPage)}
+\NormalTok{  urlWOS <-}\StringTok{ }\NormalTok{r[[}\DecValTok{1}\NormalTok{]]}
+\NormalTok{  tryExtract <-}\StringTok{ ""}
+  \KeywordTok{try}\NormalTok{(tryExtract <-}\StringTok{ }\KeywordTok{substr}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ urlWOS, }\DataTypeTok{start =} \DecValTok{117}\NormalTok{, }\DataTypeTok{stop =} \DecValTok{131}\NormalTok{), }\DataTypeTok{silent =} \OtherTok{TRUE}\NormalTok{)}
+  \ControlFlowTok{if}\NormalTok{(}\OperatorTok{!}\KeywordTok{grepl}\NormalTok{(}\DataTypeTok{pattern =} \StringTok{'^([0-9]*)$'}\NormalTok{, }\DataTypeTok{x =}\NormalTok{ tryExtract))\{tryExtract <-}\StringTok{ ""}\NormalTok{\}}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+Le résultat est ensuite stocké dans un \texttt{vector} créé au préalable
+et appelé \texttt{vecWOS}.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{vecWOS <-}\StringTok{ }\KeywordTok{vector}\NormalTok{()}
+\ControlFlowTok{for}\NormalTok{(i }\ControlFlowTok{in} \KeywordTok{seq_along}\NormalTok{(myDOIs))\{}
+\NormalTok{  myDOI <-}\StringTok{ }\NormalTok{myDOIs[i]}
+\NormalTok{  myWebPage <-}\StringTok{ }\KeywordTok{paste0}\NormalTok{(}
+    \StringTok{"http://ws.isiknowledge.com/"}\NormalTok{, }
+    \StringTok{"cps/openurl/service?url_ver=Z39.88-2004"}\NormalTok{, }
+    \StringTok{"&rft_id=info:doi/"}\NormalTok{, myDOI)}
+\NormalTok{  r <-}\StringTok{ }\KeywordTok{GET}\NormalTok{(myWebPage)}
+\NormalTok{  urlWOS <-}\StringTok{ }\NormalTok{r[[}\DecValTok{1}\NormalTok{]]}
+\NormalTok{  tryExtract <-}\StringTok{ ""}
+  \KeywordTok{try}\NormalTok{(tryExtract <-}\StringTok{ }\KeywordTok{substr}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ urlWOS, }\DataTypeTok{start =} \DecValTok{117}\NormalTok{, }\DataTypeTok{stop =} \DecValTok{131}\NormalTok{), }\DataTypeTok{silent =} \OtherTok{TRUE}\NormalTok{)}
+  \ControlFlowTok{if}\NormalTok{(}\OperatorTok{!}\KeywordTok{grepl}\NormalTok{(}\DataTypeTok{pattern =} \StringTok{'^([0-9]*)$'}\NormalTok{, }\DataTypeTok{x =}\NormalTok{ tryExtract))\{tryExtract <-}\StringTok{ ""}\NormalTok{\}}
+\NormalTok{  vecWOS <-}\StringTok{ }\KeywordTok{append}\NormalTok{(vecWOS, tryExtract)}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+Nous pouvons alors créer un objet de type \texttt{data.frame} qui va
+contenir les numéros DOI et les numéros WOS, et éventuellement
+l'exporter dans un fichier CSV.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{dfDOIWOS <-}\StringTok{ }\KeywordTok{data.frame}\NormalTok{(}\DataTypeTok{DOI =}\NormalTok{ myDOIs, }\DataTypeTok{WOS =}\NormalTok{ vecWOS)}
+\KeywordTok{write.csv}\NormalTok{(dfDOIWOS, }\DataTypeTok{file =} \StringTok{"dfDOIWOS.csv"}\NormalTok{, }\DataTypeTok{row.names =} \OtherTok{FALSE}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+Le résultat est le suivant (non exécuté car la procédure d'interrogation
+avec la fonction \texttt{GET()} est très lente : \textbf{si nous
+souhaitons travailler sur un liste de plusieurs dizaines ou centaines
+d'articles, plusieurs heures seront nécessaires} avant d'obtenir le
+résultat).
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{#                         DOI             WOS}
+\CommentTok{# 1   10.1111/2041-210X.12935 000429421800031}
+\CommentTok{# 2 10.1007/s13355-017-0480-5 000400381400016}
+\end{Highlighting}
+\end{Shaded}
+
+Voici le code complet :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{pkgCheck <-}\StringTok{ }\ControlFlowTok{function}\NormalTok{(packages)\{}
+    \ControlFlowTok{for}\NormalTok{(x }\ControlFlowTok{in}\NormalTok{ packages)\{}
+        \KeywordTok{try}\NormalTok{(}\ControlFlowTok{if}\NormalTok{ (}\OperatorTok{!}\KeywordTok{require}\NormalTok{(x, }\DataTypeTok{character.only =} \OtherTok{TRUE}\NormalTok{))\{}
+            \KeywordTok{install.packages}\NormalTok{(x, }\DataTypeTok{dependencies =} \OtherTok{TRUE}\NormalTok{)}
+            \ControlFlowTok{if}\NormalTok{(}\OperatorTok{!}\KeywordTok{require}\NormalTok{(x, }\DataTypeTok{character.only =} \OtherTok{TRUE}\NormalTok{)) \{}
+                \KeywordTok{stop}\NormalTok{()}
+\NormalTok{            \}}
+\NormalTok{        \})}
+\NormalTok{    \}}
+\NormalTok{\}}
+\KeywordTok{pkgCheck}\NormalTok{(}\StringTok{"httr"}\NormalTok{)}
+
+\NormalTok{myDOIs <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\StringTok{"10.1111/2041-210X.12935"}\NormalTok{, }\StringTok{"10.1007/s13355-017-0480-5"}\NormalTok{)}
+
+\NormalTok{vecWOS <-}\StringTok{ }\KeywordTok{vector}\NormalTok{()}
+\ControlFlowTok{for}\NormalTok{(i }\ControlFlowTok{in} \KeywordTok{seq_along}\NormalTok{(myDOIs))\{}
+\NormalTok{  myDOI <-}\StringTok{ }\NormalTok{myDOIs[i]}
+\NormalTok{  myWebPage <-}\StringTok{ }\KeywordTok{paste0}\NormalTok{(}
+    \StringTok{"http://ws.isiknowledge.com/"}\NormalTok{, }
+    \StringTok{"cps/openurl/service?url_ver=Z39.88-2004"}\NormalTok{, }
+    \StringTok{"&rft_id=info:doi/"}\NormalTok{, myDOI)}
+\NormalTok{  r <-}\StringTok{ }\KeywordTok{GET}\NormalTok{(myWebPage)}
+\NormalTok{  urlWOS <-}\StringTok{ }\NormalTok{r[[}\DecValTok{1}\NormalTok{]]}
+\NormalTok{  tryExtract <-}\StringTok{ ""}
+  \KeywordTok{try}\NormalTok{(tryExtract <-}\StringTok{ }\KeywordTok{substr}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ urlWOS, }\DataTypeTok{start =} \DecValTok{117}\NormalTok{, }\DataTypeTok{stop =} \DecValTok{131}\NormalTok{), }\DataTypeTok{silent =} \OtherTok{TRUE}\NormalTok{)}
+  \ControlFlowTok{if}\NormalTok{(}\OperatorTok{!}\KeywordTok{grepl}\NormalTok{(}\DataTypeTok{pattern =} \StringTok{'^([0-9]*)$'}\NormalTok{, }\DataTypeTok{x =}\NormalTok{ tryExtract))\{tryExtract <-}\StringTok{ ""}\NormalTok{\}}
+\NormalTok{  vecWOS <-}\StringTok{ }\KeywordTok{append}\NormalTok{(vecWOS, tryExtract)}
+\NormalTok{\}}
+
+\NormalTok{dfDOIWOS <-}\StringTok{ }\KeywordTok{data.frame}\NormalTok{(}\DataTypeTok{DOI =}\NormalTok{ myDOIs, }\DataTypeTok{WOS =}\NormalTok{ vecWOS)}
+\KeywordTok{write.csv}\NormalTok{(dfDOIWOS, }\DataTypeTok{file =} \StringTok{"dfDOIWOS.csv"}\NormalTok{, }\DataTypeTok{row.names =} \OtherTok{FALSE}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+La boucle \texttt{for()} pourrait être remplacée par une boucle
+\texttt{sapply()}, ou pour gagner en temps d'exécution par une
+parallélisation. Voici un exemple de temps d'exécution renvoyé par la
+fonction \texttt{system.time()} :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{#   user  system elapsed}
+\CommentTok{#   0.10    0.01   35.00}
+\end{Highlighting}
+\end{Shaded}
+
+Nous venons de faire un script qui permet à partir d'une liste de
+numéros DOI d'obtenir automatiquement les numéros WOS.
 
 
 \end{document}

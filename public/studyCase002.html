@@ -32,8 +32,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-<link rel="prev" href="remerciements.html">
-<link rel="next" href="intro.html">
+<link rel="prev" href="studyCase001.html">
+
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -274,24 +274,130 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="licence" class="section level1">
-<h1><span class="header-section-number"> 3</span> Licence</h1>
-<p>Licence Creative Commons Attribution - Pas d’Utilisation Commerciale - Pas de Modification 3.0 France (CC BY-NC-ND 3.0 FR ; <a href="https://creativecommons.org/licenses/by-nc-nd/3.0/fr/" class="uri">https://creativecommons.org/licenses/by-nc-nd/3.0/fr/</a>)</p>
-<p>C’est un résumé (et non pas un substitut) de la licence.</p>
-<p><strong>Vous êtes autorisé à :</strong></p>
-<ul>
-<li>Partager — copier, distribuer et communiquer le matériel par tous moyens et sous tous formats.</li>
-<li>L’Offrant ne peut retirer les autorisations concédées par la licence tant que vous appliquez les termes de cette licence.</li>
-</ul>
-<p><strong>Selon les conditions suivantes :</strong></p>
-<ul>
-<li><p>Attribution — Vous devez créditer l’Œuvre, intégrer un lien vers la licence et indiquer si des modifications ont été effectuées à l’Oeuvre. Vous devez indiquer ces informations par tous les moyens raisonnables, sans toutefois suggérer que l’Offrant vous soutient ou soutient la façon dont vous avez utilisé son Oeuvre.</p></li>
-<li><p>Pas d’Utilisation Commerciale — Vous n’êtes pas autorisé à faire un usage commercial de cette Oeuvre, tout ou partie du matériel la composant.</p></li>
-<li><p>Pas de modifications — Dans le cas où vous effectuez un remix, que vous transformez, ou créez à partir du matériel composant l’Oeuvre originale, vous n’êtes pas autorisé à distribuer ou mettre à disposition l’Oeuvre modifiée.</p></li>
-<li><p>Pas de restrictions complémentaires — Vous n’êtes pas autorisé à appliquer des conditions légales ou des mesures techniques qui restreindraient légalement autrui à utiliser l’Oeuvre dans les conditions décrites par la licence.</p></li>
-</ul>
-<p><strong>Notes :</strong></p>
-<p>Vous n’êtes pas dans l’obligation de respecter la licence pour les éléments ou matériel appartenant au domaine public ou dans le cas où l’utilisation que vous souhaitez faire est couverte par une exception. Aucune garantie n’est donnée. Il se peut que la licence ne vous donne pas toutes les permissions nécessaires pour votre utilisation. Par exemple, certains droits comme les droits moraux, le droit des données personnelles et le droit à l’image sont susceptibles de limiter votre utilisation.</p>
+<div id="studyCase002" class="section level1">
+<h1><span class="header-section-number"> 18</span> Obtenir le numéro WOS d’un article scientifique à partir de son numéro DOI</h1>
+<p>Il peut être intéressant d’obtenir le numéro WOS d’un article scientifique. Ce numéro est cependant fastidieux à obtenir, d’autant plus si nous souhaitons le récupérer pour une liste d’articles ! Par chance <em>The Kitchin Research Group</em> dans leur blog de juin 2015 (<a href="http://kitchingroup.cheme.cmu.edu/blog/2015/06/08/Getting-a-WOS-Accession-number-from-a-DOI/" class="uri">http://kitchingroup.cheme.cmu.edu/blog/2015/06/08/Getting-a-WOS-Accession-number-from-a-DOI/</a>) propose une méthode pour récupérer le numéro WOS à partir du numéro DOI. C’est cette méthode que nous allons utiliser avec R et le package <code>httr</code>. En bref, cette méthode consite à interroger le site web du WOS à partir du numéro DOI. Le site web du WOS va répondre en spécifiant qu’il faut se connecter pour accéder à l’article. Il y a pour cela une redirection vers une page web dont l’URL contient le numéro WOS. Il suffit alors d’extraire le numéro WOS de l’URL de la page web. <strong>Si nous utilisons un proxy pour accéder au site web du WOS, il faut donc le désactiver pour que la méthode fonctionne</strong>.</p>
+<p>Tout d’abord si cela n’est pas déjà fait il faut installer le package <code>httr</code> avec <code>install.packages(&quot;httr&quot;)</code>, puis le charger avec <code>library(&quot;httr&quot;)</code>. Une autre solution consiste à utiliser la fonction suivante qui va vérifier si le package est installé puis le charger (il existe de nombreuses déclinaisons de cette fonction sur internet, il s’agit ici d’un mélange de multiples sources).</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">pkgCheck &lt;-<span class="st"> </span><span class="cf">function</span>(packages){
+    <span class="cf">for</span>(x <span class="cf">in</span> packages){
+        <span class="kw">try</span>(<span class="cf">if</span> (<span class="op">!</span><span class="kw">require</span>(x, <span class="dt">character.only =</span> <span class="ot">TRUE</span>)){
+            <span class="kw">install.packages</span>(x, <span class="dt">dependencies =</span> <span class="ot">TRUE</span>)
+            <span class="cf">if</span>(<span class="op">!</span><span class="kw">require</span>(x, <span class="dt">character.only =</span> <span class="ot">TRUE</span>)) {
+                <span class="kw">stop</span>()
+            }
+        })
+    }
+}
+<span class="kw">pkgCheck</span>(<span class="st">&quot;httr&quot;</span>)</code></pre></div>
+<p>La liste des numéros DOI est la suivante (contenu dans un <code>vector</code>) :</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">myDOIs &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;10.1111/2041-210X.12935&quot;</span>, <span class="st">&quot;10.1007/s13355-017-0480-5&quot;</span>)
+<span class="kw">print</span>(myDOIs)</code></pre></div>
+<pre><code>## [1] &quot;10.1111/2041-210X.12935&quot;   &quot;10.1007/s13355-017-0480-5&quot;</code></pre>
+<p>Pour chaque DOI, nous allons interroger le site web du WOS, récupérer l’URL de redirection, puis récupérer le numéro WOS. Nous allons donc faire une boucle sur notre <code>vector</code> contenant les DOI. Nous utilisons la fonction <code>seq_along()</code> qui va prendre comme valeurs les éléments d’une séquence de 1 à la taille de l’objet <code>myDOIs</code>, soit : <code>i = 1</code>, puis <code>i = 2</code>.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="cf">for</span>(i <span class="cf">in</span> <span class="kw">seq_along</span>(myDOIs)){
+  <span class="co"># ...</span>
+}</code></pre></div>
+<p>Dans la boucle, le DOI que nous allons traiter est donc <code>myDOIs[i]</code> que nous allons appeler <code>myDOI</code>. La page d’interrogation du WOS correspond à la concaténation de l’URL du WOS avec le numéro WOS (l’URL est présentée sur plusieurs lignes pour respecter la largeur de page de ce livre).</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="cf">for</span>(i <span class="cf">in</span> <span class="kw">seq_along</span>(myDOIs)){
+  myDOI &lt;-<span class="st"> </span>myDOIs[i]
+  myWebPage &lt;-<span class="st"> </span><span class="kw">paste0</span>(
+    <span class="st">&quot;http://ws.isiknowledge.com/&quot;</span>, 
+    <span class="st">&quot;cps/openurl/service?url_ver=Z39.88-2004&quot;</span>, 
+    <span class="st">&quot;&amp;rft_id=info:doi/&quot;</span>, myDOI)
+}</code></pre></div>
+<p>Maintenant nous allons utiliser la fonction <code>GET()</code> du package <code>httr</code> pour récupérer l’URL.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="cf">for</span>(i <span class="cf">in</span> <span class="kw">seq_along</span>(myDOIs)){
+  myDOI &lt;-<span class="st"> </span>myDOIs[i]
+  myWebPage &lt;-<span class="st"> </span><span class="kw">paste0</span>(
+    <span class="st">&quot;http://ws.isiknowledge.com/&quot;</span>, 
+    <span class="st">&quot;cps/openurl/service?url_ver=Z39.88-2004&quot;</span>, 
+    <span class="st">&quot;&amp;rft_id=info:doi/&quot;</span>, myDOI)
+  r &lt;-<span class="st"> </span><span class="kw">GET</span>(myWebPage)
+  urlWOS &lt;-<span class="st"> </span>r[[<span class="dv">1</span>]]
+}</code></pre></div>
+<p>Il se peut que pour un article, il n’y ait pas de numéro WOS correspondant. Pour que notre script ne soit pas arrêté en cas d’erreur il faut donc <strong>gérer cette exception</strong>. Nous allons créer un objet <code>tryExtract</code> qui va prendre comme valeur une chaîne de caractères vide <code>&quot;&quot;</code>. Ensuite nous allons essayer avec la fonction <code>try()</code> d’extraire le numéro WOS avec la fonction <code>substr()</code>. Le numéro WOS se situe depuis le caractère numéro 117 jusqu’au caractère numéro 131 de l’URL.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="cf">for</span>(i <span class="cf">in</span> <span class="kw">seq_along</span>(myDOIs)){
+  myDOI &lt;-<span class="st"> </span>myDOIs[i]
+  myWebPage &lt;-<span class="st"> </span><span class="kw">paste0</span>(
+    <span class="st">&quot;http://ws.isiknowledge.com/&quot;</span>, 
+    <span class="st">&quot;cps/openurl/service?url_ver=Z39.88-2004&quot;</span>, 
+    <span class="st">&quot;&amp;rft_id=info:doi/&quot;</span>, myDOI)
+  r &lt;-<span class="st"> </span><span class="kw">GET</span>(myWebPage)
+  urlWOS &lt;-<span class="st"> </span>r[[<span class="dv">1</span>]]
+  tryExtract &lt;-<span class="st"> &quot;&quot;</span>
+  <span class="kw">try</span>(tryExtract &lt;-<span class="st"> </span><span class="kw">substr</span>(<span class="dt">x =</span> urlWOS, <span class="dt">start =</span> <span class="dv">117</span>, <span class="dt">stop =</span> <span class="dv">131</span>), <span class="dt">silent =</span> <span class="ot">TRUE</span>)
+}</code></pre></div>
+<p>Nous pouvons ensuite vérifier que l’extraction correspond bien à un numéro en utilisant une <strong>expression régulière</strong>. Ici nous allons simplement vérifier que l’extraction ne contient que des chiffres. Dans le cas contraire <code>tryExtract</code> reprendra sa valeur initiale <code>&quot;&quot;</code>.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="cf">for</span>(i <span class="cf">in</span> <span class="kw">seq_along</span>(myDOIs)){
+  myDOI &lt;-<span class="st"> </span>myDOIs[i]
+  myWebPage &lt;-<span class="st"> </span><span class="kw">paste0</span>(
+    <span class="st">&quot;http://ws.isiknowledge.com/&quot;</span>, 
+    <span class="st">&quot;cps/openurl/service?url_ver=Z39.88-2004&quot;</span>, 
+    <span class="st">&quot;&amp;rft_id=info:doi/&quot;</span>, myDOI)
+  r &lt;-<span class="st"> </span><span class="kw">GET</span>(myWebPage)
+  urlWOS &lt;-<span class="st"> </span>r[[<span class="dv">1</span>]]
+  tryExtract &lt;-<span class="st"> &quot;&quot;</span>
+  <span class="kw">try</span>(tryExtract &lt;-<span class="st"> </span><span class="kw">substr</span>(<span class="dt">x =</span> urlWOS, <span class="dt">start =</span> <span class="dv">117</span>, <span class="dt">stop =</span> <span class="dv">131</span>), <span class="dt">silent =</span> <span class="ot">TRUE</span>)
+  <span class="cf">if</span>(<span class="op">!</span><span class="kw">grepl</span>(<span class="dt">pattern =</span> <span class="st">&#39;^([0-9]*)$&#39;</span>, <span class="dt">x =</span> tryExtract)){tryExtract &lt;-<span class="st"> &quot;&quot;</span>}
+}</code></pre></div>
+<p>Le résultat est ensuite stocké dans un <code>vector</code> créé au préalable et appelé <code>vecWOS</code>.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">vecWOS &lt;-<span class="st"> </span><span class="kw">vector</span>()
+<span class="cf">for</span>(i <span class="cf">in</span> <span class="kw">seq_along</span>(myDOIs)){
+  myDOI &lt;-<span class="st"> </span>myDOIs[i]
+  myWebPage &lt;-<span class="st"> </span><span class="kw">paste0</span>(
+    <span class="st">&quot;http://ws.isiknowledge.com/&quot;</span>, 
+    <span class="st">&quot;cps/openurl/service?url_ver=Z39.88-2004&quot;</span>, 
+    <span class="st">&quot;&amp;rft_id=info:doi/&quot;</span>, myDOI)
+  r &lt;-<span class="st"> </span><span class="kw">GET</span>(myWebPage)
+  urlWOS &lt;-<span class="st"> </span>r[[<span class="dv">1</span>]]
+  tryExtract &lt;-<span class="st"> &quot;&quot;</span>
+  <span class="kw">try</span>(tryExtract &lt;-<span class="st"> </span><span class="kw">substr</span>(<span class="dt">x =</span> urlWOS, <span class="dt">start =</span> <span class="dv">117</span>, <span class="dt">stop =</span> <span class="dv">131</span>), <span class="dt">silent =</span> <span class="ot">TRUE</span>)
+  <span class="cf">if</span>(<span class="op">!</span><span class="kw">grepl</span>(<span class="dt">pattern =</span> <span class="st">&#39;^([0-9]*)$&#39;</span>, <span class="dt">x =</span> tryExtract)){tryExtract &lt;-<span class="st"> &quot;&quot;</span>}
+  vecWOS &lt;-<span class="st"> </span><span class="kw">append</span>(vecWOS, tryExtract)
+}</code></pre></div>
+<p>Nous pouvons alors créer un objet de type <code>data.frame</code> qui va contenir les numéros DOI et les numéros WOS, et éventuellement l’exporter dans un fichier CSV.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">dfDOIWOS &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">DOI =</span> myDOIs, <span class="dt">WOS =</span> vecWOS)
+<span class="kw">write.csv</span>(dfDOIWOS, <span class="dt">file =</span> <span class="st">&quot;dfDOIWOS.csv&quot;</span>, <span class="dt">row.names =</span> <span class="ot">FALSE</span>)</code></pre></div>
+<p>Le résultat est le suivant (non exécuté car la procédure d’interrogation avec la fonction <code>GET()</code> est très lente : <strong>si nous souhaitons travailler sur un liste de plusieurs dizaines ou centaines d’articles, plusieurs heures seront nécessaires</strong> avant d’obtenir le résultat).</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#                         DOI             WOS</span>
+<span class="co"># 1   10.1111/2041-210X.12935 000429421800031</span>
+<span class="co"># 2 10.1007/s13355-017-0480-5 000400381400016</span></code></pre></div>
+<p>Voici le code complet :</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">pkgCheck &lt;-<span class="st"> </span><span class="cf">function</span>(packages){
+    <span class="cf">for</span>(x <span class="cf">in</span> packages){
+        <span class="kw">try</span>(<span class="cf">if</span> (<span class="op">!</span><span class="kw">require</span>(x, <span class="dt">character.only =</span> <span class="ot">TRUE</span>)){
+            <span class="kw">install.packages</span>(x, <span class="dt">dependencies =</span> <span class="ot">TRUE</span>)
+            <span class="cf">if</span>(<span class="op">!</span><span class="kw">require</span>(x, <span class="dt">character.only =</span> <span class="ot">TRUE</span>)) {
+                <span class="kw">stop</span>()
+            }
+        })
+    }
+}
+<span class="kw">pkgCheck</span>(<span class="st">&quot;httr&quot;</span>)
+
+myDOIs &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;10.1111/2041-210X.12935&quot;</span>, <span class="st">&quot;10.1007/s13355-017-0480-5&quot;</span>)
+
+vecWOS &lt;-<span class="st"> </span><span class="kw">vector</span>()
+<span class="cf">for</span>(i <span class="cf">in</span> <span class="kw">seq_along</span>(myDOIs)){
+  myDOI &lt;-<span class="st"> </span>myDOIs[i]
+  myWebPage &lt;-<span class="st"> </span><span class="kw">paste0</span>(
+    <span class="st">&quot;http://ws.isiknowledge.com/&quot;</span>, 
+    <span class="st">&quot;cps/openurl/service?url_ver=Z39.88-2004&quot;</span>, 
+    <span class="st">&quot;&amp;rft_id=info:doi/&quot;</span>, myDOI)
+  r &lt;-<span class="st"> </span><span class="kw">GET</span>(myWebPage)
+  urlWOS &lt;-<span class="st"> </span>r[[<span class="dv">1</span>]]
+  tryExtract &lt;-<span class="st"> &quot;&quot;</span>
+  <span class="kw">try</span>(tryExtract &lt;-<span class="st"> </span><span class="kw">substr</span>(<span class="dt">x =</span> urlWOS, <span class="dt">start =</span> <span class="dv">117</span>, <span class="dt">stop =</span> <span class="dv">131</span>), <span class="dt">silent =</span> <span class="ot">TRUE</span>)
+  <span class="cf">if</span>(<span class="op">!</span><span class="kw">grepl</span>(<span class="dt">pattern =</span> <span class="st">&#39;^([0-9]*)$&#39;</span>, <span class="dt">x =</span> tryExtract)){tryExtract &lt;-<span class="st"> &quot;&quot;</span>}
+  vecWOS &lt;-<span class="st"> </span><span class="kw">append</span>(vecWOS, tryExtract)
+}
+
+dfDOIWOS &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">DOI =</span> myDOIs, <span class="dt">WOS =</span> vecWOS)
+<span class="kw">write.csv</span>(dfDOIWOS, <span class="dt">file =</span> <span class="st">&quot;dfDOIWOS.csv&quot;</span>, <span class="dt">row.names =</span> <span class="ot">FALSE</span>)</code></pre></div>
+<p>La boucle <code>for()</code> pourrait être remplacée par une boucle <code>sapply()</code>, ou pour gagner en temps d’exécution par une parallélisation. Voici un exemple de temps d’exécution renvoyé par la fonction <code>system.time()</code> :</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#   user  system elapsed</span>
+<span class="co">#   0.10    0.01   35.00</span></code></pre></div>
+<p>Nous venons de faire un script qui permet à partir d’une liste de numéros DOI d’obtenir automatiquement les numéros WOS.</p>
 
 </div>
             </section>
@@ -299,8 +405,8 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
           </div>
         </div>
       </div>
-<a href="remerciements.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="intro.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="studyCase001.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

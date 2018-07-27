@@ -25,7 +25,7 @@
 <meta name="author" content="François Rebaudo">
 
 
-<meta name="date" content="2018-07-25">
+<meta name="date" content="2018-07-27">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -252,7 +252,8 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="part"><span><b>III Statistiques</b></span></li>
 <li class="chapter" data-level="16" data-path="stats1.html"><a href="stats1.html"><i class="fa fa-check"></i><b>16</b> Statistiques descriptives</a></li>
 <li class="part"><span><b>IV Etude de cas</b></span></li>
-<li class="chapter" data-level="17" data-path="studyCase1.html"><a href="studyCase1.html"><i class="fa fa-check"></i><b>17</b> Analyser des données de datalogger de température</a></li>
+<li class="chapter" data-level="17" data-path="studyCase001.html"><a href="studyCase001.html"><i class="fa fa-check"></i><b>17</b> Analyser des données de datalogger de température</a></li>
+<li class="chapter" data-level="18" data-path="studyCase002.html"><a href="studyCase002.html"><i class="fa fa-check"></i><b>18</b> Obtenir le numéro WOS d’un article scientifique à partir de son numéro DOI</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
 
@@ -280,7 +281,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <p>Avec ce chapitre nous allons avoir un premier apperçu de la puissance de R grâce aux fonctions. Une fonction est un ensemble de lignes de code permettant d’exécuter une tâche particulière. Nous avons vu de nombreuses fonctions lors des précédents chapitres, la plus simple étant la fonction <code>+</code> permettant d’ajouter deux nombres entre eux, ou d’autres plus complexes comme <code>c()</code> ou <code>data.frame()</code> permettant de créer un <code>vector</code> ou un <code>data.frame</code>. Dans tous les cas une fonction se reconnait grâce aux parenthèses qui la suive dans laquelle nous allons renseigner des <strong>arguments</strong>. Les arguments correspondent aux informations que nous souhaitons transmettre à notre fonction pour qu’elle exécute la tâche que nous souhaitons réaliser.</p>
 <div class="rmdnote">
 <p>
-Pour les fonctions les plus simples comme <code>+</code>, les guillemets ont été supprimés pour que le code soit plus facile à lire, mais il s’agit bien d’une fonction qui peut s’utiliser avec des parenthèses si nous utilisons le signe <code>+</code> entre guillemets. Les arguments sont les chiffres que nous souhaitons ajouter.
+Pour les fonctions les plus simples comme <code>+</code>, les parenthèses ont été supprimés pour que le code soit plus facile à lire, mais il s’agit bien d’une fonction qui peut s’utiliser avec des parenthèses si nous utilisons le signe <code>+</code> entre guillemets. Les arguments sont les chiffres que nous souhaitons ajouter.
 </p>
 </div>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="dv">5</span> <span class="op">+</span><span class="st"> </span><span class="dv">2</span></code></pre></div>
@@ -298,7 +299,6 @@ Pour les fonctions les plus simples comme <code>+</code>, les guillemets ont ét
 <h4><span class="header-section-number">9.2.1.1</span> <code>help()</code></h4>
 <p>La fonction indispensable de R est celle permettant d’accèder à la documentation. Toutes les fonctions et tous les jeux de données de R possèdent une documentation. Nous pouvons accéder à la documentation avec la fonction <code>help()</code> ou en utilisant le raccourci <code>?</code>.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">help</span>(matrix) <span class="co"># équivalent à ?matrix</span></code></pre></div>
-<pre><code>## starting httpd help server ... done</code></pre>
 <p>La documentation est toujours structurée de la même manière. Tout d’abord nous avons le nom de la fonction recherchée <code>matrix</code>, suivie entre accolades par le nom du package R dont la fonction dépend. Nous verrons comment installer des packages additionnels plus tard. Pour l’instant nous disposons de ceux fournis avec la version de base de R. Ici nous pouvons voir que la fonction <code>matrix()</code> dépend du package <code>base</code>.</p>
 <p>Ensuite nous pouvons voir le libellé de la fonction (<code>Matrices</code>), suivi des paragraphes <code>Description</code>, <code>Usage</code>, et <code>Arguments</code>. Parfois vient s’ajouter les paragraphes <code>Details</code>, <code>Note</code>, <code>References</code>, et <code>See also</code>. Le dernier paragraphe est <code>Examples</code>. La dernière ligne de la documentation permet de revenir à l’index du package dont dépend la fonction consultée.</p>
 <p>En copiant collant <code>help(matrix)</code> dans notre console R, nous pouvons voir que le paragraphe <code>Description</code> indique ce que fait la fonction. Dans le cas de <code>help(matrix)</code>, il y a trois fonctions qui sont présentées : <code>matrix()</code>, <code>as.matrix()</code>, et <code>is.matrix()</code>.</p>
