@@ -260,6 +260,8 @@ Dernières modifications:
 \item
   Etude de cas : Obtenir le numéro WOS d'un article scientifique à
   partir de son numéro DOI
+\item
+  typos et références internes
 \end{itemize}
 
 \textbf{25/07/2018}
@@ -461,8 +463,8 @@ code et le résultat du code.
 \includegraphics[width=6.71in]{myFigures/screencap_rConsoleCalculatrice} \caption{Capture d'écran de la console R sous Windows avec la calculatrice Windows.\label{fig:screenCapConsoleCal}}\label{fig:screenCapConsoleCal}
 \end{figure}
 
-\subsection{Les opérateurs
-arithmétiques}\label{les-operateurs-arithmetiques}
+\hypertarget{l011opari}{\subsection{Les opérateurs
+arithmétiques}\label{l011opari}}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -621,8 +623,8 @@ concernant le \emph{style} seront toujours représentées avec ce
 pictogramme afin qu'elles soient facilement identifiables.
 \end{rmdstyle}
 
-\subsection{Les opérateurs de
-comparaison}\label{les-operateurs-de-comparaison}
+\hypertarget{l011opcomp}{\subsection{Les opérateurs de
+comparaison}\label{l011opcomp}}
 
 R est cependant bien plus qu'une simple calculatrice puisque'il permet
 un autre type d'opérateurs : les opérateurs de comparaison. Ils servent
@@ -938,7 +940,7 @@ utiliserons toujours \texttt{TRUE} et \texttt{FALSE} afin que le code
 soit plus facile à lire. Encore une fois l'objectif d'un code est de non
 seuleument être fonctionnel mais aussi d'être facile à lire et à relire.
 
-\subsection{Les opérateurs logiques}\label{les-operateurs-logiques}
+\subsection{Les opérateurs logiques}\label{l011oplog}
 
 Il existe un dernier type d'opérateur, les opérateurs logiques. Ils sont
 utiles pour combiner des opérateurs de comparaison (Table
@@ -1368,6 +1370,35 @@ A partir de maintenant nous n'allons plus utiliser les éditeurs de texte
 comme le bloc note mais des éditeurs spécialisés pour la confection de
 scripts R. C'est l'objet du chapitre suivant.
 
+\section{Conclusion}\label{conclusion}
+
+Félicitations, nous avons atteint la fin de ce premier chapitre sur les
+éléments de base de R. Nous savons:
+
+\begin{itemize}
+\tightlist
+\item
+  Installer R
+\item
+  Utiliser R comme une calculatrice
+\item
+  Créez \textbf{objets} et les utiliser pour les calculs arithmétiques,
+  de comparaison et de logique
+\item
+  Choisir des noms pertinents pour les objets
+\item
+  Créer de nouveaux \textbf{script}
+\item
+  Choisir un nom pertinent pour les fichiers de script
+\item
+  Exécuter le code d'un script
+\item
+  Documenter les scripts avec des \textbf{commentaires}
+\item
+  Utiliser un style de code pour le rendre agréable à lire et facile à
+  comprendre
+\end{itemize}
+
 \chapter{Choisir un environnement de développement}\label{IDE}
 
 \section{Editeurs de texte et environnement de
@@ -1618,7 +1649,7 @@ et d'autres plus généralistes pour la programmation comme \textbf{Atom}
 (\url{http://brackets.io/}) et \textbf{Eclipse}
 (\url{http://www.eclipse.org/}).
 
-\section{Conclusion}\label{conclusion}
+\section{Conclusion}\label{conclusion-1}
 
 Felicitations, nous sommes arrivés au bout de ce chapitre sur
 environnements de développement pour utiliser R. Nous savons désormais :
@@ -2238,7 +2269,7 @@ nombres.
 ## [1] NA
 \end{verbatim}
 
-\section{Conclusion}\label{conclusion-1}
+\section{Conclusion}\label{conclusion-2}
 
 Felicitations, nous sommes arrivés au bout de ce chapitre sur les type
 de données. Nous savons désormais :
@@ -2262,8 +2293,8 @@ attributs, comme sa valeur, mais aussi le type de donnée contenue.
 maintenant nous allons voir qu'il existe différents types de conteneurs
 permettant de stocker plusieurs données.
 
-\section{\texorpdfstring{Le conteneur
-\texttt{vector}}{Le conteneur vector}}\label{le-conteneur-vector}
+\hypertarget{l014vector}{\section{\texorpdfstring{Le conteneur
+\texttt{vector}}{Le conteneur vector}}\label{l014vector}}
 
 Dans R, un \texttt{vector} est une combinaison de données avec la
 particularité que toutes les données contenues dans un \texttt{vector}
@@ -3115,8 +3146,8 @@ Nous pouvons aussi changer les noms associés aux éléments d'un
 Nous pouvons faire bien plus avec un \texttt{vector} et reviendrons sur
 leur manipulations et les opérations lors du chapitre sur les fonctions.
 
-\section{\texorpdfstring{Le conteneur
-\texttt{list}}{Le conteneur list}}\label{le-conteneur-list}
+\hypertarget{l014list}{\section{\texorpdfstring{Le conteneur
+\texttt{list}}{Le conteneur list}}\label{l014list}}
 
 Le deuxième type de conteneur que nous allons introduire est le
 conteneur \texttt{list}, qui est également le deuxième conteneur après
@@ -4083,8 +4114,8 @@ supprimer.
 ## [1] "fgh" "ijk"
 \end{verbatim}
 
-\section{\texorpdfstring{Le conteneur
-\texttt{data.frame}}{Le conteneur data.frame}}\label{le-conteneur-data.frame}
+\hypertarget{l014dataframe}{\section{\texorpdfstring{Le conteneur
+\texttt{data.frame}}{Le conteneur data.frame}}\label{l014dataframe}}
 
 Le conteneur \texttt{data.frame} peut être assimilé à un \emph{tableau}.
 Il s'agit en fait d'un cas particulier de \texttt{list} où tous les
@@ -4527,8 +4558,8 @@ fonction \texttt{as.data.frame()}.
 ## [1] TRUE
 \end{verbatim}
 
-\section{\texorpdfstring{Le conteneur
-\texttt{matrix}}{Le conteneur matrix}}\label{le-conteneur-matrix}
+\hypertarget{l014matrix}{\section{\texorpdfstring{Le conteneur
+\texttt{matrix}}{Le conteneur matrix}}\label{l014matrix}}
 
 Le conteneur \texttt{matrix} peut être vu comme un \texttt{vector} à
 deux dimensions, les lignes et les colonnes. Il correspond à une matrice
@@ -4999,7 +5030,7 @@ notre exemple la valeur du dixième élément est 10.
 \end{verbatim}
 
 \section{\texorpdfstring{Le conteneur
-\texttt{array}}{Le conteneur array}}\label{le-conteneur-array}
+\texttt{array}}{Le conteneur array}}\label{l014array}
 
 Le conteneur de type \texttt{array} est une généralisation du conteneur
 de type \texttt{matrix}. Là où le type \texttt{matrix} a deux dimensions
@@ -5200,7 +5231,7 @@ une \texttt{matrix}. pour accèder aux différents éléments d'un
 ##       2      20
 \end{verbatim}
 
-\section{Conclusion}\label{conclusion-2}
+\section{Conclusion}\label{conclusion-3}
 
 Félicitations ! Nous connaissons à présent les principaux types d'objets
 que nous allons utiliser avec R. Un objet se caractérise par ses
@@ -5294,7 +5325,7 @@ documentation est l'objet de la section ci-dessous.
 
 \subsection{L'accès à la documentation}\label{lacces-a-la-documentation}
 
-\subsubsection{\texorpdfstring{\texttt{help()}}{help()}}\label{help}
+\subsubsection{\texorpdfstring{\texttt{help()}}{help()}}\label{l015help}
 
 La fonction indispensable de R est celle permettant d'accèder à la
 documentation. Toutes les fonctions et tous les jeux de données de R
@@ -5361,7 +5392,7 @@ Le paragraphe \texttt{Arguments} détaille les valeurs et le type de
 conteneur de chacun des arguments de notre fonction. Par exemple nous
 pouvons voir que l'argument \texttt{dimnames} doit être de type
 \texttt{list}. C'est pouquoi nous avons utilisé ce format lors de la
-section sur les \texttt{matrix}.
+section sur les \protect\hyperlink{l014matrix}{\texttt{matrix}}.
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -5417,7 +5448,7 @@ pour que le code soit plus lisible.
 \end{Highlighting}
 \end{Shaded}
 
-\subsubsection{\texorpdfstring{\texttt{help.search()}}{help.search()}}\label{help.search}
+\subsubsection{\texorpdfstring{\texttt{help.search()}}{help.search()}}\label{l015helpsearch}
 
 La fonction \texttt{help.search()} ou \texttt{??} permet de rechercher
 une expression dans l'ensemble de la documentation. Elle est utile
@@ -5436,7 +5467,7 @@ liste des pages où l'expression a été retrouvée sous la forme
 
 \subsection{Visualiser les données}\label{visualiser-les-donnees}
 
-\subsubsection{\texorpdfstring{\texttt{str()}}{str()}}\label{str}
+\subsubsection{\texorpdfstring{\texttt{str()}}{str()}}\label{l015str}
 
 La fonction \texttt{str()} permet de visualiser la structure interne
 d'un objet, comme indiqué dans la documentation que nous pouvons
@@ -5468,7 +5499,7 @@ aussi pour contrôler que les données sont du type voulu avant de
 procéder à des analyses statistiques.
 
 \subsubsection{\texorpdfstring{\texttt{head()} et
-\texttt{tail()}}{head() et tail()}}\label{head-et-tail}
+\texttt{tail()}}{head() et tail()}}\label{l015head}
 
 La fonction \texttt{head()} renvoie les premières valeurs d'un objet, et
 la fonction \texttt{tail()} les dernières valeurs d'un objet. Par défaut
@@ -5519,11 +5550,14 @@ valeurs à retourner.
 ## 2          4.9         3.0          1.4         0.2  setosa
 \end{verbatim}
 
-\subsubsection{\texorpdfstring{\texttt{names()}}{names()}}\label{names}
+\subsubsection{\texorpdfstring{\texttt{names()}}{names()}}\label{l015names}
 
 Nous avons déjà vu la fonction \texttt{names()} qui permet à la fois de
 connaître le nom des éléments d'un objet, mais aussi d'assigner des noms
-aux éléments d'un objet.
+aux éléments d'un objet comme une
+\protect\hyperlink{l014matrix}{\texttt{matrix}}, une
+\protect\hyperlink{l014list}{\texttt{list}} ou un
+\protect\hyperlink{l014dataframe}{\texttt{data.frame}}.
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -5549,7 +5583,7 @@ aux éléments d'un objet.
 \end{verbatim}
 
 \subsubsection{\texorpdfstring{\texttt{cat()} et
-\texttt{print()}}{cat() et print()}}\label{cat-et-print}
+\texttt{print()}}{cat() et print()}}\label{l015print}
 
 La fonction \texttt{cat()} permet d'afficher le contenu d'un objet alors
 que la fonction \texttt{print()} retourne la valeur d'un objet avec la
@@ -5608,7 +5642,7 @@ possibilité d'effectuer des conversions.
 
 \subsection{Manipuler les données}\label{manipuler-les-donnees}
 
-\subsubsection{\texorpdfstring{\texttt{rank()}}{rank()}}\label{rank}
+\subsubsection{\texorpdfstring{\texttt{rank()}}{rank()}}\label{l015rank}
 
 La fonction \texttt{rank()} renvoie pour un ensemble d'éléments le
 numéro de la position de chacun des éléments. En cas d'éléments de même
@@ -5710,9 +5744,9 @@ dans la documentation.
 \end{Highlighting}
 \end{Shaded}
 
-\subsubsection{\texorpdfstring{\texttt{order()}}{order()}}\label{order}
+\subsubsection{\texorpdfstring{\texttt{order()}}{order()}}\label{l015order}
 
-La fonction \texttt{order()} retourne le numéro du réarrangment des
+La fonction \texttt{order()} retourne le numéro du réarrangement des
 éléments en focntion de leur position. Elle est très utile par exemple
 pour trier un \texttt{data.frame} en focntion d'une colonne.
 
@@ -5825,7 +5859,7 @@ pour trier un \texttt{data.frame} en focntion d'une colonne.
 ## 3           4.7         3.2          1.3         0.2  setosa
 \end{verbatim}
 
-\subsubsection{\texorpdfstring{\texttt{sort()}}{sort()}}\label{sort}
+\subsubsection{\texorpdfstring{\texttt{sort()}}{sort()}}\label{l015sort}
 
 La fonction \texttt{sort()} permet de trier les éléments d'un objet.
 Elle ne permet pas de trier selon plusieurs variables comme c'est le cas
@@ -5887,12 +5921,12 @@ avec \texttt{order()}.
 ## [137] 6.9 7.0 7.1 7.2 7.2 7.2 7.3 7.4 7.6 7.7 7.7 7.7 7.7 7.9
 \end{verbatim}
 
-\subsubsection{\texorpdfstring{\texttt{append()}}{append()}}\label{append}
+\subsubsection{\texorpdfstring{\texttt{append()}}{append()}}\label{l015append}
 
 Cette fonction permet d'ajouter un élément à un \texttt{vector} à une
 position déterminée par l'argument \texttt{after}. Cette fonction est
 aussi plus rapide que son alternative consistant à utiliser la fonction
-\texttt{c()}.
+\protect\hyperlink{l014vector}{\texttt{c()}}.
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -5925,7 +5959,7 @@ aussi plus rapide que son alternative consistant à utiliser la fonction
 \end{verbatim}
 
 \subsubsection{\texorpdfstring{\texttt{cbind()} et
-\texttt{rbind()}}{cbind() et rbind()}}\label{cbind-et-rbind}
+\texttt{rbind()}}{cbind() et rbind()}}\label{l015cbind}
 
 Les fonctions \texttt{cbind()} et \texttt{rbind()} permettent de
 combiner des éléments par colonne ou par ligne.
@@ -5960,7 +5994,7 @@ combiner des éléments par colonne ou par ligne.
 \end{verbatim}
 
 \subsubsection{\texorpdfstring{\texttt{paste()} et
-\texttt{paste0()}}{paste() et paste0()}}\label{paste-et-paste0}
+\texttt{paste0()}}{paste() et paste0()}}\label{l015paste}
 
 Voilà deux fonctions que nous allons beaucoup utiliser par la suite. Les
 fonctions \texttt{paste()} et \texttt{paste0()} permettent de concaténer
@@ -6020,7 +6054,7 @@ concaténer. Elle est aussi plus rapide.
 ## [1] "10_2" "20_4" "30_5" "10_2" "50_7" "10_2" "40_6"
 \end{verbatim}
 
-\subsubsection{\texorpdfstring{\texttt{rev()}}{rev()}}\label{rev}
+\subsubsection{\texorpdfstring{\texttt{rev()}}{rev()}}\label{l015rev}
 
 La fonction \texttt{rev()} renvoie les éléments d'un objet dans l'ordre
 inverse.
@@ -6045,14 +6079,15 @@ inverse.
 ## [1] 40 10 50 10 30 20 10
 \end{verbatim}
 
-\subsubsection{\texorpdfstring{\texttt{\%in\%()}}{\%in\%()}}\label{in}
+\subsubsection{\texorpdfstring{\texttt{\%in\%()}}{\%in\%()}}\label{l015in}
 
-La fonction \texttt{\%in\%()} peut être assimilée à un opérateur de
-comparaison. Cette fonction prend deux objets comme arguments et renvoie
-\texttt{TRUE} ou \texttt{FALSE} pour chacun des éléments du premier
-objet en fonction de leur présence ou absence dans le second objet. Pour
-accéder à la documentation de la fonction, il faut utiliser des
-guillemets \texttt{help(\textquotesingle{}\%in\%\textquotesingle{})}.
+La fonction \texttt{\%in\%()} peut être assimilée à un
+\protect\hyperlink{l011opcomp}{opérateur de comparaison}. Cette fonction
+prend deux objets comme arguments et renvoie \texttt{TRUE} ou
+\texttt{FALSE} pour chacun des éléments du premier objet en fonction de
+leur présence ou absence dans le second objet. Pour accéder à la
+documentation de la fonction, il faut utiliser des guillemets
+\texttt{help(\textquotesingle{}\%in\%\textquotesingle{})}.
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -6097,12 +6132,13 @@ guillemets \texttt{help(\textquotesingle{}\%in\%\textquotesingle{})}.
 \subsection{Fonctions mathématiques}\label{fonctions-mathematiques}
 
 Nous avons déjà vu les fonctions \texttt{+}, \texttt{-}, \texttt{*},
-\texttt{/}, \texttt{\^{}}, \texttt{\%\%} et autres opérateurs
-arithmétiques. R possède également les fonctions mathématiques de base
-comme exponetielle \texttt{exp()}, racine carrée \texttt{sqrt()}, valeur
-absolue \texttt{abs()}, sinus \texttt{sin()}, cosinus \texttt{cos()},
-tangente \texttt{tan()}, logarithme népérien \texttt{log()}, logarithme
-décimal \texttt{log10()}, arc cosinus \texttt{acos()}, arc sinus
+\texttt{/}, \texttt{\^{}}, \texttt{\%\%} et autres
+\protect\hyperlink{l011opari}{opérateurs arithmétiques}. R possède
+également les fonctions mathématiques de base comme exponetielle
+\texttt{exp()}, racine carrée \texttt{sqrt()}, valeur absolue
+\texttt{abs()}, sinus \texttt{sin()}, cosinus \texttt{cos()}, tangente
+\texttt{tan()}, logarithme népérien \texttt{log()}, logarithme décimal
+\texttt{log10()}, arc cosinus \texttt{acos()}, arc sinus
 \texttt{asin()}, et arc tangente \texttt{atan()}.
 
 \begin{Shaded}
@@ -6235,7 +6271,7 @@ décimal \texttt{log10()}, arc cosinus \texttt{acos()}, arc sinus
 Nous pouvons également effectuer des statistiques descriptives très
 simplement à partir d'un jeu de données.
 
-\subsubsection{\texorpdfstring{\texttt{mean()}}{mean()}}\label{mean}
+\subsubsection{\texorpdfstring{\texttt{mean()}}{mean()}}\label{l015mean}
 
 La fonction \texttt{mean()} renvoie la moyenne. Pour ignorer les valeurs
 manquantes \texttt{NA}, il faut donner la valeur \texttt{TRUE} à
@@ -6272,7 +6308,7 @@ l'argument \texttt{na.rm()}.
 ## [1] 13.16667
 \end{verbatim}
 
-\subsubsection{\texorpdfstring{\texttt{sd()}}{sd()}}\label{sd}
+\subsubsection{\texorpdfstring{\texttt{sd()}}{sd()}}\label{l015sd}
 
 La fonction \texttt{sd()} renvoie l'écart type.
 
@@ -6316,7 +6352,8 @@ La fonction \texttt{sd()} renvoie l'écart type.
 ## [1] 16.16684
 \end{verbatim}
 
-\subsubsection{\texorpdfstring{\texttt{max()}}{max()}}\label{max}
+\subsubsection{\texorpdfstring{\texttt{max()} et
+\texttt{min()}}{max() et min()}}\label{l015max}
 
 La fonction \texttt{max()} renvoie la valeur maximale et \texttt{min()}
 la valeur minimale.
@@ -6391,7 +6428,7 @@ la valeur minimale.
 ## [1] 1
 \end{verbatim}
 
-\subsubsection{\texorpdfstring{\texttt{quantile()}}{quantile()}}\label{quantile}
+\subsubsection{\texorpdfstring{\texttt{quantile()}}{quantile()}}\label{l015quantile}
 
 La fonction \texttt{quantile()} renvoie le quantile défini par
 l'argument \texttt{probs}.
@@ -6429,7 +6466,7 @@ l'argument \texttt{probs}.
 ##  4.3  4.8  5.8  6.9  7.9
 \end{verbatim}
 
-\subsubsection{\texorpdfstring{\texttt{summary()}}{summary()}}\label{summary}
+\subsubsection{\texorpdfstring{\texttt{summary()}}{summary()}}\label{l015summary}
 
 La fonction \texttt{summary()} renvoie un résumé composé du minimum,
 premier quartile, médiane, moyenne, troisième quartile et maximum.
@@ -6445,7 +6482,7 @@ premier quartile, médiane, moyenne, troisième quartile et maximum.
 ##   4.300   5.100   5.800   5.843   6.400   7.900
 \end{verbatim}
 
-\subsubsection{\texorpdfstring{\texttt{median()}}{median()}}\label{median}
+\subsubsection{\texorpdfstring{\texttt{median()}}{median()}}\label{l015median}
 
 La fonction \texttt{median()} renvoie la médiane.
 
@@ -6489,7 +6526,7 @@ La fonction \texttt{median()} renvoie la médiane.
 ## [1] 7
 \end{verbatim}
 
-\subsubsection{\texorpdfstring{\texttt{length()}}{length()}}\label{length}
+\subsubsection{\texorpdfstring{\texttt{length()}}{length()}}\label{l015length}
 
 La fonction \texttt{length()} renvoie la taille d'un objet (nombre
 d'éléments).
@@ -6525,7 +6562,7 @@ d'éléments).
 \end{verbatim}
 
 \subsubsection{\texorpdfstring{\texttt{nrow()} et
-\texttt{ncol()}}{nrow() et ncol()}}\label{nrow-et-ncol}
+\texttt{ncol()}}{nrow() et ncol()}}\label{l015nrow}
 
 La fonction \texttt{nrow()} renvoie le nombre de lignes et la fonction
 \texttt{ncol()} le nombre de colonnes d'un objet.
@@ -6552,7 +6589,7 @@ La fonction \texttt{nrow()} renvoie le nombre de lignes et la fonction
 
 \subsubsection{\texorpdfstring{\texttt{round()}, \texttt{ceiling()},
 \texttt{floor()}, et
-\texttt{trunc()}}{round(), ceiling(), floor(), et trunc()}}\label{round-ceiling-floor-et-trunc}
+\texttt{trunc()}}{round(), ceiling(), floor(), et trunc()}}\label{l015round}
 
 La fonction \texttt{round()} permet de sélectionner un certain nombre de
 décimales (0 par défaut)
@@ -6647,7 +6684,7 @@ rensignée.
 \end{verbatim}
 
 \subsubsection{\texorpdfstring{\texttt{rowSums()} et
-\texttt{colSums()}}{rowSums() et colSums()}}\label{rowsums-et-colsums}
+\texttt{colSums()}}{rowSums() et colSums()}}\label{l015rowsums}
 
 Les fonctions \texttt{rowSums()} et \texttt{colSums()} calculent la
 somme des lignes et des colonnes.
@@ -6684,7 +6721,7 @@ somme des lignes et des colonnes.
 \end{verbatim}
 
 \subsubsection{\texorpdfstring{\texttt{rowMeans()} et
-\texttt{colMeans()}}{rowMeans() et colMeans()}}\label{rowmeans-et-colmeans}
+\texttt{colMeans()}}{rowMeans() et colMeans()}}\label{l015rowmeans}
 
 Les fonctions \texttt{rowMeans()} et \texttt{colMeans()} calculent la
 moyenne des lignes et des colonnes.
@@ -6723,12 +6760,12 @@ moyenne des lignes et des colonnes.
 ##     5.843333     3.057333     3.758000     1.199333
 \end{verbatim}
 
-\subsubsection{\texorpdfstring{\texttt{aggregate()}}{aggregate()}}\label{aggregate}
+\subsubsection{\texorpdfstring{\texttt{aggregate()}}{aggregate()}}\label{l015aggregate}
 
 La fonction \texttt{aggregate()} permet de grouper les éléments d'un
 objet en fonction d'une valeur. L'argument \texttt{by} définit l'élément
 sur lequel est effectué le regroupement. Il doit être de type
-\texttt{list}.
+\protect\hyperlink{l014list}{\texttt{list}}.
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -6768,7 +6805,7 @@ sur lequel est effectué le regroupement. Il doit être de type
 ## 3               3.175            3.800
 \end{verbatim}
 
-\subsubsection{\texorpdfstring{\texttt{range()}}{range()}}\label{range}
+\subsubsection{\texorpdfstring{\texttt{range()}}{range()}}\label{l015range}
 
 La fonction \texttt{range()} renvoie le minimum et le maximum.
 
@@ -6812,7 +6849,7 @@ La fonction \texttt{range()} renvoie le minimum et le maximum.
 ## [1]  1 45
 \end{verbatim}
 
-\subsubsection{\texorpdfstring{\texttt{unique()}}{unique()}}\label{unique}
+\subsubsection{\texorpdfstring{\texttt{unique()}}{unique()}}\label{l015unique}
 
 La fonction \texttt{unique()} renvoie les valeurs uniques d'un objet
 (sans les doublons).
@@ -6854,10 +6891,10 @@ La fonction \texttt{unique()} renvoie les valeurs uniques d'un objet
 Nous ne pouvons aborder toutes les fonctions utiles, ici nous ne ferons
 qu'aborder certaines fonctions. Tout au long de ce livre de nouvelles
 fonctions seront utilisées. Lorsqu'une nouvelle fonction est utilisée,
-notre réflexe doit être toujours le même : consulter la documentation
-avec la fonction \texttt{help()}.
+notre réflexe doit être toujours le même : \textbf{consulter la
+documentation} avec la fonction \texttt{help()}.
 
-\subsection{\texorpdfstring{\texttt{seq\_along()}}{seq\_along()}}\label{seq_along}
+\subsection{\texorpdfstring{\texttt{seq\_along()}}{seq\_along()}}\label{l015seqalong}
 
 La fonction \texttt{seq\_along()} permet de créer un \texttt{vector} de
 la taille de l'objet renseigné et prenant comme valeurs les chiffres de
@@ -6884,11 +6921,11 @@ fonction nous servira beaucoup lors du chapitre sur les boucles.
 ## [1] 1 2 3 4 5 6 7 8
 \end{verbatim}
 
-\subsection{\texorpdfstring{\texttt{:}}{:}}\label{section}
+\subsection{\texorpdfstring{\texttt{:}}{:}}\label{l0152points}
 
 La fonction \texttt{:} permet de créer une séquence de \texttt{a} à
 \texttt{b} par pas de 1, avec \texttt{a} et \texttt{b} le début et la
-fin de la séquence souhaitée. Il a été difficile d'écrire les chaiptres
+fin de la séquence souhaitée. Il a été difficile d'écrire les chapitres
 précédents sans y avoir recours tant cette fonction est utile. Voici
 quelques exemples.
 
@@ -6967,9 +7004,9 @@ quelques exemples.
 ##  [1] "X_1"  "X_2"  "X_3"  "X_4"  "X_5"  "X_6"  "X_7"  "X_8"  "X_9"  "X_10"
 \end{verbatim}
 
-\subsection{\texorpdfstring{\texttt{rep()}}{rep()}}\label{rep}
+\subsection{\texorpdfstring{\texttt{rep()}}{rep()}}\label{l015rep}
 
-la fonction \texttt{rep()} permet de répéter des éléments.
+La fonction \texttt{rep()} permet de répéter des éléments.
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -7013,9 +7050,9 @@ la fonction \texttt{rep()} permet de répéter des éléments.
 ## [1] 1 1 1 2 2 2 3 3 3
 \end{verbatim}
 
-\subsection{\texorpdfstring{\texttt{seq()}}{seq()}}\label{seq}
+\subsection{\texorpdfstring{\texttt{seq()}}{seq()}}\label{l015seq}
 
-la fonction \texttt{seq()} permet de créer une séquence personnalisée.
+La fonction \texttt{seq()} permet de créer une séquence personnalisée.
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -7058,7 +7095,7 @@ la fonction \texttt{seq()} permet de créer une séquence personnalisée.
 ## [1] 1.0 1.5 2.0 1.0 1.5 2.0 1.0 1.5 2.0
 \end{verbatim}
 
-\subsection{\texorpdfstring{\texttt{getwd()}}{getwd()}}\label{getwd}
+\subsection{\texorpdfstring{\texttt{getwd()}}{getwd()}}\label{l015getwd}
 
 La fonction \texttt{getwd()} définit le répertoire de travail. Cela
 correspond à l'endroit relatif à partir duquel R se positionne pour
@@ -7075,7 +7112,7 @@ verrons comment importer et exporter des données.
 ## [1] "C:/Users/nous/Documents/Francois/TRAVAIL/GitHub/myRBook_FR"
 \end{verbatim}
 
-\subsection{\texorpdfstring{\texttt{setwd()}}{setwd()}}\label{setwd}
+\subsection{\texorpdfstring{\texttt{setwd()}}{setwd()}}\label{l015setwd}
 
 La fonction \texttt{setwd()} permet de définir un nouveau répertoire de
 travail.
@@ -7113,10 +7150,20 @@ travail.
 ## [1] "C:/Users/nous/Documents/Francois/TRAVAIL/GitHub/myRBook_FR"
 \end{verbatim}
 
-\subsection{\texorpdfstring{\texttt{list.files()}}{list.files()}}\label{list.files}
+\subsection{\texorpdfstring{\texttt{list.files()}}{list.files()}}\label{l015listfiles}
 
 La fonction \texttt{list.files()} permet de faire la liste de tous les
 fichiers présents dans le répertoire de travail.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{list.files}\NormalTok{(}\DataTypeTok{pattern =} \StringTok{"(html)$"}\NormalTok{) }\CommentTok{# html}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## character(0)
+\end{verbatim}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -7128,7 +7175,7 @@ fichiers présents dans le répertoire de travail.
 ## character(0)
 \end{verbatim}
 
-\subsection{\texorpdfstring{\texttt{ls()}}{ls()}}\label{ls}
+\subsection{\texorpdfstring{\texttt{ls()}}{ls()}}\label{l015ls}
 
 Tout comme la fonction \texttt{list.files()} permet de faire la liste de
 tous les fichiers présents dans le répertoire de travail, la fonction
@@ -7195,7 +7242,7 @@ l'environnement de travail de R.
 ## [81] "zzz"
 \end{verbatim}
 
-\subsection{\texorpdfstring{\texttt{rm()}}{rm()}}\label{rm}
+\subsection{\texorpdfstring{\texttt{rm()}}{rm()}}\label{l015rm}
 
 La fonction \texttt{rm()} permet de supprimer un objet présent dans
 l'environnement de travail de R.
@@ -7238,7 +7285,8 @@ Certains exercices sont difficiles, nous pourrons y revenir plus tard.
 
 \subsection{Séquences}\label{sequences}
 
-Reproduisons les séquences suivantes :
+\subsubsection{Reproduisons les séquences suivantes
+:}\label{reproduisons-les-sequences-suivantes}
 
 -3 -4 -5 -6 -7 -8 -9 -10 --11
 
@@ -7254,7 +7302,9 @@ Reproduisons les séquences suivantes :
 ``k'' ``k'' ``k'' ``p'' ``p'' ``p'' ``p'' ``p'' ``u'' ``u'' ``u'' ``u''
 ``u'' ``z'' ``z'' ``z'' ``z'' ``z''
 
-Solutions possibles (car il y a toujours plusieurs solutions) :
+\subsubsection{Solutions possibles (car il y a toujours plusieurs
+solutions)
+:}\label{solutions-possibles-car-il-y-a-toujours-plusieurs-solutions}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -7314,14 +7364,14 @@ Dans le jeu de données \texttt{iris}, combien de valeurs de largeur de
 sépales sont supérieures à 3 ? Entre 2.8 et 3.2 ?
 
 Comment peut-on visualiser la distribution des données (fonction
-\texttt{table}) ?
+\texttt{table()}) ?
 
 Quelles sont les 10 valeurs les plus petites ?
 
 Comment calculer un intervalle contenant 90\% des valeurs ?
 
 Si la distribution des données était Normale, quelle serait la valeur
-théorique de cet intervalle de 90\% (fonction \texttt{qnorm}) ?
+théorique de cet intervalle de 90\% (fonction \texttt{qnorm()}) ?
 
 Solutions :
 
@@ -7413,7 +7463,7 @@ Solutions :
 
 XXX
 
-\section{Conclusion}\label{conclusion-3}
+\section{Conclusion}\label{conclusion-4}
 
 \chapter{Importer et exporter des données}\label{import}
 
