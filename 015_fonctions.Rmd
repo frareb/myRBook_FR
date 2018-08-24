@@ -15,7 +15,7 @@ Pour les fonctions les plus simples comme `+`, les parenthèses ont été suppri
 
 Dans ce chapitre nous allons nous focaliser sur les fonctions les plus courantes de façon à ce que ce chapitre soit consultable comme un dictionnaire. Il ne s'agit donc pas de tout apprendre par coeur mais bien de savoir que ces fonctions existent et de pouvoir consulter ce chapitre plus tard comme référence. Avec le temps et la pratique nous finirons par les connaître par coeur ! Il y a plus de 1000 fonctions à ce jour dans la version de base de R, et plus de 10000 packages complémentaires pouvant être installés, chacun contenant plusieurs dizaines de fonctions. Avant de nous lancer dans l'écriture d'une nouvelle fonction, il faudra toujours vérifier qu'elle n'existe pas déjà.
 
-## Les fonctions les plus courantes
+## Les fonctions les plus courantes {#l015mainfun}
 
 Pour travailler avec les fonctions nous allons utiliser le jeu de données `iris` qui est inclu avec la version de base de R et qui correspond à la longeur et à la largeur des sépales et des pétales de différentes espèces d'iris. Le jeu de données est sous la forme d'un `data.frame` de 5 colonnes et de 150 lignes. Pour plus d'information sur le jeu de données `iris` nous pouvons consulter la documentation de R avec la fonction `help(iris)`. L'accès à la documentation est l'objet de la section ci-dessous.
 
@@ -234,9 +234,9 @@ print(vecManip2)
 rev(vecManip2)
 ```
 
-#### `%in%()` {#l015in}
+#### `%in%` {#l015in}
 
-La fonction `%in%()` peut être assimilée à un [opérateur de comparaison](#l011opcomp). Cette fonction prend deux objets comme arguments et renvoie `TRUE` ou `FALSE` pour chacun des éléments du premier objet en fonction de leur présence ou absence dans le second objet. Pour accéder à la documentation de la fonction, il faut utiliser des guillemets `help('%in%')`.
+La fonction `%in%` peut être assimilée à un [opérateur de comparaison](#l011opcomp). Cette fonction prend deux objets comme arguments et renvoie `TRUE` ou `FALSE` pour chacun des éléments du premier objet en fonction de leur présence ou absence dans le second objet. Pour accéder à la documentation de la fonction, il faut utiliser des guillemets `help('%in%')`.
 
 ```{r}
 print(vecManip)
@@ -593,8 +593,206 @@ qnorm(
 )
 ```
 
-## Ecrire une fonction
+## Ecrire une fonction {#l015function}
 
-XXX
+Lorsque nous reproduisons plusieurs fois les mêmes opérations, le code devient fastidieux à écrire, et plus difficile à maintenir car si nous devons effectuer une modification, il faudra la répéter chaque fois que nous l'avons utilisée. C'est un signe indiquant la nécesité de recourir à une **fonction**. Dans l'exemple qui suit, il est fastidieux de modifier le code si nous souhaitons ajouter +45 au lieu de +20 à chaque ligne.
+
+```{r}
+35 + 20
+758 + 20
+862 + 20
+782 + 20
+```
+
+Comme pour les fonctions de base de R, nos fonction vont avoir un **nom**, et des **arguments**. Comme pour les noms des objets et les noms des fichiers, il est important de bien choisir le nom de notre fonction (cf. [section sur les objets](#l011object)). Pour créer une fonction nous allons utiliser la fonction `function()` qui prend comme arguments les arguments de notre fonction. La fonction va retourner le résultat souhaité. Par défaut le résultat renvoyé est le dernier utilisé, mais il est préférable de l'expliciter avec la fonction `return()`. La fonction suivante `addX` prend comme argument `x` et renvoie `x + 20`.
+
+```{r}
+addX <- function(x){
+  return(x + 20)
+}
+```
+
+Notre code devient :
+
+```{r}
+addX(35)
+addX(758)
+addX(862)
+addX(782)
+```
+
+Si nous souhaitons modifier le code pour ajouter 45 plutôt que 20, il suffit alors de modifier la fonction `addX()`.
+
+```{r}
+addX <- function(x){
+  return(x + 45)
+}
+addX(35)
+addX(758)
+addX(862)
+addX(782)
+```
+
+Ici nous aurions pu utiliser le format `vector` pour éviter les répétitions, mais ce n'est pas toujours possible.
+
+```{r}
+c(35, 758, 862, 782) + 20
+```
+
+Voyons cette fonction qui va compter le nombre de consonnes et de voyelles en minuscule dans un mot. Tout d'abord nous allons séparer toutes les lettres avec la fonction `strsplit` (nous pouvons consulter l'aide pour en savoir plus sur cette fonction). Ensuite nous allons compter les voyelles et les consonnes avec la fonction [`length()`](#l015length). pour avoir la liste des lettres nous allons utiliser la constante `letters` (consulter l'aide). 
+
+```{r}
+countVowelConso <- function(word){
+  wordSplit <- strsplit(word, split = "")[[1]]
+  vowels <- c("a", "e", "i", "o", "u", "y")
+  numVowel <- length(wordSplit[wordSplit %in% vowels])
+  consonants <- letters[!letters %in% vowels]
+  numConso <- length(wordSplit[wordSplit %in% consonants])
+  return(c(numVowel, numConso))
+}
+```
+
+Nous pouvons maintenant utiliser notre fonction.
+
+```{r}
+countVowelConso(word = "qwertyuiop azertyuiop")
+```
+
+Cette fonction peut être modifiée en affichant un message plus explicite. Même si en général ce genre de message est à éviter pour ne pas surcharger les fonctions, il peut être utile pour vérifier que tout se déroule correctement (nous le supprimerons ensuite).
+
+```{r}
+countVowelConso <- function(word){
+  wordSplit <- strsplit(word, split = "")[[1]]
+  vowels <- c("a", "e", "i", "o", "u", "y")
+  numVowel <- length(wordSplit[wordSplit %in% vowels])
+  consonants <- letters[!letters %in% vowels]
+  numConso <- length(wordSplit[wordSplit %in% consonants])
+  print(paste0("Il y a ", numVowel, " voyelles et ", 
+    numConso, " consonnes dans le mot '", word, "'."))
+  return(c(numVowel, numConso))
+}
+countVowelConso(word = "qwertyuiop azertyuiop")
+```
+
+Par contre si nous utilisons `countVowelConso(word = 5)`, une erreur va être renvoyée car notre fonction attend un objet de type `character`. De manière générale il est recommandée de gérer les erreurs renvoyées par nos fonctions afin que notre code soit plus facile à débogger. Ici nous allons simplement vérifier que l'argument est de type `character`, dans un `vector` de taille 1. Nous allons aussi commenter notre fonction pour rapidement retrouver ce qu'elle réalise (commentaire inséré sur la première ligne, que l'on retrouve aussi parfois sur la dernière ligne des fonctions).
+
+```{r}
+countVowelConso <- function(word){ # compte les voyelles et les consonnes
+  if(is.vector(word) & is.character(word) & length(word) == 1){
+    wordSplit <- strsplit(word, split = "")[[1]]
+    vowels <- c("a", "e", "i", "o", "u", "y")
+    numVowel <- length(wordSplit[wordSplit %in% vowels])
+    consonants <- letters[!letters %in% vowels]
+    numConso <- length(wordSplit[wordSplit %in% consonants])
+    return(c(numVowel, numConso))
+  } else {
+    print(paste0("Erreur dans la fonction countVowelConso, ", 
+      "argument 'word' incorrect (", word, ")"))
+  }
+} 
+countVowelConso(word = "qwertyuiop azertyuiop")
+countVowelConso(word = 5)
+```
+
+Avec R comme pour tout langage de programmation, pour un problème il existe toujours de multiples solutions. Nous nous souvenons de la section sur les types de données ([type de données `logical`](#l013logi)), ainsi que de la section sur les [opérateurs de comparaison](#l011opcomp) que la valeur de `TRUE` est de 1 et la valeur de `FALSE` est de 0. Nous venons de voir ci-dessus que la fonction [`%in%`](#l015in) renvoie `TRUE` ou `FALSE` pour chacun des éléments du premier objet en fonction de leur présence ou absence dans le second objet. Notre fonction aurait pu donc se passer de la fonction `length()` pour le comptage des voyelles et des consonnes et utiliser la fonction `sum()`. 
+
+```{r}
+countVowelConsoAlt <- function(word){ # compte les voyelles et les consonnes
+  if(is.vector(word) & is.character(word) & length(word) == 1){
+    wordSplit <- strsplit(word, split = "")[[1]]
+    vowels <- c("a", "e", "i", "o", "u", "y")
+    numVowel <- sum(wordSplit %in% vowels)
+    consonants <- letters[!letters %in% vowels]
+    numConso <- sum(wordSplit %in% consonants)
+    return(c(numVowel, numConso))
+  } else {
+    print(paste0("Erreur dans la fonction countVowelConso, ", 
+      "argument 'word' incorrect (", word, ")"))
+  }
+} 
+countVowelConsoAlt(word = "qwertyuiop azertyuiop")
+```
+
+Il n'y a pas de solution optimale dans l'absolu, tout dépend des objectifs recherchés. La première solution est peut être plus facile à comprendre, et la seconde peut être plus rapide en terme de vitesse d'exécution (même en répétant l'utilisation de la fonction 10000 fois, le gain de temps est presque nul dans notre cas).
+
+```{r}
+system.time(replicate(n = 10000, countVowelConso(word = "qwertyuiop azertyuiop")))
+system.time(replicate(n = 10000, countVowelConsoAlt(word = "qwertyuiop azertyuiop")))
+```
+
+Une fonction peut avoir des valeurs par défaut pour ses arguments. C'est le cas de la plupart des fonctions existantes. Par défaut, notre fonction va désormais compter le nombre de voyelles et de consonnes dans le mot `qwerty` (les parenthèses restent nécessaires même en l'absence d'arguments).
+
+```{r}
+countVowelConsoAlt <- function(word = "qwerty"){ # compte les voyelles et les consonnes
+  if(is.vector(word) & is.character(word) & length(word) == 1){
+    wordSplit <- strsplit(word, split = "")[[1]]
+    vowels <- c("a", "e", "i", "o", "u", "y")
+    numVowel <- sum(wordSplit %in% vowels)
+    consonants <- letters[!letters %in% vowels]
+    numConso <- sum(wordSplit %in% consonants)
+    return(c(numVowel, numConso))
+  } else {
+    print(paste0("Erreur dans la fonction countVowelConso, ", 
+      "argument 'word' incorrect (", word, ")"))
+  }
+} 
+countVowelConsoAlt()
+```
+
+R compte de nombreuses fonctions, donc avant de vous lancer dans l'écriture d'une nouvelle fonction, il faut toujours vérifier que celle-ci n'existe pas déjà soit dans la version de base de R, soit dans des **packages** développés par la communauté des utilisateurs. pour cela nous pouvons utiliser l'aide et la fonction `??`, mais aussi notre navigateur Internet.
+
+## Autres fonctions développées par la communauté des utilisateurs : les packages
+
+Un package est un ensemble de fichiers que l'on va ajouter à R pour pouvoir utiliser des fonctions (ou des jeux de données) que d'autres personnes ont développés. Il ya à ce jour plus de 10000 packages sur les serveurs de R (CRAN ; https://cran.r-project.org/web/packages/), plus de 1000 sur les serveurs de BioConductor (pour l'analyse génomique), et plusieurs centaines sur GitHub. Chaque package permet de mettre à disposition des fonctions pour à peu près tout faire... Il peut donc être difficile de trouver le package adapté à ce que nous souhaitons réaliser, et il est important de consacrer du temps sa recherche, et de tester plusieurs solutions.
+
+Pour utiliser un package il nous faut tout d'abord l'**installer**, puis le **charger** dans notre session de R.
+
+### Installer un package
+
+Une fois notre package sélectionné, nous pouvons le télécharger et l'installer avec la fonction `install.packages()` qui prend comme argument le nom du package entre guillemets (la fonction tolère l'absence de guillemets mais il est préférable de les utiliser pour que le code soit plus lisible). Certains packages sont installés par défault avec R, c'est le cas par exemple de `stats` (qui est aussi chargé par défaut).
+
+```{r eval = FALSE}
+install.packages("stats") # R statistical functions
+```
+
+L'installation d'un package est à réaliser une seule fois, ensuite le package est sur notre ordinateur.
+
+### Charger un package
+
+Pour pouvoir utiliser les fonctions d'un package, nous devons le charger dans notre session de R. Il y a tellement de packages disponibles que R ne va pas charger par défault tous ceux que nous avons installé, mais seulement ceux dont nous allons avoir besoin pour notre étude en cours. Pour charger un package nous utilisons la fonction `library()`. 
+
+```{r eval = FALSE}
+library("stats")
+```
+
+Le chargement du package est à réaliser à chaque fois que nous souhaitons exécuter notre code, il fait donc partie intégrante de notre script.
+
+### Portabilité du code
+
+Nous venons de voir que l'installation d'un package est à faire une seule fois par ordinateur, et que par contre le chargement d'un package est à réaliser pour chaque nouvelle session de R. Si l'on change d'ordinateur ou si l'on partage un script avec un collègue, il peut donc y avoir des erreurs à l'exécution liées à l'absence de l'installation d'un package. pour pallier à ce problème, il est recommandé d'utiliser une fonction qui va vérifier si les packages nécessaires à l'exécution d'un script sont installés, si besoin les installer, puis les charger. Il existe de nombreuses fonctions pour faire cela sur Internet. La solution que nous proposons ici est un mélange adapté de différentes sources. il n'est pas nécessaire de comprendre les détails de ce script pour le moment, mais simplement de comprendre ce qu'il fait. Voici un exemple pour les packages `stats` et `graphics` qui sont deux packages déjà présents avec la version de base de R, mais nous pouvons essayer avec tous les packages disponibles sur le CRAN, dont la liste se trouve ici : https://cran.r-project.org/web/packages/available_packages_by_name.html.
+
+```{r eval = FALSE}
+pkgCheck <- function(packages){
+	for(x in packages){
+		try(if(!require(x, character.only = TRUE)){
+			install.packages(x, dependencies = TRUE)
+			if(!require(x, character.only = TRUE)){
+				stop()
+			}
+		})
+	}
+}
+pkgCheck(c("stats", "graphics"))
+```
+
+Alternativement nous pouvons utiliser la fonction `.packages()` pour lister les packages disponibles sur le CRAN par ordre alphabétique.
+
+```{r}
+head(.packages(all.available = TRUE), n = 30)
+```
+
+La fonction `pkgCheck` assure la **portabilité** de nos scripts : ils fonctionneront sur tous les ordinateurs sans avoir à effectuer de modification. Ainsi nos scipts pourront par exemple être joints à nos articles scientifiques et assurer ainsi la **reproductibilité** de nos résultats.
 
 ## Conclusion
+
+Félicitations ! Nous savons à présent ce qu'est une fonction, comment chercher de l'aide sur une fonction, et même écrire ses propres fonctions. Nous savons aussi qu'il existe de nombreuses fonctions développées par la communauté des utilisateurs de R au sein de packages que nous savons installer et charger, et s'assurer de la portabilité de nos script d'un ordinateur à un autre (important pour la reproductibilité des résultats). Le prochain chapitre va s'intéresser à la lecture et à l'écriture de fichiers car bien souvent, nos données sont sur des fichiers de texte ou de tableurs.
