@@ -245,7 +245,7 @@
 
 Ce livre est incomplet pour le moment et vous visualisez sa version
 préliminaire. Si vous avez des commentaires, des suggestions ou si vous
-identifiez des erreurs, n'hésitez pas à m'envoyer un mail
+identifiez des erreurs, n'hésitez pas à m'envoyer un email
 (\href{mailto:francois.rebaudo@ird.fr}{\nolinkurl{francois.rebaudo@ird.fr}}),
 ou si vous connaissez GitHub sur le site du projet
 (\url{https://github.com/frareb/myRBook_FR}). Ce livre est également
@@ -287,9 +287,11 @@ Dernières modifications:
 \begin{itemize}
 \tightlist
 \item
-  Les conteneurs de données (partie 4/5) : matrix
+  Les conteneurs de données (partie 4/5) :
+  \protect\hyperlink{l014matrix}{matrix}
 \item
-  Les conteneurs de données (partie 5/5) : array
+  Les conteneurs de données (partie 5/5) :
+  \protect\hyperlink{l014array}{array}
 \end{itemize}
 
 \textbf{13/07/2018}
@@ -299,7 +301,8 @@ Dernières modifications:
 \item
   mise en ligne du contenu en français sur la base du livre en espagnol
 \item
-  Les conteneurs de données (partie 3/5) : data.frame
+  Les conteneurs de données (partie 3/5) :
+  \protect\hyperlink{l014dataframe}{data.frame}
 \end{itemize}
 
 \chapter{Remerciements}\label{remerciements}
@@ -5039,8 +5042,8 @@ notre exemple la valeur du dixième élément est 10.
 ## [1] 10
 \end{verbatim}
 
-\section{\texorpdfstring{Le conteneur
-\texttt{array}}{Le conteneur array}}\label{l014array}
+\hypertarget{l014array}{\section{\texorpdfstring{Le conteneur
+\texttt{array}}{Le conteneur array}}\label{l014array}}
 
 Le conteneur de type \texttt{array} est une généralisation du conteneur
 de type \texttt{matrix}. Là où le type \texttt{matrix} a deux dimensions
@@ -7708,8 +7711,8 @@ Par contre si nous utilisons \texttt{countVowelConso(word\ =\ 5)}, une
 erreur va être renvoyée car notre fonction attend un objet de type
 \texttt{character}. De manière générale il est recommandée de gérer les
 erreurs renvoyées par nos fonctions afin que notre code soit plus facile
-à débogger. ici nous allons simplement vérifier que l'argument est de
-type \texttt{character}, dans un \texttt{vector} de taille 1. nous
+à débogger. Ici nous allons simplement vérifier que l'argument est de
+type \texttt{character}, dans un \texttt{vector} de taille 1. Nous
 allons aussi commenter notre fonction pour rapidement retrouver ce
 qu'elle réalise (commentaire inséré sur la première ligne, que l'on
 retrouve aussi parfois sur la dernière ligne des fonctions).
@@ -7797,7 +7800,7 @@ le gain de temps est presque nul dans notre cas).
 
 \begin{verbatim}
 ##    user  system elapsed 
-##    0.18    0.00    0.17
+##    0.16    0.00    0.16
 \end{verbatim}
 
 \begin{Shaded}
@@ -7808,7 +7811,7 @@ le gain de temps est presque nul dans notre cas).
 
 \begin{verbatim}
 ##    user  system elapsed 
-##    0.17    0.00    0.18
+##    0.17    0.00    0.17
 \end{verbatim}
 
 Une fonction peut avoir des valeurs par défaut pour ses arguments. C'est
@@ -7908,7 +7911,7 @@ Nous venons de voir que l'installation d'un package est à faire une
 seule fois par ordinateur, et que par contre le chargement d'un package
 est à réaliser pour chaque nouvelle session de R. Si l'on change
 d'ordinateur ou si l'on partage un script avec un collègue, il peut donc
-y avoir des erreurs à l'exécutions liées à l'absence de l'installation
+y avoir des erreurs à l'exécution liées à l'absence de l'installation
 d'un package. pour pallier à ce problème, il est recommandé d'utiliser
 une fonction qui va vérifier si les packages nécessaires à l'exécution
 d'un script sont installés, si besoin les installer, puis les charger.
@@ -7926,9 +7929,9 @@ liste se trouve ici :
 \begin{Highlighting}[]
 \NormalTok{pkgCheck <-}\StringTok{ }\ControlFlowTok{function}\NormalTok{(packages)\{}
     \ControlFlowTok{for}\NormalTok{(x }\ControlFlowTok{in}\NormalTok{ packages)\{}
-        \KeywordTok{try}\NormalTok{(}\ControlFlowTok{if}\NormalTok{ (}\OperatorTok{!}\KeywordTok{require}\NormalTok{(x, }\DataTypeTok{character.only =} \OtherTok{TRUE}\NormalTok{))\{}
+        \KeywordTok{try}\NormalTok{(}\ControlFlowTok{if}\NormalTok{(}\OperatorTok{!}\KeywordTok{require}\NormalTok{(x, }\DataTypeTok{character.only =} \OtherTok{TRUE}\NormalTok{))\{}
             \KeywordTok{install.packages}\NormalTok{(x, }\DataTypeTok{dependencies =} \OtherTok{TRUE}\NormalTok{)}
-            \ControlFlowTok{if}\NormalTok{(}\OperatorTok{!}\KeywordTok{require}\NormalTok{(x, }\DataTypeTok{character.only =} \OtherTok{TRUE}\NormalTok{)) \{}
+            \ControlFlowTok{if}\NormalTok{(}\OperatorTok{!}\KeywordTok{require}\NormalTok{(x, }\DataTypeTok{character.only =} \OtherTok{TRUE}\NormalTok{))\{}
                 \KeywordTok{stop}\NormalTok{()}
 \NormalTok{            \}}
 \NormalTok{        \})}
@@ -7958,7 +7961,7 @@ pour lister les packages disponibles sur le CRAN par ordre alphabétique.
 
 La fonction \texttt{pkgCheck} assure la \textbf{portabilité} de nos
 scripts : ils fonctionneront sur tous les ordinateurs sans avoir à
-effectuer de modifications. Ainsi nos scipts pourront par exemple être
+effectuer de modification. Ainsi nos scipts pourront par exemple être
 joints à nos articles scientifiques et assurer ainsi la
 \textbf{reproductibilité} de nos résultats.
 
