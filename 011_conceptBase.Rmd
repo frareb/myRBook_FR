@@ -27,6 +27,7 @@ Tout au long de ce livre, les exemples de code R apparaîtront sur fond en gris.
 ```{r screenCapConsoleCal, fig.cap = "Capture d'écran de la console R sous Windows avec la calculatrice Windows.\\label{fig:screenCapConsoleCal}", echo = FALSE}
 knitr::include_graphics("myFigures/screencap_rConsoleCalculatrice.png")
 ```
+
 ### Les opérateurs arithmétiques {#l011opari}
 
 ```{r}
@@ -184,7 +185,7 @@ Il est recommandé que les virgules `,` soient suivies par un espace afin que le
 
 Le fichier d'aideen anglais sur les opérateurs arithmétiques peut être obtenue avec la commande `?'+'` celui sur les opérateurs de comparaison avec la commande `?'=='` et celui sur les opérateurs logiques avec la commande `?'&'`.
 
-## La notion d'objet
+## La notion d'objet {#l011object}
 
 Un aspect important de la programmation avec R, mais aussi de la programmation en général est la notion d'objet. Comme indiqué sur la page web de wikipedia (https://fr.wikipedia.org/wiki/Objet_(informatique)), en informatique, un objet est un *conteneur*, c'est à dire quelque chose qui va contenir de l'information. L'inforamtion contenue dans un objet peut être très diverse, mais pour le moment nous allons contenir dans un objet le chiffre 5. Pour ce faire (et pour pouvoir le réutiliser par la suite), il nous faut donner un nom à notre objet. Avec R le nom des objets ne doit pas comprendre de caractères spéciaux comme *^$?|+()[]}{*, ne doit pas commencer par un chiffre ni contenir d'espaces. Le nom de l'objet doit être représentatif de ce qu'il contient, tout en étant ni trop court ni trop long. Imaginons que notre chiffre 5 corresponde au nombre de répétitions d'une expérience. Nous voudrions lui donner un nom faisant référence à *nombre* et à *répétition*, que nous pourrions réduire à *nbr* et *rep*, respectivement. Il existe plusieurs possibilités qui sont toutes assez répandues sous R : 
 
