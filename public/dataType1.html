@@ -12,20 +12,20 @@
   <meta property="og:title" content="Se former au logiciel R : initiation et perfectionnement" />
   <meta property="og:type" content="book" />
   
-  
+  <meta property="og:image" content="myFigures/cover.png" />
   <meta property="og:description" content="Un guide pour acquérir les bases de la programmation avec R et conduire efficacement la gestion et l’analyse de ses données." />
-  
+  <meta name="github-repo" content="frareb/myRBook_FR" />
 
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content="Se former au logiciel R : initiation et perfectionnement" />
   
   <meta name="twitter:description" content="Un guide pour acquérir les bases de la programmation avec R et conduire efficacement la gestion et l’analyse de ses données." />
-  
+  <meta name="twitter:image" content="myFigures/cover.png" />
 
 <meta name="author" content="François Rebaudo">
 
 
-<meta name="date" content="2018-08-24">
+<meta name="date" content="2018-08-30">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -47,6 +47,15 @@
 
 
 
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-124666641-2"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-124666641-2');
+</script>
 
 
 <style type="text/css">
@@ -261,7 +270,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="17" data-path="studyCase001.html"><a href="studyCase001.html"><i class="fa fa-check"></i><b>17</b> Analyser des données de datalogger de température</a></li>
 <li class="chapter" data-level="18" data-path="studyCase002.html"><a href="studyCase002.html"><i class="fa fa-check"></i><b>18</b> Obtenir le numéro WOS d’un article scientifique à partir de son numéro DOI</a></li>
 <li class="divider"></li>
-<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+<li><a href="http://ird.fr/" target="blank"><img src="myLogos/logo_IRD_2016_LONGUEUR_SP_COUL.png" alt="IRD" width="100"></a></li>
 
 </ul>
 
@@ -325,7 +334,13 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">sumIntInt &lt;-<span class="st"> </span><span class="kw">as.integer</span>(<span class="dv">5</span>) <span class="op">+</span><span class="st"> </span><span class="kw">as.integer</span>(<span class="dv">5</span>)
 <span class="kw">typeof</span>(sumIntInt)</code></pre></div>
 <pre><code>## [1] &quot;integer&quot;</code></pre>
-<p>Pour résumer, le type <code>numeric</code> contient deux sous-types, les types <code>intger</code> pour les nombres entiers et le type <code>double</code> pour les nombres à virgule. Par défaut R attribue le type <code>double</code> aux nombres.</p>
+<p>Pour résumer, le type <code>numeric</code> contient deux sous-types, les types <code>integer</code> pour les nombres entiers et le type <code>double</code> pour les nombres à virgule. Par défaut R attribue le type <code>double</code> aux nombres.</p>
+<p>Attention, il y a un piège à l’utilisation de la fonction <code>is.integer()</code>. Elle ne nous dit pas si le nombre est un entier mais si il est du type <code>integer</code>. En effet, on peut très bien stocker un nombre entier dans une variable de type <code>double</code>.</p>
+<p>Les nombres stockés dans une variable <code>integer</code> sont codés sur 32 bits et donc peuvent prendre des valeurs comprises entre 0 et 2^32-1=4294967295. Il existe une autre façon d’indiquer à R qu’un nombre est un entier, en utilisant le suffixe L. Par exemple, <code>5L</code> est la même chose que <code>as.integer(5)</code>. L’origine de ce suffixe <code>L</code> date d’une époque où les ordinateurs utilisaient des mots de 16 bits et 32 bits étaient bien un type <code>Long</code>. Maintenant les ordinateurs utilisent des mots de 64 bits et 32 bits est plutôt court !</p>
+<p>On ne peut pas quitter cette section sans mentionner les fonctions <a href="fonctions.html#l015round"><code>ceiling()</code></a>, <a href="fonctions.html#l015round"><code>floor()</code></a>, <a href="fonctions.html#l015round"><code>trunc()</code></a> ou <a href="fonctions.html#l015round"><code>round()</code></a> qui retournent la partie entière d’un nombre mais le laisse au type <code>double</code>. Pour en savoir plus, nous pouvons utiliser <a href="fonctions.html#l015help">l’aide de R</a> avec <code>?round</code>.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">roundDou &lt;-<span class="st"> </span><span class="kw">round</span>(<span class="fl">5.2</span>)
+<span class="kw">typeof</span>(roundDou)</code></pre></div>
+<pre><code>## [1] &quot;double&quot;</code></pre>
 </div>
 <div id="le-type-character" class="section level2">
 <h2><span class="header-section-number">7.2</span> Le type <code>character</code></h2>
@@ -352,7 +367,7 @@ myText</code></pre></div>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">nbrRep &lt;-<span class="st"> </span><span class="dv">5</span>
 <span class="kw">print</span>(nbrRep)</code></pre></div>
 <pre><code>## [1] 5</code></pre>
-<p>Nous pouvons également mettre des chiffres au format texte, mais il ne faut pas oublier de mettre des guillemets pour spécifier le type <code>character</code> ou utiliser la fonction <code>as.character()</code>. Une opération entre du texte et un nombre renvoie une erreur. Par exemple si l’on ajoute <code>10</code> à <code>&quot;5&quot;</code>, R nous signale qu’un <strong>argument</strong> de la <strong>fonction</strong> <code>+</code> n’est pas de type <code>numeric</code> et que donc l’opération n’est pas possible. Nous ne pouvons pas non plus ajouter du texte a du texte, mais verrons plus tard comment <em>concaténer</em> deux <em>chaines de texte</em>.</p>
+<p>Nous pouvons également mettre des chiffres au format texte, mais il ne faut pas oublier de mettre des guillemets pour spécifier le type <code>character</code> ou utiliser la fonction <code>as.character()</code>. Une opération entre du texte et un nombre renvoie une erreur. Par exemple si l’on ajoute <code>10</code> à <code>&quot;5&quot;</code>, R nous signale qu’un <strong>argument</strong> de la <strong>fonction</strong> <code>+</code> n’est pas de type <code>numeric</code> et que donc l’opération n’est pas possible. Nous ne pouvons pas non plus ajouter du texte à du texte, mais verrons plus tard comment <em>concaténer</em> deux <em>chaines de texte</em>.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">myText &lt;-<span class="st"> &quot;qwerty&quot;</span>
 <span class="kw">typeof</span>(myText)</code></pre></div>
 <pre><code>## [1] &quot;character&quot;</code></pre>
@@ -474,12 +489,12 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": null,
-"text": null
+"link": "https://github.com/frareb/myRBook_FR/edit/master/013_dataType1.Rmd",
+"text": "Edit"
 },
 "download": ["myRBook_FR.pdf", "myRBook_FR.epub"],
 "toc": {
-"collapse": "subsection"
+"collapse": "section"
 }
 });
 });

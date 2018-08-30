@@ -12,20 +12,20 @@
   <meta property="og:title" content="Se former au logiciel R : initiation et perfectionnement" />
   <meta property="og:type" content="book" />
   
-  
+  <meta property="og:image" content="myFigures/cover.png" />
   <meta property="og:description" content="Un guide pour acquérir les bases de la programmation avec R et conduire efficacement la gestion et l’analyse de ses données." />
-  
+  <meta name="github-repo" content="frareb/myRBook_FR" />
 
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content="Se former au logiciel R : initiation et perfectionnement" />
   
   <meta name="twitter:description" content="Un guide pour acquérir les bases de la programmation avec R et conduire efficacement la gestion et l’analyse de ses données." />
-  
+  <meta name="twitter:image" content="myFigures/cover.png" />
 
 <meta name="author" content="François Rebaudo">
 
 
-<meta name="date" content="2018-08-24">
+<meta name="date" content="2018-08-30">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -47,6 +47,15 @@
 
 
 
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-124666641-2"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-124666641-2');
+</script>
 
 
 <style type="text/css">
@@ -261,7 +270,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="17" data-path="studyCase001.html"><a href="studyCase001.html"><i class="fa fa-check"></i><b>17</b> Analyser des données de datalogger de température</a></li>
 <li class="chapter" data-level="18" data-path="studyCase002.html"><a href="studyCase002.html"><i class="fa fa-check"></i><b>18</b> Obtenir le numéro WOS d’un article scientifique à partir de son numéro DOI</a></li>
 <li class="divider"></li>
-<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+<li><a href="http://ird.fr/" target="blank"><img src="myLogos/logo_IRD_2016_LONGUEUR_SP_COUL.png" alt="IRD" width="100"></a></li>
 
 </ul>
 
@@ -344,7 +353,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
   urlWOS &lt;-<span class="st"> </span>r[[<span class="dv">1</span>]]
   tryExtract &lt;-<span class="st"> &quot;&quot;</span>
   <span class="kw">try</span>(tryExtract &lt;-<span class="st"> </span><span class="kw">substr</span>(<span class="dt">x =</span> urlWOS, <span class="dt">start =</span> <span class="dv">117</span>, <span class="dt">stop =</span> <span class="dv">131</span>), <span class="dt">silent =</span> <span class="ot">TRUE</span>)
-  <span class="cf">if</span>(<span class="op">!</span><span class="kw">grepl</span>(<span class="dt">pattern =</span> <span class="st">&#39;^([0-9]*)$&#39;</span>, <span class="dt">x =</span> tryExtract)){tryExtract &lt;-<span class="st"> &quot;&quot;</span>}
+  <span class="cf">if</span>(<span class="op">!</span><span class="kw">grepl</span>(<span class="dt">pattern =</span> <span class="st">&#39;^[0-9]*$&#39;</span>, <span class="dt">x =</span> tryExtract)){tryExtract &lt;-<span class="st"> &quot;&quot;</span>}
 }</code></pre></div>
 <p>Le résultat est ensuite stocké dans un <code>vector</code> créé au préalable et appelé <code>vecWOS</code>.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">vecWOS &lt;-<span class="st"> </span><span class="kw">vector</span>()
@@ -358,7 +367,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
   urlWOS &lt;-<span class="st"> </span>r[[<span class="dv">1</span>]]
   tryExtract &lt;-<span class="st"> &quot;&quot;</span>
   <span class="kw">try</span>(tryExtract &lt;-<span class="st"> </span><span class="kw">substr</span>(<span class="dt">x =</span> urlWOS, <span class="dt">start =</span> <span class="dv">117</span>, <span class="dt">stop =</span> <span class="dv">131</span>), <span class="dt">silent =</span> <span class="ot">TRUE</span>)
-  <span class="cf">if</span>(<span class="op">!</span><span class="kw">grepl</span>(<span class="dt">pattern =</span> <span class="st">&#39;^([0-9]*)$&#39;</span>, <span class="dt">x =</span> tryExtract)){tryExtract &lt;-<span class="st"> &quot;&quot;</span>}
+  <span class="cf">if</span>(<span class="op">!</span><span class="kw">grepl</span>(<span class="dt">pattern =</span> <span class="st">&#39;^[0-9]*$&#39;</span>, <span class="dt">x =</span> tryExtract)){tryExtract &lt;-<span class="st"> &quot;&quot;</span>}
   vecWOS &lt;-<span class="st"> </span><span class="kw">append</span>(vecWOS, tryExtract)
 }</code></pre></div>
 <p>Nous pouvons alors créer un objet de type <code>data.frame</code> qui va contenir les numéros DOI et les numéros WOS, et éventuellement l’exporter dans un fichier CSV.</p>
@@ -394,15 +403,21 @@ vecWOS &lt;-<span class="st"> </span><span class="kw">vector</span>()
   urlWOS &lt;-<span class="st"> </span>r[[<span class="dv">1</span>]]
   tryExtract &lt;-<span class="st"> &quot;&quot;</span>
   <span class="kw">try</span>(tryExtract &lt;-<span class="st"> </span><span class="kw">substr</span>(<span class="dt">x =</span> urlWOS, <span class="dt">start =</span> <span class="dv">117</span>, <span class="dt">stop =</span> <span class="dv">131</span>), <span class="dt">silent =</span> <span class="ot">TRUE</span>)
-  <span class="cf">if</span>(<span class="op">!</span><span class="kw">grepl</span>(<span class="dt">pattern =</span> <span class="st">&#39;^([0-9]*)$&#39;</span>, <span class="dt">x =</span> tryExtract)){tryExtract &lt;-<span class="st"> &quot;&quot;</span>}
+  <span class="cf">if</span>(<span class="op">!</span><span class="kw">grepl</span>(<span class="dt">pattern =</span> <span class="st">&#39;^[0-9]*$&#39;</span>, <span class="dt">x =</span> tryExtract)){tryExtract &lt;-<span class="st"> &quot;&quot;</span>}
   vecWOS &lt;-<span class="st"> </span><span class="kw">append</span>(vecWOS, tryExtract)
 }
 
 dfDOIWOS &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">DOI =</span> myDOIs, <span class="dt">WOS =</span> vecWOS)
 <span class="kw">write.csv</span>(dfDOIWOS, <span class="dt">file =</span> <span class="st">&quot;dfDOIWOS.csv&quot;</span>, <span class="dt">row.names =</span> <span class="ot">FALSE</span>)</code></pre></div>
-<p>La boucle <code>for()</code> pourrait être remplacée par une boucle <code>sapply()</code>, ou pour gagner en temps d’exécution par une parallélisation. Voici un exemple de temps d’exécution renvoyé par la fonction <code>system.time()</code> :</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#   user  system elapsed</span>
-<span class="co">#   0.10    0.01   35.00</span></code></pre></div>
+<p>La boucle <code>for()</code> pourrait être remplacée par une boucle <code>sapply()</code> pour gagner en temps d’exécution. Un gain serait également possible en effectuant une parallélisation sur cette boucle. Pour information, voici un exemple de temps d’exécution renvoyé par la fonction <code>system.time()</code> et <code>microbenchmark::microbenchmark()</code> :</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># system.time()</span>
+<span class="co">#   user  system elapsed</span>
+<span class="co">#   0.10    0.01   35.00</span>
+
+<span class="co"># microbenchmark()</span>
+<span class="co"># Unit: seconds</span>
+<span class="co">#     expr      min       lq     mean   median       uq      max neval</span>
+<span class="co">#  myFun() 36.58966 36.58966 36.58966 36.58966 36.58966 36.58966     1</span></code></pre></div>
 <p>Nous venons de faire un script qui permet à partir d’une liste de numéros DOI d’obtenir automatiquement les numéros WOS.</p>
 
 </div>
@@ -442,12 +457,12 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": null,
-"text": null
+"link": "https://github.com/frareb/myRBook_FR/edit/master/042_studyCase.Rmd",
+"text": "Edit"
 },
 "download": ["myRBook_FR.pdf", "myRBook_FR.epub"],
 "toc": {
-"collapse": "subsection"
+"collapse": "section"
 }
 });
 });

@@ -125,7 +125,7 @@
   \postauthor{\par}
       \predate{\centering\large\emph}
   \postdate{\par}
-    \date{2018-08-24}
+    \date{2018-08-30}
 
 \usepackage{booktabs}
 \usepackage{longtable}
@@ -253,6 +253,15 @@ disponible en espagnol (\url{http://myrbooksp.netlify.com/}).
 
 Dernières modifications:
 
+\textbf{30/08/2018}
+
+\begin{itemize}
+\tightlist
+\item
+  Modifications de Marc G. (\protect\hyperlink{studyCase002}{étude de
+  cas} ; \protect\hyperlink{dataType1}{types de données})
+\end{itemize}
+
 \textbf{24/08/2018}
 
 \begin{itemize}
@@ -314,6 +323,7 @@ corrections (par ordre alphabétique) :
 \begin{verbatim}
 ## Contributeurs :
 Camila Benavides Frias (Bolivia)
+Marc Girondot (France ; UMR 8079 ESE)
 Susi Loza Herrera (Bolivia)
 Estefania Quenta Herrera (Bolivia)
 \end{verbatim}
@@ -1679,7 +1689,7 @@ A partir d'ici nous allons pouvoir nous concentrer sur le language de
 programmation R dans un environnement facilitant le travail de lecture
 et d'écriture du code. C'est un grand pas en avant pour maîtriser R.
 
-\chapter{Les types de données}\label{dataType1}
+\hypertarget{dataType1}{\chapter{Les types de données}\label{dataType1}}
 
 Nous avons vu précédement comment créer un objet. Un objet est comme une
 boîte dans laquelle nous allons \emph{stocker} de l'information. Jusqu'à
@@ -1885,9 +1895,44 @@ virgule.
 \end{verbatim}
 
 Pour résumer, le type \texttt{numeric} contient deux sous-types, les
-types \texttt{intger} pour les nombres entiers et le type
+types \texttt{integer} pour les nombres entiers et le type
 \texttt{double} pour les nombres à virgule. Par défaut R attribue le
 type \texttt{double} aux nombres.
+
+Attention, il y a un piège à l'utilisation de la fonction
+\texttt{is.integer()}. Elle ne nous dit pas si le nombre est un entier
+mais si il est du type \texttt{integer}. En effet, on peut très bien
+stocker un nombre entier dans une variable de type \texttt{double}.
+
+Les nombres stockés dans une variable \texttt{integer} sont codés sur 32
+bits et donc peuvent prendre des valeurs comprises entre 0 et
+2\^{}32-1=4294967295. Il existe une autre façon d'indiquer à R qu'un
+nombre est un entier, en utilisant le suffixe L. Par exemple,
+\texttt{5L} est la même chose que \texttt{as.integer(5)}. L'origine de
+ce suffixe \texttt{L} date d'une époque où les ordinateurs utilisaient
+des mots de 16 bits et 32 bits étaient bien un type \texttt{Long}.
+Maintenant les ordinateurs utilisent des mots de 64 bits et 32 bits est
+plutôt court !
+
+On ne peut pas quitter cette section sans mentionner les fonctions
+\protect\hyperlink{l015round}{\texttt{ceiling()}},
+\protect\hyperlink{l015round}{\texttt{floor()}},
+\protect\hyperlink{l015round}{\texttt{trunc()}} ou
+\protect\hyperlink{l015round}{\texttt{round()}} qui retournent la partie
+entière d'un nombre mais le laisse au type \texttt{double}. Pour en
+savoir plus, nous pouvons utiliser \protect\hyperlink{l015help}{l'aide
+de R} avec \texttt{?round}.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{roundDou <-}\StringTok{ }\KeywordTok{round}\NormalTok{(}\FloatTok{5.2}\NormalTok{)}
+\KeywordTok{typeof}\NormalTok{(roundDou)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "double"
+\end{verbatim}
 
 \section{\texorpdfstring{Le type
 \texttt{character}}{Le type character}}\label{le-type-character}
@@ -1976,7 +2021,7 @@ opération entre du texte et un nombre renvoie une erreur. Par exemple si
 l'on ajoute \texttt{10} à \texttt{"5"}, R nous signale qu'un
 \textbf{argument} de la \textbf{fonction} \texttt{+} n'est pas de type
 \texttt{numeric} et que donc l'opération n'est pas possible. Nous ne
-pouvons pas non plus ajouter du texte a du texte, mais verrons plus tard
+pouvons pas non plus ajouter du texte à du texte, mais verrons plus tard
 comment \emph{concaténer} deux \emph{chaines de texte}.
 
 \begin{Shaded}
@@ -5338,7 +5383,7 @@ documentation est l'objet de la section ci-dessous.
 
 \subsection{L'accès à la documentation}\label{lacces-a-la-documentation}
 
-\subsubsection{\texorpdfstring{\texttt{help()}}{help()}}\label{l015help}
+\hypertarget{l015help}{\subsubsection{\texorpdfstring{\texttt{help()}}{help()}}\label{l015help}}
 
 La fonction indispensable de R est celle permettant d'accèder à la
 documentation. Toutes les fonctions et tous les jeux de données de R
@@ -6600,9 +6645,9 @@ La fonction \texttt{nrow()} renvoie le nombre de lignes et la fonction
 ## [1] 5
 \end{verbatim}
 
-\subsubsection{\texorpdfstring{\texttt{round()}, \texttt{ceiling()},
-\texttt{floor()}, et
-\texttt{trunc()}}{round(), ceiling(), floor(), et trunc()}}\label{l015round}
+\hypertarget{l015round}{\subsubsection{\texorpdfstring{\texttt{round()},
+\texttt{ceiling()}, \texttt{floor()}, et
+\texttt{trunc()}}{round(), ceiling(), floor(), et trunc()}}\label{l015round}}
 
 La fonction \texttt{round()} permet de sélectionner un certain nombre de
 décimales (0 par défaut)
@@ -7175,7 +7220,7 @@ fichiers présents dans le répertoire de travail.
 \end{Shaded}
 
 \begin{verbatim}
-## character(0)
+## [1] "google_analytics_FR.html"
 \end{verbatim}
 
 \begin{Shaded}
@@ -7219,9 +7264,10 @@ l'environnement de travail de R.
 ## [57] "myCol"        "myRow"        "myText"       "myText2"     
 ## [61] "myText3"      "myText4"      "myText5"      "nbrRep"      
 ## [65] "newVec"       "newVec2"      "numbers"      "oldWd"       
-## [69] "opAriDf"      "sumIntDou"    "sumIntInt"    "terme01"     
-## [73] "terme02"      "vecForMat01"  "vecForMat02"  "vecForMat03" 
-## [77] "vecForMatrix" "vecManip"     "vecManip2"    "vecManip3"
+## [69] "opAriDf"      "roundDou"     "sumIntDou"    "sumIntInt"   
+## [73] "terme01"      "terme02"      "vecForMat01"  "vecForMat02" 
+## [77] "vecForMat03"  "vecForMatrix" "vecManip"     "vecManip2"   
+## [81] "vecManip3"
 \end{verbatim}
 
 \begin{Shaded}
@@ -7249,10 +7295,10 @@ l'environnement de travail de R.
 ## [57] "myCol"        "myRow"        "myText"       "myText2"     
 ## [61] "myText3"      "myText4"      "myText5"      "nbrRep"      
 ## [65] "newVec"       "newVec2"      "numbers"      "oldWd"       
-## [69] "opAriDf"      "sumIntDou"    "sumIntInt"    "terme01"     
-## [73] "terme02"      "vecForMat01"  "vecForMat02"  "vecForMat03" 
-## [77] "vecForMatrix" "vecManip"     "vecManip2"    "vecManip3"   
-## [81] "zzz"
+## [69] "opAriDf"      "roundDou"     "sumIntDou"    "sumIntInt"   
+## [73] "terme01"      "terme02"      "vecForMat01"  "vecForMat02" 
+## [77] "vecForMat03"  "vecForMatrix" "vecManip"     "vecManip2"   
+## [81] "vecManip3"    "zzz"
 \end{verbatim}
 
 \subsection{\texorpdfstring{\texttt{rm()}}{rm()}}\label{l015rm}
@@ -7285,9 +7331,10 @@ l'environnement de travail de R.
 ## [57] "myCol"        "myRow"        "myText"       "myText2"     
 ## [61] "myText3"      "myText4"      "myText5"      "nbrRep"      
 ## [65] "newVec"       "newVec2"      "numbers"      "oldWd"       
-## [69] "opAriDf"      "sumIntDou"    "sumIntInt"    "terme01"     
-## [73] "terme02"      "vecForMat01"  "vecForMat02"  "vecForMat03" 
-## [77] "vecForMatrix" "vecManip"     "vecManip2"    "vecManip3"
+## [69] "opAriDf"      "roundDou"     "sumIntDou"    "sumIntInt"   
+## [73] "terme01"      "terme02"      "vecForMat01"  "vecForMat02" 
+## [77] "vecForMat03"  "vecForMatrix" "vecManip"     "vecManip2"   
+## [81] "vecManip3"
 \end{verbatim}
 
 \section{Quelques exercices}\label{quelques-exercices}
@@ -7649,7 +7696,7 @@ voyelles en minuscule dans un mot. Tout d'abord nous allons séparer
 toutes les lettres avec la fonction \texttt{strsplit} (nous pouvons
 consulter l'aide pour en savoir plus sur cette fonction). Ensuite nous
 allons compter les voyelles et les consonnes avec la fonction
-\protect\hyperlink{l015length}{\texttt{length()}}. pour avoir la liste
+\protect\hyperlink{l015length}{\texttt{length()}}. Pour avoir la liste
 des lettres nous allons utiliser la constante \texttt{letters}
 (consulter l'aide).
 
@@ -7800,7 +7847,7 @@ le gain de temps est presque nul dans notre cas).
 
 \begin{verbatim}
 ##    user  system elapsed 
-##    0.16    0.00    0.16
+##    0.18    0.00    0.17
 \end{verbatim}
 
 \begin{Shaded}
@@ -7811,7 +7858,7 @@ le gain de temps est presque nul dans notre cas).
 
 \begin{verbatim}
 ##    user  system elapsed 
-##    0.17    0.00    0.17
+##    0.16    0.00    0.15
 \end{verbatim}
 
 Une fonction peut avoir des valeurs par défaut pour ses arguments. C'est
@@ -7847,7 +7894,7 @@ R compte de nombreuses fonctions, donc avant de vous lancer dans
 l'écriture d'une nouvelle fonction, il faut toujours vérifier que
 celle-ci n'existe pas déjà soit dans la version de base de R, soit dans
 des \textbf{packages} développés par la communauté des utilisateurs.
-pour cela nous pouvons utiliser l'aide et la fonction \texttt{??}, mais
+Pour cela nous pouvons utiliser l'aide et la fonction \texttt{??}, mais
 aussi notre navigateur Internet.
 
 \section{Autres fonctions développées par la communauté des utilisateurs
@@ -7912,12 +7959,12 @@ seule fois par ordinateur, et que par contre le chargement d'un package
 est à réaliser pour chaque nouvelle session de R. Si l'on change
 d'ordinateur ou si l'on partage un script avec un collègue, il peut donc
 y avoir des erreurs à l'exécution liées à l'absence de l'installation
-d'un package. pour pallier à ce problème, il est recommandé d'utiliser
+d'un package. Pour pallier à ce problème, il est recommandé d'utiliser
 une fonction qui va vérifier si les packages nécessaires à l'exécution
 d'un script sont installés, si besoin les installer, puis les charger.
 Il existe de nombreuses fonctions pour faire cela sur Internet. La
 solution que nous proposons ici est un mélange adapté de différentes
-sources. il n'est pas nécessaire de comprendre les détails de ce script
+sources. Il n'est pas nécessaire de comprendre les détails de ce script
 pour le moment, mais simplement de comprendre ce qu'il fait. Voici un
 exemple pour les packages \texttt{stats} et \texttt{graphics} qui sont
 deux packages déjà présents avec la version de base de R, mais nous
@@ -7959,7 +8006,7 @@ pour lister les packages disponibles sur le CRAN par ordre alphabétique.
 ## [26] "data.table"  "DBI"         "dbscan"      "ddalpha"     "DEoptimR"
 \end{verbatim}
 
-La fonction \texttt{pkgCheck} assure la \textbf{portabilité} de nos
+La fonction \texttt{pkgCheck()} assure la \textbf{portabilité} de nos
 scripts : ils fonctionneront sur tous les ordinateurs sans avoir à
 effectuer de modification. Ainsi nos scipts pourront par exemple être
 joints à nos articles scientifiques et assurer ainsi la
@@ -8051,8 +8098,6 @@ XXX
 \chapter{Graphiques simples}\label{graph1}
 
 \section{plot}\label{plot}
-
-xxx
 
 \section{hist}\label{hist}
 
@@ -8239,7 +8284,7 @@ le cas contraire \texttt{tryExtract} reprendra sa valeur initiale
 \NormalTok{  urlWOS <-}\StringTok{ }\NormalTok{r[[}\DecValTok{1}\NormalTok{]]}
 \NormalTok{  tryExtract <-}\StringTok{ ""}
   \KeywordTok{try}\NormalTok{(tryExtract <-}\StringTok{ }\KeywordTok{substr}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ urlWOS, }\DataTypeTok{start =} \DecValTok{117}\NormalTok{, }\DataTypeTok{stop =} \DecValTok{131}\NormalTok{), }\DataTypeTok{silent =} \OtherTok{TRUE}\NormalTok{)}
-  \ControlFlowTok{if}\NormalTok{(}\OperatorTok{!}\KeywordTok{grepl}\NormalTok{(}\DataTypeTok{pattern =} \StringTok{'^([0-9]*)$'}\NormalTok{, }\DataTypeTok{x =}\NormalTok{ tryExtract))\{tryExtract <-}\StringTok{ ""}\NormalTok{\}}
+  \ControlFlowTok{if}\NormalTok{(}\OperatorTok{!}\KeywordTok{grepl}\NormalTok{(}\DataTypeTok{pattern =} \StringTok{'^[0-9]*$'}\NormalTok{, }\DataTypeTok{x =}\NormalTok{ tryExtract))\{tryExtract <-}\StringTok{ ""}\NormalTok{\}}
 \NormalTok{\}}
 \end{Highlighting}
 \end{Shaded}
@@ -8260,7 +8305,7 @@ et appelé \texttt{vecWOS}.
 \NormalTok{  urlWOS <-}\StringTok{ }\NormalTok{r[[}\DecValTok{1}\NormalTok{]]}
 \NormalTok{  tryExtract <-}\StringTok{ ""}
   \KeywordTok{try}\NormalTok{(tryExtract <-}\StringTok{ }\KeywordTok{substr}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ urlWOS, }\DataTypeTok{start =} \DecValTok{117}\NormalTok{, }\DataTypeTok{stop =} \DecValTok{131}\NormalTok{), }\DataTypeTok{silent =} \OtherTok{TRUE}\NormalTok{)}
-  \ControlFlowTok{if}\NormalTok{(}\OperatorTok{!}\KeywordTok{grepl}\NormalTok{(}\DataTypeTok{pattern =} \StringTok{'^([0-9]*)$'}\NormalTok{, }\DataTypeTok{x =}\NormalTok{ tryExtract))\{tryExtract <-}\StringTok{ ""}\NormalTok{\}}
+  \ControlFlowTok{if}\NormalTok{(}\OperatorTok{!}\KeywordTok{grepl}\NormalTok{(}\DataTypeTok{pattern =} \StringTok{'^[0-9]*$'}\NormalTok{, }\DataTypeTok{x =}\NormalTok{ tryExtract))\{tryExtract <-}\StringTok{ ""}\NormalTok{\}}
 \NormalTok{  vecWOS <-}\StringTok{ }\KeywordTok{append}\NormalTok{(vecWOS, tryExtract)}
 \NormalTok{\}}
 \end{Highlighting}
@@ -8320,7 +8365,7 @@ Voici le code complet :
 \NormalTok{  urlWOS <-}\StringTok{ }\NormalTok{r[[}\DecValTok{1}\NormalTok{]]}
 \NormalTok{  tryExtract <-}\StringTok{ ""}
   \KeywordTok{try}\NormalTok{(tryExtract <-}\StringTok{ }\KeywordTok{substr}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ urlWOS, }\DataTypeTok{start =} \DecValTok{117}\NormalTok{, }\DataTypeTok{stop =} \DecValTok{131}\NormalTok{), }\DataTypeTok{silent =} \OtherTok{TRUE}\NormalTok{)}
-  \ControlFlowTok{if}\NormalTok{(}\OperatorTok{!}\KeywordTok{grepl}\NormalTok{(}\DataTypeTok{pattern =} \StringTok{'^([0-9]*)$'}\NormalTok{, }\DataTypeTok{x =}\NormalTok{ tryExtract))\{tryExtract <-}\StringTok{ ""}\NormalTok{\}}
+  \ControlFlowTok{if}\NormalTok{(}\OperatorTok{!}\KeywordTok{grepl}\NormalTok{(}\DataTypeTok{pattern =} \StringTok{'^[0-9]*$'}\NormalTok{, }\DataTypeTok{x =}\NormalTok{ tryExtract))\{tryExtract <-}\StringTok{ ""}\NormalTok{\}}
 \NormalTok{  vecWOS <-}\StringTok{ }\KeywordTok{append}\NormalTok{(vecWOS, tryExtract)}
 \NormalTok{\}}
 
@@ -8330,14 +8375,22 @@ Voici le code complet :
 \end{Shaded}
 
 La boucle \texttt{for()} pourrait être remplacée par une boucle
-\texttt{sapply()}, ou pour gagner en temps d'exécution par une
-parallélisation. Voici un exemple de temps d'exécution renvoyé par la
-fonction \texttt{system.time()} :
+\texttt{sapply()} pour gagner en temps d'exécution. Un gain serait
+également possible en effectuant une parallélisation sur cette boucle.
+Pour information, voici un exemple de temps d'exécution renvoyé par la
+fonction \texttt{system.time()} et
+\texttt{microbenchmark::microbenchmark()} :
 
 \begin{Shaded}
 \begin{Highlighting}[]
+\CommentTok{# system.time()}
 \CommentTok{#   user  system elapsed}
 \CommentTok{#   0.10    0.01   35.00}
+
+\CommentTok{# microbenchmark()}
+\CommentTok{# Unit: seconds}
+\CommentTok{#     expr      min       lq     mean   median       uq      max neval}
+\CommentTok{#  myFun() 36.58966 36.58966 36.58966 36.58966 36.58966 36.58966     1}
 \end{Highlighting}
 \end{Shaded}
 
