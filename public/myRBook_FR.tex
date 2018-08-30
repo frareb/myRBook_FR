@@ -260,6 +260,9 @@ Dernières modifications:
 \item
   Modifications de Marc G. (\protect\hyperlink{studyCase002}{étude de
   cas} ; \protect\hyperlink{dataType1}{types de données})
+\item
+  nouvelle étude de cas : \protect\hyperlink{studyCase001}{analyse des
+  données de datalogger de température}
 \end{itemize}
 
 \textbf{24/08/2018}
@@ -7858,7 +7861,7 @@ le gain de temps est presque nul dans notre cas).
 
 \begin{verbatim}
 ##    user  system elapsed 
-##    0.16    0.00    0.15
+##    0.20    0.00    0.22
 \end{verbatim}
 
 Une fonction peut avoir des valeurs par défaut pour ses arguments. C'est
@@ -8024,7 +8027,8 @@ reproductibilité des résultats). Le prochain chapitre va s'intéresser à
 la lecture et à l'écriture de fichiers car bien souvent, nos données
 sont sur des fichiers de texte ou de tableurs.
 
-\chapter{Importer et exporter des données}\label{import}
+\hypertarget{import}{\chapter{Importer et exporter des
+données}\label{import}}
 
 \section{Lire des données depuis un fichier
 tableur}\label{lire-des-donnees-depuis-un-fichier-tableur}
@@ -8133,8 +8137,365 @@ XXX
 
 \part{Etude de cas}\label{part-etude-de-cas}
 
-\chapter{Analyser des données de datalogger de
-température}\label{studyCase001}
+\hypertarget{studyCase001}{\chapter{Analyser des données de datalogger
+de température}\label{studyCase001}}
+
+Dans les études de biologie, d'écologie ou d'agronomie, nous utilisons
+fréquemment des données de température provenant de dataloggers. Dans
+cette étude de cas, nous verrons comment analyser ces données en
+utilisant les données de température de l'altiplano bolivien près de la
+ville de El Alto. La première étape consiste à transformer les données
+du datalogger en un format facile à lire pour R. Nous utiliserons un
+fichier CSV et la fonction
+\protect\hyperlink{import}{\texttt{read.table()}}. Le fichier peut être
+téléchargé à partir du site Web du livre sur GitHub
+(\url{https://github.com/frareb/myRBook_FR/blob/master/myFiles/E05C13.csv}
+; cliquez avec le bouton droit sur le lien et sélectionnez ``Enregistrer
+la cible du lien sous\ldots{}'').
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{bdd <-}\StringTok{ }\KeywordTok{read.table}\NormalTok{(}\StringTok{"myFiles/E05C13.csv"}\NormalTok{, }\DataTypeTok{skip =} \DecValTok{1}\NormalTok{, }\DataTypeTok{header =} \OtherTok{TRUE}\NormalTok{, }
+  \DataTypeTok{sep =} \StringTok{","}\NormalTok{, }\DataTypeTok{dec =} \StringTok{"."}\NormalTok{, }\DataTypeTok{stringsAsFactors =} \OtherTok{FALSE}\NormalTok{)}
+\KeywordTok{colnames}\NormalTok{(bdd) <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\StringTok{"id"}\NormalTok{, }\StringTok{"date"}\NormalTok{, }\StringTok{"temp"}\NormalTok{)}
+\KeywordTok{head}\NormalTok{(bdd)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##   id              date  temp
+## 1  1 11/12/15 23:00:00 4.973
+## 2  2 11/12/15 23:30:00 4.766
+## 3  3 11/13/15 00:00:00 4.844
+## 4  4 11/13/15 00:30:00 4.844
+## 5  5 11/13/15 01:00:00 5.076
+## 6  6 11/13/15 01:30:00 5.282
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{tail}\NormalTok{(bdd)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##          id              date  temp
+## 32781 32781 09/25/17 21:00:00 7.091
+## 32782 32782 09/25/17 21:30:00 6.914
+## 32783 32783 09/25/17 22:00:00 6.813
+## 32784 32784 09/25/17 22:30:00 6.611
+## 32785 32785 09/25/17 23:00:00 6.331
+## 32786 32786 09/25/17 23:30:00 5.385
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{str}\NormalTok{(bdd)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 'data.frame':    32786 obs. of  3 variables:
+##  $ id  : int  1 2 3 4 5 6 7 8 9 10 ...
+##  $ date: chr  "11/12/15 23:00:00" "11/12/15 23:30:00" "11/13/15 00:00:00" "11/13/15 00:30:00" ...
+##  $ temp: num  4.97 4.77 4.84 4.84 5.08 ...
+\end{verbatim}
+
+Nous pouvons voir que la date est au format \texttt{character} et
+qu'elle contient la date avec le mois, le jour et l'année séparés par
+\texttt{/}, puis vient un espace et l'heure avec des heures de 0 à 24,
+minutes et secondes, séparés par \texttt{:} (exemple:
+\texttt{11/12/15\ 23:00:00} pour le 12 novembre 2015 à 11 heures du
+soir). Nous allons séparer les informations en plusieurs objets.
+Séparons d'abord la date de l'heure. Pour cela, nous utiliserons la
+fonction \texttt{strsplit()} en utilisant l'espace entre la date et
+l'heure comme séparateur.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{strsplit}\NormalTok{(}\StringTok{"11/12/15 23:00:00"}\NormalTok{, }\DataTypeTok{split =} \StringTok{" "}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [[1]]
+## [1] "11/12/15" "23:00:00"
+\end{verbatim}
+
+Comme l'indiquent les doubles crochets, la fonction \texttt{strsplit()}
+renvoie un objet au format \texttt{list}. Nous voulons le vecteur qui
+correspond au premier élément de la liste, donc nous allons ajouter
+\texttt{{[}{[}1{]}{]}}.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{strsplit}\NormalTok{(}\StringTok{"11/12/15 23:00:00"}\NormalTok{, }\DataTypeTok{split =} \StringTok{" "}\NormalTok{)[[}\DecValTok{1}\NormalTok{]]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "11/12/15" "23:00:00"
+\end{verbatim}
+
+Le premier élément du \texttt{vector} est la date. Pour avoir toutes les
+dates, nous allons faire une boucle avec la fonction \texttt{sapply()}.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{bddDay <-}\StringTok{ }\KeywordTok{sapply}\NormalTok{(}\KeywordTok{strsplit}\NormalTok{(bdd[, }\DecValTok{2}\NormalTok{], }\DataTypeTok{split =} \StringTok{" "}\NormalTok{), }\StringTok{"[["}\NormalTok{, }\DecValTok{1}\NormalTok{)}
+\KeywordTok{head}\NormalTok{(bddDay)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "11/12/15" "11/12/15" "11/13/15" "11/13/15" "11/13/15" "11/13/15"
+\end{verbatim}
+
+Ensuite, nous aurons besoin des dates dans le format \texttt{factor}
+(fonction \texttt{aggregate()} pour obtenir les informations par jour).
+Nous devons donc transformer l'objet dans le format \texttt{factor} avec
+la fonction \texttt{as.factor()}.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{bddDay <-}\StringTok{ }\KeywordTok{as.factor}\NormalTok{(}\KeywordTok{sapply}\NormalTok{(}\KeywordTok{strsplit}\NormalTok{(bdd[, }\DecValTok{2}\NormalTok{], }\DataTypeTok{split =} \StringTok{" "}\NormalTok{), }\StringTok{"[["}\NormalTok{, }\DecValTok{1}\NormalTok{))}
+\KeywordTok{head}\NormalTok{(bddDay)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 11/12/15 11/12/15 11/13/15 11/13/15 11/13/15 11/13/15
+## 684 Levels: 01/01/16 01/01/17 01/02/16 01/02/17 01/03/16 ... 12/31/16
+\end{verbatim}
+
+En effectuant la transformation vers le format \texttt{factor}, les
+différents facteurs de notre objet sont classés par ordre alphabétique
+comme si les dates correspondaient à du simple texte. C'est
+problématique car l'ordre des facteurs doit correspondre à l'ordre des
+dates. Pour cela, nous allons créer un \texttt{vector} avec toutes les
+dates uniques avec la fonction \texttt{unique()}, puis trier les dates
+avec la fonction \texttt{sort.list()} en utilisant les dates avec la
+fonction \texttt{as.POSIXct()}. Le résultat sera l'objet \texttt{lev}.
+Nous allons utiliser le vecteur \texttt{lev} pour spécifier comment les
+facteurs de nos dates devraient être classées. Le travail avec les dates
+est souvent fastidieux, c'est pourquoi il existe des packages
+spécialisés dans leur gestion. Ici nous avons préféré utiliser les
+fonctions de base de R dans un objectif pédagogique.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{bddDay <-}\StringTok{ }\KeywordTok{as.factor}\NormalTok{(}\KeywordTok{sapply}\NormalTok{(}\KeywordTok{strsplit}\NormalTok{(bdd[, }\DecValTok{2}\NormalTok{], }\DataTypeTok{split =} \StringTok{" "}\NormalTok{), }\StringTok{"[["}\NormalTok{, }\DecValTok{1}\NormalTok{))}
+\NormalTok{udate <-}\StringTok{ }\KeywordTok{unique}\NormalTok{(bddDay)}
+\NormalTok{lev <-}\StringTok{ }\NormalTok{udate[}\KeywordTok{sort.list}\NormalTok{(}\KeywordTok{as.POSIXct}\NormalTok{(}\KeywordTok{strptime}\NormalTok{(udate, }\StringTok{"%m/%d/%y"}\NormalTok{)))]}
+\NormalTok{bddDay <-}\StringTok{ }\KeywordTok{factor}\NormalTok{(bddDay, }\DataTypeTok{levels =}\NormalTok{ lev)}
+\KeywordTok{head}\NormalTok{(bddDay)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 11/12/15 11/12/15 11/13/15 11/13/15 11/13/15 11/13/15
+## 684 Levels: 11/12/15 11/13/15 11/14/15 11/15/15 11/16/15 ... 09/25/17
+\end{verbatim}
+
+Maintenant, nous pouvons ajouter les dates comme nouvelle colonne de
+l'objet \texttt{bdd} et faire la même chose pour les heures (il n'est
+pas nécessaire de réorganiser les niveaux de l'haure car l'ordre par
+défaut correspond à ce que nous voulons).
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{bdd}\OperatorTok{$}\NormalTok{bddDay <-}\StringTok{ }\NormalTok{bddDay}
+\NormalTok{bdd}\OperatorTok{$}\NormalTok{bddHour <-}\StringTok{ }\KeywordTok{as.factor}\NormalTok{(}\KeywordTok{sapply}\NormalTok{(}\KeywordTok{strsplit}\NormalTok{(bdd[, }\DecValTok{2}\NormalTok{], }\DataTypeTok{split =} \StringTok{" "}\NormalTok{), }\StringTok{"[["}\NormalTok{, }\DecValTok{2}\NormalTok{))}
+\KeywordTok{head}\NormalTok{(bdd)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##   id              date  temp   bddDay  bddHour
+## 1  1 11/12/15 23:00:00 4.973 11/12/15 23:00:00
+## 2  2 11/12/15 23:30:00 4.766 11/12/15 23:30:00
+## 3  3 11/13/15 00:00:00 4.844 11/13/15 00:00:00
+## 4  4 11/13/15 00:30:00 4.844 11/13/15 00:30:00
+## 5  5 11/13/15 01:00:00 5.076 11/13/15 01:00:00
+## 6  6 11/13/15 01:30:00 5.282 11/13/15 01:30:00
+\end{verbatim}
+
+Nous pouvons visualiser les données avec la fonction \texttt{plot()}, en
+spécifiant le format des dates avec la fonction \texttt{as.Date()}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{plot}\NormalTok{(}\DataTypeTok{x =} \KeywordTok{as.Date}\NormalTok{(bdd}\OperatorTok{$}\NormalTok{bddDay, }\DataTypeTok{format =} \StringTok{"%m/%d/%y"}\NormalTok{), }\DataTypeTok{y =}\NormalTok{ bdd}\OperatorTok{$}\NormalTok{temp, }
+    \DataTypeTok{type =} \StringTok{'l'}\NormalTok{, }\DataTypeTok{ylim =} \KeywordTok{c}\NormalTok{(}\OperatorTok{-}\DecValTok{15}\NormalTok{, }\DecValTok{40}\NormalTok{), }
+    \DataTypeTok{xlab =} \StringTok{"Temps"}\NormalTok{, }\DataTypeTok{ylab =} \StringTok{"Température (°C)"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{myRBook_FR_files/figure-latex/unnamed-chunk-175-1.pdf}
+
+Nous pouvons simplifier les informations en ne calculant que les
+températures minimales, moyennes et maximales avec la fonction
+\texttt{aggregate()}.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{tempDayMean <-}\StringTok{ }\KeywordTok{aggregate}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ bdd[, }\DecValTok{3}\NormalTok{], }\DataTypeTok{by =} \KeywordTok{list}\NormalTok{(bdd[, }\DecValTok{4}\NormalTok{]), }\DataTypeTok{FUN =}\NormalTok{ mean)}
+\NormalTok{tempDayMin <-}\StringTok{ }\KeywordTok{aggregate}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ bdd[, }\DecValTok{3}\NormalTok{], }\DataTypeTok{by =} \KeywordTok{list}\NormalTok{(bdd[, }\DecValTok{4}\NormalTok{]), }\DataTypeTok{FUN =}\NormalTok{ min)}
+\NormalTok{tempDayMax <-}\StringTok{ }\KeywordTok{aggregate}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ bdd[, }\DecValTok{3}\NormalTok{], }\DataTypeTok{by =} \KeywordTok{list}\NormalTok{(bdd[, }\DecValTok{4}\NormalTok{]), }\DataTypeTok{FUN =}\NormalTok{ max)}
+\KeywordTok{plot}\NormalTok{(}\DataTypeTok{x =} \KeywordTok{as.Date}\NormalTok{(tempDayMean[, }\DecValTok{1}\NormalTok{], }\DataTypeTok{format =} \StringTok{"%m/%d/%y"}\NormalTok{), }
+    \DataTypeTok{y =}\NormalTok{ tempDayMean[, }\DecValTok{2}\NormalTok{], }\DataTypeTok{type =} \StringTok{'l'}\NormalTok{, }\DataTypeTok{ylim =} \KeywordTok{c}\NormalTok{(}\OperatorTok{-}\DecValTok{15}\NormalTok{, }\DecValTok{40}\NormalTok{), }
+    \DataTypeTok{xlab =} \StringTok{"Temps"}\NormalTok{, }\DataTypeTok{ylab =} \StringTok{"Température (°C)"}\NormalTok{)}
+\KeywordTok{points}\NormalTok{(}\DataTypeTok{x =} \KeywordTok{as.Date}\NormalTok{(tempDayMin[, }\DecValTok{1}\NormalTok{], }\DataTypeTok{format =} \StringTok{"%m/%d/%y"}\NormalTok{), }
+    \DataTypeTok{y =}\NormalTok{ tempDayMin[, }\DecValTok{2}\NormalTok{], }\DataTypeTok{type =} \StringTok{'l'}\NormalTok{, }\DataTypeTok{col =} \DecValTok{4}\NormalTok{)}
+\KeywordTok{points}\NormalTok{(}\DataTypeTok{x =} \KeywordTok{as.Date}\NormalTok{(tempDayMax[, }\DecValTok{1}\NormalTok{], }\DataTypeTok{format =} \StringTok{"%m/%d/%y"}\NormalTok{), }
+    \DataTypeTok{y =}\NormalTok{ tempDayMax[, }\DecValTok{2}\NormalTok{], }\DataTypeTok{type =} \StringTok{'l'}\NormalTok{, }\DataTypeTok{col =} \DecValTok{2}\NormalTok{)}
+\KeywordTok{legend}\NormalTok{(}\StringTok{"topright"}\NormalTok{, }\DataTypeTok{legend =} \KeywordTok{c}\NormalTok{(}\StringTok{"min"}\NormalTok{, }\StringTok{"max"}\NormalTok{, }\StringTok{"mean"}\NormalTok{), }
+  \DataTypeTok{lty =} \DecValTok{1}\NormalTok{, }\DataTypeTok{lwd =} \DecValTok{2}\NormalTok{, }\DataTypeTok{col =} \KeywordTok{c}\NormalTok{(}\DecValTok{4}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{1}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{myRBook_FR_files/figure-latex/unnamed-chunk-176-1.pdf}
+
+Nous pouvons également calculer la différence entre la température
+maximale et la température minimale (variation de la température
+diurne).
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{tempDayTR <-}\StringTok{ }\NormalTok{tempDayMax[, }\DecValTok{2}\NormalTok{] }\OperatorTok{-}\StringTok{ }\NormalTok{tempDayMin[, }\DecValTok{2}\NormalTok{]}
+\KeywordTok{plot}\NormalTok{(}\DataTypeTok{x =} \KeywordTok{as.Date}\NormalTok{(tempDayMean[, }\DecValTok{1}\NormalTok{], }\DataTypeTok{format =} \StringTok{"%m/%d/%y"}\NormalTok{), }
+    \DataTypeTok{y =}\NormalTok{ tempDayTR, }\DataTypeTok{type =} \StringTok{'l'}\NormalTok{, }\DataTypeTok{ylim =} \KeywordTok{c}\NormalTok{(}\DecValTok{5}\NormalTok{, }\DecValTok{45}\NormalTok{), }
+    \DataTypeTok{xlab =} \StringTok{"Temps"}\NormalTok{, }\DataTypeTok{ylab =} \StringTok{"Variation de température diurne (°C)"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{myRBook_FR_files/figure-latex/unnamed-chunk-177-1.pdf}
+
+Une autre possibilité est de regrouper les données pour avoir la
+température moyenne des heures de la journée avec la fonction
+\texttt{aggregate()}.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{tempHourMean <-}\StringTok{ }\KeywordTok{aggregate}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ bdd[, }\DecValTok{3}\NormalTok{], }\DataTypeTok{by =} \KeywordTok{list}\NormalTok{(bdd[, }\DecValTok{5}\NormalTok{]), }\DataTypeTok{FUN =}\NormalTok{ mean)}
+\NormalTok{tempHourMin <-}\StringTok{ }\KeywordTok{aggregate}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ bdd[, }\DecValTok{3}\NormalTok{], }\DataTypeTok{by =} \KeywordTok{list}\NormalTok{(bdd[, }\DecValTok{5}\NormalTok{]), }\DataTypeTok{FUN =}\NormalTok{ min)}
+\NormalTok{tempHourMax <-}\StringTok{ }\KeywordTok{aggregate}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ bdd[, }\DecValTok{3}\NormalTok{], }\DataTypeTok{by =} \KeywordTok{list}\NormalTok{(bdd[, }\DecValTok{5}\NormalTok{]), }\DataTypeTok{FUN =}\NormalTok{ max)}
+\NormalTok{hours <-}\StringTok{ }\KeywordTok{seq}\NormalTok{(}\DataTypeTok{from =} \DecValTok{0}\NormalTok{, }\DataTypeTok{to =} \FloatTok{23.5}\NormalTok{, }\DataTypeTok{by =} \FloatTok{0.5}\NormalTok{)}
+\KeywordTok{plot}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ hours, }
+    \DataTypeTok{y =}\NormalTok{ tempHourMean[, }\DecValTok{2}\NormalTok{], }\DataTypeTok{type =} \StringTok{'l'}\NormalTok{, }\DataTypeTok{ylim =} \KeywordTok{c}\NormalTok{(}\OperatorTok{-}\DecValTok{15}\NormalTok{, }\DecValTok{40}\NormalTok{), }
+    \DataTypeTok{xlab =} \StringTok{""}\NormalTok{, }\DataTypeTok{ylab =} \StringTok{"Température (°C)"}\NormalTok{, }\DataTypeTok{lwd =} \DecValTok{2}\NormalTok{, }
+    \DataTypeTok{xaxt =} \StringTok{"n"}\NormalTok{, }\DataTypeTok{panel.first =}\NormalTok{ \{}
+        \KeywordTok{abline}\NormalTok{(}\DataTypeTok{v =}\NormalTok{ hours, }\DataTypeTok{col =} \StringTok{"gray"}\NormalTok{, }\DataTypeTok{lty =} \DecValTok{2}\NormalTok{)}
+        \KeywordTok{abline}\NormalTok{(}\DataTypeTok{h =} \DecValTok{0}\NormalTok{, }\DataTypeTok{lty =} \DecValTok{2}\NormalTok{)  }
+\NormalTok{    \})}
+\KeywordTok{axis}\NormalTok{(}\DataTypeTok{side =} \DecValTok{1}\NormalTok{, }\DataTypeTok{at =}\NormalTok{ hours, }\DataTypeTok{labels =}\NormalTok{ tempHourMean[, }\DecValTok{1}\NormalTok{], }\DataTypeTok{las =} \DecValTok{2}\NormalTok{)}
+\KeywordTok{points}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ hours, }\DataTypeTok{y =}\NormalTok{ tempHourMin[, }\DecValTok{2}\NormalTok{], }\DataTypeTok{type =} \StringTok{'l'}\NormalTok{, }\DataTypeTok{col =} \DecValTok{4}\NormalTok{, }\DataTypeTok{lwd =} \DecValTok{2}\NormalTok{)}
+\KeywordTok{points}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ hours, }\DataTypeTok{y =}\NormalTok{ tempHourMax[, }\DecValTok{2}\NormalTok{], }\DataTypeTok{type =} \StringTok{'l'}\NormalTok{, }\DataTypeTok{col =} \DecValTok{2}\NormalTok{, }\DataTypeTok{lwd =} \DecValTok{2}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{myRBook_FR_files/figure-latex/unnamed-chunk-178-1.pdf}
+
+Nous pouvons également calculer les températures des heures de la
+journée pour chaque mois.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{meses <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\StringTok{"Janvier"}\NormalTok{, }\StringTok{"Février"}\NormalTok{, }\StringTok{"Mars"}\NormalTok{, }\StringTok{"Avril"}\NormalTok{, }\StringTok{"Mai"}\NormalTok{, }\StringTok{"Juin"}\NormalTok{, }
+    \StringTok{"Juillet"}\NormalTok{, }\StringTok{"Août"}\NormalTok{, }\StringTok{"Septembre"}\NormalTok{, }\StringTok{"Octobre"}\NormalTok{, }\StringTok{"Novembre"}\NormalTok{, }\StringTok{"Décembre"}\NormalTok{)}
+\NormalTok{hours <-}\StringTok{ }\KeywordTok{seq}\NormalTok{(}\DataTypeTok{from =} \DecValTok{0}\NormalTok{, }\DataTypeTok{to =} \FloatTok{23.5}\NormalTok{, }\DataTypeTok{by =} \FloatTok{0.5}\NormalTok{)}
+\NormalTok{bddMonth <-}\StringTok{ }\KeywordTok{sapply}\NormalTok{(}\KeywordTok{strsplit}\NormalTok{(}\KeywordTok{as.character}\NormalTok{(bdd}\OperatorTok{$}\NormalTok{bddDay), }\DataTypeTok{split =} \StringTok{"/"}\NormalTok{), }\StringTok{"[["}\NormalTok{, }\DecValTok{1}\NormalTok{)}
+\NormalTok{tempDayEachMonth <-}\StringTok{ }\KeywordTok{lapply}\NormalTok{(}\KeywordTok{sort}\NormalTok{(}\KeywordTok{unique}\NormalTok{(bddMonth)), }\ControlFlowTok{function}\NormalTok{(myMonth)\{}
+\NormalTok{    bddX <-}\StringTok{ }\NormalTok{bdd[bddMonth }\OperatorTok{==}\StringTok{ }\NormalTok{myMonth, ]}
+\NormalTok{    tempHourMean <-}\StringTok{ }\KeywordTok{aggregate}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ bddX[, }\DecValTok{3}\NormalTok{], }\DataTypeTok{by =} \KeywordTok{list}\NormalTok{(bddX[, }\DecValTok{5}\NormalTok{]), }\DataTypeTok{FUN =}\NormalTok{ mean)}
+\NormalTok{    tempHourMin <-}\StringTok{ }\KeywordTok{aggregate}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ bddX[, }\DecValTok{3}\NormalTok{], }\DataTypeTok{by =} \KeywordTok{list}\NormalTok{(bddX[, }\DecValTok{5}\NormalTok{]), }\DataTypeTok{FUN =}\NormalTok{ min)}
+\NormalTok{    tempHourMax <-}\StringTok{ }\KeywordTok{aggregate}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ bddX[, }\DecValTok{3}\NormalTok{], }\DataTypeTok{by =} \KeywordTok{list}\NormalTok{(bddX[, }\DecValTok{5}\NormalTok{]), }\DataTypeTok{FUN =}\NormalTok{ max)}
+    \KeywordTok{return}\NormalTok{(}\KeywordTok{data.frame}\NormalTok{(tempHourMean, tempHourMin, tempHourMax))}
+\NormalTok{\})}
+
+\ControlFlowTok{for}\NormalTok{ (i }\ControlFlowTok{in} \KeywordTok{seq_along}\NormalTok{(tempDayEachMonth))\{}
+    \KeywordTok{plot}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ hours, }\DataTypeTok{y =}\NormalTok{ tempDayEachMonth[[i]][, }\DecValTok{2}\NormalTok{], }
+        \DataTypeTok{type =} \StringTok{'l'}\NormalTok{, }\DataTypeTok{ylim =} \KeywordTok{c}\NormalTok{(}\OperatorTok{-}\DecValTok{15}\NormalTok{, }\DecValTok{40}\NormalTok{), }
+        \DataTypeTok{xlab =} \StringTok{""}\NormalTok{, }\DataTypeTok{ylab =} \StringTok{"Température (°C)"}\NormalTok{, }\DataTypeTok{lwd =} \DecValTok{2}\NormalTok{, }
+        \DataTypeTok{main =}\NormalTok{ meses[i],}
+        \DataTypeTok{xaxt =} \StringTok{"n"}\NormalTok{, }\DataTypeTok{panel.first =}\NormalTok{ \{}
+            \KeywordTok{abline}\NormalTok{(}\DataTypeTok{v =}\NormalTok{ hours, }\DataTypeTok{col =} \StringTok{"gray"}\NormalTok{, }\DataTypeTok{lty =} \DecValTok{2}\NormalTok{)}
+            \KeywordTok{abline}\NormalTok{(}\DataTypeTok{h =} \DecValTok{0}\NormalTok{, }\DataTypeTok{lty =} \DecValTok{2}\NormalTok{)  }
+\NormalTok{        \})}
+    \KeywordTok{axis}\NormalTok{(}\DataTypeTok{side =} \DecValTok{1}\NormalTok{, }\DataTypeTok{at =}\NormalTok{ hours, }\DataTypeTok{labels =}\NormalTok{ tempHourMean[, }\DecValTok{1}\NormalTok{], }\DataTypeTok{las =} \DecValTok{2}\NormalTok{)}
+    \KeywordTok{points}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ hours, }\DataTypeTok{y =}\NormalTok{ tempDayEachMonth[[i]][, }\DecValTok{4}\NormalTok{], }
+        \DataTypeTok{type =} \StringTok{'l'}\NormalTok{, }\DataTypeTok{col =} \DecValTok{4}\NormalTok{, }\DataTypeTok{lwd =} \DecValTok{2}\NormalTok{)}
+    \KeywordTok{points}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ hours, }\DataTypeTok{y =}\NormalTok{ tempDayEachMonth[[i]][, }\DecValTok{6}\NormalTok{], }
+        \DataTypeTok{type =} \StringTok{'l'}\NormalTok{, }\DataTypeTok{col =} \DecValTok{2}\NormalTok{, }\DataTypeTok{lwd =} \DecValTok{2}\NormalTok{)}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{myRBook_FR_files/figure-latex/unnamed-chunk-179-1.pdf}
+\includegraphics{myRBook_FR_files/figure-latex/unnamed-chunk-179-2.pdf}
+\includegraphics{myRBook_FR_files/figure-latex/unnamed-chunk-179-3.pdf}
+\includegraphics{myRBook_FR_files/figure-latex/unnamed-chunk-179-4.pdf}
+\includegraphics{myRBook_FR_files/figure-latex/unnamed-chunk-179-5.pdf}
+\includegraphics{myRBook_FR_files/figure-latex/unnamed-chunk-179-6.pdf}
+\includegraphics{myRBook_FR_files/figure-latex/unnamed-chunk-179-7.pdf}
+\includegraphics{myRBook_FR_files/figure-latex/unnamed-chunk-179-8.pdf}
+\includegraphics{myRBook_FR_files/figure-latex/unnamed-chunk-179-9.pdf}
+\includegraphics{myRBook_FR_files/figure-latex/unnamed-chunk-179-10.pdf}
+\includegraphics{myRBook_FR_files/figure-latex/unnamed-chunk-179-11.pdf}
+\includegraphics{myRBook_FR_files/figure-latex/unnamed-chunk-179-12.pdf}
+
+Ou les regrouper dans un même graphique, ainsi que la variation diurne
+des températures pour chaque mois.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{plot}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ hours, }\DataTypeTok{y =}\NormalTok{ tempDayEachMonth[[}\DecValTok{1}\NormalTok{]][, }\DecValTok{2}\NormalTok{], }\DataTypeTok{type =} \StringTok{'n'}\NormalTok{, }\DataTypeTok{ylim =} \KeywordTok{c}\NormalTok{(}\OperatorTok{-}\DecValTok{10}\NormalTok{, }\DecValTok{35}\NormalTok{),}
+    \DataTypeTok{xlab =} \StringTok{""}\NormalTok{, }\DataTypeTok{ylab =} \StringTok{"Température moyenne (°C)"}\NormalTok{,}
+    \DataTypeTok{xaxt =} \StringTok{"n"}\NormalTok{, }
+    \DataTypeTok{panel.first =}\NormalTok{ \{}
+        \KeywordTok{abline}\NormalTok{(}\DataTypeTok{v =}\NormalTok{ hours, }\DataTypeTok{col =} \StringTok{"gray"}\NormalTok{, }\DataTypeTok{lty =} \DecValTok{2}\NormalTok{)}
+        \KeywordTok{abline}\NormalTok{(}\DataTypeTok{h =} \DecValTok{0}\NormalTok{, }\DataTypeTok{lty =} \DecValTok{2}\NormalTok{)  }
+\NormalTok{    \})}
+\KeywordTok{axis}\NormalTok{(}\DataTypeTok{side =} \DecValTok{1}\NormalTok{, }\DataTypeTok{at =}\NormalTok{ hours, }\DataTypeTok{labels =}\NormalTok{ tempHourMean[, }\DecValTok{1}\NormalTok{], }\DataTypeTok{las =} \DecValTok{2}\NormalTok{)}
+\NormalTok{myColors <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\StringTok{"#A6CEE3"}\NormalTok{, }\StringTok{"#1F78B4"}\NormalTok{, }\StringTok{"#B2DF8A"}\NormalTok{, }\StringTok{"#33A02C"}\NormalTok{, }\StringTok{"#FB9A99"}\NormalTok{, }
+    \StringTok{"#E31A1C"}\NormalTok{, }\StringTok{"#FDBF6F"}\NormalTok{, }\StringTok{"#FF7F00"}\NormalTok{, }\StringTok{"#CAB2D6"}\NormalTok{, }\StringTok{"#6A3D9A"}\NormalTok{, }\StringTok{"#FFFF99"}\NormalTok{, }
+    \StringTok{"#B15928"}\NormalTok{)}
+\ControlFlowTok{for}\NormalTok{ (i }\ControlFlowTok{in} \KeywordTok{seq_along}\NormalTok{(tempDayEachMonth))\{}
+    \KeywordTok{points}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ hours, }
+        \DataTypeTok{y =}\NormalTok{ tempDayEachMonth[[i]][, }\DecValTok{2}\NormalTok{], }
+        \DataTypeTok{type =} \StringTok{'l'}\NormalTok{, }\DataTypeTok{col =}\NormalTok{ myColors[i], }\DataTypeTok{lwd =} \DecValTok{2}\NormalTok{)}
+\NormalTok{\}}
+\KeywordTok{legend}\NormalTok{(}\StringTok{"topright"}\NormalTok{, }\DataTypeTok{ncol =} \DecValTok{4}\NormalTok{, }\DataTypeTok{legend =}\NormalTok{ meses, }\DataTypeTok{col =}\NormalTok{ myColors, }
+    \DataTypeTok{lty =} \DecValTok{1}\NormalTok{, }\DataTypeTok{lwd =} \DecValTok{2}\NormalTok{, }\DataTypeTok{cex =} \FloatTok{0.8}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{myRBook_FR_files/figure-latex/unnamed-chunk-180-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{plot}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ hours, }\DataTypeTok{y =}\NormalTok{ tempDayEachMonth[[}\DecValTok{1}\NormalTok{]][, }\DecValTok{2}\NormalTok{], }\DataTypeTok{type =} \StringTok{'n'}\NormalTok{, }\DataTypeTok{ylim =} \KeywordTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{, }\DecValTok{30}\NormalTok{),}
+    \DataTypeTok{xlab =} \StringTok{""}\NormalTok{, }\DataTypeTok{ylab =} \StringTok{"Variation de température diurne (°C)"}\NormalTok{,}
+    \DataTypeTok{xaxt =} \StringTok{"n"}\NormalTok{, }
+    \DataTypeTok{panel.first =}\NormalTok{ \{}
+        \KeywordTok{abline}\NormalTok{(}\DataTypeTok{v =}\NormalTok{ hours, }\DataTypeTok{col =} \StringTok{"gray"}\NormalTok{, }\DataTypeTok{lty =} \DecValTok{2}\NormalTok{)}
+        \KeywordTok{abline}\NormalTok{(}\DataTypeTok{h =} \DecValTok{0}\NormalTok{, }\DataTypeTok{lty =} \DecValTok{2}\NormalTok{)  }
+\NormalTok{    \})}
+\KeywordTok{axis}\NormalTok{(}\DataTypeTok{side =} \DecValTok{1}\NormalTok{, }\DataTypeTok{at =}\NormalTok{ hours, }\DataTypeTok{labels =}\NormalTok{ tempHourMean[, }\DecValTok{1}\NormalTok{], }\DataTypeTok{las =} \DecValTok{2}\NormalTok{)}
+\NormalTok{myColors <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\StringTok{"#A6CEE3"}\NormalTok{, }\StringTok{"#1F78B4"}\NormalTok{, }\StringTok{"#B2DF8A"}\NormalTok{, }\StringTok{"#33A02C"}\NormalTok{, }\StringTok{"#FB9A99"}\NormalTok{, }
+    \StringTok{"#E31A1C"}\NormalTok{, }\StringTok{"#FDBF6F"}\NormalTok{, }\StringTok{"#FF7F00"}\NormalTok{, }\StringTok{"#CAB2D6"}\NormalTok{, }\StringTok{"#6A3D9A"}\NormalTok{, }\StringTok{"#FFFF99"}\NormalTok{, }
+    \StringTok{"#B15928"}\NormalTok{)}
+\ControlFlowTok{for}\NormalTok{ (i }\ControlFlowTok{in} \KeywordTok{seq_along}\NormalTok{(tempDayEachMonth))\{}
+    \KeywordTok{points}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ hours, }
+        \DataTypeTok{y =}\NormalTok{ tempDayEachMonth[[i]][, }\DecValTok{6}\NormalTok{] }\OperatorTok{-}\StringTok{ }\NormalTok{tempDayEachMonth[[i]][, }\DecValTok{4}\NormalTok{], }
+        \DataTypeTok{type =} \StringTok{'l'}\NormalTok{, }\DataTypeTok{col =}\NormalTok{ myColors[i], }\DataTypeTok{lwd =} \DecValTok{2}\NormalTok{)}
+\NormalTok{\}}
+\KeywordTok{legend}\NormalTok{(}\StringTok{"topright"}\NormalTok{, }\DataTypeTok{ncol =} \DecValTok{4}\NormalTok{, }\DataTypeTok{legend =}\NormalTok{ meses, }\DataTypeTok{col =}\NormalTok{ myColors, }
+    \DataTypeTok{lty =} \DecValTok{1}\NormalTok{, }\DataTypeTok{lwd =} \DecValTok{2}\NormalTok{, }\DataTypeTok{cex =} \FloatTok{0.8}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{myRBook_FR_files/figure-latex/unnamed-chunk-180-2.pdf}
 
 \hypertarget{studyCase002}{\chapter{Obtenir le numéro WOS d'un article
 scientifique à partir de son numéro DOI}\label{studyCase002}}
