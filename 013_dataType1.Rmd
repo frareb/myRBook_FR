@@ -47,6 +47,8 @@ typeof(sumIntInt)
 
 Pour résumer, le type `numeric` contient deux sous-types, les types `integer` pour les nombres entiers et le type `double` pour les nombres à virgule. Par défaut R attribue le type `double` aux nombres.
 
+Deux nombres particuliers doivent être considérés. `Inf` est un nombre de type `double`. Il désigne un nombre infini. Par exemple, `1/0` retourne `Inf` et aucun nombre ne peut être plus grand que `Inf`. `NaN` est une valeur qui signifie `Not a Number` : par exemple `0/0` retourne `NaN`. Cela peut être testé par `is.nan(0/0)`. Attention à ne pas confondre avec NA qui désigne une donnée absente (voir plus loin).
+
 Attention, il y a un piège à l'utilisation de la fonction `is.integer()`. Elle ne nous dit pas si le nombre est un entier mais si il est du type `integer`. En effet, on peut très bien stocker un nombre entier dans une variable de type `double`.
 
 Les nombres stockés dans une variable `integer` sont codés sur 32 bits et donc peuvent prendre des valeurs comprises entre 0 et 2^32-1=4294967295. Il existe une autre façon d'indiquer à R qu'un nombre est un entier, en utilisant le suffixe L. Par exemple, `5L` est la même chose que `as.integer(5)`. L'origine de ce suffixe `L` date d'une époque où les ordinateurs utilisaient des mots de 16 bits et 32 bits étaient bien un type `Long`. Maintenant les ordinateurs utilisent des mots de 64 bits et 32 bits est plutôt court !
