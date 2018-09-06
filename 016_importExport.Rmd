@@ -1,15 +1,169 @@
 # Importer et exporter des données {#import}
 
-## Lire des données depuis un fichier tableur
+## Lire des données depuis un fichier {#l016read}
 
-XXX
+### Transformer ces données au format TXT ou CSV {#l016transfo}
 
-## Sauver des données pour R
+Il existe de nombreuses façons de lire le contenu d'un fichier avec R. Cependant nous nous focaliserons sur la lecture des fichiers TXT et CSV qui sont les plus communs et les plus fiables. A de rares exceptions près tous les fichiers de données peuvent très facilement être transformés aux formats TXT et CSV. C'est la pratique à préférer pour une analyse des données avec R.
+
+Concrètement, depuis Microsoft Excel, il suffit d'aller dans *Fichier*, puis *Enregistrer sous*, de sélectionner l'endroit où nous souhaitons sauvegarder notre fichier (cf. chapitre suivant sur la gestion d'un projet R) puis dans la fenêtre de sauvegarde changer le *Type* depuis XLSX vers CSV. Depuis LibreOffice Calc, il suffit d'aller dans *Fichier*, puis *Enregistrer sous*, puis de sélectionner le *Type* CSV. Il est important de savoir que le fichier CSV ne supporte pas la mise en forme des fichiers tableurs avec par exemple des couleurs, et que le fichier CSV ne contient qu'un seul onglet. Si nous avons un fichier tableur avec plusieurs onglets, il faudra sauvegarder autant de fichiers CSV que d'onglets.
+
+CSV vient de l'anglais *Comma-separated values* (https://fr.wikipedia.org/wiki/Comma-separated_values https://es.wikipedia.org/wiki/Valores_separados_por_comas), et représente des données de tableur au format texte séparées par des virgules (ou des points virgules suivant les pays). Un fichier CSV pourra toujours s'ouvrir avec notre logiciel de tableur, mais aussi avec un simple éditeur de texte comme le bloc notes de Windows ou encore avec Notepad++. Il est d'ailleurs préférables d'ouvrir les fichiers CSV avec un éditeur de texte car les tableurs ont la facheuse tendance à vouloir modifier automatiquement les fichiers CSV et cela a pour conséquence de les rendre difficiles à lire. 
+
+Une fois le fichier TXT ou CSV obtenu, la lecture du contenu depuis R est facile, même si elle demande un peu de rigueur.
+
+### Lire un fichier CSV  {#l016readCSV}
+
+C'est la source d'erreur la plus commune chez les débutants en R. C'est pourquoi il est important de lire et de relire ce chapitre et le suivant  sur la gestion d'un projet R avec beaucoup d'attention.
+
+Commençons par préciser que R travaille dans un répertoire défini par défaut. Les utilisateurs de Rstudio ou autre [environnement de développement](#IDE) spécialisés pour R seront tenter d'utiliser les options disponibles via les menus pour définir leur répertoire de travail ou pour charger le contenu d'un fichier. Dans ce livre ces techniques ne seront jamais utilisées car elles ne permettent pas la reproductibilité des résultats. Un script doit toujours pouvoir fonctionner pour tous les systèmes d'exploitation et quel que soit [l'environnement de développement](#IDE) de l'utilisateur. 
+
+Le répertoire de travail par défaut peut être obtenu avec la fonction [`getwd()`](#l015getwd) et spécifier avec la fonction [`setwd()`](#l015setwd)
+
+```{r}
+oldWd <- getwd()
+print(oldWd)
+setwd("..")
+getwd()
+setwd(oldWd)
+getwd()
+```
+
+Nous avons donc quatre options : 
+
+* nous pouvons lire le contenu d'un fichier en indiquant à R son chemin complet (à proscrire pour la reproductibilité des résultats)
+* nous pouvons lire le contenu d'un fichier en indiquant à R son chemin relatif
+* nous pouvons déplacer le fichier dans le répertoire de travail de R
+* nous pouvons modifier le répertoire de travail de R pour qu'il corresponde à l'emplacement de notre fichier (avec son chemin relatif)
+
+Un exemple de chemin complet serait :
+
+* `/home/myName/myFile.csv` sous un environnement UNIX
+* `C:/users/myName/myFile.csv` sous un environnement Windows (attention, sous R nous utilisons `/` et non pas `\` comme c'est le cas par défaut sous Windows)
+
+Un chemin relatif serait :
+
+* `myName/myFiles.csv`
+
+Pour naviguer dans les chemins relatifs nous pouvons utiliser `..` qui permet de remonter dans le répertoire source. Par exemple si le répertoire de travail est `myScripts` et que l'arborescence de mes fichiers est ainsi : 
+
+```{r, echo = FALSE}
+cat("-myProject
+|-myFiles
+|-|-data01.csv
+|-|-data02.csv
+|-myScripts
+|-|-myFirstScript.R")
+```
+
+Le chemin relatif vers le fichier `data01.csv` serait `../myFiles/data01.csv`
+
+Donc pour lire le contenu du fichier `data01.csv`, nous allons privilégier l'option 2 (lire le contenu d'un fichier en indiquant à R son chemin relatif) ou l'option 4 (modifier le répertoire de travail de R pour qu'il corresponde à l'emplacement de notre fichier). Dans ce dernier cas :
+
+```{r, eval = FALSE}
+myWD <- "../myFiles/"
+setwd(myWd)
+getwd() # pour verifier que nous sommes dans le bon repertoire
+list.files() # pour verifier que le fichier se trouve bien ici
+```
+
+L'erreur la plus commune :
+
+```{r, echo = FALSE}
+cat("Error in setwd(\"../myFiles/\") : 
+impossible de changer de répertoire de travail")
+```
+
+Cela veut dire que le répertoire n'existe pas (il faut vérifier que la syntaxe est correcte et que le répertoire existe bien avec ce chemin).
+
+Une fois le répertoire de travail correctement défini ou le chemin relatif vers le fichier correctement établi, nous pouvons lire le fichier avec la fonction `read.table()`. Certains utilisent la fonction `read.csv()` mais ce n'est qu'un cas particulier de la fonction `read.table()`.
+
+```{r, eval = FALSE}
+myWD <- "../myFiles/"
+setwd(myWd)
+read.table(file = "data01.csv")
+```
+
+ou alternativement :
+
+```{r, eval = FALSE}
+read.table(file = "../myFiles/data01.csv")
+```
+
+Si le chemin n'est pas correctement renseigné ou si le fichier de données n'existe pas, R renverra l'erreur suivante :
+
+```{r, echo = FALSE}
+cat("Error in file(file, \"rt\") : impossible d'ouvrir la connexion
+De plus : Warning message:
+In file(file, \"rt\") :
+  impossible d'ouvrir le fichier '../myFiles/data01.csv' : No such file or directory")
+```
+
+Si tout va bien, R affiche le contenu du fichier `data01.csv`. Attention aux utilisateurs de Windows car par défaut le nom des fichier apparaît sans leur extension... Ainsi lorsque nous navigons dans les répertoires avec l'explorateur de fichiers, il n'y a pas de fichier `data01.csv` mais uniquement un fichier `data01`. Il est indispensable de remedier à ce problème pour éviter les erreurs. Pour ce faire il suffit d'ouvrir les 'Options de l'Explorateur de fichiers' via la touche 'Windows', puis dans l'onglet 'Affichage', de vérifier que l'option 'Masquer les extensions des fichiers dont le type est connu' est bien décochée. 
+
+En consultant l'aide sur la fonction `read.table()`, nous puvons voir qu'elle possède de nombreux arguments. Les princaux sont les suivants :
+
+* `header = FALSE` : est-ce que le fichier contient des noms de colonnes ? Si oui alors il faut changer la valeur pour `header = TRUE`
+* `sep = ""` : comment sont séparées les données de la table ? Dans un fichier CSV il s'agit de la virgule ou du point virgule, donc à changer pour `sep = ","` ou `sep = ";"`
+* `dec = "."` : quel est le séparateur des nombres décimaux ? Si c'est la virgule alors il faut changer pour `dec = ","`
+
+Avec ces trois arguments la plupart des fichiers pourront être lus sans aucun problème. En cas de besoin l'aide est faite pour être consultée, et elle est très complète.
+
+La fonction `read.table()` renvoie le contenu du fichier sous forme d'une `data.frame`. Pour pouvoir utiliser le contenu du fichier nous allons donc stocker la `data.frame` dans un objet.
+
+```{r, eval = FALSE}
+myWD <- "../myFiles/"
+setwd(myWd)
+data01 <- read.table(file = "data01.csv")
+str(data01) # verifier format des donnees
+head(data01) # verifier les premieres donnees
+```
+
+[L'étude de cas sur l'analyse de données de dataloggers](#studyCase001) se base sur un fichier CSV. En voici un extrait :
+
+```{r}
+bdd <- read.table("myFiles/E05C13.csv", skip = 1, header = TRUE, 
+  sep = ",", dec = ".", stringsAsFactors = FALSE)
+colnames(bdd) <- c("id", "date", "temp")
+head(bdd)
+tail(bdd)
+str(bdd)
+```
+
+### Lire un fichier texte  {#l016readTXT}
+
+La fonction la plus simple pour lire un fichier contenant du texte est `readlines()`. Voici un exemple avec le fichier README.md de ce livre, que l'on retrouve sur GitHub.
+
+```{r}
+readmeGitHub <- "https://raw.githubusercontent.com/frareb/myRBook_FR/master/README.md"
+readLines(readmeGitHub)
+```
+
+Il existe aussi la fonction `scan()` qui va renvoyer l'ensemble des mots séparés par des espaces. Nous pouvons consulter l'aide pour plus d'information. 
+
+```{r}
+scan(readmeGitHub, what = "character")
+```
+
+## Exporter ou charger des données pour R {#l016save}
 
 save
 load
 
-## Exporter des données
+## Exporter des données {#l016write}
 
 write
-XXX
+
+# Gestion d'un projet avec R {#project}
+
+
+
+## Gestion des fichiers et du répertoire de travail
+
+
+
+## Gestion des versions de script
+
+
+
+## Gestion de la documentation
