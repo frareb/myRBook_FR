@@ -125,7 +125,7 @@
   \postauthor{\par}
       \predate{\centering\large\emph}
   \postdate{\par}
-    \date{2018-09-06}
+    \date{2018-09-07}
 
 \usepackage{booktabs}
 \usepackage{longtable}
@@ -244,22 +244,29 @@
 \chapter{Préambule}\label{preambule}
 
 Ce livre est incomplet pour le moment et vous visualisez sa version
-préliminaire. Si vous avez des commentaires, des suggestions ou si vous
-identifiez des erreurs, n'hésitez pas à m'envoyer un email
+préliminaire. De nombreux chapitres sont néanmoins déjà en ligne, alors
+n'hésitez pas à les consulter et à commencer votre formation ou votre
+perfectionnement au langage de programmation R.
+
+Si vous avez des commentaires, des suggestions ou si vous identifiez des
+erreurs, n'hésitez pas à m'envoyer un email
 (\href{mailto:francois.rebaudo@ird.fr}{\nolinkurl{francois.rebaudo@ird.fr}}),
 ou si vous connaissez GitHub sur le site du projet
-(\url{https://github.com/frareb/myRBook_FR}). Ce livre est également
-disponible en espagnol (\url{http://myrbooksp.netlify.com/}).
+(\url{https://github.com/frareb/myRBook_FR}). Ce livre est collaboratif,
+il repose sur votre participation.
+
+Ce livre est également disponible en espagnol
+(\url{http://myrbooksp.netlify.com/}).
 
 Dernières modifications:
 
-\textbf{06/09/2018}
+\textbf{07/09/2018}
 
 \begin{itemize}
 \tightlist
 \item
-  Importer et exporter des données (partie 1/3):
-  \protect\hyperlink{l016read}{Lire des données depuis un fichier}
+  nouveau chapitre \protect\hyperlink{import}{Importer et exporter des
+  données}
 \end{itemize}
 
 \textbf{30/08/2018}
@@ -346,8 +353,8 @@ utilise les icônes issues du projet Tango disponibles depuis openclipart
 (\url{https://openclipart.org/}). Ce livre a été écrit avec le package R
 bookdown (\url{https://bookdown.org/}). Le code source est disponible
 sur GitHub (\url{https://github.com/frareb/myRBook_FR}). La compilation
-utilise Travis CI (\url{https://travis-ci.org}). La version en ligne est
-hébergée et mise à jour grâce à Netlify
+en gitbook utilise Travis CI (\url{https://travis-ci.org}). La version
+en ligne est hébergée et mise à jour grâce à Netlify
 (\url{http://myrbookfr.netlify.com/}).
 
 \chapter{Licence}\label{licence}
@@ -7870,7 +7877,7 @@ le gain de temps est presque nul dans notre cas).
 
 \begin{verbatim}
 ##    user  system elapsed 
-##    0.15    0.00    0.16
+##    0.14    0.00    0.16
 \end{verbatim}
 
 \begin{Shaded}
@@ -7881,7 +7888,7 @@ le gain de temps est presque nul dans notre cas).
 
 \begin{verbatim}
 ##    user  system elapsed 
-##    0.18    0.00    0.19
+##    0.16    0.00    0.16
 \end{verbatim}
 
 Une fonction peut avoir des valeurs par défaut pour ses arguments. C'est
@@ -8050,10 +8057,9 @@ sont sur des fichiers de texte ou de tableurs.
 \hypertarget{import}{\chapter{Importer et exporter des
 données}\label{import}}
 
-\hypertarget{l016read}{\section{Lire des données depuis un
-fichier}\label{l016read}}
+\section{Lire des données depuis un fichier}\label{l016read}
 
-\subsection{Transformer ces données au format TXT ou
+\subsection{Transformer ses données au format TXT ou
 CSV}\label{l016transfo}
 
 Il existe de nombreuses façons de lire le contenu d'un fichier avec R.
@@ -8076,8 +8082,7 @@ onglet. Si nous avons un fichier tableur avec plusieurs onglets, il
 faudra sauvegarder autant de fichiers CSV que d'onglets.
 
 CSV vient de l'anglais \emph{Comma-separated values}
-(\url{https://fr.wikipedia.org/wiki/Comma-separated_values}
-\url{https://es.wikipedia.org/wiki/Valores_separados_por_comas}), et
+(\url{https://fr.wikipedia.org/wiki/Comma-separated_values}), et
 représente des données de tableur au format texte séparées par des
 virgules (ou des points virgules suivant les pays). Un fichier CSV
 pourra toujours s'ouvrir avec notre logiciel de tableur, mais aussi avec
@@ -8109,7 +8114,7 @@ développement} de l'utilisateur.
 
 Le répertoire de travail par défaut peut être obtenu avec la fonction
 \protect\hyperlink{l015getwd}{\texttt{getwd()}} et spécifier avec la
-fonction \protect\hyperlink{l015setwd}{\texttt{setwd()}}
+fonction \protect\hyperlink{l015setwd}{\texttt{setwd()}}.
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -8267,7 +8272,7 @@ l'option `Masquer les extensions des fichiers dont le type est connu'
 est bien décochée.
 
 En consultant l'aide sur la fonction \texttt{read.table()}, nous puvons
-voir qu'elle possède de nombreux arguments. Les princaux sont les
+voir qu'elle possède de nombreux arguments. Les principaux sont les
 suivants :
 
 \begin{itemize}
@@ -8395,11 +8400,136 @@ plus d'information.
 
 \section{Exporter ou charger des données pour R}\label{l016save}
 
-save load
+Il est parfois utile de pouvoir sauvegarder un objet R pour pouvoir le
+réutiliser plus tard. C'est le cas par exemple lorsque le temps de
+calcul pour arriver à un résultat est très long, ou alors lorsque l'on
+souhaite libérer de l'espace dans la RAM. Pour ce faire il existe la
+fonction \texttt{save()} qui prend comme argument principal le nom de ou
+des objets que nous voulons sauvegarder.
+
+L'objet sauvé va être stocké dans un fichier. Par convention, il est bon
+de donner le nom d'extension \texttt{.RData} aux fichiers contenant des
+objets R, de préférer un seul objet par fichier, et de donner le nom de
+l'objet comme nom de fichier.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{myObject <-}\StringTok{ }\DecValTok{5}
+\KeywordTok{ls}\NormalTok{(}\DataTypeTok{pattern =} \StringTok{"myObject"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "myObject"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{save}\NormalTok{(myObject, }\DataTypeTok{file =} \StringTok{"myFiles/myObject.RData"}\NormalTok{)}
+\KeywordTok{rm}\NormalTok{(myObject)}
+\KeywordTok{ls}\NormalTok{(}\DataTypeTok{pattern =} \StringTok{"myObject"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## character(0)
+\end{verbatim}
+
+Lors de la session de R suivante ou si nous avons à nouveau besoin de
+l'objet sauvegardé dans un fichier, nous pouvons le recharger avec la
+fonction \texttt{load()}.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{ls}\NormalTok{(}\DataTypeTok{pattern =} \StringTok{"myObject"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## character(0)
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{load}\NormalTok{(}\StringTok{"myFiles/myObject.RData"}\NormalTok{)}
+\KeywordTok{ls}\NormalTok{(}\DataTypeTok{pattern =} \StringTok{"myObject"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "myObject"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{print}\NormalTok{(myObject)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 5
+\end{verbatim}
 
 \section{Exporter des données}\label{l016write}
 
-write
+Le meilleur moyen de communiquer vos résultats ou vos données est de
+transmettre vos scripts et vos fichiers de données. Parfois ce n'est pas
+possible ou pas adapté, et il peut être utile d'exporter ses données
+dans un fichier texte ou CSV. Pour ce faire il existe la fonction
+générique \texttt{write()} et la fonction \texttt{write.table()} pour
+les \texttt{data.frame}.
+
+Par exemple nous allons créer une \texttt{data.frame} avec les numéros
+de 1 à 26 et les lettres correspondantes, puis les sauver dans un
+fichier CSV, puis lire les données contenues dans ce fichier.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{dfLetters <-}\StringTok{ }\KeywordTok{data.frame}\NormalTok{(}\DataTypeTok{num =} \DecValTok{1}\OperatorTok{:}\DecValTok{26}\NormalTok{, }\DataTypeTok{letters =}\NormalTok{ letters)}
+\KeywordTok{write.table}\NormalTok{(dfLetters, }\DataTypeTok{file =} \StringTok{"myFiles/dfLetters.csv"}\NormalTok{, }
+  \DataTypeTok{sep =} \StringTok{","}\NormalTok{, }\DataTypeTok{col.names =} \OtherTok{TRUE}\NormalTok{, }\DataTypeTok{row.names =} \OtherTok{FALSE}\NormalTok{)}
+\KeywordTok{read.table}\NormalTok{(}\DataTypeTok{file =} \StringTok{"myFiles/dfLetters.csv"}\NormalTok{, }\DataTypeTok{header =} \OtherTok{TRUE}\NormalTok{, }\DataTypeTok{sep =} \StringTok{","}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##    num letters
+## 1    1       a
+## 2    2       b
+## 3    3       c
+## 4    4       d
+## 5    5       e
+## 6    6       f
+## 7    7       g
+## 8    8       h
+## 9    9       i
+## 10  10       j
+## 11  11       k
+## 12  12       l
+## 13  13       m
+## 14  14       n
+## 15  15       o
+## 16  16       p
+## 17  17       q
+## 18  18       r
+## 19  19       s
+## 20  20       t
+## 21  21       u
+## 22  22       v
+## 23  23       w
+## 24  24       x
+## 25  25       y
+## 26  26       z
+\end{verbatim}
+
+\section{Conclusion}\label{conclusion-5}
+
+Félicitations ! Nous savons désormais comment lire des données contenues
+dans un fichier texte ou CSV, sauver et charger des données RData, et
+écrire dans un fichier. Rappelons que l'erreur la plus commune chez les
+débutants en R est la lecture des fichiers de données et l'organisation
+des fichiers. C'est pourquoi ce chapitre et le suivant sont à lire et à
+relire sans modération.
 
 \chapter{Gestion d'un projet avec R}\label{project}
 
@@ -8699,7 +8829,7 @@ spécifiant le format des dates avec la fonction \texttt{as.Date()}
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{myRBook_FR_files/figure-latex/unnamed-chunk-186-1.pdf}
+\includegraphics{myRBook_FR_files/figure-latex/unnamed-chunk-189-1.pdf}
 
 Nous pouvons simplifier les informations en ne calculant que les
 températures minimales, moyennes et maximales avec la fonction
@@ -8722,7 +8852,7 @@ températures minimales, moyennes et maximales avec la fonction
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{myRBook_FR_files/figure-latex/unnamed-chunk-187-1.pdf}
+\includegraphics{myRBook_FR_files/figure-latex/unnamed-chunk-190-1.pdf}
 
 Nous pouvons également calculer la différence entre la température
 maximale et la température minimale (variation de la température
@@ -8737,7 +8867,7 @@ diurne).
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{myRBook_FR_files/figure-latex/unnamed-chunk-188-1.pdf}
+\includegraphics{myRBook_FR_files/figure-latex/unnamed-chunk-191-1.pdf}
 
 Une autre possibilité est de regrouper les données pour avoir la
 température moyenne des heures de la journée avec la fonction
@@ -8762,7 +8892,7 @@ température moyenne des heures de la journée avec la fonction
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{myRBook_FR_files/figure-latex/unnamed-chunk-189-1.pdf}
+\includegraphics{myRBook_FR_files/figure-latex/unnamed-chunk-192-1.pdf}
 
 Nous pouvons également calculer les températures des heures de la
 journée pour chaque mois.
@@ -8799,18 +8929,18 @@ journée pour chaque mois.
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{myRBook_FR_files/figure-latex/unnamed-chunk-190-1.pdf}
-\includegraphics{myRBook_FR_files/figure-latex/unnamed-chunk-190-2.pdf}
-\includegraphics{myRBook_FR_files/figure-latex/unnamed-chunk-190-3.pdf}
-\includegraphics{myRBook_FR_files/figure-latex/unnamed-chunk-190-4.pdf}
-\includegraphics{myRBook_FR_files/figure-latex/unnamed-chunk-190-5.pdf}
-\includegraphics{myRBook_FR_files/figure-latex/unnamed-chunk-190-6.pdf}
-\includegraphics{myRBook_FR_files/figure-latex/unnamed-chunk-190-7.pdf}
-\includegraphics{myRBook_FR_files/figure-latex/unnamed-chunk-190-8.pdf}
-\includegraphics{myRBook_FR_files/figure-latex/unnamed-chunk-190-9.pdf}
-\includegraphics{myRBook_FR_files/figure-latex/unnamed-chunk-190-10.pdf}
-\includegraphics{myRBook_FR_files/figure-latex/unnamed-chunk-190-11.pdf}
-\includegraphics{myRBook_FR_files/figure-latex/unnamed-chunk-190-12.pdf}
+\includegraphics{myRBook_FR_files/figure-latex/unnamed-chunk-193-1.pdf}
+\includegraphics{myRBook_FR_files/figure-latex/unnamed-chunk-193-2.pdf}
+\includegraphics{myRBook_FR_files/figure-latex/unnamed-chunk-193-3.pdf}
+\includegraphics{myRBook_FR_files/figure-latex/unnamed-chunk-193-4.pdf}
+\includegraphics{myRBook_FR_files/figure-latex/unnamed-chunk-193-5.pdf}
+\includegraphics{myRBook_FR_files/figure-latex/unnamed-chunk-193-6.pdf}
+\includegraphics{myRBook_FR_files/figure-latex/unnamed-chunk-193-7.pdf}
+\includegraphics{myRBook_FR_files/figure-latex/unnamed-chunk-193-8.pdf}
+\includegraphics{myRBook_FR_files/figure-latex/unnamed-chunk-193-9.pdf}
+\includegraphics{myRBook_FR_files/figure-latex/unnamed-chunk-193-10.pdf}
+\includegraphics{myRBook_FR_files/figure-latex/unnamed-chunk-193-11.pdf}
+\includegraphics{myRBook_FR_files/figure-latex/unnamed-chunk-193-12.pdf}
 
 Ou les regrouper dans un même graphique, ainsi que la variation diurne
 des températures pour chaque mois.
@@ -8838,7 +8968,7 @@ des températures pour chaque mois.
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{myRBook_FR_files/figure-latex/unnamed-chunk-191-1.pdf}
+\includegraphics{myRBook_FR_files/figure-latex/unnamed-chunk-194-1.pdf}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -8863,7 +8993,7 @@ des températures pour chaque mois.
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{myRBook_FR_files/figure-latex/unnamed-chunk-191-2.pdf}
+\includegraphics{myRBook_FR_files/figure-latex/unnamed-chunk-194-2.pdf}
 
 \hypertarget{studyCase002}{\chapter{Obtenir le numéro WOS d'un article
 scientifique à partir de son numéro DOI}\label{studyCase002}}
