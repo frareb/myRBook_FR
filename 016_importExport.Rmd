@@ -147,12 +147,43 @@ scan(readmeGitHub, what = "character")
 
 ## Exporter ou charger des données pour R {#l016save}
 
-save
-load
+Il est parfois utile de pouvoir sauvegarder un objet R pour pouvoir le réutiliser plus tard. C'est le cas par exemple lorsque le temps de calcul pour arriver à un résultat est très long, ou alors lorsque l'on souhaite libérer de l'espace dans la RAM. Pour ce faire il existe la fonction `save()` qui prend comme argument principal le nom de ou des objets que nous voulons sauvegarder.
+
+L'objet sauvé va être stocké dans un fichier. Par convention, il est bon de donner le nom d'extension `.RData` aux fichiers contenant des objets R, de préférer un seul objet par fichier, et de donner le nom de l'objet comme nom de fichier. 
+
+```{r}
+myObject <- 5
+ls(pattern = "myObject")
+save(myObject, file = "myFiles/myObject.RData")
+rm(myObject)
+ls(pattern = "myObject")
+```
+
+Lors de la session de R suivante ou si nous avons à nouveau besoin de l'objet sauvegardé dans un fichier, nous pouvons le recharger avec la fonction `load()`.
+
+```{r}
+ls(pattern = "myObject")
+load("myFiles/myObject.RData")
+ls(pattern = "myObject")
+print(myObject)
+```
 
 ## Exporter des données {#l016write}
 
-write
+Le meilleur moyen de communiquer vos résultats ou vos données est de transmettre vos scripts et vos fichiers de données. Parfois ce n'est pas possible ou pas adapté, et il peut être utile d'exporter ses données dans un fichier texte ou CSV. Pour ce faire il existe la fonction générique `write()` et la fonction `write.table()` pour les `data.frame`.
+
+Par exemple nous allons créer une `data.frame` avec les numéros de 1 à 26 et les lettres correspondantes, puis les sauver dans un fichier CSV, puis lire les données contenues dans ce fichier.
+
+```{r}
+dfLetters <- data.frame(num = 1:26, letters = letters)
+write.table(dfLetters, file = "myFiles/dfLetters.csv", 
+  sep = ",", col.names = TRUE, row.names = FALSE)
+read.table(file = "myFiles/dfLetters.csv", header = TRUE, sep = ",")
+```
+
+## Conclusion
+
+Félicitations ! Nous savons désormais comment lire des données contenues dans un fichier texte ou CSV, sauver et charger des données RData, et écrire dans un fichier. Rappelons que l'erreur la plus commune chez les débutants en R est la lecture des fichiers de données et l'organisation des fichiers. C'est pourquoi ce chapitre et le suivant sont à lire et à relire sans modération.
 
 # Gestion d'un projet avec R {#project}
 
