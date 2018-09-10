@@ -15,22 +15,9 @@ cover-image: "myFigures/cover.png"
 
 # Préambule
 
-Ce livre est incomplet pour le moment et vous visualisez sa version préliminaire. De nombreux chapitres sont néanmoins déjà en ligne, alors n'hésitez pas à les consulter et à commencer votre formation ou votre perfectionnement au langage de programmation R.
-
-Si vous avez des commentaires, des suggestions ou si vous identifiez des erreurs, n'hésitez pas à m'envoyer un email (francois.rebaudo@ird.fr), ou si vous connaissez GitHub sur le site du projet (https://github.com/frareb/myRBook_FR). Ce livre est collaboratif, il repose sur votre participation. 
-
-Ce livre est également disponible en espagnol (http://myrbooksp.netlify.com/). 
+Ce livre est incomplet pour le moment et vous visualisez sa version préliminaire. Si vous avez des commentaires, des suggestions ou si vous identifiez des erreurs, n'hésitez pas à m'envoyer un email (francois.rebaudo@ird.fr), ou si vous connaissez GitHub sur le site du projet (https://github.com/frareb/myRBook_FR). Ce livre est également disponible en espagnol (http://myrbooksp.netlify.com/). 
 
 Dernières modifications:
-
-**07/09/2018**
-
-* nouveau chapitre [Importer et exporter des données](#import)
-
-**30/08/2018**
-
-* Modifications de Marc G. ([étude de cas](#studyCase002) ; [types de données](#dataType1))
-* nouvelle étude de cas : [analyse des données de datalogger de température](#studyCase001)
 
 **24/08/2018**
 
@@ -63,8 +50,7 @@ Je remercie tous les contributeurs qui ont participé à améliorer ce livre par
 contrib <- unname(t(data.frame(
   c("Camila", "Benavides Frias", "Bolivia"), 
   c("Estefania", "Quenta Herrera",  "Bolivia"), 
-  c("Susi", "Loza Herrera", "Bolivia"),
-  c("Marc", "Girondot", "France ; UMR 8079 ESE")
+  c("Susi", "Loza Herrera", "Bolivia")
 )))
 contrib <- contrib[order(contrib[, 2]),]
 msg <- "Contributeurs :\r"
@@ -74,4 +60,4 @@ for(i in seq_along(contrib[, 2])){
 for(i in msg){cat(i, sep = "")}
 ```
 
-Les versions gitbook, html et epub de ce livre utilisent les icônes open source de Font Awesome (https://fontawesome.com). La version PDF utilise les icônes issues du projet Tango disponibles depuis openclipart (https://openclipart.org/). Ce livre a été écrit avec le package R bookdown (https://bookdown.org/). Le code source est disponible sur GitHub (https://github.com/frareb/myRBook_FR). La compilation en gitbook utilise Travis CI (https://travis-ci.org). La version en ligne est hébergée et mise à jour grâce à Netlify (http://myrbookfr.netlify.com/).
+Les versions gitbook, html et epub de ce livre utilisent les icônes open source de Font Awesome (https://fontawesome.com). La version PDF utilise les icônes issues du projet Tango disponibles depuis openclipart (https://openclipart.org/). Ce livre a été écrit avec le package R bookdown (https://bookdown.org/). Le code source est disponible sur GitHub (https://github.com/frareb/myRBook_FR). La compilation utilise Travis CI (https://travis-ci.org). La version en ligne est hébergée et mise à jour grâce à Netlify (http://myrbookfr.netlify.com/).

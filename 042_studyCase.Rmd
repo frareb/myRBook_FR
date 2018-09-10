@@ -89,7 +89,7 @@ for(i in seq_along(myDOIs)){
   urlWOS <- r[[1]]
   tryExtract <- ""
   try(tryExtract <- substr(x = urlWOS, start = 117, stop = 131), silent = TRUE)
-  if(!grepl(pattern = '^[0-9]*$', x = tryExtract)){tryExtract <- ""}
+  if(!grepl(pattern = '^([0-9]*)$', x = tryExtract)){tryExtract <- ""}
 }
 ```
 
@@ -107,7 +107,7 @@ for(i in seq_along(myDOIs)){
   urlWOS <- r[[1]]
   tryExtract <- ""
   try(tryExtract <- substr(x = urlWOS, start = 117, stop = 131), silent = TRUE)
-  if(!grepl(pattern = '^[0-9]*$', x = tryExtract)){tryExtract <- ""}
+  if(!grepl(pattern = '^([0-9]*)$', x = tryExtract)){tryExtract <- ""}
   vecWOS <- append(vecWOS, tryExtract)
 }
 ```
@@ -155,7 +155,7 @@ for(i in seq_along(myDOIs)){
   urlWOS <- r[[1]]
   tryExtract <- ""
   try(tryExtract <- substr(x = urlWOS, start = 117, stop = 131), silent = TRUE)
-  if(!grepl(pattern = '^[0-9]*$', x = tryExtract)){tryExtract <- ""}
+  if(!grepl(pattern = '^([0-9]*)$', x = tryExtract)){tryExtract <- ""}
   vecWOS <- append(vecWOS, tryExtract)
 }
 
@@ -163,17 +163,11 @@ dfDOIWOS <- data.frame(DOI = myDOIs, WOS = vecWOS)
 write.csv(dfDOIWOS, file = "dfDOIWOS.csv", row.names = FALSE)
 ```
 
-La boucle `for()` pourrait être remplacée par une boucle `sapply()` pour gagner en temps d'exécution. Un gain serait également possible en effectuant une parallélisation sur cette boucle. Pour information, voici un exemple de temps d'exécution renvoyé par la fonction `system.time()` et `microbenchmark::microbenchmark()` : 
+La boucle `for()` pourrait être remplacée par une boucle `sapply()`, ou pour gagner en temps d'exécution par une parallélisation. Voici un exemple de temps d'exécution renvoyé par la fonction `system.time()` : 
 
 ```{r eval = FALSE}
-# system.time()
 #   user  system elapsed
 #   0.10    0.01   35.00
-
-# microbenchmark()
-# Unit: seconds
-#     expr      min       lq     mean   median       uq      max neval
-#  myFun() 36.58966 36.58966 36.58966 36.58966 36.58966 36.58966     1
 ```
 
 Nous venons de faire un script qui permet à partir d'une liste de numéros DOI d'obtenir automatiquement les numéros WOS.
