@@ -32,8 +32,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-<link rel="prev" href="graph1.html">
-<link rel="next" href="graph3.html">
+<link rel="prev" href="import.html">
+<link rel="next" href="project.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -303,16 +303,159 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="graph2" class="section level1">
-<h1><span class="header-section-number"> 15</span> La gestion des couleurs</h1>
-<div id="colors" class="section level2">
-<h2><span class="header-section-number">15.1</span> colors()</h2>
+<div id="algo" class="section level1">
+<h1><span class="header-section-number"> 11</span> Algorithmique</h1>
+<div id="l17if" class="section level2">
+<h2><span class="header-section-number">11.1</span> Tests logiques avec <code>if</code></h2>
+<p>Si nous voulons effectuer une opération différente en fonction d’une condition, nous pouvons mettre en place un test logique du type <strong>SI</strong> <em>ceci</em> <strong>ALORS</strong> <em>faire cela</em> <strong>SINON</strong> <em>faire cela</em>. Avec R cela va se traduire par la fonction <code>if(cond) cons.expr else alt.expr</code> comme indiqué dans l’aide de la fonction.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">myVar &lt;-<span class="st"> </span><span class="dv">2</span>
+<span class="cf">if</span>(myVar <span class="op">&lt;</span><span class="st"> </span><span class="dv">3</span>) <span class="kw">print</span>(<span class="st">&quot;myVar &lt; 3&quot;</span>)</code></pre></div>
+<pre><code>## [1] &quot;myVar &lt; 3&quot;</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="cf">if</span>(myVar <span class="op">&lt;</span><span class="st"> </span><span class="dv">3</span>) <span class="kw">print</span>(<span class="st">&quot;myVar &lt; 3&quot;</span>) <span class="cf">else</span> <span class="kw">print</span>(<span class="st">&quot;myVar &gt; 3&quot;</span>)</code></pre></div>
+<pre><code>## [1] &quot;myVar &lt; 3&quot;</code></pre>
+<p>Lorsque il y a plusieurs lignes de codes à exécuter en fonction du test logique, ou simplement pour rendre le code plus facile à lire, nous allons utiliser plusieurs lignes avec les acolades <code>{}</code> et en utilisant l’indentation.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">myVar &lt;-<span class="st"> </span><span class="dv">2</span>
+myResult &lt;-<span class="st"> </span><span class="dv">0</span>
+<span class="cf">if</span>(myVar <span class="op">&lt;</span><span class="st"> </span><span class="dv">3</span>){
+  <span class="kw">print</span>(<span class="st">&quot;myVar &lt; 3&quot;</span>)
+  myResult &lt;-<span class="st"> </span>myVar <span class="op">+</span><span class="st"> </span><span class="dv">10</span>
+} <span class="cf">else</span> {
+  <span class="kw">print</span>(<span class="st">&quot;myVar &gt; 3&quot;</span>)
+  myResult &lt;-<span class="st"> </span>myVar <span class="op">-</span><span class="st"> </span><span class="dv">10</span>
+}</code></pre></div>
+<pre><code>## [1] &quot;myVar &lt; 3&quot;</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">print</span>(myResult)</code></pre></div>
+<pre><code>## [1] 12</code></pre>
+<p>Dans cet exemple nous définissons une variable <code>myVar</code>. Si cette variable est inférieure à 3 alors la variable <code>myResult</code> prend comme valeur <code>myVar + 10</code>, et dans le cas contraire <code>myResult</code> prend comme valeur <code>myVar - 10</code>.</p>
+<p>Nous avions déjà vu l’utilisation du test logique <code>if</code> dans le <a href="fonctions.html#l015function">chapitre sur les fonctions</a>. Nous avions alors testé si la variable entrée comme argument dans notre fonction était bien de type <code>character</code>.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">myVar &lt;-<span class="st"> &quot;qwerty&quot;</span>
+<span class="cf">if</span>(<span class="kw">is.character</span>(myVar)){
+  <span class="kw">print</span>(<span class="st">&quot;ok&quot;</span>)
+} <span class="cf">else</span> {
+  <span class="kw">print</span>(<span class="st">&quot;error&quot;</span>)
+}</code></pre></div>
+<pre><code>## [1] &quot;ok&quot;</code></pre>
+<p>Nous pouvons aussi imbriqués les tests logiques les uns dans les autres.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">myVar &lt;-<span class="st"> </span><span class="ot">TRUE</span>
+<span class="cf">if</span>(<span class="kw">is.character</span>(myVar)){
+  <span class="kw">print</span>(<span class="st">&quot;myVar: character&quot;</span>)
+} <span class="cf">else</span> {
+  <span class="cf">if</span>(<span class="kw">is.numeric</span>(myVar)){
+    <span class="kw">print</span>(<span class="st">&quot;myVar: numeric&quot;</span>)
+  } <span class="cf">else</span> {
+    <span class="cf">if</span>(<span class="kw">is.logical</span>(myVar)){
+      <span class="kw">print</span>(<span class="st">&quot;myVar: logical&quot;</span>)
+    } <span class="cf">else</span> {
+      <span class="kw">print</span>(<span class="st">&quot;myVar: ...&quot;</span>)
+    }
+  }
+}</code></pre></div>
+<pre><code>## [1] &quot;myVar: logical&quot;</code></pre>
+<p>Il est aussi possible de stipuler plusiers conditions, comme nous l’avons vu lors du chapitre sur les <a href="premiersPas.html#l011opcomp">opérateurs de comparaison</a>.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">myVar &lt;-<span class="st"> </span><span class="dv">2</span>
+<span class="cf">if</span>(myVar <span class="op">&gt;</span><span class="st"> </span><span class="dv">1</span> <span class="op">&amp;</span><span class="st"> </span>myVar <span class="op">&lt;</span><span class="st"> </span><span class="dv">50</span>){
+  <span class="kw">print</span>(<span class="st">&quot;ok&quot;</span>)
+}</code></pre></div>
+<pre><code>## [1] &quot;ok&quot;</code></pre>
+<p>Dans cet exemple <code>myVar</code> est au format <code>numeric</code> donc la première condition (<code>&gt;1</code>), et la seconde condition (<code>&lt;50</code>) sont toutes les deux vérifiables. Par contre si nous affectons une variable de type <code>character</code> à <code>myVar</code> alors R va transformer 0 et 10 en objets de type <code>character</code> et tester si <code>myVar &gt; &quot;1&quot;</code> puis si <code>myVar &lt; &quot;50&quot;</code> en se basant sur un tri par ordre alphabétique. Dans l’exemple suivant <code>&quot;azerty&quot;</code> n’est pas situé par ordre alphabétique entre <code>&quot;1&quot;</code> et <code>&quot;50&quot;</code>, par contre c’est le cas de <code>&quot;2azerty&quot;</code>.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">myVar &lt;-<span class="st"> &quot;azerty&quot;</span>
+limInit &lt;-<span class="st"> </span><span class="dv">1</span>
+limEnd &lt;-<span class="st"> </span><span class="dv">50</span>
+<span class="cf">if</span>(myVar <span class="op">&gt;</span><span class="st"> </span>limInit <span class="op">&amp;</span><span class="st"> </span>myVar <span class="op">&lt;</span><span class="st"> </span>limEnd){
+  <span class="kw">print</span>(<span class="kw">paste0</span>(myVar, <span class="st">&quot; is between &quot;</span>, limInit, <span class="st">&quot; and &quot;</span>, limEnd, <span class="st">&quot;.&quot;</span>))
+} <span class="cf">else</span> {
+  <span class="kw">print</span>(<span class="kw">paste0</span>(myVar, <span class="st">&quot; not between &quot;</span>, limInit, <span class="st">&quot; and &quot;</span>, limEnd, <span class="st">&quot;.&quot;</span>))
+}</code></pre></div>
+<pre><code>## [1] &quot;azerty not between 1 and 50.&quot;</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">myVar &lt;-<span class="st"> &quot;2azerty&quot;</span>
+<span class="cf">if</span>(myVar <span class="op">&gt;</span><span class="st"> </span>limInit <span class="op">&amp;</span><span class="st"> </span>myVar <span class="op">&lt;</span><span class="st"> </span>limEnd){
+  <span class="kw">print</span>(<span class="kw">paste0</span>(myVar, <span class="st">&quot; is between &quot;</span>, limInit, <span class="st">&quot; and &quot;</span>, limEnd, <span class="st">&quot;.&quot;</span>))
+} <span class="cf">else</span> {
+  <span class="kw">print</span>(<span class="kw">paste0</span>(myVar, <span class="st">&quot; not between &quot;</span>, limInit, <span class="st">&quot; and &quot;</span>, limEnd, <span class="st">&quot;.&quot;</span>))
+}</code></pre></div>
+<pre><code>## [1] &quot;2azerty is between 1 and 50.&quot;</code></pre>
+<p>Donc ce que nous voudirons faire est de tester si <code>myVar</code> est bien au format <code>numeric</code> puis uniquement si c’est le cas de tester les conditions précédentes.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">myVar &lt;-<span class="st"> &quot;2azerty&quot;</span>
+<span class="cf">if</span>(<span class="kw">is.numeric</span>(myVar)){
+  <span class="cf">if</span>(myVar <span class="op">&gt;</span><span class="st"> </span>limInit <span class="op">&amp;</span><span class="st"> </span>myVar <span class="op">&lt;</span><span class="st"> </span>limEnd){
+    <span class="kw">print</span>(<span class="kw">paste0</span>(myVar, <span class="st">&quot; is between &quot;</span>, limInit, <span class="st">&quot; and &quot;</span>, limEnd, <span class="st">&quot;.&quot;</span>))
+  } <span class="cf">else</span> {
+    <span class="kw">print</span>(<span class="kw">paste0</span>(myVar, <span class="st">&quot; not between &quot;</span>, limInit, <span class="st">&quot; and &quot;</span>, limEnd, <span class="st">&quot;.&quot;</span>))
+  }
+} <span class="cf">else</span> {
+  <span class="kw">print</span>(<span class="kw">paste0</span>(<span class="st">&quot;Object &quot;</span>, myVar, <span class="st">&quot; is not numeric&quot;</span>))
+}</code></pre></div>
+<pre><code>## [1] &quot;Object 2azerty is not numeric&quot;</code></pre>
+<p>Parfois, nous pouvons avoir besoin de tester une première condition puis une seconde condition uniquement si la première se vérifie dans un même test. Par exemple, pour un site nous voudrions savoir si il y a une seule espèces et tester si son abondance est supérieure à 10. Imaginons un jeu de données avec sous forme de vecteur les abondances. Nous allons tester le nombre d’espèces avec la fonction <a href="fonctions.html#l015length"><code>length()</code></a>.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">mySpecies &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">15</span>, <span class="dv">14</span>, <span class="dv">20</span>, <span class="dv">12</span>)
+<span class="cf">if</span>(<span class="kw">length</span>(mySpecies) <span class="op">==</span><span class="st"> </span><span class="dv">1</span> <span class="op">&amp;</span><span class="st"> </span>mySpecies <span class="op">&gt;</span><span class="st"> </span><span class="dv">10</span>){
+  <span class="kw">print</span>(<span class="st">&quot;ok!&quot;</span>)
+}
+## Warning message:
+## In if (length(mySpecies) == 1 &amp; mySpecies &gt; 10) { :
+##   the condition has length &gt; 1 and only the first element will be used</code></pre></div>
+<p>R renvoie une erreur car il ne peut pas au sein d’un test logique avec <code>if()</code> vérifier la seconde condition. En effet, <code>mySpecies &gt; 10</code> renvoie <code>TRUE TRUE TRUE TRUE TRUE</code>. Nous pouvons séparer le code en deux conditions :</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">mySpecies &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">15</span>, <span class="dv">14</span>, <span class="dv">20</span>, <span class="dv">12</span>)
+<span class="cf">if</span>(<span class="kw">length</span>(mySpecies) <span class="op">==</span><span class="st"> </span><span class="dv">1</span>){
+  <span class="cf">if</span>(mySpecies <span class="op">&gt;</span><span class="st"> </span><span class="dv">10</span>){
+    <span class="kw">print</span>(<span class="st">&quot;ok!&quot;</span>)
+  }
+}</code></pre></div>
+<p>Une alternative plus élégante consiste à spécifier à R de vérifier la seconde condition uniquement si la première est vraie. Pour cela nous pouvons utiliser <code>&amp;&amp;</code> à la place de <code>&amp;</code>.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">mySpecies &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">15</span>, <span class="dv">14</span>, <span class="dv">20</span>, <span class="dv">12</span>)
+<span class="cf">if</span>(<span class="kw">length</span>(mySpecies) <span class="op">==</span><span class="st"> </span><span class="dv">1</span> <span class="op">&amp;&amp;</span><span class="st"> </span>mySpecies <span class="op">&gt;</span><span class="st"> </span><span class="dv">10</span>){
+  <span class="kw">print</span>(<span class="st">&quot;ok!&quot;</span>)
+}
+mySpecies &lt;-<span class="st"> </span><span class="dv">15</span>
+<span class="cf">if</span>(<span class="kw">length</span>(mySpecies) <span class="op">==</span><span class="st"> </span><span class="dv">1</span> <span class="op">&amp;&amp;</span><span class="st"> </span>mySpecies <span class="op">&gt;</span><span class="st"> </span><span class="dv">10</span>){
+  <span class="kw">print</span>(<span class="st">&quot;ok!&quot;</span>)
+}</code></pre></div>
+<pre><code>## [1] &quot;ok!&quot;</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">mySpecies &lt;-<span class="st"> </span><span class="dv">5</span>
+<span class="cf">if</span>(<span class="kw">length</span>(mySpecies) <span class="op">==</span><span class="st"> </span><span class="dv">1</span> <span class="op">&amp;&amp;</span><span class="st"> </span>mySpecies <span class="op">&gt;</span><span class="st"> </span><span class="dv">10</span>){
+  <span class="kw">print</span>(<span class="st">&quot;ok!&quot;</span>)
+}</code></pre></div>
+<p>Avec <code>&amp;</code> R va vérifier toutes les conditions, et avec <code>&amp;&amp;</code> R va prendre chaque condition l’une après l’autre et poursuivre uniquement si elle se vérifie. Cela peut paraître anecdotique mais il est bon de connaître la différence entre <code>&amp;</code> et <code>&amp;&amp;</code> car nous les rencontrons souvent dans les codes disponibles sur Internet ou dans les packages.</p>
 </div>
-<div id="rgb" class="section level2">
-<h2><span class="header-section-number">15.2</span> RGB</h2>
+<div id="l17switch" class="section level2">
+<h2><span class="header-section-number">11.2</span> Tests logiques avec <code>switch</code></h2>
+<p>XXX</p>
 </div>
-<div id="paletas" class="section level2">
-<h2><span class="header-section-number">15.3</span> Paletas</h2>
+<div id="l17for" class="section level2">
+<h2><span class="header-section-number">11.3</span> La boucle <code>for</code></h2>
+<p>for(i in seq_along(xxx)){} for(i in xxx){}</p>
+</div>
+<div id="l17while" class="section level2">
+<h2><span class="header-section-number">11.4</span> La boucle <code>while</code></h2>
+<p>XXX</p>
+</div>
+<div id="l17spe" class="section level2">
+<h2><span class="header-section-number">11.5</span> <code>repeat</code>, <code>next</code>, <code>break</code>, <code>stop</code></h2>
+<p>XXX</p>
+</div>
+<div id="l17applyfamily" class="section level2">
+<h2><span class="header-section-number">11.6</span> Les boucles de la famille <code>apply</code></h2>
+<div id="l17apply" class="section level3">
+<h3><span class="header-section-number">11.6.1</span> <code>apply</code></h3>
+<p>XXX</p>
+</div>
+<div id="l17sapply" class="section level3">
+<h3><span class="header-section-number">11.6.2</span> <code>sapply</code></h3>
+<p>XXX</p>
+</div>
+<div id="l17lapply" class="section level3">
+<h3><span class="header-section-number">11.6.3</span> <code>lapply</code></h3>
+<p>XXX</p>
+</div>
+<div id="l17tapply" class="section level3">
+<h3><span class="header-section-number">11.6.4</span> <code>tapply</code></h3>
+<p>XXX</p>
+</div>
+<div id="l17mapply" class="section level3">
+<h3><span class="header-section-number">11.6.5</span> <code>mapply</code></h3>
+<p>XXX</p>
+
+</div>
 </div>
 </div>
             </section>
@@ -320,8 +463,8 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
           </div>
         </div>
       </div>
-<a href="graph1.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="graph3.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="import.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="project.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -351,7 +494,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/frareb/myRBook_FR/edit/master/021_graphiques.Rmd",
+"link": "https://github.com/frareb/myRBook_FR/edit/master/017_boucles.Rmd",
 "text": "Edit"
 },
 "download": ["myRBook_FR.pdf", "myRBook_FR.epub"],

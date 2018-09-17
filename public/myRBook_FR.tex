@@ -125,7 +125,7 @@
   \postauthor{\par}
       \predate{\centering\large\emph}
   \postdate{\par}
-    \date{2018-09-10}
+    \date{2018-09-17}
 
 \usepackage{booktabs}
 \usepackage{longtable}
@@ -273,6 +273,15 @@ Ce livre est également disponible en espagnol
 (\url{http://myrbooksp.netlify.com/}).
 
 Dernières modifications:
+
+\textbf{17/09/2018}
+
+\begin{itemize}
+\tightlist
+\item
+  nouveau chapitre sur \protect\hyperlink{algo}{l'algorithmique avec R}
+  (1/6)
+\end{itemize}
 
 \textbf{10/09/2018}
 
@@ -7948,7 +7957,7 @@ le gain de temps est presque nul dans notre cas).
 
 \begin{verbatim}
 ##    user  system elapsed 
-##    0.09    0.00    0.09
+##    0.11    0.00    0.10
 \end{verbatim}
 
 \begin{Shaded}
@@ -7959,7 +7968,7 @@ le gain de temps est presque nul dans notre cas).
 
 \begin{verbatim}
 ##    user  system elapsed 
-##    0.11    0.00    0.11
+##    0.13    0.00    0.13
 \end{verbatim}
 
 Une fonction peut avoir des valeurs par défaut pour ses arguments. C'est
@@ -8602,57 +8611,319 @@ débutants en R est la lecture des fichiers de données et l'organisation
 des fichiers. C'est pourquoi ce chapitre est à lire et à relire sans
 modération.
 
-\chapter{Les boucles}\label{loops}
+\hypertarget{algo}{\chapter{Algorithmique}\label{algo}}
 
-\section{Pourquoi faire des boucles}\label{pourquoi-faire-des-boucles}
+\section{\texorpdfstring{Tests logiques avec
+\texttt{if}}{Tests logiques avec if}}\label{l17if}
 
-XXX un peu d'algo
+Si nous voulons effectuer une opération différente en fonction d'une
+condition, nous pouvons mettre en place un test logique du type
+\textbf{SI} \emph{ceci} \textbf{ALORS} \emph{faire cela} \textbf{SINON}
+\emph{faire cela}. Avec R cela va se traduire par la fonction
+\texttt{if(cond)\ cons.expr\ else\ alt.expr} comme indiqué dans l'aide
+de la fonction.
 
-\section{\texorpdfstring{La boucle
-\texttt{if}}{La boucle if}}\label{la-boucle-if}
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{myVar <-}\StringTok{ }\DecValTok{2}
+\ControlFlowTok{if}\NormalTok{(myVar }\OperatorTok{<}\StringTok{ }\DecValTok{3}\NormalTok{) }\KeywordTok{print}\NormalTok{(}\StringTok{"myVar < 3"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "myVar < 3"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ControlFlowTok{if}\NormalTok{(myVar }\OperatorTok{<}\StringTok{ }\DecValTok{3}\NormalTok{) }\KeywordTok{print}\NormalTok{(}\StringTok{"myVar < 3"}\NormalTok{) }\ControlFlowTok{else} \KeywordTok{print}\NormalTok{(}\StringTok{"myVar > 3"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "myVar < 3"
+\end{verbatim}
+
+Lorsque il y a plusieurs lignes de codes à exécuter en fonction du test
+logique, ou simplement pour rendre le code plus facile à lire, nous
+allons utiliser plusieurs lignes avec les acolades \texttt{\{\}} et en
+utilisant l'indentation.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{myVar <-}\StringTok{ }\DecValTok{2}
+\NormalTok{myResult <-}\StringTok{ }\DecValTok{0}
+\ControlFlowTok{if}\NormalTok{(myVar }\OperatorTok{<}\StringTok{ }\DecValTok{3}\NormalTok{)\{}
+  \KeywordTok{print}\NormalTok{(}\StringTok{"myVar < 3"}\NormalTok{)}
+\NormalTok{  myResult <-}\StringTok{ }\NormalTok{myVar }\OperatorTok{+}\StringTok{ }\DecValTok{10}
+\NormalTok{\} }\ControlFlowTok{else}\NormalTok{ \{}
+  \KeywordTok{print}\NormalTok{(}\StringTok{"myVar > 3"}\NormalTok{)}
+\NormalTok{  myResult <-}\StringTok{ }\NormalTok{myVar }\OperatorTok{-}\StringTok{ }\DecValTok{10}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "myVar < 3"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{print}\NormalTok{(myResult)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 12
+\end{verbatim}
+
+Dans cet exemple nous définissons une variable \texttt{myVar}. Si cette
+variable est inférieure à 3 alors la variable \texttt{myResult} prend
+comme valeur \texttt{myVar\ +\ 10}, et dans le cas contraire
+\texttt{myResult} prend comme valeur \texttt{myVar\ -\ 10}.
+
+Nous avions déjà vu l'utilisation du test logique \texttt{if} dans le
+\protect\hyperlink{l015function}{chapitre sur les fonctions}. Nous
+avions alors testé si la variable entrée comme argument dans notre
+fonction était bien de type \texttt{character}.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{myVar <-}\StringTok{ "qwerty"}
+\ControlFlowTok{if}\NormalTok{(}\KeywordTok{is.character}\NormalTok{(myVar))\{}
+  \KeywordTok{print}\NormalTok{(}\StringTok{"ok"}\NormalTok{)}
+\NormalTok{\} }\ControlFlowTok{else}\NormalTok{ \{}
+  \KeywordTok{print}\NormalTok{(}\StringTok{"error"}\NormalTok{)}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "ok"
+\end{verbatim}
+
+Nous pouvons aussi imbriqués les tests logiques les uns dans les autres.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{myVar <-}\StringTok{ }\OtherTok{TRUE}
+\ControlFlowTok{if}\NormalTok{(}\KeywordTok{is.character}\NormalTok{(myVar))\{}
+  \KeywordTok{print}\NormalTok{(}\StringTok{"myVar: character"}\NormalTok{)}
+\NormalTok{\} }\ControlFlowTok{else}\NormalTok{ \{}
+  \ControlFlowTok{if}\NormalTok{(}\KeywordTok{is.numeric}\NormalTok{(myVar))\{}
+    \KeywordTok{print}\NormalTok{(}\StringTok{"myVar: numeric"}\NormalTok{)}
+\NormalTok{  \} }\ControlFlowTok{else}\NormalTok{ \{}
+    \ControlFlowTok{if}\NormalTok{(}\KeywordTok{is.logical}\NormalTok{(myVar))\{}
+      \KeywordTok{print}\NormalTok{(}\StringTok{"myVar: logical"}\NormalTok{)}
+\NormalTok{    \} }\ControlFlowTok{else}\NormalTok{ \{}
+      \KeywordTok{print}\NormalTok{(}\StringTok{"myVar: ..."}\NormalTok{)}
+\NormalTok{    \}}
+\NormalTok{  \}}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "myVar: logical"
+\end{verbatim}
+
+Il est aussi possible de stipuler plusiers conditions, comme nous
+l'avons vu lors du chapitre sur les
+\protect\hyperlink{l011opcomp}{opérateurs de comparaison}.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{myVar <-}\StringTok{ }\DecValTok{2}
+\ControlFlowTok{if}\NormalTok{(myVar }\OperatorTok{>}\StringTok{ }\DecValTok{1} \OperatorTok{&}\StringTok{ }\NormalTok{myVar }\OperatorTok{<}\StringTok{ }\DecValTok{50}\NormalTok{)\{}
+  \KeywordTok{print}\NormalTok{(}\StringTok{"ok"}\NormalTok{)}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "ok"
+\end{verbatim}
+
+Dans cet exemple \texttt{myVar} est au format \texttt{numeric} donc la
+première condition (\texttt{\textgreater{}1}), et la seconde condition
+(\texttt{\textless{}50}) sont toutes les deux vérifiables. Par contre si
+nous affectons une variable de type \texttt{character} à \texttt{myVar}
+alors R va transformer 0 et 10 en objets de type \texttt{character} et
+tester si \texttt{myVar\ \textgreater{}\ "1"} puis si
+\texttt{myVar\ \textless{}\ "50"} en se basant sur un tri par ordre
+alphabétique. Dans l'exemple suivant \texttt{"azerty"} n'est pas situé
+par ordre alphabétique entre \texttt{"1"} et \texttt{"50"}, par contre
+c'est le cas de \texttt{"2azerty"}.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{myVar <-}\StringTok{ "azerty"}
+\NormalTok{limInit <-}\StringTok{ }\DecValTok{1}
+\NormalTok{limEnd <-}\StringTok{ }\DecValTok{50}
+\ControlFlowTok{if}\NormalTok{(myVar }\OperatorTok{>}\StringTok{ }\NormalTok{limInit }\OperatorTok{&}\StringTok{ }\NormalTok{myVar }\OperatorTok{<}\StringTok{ }\NormalTok{limEnd)\{}
+  \KeywordTok{print}\NormalTok{(}\KeywordTok{paste0}\NormalTok{(myVar, }\StringTok{" is between "}\NormalTok{, limInit, }\StringTok{" and "}\NormalTok{, limEnd, }\StringTok{"."}\NormalTok{))}
+\NormalTok{\} }\ControlFlowTok{else}\NormalTok{ \{}
+  \KeywordTok{print}\NormalTok{(}\KeywordTok{paste0}\NormalTok{(myVar, }\StringTok{" not between "}\NormalTok{, limInit, }\StringTok{" and "}\NormalTok{, limEnd, }\StringTok{"."}\NormalTok{))}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "azerty not between 1 and 50."
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{myVar <-}\StringTok{ "2azerty"}
+\ControlFlowTok{if}\NormalTok{(myVar }\OperatorTok{>}\StringTok{ }\NormalTok{limInit }\OperatorTok{&}\StringTok{ }\NormalTok{myVar }\OperatorTok{<}\StringTok{ }\NormalTok{limEnd)\{}
+  \KeywordTok{print}\NormalTok{(}\KeywordTok{paste0}\NormalTok{(myVar, }\StringTok{" is between "}\NormalTok{, limInit, }\StringTok{" and "}\NormalTok{, limEnd, }\StringTok{"."}\NormalTok{))}
+\NormalTok{\} }\ControlFlowTok{else}\NormalTok{ \{}
+  \KeywordTok{print}\NormalTok{(}\KeywordTok{paste0}\NormalTok{(myVar, }\StringTok{" not between "}\NormalTok{, limInit, }\StringTok{" and "}\NormalTok{, limEnd, }\StringTok{"."}\NormalTok{))}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "2azerty is between 1 and 50."
+\end{verbatim}
+
+Donc ce que nous voudirons faire est de tester si \texttt{myVar} est
+bien au format \texttt{numeric} puis uniquement si c'est le cas de
+tester les conditions précédentes.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{myVar <-}\StringTok{ "2azerty"}
+\ControlFlowTok{if}\NormalTok{(}\KeywordTok{is.numeric}\NormalTok{(myVar))\{}
+  \ControlFlowTok{if}\NormalTok{(myVar }\OperatorTok{>}\StringTok{ }\NormalTok{limInit }\OperatorTok{&}\StringTok{ }\NormalTok{myVar }\OperatorTok{<}\StringTok{ }\NormalTok{limEnd)\{}
+    \KeywordTok{print}\NormalTok{(}\KeywordTok{paste0}\NormalTok{(myVar, }\StringTok{" is between "}\NormalTok{, limInit, }\StringTok{" and "}\NormalTok{, limEnd, }\StringTok{"."}\NormalTok{))}
+\NormalTok{  \} }\ControlFlowTok{else}\NormalTok{ \{}
+    \KeywordTok{print}\NormalTok{(}\KeywordTok{paste0}\NormalTok{(myVar, }\StringTok{" not between "}\NormalTok{, limInit, }\StringTok{" and "}\NormalTok{, limEnd, }\StringTok{"."}\NormalTok{))}
+\NormalTok{  \}}
+\NormalTok{\} }\ControlFlowTok{else}\NormalTok{ \{}
+  \KeywordTok{print}\NormalTok{(}\KeywordTok{paste0}\NormalTok{(}\StringTok{"Object "}\NormalTok{, myVar, }\StringTok{" is not numeric"}\NormalTok{))}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "Object 2azerty is not numeric"
+\end{verbatim}
+
+Parfois, nous pouvons avoir besoin de tester une première condition puis
+une seconde condition uniquement si la première se vérifie dans un même
+test. Par exemple, pour un site nous voudrions savoir si il y a une
+seule espèces et tester si son abondance est supérieure à 10. Imaginons
+un jeu de données avec sous forme de vecteur les abondances. Nous allons
+tester le nombre d'espèces avec la fonction
+\protect\hyperlink{l015length}{\texttt{length()}}.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{mySpecies <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\DecValTok{15}\NormalTok{, }\DecValTok{14}\NormalTok{, }\DecValTok{20}\NormalTok{, }\DecValTok{12}\NormalTok{)}
+\ControlFlowTok{if}\NormalTok{(}\KeywordTok{length}\NormalTok{(mySpecies) }\OperatorTok{==}\StringTok{ }\DecValTok{1} \OperatorTok{&}\StringTok{ }\NormalTok{mySpecies }\OperatorTok{>}\StringTok{ }\DecValTok{10}\NormalTok{)\{}
+  \KeywordTok{print}\NormalTok{(}\StringTok{"ok!"}\NormalTok{)}
+\NormalTok{\}}
+\NormalTok{## Warning message:}
+\NormalTok{## In if (length(mySpecies) == 1 & mySpecies > 10) \{ :}
+\NormalTok{##   the condition has length > 1 and only the first element will be used}
+\end{Highlighting}
+\end{Shaded}
+
+R renvoie une erreur car il ne peut pas au sein d'un test logique avec
+\texttt{if()} vérifier la seconde condition. En effet,
+\texttt{mySpecies\ \textgreater{}\ 10} renvoie
+\texttt{TRUE\ TRUE\ TRUE\ TRUE\ TRUE}. Nous pouvons séparer le code en
+deux conditions :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{mySpecies <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\DecValTok{15}\NormalTok{, }\DecValTok{14}\NormalTok{, }\DecValTok{20}\NormalTok{, }\DecValTok{12}\NormalTok{)}
+\ControlFlowTok{if}\NormalTok{(}\KeywordTok{length}\NormalTok{(mySpecies) }\OperatorTok{==}\StringTok{ }\DecValTok{1}\NormalTok{)\{}
+  \ControlFlowTok{if}\NormalTok{(mySpecies }\OperatorTok{>}\StringTok{ }\DecValTok{10}\NormalTok{)\{}
+    \KeywordTok{print}\NormalTok{(}\StringTok{"ok!"}\NormalTok{)}
+\NormalTok{  \}}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+Une alternative plus élégante consiste à spécifier à R de vérifier la
+seconde condition uniquement si la première est vraie. Pour cela nous
+pouvons utiliser \texttt{\&\&} à la place de \texttt{\&}.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{mySpecies <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\DecValTok{15}\NormalTok{, }\DecValTok{14}\NormalTok{, }\DecValTok{20}\NormalTok{, }\DecValTok{12}\NormalTok{)}
+\ControlFlowTok{if}\NormalTok{(}\KeywordTok{length}\NormalTok{(mySpecies) }\OperatorTok{==}\StringTok{ }\DecValTok{1} \OperatorTok{&&}\StringTok{ }\NormalTok{mySpecies }\OperatorTok{>}\StringTok{ }\DecValTok{10}\NormalTok{)\{}
+  \KeywordTok{print}\NormalTok{(}\StringTok{"ok!"}\NormalTok{)}
+\NormalTok{\}}
+\NormalTok{mySpecies <-}\StringTok{ }\DecValTok{15}
+\ControlFlowTok{if}\NormalTok{(}\KeywordTok{length}\NormalTok{(mySpecies) }\OperatorTok{==}\StringTok{ }\DecValTok{1} \OperatorTok{&&}\StringTok{ }\NormalTok{mySpecies }\OperatorTok{>}\StringTok{ }\DecValTok{10}\NormalTok{)\{}
+  \KeywordTok{print}\NormalTok{(}\StringTok{"ok!"}\NormalTok{)}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "ok!"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{mySpecies <-}\StringTok{ }\DecValTok{5}
+\ControlFlowTok{if}\NormalTok{(}\KeywordTok{length}\NormalTok{(mySpecies) }\OperatorTok{==}\StringTok{ }\DecValTok{1} \OperatorTok{&&}\StringTok{ }\NormalTok{mySpecies }\OperatorTok{>}\StringTok{ }\DecValTok{10}\NormalTok{)\{}
+  \KeywordTok{print}\NormalTok{(}\StringTok{"ok!"}\NormalTok{)}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+Avec \texttt{\&} R va vérifier toutes les conditions, et avec
+\texttt{\&\&} R va prendre chaque condition l'une après l'autre et
+poursuivre uniquement si elle se vérifie. Cela peut paraître anecdotique
+mais il est bon de connaître la différence entre \texttt{\&} et
+\texttt{\&\&} car nous les rencontrons souvent dans les codes
+disponibles sur Internet ou dans les packages.
+
+\section{\texorpdfstring{Tests logiques avec
+\texttt{switch}}{Tests logiques avec switch}}\label{l17switch}
 
 XXX
 
 \section{\texorpdfstring{La boucle
-\texttt{switch}}{La boucle switch}}\label{la-boucle-switch}
+\texttt{for}}{La boucle for}}\label{l17for}
 
-XXX
-
-\section{\texorpdfstring{La boucle
-\texttt{for}}{La boucle for}}\label{la-boucle-for}
-
-XXX
+for(i in seq\_along(xxx))\{\} for(i in xxx)\{\}
 
 \section{\texorpdfstring{La boucle
-\texttt{while}}{La boucle while}}\label{la-boucle-while}
+\texttt{while}}{La boucle while}}\label{l17while}
 
 XXX
 
 \section{\texorpdfstring{\texttt{repeat}, \texttt{next}, \texttt{break},
-\texttt{stop}}{repeat, next, break, stop}}\label{repeat-next-break-stop}
+\texttt{stop}}{repeat, next, break, stop}}\label{l17spe}
 
 XXX
 
 \section{\texorpdfstring{Les boucles de la famille
-\texttt{apply}}{Les boucles de la famille apply}}\label{les-boucles-de-la-famille-apply}
+\texttt{apply}}{Les boucles de la famille apply}}\label{l17applyfamily}
 
-\subsection{\texorpdfstring{\texttt{apply}}{apply}}\label{apply}
-
-XXX
-
-\subsection{\texorpdfstring{\texttt{sapply}}{sapply}}\label{sapply}
+\subsection{\texorpdfstring{\texttt{apply}}{apply}}\label{l17apply}
 
 XXX
 
-\subsection{\texorpdfstring{\texttt{lapply}}{lapply}}\label{lapply}
+\subsection{\texorpdfstring{\texttt{sapply}}{sapply}}\label{l17sapply}
 
 XXX
 
-\subsection{\texorpdfstring{\texttt{tapply}}{tapply}}\label{tapply}
+\subsection{\texorpdfstring{\texttt{lapply}}{lapply}}\label{l17lapply}
 
 XXX
 
-\subsection{\texorpdfstring{\texttt{mapply}}{mapply}}\label{mapply}
+\subsection{\texorpdfstring{\texttt{tapply}}{tapply}}\label{l17tapply}
+
+XXX
+
+\subsection{\texorpdfstring{\texttt{mapply}}{mapply}}\label{l17mapply}
 
 XXX
 
@@ -8911,7 +9182,7 @@ spécifiant le format des dates avec la fonction \texttt{as.Date()}
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{myRBook_FR_files/figure-latex/unnamed-chunk-189-1.pdf}
+\includegraphics{myRBook_FR_files/figure-latex/unnamed-chunk-199-1.pdf}
 
 Nous pouvons simplifier les informations en ne calculant que les
 températures minimales, moyennes et maximales avec la fonction
@@ -8934,7 +9205,7 @@ températures minimales, moyennes et maximales avec la fonction
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{myRBook_FR_files/figure-latex/unnamed-chunk-190-1.pdf}
+\includegraphics{myRBook_FR_files/figure-latex/unnamed-chunk-200-1.pdf}
 
 Nous pouvons également calculer la différence entre la température
 maximale et la température minimale (variation de la température
@@ -8949,7 +9220,7 @@ diurne).
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{myRBook_FR_files/figure-latex/unnamed-chunk-191-1.pdf}
+\includegraphics{myRBook_FR_files/figure-latex/unnamed-chunk-201-1.pdf}
 
 Une autre possibilité est de regrouper les données pour avoir la
 température moyenne des heures de la journée avec la fonction
@@ -8974,7 +9245,7 @@ température moyenne des heures de la journée avec la fonction
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{myRBook_FR_files/figure-latex/unnamed-chunk-192-1.pdf}
+\includegraphics{myRBook_FR_files/figure-latex/unnamed-chunk-202-1.pdf}
 
 Nous pouvons également calculer les températures des heures de la
 journée pour chaque mois.
@@ -9011,18 +9282,18 @@ journée pour chaque mois.
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{myRBook_FR_files/figure-latex/unnamed-chunk-193-1.pdf}
-\includegraphics{myRBook_FR_files/figure-latex/unnamed-chunk-193-2.pdf}
-\includegraphics{myRBook_FR_files/figure-latex/unnamed-chunk-193-3.pdf}
-\includegraphics{myRBook_FR_files/figure-latex/unnamed-chunk-193-4.pdf}
-\includegraphics{myRBook_FR_files/figure-latex/unnamed-chunk-193-5.pdf}
-\includegraphics{myRBook_FR_files/figure-latex/unnamed-chunk-193-6.pdf}
-\includegraphics{myRBook_FR_files/figure-latex/unnamed-chunk-193-7.pdf}
-\includegraphics{myRBook_FR_files/figure-latex/unnamed-chunk-193-8.pdf}
-\includegraphics{myRBook_FR_files/figure-latex/unnamed-chunk-193-9.pdf}
-\includegraphics{myRBook_FR_files/figure-latex/unnamed-chunk-193-10.pdf}
-\includegraphics{myRBook_FR_files/figure-latex/unnamed-chunk-193-11.pdf}
-\includegraphics{myRBook_FR_files/figure-latex/unnamed-chunk-193-12.pdf}
+\includegraphics{myRBook_FR_files/figure-latex/unnamed-chunk-203-1.pdf}
+\includegraphics{myRBook_FR_files/figure-latex/unnamed-chunk-203-2.pdf}
+\includegraphics{myRBook_FR_files/figure-latex/unnamed-chunk-203-3.pdf}
+\includegraphics{myRBook_FR_files/figure-latex/unnamed-chunk-203-4.pdf}
+\includegraphics{myRBook_FR_files/figure-latex/unnamed-chunk-203-5.pdf}
+\includegraphics{myRBook_FR_files/figure-latex/unnamed-chunk-203-6.pdf}
+\includegraphics{myRBook_FR_files/figure-latex/unnamed-chunk-203-7.pdf}
+\includegraphics{myRBook_FR_files/figure-latex/unnamed-chunk-203-8.pdf}
+\includegraphics{myRBook_FR_files/figure-latex/unnamed-chunk-203-9.pdf}
+\includegraphics{myRBook_FR_files/figure-latex/unnamed-chunk-203-10.pdf}
+\includegraphics{myRBook_FR_files/figure-latex/unnamed-chunk-203-11.pdf}
+\includegraphics{myRBook_FR_files/figure-latex/unnamed-chunk-203-12.pdf}
 
 Ou les regrouper dans un même graphique, ainsi que la variation diurne
 des températures pour chaque mois.
@@ -9050,7 +9321,7 @@ des températures pour chaque mois.
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{myRBook_FR_files/figure-latex/unnamed-chunk-194-1.pdf}
+\includegraphics{myRBook_FR_files/figure-latex/unnamed-chunk-204-1.pdf}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -9075,7 +9346,7 @@ des températures pour chaque mois.
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{myRBook_FR_files/figure-latex/unnamed-chunk-194-2.pdf}
+\includegraphics{myRBook_FR_files/figure-latex/unnamed-chunk-204-2.pdf}
 
 \hypertarget{studyCase002}{\chapter{Obtenir le numéro WOS d'un article
 scientifique à partir de son numéro DOI}\label{studyCase002}}
