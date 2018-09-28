@@ -281,6 +281,8 @@ Dernières modifications:
 \item
   algorithmique \protect\hyperlink{l17switch}{Tests logiques avec
   ``switch''} (2/6)
+\item
+  algorithmique \protect\hyperlink{l17for}{La boucle ``for''} (3/6)
 \end{itemize}
 
 \textbf{17/09/2018}
@@ -6692,8 +6694,8 @@ d'éléments).
 ## [1] 8
 \end{verbatim}
 
-\subsubsection{\texorpdfstring{\texttt{nrow()} et
-\texttt{ncol()}}{nrow() et ncol()}}\label{l015nrow}
+\hypertarget{l015nrow}{\subsubsection{\texorpdfstring{\texttt{nrow()} et
+\texttt{ncol()}}{nrow() et ncol()}}\label{l015nrow}}
 
 La fonction \texttt{nrow()} renvoie le nombre de lignes et la fonction
 \texttt{ncol()} le nombre de colonnes d'un objet.
@@ -7052,7 +7054,7 @@ fonction nous servira beaucoup lors du chapitre sur les boucles.
 ## [1] 1 2 3 4 5 6 7 8
 \end{verbatim}
 
-\subsection{\texorpdfstring{\texttt{:}}{:}}\label{l0152points}
+\hypertarget{l0152points}{\subsection{\texorpdfstring{\texttt{:}}{:}}\label{l0152points}}
 
 La fonction \texttt{:} permet de créer une séquence de \texttt{a} à
 \texttt{b} par pas de 1, avec \texttt{a} et \texttt{b} le début et la
@@ -7931,7 +7933,7 @@ le gain de temps est presque nul dans notre cas).
 
 \begin{verbatim}
 ##    user  system elapsed 
-##    0.18    0.00    0.18
+##    0.16    0.00    0.15
 \end{verbatim}
 
 Une fonction peut avoir des valeurs par défaut pour ses arguments. C'est
@@ -8894,15 +8896,388 @@ utilisant \texttt{if()} en \texttt{switch()}.
 ## [1] 2
 \end{verbatim}
 
-\section{\texorpdfstring{La boucle
-\texttt{for}}{La boucle for}}\label{l17for}
+\hypertarget{l17for}{\section{\texorpdfstring{La boucle
+\texttt{for}}{La boucle for}}\label{l17for}}
 
-for(i in seq\_along(xxx))\{\} for(i in xxx)\{\}
+En programmation, lorsque nous sommes amenés à répéter plusieurs fois la
+même ligne de code, c'est un signe indiquant qu'il faut utiliser une
+\textbf{boucle}. Une boucle est une manière d'itérer sur un ensemble
+d'objets (ou sur les éléments d'un objet), et de répéter une opération.
+Imaginons une \texttt{data.frame} avec des mesures de terrain à deux
+dates.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{bdd <-}\StringTok{ }\KeywordTok{data.frame}\NormalTok{(}\DataTypeTok{date01 =} \KeywordTok{rnorm}\NormalTok{(}\DataTypeTok{n =} \DecValTok{100}\NormalTok{, }\DataTypeTok{mean =} \DecValTok{10}\NormalTok{, }\DataTypeTok{sd =} \DecValTok{1}\NormalTok{), }
+                  \DataTypeTok{date02 =} \KeywordTok{rnorm}\NormalTok{(}\DataTypeTok{n =} \DecValTok{100}\NormalTok{, }\DataTypeTok{mean =} \DecValTok{10}\NormalTok{, }\DataTypeTok{sd =} \DecValTok{1}\NormalTok{))}
+\KeywordTok{print}\NormalTok{(}\KeywordTok{head}\NormalTok{(bdd))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##      date01    date02
+## 1 11.426716  9.350768
+## 2  9.364828 10.536668
+## 3 10.865036  9.618889
+## 4 10.062300 10.063185
+## 5 10.341554  9.765568
+## 6 10.233092  9.244026
+\end{verbatim}
+
+Nous voudrions quantifier la différence entre la première et la deuxième
+date, puis mettre un indicateur pour savoir si cette différence est
+petite ou grande, par exemple avec un seuil arbitraire de 3. Donc pour
+chaque ligne nous pourrions faire :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{bdd}\OperatorTok{$}\NormalTok{dif <-}\StringTok{ }\OtherTok{NA}
+\NormalTok{bdd}\OperatorTok{$}\NormalTok{isDifBig <-}\StringTok{ }\OtherTok{NA}
+
+\NormalTok{bdd}\OperatorTok{$}\NormalTok{dif[}\DecValTok{1}\NormalTok{] <-}\StringTok{ }\KeywordTok{sqrt}\NormalTok{((bdd}\OperatorTok{$}\NormalTok{date01[}\DecValTok{1}\NormalTok{] }\OperatorTok{-}\StringTok{ }\NormalTok{bdd}\OperatorTok{$}\NormalTok{date02[}\DecValTok{1}\NormalTok{])}\OperatorTok{^}\DecValTok{2}\NormalTok{)}
+\NormalTok{bdd}\OperatorTok{$}\NormalTok{dif[}\DecValTok{2}\NormalTok{] <-}\StringTok{ }\KeywordTok{sqrt}\NormalTok{((bdd}\OperatorTok{$}\NormalTok{date01[}\DecValTok{2}\NormalTok{] }\OperatorTok{-}\StringTok{ }\NormalTok{bdd}\OperatorTok{$}\NormalTok{date02[}\DecValTok{2}\NormalTok{])}\OperatorTok{^}\DecValTok{2}\NormalTok{)}
+\NormalTok{bdd}\OperatorTok{$}\NormalTok{dif[}\DecValTok{3}\NormalTok{] <-}\StringTok{ }\KeywordTok{sqrt}\NormalTok{((bdd}\OperatorTok{$}\NormalTok{date01[}\DecValTok{3}\NormalTok{] }\OperatorTok{-}\StringTok{ }\NormalTok{bdd}\OperatorTok{$}\NormalTok{date02[}\DecValTok{3}\NormalTok{])}\OperatorTok{^}\DecValTok{2}\NormalTok{)}
+\CommentTok{# ...}
+\NormalTok{bdd}\OperatorTok{$}\NormalTok{dif[}\DecValTok{100}\NormalTok{] <-}\StringTok{ }\KeywordTok{sqrt}\NormalTok{((bdd}\OperatorTok{$}\NormalTok{date01[}\DecValTok{100}\NormalTok{] }\OperatorTok{-}\StringTok{ }\NormalTok{bdd}\OperatorTok{$}\NormalTok{date02[}\DecValTok{100}\NormalTok{])}\OperatorTok{^}\DecValTok{2}\NormalTok{)}
+
+\ControlFlowTok{if}\NormalTok{(bdd}\OperatorTok{$}\NormalTok{dif[}\DecValTok{1}\NormalTok{] }\OperatorTok{>}\StringTok{ }\DecValTok{3}\NormalTok{)\{}
+\NormalTok{  bdd}\OperatorTok{$}\NormalTok{isDifBig[}\DecValTok{1}\NormalTok{] <-}\StringTok{ "big"}
+\NormalTok{\}}\ControlFlowTok{else}\NormalTok{\{}
+\NormalTok{  bdd}\OperatorTok{$}\NormalTok{isDifBig[}\DecValTok{1}\NormalTok{] <-}\StringTok{ "small"}
+\NormalTok{\}}
+\ControlFlowTok{if}\NormalTok{(bdd}\OperatorTok{$}\NormalTok{dif[}\DecValTok{2}\NormalTok{] }\OperatorTok{>}\StringTok{ }\DecValTok{3}\NormalTok{)\{}
+\NormalTok{  bdd}\OperatorTok{$}\NormalTok{isDifBig[}\DecValTok{2}\NormalTok{] <-}\StringTok{ "big"}
+\NormalTok{\}}\ControlFlowTok{else}\NormalTok{\{}
+\NormalTok{  bdd}\OperatorTok{$}\NormalTok{isDifBig[}\DecValTok{2}\NormalTok{] <-}\StringTok{ "small"}
+\NormalTok{\}}
+\ControlFlowTok{if}\NormalTok{(bdd}\OperatorTok{$}\NormalTok{dif[}\DecValTok{3}\NormalTok{] }\OperatorTok{>}\StringTok{ }\DecValTok{3}\NormalTok{)\{}
+\NormalTok{  bdd}\OperatorTok{$}\NormalTok{isDifBig[}\DecValTok{3}\NormalTok{] <-}\StringTok{ "big"}
+\NormalTok{\}}\ControlFlowTok{else}\NormalTok{\{}
+\NormalTok{  bdd}\OperatorTok{$}\NormalTok{isDifBig[}\DecValTok{3}\NormalTok{] <-}\StringTok{ "small"}
+\NormalTok{\}}
+\CommentTok{# ...}
+\ControlFlowTok{if}\NormalTok{(bdd}\OperatorTok{$}\NormalTok{dif[}\DecValTok{100}\NormalTok{] }\OperatorTok{>}\StringTok{ }\DecValTok{3}\NormalTok{)\{}
+\NormalTok{  bdd}\OperatorTok{$}\NormalTok{isDifBig[}\DecValTok{100}\NormalTok{] <-}\StringTok{ "big"}
+\NormalTok{\}}\ControlFlowTok{else}\NormalTok{\{}
+\NormalTok{  bdd}\OperatorTok{$}\NormalTok{isDifBig[}\DecValTok{100}\NormalTok{] <-}\StringTok{ "small"}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+Cette façon de faire serait extrêmement fastidieuse à réaliser, et même
+presque impossible à réaliser si la table contenait 1000 ou 100000
+lignes. Il pourrait sembler logique de vouloir itérer sur les lignes de
+notre \texttt{data.frame} pour obtenir les nouvelles colonnes. Nous
+allons le réaliser même si ce n'est pas la solution que nous allons
+retenir par la suite.
+
+Nous allons utiliser une boucle \texttt{for()}. La boucle \texttt{for()}
+va itérer sur les éléments d'un objet que nous allons donner en
+argument. Par exemple voici une boucle qui pour tous les chiffres de 3 à
+9 va calculer leur valeur au carré. La valeur courante du chiffre est
+symbolisé par un objet qui peut prendre le nom que nous souhaitons (ici
+cela sera \texttt{i}).
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ControlFlowTok{for}\NormalTok{(i }\ControlFlowTok{in} \KeywordTok{c}\NormalTok{(}\DecValTok{3}\NormalTok{, }\DecValTok{4}\NormalTok{, }\DecValTok{5}\NormalTok{, }\DecValTok{6}\NormalTok{, }\DecValTok{7}\NormalTok{, }\DecValTok{8}\NormalTok{, }\DecValTok{9}\NormalTok{))\{}
+  \KeywordTok{print}\NormalTok{(i}\OperatorTok{^}\DecValTok{2}\NormalTok{)}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 9
+## [1] 16
+## [1] 25
+## [1] 36
+## [1] 49
+## [1] 64
+## [1] 81
+\end{verbatim}
+
+Que nous pouvons améliorer en utilisant
+\protect\hyperlink{l0152points}{la fonction \texttt{:}}.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ControlFlowTok{for}\NormalTok{(i }\ControlFlowTok{in} \DecValTok{3}\OperatorTok{:}\DecValTok{9}\NormalTok{)\{}
+  \KeywordTok{print}\NormalTok{(i}\OperatorTok{^}\DecValTok{2}\NormalTok{)}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+Le choix du nom \texttt{i} est ici arbitraire, nous aurions pu choisir
+\texttt{myVarFor} de la même façon :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ControlFlowTok{for}\NormalTok{(myVarFor }\ControlFlowTok{in} \DecValTok{3}\OperatorTok{:}\DecValTok{9}\NormalTok{)\{}
+  \KeywordTok{print}\NormalTok{(myVarFor}\OperatorTok{^}\DecValTok{2}\NormalTok{)}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+La boucle \texttt{for()} peut itérer sur tous les types d'éléments.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{nChar <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\StringTok{"a"}\NormalTok{, }\StringTok{"z"}\NormalTok{, }\StringTok{"e"}\NormalTok{, }\StringTok{"r"}\NormalTok{, }\StringTok{"t"}\NormalTok{, }\StringTok{"y"}\NormalTok{)}
+\ControlFlowTok{for}\NormalTok{(i }\ControlFlowTok{in}\NormalTok{ nChar)\{}
+  \KeywordTok{print}\NormalTok{(i)}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "a"
+## [1] "z"
+## [1] "e"
+## [1] "r"
+## [1] "t"
+## [1] "y"
+\end{verbatim}
+
+Revenons à notre cas. Nous allons itérer sur le nombre de ligne de notre
+\texttt{data.frame} \texttt{bdd}. Avant cela nous allons créer les
+colonnes \texttt{dif} et \texttt{isDifBig} avec les valeurs \texttt{NA}.
+Ensuite nous allons utiliser \protect\hyperlink{l015nrow}{la fonction
+\texttt{nrow()}} pour connaître le nombre de lignes.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{bdd}\OperatorTok{$}\NormalTok{dif <-}\StringTok{ }\OtherTok{NA}
+\NormalTok{bdd}\OperatorTok{$}\NormalTok{isDifBig <-}\StringTok{ }\OtherTok{NA}
+\ControlFlowTok{for}\NormalTok{(i }\ControlFlowTok{in} \DecValTok{1}\OperatorTok{:}\KeywordTok{nrow}\NormalTok{(bdd))\{}
+\NormalTok{  bdd}\OperatorTok{$}\NormalTok{dif[i] <-}\StringTok{ }\KeywordTok{sqrt}\NormalTok{((bdd}\OperatorTok{$}\NormalTok{date01[i] }\OperatorTok{-}\StringTok{ }\NormalTok{bdd}\OperatorTok{$}\NormalTok{date02[i])}\OperatorTok{^}\DecValTok{2}\NormalTok{)}
+  \ControlFlowTok{if}\NormalTok{(bdd}\OperatorTok{$}\NormalTok{dif[i] }\OperatorTok{>}\StringTok{ }\DecValTok{3}\NormalTok{)\{}
+\NormalTok{    bdd}\OperatorTok{$}\NormalTok{isDifBig[i] <-}\StringTok{ "big"}
+\NormalTok{  \}}\ControlFlowTok{else}\NormalTok{\{}
+\NormalTok{    bdd}\OperatorTok{$}\NormalTok{isDifBig[i] <-}\StringTok{ "small"}
+\NormalTok{  \}}
+\NormalTok{\}}
+\KeywordTok{print}\NormalTok{(}\KeywordTok{head}\NormalTok{(bdd, }\DataTypeTok{n =} \DecValTok{20}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##       date01    date02          dif isDifBig
+## 1  11.426716  9.350768 2.0759481215    small
+## 2   9.364828 10.536668 1.1718402950    small
+## 3  10.865036  9.618889 1.2461471922    small
+## 4  10.062300 10.063185 0.0008858209    small
+## 5  10.341554  9.765568 0.5759867124    small
+## 6  10.233092  9.244026 0.9890656465    small
+## 7   9.327827  9.206085 0.1217418199    small
+## 8   9.024487  9.711738 0.6872503008    small
+## 9   9.614423  9.733820 0.1193976384    small
+## 10 10.399648  9.534082 0.8655660300    small
+## 11 10.435353 11.445226 1.0098734658    small
+## 12 11.366016 11.634626 0.2686095614    small
+## 13  9.808510  8.492585 1.3159249813    small
+## 14  7.974796  8.797494 0.8226982747    small
+## 15  9.737066  8.240624 1.4964419985    small
+## 16 10.379198 10.617497 0.2382996377    small
+## 17 10.563203  8.685017 1.8781854141    small
+## 18 10.055028 10.682972 0.6279441573    small
+## 19  9.566603 10.714402 1.1477981998    small
+## 20 11.045814 10.297064 0.7487503414    small
+\end{verbatim}
+
+En pratique ce n'est pas la meilleure façon de réaliser cet exercice car
+il s'agit ici de simples calculs sur des vecteurs contenus dans une
+\texttt{data.frame}. R est particulièrement puissant pour effectuer des
+opérations sur des vecteurs. Lorsque cela est possible il faut donc
+toujours privilégier les opérations sur les vecteurs. Ici notre code
+devient :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{bdd}\OperatorTok{$}\NormalTok{dif <-}\StringTok{ }\KeywordTok{sqrt}\NormalTok{((bdd}\OperatorTok{$}\NormalTok{date01 }\OperatorTok{-}\StringTok{ }\NormalTok{bdd}\OperatorTok{$}\NormalTok{date02)}\OperatorTok{^}\DecValTok{2}\NormalTok{)}
+\NormalTok{bdd}\OperatorTok{$}\NormalTok{isDifBig <-}\StringTok{ "small"}
+\NormalTok{bdd}\OperatorTok{$}\NormalTok{isDifBig[bdd}\OperatorTok{$}\NormalTok{dif }\OperatorTok{>}\StringTok{ }\DecValTok{3}\NormalTok{] <-}\StringTok{ "big"}
+\KeywordTok{print}\NormalTok{(}\KeywordTok{head}\NormalTok{(bdd, }\DataTypeTok{n =} \DecValTok{20}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##       date01    date02          dif isDifBig
+## 1  11.426716  9.350768 2.0759481215    small
+## 2   9.364828 10.536668 1.1718402950    small
+## 3  10.865036  9.618889 1.2461471922    small
+## 4  10.062300 10.063185 0.0008858209    small
+## 5  10.341554  9.765568 0.5759867124    small
+## 6  10.233092  9.244026 0.9890656465    small
+## 7   9.327827  9.206085 0.1217418199    small
+## 8   9.024487  9.711738 0.6872503008    small
+## 9   9.614423  9.733820 0.1193976384    small
+## 10 10.399648  9.534082 0.8655660300    small
+## 11 10.435353 11.445226 1.0098734658    small
+## 12 11.366016 11.634626 0.2686095614    small
+## 13  9.808510  8.492585 1.3159249813    small
+## 14  7.974796  8.797494 0.8226982747    small
+## 15  9.737066  8.240624 1.4964419985    small
+## 16 10.379198 10.617497 0.2382996377    small
+## 17 10.563203  8.685017 1.8781854141    small
+## 18 10.055028 10.682972 0.6279441573    small
+## 19  9.566603 10.714402 1.1477981998    small
+## 20 11.045814 10.297064 0.7487503414    small
+\end{verbatim}
+
+La plupart des exemples que l'on peut trouver sur Internet à propos de
+la boucle \texttt{for()} peuvent être remplacés par des opérations sur
+les vecteurs. Voici quelques exemples adaptés de plusieurs sources :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# tester si des nombres sont pairs}
+\CommentTok{# [1] FOR}
+\NormalTok{x <-}\StringTok{ }\KeywordTok{sample}\NormalTok{(}\DecValTok{1}\OperatorTok{:}\DecValTok{100}\NormalTok{, }\DataTypeTok{size =} \DecValTok{20}\NormalTok{)}
+\NormalTok{count <-}\StringTok{ }\DecValTok{0}
+\ControlFlowTok{for}\NormalTok{ (val }\ControlFlowTok{in}\NormalTok{ x) \{}
+  \ControlFlowTok{if}\NormalTok{(val }\OperatorTok{%%}\StringTok{ }\DecValTok{2} \OperatorTok{==}\StringTok{ }\DecValTok{0}\NormalTok{)\{}
+\NormalTok{    count <-}\StringTok{ }\NormalTok{count }\OperatorTok{+}\StringTok{ }\DecValTok{1}
+\NormalTok{  \}}
+\NormalTok{\}}
+\KeywordTok{print}\NormalTok{(count)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 9
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# [2] VECTOR}
+\KeywordTok{sum}\NormalTok{(x }\OperatorTok{%%}\StringTok{ }\DecValTok{2} \OperatorTok{==}\StringTok{ }\DecValTok{0}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 9
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# calculer des carrés}
+\CommentTok{# [1] FOR}
+\NormalTok{x <-}\StringTok{ }\KeywordTok{rep}\NormalTok{(}\DecValTok{0}\NormalTok{, }\DecValTok{20}\NormalTok{)}
+\ControlFlowTok{for}\NormalTok{ (j }\ControlFlowTok{in} \DecValTok{1}\OperatorTok{:}\DecValTok{20}\NormalTok{)\{}
+\NormalTok{  x[j] <-}\StringTok{ }\NormalTok{j}\OperatorTok{^}\DecValTok{2}
+\NormalTok{\}}
+\KeywordTok{print}\NormalTok{(x)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##  [1]   1   4   9  16  25  36  49  64  81 100 121 144 169 196 225 256 289
+## [18] 324 361 400
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# [2] VECTOR}
+\NormalTok{(}\DecValTok{1}\OperatorTok{:}\DecValTok{20}\NormalTok{)}\OperatorTok{^}\DecValTok{2}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##  [1]   1   4   9  16  25  36  49  64  81 100 121 144 169 196 225 256 289
+## [18] 324 361 400
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# répéter un lancer de dés et faire la moyenne}
+\CommentTok{# [1] FOR}
+\NormalTok{ntrials =}\StringTok{ }\DecValTok{1000}
+\NormalTok{trials =}\StringTok{ }\KeywordTok{rep}\NormalTok{(}\DecValTok{0}\NormalTok{, ntrials)}
+\ControlFlowTok{for}\NormalTok{ (j }\ControlFlowTok{in} \DecValTok{1}\OperatorTok{:}\NormalTok{ntrials)\{}
+\NormalTok{  trials[j] =}\StringTok{ }\KeywordTok{sample}\NormalTok{(}\DecValTok{1}\OperatorTok{:}\DecValTok{6}\NormalTok{, }\DataTypeTok{size =} \DecValTok{1}\NormalTok{)}
+\NormalTok{\}}
+\KeywordTok{mean}\NormalTok{(trials)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 3.578
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# [2] VECTOR}
+\KeywordTok{mean}\NormalTok{(}\KeywordTok{sample}\NormalTok{(}\DecValTok{1}\OperatorTok{:}\DecValTok{6}\NormalTok{, ntrials, }\DataTypeTok{replace =} \OtherTok{TRUE}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 3.511
+\end{verbatim}
+
+C'est un bon exercice de parcourir les nombreux exemples disponibles sur
+Internet sur la boucle \texttt{for()} et de tenter de les transformer en
+opérations vectorielles. Cela nous permet d'acquérir les bons réflexes
+de programmation avec R. La boucle \texttt{for()} reste très utile pour
+par exemple lire plusieurs fichiers et traiter l'information qu'ils
+contiennent de la même façon, faire des graphiques, ou encore lorsque
+les opérations vectorielles deveinnent fastidieuses. Imaginons une
+matrice de 10 colonnes et 100 lignes. Nous voulons la somme de chaque
+ligne (nous verrons plus loin comment faire avec la fonction
+\texttt{apply()}).
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{myMat <-}\StringTok{ }\KeywordTok{matrix}\NormalTok{(}\KeywordTok{sample}\NormalTok{(}\DecValTok{1}\OperatorTok{:}\DecValTok{100}\NormalTok{, }\DataTypeTok{size =} \DecValTok{1000}\NormalTok{, }\DataTypeTok{replace =} \OtherTok{TRUE}\NormalTok{), }\DataTypeTok{ncol =} \DecValTok{10}\NormalTok{)}
+\CommentTok{# VECTOR}
+\NormalTok{sumRow <-}\StringTok{ }\NormalTok{myMat[, }\DecValTok{1}\NormalTok{] }\OperatorTok{+}\StringTok{ }\NormalTok{myMat[, }\DecValTok{2}\NormalTok{] }\OperatorTok{+}\StringTok{ }\NormalTok{myMat[, }\DecValTok{3}\NormalTok{] }\OperatorTok{+}\StringTok{ }\NormalTok{myMat[, }\DecValTok{4}\NormalTok{] }\OperatorTok{+}\StringTok{ }
+\StringTok{  }\NormalTok{myMat[, }\DecValTok{5}\NormalTok{] }\OperatorTok{+}\StringTok{ }\NormalTok{myMat[, }\DecValTok{6}\NormalTok{] }\OperatorTok{+}\StringTok{ }\NormalTok{myMat[, }\DecValTok{7}\NormalTok{] }\OperatorTok{+}\StringTok{ }\NormalTok{myMat[, }\DecValTok{8}\NormalTok{] }\OperatorTok{+}\StringTok{ }
+\StringTok{  }\NormalTok{myMat[, }\DecValTok{9}\NormalTok{] }\OperatorTok{+}\StringTok{ }\NormalTok{myMat[, }\DecValTok{10}\NormalTok{]}
+\KeywordTok{print}\NormalTok{(sumRow)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##   [1] 467 506 589 501 471 512 570 552 497 565 534 472 485 456 505 493 426
+##  [18] 660 535 558 479 532 515 571 369 522 260 453 459 602 547 488 289 572
+##  [35] 449 397 495 443 493 514 496 486 489 477 500 456 390 519 682 503 593
+##  [52] 625 477 456 375 431 544 635 441 507 514 562 360 483 541 415 470 543
+##  [69] 435 424 441 563 527 499 470 438 289 587 581 514 555 647 407 225 558
+##  [86] 645 626 580 425 425 448 359 413 567 437 343 564 488 554 666
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# FOR}
+\NormalTok{sumRow <-}\StringTok{ }\KeywordTok{rep}\NormalTok{(}\OtherTok{NA}\NormalTok{, }\DataTypeTok{times =} \KeywordTok{nrow}\NormalTok{(myMat))}
+\ControlFlowTok{for}\NormalTok{(j }\ControlFlowTok{in} \DecValTok{1}\OperatorTok{:}\KeywordTok{nrow}\NormalTok{(myMat))\{}
+\NormalTok{  sumRow[j] <-}\StringTok{ }\KeywordTok{sum}\NormalTok{(myMat[j, ])}
+\NormalTok{\}}
+\KeywordTok{print}\NormalTok{(sumRow)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##   [1] 467 506 589 501 471 512 570 552 497 565 534 472 485 456 505 493 426
+##  [18] 660 535 558 479 532 515 571 369 522 260 453 459 602 547 488 289 572
+##  [35] 449 397 495 443 493 514 496 486 489 477 500 456 390 519 682 503 593
+##  [52] 625 477 456 375 431 544 635 441 507 514 562 360 483 541 415 470 543
+##  [69] 435 424 441 563 527 499 470 438 289 587 581 514 555 647 407 225 558
+##  [86] 645 626 580 425 425 448 359 413 567 437 343 564 488 554 666
+\end{verbatim}
+
+En conclusion, il est recommandé de ne pas utiliser la boucle
+\texttt{for()} avec R chaque fois que cela est possible, et nous verrons
+dans ce chapitre des alternatives commes les boucles de la famille
+\texttt{apply()}.
 
 \section{\texorpdfstring{La boucle
 \texttt{while}}{La boucle while}}\label{l17while}
 
-XXX
+La boucle \texttt{while()}, contrairement à la boucle \texttt{for()},
+signifie \emph{TANT QUE}. Tant qu'une condition n'est pas remplie, la
+boucle va continuer à s'exécuter. Attention car en cas d'erreur, nous
+pouvons facilement programmer des boucles qui ne terminent jamais !
 
 \section{\texorpdfstring{\texttt{repeat}, \texttt{next}, \texttt{break},
 \texttt{stop}}{repeat, next, break, stop}}\label{l17spe}
@@ -9187,7 +9562,7 @@ spécifiant le format des dates avec la fonction \texttt{as.Date()}
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{myRBook_FR_files/figure-latex/unnamed-chunk-200-1.pdf}
+\includegraphics{myRBook_FR_files/figure-latex/unnamed-chunk-210-1.pdf}
 
 Nous pouvons simplifier les informations en ne calculant que les
 températures minimales, moyennes et maximales avec la fonction
@@ -9210,7 +9585,7 @@ températures minimales, moyennes et maximales avec la fonction
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{myRBook_FR_files/figure-latex/unnamed-chunk-201-1.pdf}
+\includegraphics{myRBook_FR_files/figure-latex/unnamed-chunk-211-1.pdf}
 
 Nous pouvons également calculer la différence entre la température
 maximale et la température minimale (variation de la température
@@ -9225,7 +9600,7 @@ diurne).
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{myRBook_FR_files/figure-latex/unnamed-chunk-202-1.pdf}
+\includegraphics{myRBook_FR_files/figure-latex/unnamed-chunk-212-1.pdf}
 
 Une autre possibilité est de regrouper les données pour avoir la
 température moyenne des heures de la journée avec la fonction
@@ -9250,7 +9625,7 @@ température moyenne des heures de la journée avec la fonction
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{myRBook_FR_files/figure-latex/unnamed-chunk-203-1.pdf}
+\includegraphics{myRBook_FR_files/figure-latex/unnamed-chunk-213-1.pdf}
 
 Nous pouvons également calculer les températures des heures de la
 journée pour chaque mois.
@@ -9287,18 +9662,18 @@ journée pour chaque mois.
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{myRBook_FR_files/figure-latex/unnamed-chunk-204-1.pdf}
-\includegraphics{myRBook_FR_files/figure-latex/unnamed-chunk-204-2.pdf}
-\includegraphics{myRBook_FR_files/figure-latex/unnamed-chunk-204-3.pdf}
-\includegraphics{myRBook_FR_files/figure-latex/unnamed-chunk-204-4.pdf}
-\includegraphics{myRBook_FR_files/figure-latex/unnamed-chunk-204-5.pdf}
-\includegraphics{myRBook_FR_files/figure-latex/unnamed-chunk-204-6.pdf}
-\includegraphics{myRBook_FR_files/figure-latex/unnamed-chunk-204-7.pdf}
-\includegraphics{myRBook_FR_files/figure-latex/unnamed-chunk-204-8.pdf}
-\includegraphics{myRBook_FR_files/figure-latex/unnamed-chunk-204-9.pdf}
-\includegraphics{myRBook_FR_files/figure-latex/unnamed-chunk-204-10.pdf}
-\includegraphics{myRBook_FR_files/figure-latex/unnamed-chunk-204-11.pdf}
-\includegraphics{myRBook_FR_files/figure-latex/unnamed-chunk-204-12.pdf}
+\includegraphics{myRBook_FR_files/figure-latex/unnamed-chunk-214-1.pdf}
+\includegraphics{myRBook_FR_files/figure-latex/unnamed-chunk-214-2.pdf}
+\includegraphics{myRBook_FR_files/figure-latex/unnamed-chunk-214-3.pdf}
+\includegraphics{myRBook_FR_files/figure-latex/unnamed-chunk-214-4.pdf}
+\includegraphics{myRBook_FR_files/figure-latex/unnamed-chunk-214-5.pdf}
+\includegraphics{myRBook_FR_files/figure-latex/unnamed-chunk-214-6.pdf}
+\includegraphics{myRBook_FR_files/figure-latex/unnamed-chunk-214-7.pdf}
+\includegraphics{myRBook_FR_files/figure-latex/unnamed-chunk-214-8.pdf}
+\includegraphics{myRBook_FR_files/figure-latex/unnamed-chunk-214-9.pdf}
+\includegraphics{myRBook_FR_files/figure-latex/unnamed-chunk-214-10.pdf}
+\includegraphics{myRBook_FR_files/figure-latex/unnamed-chunk-214-11.pdf}
+\includegraphics{myRBook_FR_files/figure-latex/unnamed-chunk-214-12.pdf}
 
 Ou les regrouper dans un même graphique, ainsi que la variation diurne
 des températures pour chaque mois.
@@ -9326,7 +9701,7 @@ des températures pour chaque mois.
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{myRBook_FR_files/figure-latex/unnamed-chunk-205-1.pdf}
+\includegraphics{myRBook_FR_files/figure-latex/unnamed-chunk-215-1.pdf}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -9351,7 +9726,7 @@ des températures pour chaque mois.
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{myRBook_FR_files/figure-latex/unnamed-chunk-205-2.pdf}
+\includegraphics{myRBook_FR_files/figure-latex/unnamed-chunk-215-2.pdf}
 
 \hypertarget{studyCase002}{\chapter{Obtenir le numéro WOS d'un article
 scientifique à partir de son numéro DOI}\label{studyCase002}}
