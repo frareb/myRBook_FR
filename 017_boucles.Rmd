@@ -175,12 +175,171 @@ print(result)
 
 ## La boucle `for` {#l17for}
 
-for(i in seq_along(xxx)){}
-for(i in xxx){}
+En programmation, lorsque nous sommes amenés à répéter plusieurs fois la même ligne de code, c'est un signe indiquant qu'il faut utiliser une **boucle**. Une boucle est une manière d'itérer sur un ensemble d'objets (ou sur les éléments d'un objet), et de répéter une opération. Imaginons une `data.frame` avec des mesures de terrain à deux dates. 
+
+```{r}
+bdd <- data.frame(date01 = rnorm(n = 100, mean = 10, sd = 1), 
+                  date02 = rnorm(n = 100, mean = 10, sd = 1))
+print(head(bdd))
+```
+
+Nous voudrions quantifier la différence entre la première et la deuxième date, puis mettre un indicateur pour savoir si cette différence est petite ou grande, par exemple avec un seuil arbitraire de 3. Donc pour chaque ligne nous pourrions faire :
+
+```{r}
+bdd$dif <- NA
+bdd$isDifBig <- NA
+
+bdd$dif[1] <- sqrt((bdd$date01[1] - bdd$date02[1])^2)
+bdd$dif[2] <- sqrt((bdd$date01[2] - bdd$date02[2])^2)
+bdd$dif[3] <- sqrt((bdd$date01[3] - bdd$date02[3])^2)
+# ...
+bdd$dif[100] <- sqrt((bdd$date01[100] - bdd$date02[100])^2)
+
+if(bdd$dif[1] > 3){
+  bdd$isDifBig[1] <- "big"
+}else{
+  bdd$isDifBig[1] <- "small"
+}
+if(bdd$dif[2] > 3){
+  bdd$isDifBig[2] <- "big"
+}else{
+  bdd$isDifBig[2] <- "small"
+}
+if(bdd$dif[3] > 3){
+  bdd$isDifBig[3] <- "big"
+}else{
+  bdd$isDifBig[3] <- "small"
+}
+# ...
+if(bdd$dif[100] > 3){
+  bdd$isDifBig[100] <- "big"
+}else{
+  bdd$isDifBig[100] <- "small"
+}
+```
+
+Cette façon de faire serait extrêmement fastidieuse à réaliser, et même presque impossible à réaliser si la table contenait 1000 ou 100000 lignes. Il pourrait sembler logique de vouloir itérer sur les lignes de notre `data.frame` pour obtenir les nouvelles colonnes. Nous allons le réaliser même si ce n'est pas la solution que nous allons retenir par la suite.
+
+Nous allons utiliser une boucle `for()`. La boucle `for()` va itérer sur les éléments d'un objet que nous allons donner en argument. Par exemple voici une boucle qui pour tous les chiffres de 3 à 9 va calculer leur valeur au carré. La valeur courante du chiffre est symbolisé par un objet qui peut prendre le nom que nous souhaitons (ici cela sera `i`).
+
+```{r}
+for(i in c(3, 4, 5, 6, 7, 8, 9)){
+  print(i^2)
+}
+```
+
+Que nous pouvons améliorer en utilisant [la fonction `:`](#l0152points).
+
+```{r, eval = FALSE}
+for(i in 3:9){
+  print(i^2)
+}
+```
+
+Le choix du nom `i` est ici arbitraire, nous aurions pu choisir `myVarFor` de la même façon :
+
+```{r, eval = FALSE}
+for(myVarFor in 3:9){
+  print(myVarFor^2)
+}
+```
+
+La boucle `for()` peut itérer sur tous les types d'éléments.
+
+```{r}
+nChar <- c("a", "z", "e", "r", "t", "y")
+for(i in nChar){
+  print(i)
+}
+```
+
+Revenons à notre cas. Nous allons itérer sur le nombre de ligne de notre `data.frame` `bdd`. Avant cela nous allons créer les colonnes `dif` et `isDifBig` avec les valeurs `NA`. Ensuite nous allons utiliser [la fonction `nrow()`](#l015nrow) pour connaître le nombre de lignes.
+
+```{r}
+bdd$dif <- NA
+bdd$isDifBig <- NA
+for(i in 1:nrow(bdd)){
+  bdd$dif[i] <- sqrt((bdd$date01[i] - bdd$date02[i])^2)
+  if(bdd$dif[i] > 3){
+    bdd$isDifBig[i] <- "big"
+  }else{
+    bdd$isDifBig[i] <- "small"
+  }
+}
+print(head(bdd, n = 20))
+```
+
+En pratique ce n'est pas la meilleure façon de réaliser cet exercice car il s'agit ici de simples calculs sur des vecteurs contenus dans une `data.frame`. R est particulièrement puissant pour effectuer des opérations sur des vecteurs. Lorsque cela est possible il faut donc toujours privilégier les opérations sur les vecteurs. Ici notre code devient :
+
+```{r}
+bdd$dif <- sqrt((bdd$date01 - bdd$date02)^2)
+bdd$isDifBig <- "small"
+bdd$isDifBig[bdd$dif > 3] <- "big"
+print(head(bdd, n = 20))
+```
+
+La plupart des exemples que l'on peut trouver sur Internet à propos de la boucle `for()` peuvent être remplacés par des opérations sur les vecteurs. Voici quelques exemples adaptés de plusieurs sources :
+
+```{r}
+# tester si des nombres sont pairs
+# [1] FOR
+x <- sample(1:100, size = 20)
+count <- 0
+for (val in x) {
+  if(val %% 2 == 0){
+    count <- count + 1
+  }
+}
+print(count)
+# [2] VECTOR
+sum(x %% 2 == 0)
+
+# calculer des carrés
+# [1] FOR
+x <- rep(0, 20)
+for (j in 1:20){
+  x[j] <- j^2
+}
+print(x)
+# [2] VECTOR
+(1:20)^2
+
+# répéter un lancer de dés et faire la moyenne
+# [1] FOR
+ntrials = 1000
+trials = rep(0, ntrials)
+for (j in 1:ntrials){
+  trials[j] = sample(1:6, size = 1)
+}
+mean(trials)
+# [2] VECTOR
+mean(sample(1:6, ntrials, replace = TRUE))
+```
+
+C'est un bon exercice de parcourir les nombreux exemples disponibles sur Internet sur la boucle `for()` et de tenter de les transformer en opérations vectorielles. Cela nous permet d'acquérir les bons réflexes de programmation avec R. La boucle `for()` reste très utile pour par exemple lire plusieurs fichiers et traiter l'information qu'ils contiennent de la même façon, faire des graphiques, ou encore lorsque les opérations vectorielles deveinnent fastidieuses. Imaginons une matrice de 10 colonnes et 100 lignes. Nous voulons la somme de chaque ligne (nous verrons plus loin comment faire avec la fonction `apply()`).
+
+```{r}
+myMat <- matrix(sample(1:100, size = 1000, replace = TRUE), ncol = 10)
+# VECTOR
+sumRow <- myMat[, 1] + myMat[, 2] + myMat[, 3] + myMat[, 4] + 
+  myMat[, 5] + myMat[, 6] + myMat[, 7] + myMat[, 8] + 
+  myMat[, 9] + myMat[, 10]
+print(sumRow)
+# FOR
+sumRow <- rep(NA, times = nrow(myMat))
+for(j in 1:nrow(myMat)){
+  sumRow[j] <- sum(myMat[j, ])
+}
+print(sumRow)
+```
+
+En conclusion, il est recommandé de ne pas utiliser la boucle `for()` avec R chaque fois que cela est possible, et nous verrons dans ce chapitre des alternatives commes les boucles de la famille `apply()`.
 
 ## La boucle `while` {#l17while}
 
-XXX
+La boucle `while()`, contrairement à la boucle `for()`, signifie *TANT QUE*. Tant qu'une condition n'est pas remplie, la boucle va continuer à s'exécuter. Attention car en cas d'erreur, nous pouvons facilement programmer des boucles qui ne terminent jamais !
+
+
 
 ## `repeat`, `next`, `break`, `stop` {#l17spe}
 
