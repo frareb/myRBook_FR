@@ -25,7 +25,7 @@
 <meta name="author" content="François Rebaudo">
 
 
-<meta name="date" content="2018-09-17">
+<meta name="date" content="2018-09-28">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -335,7 +335,7 @@ myResult &lt;-<span class="st"> </span><span class="dv">0</span>
   <span class="kw">print</span>(<span class="st">&quot;error&quot;</span>)
 }</code></pre></div>
 <pre><code>## [1] &quot;ok&quot;</code></pre>
-<p>Nous pouvons aussi imbriqués les tests logiques les uns dans les autres.</p>
+<p>Nous pouvons aussi imbriquer les tests logiques les uns dans les autres.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">myVar &lt;-<span class="st"> </span><span class="ot">TRUE</span>
 <span class="cf">if</span>(<span class="kw">is.character</span>(myVar)){
   <span class="kw">print</span>(<span class="st">&quot;myVar: character&quot;</span>)
@@ -351,7 +351,7 @@ myResult &lt;-<span class="st"> </span><span class="dv">0</span>
   }
 }</code></pre></div>
 <pre><code>## [1] &quot;myVar: logical&quot;</code></pre>
-<p>Il est aussi possible de stipuler plusiers conditions, comme nous l’avons vu lors du chapitre sur les <a href="premiersPas.html#l011opcomp">opérateurs de comparaison</a>.</p>
+<p>Il est aussi possible de stipuler plusieurs conditions, comme nous l’avons vu lors du chapitre sur les <a href="premiersPas.html#l011opcomp">opérateurs de comparaison</a>.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">myVar &lt;-<span class="st"> </span><span class="dv">2</span>
 <span class="cf">if</span>(myVar <span class="op">&gt;</span><span class="st"> </span><span class="dv">1</span> <span class="op">&amp;</span><span class="st"> </span>myVar <span class="op">&lt;</span><span class="st"> </span><span class="dv">50</span>){
   <span class="kw">print</span>(<span class="st">&quot;ok&quot;</span>)
@@ -374,7 +374,7 @@ limEnd &lt;-<span class="st"> </span><span class="dv">50</span>
   <span class="kw">print</span>(<span class="kw">paste0</span>(myVar, <span class="st">&quot; not between &quot;</span>, limInit, <span class="st">&quot; and &quot;</span>, limEnd, <span class="st">&quot;.&quot;</span>))
 }</code></pre></div>
 <pre><code>## [1] &quot;2azerty is between 1 and 50.&quot;</code></pre>
-<p>Donc ce que nous voudirons faire est de tester si <code>myVar</code> est bien au format <code>numeric</code> puis uniquement si c’est le cas de tester les conditions précédentes.</p>
+<p>Donc ce que nous voudrions faire est de tester si <code>myVar</code> est bien au format <code>numeric</code> puis uniquement si c’est le cas de tester les conditions suivantes.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">myVar &lt;-<span class="st"> &quot;2azerty&quot;</span>
 <span class="cf">if</span>(<span class="kw">is.numeric</span>(myVar)){
   <span class="cf">if</span>(myVar <span class="op">&gt;</span><span class="st"> </span>limInit <span class="op">&amp;</span><span class="st"> </span>myVar <span class="op">&lt;</span><span class="st"> </span>limEnd){
@@ -419,7 +419,30 @@ mySpecies &lt;-<span class="st"> </span><span class="dv">15</span>
 </div>
 <div id="l17switch" class="section level2">
 <h2><span class="header-section-number">11.2</span> Tests logiques avec <code>switch</code></h2>
-<p>XXX</p>
+<p>La fonction <code>switch()</code> est une variante de <code>if()</code> qui est utile lorsque nous avons de nombreuses options possibles sur une même expression. L’exemple suivant montre comment transformer un code utilisant <code>if()</code> en <code>switch()</code>.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">x &lt;-<span class="st"> &quot;aa&quot;</span>
+<span class="cf">if</span>(x <span class="op">==</span><span class="st"> &quot;a&quot;</span>){
+  result &lt;-<span class="st"> </span><span class="dv">1</span>
+}
+<span class="cf">if</span>(x <span class="op">==</span><span class="st"> &quot;aa&quot;</span>){
+  result &lt;-<span class="st"> </span><span class="dv">2</span>
+}
+<span class="cf">if</span>(x <span class="op">==</span><span class="st"> &quot;aaa&quot;</span>){
+  result &lt;-<span class="st"> </span><span class="dv">3</span>
+}
+<span class="cf">if</span>(x <span class="op">==</span><span class="st"> &quot;aaaa&quot;</span>){
+  result &lt;-<span class="st"> </span><span class="dv">4</span>
+}
+<span class="kw">print</span>(result)</code></pre></div>
+<pre><code>## [1] 2</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">x &lt;-<span class="st"> &quot;aa&quot;</span>
+<span class="cf">switch</span>(x, 
+  <span class="dt">a =</span> result &lt;-<span class="st"> </span><span class="dv">1</span>,
+  <span class="dt">aa =</span> result &lt;-<span class="st"> </span><span class="dv">2</span>,
+  <span class="dt">aaa =</span> result &lt;-<span class="st"> </span><span class="dv">3</span>,
+  <span class="dt">aaaa =</span> result &lt;-<span class="st"> </span><span class="dv">4</span>)
+<span class="kw">print</span>(result)</code></pre></div>
+<pre><code>## [1] 2</code></pre>
 </div>
 <div id="l17for" class="section level2">
 <h2><span class="header-section-number">11.3</span> La boucle <code>for</code></h2>
