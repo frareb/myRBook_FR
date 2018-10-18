@@ -337,9 +337,43 @@ En conclusion, il est recommandé de ne pas utiliser la boucle `for()` avec R ch
 
 ## La boucle `while` {#l17while}
 
-La boucle `while()`, contrairement à la boucle `for()`, signifie *TANT QUE*. Tant qu'une condition n'est pas remplie, la boucle va continuer à s'exécuter. Attention car en cas d'erreur, nous pouvons facilement programmer des boucles qui ne terminent jamais !
+La boucle `while()`, contrairement à la boucle `for()`, signifie *TANT QUE*. Tant qu'une condition n'est pas remplie, la boucle va continuer à s'exécuter. Attention car en cas d'erreur, nous pouvons facilement programmer des boucles qui ne terminent jamais ! Cette boucle est moins courante que la boucle `for()`. prenons un exemple :
 
+```{r}
+i <- 0
+while(i < 10){
+  print(i)
+  i <- i + 1
+}
+```
 
+Dans cet exemple, la variable `i` a comme valeur 0. TANT QUE `i < 10`, nous allons afficher `i`. Pour que cette boucle se termine, il ne faut pas oublier de modifier la valeur de `i`, c'est ce qui est fait avec la ligne `i <- i + 1`. Lorsque la condition `i < 10` ne se vérifie plus, la boucle s'arrête.
+
+La boucle `while()` est très utile pour créer des scripts qui vont effectuer des calculs sur des variables dont la valeur évoluent dans le temps. Par exemple imaginons un nombre entre 0 et 10000 et un générateur aléatoire qui va essayer de déterminer la valeur de ce nombre. Si nous souhaitons limiter les tentatives de R à 2 secondes, nous pouvons écrire le script suivant (qui devrait marcher à tous les coups sur un ordinateur de bureau classique pouvant facilement effectuer 35000 essais en 2 secondes) :
+
+```{r}
+myNumber <- sample(x = 10000, size = 1)
+myGuess <- sample(x = 10000, size = 1)
+startTime <- Sys.time()
+numberGuess <- 0
+while(Sys.time() - startTime < 2){
+  if(myGuess == myNumber){
+    numberGuess <- numberGuess + 1
+    print("number Found !")
+    print(paste0("and I have plenty of time left: ", 
+      round(2 - as.numeric(Sys.time() - startTime), digits = 2), 
+      " sec"))
+    break
+  }else{
+    myGuess <- sample(x = 10000, size = 1)
+    numberGuess <- numberGuess + 1
+  }
+}
+```
+
+Dans ce script nous générons un nombre aléatoire à deviner avec la fonction `sample()`, et chaque essai avec la même fonction `sample()`. Ensuite nous utilisons la fonction `Sys.time()` (avec un S majuscule à `Sys`), pour connaître l'heure de début de la boucle. Tant que la différence entre chaque itération de la boucle et l'heure de démarrage est inférieur à 2 secondes, la boucle `while()` va vérifier si le bon nombre a été deviner dans le test logique avec `if()` puis si c'est le cas nous informer que le nombre a été trouvé, nous dire le temps restant avant les deux secondes, puis terminer la boucle avec le mot clef `break` sur lequel nous reviendrons. En bref, `break` permet de sortir d'une boucle. Si le nombre n'a pas été deviné, la boucle fait un autre essai avec la fonction `sample()`.
+
+Plus concrètement nous pourrions imaginer des algorithmes pour explorer un espace de solutions face à un problème avec un temps limité pour y parvenir. La boucle `while()` peut aussi être pratique pour qu'un script ne s'exécute que lorsque un fichier issu d'un autre programme devient disponible... En pratique la boucle `while()` reste peu utilisée avec R.
 
 ## `repeat`, `next`, `break`, `stop` {#l17spe}
 
