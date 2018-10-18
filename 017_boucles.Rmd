@@ -375,7 +375,22 @@ Dans ce script nous générons un nombre aléatoire à deviner avec la fonction 
 
 Plus concrètement nous pourrions imaginer des algorithmes pour explorer un espace de solutions face à un problème avec un temps limité pour y parvenir. La boucle `while()` peut aussi être pratique pour qu'un script ne s'exécute que lorsque un fichier issu d'un autre programme devient disponible... En pratique la boucle `while()` reste peu utilisée avec R.
 
-## `repeat`, `next`, `break`, `stop` {#l17spe}
+## La boucle `repeat` {#l17repeat}
+
+La boucle `repeat()` permet de répéter une opération sans condition à vérifier. Pour sortir de cette boucle il faut donc obligatoirement utiliser le mot clef `break`.
+
+```{r}
+i <- 1
+repeat{
+  print(i^2)
+  i <- i + 1
+  if(i == 5){
+    break
+  }
+}
+``` 
+
+## `next`, `break`, `stop` {#l17spe}
 
 XXX
 
