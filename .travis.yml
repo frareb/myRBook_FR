@@ -10,12 +10,12 @@ pandoc_version: 2.1.1
 
 before_install:
 - mkdir ~/.R
-- npm install netlify-cli -g
+#- npm install netlify-cli -g
 
 script:
 - Rscript -e 'bookdown::render_book("index.Rmd")'
 
-deploy:
-  provider: script
-  script: bash scripts/deploy.sh
-  skip_cleanup: true
+#deploy:
+#  provider: script
+#  script: bash scripts/deploy.sh
+#  skip_cleanup: true
