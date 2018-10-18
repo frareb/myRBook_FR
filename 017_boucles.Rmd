@@ -359,8 +359,8 @@ numberGuess <- 0
 while(Sys.time() - startTime < 2){
   if(myGuess == myNumber){
     numberGuess <- numberGuess + 1
-    print("number Found !")
-    print(paste0("and I have plenty of time left: ", 
+    print("Number found !")
+    print(paste0("And I have plenty of time left: ", 
       round(2 - as.numeric(Sys.time() - startTime), digits = 2), 
       " sec"))
     break
@@ -388,7 +388,33 @@ repeat{
     break
   }
 }
-``` 
+```
+
+Si nous reprenons l'exemple précédent, nous pouvons utiliser une boucle `repeat()` pour le répéter 5 fois.
+
+```{r}
+numTry <- 0
+repeat{
+  myNumber <- sample(x = 10000, size = 1)
+  myGuess <- sample(x = 10000, size = 1)
+  startTime <- Sys.time()
+  numberGuess <- 0
+  while(Sys.time() - startTime < 2){
+    if(myGuess == myNumber){
+      numberGuess <- numberGuess + 1
+      print(round(as.numeric(Sys.time() - startTime), digits = 3))
+      break
+    }else{
+      myGuess <- sample(x = 10000, size = 1)
+      numberGuess <- numberGuess + 1
+    }
+  }
+  numTry <- numTry + 1
+  if(numTry == 5){break}
+}
+```
+
+Comme la boucle `while()`, la boucle `repeat()` reste peu utlisée avec R.
 
 ## `next`, `break`, `stop` {#l17spe}
 
@@ -415,3 +441,13 @@ XXX
 ### `mapply` {#l17mapply}
 
 XXX
+
+### `rapply` {#l17rapply}
+
+XXX
+
+### `vapply` {#l17vapply}
+
+## Conclusion
+
+Félicitations, nous sommes arrivés au bout de ce chapitre sur l'algorithmique. Retenons ce message clef : dès qu'une opération doit être réalisée plus de deux fois dans un script en répétant du code aui a été déjà écrit, c'est un signe qui doit nous conduire à l'utilisation d'une boucle. Pour autant, chaque fois que cela est possible, il est recommandé de ne pas utiliser les boucles traditionnelles `for()`, `while()`, et `repeat()`, mais de préférer les opération sur les vecteurs ou encore les boucles de la famille `apply`. Cela peut être assez difficile à intégrer au début mais nous verrons que nos scripts seront plus faciles à maintenir et à lire, et beaucoup plus performants si nous suivons ces habitudes. 
