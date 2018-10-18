@@ -246,7 +246,10 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="11.7.3" data-path="algo.html"><a href="algo.html#l17lapply"><i class="fa fa-check"></i><b>11.7.3</b> <code>lapply</code></a></li>
 <li class="chapter" data-level="11.7.4" data-path="algo.html"><a href="algo.html#l17tapply"><i class="fa fa-check"></i><b>11.7.4</b> <code>tapply</code></a></li>
 <li class="chapter" data-level="11.7.5" data-path="algo.html"><a href="algo.html#l17mapply"><i class="fa fa-check"></i><b>11.7.5</b> <code>mapply</code></a></li>
+<li class="chapter" data-level="11.7.6" data-path="algo.html"><a href="algo.html#l17rapply"><i class="fa fa-check"></i><b>11.7.6</b> <code>rapply</code></a></li>
+<li class="chapter" data-level="11.7.7" data-path="algo.html"><a href="algo.html#l17vapply"><i class="fa fa-check"></i><b>11.7.7</b> <code>vapply</code></a></li>
 </ul></li>
+<li class="chapter" data-level="11.8" data-path="algo.html"><a href="algo.html#conclusion-6"><i class="fa fa-check"></i><b>11.8</b> Conclusion</a></li>
 </ul></li>
 <li class="chapter" data-level="12" data-path="project.html"><a href="project.html"><i class="fa fa-check"></i><b>12</b> Gestion d’un projet avec R</a><ul>
 <li class="chapter" data-level="12.1" data-path="project.html"><a href="project.html#gestion-des-fichiers-et-du-repertoire-de-travail"><i class="fa fa-check"></i><b>12.1</b> Gestion des fichiers et du répertoire de travail</a></li>
@@ -452,12 +455,12 @@ mySpecies &lt;-<span class="st"> </span><span class="dv">15</span>
                   <span class="dt">date02 =</span> <span class="kw">rnorm</span>(<span class="dt">n =</span> <span class="dv">100</span>, <span class="dt">mean =</span> <span class="dv">10</span>, <span class="dt">sd =</span> <span class="dv">1</span>))
 <span class="kw">print</span>(<span class="kw">head</span>(bdd))</code></pre></div>
 <pre><code>##      date01    date02
-## 1 10.404092  9.902475
-## 2  9.751097  9.266941
-## 3  9.689500 10.570203
-## 4  9.831841 10.112317
-## 5  8.605278  8.918910
-## 6  9.623938  8.990316</code></pre>
+## 1  9.542629 10.066054
+## 2  9.389914 10.112415
+## 3 10.663757 10.315936
+## 4 11.573940 10.173339
+## 5  8.829368  8.596225
+## 6  9.426656  9.649012</code></pre>
 <p>Nous voudrions quantifier la différence entre la première et la deuxième date, puis mettre un indicateur pour savoir si cette différence est petite ou grande, par exemple avec un seuil arbitraire de 3. Donc pour chaque ligne nous pourrions faire :</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">bdd<span class="op">$</span>dif &lt;-<span class="st"> </span><span class="ot">NA</span>
 bdd<span class="op">$</span>isDifBig &lt;-<span class="st"> </span><span class="ot">NA</span>
@@ -532,53 +535,53 @@ bdd<span class="op">$</span>isDifBig &lt;-<span class="st"> </span><span class="
   }
 }
 <span class="kw">print</span>(<span class="kw">head</span>(bdd, <span class="dt">n =</span> <span class="dv">20</span>))</code></pre></div>
-<pre><code>##       date01    date02        dif isDifBig
-## 1  10.404092  9.902475 0.50161740    small
-## 2   9.751097  9.266941 0.48415616    small
-## 3   9.689500 10.570203 0.88070268    small
-## 4   9.831841 10.112317 0.28047585    small
-## 5   8.605278  8.918910 0.31363266    small
-## 6   9.623938  8.990316 0.63362269    small
-## 7   8.182490  9.460139 1.27764875    small
-## 8   9.774450 10.447874 0.67342310    small
-## 9  10.731622 11.755571 1.02394942    small
-## 10  9.970676  9.941768 0.02890808    small
-## 11  8.714837 11.727704 3.01286775      big
-## 12  9.446793  8.711564 0.73522867    small
-## 13  9.417257 10.017087 0.59983000    small
-## 14  8.802551  8.259850 0.54270093    small
-## 15 10.188014 11.177470 0.98945590    small
-## 16 10.875558  9.518492 1.35706548    small
-## 17  9.479225 10.338532 0.85930633    small
-## 18 10.291204  9.577813 0.71339083    small
-## 19  9.555855  6.807415 2.74844037    small
-## 20  9.975964 10.017410 0.04144601    small</code></pre>
+<pre><code>##       date01    date02       dif isDifBig
+## 1   9.542629 10.066054 0.5234250    small
+## 2   9.389914 10.112415 0.7225007    small
+## 3  10.663757 10.315936 0.3478209    small
+## 4  11.573940 10.173339 1.4006015    small
+## 5   8.829368  8.596225 0.2331422    small
+## 6   9.426656  9.649012 0.2223562    small
+## 7  10.963885 10.079237 0.8846488    small
+## 8  11.092572 10.416316 0.6762563    small
+## 9  10.221889  9.743809 0.4780799    small
+## 10  9.183077  9.463034 0.2799571    small
+## 11 11.459310  9.625701 1.8336097    small
+## 12  8.976507 11.921849 2.9453412    small
+## 13  9.424650  8.677065 0.7475847    small
+## 14  8.985461  9.242750 0.2572894    small
+## 15  8.953793  8.675910 0.2778833    small
+## 16 10.326545 10.494928 0.1683835    small
+## 17 12.122014  9.133295 2.9887188    small
+## 18  9.367076 11.132259 1.7651830    small
+## 19  9.557190  9.849876 0.2926860    small
+## 20  9.011922  9.752653 0.7407304    small</code></pre>
 <p>En pratique ce n’est pas la meilleure façon de réaliser cet exercice car il s’agit ici de simples calculs sur des vecteurs contenus dans une <code>data.frame</code>. R est particulièrement puissant pour effectuer des opérations sur des vecteurs. Lorsque cela est possible il faut donc toujours privilégier les opérations sur les vecteurs. Ici notre code devient :</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">bdd<span class="op">$</span>dif &lt;-<span class="st"> </span><span class="kw">sqrt</span>((bdd<span class="op">$</span>date01 <span class="op">-</span><span class="st"> </span>bdd<span class="op">$</span>date02)<span class="op">^</span><span class="dv">2</span>)
 bdd<span class="op">$</span>isDifBig &lt;-<span class="st"> &quot;small&quot;</span>
 bdd<span class="op">$</span>isDifBig[bdd<span class="op">$</span>dif <span class="op">&gt;</span><span class="st"> </span><span class="dv">3</span>] &lt;-<span class="st"> &quot;big&quot;</span>
 <span class="kw">print</span>(<span class="kw">head</span>(bdd, <span class="dt">n =</span> <span class="dv">20</span>))</code></pre></div>
-<pre><code>##       date01    date02        dif isDifBig
-## 1  10.404092  9.902475 0.50161740    small
-## 2   9.751097  9.266941 0.48415616    small
-## 3   9.689500 10.570203 0.88070268    small
-## 4   9.831841 10.112317 0.28047585    small
-## 5   8.605278  8.918910 0.31363266    small
-## 6   9.623938  8.990316 0.63362269    small
-## 7   8.182490  9.460139 1.27764875    small
-## 8   9.774450 10.447874 0.67342310    small
-## 9  10.731622 11.755571 1.02394942    small
-## 10  9.970676  9.941768 0.02890808    small
-## 11  8.714837 11.727704 3.01286775      big
-## 12  9.446793  8.711564 0.73522867    small
-## 13  9.417257 10.017087 0.59983000    small
-## 14  8.802551  8.259850 0.54270093    small
-## 15 10.188014 11.177470 0.98945590    small
-## 16 10.875558  9.518492 1.35706548    small
-## 17  9.479225 10.338532 0.85930633    small
-## 18 10.291204  9.577813 0.71339083    small
-## 19  9.555855  6.807415 2.74844037    small
-## 20  9.975964 10.017410 0.04144601    small</code></pre>
+<pre><code>##       date01    date02       dif isDifBig
+## 1   9.542629 10.066054 0.5234250    small
+## 2   9.389914 10.112415 0.7225007    small
+## 3  10.663757 10.315936 0.3478209    small
+## 4  11.573940 10.173339 1.4006015    small
+## 5   8.829368  8.596225 0.2331422    small
+## 6   9.426656  9.649012 0.2223562    small
+## 7  10.963885 10.079237 0.8846488    small
+## 8  11.092572 10.416316 0.6762563    small
+## 9  10.221889  9.743809 0.4780799    small
+## 10  9.183077  9.463034 0.2799571    small
+## 11 11.459310  9.625701 1.8336097    small
+## 12  8.976507 11.921849 2.9453412    small
+## 13  9.424650  8.677065 0.7475847    small
+## 14  8.985461  9.242750 0.2572894    small
+## 15  8.953793  8.675910 0.2778833    small
+## 16 10.326545 10.494928 0.1683835    small
+## 17 12.122014  9.133295 2.9887188    small
+## 18  9.367076 11.132259 1.7651830    small
+## 19  9.557190  9.849876 0.2926860    small
+## 20  9.011922  9.752653 0.7407304    small</code></pre>
 <p>La plupart des exemples que l’on peut trouver sur Internet à propos de la boucle <code>for()</code> peuvent être remplacés par des opérations sur les vecteurs. Voici quelques exemples adaptés de plusieurs sources :</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># tester si des nombres sont pairs</span>
 <span class="co"># [1] FOR</span>
@@ -590,10 +593,10 @@ count &lt;-<span class="st"> </span><span class="dv">0</span>
   }
 }
 <span class="kw">print</span>(count)</code></pre></div>
-<pre><code>## [1] 14</code></pre>
+<pre><code>## [1] 11</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># [2] VECTOR</span>
 <span class="kw">sum</span>(x <span class="op">%%</span><span class="st"> </span><span class="dv">2</span> <span class="op">==</span><span class="st"> </span><span class="dv">0</span>)</code></pre></div>
-<pre><code>## [1] 14</code></pre>
+<pre><code>## [1] 11</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># calculer des carrés</span>
 <span class="co"># [1] FOR</span>
 x &lt;-<span class="st"> </span><span class="kw">rep</span>(<span class="dv">0</span>, <span class="dv">20</span>)
@@ -615,10 +618,10 @@ trials =<span class="st"> </span><span class="kw">rep</span>(<span class="dv">0<
   trials[j] =<span class="st"> </span><span class="kw">sample</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">6</span>, <span class="dt">size =</span> <span class="dv">1</span>)
 }
 <span class="kw">mean</span>(trials)</code></pre></div>
-<pre><code>## [1] 3.459</code></pre>
+<pre><code>## [1] 3.528</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># [2] VECTOR</span>
 <span class="kw">mean</span>(<span class="kw">sample</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">6</span>, ntrials, <span class="dt">replace =</span> <span class="ot">TRUE</span>))</code></pre></div>
-<pre><code>## [1] 3.436</code></pre>
+<pre><code>## [1] 3.537</code></pre>
 <p>C’est un bon exercice de parcourir les nombreux exemples disponibles sur Internet sur la boucle <code>for()</code> et de tenter de les transformer en opérations vectorielles. Cela nous permet d’acquérir les bons réflexes de programmation avec R. La boucle <code>for()</code> reste très utile pour par exemple lire plusieurs fichiers et traiter l’information qu’ils contiennent de la même façon, faire des graphiques, ou encore lorsque les opérations vectorielles deveinnent fastidieuses. Imaginons une matrice de 10 colonnes et 100 lignes. Nous voulons la somme de chaque ligne (nous verrons plus loin comment faire avec la fonction <code>apply()</code>).</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">myMat &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">sample</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">100</span>, <span class="dt">size =</span> <span class="dv">1000</span>, <span class="dt">replace =</span> <span class="ot">TRUE</span>), <span class="dt">ncol =</span> <span class="dv">10</span>)
 <span class="co"># VECTOR</span>
@@ -626,24 +629,24 @@ sumRow &lt;-<span class="st"> </span>myMat[, <span class="dv">1</span>] <span cl
 <span class="st">  </span>myMat[, <span class="dv">5</span>] <span class="op">+</span><span class="st"> </span>myMat[, <span class="dv">6</span>] <span class="op">+</span><span class="st"> </span>myMat[, <span class="dv">7</span>] <span class="op">+</span><span class="st"> </span>myMat[, <span class="dv">8</span>] <span class="op">+</span><span class="st"> </span>
 <span class="st">  </span>myMat[, <span class="dv">9</span>] <span class="op">+</span><span class="st"> </span>myMat[, <span class="dv">10</span>]
 <span class="kw">print</span>(sumRow)</code></pre></div>
-<pre><code>##   [1] 529 390 622 460 460 550 539 532 562 537 595 358 514 718 329 562 457
-##  [18] 456 491 497 504 582 554 675 308 286 491 551 534 298 559 469 403 717
-##  [35] 360 597 575 414 471 596 357 624 552 590 442 584 506 430 386 529 460
-##  [52] 329 565 411 451 503 540 628 453 787 571 360 474 404 490 465 431 593
-##  [69] 526 406 373 554 577 609 433 663 384 464 464 478 422 444 517 463 466
-##  [86] 588 435 395 551 497 562 527 508 495 357 457 480 579 543 522</code></pre>
+<pre><code>##   [1] 491 459 553 506 520 477 444 353 481 643 503 464 541 313 487 532 536
+##  [18] 373 472 524 527 523 473 336 516 627 549 483 547 539 465 539 619 433
+##  [35] 433 602 359 545 539 537 572 386 538 564 527 521 680 591 553 585 608
+##  [52] 544 459 530 369 622 544 462 547 489 546 305 403 586 489 575 617 546
+##  [69] 420 525 427 540 664 705 360 546 563 593 508 523 423 442 559 496 599
+##  [86] 274 570 436 425 489 497 513 717 587 486 477 522 410 636 499</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># FOR</span>
 sumRow &lt;-<span class="st"> </span><span class="kw">rep</span>(<span class="ot">NA</span>, <span class="dt">times =</span> <span class="kw">nrow</span>(myMat))
 <span class="cf">for</span>(j <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="kw">nrow</span>(myMat)){
   sumRow[j] &lt;-<span class="st"> </span><span class="kw">sum</span>(myMat[j, ])
 }
 <span class="kw">print</span>(sumRow)</code></pre></div>
-<pre><code>##   [1] 529 390 622 460 460 550 539 532 562 537 595 358 514 718 329 562 457
-##  [18] 456 491 497 504 582 554 675 308 286 491 551 534 298 559 469 403 717
-##  [35] 360 597 575 414 471 596 357 624 552 590 442 584 506 430 386 529 460
-##  [52] 329 565 411 451 503 540 628 453 787 571 360 474 404 490 465 431 593
-##  [69] 526 406 373 554 577 609 433 663 384 464 464 478 422 444 517 463 466
-##  [86] 588 435 395 551 497 562 527 508 495 357 457 480 579 543 522</code></pre>
+<pre><code>##   [1] 491 459 553 506 520 477 444 353 481 643 503 464 541 313 487 532 536
+##  [18] 373 472 524 527 523 473 336 516 627 549 483 547 539 465 539 619 433
+##  [35] 433 602 359 545 539 537 572 386 538 564 527 521 680 591 553 585 608
+##  [52] 544 459 530 369 622 544 462 547 489 546 305 403 586 489 575 617 546
+##  [69] 420 525 427 540 664 705 360 546 563 593 508 523 423 442 559 496 599
+##  [86] 274 570 436 425 489 497 513 717 587 486 477 522 410 636 499</code></pre>
 <p>En conclusion, il est recommandé de ne pas utiliser la boucle <code>for()</code> avec R chaque fois que cela est possible, et nous verrons dans ce chapitre des alternatives commes les boucles de la famille <code>apply()</code>.</p>
 </div>
 <div id="l17while" class="section level2">
@@ -673,8 +676,8 @@ numberGuess &lt;-<span class="st"> </span><span class="dv">0</span>
 <span class="cf">while</span>(<span class="kw">Sys.time</span>() <span class="op">-</span><span class="st"> </span>startTime <span class="op">&lt;</span><span class="st"> </span><span class="dv">2</span>){
   <span class="cf">if</span>(myGuess <span class="op">==</span><span class="st"> </span>myNumber){
     numberGuess &lt;-<span class="st"> </span>numberGuess <span class="op">+</span><span class="st"> </span><span class="dv">1</span>
-    <span class="kw">print</span>(<span class="st">&quot;number Found !&quot;</span>)
-    <span class="kw">print</span>(<span class="kw">paste0</span>(<span class="st">&quot;and I have plenty of time left: &quot;</span>, 
+    <span class="kw">print</span>(<span class="st">&quot;Number found !&quot;</span>)
+    <span class="kw">print</span>(<span class="kw">paste0</span>(<span class="st">&quot;And I have plenty of time left: &quot;</span>, 
       <span class="kw">round</span>(<span class="dv">2</span> <span class="op">-</span><span class="st"> </span><span class="kw">as.numeric</span>(<span class="kw">Sys.time</span>() <span class="op">-</span><span class="st"> </span>startTime), <span class="dt">digits =</span> <span class="dv">2</span>), 
       <span class="st">&quot; sec&quot;</span>))
     <span class="cf">break</span>
@@ -683,8 +686,8 @@ numberGuess &lt;-<span class="st"> </span><span class="dv">0</span>
     numberGuess &lt;-<span class="st"> </span>numberGuess <span class="op">+</span><span class="st"> </span><span class="dv">1</span>
   }
 }</code></pre></div>
-<pre><code>## [1] &quot;number Found !&quot;
-## [1] &quot;and I have plenty of time left: 1.95 sec&quot;</code></pre>
+<pre><code>## [1] &quot;Number found !&quot;
+## [1] &quot;And I have plenty of time left: 1.76 sec&quot;</code></pre>
 <p>Dans ce script nous générons un nombre aléatoire à deviner avec la fonction <code>sample()</code>, et chaque essai avec la même fonction <code>sample()</code>. Ensuite nous utilisons la fonction <code>Sys.time()</code> (avec un S majuscule à <code>Sys</code>), pour connaître l’heure de début de la boucle. Tant que la différence entre chaque itération de la boucle et l’heure de démarrage est inférieur à 2 secondes, la boucle <code>while()</code> va vérifier si le bon nombre a été deviner dans le test logique avec <code>if()</code> puis si c’est le cas nous informer que le nombre a été trouvé, nous dire le temps restant avant les deux secondes, puis terminer la boucle avec le mot clef <code>break</code> sur lequel nous reviendrons. En bref, <code>break</code> permet de sortir d’une boucle. Si le nombre n’a pas été deviné, la boucle fait un autre essai avec la fonction <code>sample()</code>.</p>
 <p>Plus concrètement nous pourrions imaginer des algorithmes pour explorer un espace de solutions face à un problème avec un temps limité pour y parvenir. La boucle <code>while()</code> peut aussi être pratique pour qu’un script ne s’exécute que lorsque un fichier issu d’un autre programme devient disponible… En pratique la boucle <code>while()</code> reste peu utilisée avec R.</p>
 </div>
@@ -703,6 +706,32 @@ numberGuess &lt;-<span class="st"> </span><span class="dv">0</span>
 ## [1] 4
 ## [1] 9
 ## [1] 16</code></pre>
+<p>Si nous reprenons l’exemple précédent, nous pouvons utiliser une boucle <code>repeat()</code> pour le répéter 5 fois.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">numTry &lt;-<span class="st"> </span><span class="dv">0</span>
+<span class="cf">repeat</span>{
+  myNumber &lt;-<span class="st"> </span><span class="kw">sample</span>(<span class="dt">x =</span> <span class="dv">10000</span>, <span class="dt">size =</span> <span class="dv">1</span>)
+  myGuess &lt;-<span class="st"> </span><span class="kw">sample</span>(<span class="dt">x =</span> <span class="dv">10000</span>, <span class="dt">size =</span> <span class="dv">1</span>)
+  startTime &lt;-<span class="st"> </span><span class="kw">Sys.time</span>()
+  numberGuess &lt;-<span class="st"> </span><span class="dv">0</span>
+  <span class="cf">while</span>(<span class="kw">Sys.time</span>() <span class="op">-</span><span class="st"> </span>startTime <span class="op">&lt;</span><span class="st"> </span><span class="dv">2</span>){
+    <span class="cf">if</span>(myGuess <span class="op">==</span><span class="st"> </span>myNumber){
+      numberGuess &lt;-<span class="st"> </span>numberGuess <span class="op">+</span><span class="st"> </span><span class="dv">1</span>
+      <span class="kw">print</span>(<span class="kw">round</span>(<span class="kw">as.numeric</span>(<span class="kw">Sys.time</span>() <span class="op">-</span><span class="st"> </span>startTime), <span class="dt">digits =</span> <span class="dv">3</span>))
+      <span class="cf">break</span>
+    }<span class="cf">else</span>{
+      myGuess &lt;-<span class="st"> </span><span class="kw">sample</span>(<span class="dt">x =</span> <span class="dv">10000</span>, <span class="dt">size =</span> <span class="dv">1</span>)
+      numberGuess &lt;-<span class="st"> </span>numberGuess <span class="op">+</span><span class="st"> </span><span class="dv">1</span>
+    }
+  }
+  numTry &lt;-<span class="st"> </span>numTry <span class="op">+</span><span class="st"> </span><span class="dv">1</span>
+  <span class="cf">if</span>(numTry <span class="op">==</span><span class="st"> </span><span class="dv">5</span>){<span class="cf">break</span>}
+}</code></pre></div>
+<pre><code>## [1] 0.22
+## [1] 0.982
+## [1] 0.184
+## [1] 0.504
+## [1] 0.048</code></pre>
+<p>Comme la boucle <code>while()</code>, la boucle <code>repeat()</code> reste peu utlisée avec R.</p>
 </div>
 <div id="l17spe" class="section level2">
 <h2><span class="header-section-number">11.6</span> <code>next</code>, <code>break</code>, <code>stop</code></h2>
@@ -729,8 +758,19 @@ numberGuess &lt;-<span class="st"> </span><span class="dv">0</span>
 <div id="l17mapply" class="section level3">
 <h3><span class="header-section-number">11.7.5</span> <code>mapply</code></h3>
 <p>XXX</p>
-
 </div>
+<div id="l17rapply" class="section level3">
+<h3><span class="header-section-number">11.7.6</span> <code>rapply</code></h3>
+<p>XXX</p>
+</div>
+<div id="l17vapply" class="section level3">
+<h3><span class="header-section-number">11.7.7</span> <code>vapply</code></h3>
+</div>
+</div>
+<div id="conclusion-6" class="section level2">
+<h2><span class="header-section-number">11.8</span> Conclusion</h2>
+<p>Félicitations, nous sommes arrivés au bout de ce chapitre sur l’algorithmique. Retenons ce message clef : dès qu’une opération doit être réalisée plus de deux fois dans un script en répétant du code aui a été déjà écrit, c’est un signe qui doit nous conduire à l’utilisation d’une boucle. Pour autant, chaque fois que cela est possible, il est recommandé de ne pas utiliser les boucles traditionnelles <code>for()</code>, <code>while()</code>, et <code>repeat()</code>, mais de préférer les opération sur les vecteurs ou encore les boucles de la famille <code>apply</code>. Cela peut être assez difficile à intégrer au début mais nous verrons que nos scripts seront plus faciles à maintenir et à lire, et beaucoup plus performants si nous suivons ces habitudes.</p>
+
 </div>
 </div>
             </section>

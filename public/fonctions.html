@@ -246,7 +246,10 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="11.7.3" data-path="algo.html"><a href="algo.html#l17lapply"><i class="fa fa-check"></i><b>11.7.3</b> <code>lapply</code></a></li>
 <li class="chapter" data-level="11.7.4" data-path="algo.html"><a href="algo.html#l17tapply"><i class="fa fa-check"></i><b>11.7.4</b> <code>tapply</code></a></li>
 <li class="chapter" data-level="11.7.5" data-path="algo.html"><a href="algo.html#l17mapply"><i class="fa fa-check"></i><b>11.7.5</b> <code>mapply</code></a></li>
+<li class="chapter" data-level="11.7.6" data-path="algo.html"><a href="algo.html#l17rapply"><i class="fa fa-check"></i><b>11.7.6</b> <code>rapply</code></a></li>
+<li class="chapter" data-level="11.7.7" data-path="algo.html"><a href="algo.html#l17vapply"><i class="fa fa-check"></i><b>11.7.7</b> <code>vapply</code></a></li>
 </ul></li>
+<li class="chapter" data-level="11.8" data-path="algo.html"><a href="algo.html#conclusion-6"><i class="fa fa-check"></i><b>11.8</b> Conclusion</a></li>
 </ul></li>
 <li class="chapter" data-level="12" data-path="project.html"><a href="project.html"><i class="fa fa-check"></i><b>12</b> Gestion d’un projet avec R</a><ul>
 <li class="chapter" data-level="12.1" data-path="project.html"><a href="project.html#gestion-des-fichiers-et-du-repertoire-de-travail"><i class="fa fa-check"></i><b>12.1</b> Gestion des fichiers et du répertoire de travail</a></li>
@@ -1227,10 +1230,10 @@ irisSepWCopy &lt;-<span class="st"> </span>irisSepWCopy[<span class="kw">order</
 <p>Il n’y a pas de solution optimale dans l’absolu, tout dépend des objectifs recherchés. La première solution est peut être plus facile à comprendre, et la seconde peut être plus rapide en terme de vitesse d’exécution (même en répétant l’utilisation de la fonction 10000 fois, le gain de temps est presque nul dans notre cas).</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">system.time</span>(<span class="kw">replicate</span>(<span class="dt">n =</span> <span class="dv">10000</span>, <span class="kw">countVowelConso</span>(<span class="dt">word =</span> <span class="st">&quot;qwertyuiop azertyuiop&quot;</span>)))</code></pre></div>
 <pre><code>##    user  system elapsed 
-##   0.152   0.004   0.157</code></pre>
+##   0.135   0.000   0.135</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">system.time</span>(<span class="kw">replicate</span>(<span class="dt">n =</span> <span class="dv">10000</span>, <span class="kw">countVowelConsoAlt</span>(<span class="dt">word =</span> <span class="st">&quot;qwertyuiop azertyuiop&quot;</span>)))</code></pre></div>
 <pre><code>##    user  system elapsed 
-##   0.163   0.004   0.169</code></pre>
+##   0.117   0.000   0.117</code></pre>
 <p>Une fonction peut avoir des valeurs par défaut pour ses arguments. C’est le cas de la plupart des fonctions existantes. Par défaut, notre fonction va désormais compter le nombre de voyelles et de consonnes dans le mot <code>qwerty</code> (les parenthèses restent nécessaires même en l’absence d’arguments).</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">countVowelConsoAlt &lt;-<span class="st"> </span><span class="cf">function</span>(<span class="dt">word =</span> <span class="st">&quot;qwerty&quot;</span>){ <span class="co"># compte les voyelles et les consonnes</span>
   <span class="cf">if</span>(<span class="kw">is.vector</span>(word) <span class="op">&amp;</span><span class="st"> </span><span class="kw">is.character</span>(word) <span class="op">&amp;</span><span class="st"> </span><span class="kw">length</span>(word) <span class="op">==</span><span class="st"> </span><span class="dv">1</span>){
