@@ -7979,7 +7979,7 @@ le gain de temps est presque nul dans notre cas).
 
 \begin{verbatim}
 ##    user  system elapsed 
-##    0.11    0.00    0.11
+##    0.18    0.00    0.18
 \end{verbatim}
 
 \begin{Shaded}
@@ -7990,7 +7990,7 @@ le gain de temps est presque nul dans notre cas).
 
 \begin{verbatim}
 ##    user  system elapsed 
-##    0.11    0.00    0.11
+##    0.18    0.00    0.18
 \end{verbatim}
 
 Une fonction peut avoir des valeurs par défaut pour ses arguments. C'est
@@ -8973,12 +8973,12 @@ dates.
 
 \begin{verbatim}
 ##      date01    date02
-## 1  9.337923 10.746763
-## 2  9.801294 10.228596
-## 3 10.003352 10.827047
-## 4 10.374790 10.319608
-## 5 11.403287  8.844199
-## 6 10.269207  8.512627
+## 1 11.469815  9.555959
+## 2 10.203322 11.818795
+## 3 10.697616 10.484531
+## 4  9.298933 11.609200
+## 5  9.751422 10.980788
+## 6 11.282117  9.819693
 \end{verbatim}
 
 Nous voudrions quantifier la différence entre la première et la deuxième
@@ -9119,26 +9119,26 @@ Ensuite nous allons utiliser \protect\hyperlink{l015nrow}{la fonction
 
 \begin{verbatim}
 ##       date01    date02        dif isDifBig
-## 1   9.337923 10.746763 1.40883990    small
-## 2   9.801294 10.228596 0.42730170    small
-## 3  10.003352 10.827047 0.82369445    small
-## 4  10.374790 10.319608 0.05518207    small
-## 5  11.403287  8.844199 2.55908815    small
-## 6  10.269207  8.512627 1.75658050    small
-## 7  10.597527  9.816264 0.78126264    small
-## 8  10.371422 10.958858 0.58743589    small
-## 9   8.259962  9.834015 1.57405330    small
-## 10 10.339591 10.760329 0.42073805    small
-## 11 10.014313 10.730743 0.71643060    small
-## 12  9.486801  9.162444 0.32435729    small
-## 13  9.339513  9.806821 0.46730825    small
-## 14  8.419270  9.737420 1.31814990    small
-## 15 10.092375 11.115590 1.02321496    small
-## 16 10.911474 10.865515 0.04595878    small
-## 17  8.498270 10.757208 2.25893766    small
-## 18 12.213120 12.058899 0.15422114    small
-## 19  9.192785  7.856401 1.33638349    small
-## 20 10.076392 10.763168 0.68677617    small
+## 1  11.469815  9.555959 1.91385666    small
+## 2  10.203322 11.818795 1.61547266    small
+## 3  10.697616 10.484531 0.21308498    small
+## 4   9.298933 11.609200 2.31026727    small
+## 5   9.751422 10.980788 1.22936601    small
+## 6  11.282117  9.819693 1.46242483    small
+## 7   9.940519  9.958305 0.01778599    small
+## 8   9.953322  9.556348 0.39697385    small
+## 9  10.343985 10.599926 0.25594129    small
+## 10 10.265249  9.465113 0.80013586    small
+## 11  7.940674 11.852534 3.91186017      big
+## 12  9.949133  9.982080 0.03294704    small
+## 13 11.053856  9.587964 1.46589269    small
+## 14 11.392994  9.133547 2.25944717    small
+## 15 11.396008 12.331572 0.93556463    small
+## 16 10.425504 10.069917 0.35558641    small
+## 17  9.363188 10.221717 0.85852892    small
+## 18 10.694858  9.729793 0.96506521    small
+## 19 10.221550 10.036528 0.18502201    small
+## 20 10.828784  9.247063 1.58172070    small
 \end{verbatim}
 
 En pratique ce n'est pas la meilleure façon de réaliser cet exercice car
@@ -9159,26 +9159,26 @@ devient :
 
 \begin{verbatim}
 ##       date01    date02        dif isDifBig
-## 1   9.337923 10.746763 1.40883990    small
-## 2   9.801294 10.228596 0.42730170    small
-## 3  10.003352 10.827047 0.82369445    small
-## 4  10.374790 10.319608 0.05518207    small
-## 5  11.403287  8.844199 2.55908815    small
-## 6  10.269207  8.512627 1.75658050    small
-## 7  10.597527  9.816264 0.78126264    small
-## 8  10.371422 10.958858 0.58743589    small
-## 9   8.259962  9.834015 1.57405330    small
-## 10 10.339591 10.760329 0.42073805    small
-## 11 10.014313 10.730743 0.71643060    small
-## 12  9.486801  9.162444 0.32435729    small
-## 13  9.339513  9.806821 0.46730825    small
-## 14  8.419270  9.737420 1.31814990    small
-## 15 10.092375 11.115590 1.02321496    small
-## 16 10.911474 10.865515 0.04595878    small
-## 17  8.498270 10.757208 2.25893766    small
-## 18 12.213120 12.058899 0.15422114    small
-## 19  9.192785  7.856401 1.33638349    small
-## 20 10.076392 10.763168 0.68677617    small
+## 1  11.469815  9.555959 1.91385666    small
+## 2  10.203322 11.818795 1.61547266    small
+## 3  10.697616 10.484531 0.21308498    small
+## 4   9.298933 11.609200 2.31026727    small
+## 5   9.751422 10.980788 1.22936601    small
+## 6  11.282117  9.819693 1.46242483    small
+## 7   9.940519  9.958305 0.01778599    small
+## 8   9.953322  9.556348 0.39697385    small
+## 9  10.343985 10.599926 0.25594129    small
+## 10 10.265249  9.465113 0.80013586    small
+## 11  7.940674 11.852534 3.91186017      big
+## 12  9.949133  9.982080 0.03294704    small
+## 13 11.053856  9.587964 1.46589269    small
+## 14 11.392994  9.133547 2.25944717    small
+## 15 11.396008 12.331572 0.93556463    small
+## 16 10.425504 10.069917 0.35558641    small
+## 17  9.363188 10.221717 0.85852892    small
+## 18 10.694858  9.729793 0.96506521    small
+## 19 10.221550 10.036528 0.18502201    small
+## 20 10.828784  9.247063 1.58172070    small
 \end{verbatim}
 
 La plupart des exemples que l'on peut trouver sur Internet à propos de
@@ -9201,7 +9201,7 @@ les vecteurs. Voici quelques exemples adaptés de plusieurs sources :
 \end{Shaded}
 
 \begin{verbatim}
-## [1] 10
+## [1] 12
 \end{verbatim}
 
 \begin{Shaded}
@@ -9212,7 +9212,7 @@ les vecteurs. Voici quelques exemples adaptés de plusieurs sources :
 \end{Shaded}
 
 \begin{verbatim}
-## [1] 10
+## [1] 12
 \end{verbatim}
 
 \begin{Shaded}
@@ -9258,7 +9258,7 @@ les vecteurs. Voici quelques exemples adaptés de plusieurs sources :
 \end{Shaded}
 
 \begin{verbatim}
-## [1] 3.44
+## [1] 3.549
 \end{verbatim}
 
 \begin{Shaded}
@@ -9269,7 +9269,7 @@ les vecteurs. Voici quelques exemples adaptés de plusieurs sources :
 \end{Shaded}
 
 \begin{verbatim}
-## [1] 3.433
+## [1] 3.41
 \end{verbatim}
 
 C'est un bon exercice de parcourir les nombreux exemples disponibles sur
@@ -9295,12 +9295,12 @@ ligne (nous verrons plus loin comment faire avec la fonction
 \end{Shaded}
 
 \begin{verbatim}
-##   [1] 308 358 381 338 500 449 458 456 484 573 592 476 458 292 490 625 383
-##  [18] 405 587 608 553 462 449 578 623 546 455 597 344 576 444 432 609 388
-##  [35] 410 382 475 485 546 601 410 446 402 505 395 574 418 564 565 539 547
-##  [52] 299 430 602 562 583 313 468 579 475 477 554 741 425 645 584 496 315
-##  [69] 440 454 441 497 341 587 646 557 587 298 597 521 456 510 712 427 436
-##  [86] 631 379 554 378 466 590 433 435 558 378 434 528 657 585 719
+##   [1] 489 484 455 540 609 409 452 519 638 578 466 472 489 571 464 327 554
+##  [18] 574 457 561 485 489 519 440 548 601 453 310 519 469 410 512 513 347
+##  [35] 406 646 706 494 434 392 615 404 602 643 418 601 442 593 453 474 592
+##  [52] 578 549 528 501 661 596 389 511 433 733 574 372 307 674 442 566 512
+##  [69] 523 474 400 523 618 557 587 583 460 644 515 556 567 649 452 488 688
+##  [86] 602 357 429 491 536 432 643 506 480 616 465 395 501 330 469
 \end{verbatim}
 
 \begin{Shaded}
@@ -9315,12 +9315,12 @@ ligne (nous verrons plus loin comment faire avec la fonction
 \end{Shaded}
 
 \begin{verbatim}
-##   [1] 308 358 381 338 500 449 458 456 484 573 592 476 458 292 490 625 383
-##  [18] 405 587 608 553 462 449 578 623 546 455 597 344 576 444 432 609 388
-##  [35] 410 382 475 485 546 601 410 446 402 505 395 574 418 564 565 539 547
-##  [52] 299 430 602 562 583 313 468 579 475 477 554 741 425 645 584 496 315
-##  [69] 440 454 441 497 341 587 646 557 587 298 597 521 456 510 712 427 436
-##  [86] 631 379 554 378 466 590 433 435 558 378 434 528 657 585 719
+##   [1] 489 484 455 540 609 409 452 519 638 578 466 472 489 571 464 327 554
+##  [18] 574 457 561 485 489 519 440 548 601 453 310 519 469 410 512 513 347
+##  [35] 406 646 706 494 434 392 615 404 602 643 418 601 442 593 453 474 592
+##  [52] 578 549 528 501 661 596 389 511 433 733 574 372 307 674 442 566 512
+##  [69] 523 474 400 523 618 557 587 583 460 644 515 556 567 649 452 488 688
+##  [86] 602 357 429 491 536 432 643 506 480 616 465 395 501 330 469
 \end{verbatim}
 
 En conclusion, il est recommandé de ne pas utiliser la boucle
@@ -9401,7 +9401,7 @@ coups sur un ordinateur de bureau classique pouvant facilement effectuer
 
 \begin{verbatim}
 ## [1] "Number found !"
-## [1] "And I have plenty of time left: 1.38 sec"
+## [1] "And I have plenty of time left: 1.14 sec"
 \end{verbatim}
 
 Dans ce script nous générons un nombre aléatoire à deviner avec la
@@ -9480,15 +9480,15 @@ Si nous reprenons l'exemple précédent, nous pouvons utiliser une boucle
 \end{Shaded}
 
 \begin{verbatim}
-## [1] 0.025
-## [1] 0.32
-## [1] 0.916
-## [1] 0.027
-## [1] 0.003
+## [1] 1.655
+## [1] 0.052
+## [1] 0.065
+## [1] 0.248
+## [1] 0.921
 \end{verbatim}
 
 Comme la boucle \texttt{while()}, la boucle \texttt{repeat()} reste peu
-utlisée avec R.
+utilisée avec R.
 
 \section{\texorpdfstring{\texttt{next}, \texttt{break},
 \texttt{stop}}{next, break, stop}}\label{l17spe}
@@ -9523,6 +9523,8 @@ XXX
 XXX
 
 \subsection{\texorpdfstring{\texttt{vapply}}{vapply}}\label{l17vapply}
+
+XXX
 
 \section{Conclusion}\label{conclusion-6}
 
