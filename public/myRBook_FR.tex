@@ -125,7 +125,7 @@
   \postauthor{\par}
       \predate{\centering\large\emph}
   \postdate{\par}
-    \date{2018-10-19}
+    \date{2018-10-30}
 
 \usepackage{booktabs}
 \usepackage{longtable}
@@ -274,6 +274,15 @@ Ce livre est également disponible en espagnol
 
 Dernières modifications:
 
+\textbf{30/10/2018}
+
+\begin{itemize}
+\tightlist
+\item
+  algorithmique \protect\hyperlink{l17spe}{\texttt{next} et
+  \texttt{break}} (5/6)
+\end{itemize}
+
 \textbf{18/10/2018}
 
 \begin{itemize}
@@ -397,9 +406,8 @@ source de Font Awesome (\url{https://fontawesome.com}). La version PDF
 utilise les icônes issues du projet Tango disponibles depuis openclipart
 (\url{https://openclipart.org/}). Ce livre a été écrit avec le package R
 bookdown (\url{https://bookdown.org/}). Le code source est disponible
-sur GitHub (\url{https://github.com/frareb/myRBook_FR}). La compilation
-en gitbook utilise Travis CI (\url{https://travis-ci.org}). La version
-en ligne est hébergée et mise à jour grâce à Netlify
+sur GitHub (\url{https://github.com/frareb/myRBook_FR}). La version en
+ligne est hébergée et mise à jour grâce à Netlify
 (\url{http://myrbookfr.netlify.com/}).
 
 \chapter{Licence}\label{licence}
@@ -7979,7 +7987,7 @@ le gain de temps est presque nul dans notre cas).
 
 \begin{verbatim}
 ##    user  system elapsed 
-##    0.18    0.00    0.18
+##    0.11    0.00    0.13
 \end{verbatim}
 
 \begin{Shaded}
@@ -7990,7 +7998,7 @@ le gain de temps est presque nul dans notre cas).
 
 \begin{verbatim}
 ##    user  system elapsed 
-##    0.18    0.00    0.18
+##    0.09    0.00    0.09
 \end{verbatim}
 
 Une fonction peut avoir des valeurs par défaut pour ses arguments. C'est
@@ -8973,12 +8981,12 @@ dates.
 
 \begin{verbatim}
 ##      date01    date02
-## 1 11.469815  9.555959
-## 2 10.203322 11.818795
-## 3 10.697616 10.484531
-## 4  9.298933 11.609200
-## 5  9.751422 10.980788
-## 6 11.282117  9.819693
+## 1  9.606228 10.293156
+## 2 10.704141  9.855716
+## 3  9.155101 10.953243
+## 4  8.291749 10.027367
+## 5 10.881488 10.617335
+## 6  7.744482  9.651962
 \end{verbatim}
 
 Nous voudrions quantifier la différence entre la première et la deuxième
@@ -9118,27 +9126,27 @@ Ensuite nous allons utiliser \protect\hyperlink{l015nrow}{la fonction
 \end{Shaded}
 
 \begin{verbatim}
-##       date01    date02        dif isDifBig
-## 1  11.469815  9.555959 1.91385666    small
-## 2  10.203322 11.818795 1.61547266    small
-## 3  10.697616 10.484531 0.21308498    small
-## 4   9.298933 11.609200 2.31026727    small
-## 5   9.751422 10.980788 1.22936601    small
-## 6  11.282117  9.819693 1.46242483    small
-## 7   9.940519  9.958305 0.01778599    small
-## 8   9.953322  9.556348 0.39697385    small
-## 9  10.343985 10.599926 0.25594129    small
-## 10 10.265249  9.465113 0.80013586    small
-## 11  7.940674 11.852534 3.91186017      big
-## 12  9.949133  9.982080 0.03294704    small
-## 13 11.053856  9.587964 1.46589269    small
-## 14 11.392994  9.133547 2.25944717    small
-## 15 11.396008 12.331572 0.93556463    small
-## 16 10.425504 10.069917 0.35558641    small
-## 17  9.363188 10.221717 0.85852892    small
-## 18 10.694858  9.729793 0.96506521    small
-## 19 10.221550 10.036528 0.18502201    small
-## 20 10.828784  9.247063 1.58172070    small
+##       date01    date02       dif isDifBig
+## 1   9.606228 10.293156 0.6869278    small
+## 2  10.704141  9.855716 0.8484244    small
+## 3   9.155101 10.953243 1.7981425    small
+## 4   8.291749 10.027367 1.7356182    small
+## 5  10.881488 10.617335 0.2641533    small
+## 6   7.744482  9.651962 1.9074801    small
+## 7  10.761209  9.674994 1.0862151    small
+## 8  10.781466  9.330694 1.4507720    small
+## 9  10.281310 10.042161 0.2391487    small
+## 10 11.472379  9.613193 1.8591858    small
+## 11  9.770935 10.680186 0.9092509    small
+## 12 10.254763  8.195051 2.0597121    small
+## 13 11.135939 10.498173 0.6377655    small
+## 14  9.312072 11.902469 2.5903972    small
+## 15  9.322365  9.478993 0.1566279    small
+## 16  9.494747 10.953086 1.4583389    small
+## 17  9.460109 10.527041 1.0669320    small
+## 18  9.097320 10.895615 1.7982952    small
+## 19  8.708264 10.344960 1.6366967    small
+## 20 11.298279 10.223553 1.0747260    small
 \end{verbatim}
 
 En pratique ce n'est pas la meilleure façon de réaliser cet exercice car
@@ -9158,27 +9166,27 @@ devient :
 \end{Shaded}
 
 \begin{verbatim}
-##       date01    date02        dif isDifBig
-## 1  11.469815  9.555959 1.91385666    small
-## 2  10.203322 11.818795 1.61547266    small
-## 3  10.697616 10.484531 0.21308498    small
-## 4   9.298933 11.609200 2.31026727    small
-## 5   9.751422 10.980788 1.22936601    small
-## 6  11.282117  9.819693 1.46242483    small
-## 7   9.940519  9.958305 0.01778599    small
-## 8   9.953322  9.556348 0.39697385    small
-## 9  10.343985 10.599926 0.25594129    small
-## 10 10.265249  9.465113 0.80013586    small
-## 11  7.940674 11.852534 3.91186017      big
-## 12  9.949133  9.982080 0.03294704    small
-## 13 11.053856  9.587964 1.46589269    small
-## 14 11.392994  9.133547 2.25944717    small
-## 15 11.396008 12.331572 0.93556463    small
-## 16 10.425504 10.069917 0.35558641    small
-## 17  9.363188 10.221717 0.85852892    small
-## 18 10.694858  9.729793 0.96506521    small
-## 19 10.221550 10.036528 0.18502201    small
-## 20 10.828784  9.247063 1.58172070    small
+##       date01    date02       dif isDifBig
+## 1   9.606228 10.293156 0.6869278    small
+## 2  10.704141  9.855716 0.8484244    small
+## 3   9.155101 10.953243 1.7981425    small
+## 4   8.291749 10.027367 1.7356182    small
+## 5  10.881488 10.617335 0.2641533    small
+## 6   7.744482  9.651962 1.9074801    small
+## 7  10.761209  9.674994 1.0862151    small
+## 8  10.781466  9.330694 1.4507720    small
+## 9  10.281310 10.042161 0.2391487    small
+## 10 11.472379  9.613193 1.8591858    small
+## 11  9.770935 10.680186 0.9092509    small
+## 12 10.254763  8.195051 2.0597121    small
+## 13 11.135939 10.498173 0.6377655    small
+## 14  9.312072 11.902469 2.5903972    small
+## 15  9.322365  9.478993 0.1566279    small
+## 16  9.494747 10.953086 1.4583389    small
+## 17  9.460109 10.527041 1.0669320    small
+## 18  9.097320 10.895615 1.7982952    small
+## 19  8.708264 10.344960 1.6366967    small
+## 20 11.298279 10.223553 1.0747260    small
 \end{verbatim}
 
 La plupart des exemples que l'on peut trouver sur Internet à propos de
@@ -9201,7 +9209,7 @@ les vecteurs. Voici quelques exemples adaptés de plusieurs sources :
 \end{Shaded}
 
 \begin{verbatim}
-## [1] 12
+## [1] 10
 \end{verbatim}
 
 \begin{Shaded}
@@ -9212,7 +9220,7 @@ les vecteurs. Voici quelques exemples adaptés de plusieurs sources :
 \end{Shaded}
 
 \begin{verbatim}
-## [1] 12
+## [1] 10
 \end{verbatim}
 
 \begin{Shaded}
@@ -9258,7 +9266,7 @@ les vecteurs. Voici quelques exemples adaptés de plusieurs sources :
 \end{Shaded}
 
 \begin{verbatim}
-## [1] 3.549
+## [1] 3.527
 \end{verbatim}
 
 \begin{Shaded}
@@ -9269,7 +9277,7 @@ les vecteurs. Voici quelques exemples adaptés de plusieurs sources :
 \end{Shaded}
 
 \begin{verbatim}
-## [1] 3.41
+## [1] 3.5
 \end{verbatim}
 
 C'est un bon exercice de parcourir les nombreux exemples disponibles sur
@@ -9295,12 +9303,12 @@ ligne (nous verrons plus loin comment faire avec la fonction
 \end{Shaded}
 
 \begin{verbatim}
-##   [1] 489 484 455 540 609 409 452 519 638 578 466 472 489 571 464 327 554
-##  [18] 574 457 561 485 489 519 440 548 601 453 310 519 469 410 512 513 347
-##  [35] 406 646 706 494 434 392 615 404 602 643 418 601 442 593 453 474 592
-##  [52] 578 549 528 501 661 596 389 511 433 733 574 372 307 674 442 566 512
-##  [69] 523 474 400 523 618 557 587 583 460 644 515 556 567 649 452 488 688
-##  [86] 602 357 429 491 536 432 643 506 480 616 465 395 501 330 469
+##   [1] 432 477 292 503 529 469 659 508 775 636 499 580 496 375 522 516 483
+##  [18] 323 565 460 430 383 655 348 464 463 553 577 582 350 687 537 586 567
+##  [35] 501 673 585 622 674 580 468 522 432 507 337 543 388 556 705 661 563
+##  [52] 612 539 392 605 442 313 529 481 459 658 317 524 468 586 437 452 544
+##  [69] 581 547 553 511 506 382 432 518 559 593 412 583 496 508 472 367 500
+##  [86] 419 641 501 536 536 466 416 554 293 581 469 541 590 456 550
 \end{verbatim}
 
 \begin{Shaded}
@@ -9315,12 +9323,12 @@ ligne (nous verrons plus loin comment faire avec la fonction
 \end{Shaded}
 
 \begin{verbatim}
-##   [1] 489 484 455 540 609 409 452 519 638 578 466 472 489 571 464 327 554
-##  [18] 574 457 561 485 489 519 440 548 601 453 310 519 469 410 512 513 347
-##  [35] 406 646 706 494 434 392 615 404 602 643 418 601 442 593 453 474 592
-##  [52] 578 549 528 501 661 596 389 511 433 733 574 372 307 674 442 566 512
-##  [69] 523 474 400 523 618 557 587 583 460 644 515 556 567 649 452 488 688
-##  [86] 602 357 429 491 536 432 643 506 480 616 465 395 501 330 469
+##   [1] 432 477 292 503 529 469 659 508 775 636 499 580 496 375 522 516 483
+##  [18] 323 565 460 430 383 655 348 464 463 553 577 582 350 687 537 586 567
+##  [35] 501 673 585 622 674 580 468 522 432 507 337 543 388 556 705 661 563
+##  [52] 612 539 392 605 442 313 529 481 459 658 317 524 468 586 437 452 544
+##  [69] 581 547 553 511 506 382 432 518 559 593 412 583 496 508 472 367 500
+##  [86] 419 641 501 536 536 466 416 554 293 581 469 541 590 456 550
 \end{verbatim}
 
 En conclusion, il est recommandé de ne pas utiliser la boucle
@@ -9401,7 +9409,7 @@ coups sur un ordinateur de bureau classique pouvant facilement effectuer
 
 \begin{verbatim}
 ## [1] "Number found !"
-## [1] "And I have plenty of time left: 1.14 sec"
+## [1] "And I have plenty of time left: 1.94 sec"
 \end{verbatim}
 
 Dans ce script nous générons un nombre aléatoire à deviner avec la
@@ -9480,27 +9488,153 @@ Si nous reprenons l'exemple précédent, nous pouvons utiliser une boucle
 \end{Shaded}
 
 \begin{verbatim}
-## [1] 1.655
-## [1] 0.052
-## [1] 0.065
-## [1] 0.248
-## [1] 0.921
+## [1] 0.51
+## [1] 0.211
+## [1] 0.407
+## [1] 0.693
+## [1] 0.202
 \end{verbatim}
 
 Comme la boucle \texttt{while()}, la boucle \texttt{repeat()} reste peu
 utilisée avec R.
 
-\section{\texorpdfstring{\texttt{next}, \texttt{break},
-\texttt{stop}}{next, break, stop}}\label{l17spe}
+\hypertarget{l17spe}{\section{\texorpdfstring{\texttt{next} et
+\texttt{break}}{next et break}}\label{l17spe}}
 
-XXX
+Nous avons déjà vu le mot clef \texttt{break} qui permet de sortir de la
+boucle en cours. Par exemple si nous cherchons le premier chiffre après
+111 qui soit divisible par 32 :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{myVars <-}\StringTok{ }\DecValTok{111}\OperatorTok{:}\DecValTok{1000}
+\ControlFlowTok{for}\NormalTok{(myVar }\ControlFlowTok{in}\NormalTok{ myVars)\{}
+  \ControlFlowTok{if}\NormalTok{(myVar }\OperatorTok{%%}\StringTok{ }\DecValTok{32} \OperatorTok{==}\StringTok{ }\DecValTok{0}\NormalTok{)\{}
+    \KeywordTok{print}\NormalTok{(myVar)}
+    \ControlFlowTok{break}
+\NormalTok{  \}}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 128
+\end{verbatim}
+
+Même si nous avons vu que dans la pratique nous pouvons éviter la boucle
+\texttt{for()} avec une opération sur les vecteurs :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{(}\DecValTok{111}\OperatorTok{:}\DecValTok{1000}\NormalTok{)[}\DecValTok{111}\OperatorTok{:}\DecValTok{1000} \OperatorTok{%%}\StringTok{ }\DecValTok{32} \OperatorTok{==}\StringTok{ }\DecValTok{0}\NormalTok{][}\DecValTok{1}\NormalTok{]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 128
+\end{verbatim}
+
+Le mot clef \texttt{next} permet quant à lui de passer à l'itération
+suivante d'une boucle si une certaine condition est remplie. Par exemple
+si nous voulons imprimer les lettre de l'alphabet sans les voyelles :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ControlFlowTok{for}\NormalTok{(myLetter }\ControlFlowTok{in}\NormalTok{ letters)\{}
+  \ControlFlowTok{if}\NormalTok{(myLetter }\OperatorTok{%in%}\StringTok{ }\KeywordTok{c}\NormalTok{(}\StringTok{"a"}\NormalTok{, }\StringTok{"e"}\NormalTok{, }\StringTok{"i"}\NormalTok{, }\StringTok{"o"}\NormalTok{, }\StringTok{"u"}\NormalTok{, }\StringTok{"y"}\NormalTok{))\{}
+    \ControlFlowTok{next}
+\NormalTok{  \}}
+  \KeywordTok{print}\NormalTok{(myLetter)}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "b"
+## [1] "c"
+## [1] "d"
+## [1] "f"
+## [1] "g"
+## [1] "h"
+## [1] "j"
+## [1] "k"
+## [1] "l"
+## [1] "m"
+## [1] "n"
+## [1] "p"
+## [1] "q"
+## [1] "r"
+## [1] "s"
+## [1] "t"
+## [1] "v"
+## [1] "w"
+## [1] "x"
+## [1] "z"
+\end{verbatim}
+
+Encore une fois nous pourrions éviter la boucle \texttt{for()} avec :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{letters[}\OperatorTok{!}\StringTok{ }\NormalTok{letters }\OperatorTok{%in%}\StringTok{ }\KeywordTok{c}\NormalTok{(}\StringTok{"a"}\NormalTok{, }\StringTok{"e"}\NormalTok{, }\StringTok{"i"}\NormalTok{, }\StringTok{"o"}\NormalTok{, }\StringTok{"u"}\NormalTok{, }\StringTok{"y"}\NormalTok{)]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##  [1] "b" "c" "d" "f" "g" "h" "j" "k" "l" "m" "n" "p" "q" "r" "s" "t" "v"
+## [18] "w" "x" "z"
+\end{verbatim}
+
+En conclusion, si nous utilisons les boucles, alors les mots clefs
+\texttt{next} et \texttt{break} sont souvent très utiles, mais chaque
+fois que cela est possible il vaut mieux avoir recours à des opérations
+sur les vecteurs. Lorsque cela n'est pas possible de travailler sur les
+vecteurs, il est préférable d'utiliser les boucles de la famille
+\texttt{apply} qui sont le sujet de la prochaine section.
 
 \section{\texorpdfstring{Les boucles de la famille
 \texttt{apply}}{Les boucles de la famille apply}}\label{l17applyfamily}
 
 \subsection{\texorpdfstring{\texttt{apply}}{apply}}\label{l17apply}
 
-XXX
+La fonction \texttt{apply()} permet d'appliquer une fonction à tous les
+éléments d'un \texttt{array} ou d'une \texttt{matrix}. Par exemple si
+nous souhaitons connaître la somme de chaque ligne d'une \texttt{matrix}
+de 10 colonnes et 100 lignes :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{myMat <-}\StringTok{ }\KeywordTok{matrix}\NormalTok{(}\KeywordTok{sample}\NormalTok{(}\DecValTok{1}\OperatorTok{:}\DecValTok{100}\NormalTok{, }\DataTypeTok{size =} \DecValTok{1000}\NormalTok{, }\DataTypeTok{replace =} \OtherTok{TRUE}\NormalTok{), }\DataTypeTok{ncol =} \DecValTok{10}\NormalTok{)}
+\KeywordTok{apply}\NormalTok{(}\DataTypeTok{X =}\NormalTok{ myMat, }\DataTypeTok{MARGIN =} \DecValTok{1}\NormalTok{, }\DataTypeTok{FUN =}\NormalTok{ sum)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##   [1] 583 522 470 493 517 480 462 519 609 524 360 711 530 543 551 411 555
+##  [18] 546 382 499 381 458 464 651 528 534 432 488 398 638 362 574 424 504
+##  [35] 559 410 705 453 522 709 451 530 480 581 530 537 451 707 536 634 302
+##  [52] 502 445 398 458 473 867 579 374 530 538 568 566 501 635 666 547 572
+##  [69] 706 447 460 383 407 561 520 459 401 603 516 721 513 493 686 451 657
+##  [86] 404 572 597 454 487 479 523 518 432 406 473 473 459 512 408
+\end{verbatim}
+
+Si nous souhaitons connaître la médiane de chaque colonne, l'expression
+devient :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{apply}\NormalTok{(}\DataTypeTok{X =}\NormalTok{ myMat, }\DataTypeTok{MARGIN =} \DecValTok{2}\NormalTok{, }\DataTypeTok{FUN =}\NormalTok{ median)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##  [1] 48.5 51.5 51.0 56.0 54.0 53.0 53.0 52.5 52.0 48.5
+\end{verbatim}
+
+L'argument \texttt{X} correspond à l'objet sur lequel la boucle
+\texttt{apply} va itérer. L'argument \texttt{MARGIN} correspond à la
+dimension à prendre en compte (1 pour les lignes, et 2 pour les
+colonnes). L'argument \texttt{FUN} correspond à la fonction à appliquer.
 
 \subsection{\texorpdfstring{\texttt{sapply}}{sapply}}\label{l17sapply}
 
@@ -9795,7 +9929,7 @@ spécifiant le format des dates avec la fonction \texttt{as.Date()}
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{myRBook_FR_files/figure-latex/unnamed-chunk-214-1.pdf}
+\includegraphics{myRBook_FR_files/figure-latex/unnamed-chunk-220-1.pdf}
 
 Nous pouvons simplifier les informations en ne calculant que les
 températures minimales, moyennes et maximales avec la fonction
@@ -9818,7 +9952,7 @@ températures minimales, moyennes et maximales avec la fonction
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{myRBook_FR_files/figure-latex/unnamed-chunk-215-1.pdf}
+\includegraphics{myRBook_FR_files/figure-latex/unnamed-chunk-221-1.pdf}
 
 Nous pouvons également calculer la différence entre la température
 maximale et la température minimale (variation de la température
@@ -9833,7 +9967,7 @@ diurne).
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{myRBook_FR_files/figure-latex/unnamed-chunk-216-1.pdf}
+\includegraphics{myRBook_FR_files/figure-latex/unnamed-chunk-222-1.pdf}
 
 Une autre possibilité est de regrouper les données pour avoir la
 température moyenne des heures de la journée avec la fonction
@@ -9858,7 +9992,7 @@ température moyenne des heures de la journée avec la fonction
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{myRBook_FR_files/figure-latex/unnamed-chunk-217-1.pdf}
+\includegraphics{myRBook_FR_files/figure-latex/unnamed-chunk-223-1.pdf}
 
 Nous pouvons également calculer les températures des heures de la
 journée pour chaque mois.
@@ -9895,18 +10029,18 @@ journée pour chaque mois.
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{myRBook_FR_files/figure-latex/unnamed-chunk-218-1.pdf}
-\includegraphics{myRBook_FR_files/figure-latex/unnamed-chunk-218-2.pdf}
-\includegraphics{myRBook_FR_files/figure-latex/unnamed-chunk-218-3.pdf}
-\includegraphics{myRBook_FR_files/figure-latex/unnamed-chunk-218-4.pdf}
-\includegraphics{myRBook_FR_files/figure-latex/unnamed-chunk-218-5.pdf}
-\includegraphics{myRBook_FR_files/figure-latex/unnamed-chunk-218-6.pdf}
-\includegraphics{myRBook_FR_files/figure-latex/unnamed-chunk-218-7.pdf}
-\includegraphics{myRBook_FR_files/figure-latex/unnamed-chunk-218-8.pdf}
-\includegraphics{myRBook_FR_files/figure-latex/unnamed-chunk-218-9.pdf}
-\includegraphics{myRBook_FR_files/figure-latex/unnamed-chunk-218-10.pdf}
-\includegraphics{myRBook_FR_files/figure-latex/unnamed-chunk-218-11.pdf}
-\includegraphics{myRBook_FR_files/figure-latex/unnamed-chunk-218-12.pdf}
+\includegraphics{myRBook_FR_files/figure-latex/unnamed-chunk-224-1.pdf}
+\includegraphics{myRBook_FR_files/figure-latex/unnamed-chunk-224-2.pdf}
+\includegraphics{myRBook_FR_files/figure-latex/unnamed-chunk-224-3.pdf}
+\includegraphics{myRBook_FR_files/figure-latex/unnamed-chunk-224-4.pdf}
+\includegraphics{myRBook_FR_files/figure-latex/unnamed-chunk-224-5.pdf}
+\includegraphics{myRBook_FR_files/figure-latex/unnamed-chunk-224-6.pdf}
+\includegraphics{myRBook_FR_files/figure-latex/unnamed-chunk-224-7.pdf}
+\includegraphics{myRBook_FR_files/figure-latex/unnamed-chunk-224-8.pdf}
+\includegraphics{myRBook_FR_files/figure-latex/unnamed-chunk-224-9.pdf}
+\includegraphics{myRBook_FR_files/figure-latex/unnamed-chunk-224-10.pdf}
+\includegraphics{myRBook_FR_files/figure-latex/unnamed-chunk-224-11.pdf}
+\includegraphics{myRBook_FR_files/figure-latex/unnamed-chunk-224-12.pdf}
 
 Ou les regrouper dans un même graphique, ainsi que la variation diurne
 des températures pour chaque mois.
@@ -9934,7 +10068,7 @@ des températures pour chaque mois.
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{myRBook_FR_files/figure-latex/unnamed-chunk-219-1.pdf}
+\includegraphics{myRBook_FR_files/figure-latex/unnamed-chunk-225-1.pdf}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -9959,7 +10093,7 @@ des températures pour chaque mois.
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{myRBook_FR_files/figure-latex/unnamed-chunk-219-2.pdf}
+\includegraphics{myRBook_FR_files/figure-latex/unnamed-chunk-225-2.pdf}
 
 \hypertarget{studyCase002}{\chapter{Obtenir le numéro WOS d'un article
 scientifique à partir de son numéro DOI}\label{studyCase002}}
