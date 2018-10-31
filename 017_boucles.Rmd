@@ -472,15 +472,99 @@ Si nous souhaitons connaître la médiane de chaque colonne, l'expression devien
 apply(X = myMat, MARGIN = 2, FUN = median)
 ```
 
-L'argument `X` correspond à l'objet sur lequel la boucle `apply` va itérer. L'argument `MARGIN` correspond à la dimension à prendre en compte (1 pour les lignes, et 2 pour les colonnes). L'argument `FUN` correspond à la fonction à appliquer.
+L'argument `X` correspond à l'objet sur lequel la boucle `apply` va itérer. L'argument `MARGIN` correspond à la dimension à prendre en compte (1 pour les lignes, et 2 pour les colonnes). L'argument `FUN` correspond à la fonction à appliquer. Sur un objet de type `array`, l'argument `MARGIN` peut prendre autant de valeurs que de dimensions. Dans cet exemple `MARGIN = 1` correspond à la moyenne de chaque ligne - dimension 1 - (toutes dimensions confondues), `MARGIN = 2` correspond à la moyenne de chaque colonne - dimension 2 - (toutes dimensions confondues), et `MARGIN = 3` correspond à la moyenne de chaque dimension 3. Ci-dessous chaque calcul est réalisé de deux manières différentes pour en expliciter le fonctionnement.
 
-### `sapply` {#l17sapply}
+```{r}
+myArr <- array(sample(1:100, size = 1000, replace = TRUE), dim = c(10, 20, 5))
+apply(X = myArr, MARGIN = 1, FUN = mean)
+(apply(myArr[,,1], 1, mean) + apply(myArr[,,2], 1, mean) + 
+  apply(myArr[,,3], 1, mean) + apply(myArr[,,4], 1, mean) + 
+  apply(myArr[,,5], 1, mean))/5
+apply(X = myArr, MARGIN = 2, FUN = mean)
+(apply(myArr[,,1], 2, mean) + apply(myArr[,,2], 2, mean) + 
+  apply(myArr[,,3], 2, mean) + apply(myArr[,,4], 2, mean) + 
+  apply(myArr[,,5], 2, mean))/5
+apply(X = myArr, MARGIN = 3, FUN = mean)
+c(mean(myArr[,,1]), mean(myArr[,,2]), mean(myArr[,,3]), 
+  mean(myArr[,,4]), mean(myArr[,,5]))
+```
 
-XXX
+Nous pouvons aussi calculer la moyenne por chaque valeur de ligne et de colonne (la fonction itère alors sur la dimension 3) :
 
-### `lapply` {#l17lapply}
+```{r}
+apply(X = myArr, MARGIN = c(1, 2), FUN = mean)
+```
 
-XXX
+### `lapply` {#l17sapply}
+
+Comme indiqué dans la documentation, `lapply()` renvoie une liste de même longueur que `X`, chaque élément résultant de l'application de `FUN` à l'élément correspondant de `X`. Si `X` est une `list` contenant des `vector` et que nous cherchons à obtenir la moyenne de chacun des éléments de la `list`, nous pouvons utiliser la fonction `lapply()` :
+
+```{r}
+myList <- list(
+  a = sample(1:100, size = 10), 
+  b = sample(1:100, size = 10), 
+  c = sample(1:100, size = 10), 
+  d = sample(1:100, size = 10), 
+  e = sample(1:100, size = 10)
+)
+print(myList)
+lapply(myList, FUN = mean)
+```
+
+Comme pour la fonction `apply()`, nous pouvons passer des arguments supplémentaires à la fonction `lapply()` en les ajoutant à la suite de la fonction. C'est par exemple utile si notre `list` contient ces valeurs manquantes `NA` et que nous voulons les ignorer pour le calcul des moyennes (avec l'arguement `na.rm = TRUE`).
+
+```{r}
+myList <- list(
+  a = sample(c(1:5, NA), size = 10, replace = TRUE), 
+  b = sample(c(1:5, NA), size = 10, replace = TRUE), 
+  c = sample(c(1:5, NA), size = 10, replace = TRUE), 
+  d = sample(c(1:5, NA), size = 10, replace = TRUE), 
+  e = sample(c(1:5, NA), size = 10, replace = TRUE)
+)
+print(myList)
+lapply(myList, FUN = mean)
+lapply(myList, FUN = mean, na.rm = TRUE)
+```
+
+Pour plus de lisibilité ou si plusieurs opérations sont à réaliser au sein de l'argument `FUN`, nous pouvons utiliser l'écriture suivante :
+
+```{r}
+lapply(myList, FUN = function(i){
+  mean(i, na.rm = TRUE)
+})
+```
+
+Par exemple si nous souhaitons obtenir `i^2` si la moyenne est supérieure à 3, et `i^3` sinon : 
+
+```{r}
+lapply(myList, FUN = function(i){
+  m <- mean(i, na.rm = TRUE)
+  if(m > 3){
+    return(i^2)  
+  }else{
+    return(i^3)
+  }
+})
+```
+
+### `sapply` {#l17lapply}
+
+La fonction `sapply()` est une version modifiée de la fonction `lapply()` qui effectue la même opération mais en renvoyant le résultat sous un format simplifié lorsque c'est possible.
+
+```{r}
+lapply(myList, FUN = function(i){
+  mean(i, na.rm = TRUE)
+})
+sapply(myList, FUN = function(i){
+  mean(i, na.rm = TRUE)
+})
+```
+
+La fonction `sapply()` est intéressante pour récupérer par exemple le nième élément de cahcun des élément d'une `list`. La fonction qui est appelée pour faire cela est `'[['`.
+
+```{r}
+sapply(myList, FUN = '[[', 2)
+```
 
 ### `tapply` {#l17tapply}
 
@@ -490,13 +574,6 @@ XXX
 
 XXX
 
-### `rapply` {#l17rapply}
-
-XXX
-
-### `vapply` {#l17vapply}
-
-XXX
 
 ## Conclusion
 
