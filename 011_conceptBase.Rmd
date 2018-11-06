@@ -6,9 +6,7 @@
 
 Le programme permettant l'installation du logiciel R peut être téléchargé depuis le site web de R : https://www.r-project.org/. Sur le site de R il faut au préalable choisir un mirroir CRAN (serveur depuis lequel télécharger R ; sauf cas particulier le plus proche de sa localisation géographique), puis télécharger le fichier *base*. Les utilisateurs de Linux pourront préférer un `sudo apt-get install r-base`. 
 
-```{block, type='rmdnote'}
-Le logiciel R peut être téléchargé depuis de nombreux serveurs du CRAN (Comprehensive R Archive Network) à travers le monde. Ces serveurs s'appellent des miroirs. Le choix du miroir est manuel. Les informations complémentaires comme cette note seront toujours représentées avec ce pictogramme *information*.
-```
+Le logiciel R peut être téléchargé depuis de nombreux serveurs du CRAN (Comprehensive R Archive Network) à travers le monde. Ces serveurs s'appellent des miroirs. Le choix du miroir est manuel. 
 
 ## R comme calculatrice
 
@@ -20,9 +18,7 @@ knitr::include_graphics("myFigures/screencap_rConsoleFR.png")
 
 La console correspond à l'interface où va être interprété le code, c'est à dire à l'endroit où le code va être transformé en langage machine, exécuté par l'ordinateur, puis retransmis sous une forme lisible par des humains. Cela correspond à l'écran d'affichage d'une calculatrice (Figure \@ref(fig:screenCapConsoleCal)). C'est de cette manière que R va être utilisé dans la suite de cette section.
 
-```{block, type='rmdnote'}
 Tout au long de ce livre, les exemples de code R apparaîtront sur fond en gris. Ils peuvent être copiés et collés directement dans la console, bien qu'il soit préférable de reproduire soit même les exemples dans la console (ou plus tard dans les scripts). Le résultat de ce qui est envoyé dans la console apparaîtra également sur fond en gris avec `##` devant le code afin de bien faire la distinction entre le code et le résultat du code.
-```
 
 ```{r screenCapConsoleCal, fig.cap = "Capture d'écran de la console R sous Windows avec la calculatrice Windows.\\label{fig:screenCapConsoleCal}", echo = FALSE}
 knitr::include_graphics("myFigures/screencap_rConsoleCalculatrice.png")
@@ -40,7 +36,8 @@ Les opérateurs aritmétiques disponibles sous R sont résumés dans la table \@
 ```{r tabOpAri, echo = FALSE}
 opAriDf <- data.frame(Label = c("Addition", "Soustraction", "Multiplication", 
   "Division", "Puissance", "Modulo", "Quotien Décimal"), 
-  Operateur = c("+", "-", "*", "/", "^", "%%", "%/%"))
+  Operateur = c("+", "-", "*", "/", "^", "%%", "%/%"), 
+  Exemple = c("5 + 5", "5 - 5", "5*5", "5/5", "5^5", "5 %% 5", "5 %/% 5"))
 knitr::kable(opAriDf, caption = "Opérateurs arithmétiques.\\label{tab:tabOpAri}")
 ```
 
