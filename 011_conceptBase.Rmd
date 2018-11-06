@@ -36,8 +36,9 @@ Les opérateurs aritmétiques disponibles sous R sont résumés dans la table \@
 ```{r tabOpAri, echo = FALSE}
 opAriDf <- data.frame(Label = c("Addition", "Soustraction", "Multiplication", 
   "Division", "Puissance", "Modulo", "Quotien Décimal"), 
-  Operateur = c("+", "-", "*", "/", "^", "%%", "%/%"), 
-  Exemple = c("5 + 5", "5 - 5", "5*5", "5/5", "5^5", "5 %% 5", "5 %/% 5"))
+  Opérateur = c("+", "-", "*", "/", "^", "%%", "%/%"), 
+  Exemple = c("5 + 5", "5 - 5", "5*5", "5/5", "5^5", "5 %% 5", "5 %/% 5"), 
+  Résultat = c("10", "0", "25", "1", "3125", "0", "1"))
 knitr::kable(opAriDf, caption = "Opérateurs arithmétiques.\\label{tab:tabOpAri}")
 ```
 
@@ -65,9 +66,7 @@ pi * 5^2
 1/0
 ```
 
-```{block, type='rmdstyle'}
-le *style* du code est important car le code est destiné à être lisible par nous plus tard et par d'autres personnes de manière générale. Pour avoir un style lisible il est recommandé de mettre des espaces avant et après les opérateurs arithmétiques. Les informations concernant le *style* seront toujours représentées avec ce pictogramme afin qu'elles soient facilement identifiables.
-```
+le *style* du code est important car le code est destiné à être lisible par nous plus tard et par d'autres personnes de manière générale. Pour avoir un style lisible il est recommandé de mettre des espaces avant et après les opérateurs arithmétiques. 
 
 ### Les opérateurs de comparaison {#l011opcomp}
 
@@ -75,7 +74,9 @@ R est cependant bien plus qu'une simple calculatrice puisque'il permet un autre 
 
 ```{r tabOpCom, echo = FALSE}
 opAriDf <- data.frame(Label = c("plus petit que", "plus grand que", "plus petit ou égal à",  "plus grand ou égal à", "égal à", "différent de"), 
-  Operador = c("<", ">", "<=", ">=", "==", "!="))
+  Opérateur = c("<", ">", "<=", ">=", "==", "!="), 
+  Exemple = c("5 < 5", "5 > 5", "5 <= 5", "5 >= 5", "5 == 5", "5 != 5"), 
+  Résultat = c("FALSE", "FALSE", "TRUE", "TRUE", "TRUE", "FALSE"))
 knitr::kable(opAriDf, caption = "Opérateurs de comparaison.\\label{tab:tabOpCom}")
 ```
 
@@ -100,9 +101,7 @@ Nous pouvons combiner les opérateurs arithmétiques avec les opérateurs de com
 (5 + 8) > (3 * 45/2) 
 ```
 
-```{block, type='rmdstyle'}
 Dans la comparasion `(5 + 8) > (3 * 45/2)` les parenthèses ne sont pas nécessaires mais elles permettent au code d'être plus facile à lire.
-```
 
 Un opérateur de comparaison particulier est *égal à*. Nous verrons dans la section suivante que le signe `=` est réservé à un autre usage : il permet d'affecter une valeur à un objet. L'opérateur de comparaison *égal à* doit donc être différent, c'est pour cela que R utilise `==`. 
 
@@ -111,7 +110,7 @@ Un opérateur de comparaison particulier est *égal à*. Nous verrons dans la se
 58 == 58
 ```
 
-Un autre opérateur particulier est *différent de*. Il est utilisé avec *un point d'intérrogation* suivi de *égal*, `!=`. Cet opérateur permet de d'obtenir la réponse inverse à `==`.
+Un autre opérateur particulier est *différent de*. Il est utilisé avec *un point d'intérrogation* suivi de *égal*, `!=`. Cet opérateur permet d'obtenir la réponse inverse à `==`.
 
 ```{r}
 42 == 53
@@ -174,13 +173,11 @@ xor((3 + 3) == 5, (3 + 2) == 6)
 xor((3 + 3) == 5, (3 + 3) == 6)
 ```
 
-```{block, type='rmdstyle'}
 Il est recommandé que les virgules `,` soient suivies par un espace afin que le code soit plus agréable à lire.
-```
 
 ### Aide sur les opérateurs
 
-Le fichier d'aideen anglais sur les opérateurs arithmétiques peut être obtenue avec la commande `?'+'` celui sur les opérateurs de comparaison avec la commande `?'=='` et celui sur les opérateurs logiques avec la commande `?'&'`.
+Le fichier d'aide en anglais sur les opérateurs arithmétiques peut être obtenue avec la commande `?'+'` celui sur les opérateurs de comparaison avec la commande `?'=='` et celui sur les opérateurs logiques avec la commande `?'&'`.
 
 ## La notion d'objet {#l011object}
 
@@ -194,9 +191,7 @@ Un aspect important de la programmation avec R, mais aussi de la programmation e
 
 Toutes ces formes de nommer un objet sont équivalentes. Dans ce livre nous utiliserons le style *lowerCamelCase*. De manière générale il faut éviter les noms trop longs comme `leNombreDeRepetitions` ou trop courts comme `nR`, et les noms ne permettant pas d'identifier le contenu comme `maVariable` ou `monChiffre`, mais aussi `a` ou `b`...
 
-```{block, type='rmdstyle'}
-Il existe différentes façons de définir un nom pour les objets que nous allons créer avec R. Dans ce livre il est utilisé le style *lowerCamelCase*. L'important n'est pas le choix du style mais la consistence dans son choix. L'objectif est d'avoir un code fonctionnel mais également un code facile et agréable à lire.
-```
+Il existe différentes façons de définir un nom pour les objets que nous allons créer avec R. Dans ce livre nous utilisons le style *lowerCamelCase*. L'important n'est pas le choix du style mais la consistence dans son choix. L'objectif est d'avoir un code fonctionnel mais également un code facile et agréable à lire.
 
 Maintenant que nous avons choisi un nom pour notre objet, il faut le créer et faire comprendre à R que notre objet doit contenir le chiffre 5. Il existe trois façons de créer un objet sous R:
 
@@ -251,14 +246,14 @@ R est un langage de programmation souvent dénommé *langage de script*. Cela fa
 ### Créer un script et le documenter
 
 Pour ouvrir un nouveau script il suffit de créer un fichier texte vide qui sera édité par un éditeur de texte comme le bloc note sous Windows ou Mac OS, ou encore Gedit ou même nano sous Linux. Par convention ce fichier prend l'extension ".r" ou plus souvent ".R". C'est cette dernière convention qui sera utilisée dans ce livre. Depuis l'interface graphique de R il est possible de créer un nouveux script sous Mac OS et Windows via *fichier* puis *nouveau script* et *enregistrer sous*.
-Tout comme le nom des objets, le nom du script est important pour que nous puissions facilement identifier son contenu. Par exemple nous pourrions créer un fichier `formRConceptsBase.R` contenant les objets que nous venons de créer et les calculs effectués. Mais même avec des noms de variables et un nom de fichier bien définis, il sera difficile de se rappeler le sens de cce fichier sans une documentation accompagnant ce script. Pour docummenter un script nous allons utiliser des *commentaires*. Les commentaires sont des éléments qui seront identifiés par R comme tel et qui ne seront pas exécutés. Pour spécifier à R que nous allons faire un commentaire, il faut utiliser le caractère octothorpe (croisillon) `#`. Les commentaires peuvent être insérés sur une nouvelle ligne ou en fin de ligne.
+Tout comme le nom des objets, le nom du script est important pour que nous puissions facilement identifier son contenu. Par exemple nous pourrions créer un fichier `formRConceptsBase.R` contenant les objets que nous venons de créer et les calculs effectués. Mais même avec des noms de variables et un nom de fichier bien définis, il sera difficile de se rappeler le sens de ce fichier sans une documentation accompagnant le script. Pour docummenter un script nous allons utiliser des *commentaires*. Les commentaires sont des éléments qui seront identifiés par R et qui ne seront pas exécutés. Pour spécifier à R que nous allons faire un commentaire, il faut utiliser le caractère octothorpe (croisillon) `#`. Les commentaires peuvent être insérés sur une nouvelle ligne ou en fin de ligne.
 
 ```{r}
 # creation objet nombre de repetitions
 nbrRep <- 5 # commentaire de fin de ligne
 ```
 
-Les commentaires peuvent aussi être utilisé pour qu'une ligne ne soit plus exécutée.
+Les commentaires peuvent aussi être utilisés pour qu'une ligne ne soit plus exécutée.
 
 ```{r}
 nbrRep <- 5
@@ -286,9 +281,7 @@ nbrRep <- 5
 pi * nbrRep^2
 ```
 
-```{block, type='rmdstyle'}
 Pour aller plus loin sur le style de code, un guide complet de recommandations est disponible en ligne (en anglais ; http://style.tidyverse.org/). 
-```
 
 ### Exécuter un script
 
@@ -300,9 +293,9 @@ Félicitations, nous avons atteint la fin de ce premier chapitre sur les éléme
 
 * Installer R
 * Utiliser R comme une calculatrice
-* Créez **objets** et les utiliser pour les calculs arithmétiques, de comparaison et de logique
+* Créez des **objets** et les utiliser pour les calculs arithmétiques, les comparaisons et les tests logiques
 * Choisir des noms pertinents pour les objets
-* Créer de nouveaux **script**
+* Créer de nouveaux **scripts**
 * Choisir un nom pertinent pour les fichiers de script
 * Exécuter le code d'un script
 * Documenter les scripts avec des **commentaires**
