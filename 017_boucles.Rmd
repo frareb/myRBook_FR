@@ -568,12 +568,38 @@ sapply(myList, FUN = '[[', 2)
 
 ### `tapply` {#l17tapply}
 
-XXX
+La fonction`tapply()` permet d'appliquer une fonction en prenant comme élément à itérer une variable existante. Imaginons des informations sur des espèces représentées par des lettres majuscules (e.g., A, B, C) et des valeurs de performances à différentes localisations.
+
+```{r}
+species <- sample(LETTERS[1:10], size = 1000, replace = TRUE)
+perf1 <- rnorm(n = 1000, mean = 10, sd = 0.5)
+perf2 <- rlnorm(n = 1000, meanlog = 10, sdlog = 0.5)
+perf3 <- rgamma(n = 1000, shape = 10, rate = 0.5)
+dfSpecies <- data.frame(species, perf1, perf2, perf3)
+print(head(dfSpecies, n = 10))
+```
+
+Nous pouvons facilement obtenir un résumé des performances pour chaque espèce avec la fonction `tapply()` et la fonction `summary()`.
+
+```{r}
+tapply(dfSpecies$perf1, INDEX = dfSpecies$species, FUN = summary)
+```
+
+Nous pouvons aussi obtenir la valeur moyenne de chacune des performances en combinant une fonction `sapply()` avec la fonction `tapply()`et en utilisant la fonction `mean()`.
+
+```{r}
+sapply(2:4, FUN = function(i){
+  tapply(dfSpecies[,i], INDEX = dfSpecies$species, FUN = mean)
+})
+```
 
 ### `mapply` {#l17mapply}
 
-XXX
+La fonction `mapply()` est une version de la fonction `sapply()`qui utilise de multiples arguments. Par exemple si nous avons une liste de deux éléments `1:5` et `5:1` et que nous souhaitons ajouter `10` au premier élément et `100` au deuxième élément :
 
+```{r}
+mapply(FUN = function(i, j){i+j}, i = list(1:5, 5:1), j = c(10, 100))
+```
 
 ## Conclusion
 
