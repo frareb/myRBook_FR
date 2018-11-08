@@ -25,7 +25,7 @@
 <meta name="author" content="François Rebaudo">
 
 
-<meta name="date" content="2018-11-06">
+<meta name="date" content="2018-11-08">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -310,11 +310,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <div id="quest-ce-quune-fonction" class="section level2">
 <h2><span class="header-section-number">9.1</span> Qu’est-ce qu’une fonction</h2>
 <p>Avec ce chapitre nous allons avoir un premier apperçu de la puissance de R grâce aux fonctions. Une fonction est un ensemble de lignes de code permettant d’exécuter une tâche particulière. Nous avons vu de nombreuses fonctions lors des précédents chapitres, la plus simple étant la fonction <code>+</code> permettant d’ajouter deux nombres entre eux, ou d’autres plus complexes comme <code>c()</code> ou <code>data.frame()</code> permettant de créer un <code>vector</code> ou un <code>data.frame</code>. Dans tous les cas une fonction se reconnait grâce aux parenthèses qui la suive dans laquelle nous allons renseigner des <strong>arguments</strong>. Les arguments correspondent aux informations que nous souhaitons transmettre à notre fonction pour qu’elle exécute la tâche que nous souhaitons réaliser.</p>
-<div class="rmdnote">
-<p>
-Pour les fonctions les plus simples comme <code>+</code>, les parenthèses ont été supprimés pour que le code soit plus facile à lire, mais il s’agit bien d’une fonction qui peut s’utiliser avec des parenthèses si nous utilisons le signe <code>+</code> entre guillemets. Les arguments sont les chiffres que nous souhaitons ajouter.
-</p>
-</div>
+<p>Pour les fonctions les plus simples comme <code>+</code>, les parenthèses ont été supprimés pour que le code soit plus facile à lire, mais il s’agit bien d’une fonction qui peut s’utiliser avec des parenthèses si nous utilisons le signe <code>+</code> entre guillemets. Les arguments sont les chiffres que nous souhaitons ajouter.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="dv">5</span> <span class="op">+</span><span class="st"> </span><span class="dv">2</span></code></pre></div>
 <pre><code>## [1] 7</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="st">&#39;+&#39;</span>(<span class="dv">5</span>, <span class="dv">2</span>)</code></pre></div>
@@ -365,11 +361,7 @@ mdat</code></pre></div>
 <pre><code>##      C.1 C.2 C.3
 ## row1   1   2   3
 ## row2  11  12  13</code></pre>
-<div class="rmdstyle">
-<p>
-Le nom des arguments n’est pas nécessaire pour qu’une fonction soit correctement interprété par R. Néanmoins par soucis de clarté il est préférable d’utiliser le nom des arguments suivi du signe <code>=</code> pour que le code soit plus lisible.
-</p>
-</div>
+<p>Le nom des arguments n’est pas nécessaire pour qu’une fonction soit correctement interprété par R. Néanmoins par soucis de clarté il est préférable d’utiliser le nom des arguments suivi du signe <code>=</code> pour que le code soit plus lisible.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># bon exemple</span>
 mdat &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>, <span class="dv">11</span>,<span class="dv">12</span>,<span class="dv">13</span>), <span class="dt">nrow =</span> <span class="dv">2</span>, <span class="dt">ncol =</span> <span class="dv">3</span>, <span class="dt">byrow =</span> <span class="ot">TRUE</span>)
 <span class="co"># mauvais exemple</span>
@@ -1228,10 +1220,10 @@ irisSepWCopy &lt;-<span class="st"> </span>irisSepWCopy[<span class="kw">order</
 <p>Il n’y a pas de solution optimale dans l’absolu, tout dépend des objectifs recherchés. La première solution est peut être plus facile à comprendre, et la seconde peut être plus rapide en terme de vitesse d’exécution (même en répétant l’utilisation de la fonction 10000 fois, le gain de temps est presque nul dans notre cas).</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">system.time</span>(<span class="kw">replicate</span>(<span class="dt">n =</span> <span class="dv">10000</span>, <span class="kw">countVowelConso</span>(<span class="dt">word =</span> <span class="st">&quot;qwertyuiop azertyuiop&quot;</span>)))</code></pre></div>
 <pre><code>##    user  system elapsed 
-##    0.16    0.02    0.17</code></pre>
+##    0.16    0.00    0.16</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">system.time</span>(<span class="kw">replicate</span>(<span class="dt">n =</span> <span class="dv">10000</span>, <span class="kw">countVowelConsoAlt</span>(<span class="dt">word =</span> <span class="st">&quot;qwertyuiop azertyuiop&quot;</span>)))</code></pre></div>
 <pre><code>##    user  system elapsed 
-##    0.14    0.00    0.14</code></pre>
+##    0.15    0.00    0.15</code></pre>
 <p>Une fonction peut avoir des valeurs par défaut pour ses arguments. C’est le cas de la plupart des fonctions existantes. Par défaut, notre fonction va désormais compter le nombre de voyelles et de consonnes dans le mot <code>qwerty</code> (les parenthèses restent nécessaires même en l’absence d’arguments).</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">countVowelConsoAlt &lt;-<span class="st"> </span><span class="cf">function</span>(<span class="dt">word =</span> <span class="st">&quot;qwerty&quot;</span>){ <span class="co"># compte les voyelles et les consonnes</span>
   <span class="cf">if</span>(<span class="kw">is.vector</span>(word) <span class="op">&amp;</span><span class="st"> </span><span class="kw">is.character</span>(word) <span class="op">&amp;</span><span class="st"> </span><span class="kw">length</span>(word) <span class="op">==</span><span class="st"> </span><span class="dv">1</span>){
