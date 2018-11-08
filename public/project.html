@@ -307,11 +307,38 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
             <section class="normal" id="section-">
 <div id="project" class="section level1">
 <h1><span class="header-section-number"> 12</span> Gestion d’un projet avec R</h1>
+<p>Maintenant Que nous avons vu les concepts de base de R, il nous reste à aborder un élément déterminant pour le bon déroulement de nos activités scientifiques avec R : la gestion de projet. Cela consiste à intégrer ses développements dans un environnement et avec une logique visant à faciliter son travail et donc augmenter son efficacité. Il s’agit ici que d’une façon de faire parmis les inombrables possibilités, à adapter pour chacun et chacune.</p>
 <div id="gestion-des-fichiers-et-du-repertoire-de-travail" class="section level2">
 <h2><span class="header-section-number">12.1</span> Gestion des fichiers et du répertoire de travail</h2>
+<p>Entre les fichiers d’entrée (i.e., les fichiers qui contiennent nos données brutes), les fichiers de sortie (e.g., avec la fonction <code>write()</code>), les graphiques (prochain chapitre), et les nombreux scripts associés à un projet de recherche, un minimum d’organisation s’impose pour pouvoir être efficace et reprendre rapidement son projet en cours. La solution la plus simple consiste à structurer son environnement de travail en dossiers en fonction de chaque catégorie de fichiers. Par exemple avec un dossier “myProject” pour le projet en cours, contenant lui-même les dossiers “myFiles” pour les fichiers d’entrée, un dossier “myScripts” pour les fichiers script R, et un dossier “myOutputs” pour les fichiers de sortie (e.g., les graphiques et les analyses).</p>
+<pre><code>## -myProject
+## |-myFiles
+## |-|-data01.csv
+## |-|-data02.csv
+## |-myScripts
+## |-|-myFirstScript.R
+## |-myOutputs
+## |-|-dataOut01.csv
+## |-|-figure01.pdf</code></pre>
 </div>
 <div id="gestion-des-versions-de-script" class="section level2">
 <h2><span class="header-section-number">12.2</span> Gestion des versions de script</h2>
+<p>Le travail sur un script est itératif : même si les objectifs sont définis dès le départ, nous allons retravailler certaines parties pour obtenir par exemples des informations supplémentaires, ou encore pour optimiser telle ou telle fonction, ou encore rendre généralisable un script pour le communiquer à la communauté scientifique ou tout simplement à un collègue. Parfois ce que nous allons voir comme une amélioration va au final se révéler être une erreur, et le retour au script initial peut être difficile. Il faut donc gérer des versions.</p>
+<p>Dans la plupart des laboratoire il y a des services de gestion des versions, les plus connus étant GIT (<a href="https://git-scm.com/" class="uri">https://git-scm.com/</a>) et Subversion (<a href="https://subversion.apache.org/" class="uri">https://subversion.apache.org/</a>). Lorsque GIT ou Subversion sont disponibles il est recommandé de les utiliser. Si nous n’avons pas accès à ces services il existe des services gratuits en ligne comme GitHub (<a href="https://github.com/" class="uri">https://github.com/</a> ; ce livre utilise GitHub). Il existe de nombreuses autres solutions comme GitLab (<a href="https://about.gitlab.com/" class="uri">https://about.gitlab.com/</a>), Bitbucket (<a href="https://bitbucket.org/" class="uri">https://bitbucket.org/</a>), SourceForge (<a href="https://sourceforge.net/" class="uri">https://sourceforge.net/</a>), GitKraken (<a href="https://www.gitkraken.com/" class="uri">https://www.gitkraken.com/</a>), ou encore Launchpad (<a href="https://launchpad.net/" class="uri">https://launchpad.net/</a>).</p>
+<p>L’utilisation de ces différents services de gestion des versions sort du cadre de ce livre. Pour le débutant ou pour les projets ne nécessitant pas un travail collaboratif sur les scripts, une alternative consiste à gérer ses versions manuellement. Par exemple une solution consiste à ajouter un numéro à la fin de son nom de fichier de script (e.g., “myFirstScript_01.R”). Dès qu’une modification importante est apportée à ce script, il suffira alors de le sauver avec un nouveau nom (e.g., “myFirstScript_02.R”) et de placer l’ancien script dans un dossier d’archive pour ne pas encombrer l’espace de travail et risquer des erreurs. En cas de problème, nous pourrons ainsi facilement retourner au script antérieur et reprendre notre travail.</p>
+<pre><code>## -myProject
+## |-myFiles
+## |-|-data01.csv
+## |-|-data02.csv
+## |-myScripts
+## |-|-myFirstScript04.R
+## |-|-ARCHIVES
+## |-|-|-myFirstScript01.R
+## |-|-|-myFirstScript02.R
+## |-|-|-myFirstScript03.R
+## |-myOutputs
+## |-|-dataOut01.csv
+## |-|-figure01.pdf</code></pre>
 </div>
 <div id="gestion-de-la-documentation" class="section level2">
 <h2><span class="header-section-number">12.3</span> Gestion de la documentation</h2>
