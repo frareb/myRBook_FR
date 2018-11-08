@@ -4,9 +4,7 @@
 
 Avec ce chapitre nous allons avoir un premier apperçu de la puissance de R grâce aux fonctions. Une fonction est un ensemble de lignes de code permettant d'exécuter une tâche particulière. Nous avons vu de nombreuses fonctions lors des précédents chapitres, la plus simple étant la fonction `+` permettant d'ajouter deux nombres entre eux, ou d'autres plus complexes comme `c()` ou `data.frame()` permettant de créer un `vector` ou un `data.frame`. Dans tous les cas une fonction se reconnait grâce aux parenthèses qui la suive dans laquelle nous allons renseigner des **arguments**. Les arguments correspondent aux informations que nous souhaitons transmettre à notre fonction pour qu'elle exécute la tâche que nous souhaitons réaliser. 
 
-```{block, type='rmdnote'}
 Pour les fonctions les plus simples comme `+`, les parenthèses ont été supprimés pour que le code soit plus facile à lire, mais il s'agit bien d'une fonction qui peut s'utiliser avec des parenthèses si nous utilisons le signe `+` entre guillemets. Les arguments sont les chiffres que nous souhaitons ajouter.
-```
 
 ```{r}
 5 + 2
@@ -80,9 +78,7 @@ mdat <- matrix(c(1,2,3, 11,12,13), nrow = 2, ncol = 3, byrow = TRUE,
 mdat
 ```
 
-```{block, type='rmdstyle'}
 Le nom des arguments n'est pas nécessaire pour qu'une fonction soit correctement interprété par R. Néanmoins par soucis de clarté il est préférable d'utiliser le nom des arguments suivi du signe `=` pour que le code soit plus lisible. 
-```
 
 ```{r}
 # bon exemple
