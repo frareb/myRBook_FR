@@ -2,7 +2,7 @@
 
 Maintenant Que nous avons vu les concepts de base de R, il nous reste à aborder un élément déterminant pour le bon déroulement de nos activités scientifiques avec R : la gestion de projet. Cela consiste à intégrer ses développements dans un environnement et avec une logique visant à faciliter son travail et donc augmenter son efficacité. Il s'agit ici que d'une façon de faire parmis les inombrables possibilités, à adapter pour chacun et chacune. 
 
-## Gestion des fichiers et du répertoire de travail
+## Gestion des fichiers et des répertoires de travail
 
 Entre les fichiers d'entrée (i.e., les fichiers qui contiennent nos données brutes), les fichiers de sortie (e.g., avec la fonction `write()`), les graphiques (prochain chapitre), et les nombreux scripts associés à un projet de recherche, un minimum d'organisation s'impose pour pouvoir être efficace et reprendre rapidement son projet en cours. La solution la plus simple consiste à structurer son environnement de travail en dossiers en fonction de chaque catégorie de fichiers. Par exemple avec un dossier "myProject" pour le projet en cours, contenant lui-même les dossiers "myFiles" pour les fichiers d'entrée, un dossier "myScripts" pour les fichiers script R, et un dossier "myOutputs" pour les fichiers de sortie (e.g., les graphiques et les analyses).
 
@@ -44,4 +44,77 @@ cat("-myProject
 
 ## Gestion de la documentation
 
+La documentation de son code est essentielle pour pouvoir facilement reprendre un travail ou communiquer son travail avec ses collègues et la communauté scientifique. Un code bien documenté sera compréhensible par un plus grand nombre et donc utilisé d'avantage. Il est donc important d'adopter de bonnes techniques.
 
+Nous avons déjà vu qu'il y avait plusieurs façons d'écrire son code avec R car c'est un langage assez permissif. Le premier pas vers un code lisible et reproductible est donc d'adopter un style de code clair, cohérent, et... fait pour les humains ! Car même si notre code a vocation à être exécuter par les machines, il doit rester compréhensible pour soit et toutes les personnes qui seront amenées à le consulter. Il s'agit par exemple de mettre des espaces après les virgules, ou encore d'utiliser l'indentation. Bien sûr la lisibilité du code doit être à balancer avec l'optimisation du code pour les  grands jeux de données, mais dans la plupart des cas nous pouvons associer un code clair et optimisé. Donc la première étape de la documentation et de sa gestion est tout d'abord de rédiger son code en pensant aux personnes qui vont le lire et le reproduire.
+
+La deuxième étape est de commenter son code. Les commentaires sont indispensables lorsque nous privilégions du code optimisé pour la performance mais qui perd en lisibilité. Les commentaires sont souvent superflus si le code est bien rédigé et les objets et les fonctions bien nommés. Cela veut dire qu'il ne faut pas utiliser les commentaires pour expliquer un code mal rédigé, mais dès le début bien rédiger son code. Les commentaires sont utiles pour apporter des éléments de contexte (e.g., choix d'une méthode plutôt qu'une autre au regard de la littérature). La place des commentaires peut être en fin de ligne ou sur des lignes à part. 
+
+Pour un petit projet R il est indispensable que chaque script commence par une description de son contenu pour que nous puissions rapidement savoir de quoi il traite. C'est ce que nous avions fait au début de ce livre : 
+
+```{r, eval = FALSE}
+# ------------------------------------------------------------
+# Voici un script pour acquérir les concepts de base 
+# avec R
+# date de création : 25/06/2018
+# auteur : François Rebaudo
+# ------------------------------------------------------------
+
+# [1] création de l'objet nombre de répétitions
+# ------------------------------------------------------------
+
+nbrRep <- 5
+
+# [2] calculs simples
+# ------------------------------------------------------------
+
+pi * nbrRep^2
+```
+
+Ici les commentaires qui suivent l'en-tête ne sont pas nécessaires car le nom de l'objet se comprend de lui même. Notre fichier devient :
+
+```{r, eval = FALSE}
+# ------------------------------------------------------------
+# Voici un script pour acquérir les concepts de base 
+# avec R
+# date de création : 25/06/2018
+# auteur : François Rebaudo
+# ------------------------------------------------------------
+
+nbrRep <- 5
+pi * nbrRep^2
+```
+
+Pour un gros projet avec de nombreuses fonctions destinées à être utilisées par d'autres usagers, il est préférable que la documentation du code soit à part, dans un fichier d'aide spécifique. C'est le cas de tous les packages R ! Pour gérer la documentation d'un package (et donc de toutes les fonctions), là encore il existe de nombreuses possibilités. La plus répandue consiste à utiliser la package R roxigen2. Sans entrer dans les détails, voici quelques examples issus de la documentation du package. 
+
+```{r, eval = FALSE}
+#' Add together two numbers
+#'
+#' @param x A number
+#' @param y A number
+#' @return The sum of \code{x} and \code{y}
+#' @examples
+#' add(1, 1)
+#' add(10, 1)
+add <- function(x, y) {
+  x + y
+}
+```
+
+```{r, eval = FALSE}
+#' Sum of vector elements.
+#'
+#' `sum` returns the sum of all the values present in its arguments.
+#'
+#' This is a generic function: methods can be defined for it directly
+#' or via the [Summary()] group generic. For this to work properly,
+#' the arguments `...` should be unnamed, and dispatch is on the
+#' first argument.
+sum <- function(..., na.rm = TRUE) {}
+```
+
+Cela permet d'écrire la documentation de chaque fonction à côté de la focntion. Le package roxigen2 va ensuite générer à partir de ces commentaires un document d'aide accessible avec la fonction `'?'`. A moins que nous écrivions un nouveau package, les commentaires simples suffiront, et le développement d'un package sort du cadre de ce livre. 
+
+## Conclusion
+
+Félicitations ! Ce chapitre marque la fin de la première partie de ce livre. Nous avons désormais les bases pour mener à bien nos projets avec R. Dans la prochaine partie nous allons voir les graphiques et comment faire des figures dans le cadre d'articles scientifiques. 
