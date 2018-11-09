@@ -2,26 +2,98 @@
 
 # Graphiques simples {#graph1}
 
-## plot
+## `plot`
 
-## hist
+Le premier type de graphique que nous allons voir est le nuage de points. Dans un nuage de points, chaque point est représenté par sa valeur en x et en y. La fonction permettant de faire un nuage de points est `plot()`. 
 
-## barplot
+```{r}
+myX <- rnorm(50, mean = 0, sd = 1)
+myY <- rnorm(50, mean = 10, sd = 1)
+plot(x = myX, y = myY)
+```
 
-## boxplot
+Comme pour tous les types de graphiques, nous pouvons ajouter une légende sur l'axe des x et des y.
 
-## image et contour
+```{r}
+plot(x = myX, y = myY, 
+  xlab = "X", ylab = "Y")
+```
+
+Nous pouvons aussi définir les limites des axes en X et en Y.
+
+```{r}
+plot(x = myX, y = myY, 
+  xlab = "X", ylab = "Y", 
+  xlim = c(-3, 3), ylim = c(7, 13))
+```
+
+Le type de point peut être défini avec l'argument `pch` qui peut prendre un caratère ou un chiffre de 1 à 25.
+
+```{r}
+plot(x = rep(seq(1:5), 5), y = rep(seq(1:5), each = 5),
+  pch = 1:25)
+plot(x = myX, y = myY, 
+  pch = c("a", "@", "#", "1", "=", "-", "_", "o", "O", "0", letters[1:15]))
+```
+
+La taille des points peut se définir avec l'argument `cex`.
+
+```{r}
+plot(x = myX, y = myY, 
+  cex = seq(from = 0.5, to = 3, length.out = 50))
+```
+
+La couleur des points peut se définir avec l'argument `col`. Nous reviendrons sur les couleurs dans un prochain chapitre.
+
+```{r}
+myX <- rnorm(100, mean = 0, sd = 1)
+myY <- rnorm(100, mean = 10, sd = 1)
+plot(x = myX, y = myY, 
+  cex = seq(from = 0.5, to = 3, length.out = 100),
+  pch = 16,
+  col = sample(colors(), 100))
+```
+
+R offre la possibilité de relier les points des nuages de points de différentes façons. Les différentes options sont disponibles dans l'aide de la fonction `plot()` et `plot.default()`.
+
+```{r}
+myX <- 1:20
+myY <- rnorm(20, mean = 10, sd = 1)
+plot(x = myX, y = myY, 
+  type = 'b') # 'p', 'l', 'b', 'c', 'o', 'h', 's', 'S', 'n'
+```
+
+Une dernière option très utile est l'argument `panel.first` qui permet de réaliser une opération graphique sur une couche située en dessous de notre graphique. Voici un exemple illustratif avec une grille réalisée avec et sans `panel.first`. La grille se fait grâce à la fonction `grid()`. Pour mettre les graphiques côte à côte nous allons utiliser `mfrow` sur lequel nous reviendrons plus tard.
+
+```{r}
+par(mfrow = c(1, 2))
+plot(x = myX, y = myY, 
+  type = 'b', pch = 16, cex = 3) 
+grid(lwd = 3, lty = 1)
+plot(x = myX, y = myY, 
+  type = 'b', pch = 16, cex = 3, 
+  panel.first = grid(lwd = 3, lty = 1)) 
+par(mfrow = c(1, 1))
+```
+
+## `hist`
+
+## `barplot`
+
+## `boxplot`
+
+## `image` et `contour`
 
 # La gestion des couleurs {#graph2}
 
-## colors()
+## `colors()`
 
 ## RGB
 
-## Paletas
+## Palettes
 
 # Graphiques composés {#graph3}
 
-## mfrow
+## `mfrow`
 
-## layout
+## `layout`
