@@ -257,20 +257,20 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </ul></li>
 <li class="part"><span><b>II Les graphiques</b></span></li>
 <li class="chapter" data-level="13" data-path="graph1.html"><a href="graph1.html"><i class="fa fa-check"></i><b>13</b> Graphiques simples</a><ul>
-<li class="chapter" data-level="13.1" data-path="graph1.html"><a href="graph1.html#plot"><i class="fa fa-check"></i><b>13.1</b> plot</a></li>
-<li class="chapter" data-level="13.2" data-path="graph1.html"><a href="graph1.html#hist"><i class="fa fa-check"></i><b>13.2</b> hist</a></li>
-<li class="chapter" data-level="13.3" data-path="graph1.html"><a href="graph1.html#barplot"><i class="fa fa-check"></i><b>13.3</b> barplot</a></li>
-<li class="chapter" data-level="13.4" data-path="graph1.html"><a href="graph1.html#boxplot"><i class="fa fa-check"></i><b>13.4</b> boxplot</a></li>
-<li class="chapter" data-level="13.5" data-path="graph1.html"><a href="graph1.html#image-et-contour"><i class="fa fa-check"></i><b>13.5</b> image et contour</a></li>
+<li class="chapter" data-level="13.1" data-path="graph1.html"><a href="graph1.html#plot"><i class="fa fa-check"></i><b>13.1</b> <code>plot</code></a></li>
+<li class="chapter" data-level="13.2" data-path="graph1.html"><a href="graph1.html#hist"><i class="fa fa-check"></i><b>13.2</b> <code>hist</code></a></li>
+<li class="chapter" data-level="13.3" data-path="graph1.html"><a href="graph1.html#barplot"><i class="fa fa-check"></i><b>13.3</b> <code>barplot</code></a></li>
+<li class="chapter" data-level="13.4" data-path="graph1.html"><a href="graph1.html#boxplot"><i class="fa fa-check"></i><b>13.4</b> <code>boxplot</code></a></li>
+<li class="chapter" data-level="13.5" data-path="graph1.html"><a href="graph1.html#image-et-contour"><i class="fa fa-check"></i><b>13.5</b> <code>image</code> et <code>contour</code></a></li>
 </ul></li>
 <li class="chapter" data-level="14" data-path="graph2.html"><a href="graph2.html"><i class="fa fa-check"></i><b>14</b> La gestion des couleurs</a><ul>
-<li class="chapter" data-level="14.1" data-path="graph2.html"><a href="graph2.html#colors"><i class="fa fa-check"></i><b>14.1</b> colors()</a></li>
+<li class="chapter" data-level="14.1" data-path="graph2.html"><a href="graph2.html#colors"><i class="fa fa-check"></i><b>14.1</b> <code>colors()</code></a></li>
 <li class="chapter" data-level="14.2" data-path="graph2.html"><a href="graph2.html#rgb"><i class="fa fa-check"></i><b>14.2</b> RGB</a></li>
-<li class="chapter" data-level="14.3" data-path="graph2.html"><a href="graph2.html#paletas"><i class="fa fa-check"></i><b>14.3</b> Paletas</a></li>
+<li class="chapter" data-level="14.3" data-path="graph2.html"><a href="graph2.html#palettes"><i class="fa fa-check"></i><b>14.3</b> Palettes</a></li>
 </ul></li>
 <li class="chapter" data-level="15" data-path="graph3.html"><a href="graph3.html"><i class="fa fa-check"></i><b>15</b> Graphiques composés</a><ul>
-<li class="chapter" data-level="15.1" data-path="graph3.html"><a href="graph3.html#mfrow"><i class="fa fa-check"></i><b>15.1</b> mfrow</a></li>
-<li class="chapter" data-level="15.2" data-path="graph3.html"><a href="graph3.html#layout"><i class="fa fa-check"></i><b>15.2</b> layout</a></li>
+<li class="chapter" data-level="15.1" data-path="graph3.html"><a href="graph3.html#mfrow"><i class="fa fa-check"></i><b>15.1</b> <code>mfrow</code></a></li>
+<li class="chapter" data-level="15.2" data-path="graph3.html"><a href="graph3.html#layout"><i class="fa fa-check"></i><b>15.2</b> <code>layout</code></a></li>
 </ul></li>
 <li class="chapter" data-level="16" data-path="graph4.html"><a href="graph4.html"><i class="fa fa-check"></i><b>16</b> Manipuler les graphiques</a><ul>
 <li class="chapter" data-level="16.1" data-path="graph4.html"><a href="graph4.html#inkscape"><i class="fa fa-check"></i><b>16.1</b> Inkscape</a></li>
@@ -371,7 +371,7 @@ bdd<span class="op">$</span>bddHour &lt;-<span class="st"> </span><span class="k
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(<span class="dt">x =</span> <span class="kw">as.Date</span>(bdd<span class="op">$</span>bddDay, <span class="dt">format =</span> <span class="st">&quot;%m/%d/%y&quot;</span>), <span class="dt">y =</span> bdd<span class="op">$</span>temp, 
     <span class="dt">type =</span> <span class="st">&#39;l&#39;</span>, <span class="dt">ylim =</span> <span class="kw">c</span>(<span class="op">-</span><span class="dv">15</span>, <span class="dv">40</span>), 
     <span class="dt">xlab =</span> <span class="st">&quot;Temps&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;Température (°C)&quot;</span>)</code></pre></div>
-<p><img src="myRBook_FR_files/figure-html/unnamed-chunk-228-1.png" width="672" /></p>
+<p><img src="myRBook_FR_files/figure-html/unnamed-chunk-236-1.png" width="672" /></p>
 <p>Nous pouvons simplifier les informations en ne calculant que les températures minimales, moyennes et maximales avec la fonction <code>aggregate()</code>.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">tempDayMean &lt;-<span class="st"> </span><span class="kw">aggregate</span>(<span class="dt">x =</span> bdd[, <span class="dv">3</span>], <span class="dt">by =</span> <span class="kw">list</span>(bdd[, <span class="dv">4</span>]), <span class="dt">FUN =</span> mean)
 tempDayMin &lt;-<span class="st"> </span><span class="kw">aggregate</span>(<span class="dt">x =</span> bdd[, <span class="dv">3</span>], <span class="dt">by =</span> <span class="kw">list</span>(bdd[, <span class="dv">4</span>]), <span class="dt">FUN =</span> min)
@@ -385,13 +385,13 @@ tempDayMax &lt;-<span class="st"> </span><span class="kw">aggregate</span>(<span
     <span class="dt">y =</span> tempDayMax[, <span class="dv">2</span>], <span class="dt">type =</span> <span class="st">&#39;l&#39;</span>, <span class="dt">col =</span> <span class="dv">2</span>)
 <span class="kw">legend</span>(<span class="st">&quot;topright&quot;</span>, <span class="dt">legend =</span> <span class="kw">c</span>(<span class="st">&quot;min&quot;</span>, <span class="st">&quot;max&quot;</span>, <span class="st">&quot;mean&quot;</span>), 
   <span class="dt">lty =</span> <span class="dv">1</span>, <span class="dt">lwd =</span> <span class="dv">2</span>, <span class="dt">col =</span> <span class="kw">c</span>(<span class="dv">4</span>, <span class="dv">2</span>, <span class="dv">1</span>))</code></pre></div>
-<p><img src="myRBook_FR_files/figure-html/unnamed-chunk-229-1.png" width="672" /></p>
+<p><img src="myRBook_FR_files/figure-html/unnamed-chunk-237-1.png" width="672" /></p>
 <p>Nous pouvons également calculer la différence entre la température maximale et la température minimale (variation de la température diurne).</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">tempDayTR &lt;-<span class="st"> </span>tempDayMax[, <span class="dv">2</span>] <span class="op">-</span><span class="st"> </span>tempDayMin[, <span class="dv">2</span>]
 <span class="kw">plot</span>(<span class="dt">x =</span> <span class="kw">as.Date</span>(tempDayMean[, <span class="dv">1</span>], <span class="dt">format =</span> <span class="st">&quot;%m/%d/%y&quot;</span>), 
     <span class="dt">y =</span> tempDayTR, <span class="dt">type =</span> <span class="st">&#39;l&#39;</span>, <span class="dt">ylim =</span> <span class="kw">c</span>(<span class="dv">5</span>, <span class="dv">45</span>), 
     <span class="dt">xlab =</span> <span class="st">&quot;Temps&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;Variation de température diurne (°C)&quot;</span>)</code></pre></div>
-<p><img src="myRBook_FR_files/figure-html/unnamed-chunk-230-1.png" width="672" /></p>
+<p><img src="myRBook_FR_files/figure-html/unnamed-chunk-238-1.png" width="672" /></p>
 <p>Une autre possibilité est de regrouper les données pour avoir la température moyenne des heures de la journée avec la fonction <code>aggregate()</code>.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">tempHourMean &lt;-<span class="st"> </span><span class="kw">aggregate</span>(<span class="dt">x =</span> bdd[, <span class="dv">3</span>], <span class="dt">by =</span> <span class="kw">list</span>(bdd[, <span class="dv">5</span>]), <span class="dt">FUN =</span> mean)
 tempHourMin &lt;-<span class="st"> </span><span class="kw">aggregate</span>(<span class="dt">x =</span> bdd[, <span class="dv">3</span>], <span class="dt">by =</span> <span class="kw">list</span>(bdd[, <span class="dv">5</span>]), <span class="dt">FUN =</span> min)
@@ -407,7 +407,7 @@ hours &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="dt"
 <span class="kw">axis</span>(<span class="dt">side =</span> <span class="dv">1</span>, <span class="dt">at =</span> hours, <span class="dt">labels =</span> tempHourMean[, <span class="dv">1</span>], <span class="dt">las =</span> <span class="dv">2</span>)
 <span class="kw">points</span>(<span class="dt">x =</span> hours, <span class="dt">y =</span> tempHourMin[, <span class="dv">2</span>], <span class="dt">type =</span> <span class="st">&#39;l&#39;</span>, <span class="dt">col =</span> <span class="dv">4</span>, <span class="dt">lwd =</span> <span class="dv">2</span>)
 <span class="kw">points</span>(<span class="dt">x =</span> hours, <span class="dt">y =</span> tempHourMax[, <span class="dv">2</span>], <span class="dt">type =</span> <span class="st">&#39;l&#39;</span>, <span class="dt">col =</span> <span class="dv">2</span>, <span class="dt">lwd =</span> <span class="dv">2</span>)</code></pre></div>
-<p><img src="myRBook_FR_files/figure-html/unnamed-chunk-231-1.png" width="672" /></p>
+<p><img src="myRBook_FR_files/figure-html/unnamed-chunk-239-1.png" width="672" /></p>
 <p>Nous pouvons également calculer les températures des heures de la journée pour chaque mois.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">meses &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Janvier&quot;</span>, <span class="st">&quot;Février&quot;</span>, <span class="st">&quot;Mars&quot;</span>, <span class="st">&quot;Avril&quot;</span>, <span class="st">&quot;Mai&quot;</span>, <span class="st">&quot;Juin&quot;</span>, 
     <span class="st">&quot;Juillet&quot;</span>, <span class="st">&quot;Août&quot;</span>, <span class="st">&quot;Septembre&quot;</span>, <span class="st">&quot;Octobre&quot;</span>, <span class="st">&quot;Novembre&quot;</span>, <span class="st">&quot;Décembre&quot;</span>)
@@ -436,7 +436,7 @@ tempDayEachMonth &lt;-<span class="st"> </span><span class="kw">lapply</span>(<s
     <span class="kw">points</span>(<span class="dt">x =</span> hours, <span class="dt">y =</span> tempDayEachMonth[[i]][, <span class="dv">6</span>], 
         <span class="dt">type =</span> <span class="st">&#39;l&#39;</span>, <span class="dt">col =</span> <span class="dv">2</span>, <span class="dt">lwd =</span> <span class="dv">2</span>)
 }</code></pre></div>
-<p><img src="myRBook_FR_files/figure-html/unnamed-chunk-232-1.png" width="672" /><img src="myRBook_FR_files/figure-html/unnamed-chunk-232-2.png" width="672" /><img src="myRBook_FR_files/figure-html/unnamed-chunk-232-3.png" width="672" /><img src="myRBook_FR_files/figure-html/unnamed-chunk-232-4.png" width="672" /><img src="myRBook_FR_files/figure-html/unnamed-chunk-232-5.png" width="672" /><img src="myRBook_FR_files/figure-html/unnamed-chunk-232-6.png" width="672" /><img src="myRBook_FR_files/figure-html/unnamed-chunk-232-7.png" width="672" /><img src="myRBook_FR_files/figure-html/unnamed-chunk-232-8.png" width="672" /><img src="myRBook_FR_files/figure-html/unnamed-chunk-232-9.png" width="672" /><img src="myRBook_FR_files/figure-html/unnamed-chunk-232-10.png" width="672" /><img src="myRBook_FR_files/figure-html/unnamed-chunk-232-11.png" width="672" /><img src="myRBook_FR_files/figure-html/unnamed-chunk-232-12.png" width="672" /></p>
+<p><img src="myRBook_FR_files/figure-html/unnamed-chunk-240-1.png" width="672" /><img src="myRBook_FR_files/figure-html/unnamed-chunk-240-2.png" width="672" /><img src="myRBook_FR_files/figure-html/unnamed-chunk-240-3.png" width="672" /><img src="myRBook_FR_files/figure-html/unnamed-chunk-240-4.png" width="672" /><img src="myRBook_FR_files/figure-html/unnamed-chunk-240-5.png" width="672" /><img src="myRBook_FR_files/figure-html/unnamed-chunk-240-6.png" width="672" /><img src="myRBook_FR_files/figure-html/unnamed-chunk-240-7.png" width="672" /><img src="myRBook_FR_files/figure-html/unnamed-chunk-240-8.png" width="672" /><img src="myRBook_FR_files/figure-html/unnamed-chunk-240-9.png" width="672" /><img src="myRBook_FR_files/figure-html/unnamed-chunk-240-10.png" width="672" /><img src="myRBook_FR_files/figure-html/unnamed-chunk-240-11.png" width="672" /><img src="myRBook_FR_files/figure-html/unnamed-chunk-240-12.png" width="672" /></p>
 <p>Ou les regrouper dans un même graphique, ainsi que la variation diurne des températures pour chaque mois.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(<span class="dt">x =</span> hours, <span class="dt">y =</span> tempDayEachMonth[[<span class="dv">1</span>]][, <span class="dv">2</span>], <span class="dt">type =</span> <span class="st">&#39;n&#39;</span>, <span class="dt">ylim =</span> <span class="kw">c</span>(<span class="op">-</span><span class="dv">10</span>, <span class="dv">35</span>),
     <span class="dt">xlab =</span> <span class="st">&quot;&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;Température moyenne (°C)&quot;</span>,
@@ -456,7 +456,7 @@ myColors &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st
 }
 <span class="kw">legend</span>(<span class="st">&quot;topright&quot;</span>, <span class="dt">ncol =</span> <span class="dv">4</span>, <span class="dt">legend =</span> meses, <span class="dt">col =</span> myColors, 
     <span class="dt">lty =</span> <span class="dv">1</span>, <span class="dt">lwd =</span> <span class="dv">2</span>, <span class="dt">cex =</span> <span class="fl">0.8</span>)</code></pre></div>
-<p><img src="myRBook_FR_files/figure-html/unnamed-chunk-233-1.png" width="672" /></p>
+<p><img src="myRBook_FR_files/figure-html/unnamed-chunk-241-1.png" width="672" /></p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(<span class="dt">x =</span> hours, <span class="dt">y =</span> tempDayEachMonth[[<span class="dv">1</span>]][, <span class="dv">2</span>], <span class="dt">type =</span> <span class="st">&#39;n&#39;</span>, <span class="dt">ylim =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">30</span>),
     <span class="dt">xlab =</span> <span class="st">&quot;&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;Variation de température diurne (°C)&quot;</span>,
     <span class="dt">xaxt =</span> <span class="st">&quot;n&quot;</span>, 
@@ -475,7 +475,7 @@ myColors &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st
 }
 <span class="kw">legend</span>(<span class="st">&quot;topright&quot;</span>, <span class="dt">ncol =</span> <span class="dv">4</span>, <span class="dt">legend =</span> meses, <span class="dt">col =</span> myColors, 
     <span class="dt">lty =</span> <span class="dv">1</span>, <span class="dt">lwd =</span> <span class="dv">2</span>, <span class="dt">cex =</span> <span class="fl">0.8</span>)</code></pre></div>
-<p><img src="myRBook_FR_files/figure-html/unnamed-chunk-233-2.png" width="672" /></p>
+<p><img src="myRBook_FR_files/figure-html/unnamed-chunk-241-2.png" width="672" /></p>
 
 </div>
             </section>

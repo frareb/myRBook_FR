@@ -257,20 +257,20 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </ul></li>
 <li class="part"><span><b>II Les graphiques</b></span></li>
 <li class="chapter" data-level="13" data-path="graph1.html"><a href="graph1.html"><i class="fa fa-check"></i><b>13</b> Graphiques simples</a><ul>
-<li class="chapter" data-level="13.1" data-path="graph1.html"><a href="graph1.html#plot"><i class="fa fa-check"></i><b>13.1</b> plot</a></li>
-<li class="chapter" data-level="13.2" data-path="graph1.html"><a href="graph1.html#hist"><i class="fa fa-check"></i><b>13.2</b> hist</a></li>
-<li class="chapter" data-level="13.3" data-path="graph1.html"><a href="graph1.html#barplot"><i class="fa fa-check"></i><b>13.3</b> barplot</a></li>
-<li class="chapter" data-level="13.4" data-path="graph1.html"><a href="graph1.html#boxplot"><i class="fa fa-check"></i><b>13.4</b> boxplot</a></li>
-<li class="chapter" data-level="13.5" data-path="graph1.html"><a href="graph1.html#image-et-contour"><i class="fa fa-check"></i><b>13.5</b> image et contour</a></li>
+<li class="chapter" data-level="13.1" data-path="graph1.html"><a href="graph1.html#plot"><i class="fa fa-check"></i><b>13.1</b> <code>plot</code></a></li>
+<li class="chapter" data-level="13.2" data-path="graph1.html"><a href="graph1.html#hist"><i class="fa fa-check"></i><b>13.2</b> <code>hist</code></a></li>
+<li class="chapter" data-level="13.3" data-path="graph1.html"><a href="graph1.html#barplot"><i class="fa fa-check"></i><b>13.3</b> <code>barplot</code></a></li>
+<li class="chapter" data-level="13.4" data-path="graph1.html"><a href="graph1.html#boxplot"><i class="fa fa-check"></i><b>13.4</b> <code>boxplot</code></a></li>
+<li class="chapter" data-level="13.5" data-path="graph1.html"><a href="graph1.html#image-et-contour"><i class="fa fa-check"></i><b>13.5</b> <code>image</code> et <code>contour</code></a></li>
 </ul></li>
 <li class="chapter" data-level="14" data-path="graph2.html"><a href="graph2.html"><i class="fa fa-check"></i><b>14</b> La gestion des couleurs</a><ul>
-<li class="chapter" data-level="14.1" data-path="graph2.html"><a href="graph2.html#colors"><i class="fa fa-check"></i><b>14.1</b> colors()</a></li>
+<li class="chapter" data-level="14.1" data-path="graph2.html"><a href="graph2.html#colors"><i class="fa fa-check"></i><b>14.1</b> <code>colors()</code></a></li>
 <li class="chapter" data-level="14.2" data-path="graph2.html"><a href="graph2.html#rgb"><i class="fa fa-check"></i><b>14.2</b> RGB</a></li>
-<li class="chapter" data-level="14.3" data-path="graph2.html"><a href="graph2.html#paletas"><i class="fa fa-check"></i><b>14.3</b> Paletas</a></li>
+<li class="chapter" data-level="14.3" data-path="graph2.html"><a href="graph2.html#palettes"><i class="fa fa-check"></i><b>14.3</b> Palettes</a></li>
 </ul></li>
 <li class="chapter" data-level="15" data-path="graph3.html"><a href="graph3.html"><i class="fa fa-check"></i><b>15</b> Graphiques composés</a><ul>
-<li class="chapter" data-level="15.1" data-path="graph3.html"><a href="graph3.html#mfrow"><i class="fa fa-check"></i><b>15.1</b> mfrow</a></li>
-<li class="chapter" data-level="15.2" data-path="graph3.html"><a href="graph3.html#layout"><i class="fa fa-check"></i><b>15.2</b> layout</a></li>
+<li class="chapter" data-level="15.1" data-path="graph3.html"><a href="graph3.html#mfrow"><i class="fa fa-check"></i><b>15.1</b> <code>mfrow</code></a></li>
+<li class="chapter" data-level="15.2" data-path="graph3.html"><a href="graph3.html#layout"><i class="fa fa-check"></i><b>15.2</b> <code>layout</code></a></li>
 </ul></li>
 <li class="chapter" data-level="16" data-path="graph4.html"><a href="graph4.html"><i class="fa fa-check"></i><b>16</b> Manipuler les graphiques</a><ul>
 <li class="chapter" data-level="16.1" data-path="graph4.html"><a href="graph4.html#inkscape"><i class="fa fa-check"></i><b>16.1</b> Inkscape</a></li>
@@ -308,19 +308,68 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <div id="graph1" class="section level1">
 <h1><span class="header-section-number"> 13</span> Graphiques simples</h1>
 <div id="plot" class="section level2">
-<h2><span class="header-section-number">13.1</span> plot</h2>
+<h2><span class="header-section-number">13.1</span> <code>plot</code></h2>
+<p>Le premier type de graphique que nous allons voir est le nuage de points. Dans un nuage de points, chaque point est représenté par sa valeur en x et en y. La fonction permettant de faire un nuage de points est <code>plot()</code>.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">myX &lt;-<span class="st"> </span><span class="kw">rnorm</span>(<span class="dv">50</span>, <span class="dt">mean =</span> <span class="dv">0</span>, <span class="dt">sd =</span> <span class="dv">1</span>)
+myY &lt;-<span class="st"> </span><span class="kw">rnorm</span>(<span class="dv">50</span>, <span class="dt">mean =</span> <span class="dv">10</span>, <span class="dt">sd =</span> <span class="dv">1</span>)
+<span class="kw">plot</span>(<span class="dt">x =</span> myX, <span class="dt">y =</span> myY)</code></pre></div>
+<p><img src="myRBook_FR_files/figure-html/unnamed-chunk-221-1.png" width="672" /></p>
+<p>Comme pour tous les types de graphiques, nous pouvons ajouter une légende sur l’axe des x et des y.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(<span class="dt">x =</span> myX, <span class="dt">y =</span> myY, 
+  <span class="dt">xlab =</span> <span class="st">&quot;X&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;Y&quot;</span>)</code></pre></div>
+<p><img src="myRBook_FR_files/figure-html/unnamed-chunk-222-1.png" width="672" /></p>
+<p>Nous pouvons aussi définir les limites des axes en X et en Y.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(<span class="dt">x =</span> myX, <span class="dt">y =</span> myY, 
+  <span class="dt">xlab =</span> <span class="st">&quot;X&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;Y&quot;</span>, 
+  <span class="dt">xlim =</span> <span class="kw">c</span>(<span class="op">-</span><span class="dv">3</span>, <span class="dv">3</span>), <span class="dt">ylim =</span> <span class="kw">c</span>(<span class="dv">7</span>, <span class="dv">13</span>))</code></pre></div>
+<p><img src="myRBook_FR_files/figure-html/unnamed-chunk-223-1.png" width="672" /></p>
+<p>Le type de point peut être défini avec l’argument <code>pch</code> qui peut prendre un caratère ou un chiffre de 1 à 25.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(<span class="dt">x =</span> <span class="kw">rep</span>(<span class="kw">seq</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>), <span class="dv">5</span>), <span class="dt">y =</span> <span class="kw">rep</span>(<span class="kw">seq</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>), <span class="dt">each =</span> <span class="dv">5</span>),
+  <span class="dt">pch =</span> <span class="dv">1</span><span class="op">:</span><span class="dv">25</span>)</code></pre></div>
+<p><img src="myRBook_FR_files/figure-html/unnamed-chunk-224-1.png" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(<span class="dt">x =</span> myX, <span class="dt">y =</span> myY, 
+  <span class="dt">pch =</span> <span class="kw">c</span>(<span class="st">&quot;a&quot;</span>, <span class="st">&quot;@&quot;</span>, <span class="st">&quot;#&quot;</span>, <span class="st">&quot;1&quot;</span>, <span class="st">&quot;=&quot;</span>, <span class="st">&quot;-&quot;</span>, <span class="st">&quot;_&quot;</span>, <span class="st">&quot;o&quot;</span>, <span class="st">&quot;O&quot;</span>, <span class="st">&quot;0&quot;</span>, letters[<span class="dv">1</span><span class="op">:</span><span class="dv">15</span>]))</code></pre></div>
+<p><img src="myRBook_FR_files/figure-html/unnamed-chunk-224-2.png" width="672" /></p>
+<p>La taille des points peut se définir avec l’argument <code>cex</code>.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(<span class="dt">x =</span> myX, <span class="dt">y =</span> myY, 
+  <span class="dt">cex =</span> <span class="kw">seq</span>(<span class="dt">from =</span> <span class="fl">0.5</span>, <span class="dt">to =</span> <span class="dv">3</span>, <span class="dt">length.out =</span> <span class="dv">50</span>))</code></pre></div>
+<p><img src="myRBook_FR_files/figure-html/unnamed-chunk-225-1.png" width="672" /></p>
+<p>La couleur des points peut se définir avec l’argument <code>col</code>. Nous reviendrons sur les couleurs dans un prochain chapitre.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">myX &lt;-<span class="st"> </span><span class="kw">rnorm</span>(<span class="dv">100</span>, <span class="dt">mean =</span> <span class="dv">0</span>, <span class="dt">sd =</span> <span class="dv">1</span>)
+myY &lt;-<span class="st"> </span><span class="kw">rnorm</span>(<span class="dv">100</span>, <span class="dt">mean =</span> <span class="dv">10</span>, <span class="dt">sd =</span> <span class="dv">1</span>)
+<span class="kw">plot</span>(<span class="dt">x =</span> myX, <span class="dt">y =</span> myY, 
+  <span class="dt">cex =</span> <span class="kw">seq</span>(<span class="dt">from =</span> <span class="fl">0.5</span>, <span class="dt">to =</span> <span class="dv">3</span>, <span class="dt">length.out =</span> <span class="dv">100</span>),
+  <span class="dt">pch =</span> <span class="dv">16</span>,
+  <span class="dt">col =</span> <span class="kw">sample</span>(<span class="kw">colors</span>(), <span class="dv">100</span>))</code></pre></div>
+<p><img src="myRBook_FR_files/figure-html/unnamed-chunk-226-1.png" width="672" /></p>
+<p>R offre la possibilité de relier les points des nuages de points de différentes façons. Les différentes options sont disponibles dans l’aide de la fonction <code>plot()</code> et <code>plot.default()</code>.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">myX &lt;-<span class="st"> </span><span class="dv">1</span><span class="op">:</span><span class="dv">20</span>
+myY &lt;-<span class="st"> </span><span class="kw">rnorm</span>(<span class="dv">20</span>, <span class="dt">mean =</span> <span class="dv">10</span>, <span class="dt">sd =</span> <span class="dv">1</span>)
+<span class="kw">plot</span>(<span class="dt">x =</span> myX, <span class="dt">y =</span> myY, 
+  <span class="dt">type =</span> <span class="st">&#39;b&#39;</span>) <span class="co"># &#39;p&#39;, &#39;l&#39;, &#39;b&#39;, &#39;c&#39;, &#39;o&#39;, &#39;h&#39;, &#39;s&#39;, &#39;S&#39;, &#39;n&#39;</span></code></pre></div>
+<p><img src="myRBook_FR_files/figure-html/unnamed-chunk-227-1.png" width="672" /></p>
+<p>Une dernière option très utile est l’argument <code>panel.first</code> qui permet de réaliser une opération graphique sur une couche située en dessous de notre graphique. Voici un exemple illustratif avec une grille réalisée avec et sans <code>panel.first</code>. La grille se fait grâce à la fonction <code>grid()</code>. Pour mettre les graphiques côte à côte nous allons utiliser <code>mfrow</code> sur lequel nous reviendrons plus tard.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">par</span>(<span class="dt">mfrow =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>))
+<span class="kw">plot</span>(<span class="dt">x =</span> myX, <span class="dt">y =</span> myY, 
+  <span class="dt">type =</span> <span class="st">&#39;b&#39;</span>, <span class="dt">pch =</span> <span class="dv">16</span>, <span class="dt">cex =</span> <span class="dv">3</span>) 
+<span class="kw">grid</span>(<span class="dt">lwd =</span> <span class="dv">3</span>, <span class="dt">lty =</span> <span class="dv">1</span>)
+<span class="kw">plot</span>(<span class="dt">x =</span> myX, <span class="dt">y =</span> myY, 
+  <span class="dt">type =</span> <span class="st">&#39;b&#39;</span>, <span class="dt">pch =</span> <span class="dv">16</span>, <span class="dt">cex =</span> <span class="dv">3</span>, 
+  <span class="dt">panel.first =</span> <span class="kw">grid</span>(<span class="dt">lwd =</span> <span class="dv">3</span>, <span class="dt">lty =</span> <span class="dv">1</span>)) </code></pre></div>
+<p><img src="myRBook_FR_files/figure-html/unnamed-chunk-228-1.png" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">par</span>(<span class="dt">mfrow =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">1</span>))</code></pre></div>
 </div>
 <div id="hist" class="section level2">
-<h2><span class="header-section-number">13.2</span> hist</h2>
+<h2><span class="header-section-number">13.2</span> <code>hist</code></h2>
 </div>
 <div id="barplot" class="section level2">
-<h2><span class="header-section-number">13.3</span> barplot</h2>
+<h2><span class="header-section-number">13.3</span> <code>barplot</code></h2>
 </div>
 <div id="boxplot" class="section level2">
-<h2><span class="header-section-number">13.4</span> boxplot</h2>
+<h2><span class="header-section-number">13.4</span> <code>boxplot</code></h2>
 </div>
 <div id="image-et-contour" class="section level2">
-<h2><span class="header-section-number">13.5</span> image et contour</h2>
+<h2><span class="header-section-number">13.5</span> <code>image</code> et <code>contour</code></h2>
 </div>
 </div>
             </section>
