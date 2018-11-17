@@ -25,7 +25,7 @@
 <meta name="author" content="François Rebaudo">
 
 
-<meta name="date" content="2018-11-09">
+<meta name="date" content="2018-11-17">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -348,7 +348,7 @@ myY &lt;-<span class="st"> </span><span class="kw">rnorm</span>(<span class="dv"
 <span class="kw">plot</span>(<span class="dt">x =</span> myX, <span class="dt">y =</span> myY, 
   <span class="dt">type =</span> <span class="st">&#39;b&#39;</span>) <span class="co"># &#39;p&#39;, &#39;l&#39;, &#39;b&#39;, &#39;c&#39;, &#39;o&#39;, &#39;h&#39;, &#39;s&#39;, &#39;S&#39;, &#39;n&#39;</span></code></pre></div>
 <p><img src="myRBook_FR_files/figure-html/unnamed-chunk-227-1.png" width="672" /></p>
-<p>Une dernière option très utile est l’argument <code>panel.first</code> qui permet de réaliser une opération graphique sur une couche située en dessous de notre graphique. Voici un exemple illustratif avec une grille réalisée avec et sans <code>panel.first</code>. La grille se fait grâce à la fonction <code>grid()</code>. Pour mettre les graphiques côte à côte nous allons utiliser <code>mfrow</code> sur lequel nous reviendrons plus tard.</p>
+<p>Une dernière option très utile est l’argument <code>panel.first</code> qui permet de réaliser une opération graphique sur une couche située en dessous de notre graphique. Voici un exemple illustratif avec une grille réalisée avec et sans <code>panel.first</code>. La grille se fait grâce à la fonction <code>grid()</code>. Pour mettre les graphiques côte à côte nous allons utiliser <code>mfrow</code>.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">par</span>(<span class="dt">mfrow =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>))
 <span class="kw">plot</span>(<span class="dt">x =</span> myX, <span class="dt">y =</span> myY, 
   <span class="dt">type =</span> <span class="st">&#39;b&#39;</span>, <span class="dt">pch =</span> <span class="dv">16</span>, <span class="dt">cex =</span> <span class="dv">3</span>) 
@@ -358,6 +358,31 @@ myY &lt;-<span class="st"> </span><span class="kw">rnorm</span>(<span class="dv"
   <span class="dt">panel.first =</span> <span class="kw">grid</span>(<span class="dt">lwd =</span> <span class="dv">3</span>, <span class="dt">lty =</span> <span class="dv">1</span>)) </code></pre></div>
 <p><img src="myRBook_FR_files/figure-html/unnamed-chunk-228-1.png" width="672" /></p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">par</span>(<span class="dt">mfrow =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">1</span>))</code></pre></div>
+<p>La fonction <code>par()</code> permet d’accéder aux paramètres graphiques. Parmi ces paramètres il y a <code>mfrow</code> qui permet de diviser l’espace graphique comme une matrice. <code>mfrow</code> prend comme arguments un vecteur numérique de taille 2 : le premier élément correspond au nombre de lignes et le deuxième élément au nombre de colonnes. Le paramètre <code>mar</code> permet de contrôler les marges en bas, à gauche, en haut et à droite, respectivement, au moyen d’un vecteur numérique de taille 4. Après avoir modifié les paramètres graphiques par défaut il est recommandé de les réinitialiser pour que cela n’affecte pas les graphiques à venir. Les valeurs par défaut de <code>mfrow</code> sont <code>c(1, 1)</code> et <code>mar = c(4, 4, 4, 4)</code>. Nous pouvons remettre ces valeurs par défaut comme ci-dessus en redéfinissant chacun des paramètres. Nous pouvons également enregistrer au préalable les valeurs courantes (dans un objet <code>op</code>), puis les modifier pour les besoins de nos graphiques, puis ensuite rappeler les valeurs contenues dans l’objet <code>op</code>. Ici nous utilisons <code>lapply</code> pour réaliser rapidement quatre graphiques.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">op &lt;-<span class="st"> </span><span class="kw">par</span>(<span class="dt">no.readonly =</span> <span class="ot">TRUE</span>)
+<span class="kw">par</span>(<span class="dt">mfrow =</span> <span class="kw">c</span>(<span class="dv">2</span>, <span class="dv">2</span>), <span class="dt">mar =</span> <span class="kw">c</span>(<span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">1</span>))
+graph4 &lt;-<span class="st"> </span><span class="kw">lapply</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">4</span>, <span class="cf">function</span>(i){
+  <span class="kw">plot</span>(<span class="dt">x =</span> <span class="kw">rnorm</span>(<span class="dv">100</span>), 
+    <span class="dt">y =</span> <span class="kw">rnorm</span>(<span class="dv">100</span>), 
+    <span class="dt">col =</span> i, <span class="dt">pch =</span> <span class="dv">16</span>)
+})</code></pre></div>
+<p><img src="myRBook_FR_files/figure-html/unnamed-chunk-229-1.png" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">par</span>(op)</code></pre></div>
+<p>Il est souvent utile de faire figurer des lignes verticales ou horizontales pour représenter des valeurs particulières. Ces lignes peuvent être ajoutées avec la fonction <code>abline()</code>.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">myX &lt;-<span class="st"> </span><span class="kw">rnorm</span>(<span class="dv">100</span>)
+myY &lt;-<span class="st"> </span><span class="kw">rnorm</span>(<span class="dv">100</span>)
+<span class="kw">plot</span>(<span class="dt">x =</span> myX, <span class="dt">y =</span> myY, 
+  <span class="dt">xlim =</span> <span class="kw">c</span>(<span class="op">-</span><span class="dv">4</span>, <span class="dv">4</span>), <span class="dt">ylim =</span> <span class="kw">c</span>(<span class="op">-</span><span class="dv">4</span>, <span class="dv">4</span>),   
+  <span class="dt">pch =</span> <span class="dv">16</span>, <span class="dt">cex =</span> <span class="fl">1.5</span>, 
+  <span class="dt">col =</span> <span class="kw">sample</span>(<span class="kw">colors</span>(), <span class="dt">size =</span> <span class="dv">100</span>),
+  <span class="dt">panel.first =</span> {
+    <span class="kw">grid</span>()
+    <span class="kw">abline</span>(<span class="dt">v =</span> <span class="kw">c</span>(<span class="kw">min</span>(myX), <span class="kw">max</span>(myX)), <span class="dt">lty =</span> <span class="dv">2</span>)
+    <span class="kw">abline</span>(<span class="dt">h =</span> <span class="kw">c</span>(<span class="kw">min</span>(myY), <span class="kw">max</span>(myY)), <span class="dt">lty =</span> <span class="dv">2</span>)
+    <span class="kw">abline</span>(<span class="dt">v =</span> <span class="kw">mean</span>(myX), <span class="dt">lty =</span> <span class="dv">1</span>)
+    <span class="kw">abline</span>(<span class="dt">h =</span> <span class="kw">mean</span>(myY), <span class="dt">lty =</span> <span class="dv">1</span>)
+})</code></pre></div>
+<p><img src="myRBook_FR_files/figure-html/unnamed-chunk-230-1.png" width="672" /></p>
 </div>
 <div id="hist" class="section level2">
 <h2><span class="header-section-number">13.2</span> <code>hist</code></h2>
