@@ -109,7 +109,54 @@ plot(x = myX, y = myY,
 
 ## `hist`
 
+Pour faire un histogramme nous utilisons la fonction `hist()`. C'est une fonction graphique utile pour visualiser rapidement la distribution d'un jeu de données. 
+
+```{r}
+myX <- rnorm(1000)
+hist(myX, col = rainbow(15))
+```
+
 ## `barplot`
+
+Le graphique en barres se fait au moyen de la fonction `barplot()`.
+
+```{r}
+myX <- c(4, 5, 8)
+barplot(myX, names.arg = c("A", "B", "C"))
+```
+
+Quand l'objet envoyé à cette fonction est un `vector()` alors la fonction `barplot()` renvoie un graphique en barres simples. Quand c'est une `matrix()` alors les barres sont multiples.
+
+```{r}
+op <- par(no.readonly = TRUE)
+par(mfrow = c(1, 2), mar = c(2, 2, 1, 1))
+myX <- matrix(c(4, 5, 8, 4, 6, 2), nrow = 2)
+barplot(myX, names.arg = c("A", "B", "C"))
+myX <- matrix(c(4, 5, 8, 4, 6, 2, 3, 4, 5), nrow = 3)
+barplot(myX, names.arg = c("A", "B", "C"))
+par(op)
+```
+
+xxx
+
+```{r}
+op <- par(no.readonly = TRUE)
+par(mar = c(2, 2, 1, 1))
+myX <- rnorm(100)
+myY <- rnorm(100)
+myYCut <- table(cut(myY, breaks = -4:4))
+myXCut <- table(cut(myX, breaks = -4:4))
+layout(matrix(c(1, 1, 0, 
+                2, 2, 3, 
+                2, 2, 3), ncol = 3, byrow = TRUE))
+
+barplot(myXCut, las = 3)
+plot(x = myX, y = myY, 
+     xlim = c(-4, 4), ylim = c(-4, 4), 
+     panel.first = {grid()})
+barplot(myYCut, las = 3, horiz = TRUE)
+par(op)
+```
 
 ## `boxplot`
 
