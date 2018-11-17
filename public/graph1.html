@@ -386,9 +386,44 @@ myY &lt;-<span class="st"> </span><span class="kw">rnorm</span>(<span class="dv"
 </div>
 <div id="hist" class="section level2">
 <h2><span class="header-section-number">13.2</span> <code>hist</code></h2>
+<p>Pour faire un histogramme nous utilisons la fonction <code>hist()</code>. C’est une fonction graphique utile pour visualiser rapidement la distribution d’un jeu de données.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">myX &lt;-<span class="st"> </span><span class="kw">rnorm</span>(<span class="dv">1000</span>)
+<span class="kw">hist</span>(myX, <span class="dt">col =</span> <span class="kw">rainbow</span>(<span class="dv">15</span>))</code></pre></div>
+<p><img src="myRBook_FR_files/figure-html/unnamed-chunk-231-1.png" width="672" /></p>
 </div>
 <div id="barplot" class="section level2">
 <h2><span class="header-section-number">13.3</span> <code>barplot</code></h2>
+<p>Le graphique en barres se fait au moyen de la fonction <code>barplot()</code>.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">myX &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">8</span>)
+<span class="kw">barplot</span>(myX, <span class="dt">names.arg =</span> <span class="kw">c</span>(<span class="st">&quot;A&quot;</span>, <span class="st">&quot;B&quot;</span>, <span class="st">&quot;C&quot;</span>))</code></pre></div>
+<p><img src="myRBook_FR_files/figure-html/unnamed-chunk-232-1.png" width="672" /></p>
+<p>Quand l’objet envoyé à cette fonction est un <code>vector()</code> alors la fonction <code>barplot()</code> renvoie un graphique en barres simples. Quand c’est une <code>matrix()</code> alors les barres sont multiples.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">op &lt;-<span class="st"> </span><span class="kw">par</span>(<span class="dt">no.readonly =</span> <span class="ot">TRUE</span>)
+<span class="kw">par</span>(<span class="dt">mfrow =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>), <span class="dt">mar =</span> <span class="kw">c</span>(<span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">1</span>))
+myX &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">8</span>, <span class="dv">4</span>, <span class="dv">6</span>, <span class="dv">2</span>), <span class="dt">nrow =</span> <span class="dv">2</span>)
+<span class="kw">barplot</span>(myX, <span class="dt">names.arg =</span> <span class="kw">c</span>(<span class="st">&quot;A&quot;</span>, <span class="st">&quot;B&quot;</span>, <span class="st">&quot;C&quot;</span>))
+myX &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">8</span>, <span class="dv">4</span>, <span class="dv">6</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>), <span class="dt">nrow =</span> <span class="dv">3</span>)
+<span class="kw">barplot</span>(myX, <span class="dt">names.arg =</span> <span class="kw">c</span>(<span class="st">&quot;A&quot;</span>, <span class="st">&quot;B&quot;</span>, <span class="st">&quot;C&quot;</span>))</code></pre></div>
+<p><img src="myRBook_FR_files/figure-html/unnamed-chunk-233-1.png" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">par</span>(op)</code></pre></div>
+<p>xxx</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">op &lt;-<span class="st"> </span><span class="kw">par</span>(<span class="dt">no.readonly =</span> <span class="ot">TRUE</span>)
+<span class="kw">par</span>(<span class="dt">mar =</span> <span class="kw">c</span>(<span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">1</span>))
+myX &lt;-<span class="st"> </span><span class="kw">rnorm</span>(<span class="dv">100</span>)
+myY &lt;-<span class="st"> </span><span class="kw">rnorm</span>(<span class="dv">100</span>)
+myYCut &lt;-<span class="st"> </span><span class="kw">table</span>(<span class="kw">cut</span>(myY, <span class="dt">breaks =</span> <span class="op">-</span><span class="dv">4</span><span class="op">:</span><span class="dv">4</span>))
+myXCut &lt;-<span class="st"> </span><span class="kw">table</span>(<span class="kw">cut</span>(myX, <span class="dt">breaks =</span> <span class="op">-</span><span class="dv">4</span><span class="op">:</span><span class="dv">4</span>))
+<span class="kw">layout</span>(<span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>, 
+                <span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">3</span>, 
+                <span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">3</span>), <span class="dt">ncol =</span> <span class="dv">3</span>, <span class="dt">byrow =</span> <span class="ot">TRUE</span>))
+
+<span class="kw">barplot</span>(myXCut, <span class="dt">las =</span> <span class="dv">3</span>)
+<span class="kw">plot</span>(<span class="dt">x =</span> myX, <span class="dt">y =</span> myY, 
+     <span class="dt">xlim =</span> <span class="kw">c</span>(<span class="op">-</span><span class="dv">4</span>, <span class="dv">4</span>), <span class="dt">ylim =</span> <span class="kw">c</span>(<span class="op">-</span><span class="dv">4</span>, <span class="dv">4</span>), 
+     <span class="dt">panel.first =</span> {<span class="kw">grid</span>()})
+<span class="kw">barplot</span>(myYCut, <span class="dt">las =</span> <span class="dv">3</span>, <span class="dt">horiz =</span> <span class="ot">TRUE</span>)</code></pre></div>
+<p><img src="myRBook_FR_files/figure-html/unnamed-chunk-234-1.png" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">par</span>(op)</code></pre></div>
 </div>
 <div id="boxplot" class="section level2">
 <h2><span class="header-section-number">13.4</span> <code>boxplot</code></h2>
