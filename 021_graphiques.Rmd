@@ -63,7 +63,7 @@ plot(x = myX, y = myY,
   type = 'b') # 'p', 'l', 'b', 'c', 'o', 'h', 's', 'S', 'n'
 ```
 
-Une dernière option très utile est l'argument `panel.first` qui permet de réaliser une opération graphique sur une couche située en dessous de notre graphique. Voici un exemple illustratif avec une grille réalisée avec et sans `panel.first`. La grille se fait grâce à la fonction `grid()`. Pour mettre les graphiques côte à côte nous allons utiliser `mfrow` sur lequel nous reviendrons plus tard.
+Une dernière option très utile est l'argument `panel.first` qui permet de réaliser une opération graphique sur une couche située en dessous de notre graphique. Voici un exemple illustratif avec une grille réalisée avec et sans `panel.first`. La grille se fait grâce à la fonction `grid()`. Pour mettre les graphiques côte à côte nous allons utiliser `mfrow`.
 
 ```{r}
 par(mfrow = c(1, 2))
@@ -74,6 +74,37 @@ plot(x = myX, y = myY,
   type = 'b', pch = 16, cex = 3, 
   panel.first = grid(lwd = 3, lty = 1)) 
 par(mfrow = c(1, 1))
+```
+
+La fonction `par()` permet d'accéder aux paramètres graphiques. Parmi ces paramètres il y a `mfrow` qui permet de diviser l'espace graphique comme une matrice. `mfrow` prend comme arguments un vecteur numérique de taille 2 : le premier élément correspond au nombre de lignes et le deuxième élément au nombre de colonnes. Le paramètre `mar` permet de contrôler les marges en bas, à gauche, en haut et à droite, respectivement, au moyen d'un vecteur numérique de taille 4. Après avoir modifié les paramètres graphiques par défaut il est recommandé de les réinitialiser pour que cela n'affecte pas les graphiques à venir. Les valeurs par défaut de `mfrow` sont `c(1, 1)` et `mar = c(4, 4, 4, 4)`. Nous pouvons remettre ces valeurs par défaut comme ci-dessus en redéfinissant chacun des paramètres. Nous pouvons également enregistrer au préalable les valeurs courantes (dans un objet `op`), puis les modifier pour les besoins de nos graphiques, puis ensuite rappeler les valeurs contenues dans l'objet `op`. Ici nous utilisons `lapply` pour réaliser rapidement quatre graphiques.
+
+```{r}
+op <- par(no.readonly = TRUE)
+par(mfrow = c(2, 2), mar = c(2, 2, 1, 1))
+graph4 <- lapply(1:4, function(i){
+  plot(x = rnorm(100), 
+    y = rnorm(100), 
+    col = i, pch = 16)
+})
+par(op)
+```
+
+Il est souvent utile de faire figurer des lignes verticales ou horizontales pour représenter des valeurs particulières. Ces lignes peuvent être ajoutées avec la fonction `abline()`. 
+
+```{r}
+myX <- rnorm(100)
+myY <- rnorm(100)
+plot(x = myX, y = myY, 
+  xlim = c(-4, 4), ylim = c(-4, 4),   
+  pch = 16, cex = 1.5, 
+  col = sample(colors(), size = 100),
+  panel.first = {
+    grid()
+    abline(v = c(min(myX), max(myX)), lty = 2)
+    abline(h = c(min(myY), max(myY)), lty = 2)
+    abline(v = mean(myX), lty = 1)
+    abline(h = mean(myY), lty = 1)
+})
 ```
 
 ## `hist`
