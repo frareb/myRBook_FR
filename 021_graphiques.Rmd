@@ -120,11 +120,11 @@ myX <- list(
   sample(1:100, size = 1000, replace = TRUE),
   rbeta(1000, shape1 = 1, shape2 = 2)
 )
-myTitle <- list("Normal", "Gamma", "Uniform", "Beta")
-lapply(1:4, function(i){
+myTitle <- c("Normal", "Gamma", "Uniform", "Beta")
+tr <- lapply(1:4, function(i){
   hist(myX[[i]], 
     col = heat.colors(15), 
-    main = myTitle[[i]]
+    main = myTitle[i]
   )
 })
 par(op)
