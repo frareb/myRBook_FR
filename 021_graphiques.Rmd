@@ -112,8 +112,22 @@ plot(x = myX, y = myY,
 Pour faire un histogramme nous utilisons la fonction `hist()`. C'est une fonction graphique utile pour visualiser rapidement la distribution d'un jeu de données. 
 
 ```{r}
-myX <- rnorm(1000)
-hist(myX, col = rainbow(15))
+op <- par(no.readonly = TRUE)
+par(mfrow = c(2, 2), mar = c(2, 2, 1, 1))
+myX <- list(
+  rnorm(1000),
+  rgamma(1000, shape = 1),
+  sample(1:100, size = 1000, replace = TRUE),
+  rbeta(1000, shape1 = 1, shape2 = 2)
+)
+myTitle <- list("Normal", "Gamma", "Uniform", "Beta")
+lapply(1:4, function(i){
+  hist(myX[[i]], 
+    col = heat.colors(15), 
+    main = myTitle[[i]]
+  )
+})
+par(op)
 ```
 
 ## `barplot`
