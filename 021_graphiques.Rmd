@@ -151,39 +151,78 @@ barplot(myX, names.arg = c("A", "B", "C"))
 par(op)
 ```
 
-xxx
+La fonction `barplot()` peut aussi être utilisée pour représenter l'équivalent d'un histogramme. Cela peut être utile pour représenter la distribution d'une variable en fonction de l'axe des abscisses et l'axe des ordonnées. Dans l'exemple qui suit nous avons `n` points tirés au hasard dans une loi normale de paramètres `mean = 0` et `sd = 1` (`myX <- rnorm(n)`). Ces points sont soit représentés en bleu, soit représentés en rouge (la couleur bleue est codée avec la valeur 4 et la couleur rouge avec la valeur 2, nous en reparlerons dans un prochain chapitre). Le tirage au hasard de la couleur se fait avec la fonction `sample()` (`myCol <- sample(c(4, 2), size = n, replace = TRUE)`). Ici nous voulons représenter un nuage de points avec les points en rouge ou en bleu, puis pour l'axe des abscisses et l'axe des ordonnées, des histogrammes pour voir la répartition des points et un gradient de couleur du bleu au rouge en fonction de la proportion des points de couleur dans chaque catégorie. Le gradient de couleur avec 100 valeurs entre bleu et rouge se réalise avec la fonction `colorRampPalette()` (`myColors <- colorRampPalette(c("blue", "red"))(100)`).
+
+Pour faire l'histogramme nous allons découper les données avec la fonction `cut()` en spécifiant que nous souhaitons des séparations faites entre -4 et 4 par pas de 1 (`myYCut <- cut(myY, breaks = -4:4)`). Pour avoir le compte du nombre de points dans chacune des catégories et pour chaque couleur il nous suffit d'utiliser la fonction `table()` (`myYCutCol <- table(myCol, myYCut)`). Dans cette table la première ligne correspond à la première couleur rencontrée dans le jeu de données et la deuxième ligne à l'autre couleur. C'est pourquoi il nous faut modifier le tirage aléatoire des couleurs pour que la première ligne corresponde toujours au bleu et la deuxième ligne au rouge : `myCol <- c(2, sample(c(4, 2), size = (n - 1), replace = TRUE))`.
+
+Ensuite nous pouvons calculer la proportion de rouge en divisant la première ligne par la somme des deux lignes que nous allons représenter en pourcentage en multiplinat par 100 : `myXCutCol[1,] / (myXCutCol[1,] + myXCutCol[2,]) * 100`. pour que ce chiffre corresponde à une couleur nous n'allons conserver que sa partie entière avec la fonction `round()`. Si le pourcentage est de zéro ou si le résultat n'est pas possible du fait d'une division par zéro alors il nous faut le remplacer par 1 afin que cela corresponde à une couleur dans notre gradient qui va de 1 à 100 (`xCol[is.na(xCol) | xCol == 0] <- 1`).
+
+Il ne nous reste plus qu'à organiser l'espace graphique avec la fonction `layout()` qui prend comme argument une matrice dont les valeurs et leur position vont correspondrent à l'agencement des différents graphiques que nous souhaitons réaliser. Le graphique 1 correspond au barplot du haut, le graphique 2 au nuage de points et le graphique 3 au barplot de droite.  
 
 ```{r}
 n <- 50
-op <- par(no.readonly = TRUE)
-par(mar = c(2, 2, 1, 1))
 myX <- rnorm(n)
 myY <- rnorm(n)
-myCol <- sample(c(4, 2), size = n, replace = TRUE)
+myCol <- c(2, sample(c(4, 2), size = (n - 1), replace = TRUE))
 myColors <- colorRampPalette(c("blue", "red"))(100)
 myYCut <- cut(myY, breaks = -4:4)
 myXCut <- cut(myX, breaks = -4:4)
 myYCutCol <- table(myCol, myYCut)
 myXCutCol <- table(myCol, myXCut)
-layout(matrix(c(1, 1, 0, 
-                2, 2, 3, 
-                2, 2, 3), ncol = 3, byrow = TRUE))
 xCol <- round(
   myXCutCol[1,] / (myXCutCol[1,] + myXCutCol[2,]) * 100
 )
 xCol[is.na(xCol) | xCol == 0] <- 1
-
 yCol <- round(
   myYCutCol[1,] / (myYCutCol[1,] + myYCutCol[2,]) * 100
 )
 yCol[is.na(yCol) | yCol == 0] <- 1
-
+op <- par(no.readonly = TRUE)
+par(mar = c(2, 3, 1, 1))
+layout(matrix(c(1, 1, 0, 
+                2, 2, 3, 
+                2, 2, 3), ncol = 3, byrow = TRUE))
 barplot(table(myXCut), las = 1, col = myColors[xCol])
 plot(x = myX, y = myY, col = myCol, pch = 16, 
   xlim = c(-4, 4), ylim = c(-4, 4), cex = 1.5, 
   panel.first = grid())
 barplot(table(myYCut), las = 1, horiz = TRUE, col = myColors[yCol])
 par(op)
+```
+
+Nous pouvons ensuite intégrer ce script dans une fonction pour par exemple étudier l'effet de la variable `n`.
+
+```{r}
+graphBarplotCol <- function(n){
+  myX <- rnorm(n)
+  myY <- rnorm(n)
+  myCol <- c(2, sample(c(4, 2), size = (n - 1), replace = TRUE))
+  myColors <- colorRampPalette(c("blue", "red"))(100)
+  myYCut <- cut(myY, breaks = -4:4)
+  myXCut <- cut(myX, breaks = -4:4)
+  myYCutCol <- table(myCol, myYCut)
+  myXCutCol <- table(myCol, myXCut)
+  xCol <- round(
+    myXCutCol[1,] / (myXCutCol[1,] + myXCutCol[2,]) * 100
+  )
+  xCol[is.na(xCol) | xCol == 0] <- 1
+  yCol <- round(
+    myYCutCol[1,] / (myYCutCol[1,] + myYCutCol[2,]) * 100
+  )
+  yCol[is.na(yCol) | yCol == 0] <- 1
+  op <- par(no.readonly = TRUE)
+  par(mar = c(2, 3, 1, 1))
+  layout(matrix(c(1, 1, 0, 
+                  2, 2, 3, 
+                  2, 2, 3), ncol = 3, byrow = TRUE))
+  barplot(table(myXCut), las = 1, col = myColors[xCol])
+  plot(x = myX, y = myY, col = myCol, pch = 16, 
+    xlim = c(-4, 4), ylim = c(-4, 4), cex = 1.5, 
+    panel.first = grid())
+  barplot(table(myYCut), las = 1, horiz = TRUE, col = myColors[yCol])
+  par(op)
+}
+graphBarplotCol(n = 1000)
 ```
 
 <!-- ## `boxplot` -->
