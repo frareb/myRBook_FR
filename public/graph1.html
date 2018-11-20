@@ -25,7 +25,7 @@
 <meta name="author" content="François Rebaudo">
 
 
-<meta name="date" content="2018-11-19">
+<meta name="date" content="2018-11-20">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -399,24 +399,71 @@ myX &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw
 <span class="kw">barplot</span>(myX, <span class="dt">names.arg =</span> <span class="kw">c</span>(<span class="st">&quot;A&quot;</span>, <span class="st">&quot;B&quot;</span>, <span class="st">&quot;C&quot;</span>))</code></pre></div>
 <p><img src="myRBook_FR_files/figure-html/unnamed-chunk-233-1.png" width="672" /></p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">par</span>(op)</code></pre></div>
-<p>xxx</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">op &lt;-<span class="st"> </span><span class="kw">par</span>(<span class="dt">no.readonly =</span> <span class="ot">TRUE</span>)
-<span class="kw">par</span>(<span class="dt">mar =</span> <span class="kw">c</span>(<span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">1</span>))
-myX &lt;-<span class="st"> </span><span class="kw">rnorm</span>(<span class="dv">100</span>)
-myY &lt;-<span class="st"> </span><span class="kw">rnorm</span>(<span class="dv">100</span>)
-myYCut &lt;-<span class="st"> </span><span class="kw">table</span>(<span class="kw">cut</span>(myY, <span class="dt">breaks =</span> <span class="op">-</span><span class="dv">4</span><span class="op">:</span><span class="dv">4</span>))
-myXCut &lt;-<span class="st"> </span><span class="kw">table</span>(<span class="kw">cut</span>(myX, <span class="dt">breaks =</span> <span class="op">-</span><span class="dv">4</span><span class="op">:</span><span class="dv">4</span>))
+<p>La fonction <code>barplot()</code> peut aussi être utilisée pour représenter l’équivalent d’un histogramme. Cela peut être utile pour représenter la distribution d’une variable en fonction de l’axe des abscisses et l’axe des ordonnées. Dans l’exemple qui suit nous avons <code>n</code> points tirés au hasard dans une loi normale de paramètres <code>mean = 0</code> et <code>sd = 1</code> (<code>myX &lt;- rnorm(n)</code>). Ces points sont soit représentés en bleu, soit représentés en rouge (la couleur bleue est codée avec la valeur 4 et la couleur rouge avec la valeur 2, nous en reparlerons dans un prochain chapitre). Le tirage au hasard de la couleur se fait avec la fonction <code>sample()</code> (<code>myCol &lt;- sample(c(4, 2), size = n, replace = TRUE)</code>). Ici nous voulons représenter un nuage de points avec les points en rouge ou en bleu, puis pour l’axe des abscisses et l’axe des ordonnées, des histogrammes pour voir la répartition des points et un gradient de couleur du bleu au rouge en fonction de la proportion des points de couleur dans chaque catégorie. Le gradient de couleur avec 100 valeurs entre bleu et rouge se réalise avec la fonction <code>colorRampPalette()</code> (<code>myColors &lt;- colorRampPalette(c(&quot;blue&quot;, &quot;red&quot;))(100)</code>).</p>
+<p>Pour faire l’histogramme nous allons découper les données avec la fonction <code>cut()</code> en spécifiant que nous souhaitons des séparations faites entre -4 et 4 par pas de 1 (<code>myYCut &lt;- cut(myY, breaks = -4:4)</code>). Pour avoir le compte du nombre de points dans chacune des catégories et pour chaque couleur il nous suffit d’utiliser la fonction <code>table()</code> (<code>myYCutCol &lt;- table(myCol, myYCut)</code>). Dans cette table la première ligne correspond à la première couleur rencontrée dans le jeu de données et la deuxième ligne à l’autre couleur. C’est pourquoi il nous faut modifier le tirage aléatoire des couleurs pour que la première ligne corresponde toujours au bleu et la deuxième ligne au rouge : <code>myCol &lt;- c(2, sample(c(4, 2), size = (n - 1), replace = TRUE))</code>.</p>
+<p>Ensuite nous pouvons calculer la proportion de rouge en divisant la première ligne par la somme des deux lignes que nous allons représenter en pourcentage en multiplinat par 100 : <code>myXCutCol[1,] / (myXCutCol[1,] + myXCutCol[2,]) * 100</code>. pour que ce chiffre corresponde à une couleur nous n’allons conserver que sa partie entière avec la fonction <code>round()</code>. Si le pourcentage est de zéro ou si le résultat n’est pas possible du fait d’une division par zéro alors il nous faut le remplacer par 1 afin que cela corresponde à une couleur dans notre gradient qui va de 1 à 100 (<code>xCol[is.na(xCol) | xCol == 0] &lt;- 1</code>).</p>
+<p>Il ne nous reste plus qu’à organiser l’espace graphique avec la fonction <code>layout()</code> qui prend comme argument une matrice dont les valeurs et leur position vont correspondrent à l’agencement des différents graphiques que nous souhaitons réaliser. Le graphique 1 correspond au barplot du haut, le graphique 2 au nuage de points et le graphique 3 au barplot de droite.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">n &lt;-<span class="st"> </span><span class="dv">50</span>
+myX &lt;-<span class="st"> </span><span class="kw">rnorm</span>(n)
+myY &lt;-<span class="st"> </span><span class="kw">rnorm</span>(n)
+myCol &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">2</span>, <span class="kw">sample</span>(<span class="kw">c</span>(<span class="dv">4</span>, <span class="dv">2</span>), <span class="dt">size =</span> (n <span class="op">-</span><span class="st"> </span><span class="dv">1</span>), <span class="dt">replace =</span> <span class="ot">TRUE</span>))
+myColors &lt;-<span class="st"> </span><span class="kw">colorRampPalette</span>(<span class="kw">c</span>(<span class="st">&quot;blue&quot;</span>, <span class="st">&quot;red&quot;</span>))(<span class="dv">100</span>)
+myYCut &lt;-<span class="st"> </span><span class="kw">cut</span>(myY, <span class="dt">breaks =</span> <span class="op">-</span><span class="dv">4</span><span class="op">:</span><span class="dv">4</span>)
+myXCut &lt;-<span class="st"> </span><span class="kw">cut</span>(myX, <span class="dt">breaks =</span> <span class="op">-</span><span class="dv">4</span><span class="op">:</span><span class="dv">4</span>)
+myYCutCol &lt;-<span class="st"> </span><span class="kw">table</span>(myCol, myYCut)
+myXCutCol &lt;-<span class="st"> </span><span class="kw">table</span>(myCol, myXCut)
+xCol &lt;-<span class="st"> </span><span class="kw">round</span>(
+  myXCutCol[<span class="dv">1</span>,] <span class="op">/</span><span class="st"> </span>(myXCutCol[<span class="dv">1</span>,] <span class="op">+</span><span class="st"> </span>myXCutCol[<span class="dv">2</span>,]) <span class="op">*</span><span class="st"> </span><span class="dv">100</span>
+)
+xCol[<span class="kw">is.na</span>(xCol) <span class="op">|</span><span class="st"> </span>xCol <span class="op">==</span><span class="st"> </span><span class="dv">0</span>] &lt;-<span class="st"> </span><span class="dv">1</span>
+yCol &lt;-<span class="st"> </span><span class="kw">round</span>(
+  myYCutCol[<span class="dv">1</span>,] <span class="op">/</span><span class="st"> </span>(myYCutCol[<span class="dv">1</span>,] <span class="op">+</span><span class="st"> </span>myYCutCol[<span class="dv">2</span>,]) <span class="op">*</span><span class="st"> </span><span class="dv">100</span>
+)
+yCol[<span class="kw">is.na</span>(yCol) <span class="op">|</span><span class="st"> </span>yCol <span class="op">==</span><span class="st"> </span><span class="dv">0</span>] &lt;-<span class="st"> </span><span class="dv">1</span>
+op &lt;-<span class="st"> </span><span class="kw">par</span>(<span class="dt">no.readonly =</span> <span class="ot">TRUE</span>)
+<span class="kw">par</span>(<span class="dt">mar =</span> <span class="kw">c</span>(<span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">1</span>, <span class="dv">1</span>))
 <span class="kw">layout</span>(<span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>, 
                 <span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">3</span>, 
                 <span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">3</span>), <span class="dt">ncol =</span> <span class="dv">3</span>, <span class="dt">byrow =</span> <span class="ot">TRUE</span>))
-
-<span class="kw">barplot</span>(myXCut, <span class="dt">las =</span> <span class="dv">1</span>)
-<span class="kw">plot</span>(<span class="dt">x =</span> myX, <span class="dt">y =</span> myY, 
-     <span class="dt">xlim =</span> <span class="kw">c</span>(<span class="op">-</span><span class="dv">4</span>, <span class="dv">4</span>), <span class="dt">ylim =</span> <span class="kw">c</span>(<span class="op">-</span><span class="dv">4</span>, <span class="dv">4</span>), 
-     <span class="dt">panel.first =</span> {<span class="kw">grid</span>()})
-<span class="kw">barplot</span>(myYCut, <span class="dt">las =</span> <span class="dv">1</span>, <span class="dt">horiz =</span> <span class="ot">TRUE</span>)</code></pre></div>
+<span class="kw">barplot</span>(<span class="kw">table</span>(myXCut), <span class="dt">las =</span> <span class="dv">1</span>, <span class="dt">col =</span> myColors[xCol])
+<span class="kw">plot</span>(<span class="dt">x =</span> myX, <span class="dt">y =</span> myY, <span class="dt">col =</span> myCol, <span class="dt">pch =</span> <span class="dv">16</span>, 
+  <span class="dt">xlim =</span> <span class="kw">c</span>(<span class="op">-</span><span class="dv">4</span>, <span class="dv">4</span>), <span class="dt">ylim =</span> <span class="kw">c</span>(<span class="op">-</span><span class="dv">4</span>, <span class="dv">4</span>), <span class="dt">cex =</span> <span class="fl">1.5</span>, 
+  <span class="dt">panel.first =</span> <span class="kw">grid</span>())
+<span class="kw">barplot</span>(<span class="kw">table</span>(myYCut), <span class="dt">las =</span> <span class="dv">1</span>, <span class="dt">horiz =</span> <span class="ot">TRUE</span>, <span class="dt">col =</span> myColors[yCol])</code></pre></div>
 <p><img src="myRBook_FR_files/figure-html/unnamed-chunk-234-1.png" width="672" /></p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">par</span>(op)</code></pre></div>
+<p>Nous pouvons ensuite intégrer ce script dans une fonction pour par exemple étudier l’effet de la variable <code>n</code>.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">graphBarplotCol &lt;-<span class="st"> </span><span class="cf">function</span>(n){
+  myX &lt;-<span class="st"> </span><span class="kw">rnorm</span>(n)
+  myY &lt;-<span class="st"> </span><span class="kw">rnorm</span>(n)
+  myCol &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">2</span>, <span class="kw">sample</span>(<span class="kw">c</span>(<span class="dv">4</span>, <span class="dv">2</span>), <span class="dt">size =</span> (n <span class="op">-</span><span class="st"> </span><span class="dv">1</span>), <span class="dt">replace =</span> <span class="ot">TRUE</span>))
+  myColors &lt;-<span class="st"> </span><span class="kw">colorRampPalette</span>(<span class="kw">c</span>(<span class="st">&quot;blue&quot;</span>, <span class="st">&quot;red&quot;</span>))(<span class="dv">100</span>)
+  myYCut &lt;-<span class="st"> </span><span class="kw">cut</span>(myY, <span class="dt">breaks =</span> <span class="op">-</span><span class="dv">4</span><span class="op">:</span><span class="dv">4</span>)
+  myXCut &lt;-<span class="st"> </span><span class="kw">cut</span>(myX, <span class="dt">breaks =</span> <span class="op">-</span><span class="dv">4</span><span class="op">:</span><span class="dv">4</span>)
+  myYCutCol &lt;-<span class="st"> </span><span class="kw">table</span>(myCol, myYCut)
+  myXCutCol &lt;-<span class="st"> </span><span class="kw">table</span>(myCol, myXCut)
+  xCol &lt;-<span class="st"> </span><span class="kw">round</span>(
+    myXCutCol[<span class="dv">1</span>,] <span class="op">/</span><span class="st"> </span>(myXCutCol[<span class="dv">1</span>,] <span class="op">+</span><span class="st"> </span>myXCutCol[<span class="dv">2</span>,]) <span class="op">*</span><span class="st"> </span><span class="dv">100</span>
+  )
+  xCol[<span class="kw">is.na</span>(xCol) <span class="op">|</span><span class="st"> </span>xCol <span class="op">==</span><span class="st"> </span><span class="dv">0</span>] &lt;-<span class="st"> </span><span class="dv">1</span>
+  yCol &lt;-<span class="st"> </span><span class="kw">round</span>(
+    myYCutCol[<span class="dv">1</span>,] <span class="op">/</span><span class="st"> </span>(myYCutCol[<span class="dv">1</span>,] <span class="op">+</span><span class="st"> </span>myYCutCol[<span class="dv">2</span>,]) <span class="op">*</span><span class="st"> </span><span class="dv">100</span>
+  )
+  yCol[<span class="kw">is.na</span>(yCol) <span class="op">|</span><span class="st"> </span>yCol <span class="op">==</span><span class="st"> </span><span class="dv">0</span>] &lt;-<span class="st"> </span><span class="dv">1</span>
+  op &lt;-<span class="st"> </span><span class="kw">par</span>(<span class="dt">no.readonly =</span> <span class="ot">TRUE</span>)
+  <span class="kw">par</span>(<span class="dt">mar =</span> <span class="kw">c</span>(<span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">1</span>, <span class="dv">1</span>))
+  <span class="kw">layout</span>(<span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>, 
+                  <span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">3</span>, 
+                  <span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">3</span>), <span class="dt">ncol =</span> <span class="dv">3</span>, <span class="dt">byrow =</span> <span class="ot">TRUE</span>))
+  <span class="kw">barplot</span>(<span class="kw">table</span>(myXCut), <span class="dt">las =</span> <span class="dv">1</span>, <span class="dt">col =</span> myColors[xCol])
+  <span class="kw">plot</span>(<span class="dt">x =</span> myX, <span class="dt">y =</span> myY, <span class="dt">col =</span> myCol, <span class="dt">pch =</span> <span class="dv">16</span>, 
+    <span class="dt">xlim =</span> <span class="kw">c</span>(<span class="op">-</span><span class="dv">4</span>, <span class="dv">4</span>), <span class="dt">ylim =</span> <span class="kw">c</span>(<span class="op">-</span><span class="dv">4</span>, <span class="dv">4</span>), <span class="dt">cex =</span> <span class="fl">1.5</span>, 
+    <span class="dt">panel.first =</span> <span class="kw">grid</span>())
+  <span class="kw">barplot</span>(<span class="kw">table</span>(myYCut), <span class="dt">las =</span> <span class="dv">1</span>, <span class="dt">horiz =</span> <span class="ot">TRUE</span>, <span class="dt">col =</span> myColors[yCol])
+  <span class="kw">par</span>(op)
+}
+<span class="kw">graphBarplotCol</span>(<span class="dt">n =</span> <span class="dv">1000</span>)</code></pre></div>
+<p><img src="myRBook_FR_files/figure-html/unnamed-chunk-235-1.png" width="672" /></p>
 <!-- ## `boxplot` -->
 <!-- ## `image` et `contour` -->
 <!-- # La gestion des couleurs {#graph2} -->
