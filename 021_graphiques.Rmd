@@ -241,16 +241,62 @@ graphBarplotCol <- function(n){
 graphBarplotCol(n = 1000)
 ```
 
-XXX
 
-<!-- ## `boxplot` -->
+## `boxplot`
 
-<!-- ## `image` et `contour` -->
+## Autres graphiques
 
-<!-- # La gestion des couleurs {#graph2} -->
+# La gestion des couleurs {#graph2}
 
-<!-- ## `colors()` -->
+## `colors()`
 
-<!-- ## RGB -->
+## RGB
 
-<!-- ## Palettes -->
+XXX L'espace de couleur RGB
+
+```{r}
+graphBarplotCol <- function(n){
+  myX <- rnorm(n)
+  myY <- rnorm(n)
+  myCol <- c(2, 3, 4, sample(2:4, size = (n - 3), replace = TRUE))
+  myYCut <- cut(myY, breaks = -4:4)
+  myXCut <- cut(myX, breaks = -4:4)
+  myYCutCol <- table(myCol, myYCut)
+  myXCutCol <- table(myCol, myXCut)
+  rColX <- myXCutCol[1,] / (myXCutCol[1,] + myXCutCol[2,] + 
+    myXCutCol[3,])
+  gColX <- myXCutCol[2,] / (myXCutCol[1,] + myXCutCol[2,] + 
+    myXCutCol[3,])
+  bColX <- myXCutCol[3,] / (myXCutCol[1,] + myXCutCol[2,] + 
+    myXCutCol[3,])
+  rColX[is.na(rColX)] <- 0
+  gColX[is.na(gColX)] <- 0
+  bColX[is.na(bColX)] <- 0
+  rColY <- myYCutCol[1,] / (myYCutCol[1,] + myYCutCol[2,] + 
+    myYCutCol[3,])
+  gColY <- myYCutCol[2,] / (myYCutCol[1,] + myYCutCol[2,] + 
+    myYCutCol[3,])
+  bColY <- myYCutCol[3,] / (myYCutCol[1,] + myYCutCol[2,] + 
+    myYCutCol[3,])
+  rColY[is.na(rColY)] <- 0
+  gColY[is.na(gColY)] <- 0
+  bColY[is.na(bColY)] <- 0
+  op <- par(no.readonly = TRUE)
+  par(mar = c(2, 3, 1, 1))
+  layout(matrix(c(1, 1, 0, 
+                  2, 2, 3, 
+                  2, 2, 3), ncol = 3, byrow = TRUE))
+  barplot(table(myXCut), las = 1, col = rgb(rColX, gColX, bColX))
+  plot(x = myX, y = myY, col = myCol, pch = 16, 
+    xlim = c(-4, 4), ylim = c(-4, 4), cex = 1.5, 
+    panel.first = grid())
+  barplot(table(myYCut), las = 1, horiz = TRUE, 
+    col = rgb(rColY, gColY, bColY))
+  par(op)
+}
+graphBarplotCol(n = 50)
+```
+
+## Palettes
+
+# Les packages graphiques {#graph3}
