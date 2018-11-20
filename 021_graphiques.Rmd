@@ -54,6 +54,22 @@ plot(x = myX, y = myY,
   col = sample(colors(), 100))
 ```
 
+Pour représenter nos points la couleur et la taille des points peuvent représenter des informations complémentaires. Ici nous allons représenter par un gradient de taille la variable `myY` et par un gradient de couleur la variable `myX`.
+
+```{r}
+myX <- rnorm(100)
+myY <- rnorm(100)
+dfGraph <- data.frame(myX, myY)
+dfGraph <- dfGraph[order(dfGraph$myX),]
+dfGraph$myCol <- colorRampPalette(c("blue", "red"))(100)
+dfGraph <- dfGraph[order(dfGraph$myY),]
+dfGraph$myCex <- seq(from = 0.5, to = 3, length.out = 100)
+plot(x = dfGraph$myX, y = dfGraph$myY, 
+  cex = dfGraph$myCex, pch = 16, col = dfGraph$myCol, 
+  xlab = "", ylab = "")
+```
+
+
 R offre la possibilité de relier les points des nuages de points de différentes façons. Les différentes options sont disponibles dans l'aide de la fonction `plot()` et `plot.default()`.
 
 ```{r}
