@@ -25,7 +25,7 @@
 <meta name="author" content="François Rebaudo">
 
 
-<meta name="date" content="2018-11-20">
+<meta name="date" content="2018-11-28">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -484,6 +484,22 @@ op &lt;-<span class="st"> </span><span class="kw">par</span>(<span class="dt">no
 }
 <span class="kw">graphBarplotCol</span>(<span class="dt">n =</span> <span class="dv">1000</span>)</code></pre></div>
 <p><img src="myRBook_FR_files/figure-html/unnamed-chunk-236-1.png" width="672" /></p>
+<p>Un <code>barplot</code> peut bien sûr prendre des valeurs positives ou négatives.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">barplot</span>(<span class="kw">rnorm</span>(<span class="dv">20</span>), <span class="dt">horiz =</span> <span class="ot">TRUE</span>, <span class="dt">col =</span> <span class="kw">rainbow</span>(<span class="dv">20</span>))</code></pre></div>
+<p><img src="myRBook_FR_files/figure-html/unnamed-chunk-237-1.png" width="672" /></p>
+<p>Le <code>barplot</code> peut aussi être utilisé pour faire une pyramide des âges (il existe des fonctions pour réaliser des pyramides des âges, ici l’objectif est pédagogique).</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">gender &lt;-<span class="st"> </span><span class="kw">data.frame</span>(
+  <span class="dt">m =</span> <span class="kw">cut</span>(<span class="kw">sample</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">75</span>, <span class="dv">1000</span>, <span class="dt">replace =</span> <span class="ot">TRUE</span>), 
+    <span class="dt">breaks =</span> <span class="kw">seq</span>(<span class="dt">from =</span> <span class="dv">0</span>, <span class="dt">to =</span> <span class="dv">80</span>, <span class="dt">by =</span> <span class="dv">10</span>)), 
+  <span class="dt">f =</span> <span class="kw">cut</span>(<span class="kw">sample</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">75</span>, <span class="dv">1000</span>, <span class="dt">replace =</span> <span class="ot">TRUE</span>), 
+    <span class="dt">breaks =</span> <span class="kw">seq</span>(<span class="dt">from =</span> <span class="dv">0</span>, <span class="dt">to =</span> <span class="dv">80</span>, <span class="dt">by =</span> <span class="dv">10</span>))
+)
+op &lt;-<span class="st"> </span><span class="kw">par</span>(<span class="dt">no.readonly =</span> <span class="ot">TRUE</span>)
+<span class="kw">par</span>(<span class="dt">mfrow =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>), <span class="dt">mar =</span> <span class="kw">c</span>(<span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">1</span>))
+<span class="kw">barplot</span>(<span class="op">-</span><span class="kw">table</span>(gender<span class="op">$</span>f), <span class="dt">horiz =</span> <span class="ot">TRUE</span>, <span class="dt">col =</span> <span class="st">&quot;salmon&quot;</span>)
+<span class="kw">barplot</span>(<span class="kw">table</span>(gender<span class="op">$</span>m), <span class="dt">horiz =</span> <span class="ot">TRUE</span>, <span class="dt">col =</span> <span class="st">&quot;lightblue&quot;</span>)</code></pre></div>
+<p><img src="myRBook_FR_files/figure-html/unnamed-chunk-238-1.png" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">par</span>(op)</code></pre></div>
 </div>
 <div id="boxplot" class="section level2">
 <h2><span class="header-section-number">13.4</span> <code>boxplot</code></h2>

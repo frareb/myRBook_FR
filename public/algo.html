@@ -25,7 +25,7 @@
 <meta name="author" content="François Rebaudo">
 
 
-<meta name="date" content="2018-11-20">
+<meta name="date" content="2018-11-28">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -440,12 +440,12 @@ mySpecies &lt;-<span class="st"> </span><span class="dv">15</span>
                   <span class="dt">date02 =</span> <span class="kw">rnorm</span>(<span class="dt">n =</span> <span class="dv">100</span>, <span class="dt">mean =</span> <span class="dv">10</span>, <span class="dt">sd =</span> <span class="dv">1</span>))
 <span class="kw">print</span>(<span class="kw">head</span>(bdd))</code></pre></div>
 <pre><code>##      date01    date02
-## 1  9.843735 10.113956
-## 2  8.672829  8.508125
-## 3 10.489931  8.789686
-## 4 11.669505  8.027240
-## 5  8.096643 12.665248
-## 6 10.066286  8.044959</code></pre>
+## 1 10.147463 10.830537
+## 2  9.660554 10.395173
+## 3  9.149723  8.927141
+## 4  8.944937  7.255556
+## 5  8.369436 12.034728
+## 6  9.754435 10.233155</code></pre>
 <p>Nous voudrions quantifier la différence entre la première et la deuxième date, puis mettre un indicateur pour savoir si cette différence est petite ou grande, par exemple avec un seuil arbitraire de 3. Donc pour chaque ligne nous pourrions faire :</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">bdd<span class="op">$</span>dif &lt;-<span class="st"> </span><span class="ot">NA</span>
 bdd<span class="op">$</span>isDifBig &lt;-<span class="st"> </span><span class="ot">NA</span>
@@ -521,52 +521,52 @@ bdd<span class="op">$</span>isDifBig &lt;-<span class="st"> </span><span class="
 }
 <span class="kw">print</span>(<span class="kw">head</span>(bdd, <span class="dt">n =</span> <span class="dv">20</span>))</code></pre></div>
 <pre><code>##       date01    date02       dif isDifBig
-## 1   9.843735 10.113956 0.2702210    small
-## 2   8.672829  8.508125 0.1647045    small
-## 3  10.489931  8.789686 1.7002450    small
-## 4  11.669505  8.027240 3.6422652      big
-## 5   8.096643 12.665248 4.5686049      big
-## 6  10.066286  8.044959 2.0213269    small
-## 7  10.867924 11.776686 0.9087615    small
-## 8  10.129244  9.878779 0.2504648    small
-## 9  11.374395  9.831427 1.5429681    small
-## 10  9.134302  9.950532 0.8162297    small
-## 11  9.946475 11.517279 1.5708043    small
-## 12  9.009726 10.588961 1.5792347    small
-## 13  9.283512  9.944801 0.6612888    small
-## 14 10.115354 11.147599 1.0322450    small
-## 15  9.938116  8.672694 1.2654211    small
-## 16  9.626297 11.049723 1.4234261    small
-## 17  7.274655  8.493168 1.2185133    small
-## 18  9.814388  9.715997 0.0983908    small
-## 19  8.321599  9.811949 1.4903501    small
-## 20 10.189750 11.799165 1.6094150    small</code></pre>
+## 1  10.147463 10.830537 0.6830740    small
+## 2   9.660554 10.395173 0.7346188    small
+## 3   9.149723  8.927141 0.2225815    small
+## 4   8.944937  7.255556 1.6893814    small
+## 5   8.369436 12.034728 3.6652918      big
+## 6   9.754435 10.233155 0.4787207    small
+## 7  10.542709  9.901990 0.6407193    small
+## 8   8.850138 10.625774 1.7756366    small
+## 9   9.037919  9.906365 0.8684456    small
+## 10 10.987736  9.510400 1.4773363    small
+## 11 10.267617 10.437283 0.1696659    small
+## 12 11.340235  8.937668 2.4025665    small
+## 13  9.323363 11.684852 2.3614895    small
+## 14  9.675208  8.806601 0.8686063    small
+## 15 11.031211 11.554313 0.5231016    small
+## 16  8.764411 11.002123 2.2377122    small
+## 17 10.973725 10.483217 0.4905086    small
+## 18 10.060428  9.839964 0.2204649    small
+## 19  8.271146  9.224156 0.9530106    small
+## 20 10.794966 11.309082 0.5141164    small</code></pre>
 <p>En pratique ce n’est pas la meilleure façon de réaliser cet exercice car il s’agit ici de simples calculs sur des vecteurs contenus dans une <code>data.frame</code>. R est particulièrement puissant pour effectuer des opérations sur des vecteurs. Lorsque cela est possible il faut donc toujours privilégier les opérations sur les vecteurs. Ici notre code devient :</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">bdd<span class="op">$</span>dif &lt;-<span class="st"> </span><span class="kw">sqrt</span>((bdd<span class="op">$</span>date01 <span class="op">-</span><span class="st"> </span>bdd<span class="op">$</span>date02)<span class="op">^</span><span class="dv">2</span>)
 bdd<span class="op">$</span>isDifBig &lt;-<span class="st"> &quot;small&quot;</span>
 bdd<span class="op">$</span>isDifBig[bdd<span class="op">$</span>dif <span class="op">&gt;</span><span class="st"> </span><span class="dv">3</span>] &lt;-<span class="st"> &quot;big&quot;</span>
 <span class="kw">print</span>(<span class="kw">head</span>(bdd, <span class="dt">n =</span> <span class="dv">20</span>))</code></pre></div>
 <pre><code>##       date01    date02       dif isDifBig
-## 1   9.843735 10.113956 0.2702210    small
-## 2   8.672829  8.508125 0.1647045    small
-## 3  10.489931  8.789686 1.7002450    small
-## 4  11.669505  8.027240 3.6422652      big
-## 5   8.096643 12.665248 4.5686049      big
-## 6  10.066286  8.044959 2.0213269    small
-## 7  10.867924 11.776686 0.9087615    small
-## 8  10.129244  9.878779 0.2504648    small
-## 9  11.374395  9.831427 1.5429681    small
-## 10  9.134302  9.950532 0.8162297    small
-## 11  9.946475 11.517279 1.5708043    small
-## 12  9.009726 10.588961 1.5792347    small
-## 13  9.283512  9.944801 0.6612888    small
-## 14 10.115354 11.147599 1.0322450    small
-## 15  9.938116  8.672694 1.2654211    small
-## 16  9.626297 11.049723 1.4234261    small
-## 17  7.274655  8.493168 1.2185133    small
-## 18  9.814388  9.715997 0.0983908    small
-## 19  8.321599  9.811949 1.4903501    small
-## 20 10.189750 11.799165 1.6094150    small</code></pre>
+## 1  10.147463 10.830537 0.6830740    small
+## 2   9.660554 10.395173 0.7346188    small
+## 3   9.149723  8.927141 0.2225815    small
+## 4   8.944937  7.255556 1.6893814    small
+## 5   8.369436 12.034728 3.6652918      big
+## 6   9.754435 10.233155 0.4787207    small
+## 7  10.542709  9.901990 0.6407193    small
+## 8   8.850138 10.625774 1.7756366    small
+## 9   9.037919  9.906365 0.8684456    small
+## 10 10.987736  9.510400 1.4773363    small
+## 11 10.267617 10.437283 0.1696659    small
+## 12 11.340235  8.937668 2.4025665    small
+## 13  9.323363 11.684852 2.3614895    small
+## 14  9.675208  8.806601 0.8686063    small
+## 15 11.031211 11.554313 0.5231016    small
+## 16  8.764411 11.002123 2.2377122    small
+## 17 10.973725 10.483217 0.4905086    small
+## 18 10.060428  9.839964 0.2204649    small
+## 19  8.271146  9.224156 0.9530106    small
+## 20 10.794966 11.309082 0.5141164    small</code></pre>
 <p>La plupart des exemples que l’on peut trouver sur Internet à propos de la boucle <code>for()</code> peuvent être remplacés par des opérations sur les vecteurs. Voici quelques exemples adaptés de plusieurs sources :</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># tester si des nombres sont pairs</span>
 <span class="co"># [1] FOR</span>
@@ -578,10 +578,10 @@ count &lt;-<span class="st"> </span><span class="dv">0</span>
   }
 }
 <span class="kw">print</span>(count)</code></pre></div>
-<pre><code>## [1] 12</code></pre>
+<pre><code>## [1] 11</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># [2] VECTOR</span>
 <span class="kw">sum</span>(x <span class="op">%%</span><span class="st"> </span><span class="dv">2</span> <span class="op">==</span><span class="st"> </span><span class="dv">0</span>)</code></pre></div>
-<pre><code>## [1] 12</code></pre>
+<pre><code>## [1] 11</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># calculer des carrés</span>
 <span class="co"># [1] FOR</span>
 x &lt;-<span class="st"> </span><span class="kw">rep</span>(<span class="dv">0</span>, <span class="dv">20</span>)
@@ -603,10 +603,10 @@ trials =<span class="st"> </span><span class="kw">rep</span>(<span class="dv">0<
   trials[j] =<span class="st"> </span><span class="kw">sample</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">6</span>, <span class="dt">size =</span> <span class="dv">1</span>)
 }
 <span class="kw">mean</span>(trials)</code></pre></div>
-<pre><code>## [1] 3.545</code></pre>
+<pre><code>## [1] 3.458</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># [2] VECTOR</span>
 <span class="kw">mean</span>(<span class="kw">sample</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">6</span>, ntrials, <span class="dt">replace =</span> <span class="ot">TRUE</span>))</code></pre></div>
-<pre><code>## [1] 3.491</code></pre>
+<pre><code>## [1] 3.378</code></pre>
 <p>C’est un bon exercice de parcourir les nombreux exemples disponibles sur Internet sur la boucle <code>for()</code> et de tenter de les transformer en opérations vectorielles. Cela nous permet d’acquérir les bons réflexes de programmation avec R. La boucle <code>for()</code> reste très utile pour par exemple lire plusieurs fichiers et traiter l’information qu’ils contiennent de la même façon, faire des graphiques, ou encore lorsque les opérations vectorielles deveinnent fastidieuses. Imaginons une matrice de 10 colonnes et 100 lignes. Nous voulons la somme de chaque ligne (nous verrons plus loin comment faire avec la fonction <code>apply()</code>).</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">myMat &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">sample</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">100</span>, <span class="dt">size =</span> <span class="dv">1000</span>, <span class="dt">replace =</span> <span class="ot">TRUE</span>), <span class="dt">ncol =</span> <span class="dv">10</span>)
 <span class="co"># VECTOR</span>
@@ -614,24 +614,24 @@ sumRow &lt;-<span class="st"> </span>myMat[, <span class="dv">1</span>] <span cl
 <span class="st">  </span>myMat[, <span class="dv">5</span>] <span class="op">+</span><span class="st"> </span>myMat[, <span class="dv">6</span>] <span class="op">+</span><span class="st"> </span>myMat[, <span class="dv">7</span>] <span class="op">+</span><span class="st"> </span>myMat[, <span class="dv">8</span>] <span class="op">+</span><span class="st"> </span>
 <span class="st">  </span>myMat[, <span class="dv">9</span>] <span class="op">+</span><span class="st"> </span>myMat[, <span class="dv">10</span>]
 <span class="kw">print</span>(sumRow)</code></pre></div>
-<pre><code>##   [1] 582 532 468 579 364 476 451 639 546 450 580 333 409 638 561 444 457
-##  [18] 762 423 571 354 556 436 570 506 543 579 422 651 535 376 619 417 573
-##  [35] 571 491 515 572 550 399 676 545 659 489 614 484 619 638 463 504 620
-##  [52] 645 488 337 567 608 490 473 412 666 504 491 463 369 567 384 463 477
-##  [69] 540 495 595 492 570 386 619 390 600 400 449 465 438 308 643 585 587
-##  [86] 448 485 375 562 556 810 418 574 336 477 445 348 410 535 598</code></pre>
+<pre><code>##   [1] 478 486 654 499 549 320 512 495 486 580 545 497 615 557 626 439 530
+##  [18] 591 456 571 404 449 585 652 567 490 610 366 427 488 365 565 359 589
+##  [35] 361 562 537 454 552 533 619 587 524 395 485 466 454 463 559 448 501
+##  [52] 551 426 544 571 424 526 666 606 486 547 540 628 562 540 503 540 568
+##  [69] 280 409 450 349 567 557 487 573 421 565 307 542 336 492 495 504 765
+##  [86] 571 392 401 506 349 506 515 548 667 443 339 458 542 506 362</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># FOR</span>
 sumRow &lt;-<span class="st"> </span><span class="kw">rep</span>(<span class="ot">NA</span>, <span class="dt">times =</span> <span class="kw">nrow</span>(myMat))
 <span class="cf">for</span>(j <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="kw">nrow</span>(myMat)){
   sumRow[j] &lt;-<span class="st"> </span><span class="kw">sum</span>(myMat[j, ])
 }
 <span class="kw">print</span>(sumRow)</code></pre></div>
-<pre><code>##   [1] 582 532 468 579 364 476 451 639 546 450 580 333 409 638 561 444 457
-##  [18] 762 423 571 354 556 436 570 506 543 579 422 651 535 376 619 417 573
-##  [35] 571 491 515 572 550 399 676 545 659 489 614 484 619 638 463 504 620
-##  [52] 645 488 337 567 608 490 473 412 666 504 491 463 369 567 384 463 477
-##  [69] 540 495 595 492 570 386 619 390 600 400 449 465 438 308 643 585 587
-##  [86] 448 485 375 562 556 810 418 574 336 477 445 348 410 535 598</code></pre>
+<pre><code>##   [1] 478 486 654 499 549 320 512 495 486 580 545 497 615 557 626 439 530
+##  [18] 591 456 571 404 449 585 652 567 490 610 366 427 488 365 565 359 589
+##  [35] 361 562 537 454 552 533 619 587 524 395 485 466 454 463 559 448 501
+##  [52] 551 426 544 571 424 526 666 606 486 547 540 628 562 540 503 540 568
+##  [69] 280 409 450 349 567 557 487 573 421 565 307 542 336 492 495 504 765
+##  [86] 571 392 401 506 349 506 515 548 667 443 339 458 542 506 362</code></pre>
 <p>En conclusion, il est recommandé de ne pas utiliser la boucle <code>for()</code> avec R chaque fois que cela est possible, et nous verrons dans ce chapitre des alternatives commes les boucles de la famille <code>apply()</code>.</p>
 </div>
 <div id="l17while" class="section level2">
@@ -672,7 +672,7 @@ numberGuess &lt;-<span class="st"> </span><span class="dv">0</span>
   }
 }</code></pre></div>
 <pre><code>## [1] &quot;Number found !&quot;
-## [1] &quot;And I have plenty of time left: 1.41 sec&quot;</code></pre>
+## [1] &quot;And I have plenty of time left: 1.22 sec&quot;</code></pre>
 <p>Dans ce script nous générons un nombre aléatoire à deviner avec la fonction <code>sample()</code>, et chaque essai avec la même fonction <code>sample()</code>. Ensuite nous utilisons la fonction <code>Sys.time()</code> (avec un S majuscule à <code>Sys</code>), pour connaître l’heure de début de la boucle. Tant que la différence entre chaque itération de la boucle et l’heure de démarrage est inférieur à 2 secondes, la boucle <code>while()</code> va vérifier si le bon nombre a été deviner dans le test logique avec <code>if()</code> puis si c’est le cas nous informer que le nombre a été trouvé, nous dire le temps restant avant les deux secondes, puis terminer la boucle avec le mot clef <code>break</code> sur lequel nous reviendrons. En bref, <code>break</code> permet de sortir d’une boucle. Si le nombre n’a pas été deviné, la boucle fait un autre essai avec la fonction <code>sample()</code>.</p>
 <p>Plus concrètement nous pourrions imaginer des algorithmes pour explorer un espace de solutions face à un problème avec un temps limité pour y parvenir. La boucle <code>while()</code> peut aussi être pratique pour qu’un script ne s’exécute que lorsque un fichier issu d’un autre programme devient disponible… En pratique la boucle <code>while()</code> reste peu utilisée avec R.</p>
 </div>
@@ -711,11 +711,11 @@ numberGuess &lt;-<span class="st"> </span><span class="dv">0</span>
   numTry &lt;-<span class="st"> </span>numTry <span class="op">+</span><span class="st"> </span><span class="dv">1</span>
   <span class="cf">if</span>(numTry <span class="op">==</span><span class="st"> </span><span class="dv">5</span>){<span class="cf">break</span>}
 }</code></pre></div>
-<pre><code>## [1] 0.361
-## [1] 0.453
-## [1] 0.613
-## [1] 0.583
-## [1] 0.159</code></pre>
+<pre><code>## [1] 0.325
+## [1] 0.184
+## [1] 0.311
+## [1] 0.001
+## [1] 0.095</code></pre>
 <p>Comme la boucle <code>while()</code>, la boucle <code>repeat()</code> reste peu utilisée avec R.</p>
 </div>
 <div id="l17spe" class="section level2">
@@ -772,60 +772,60 @@ numberGuess &lt;-<span class="st"> </span><span class="dv">0</span>
 <p>La fonction <code>apply()</code> permet d’appliquer une fonction à tous les éléments d’un <code>array</code> ou d’une <code>matrix</code>. Par exemple si nous souhaitons connaître la somme de chaque ligne d’une <code>matrix</code> de 10 colonnes et 100 lignes :</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">myMat &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">sample</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">100</span>, <span class="dt">size =</span> <span class="dv">1000</span>, <span class="dt">replace =</span> <span class="ot">TRUE</span>), <span class="dt">ncol =</span> <span class="dv">10</span>)
 <span class="kw">apply</span>(<span class="dt">X =</span> myMat, <span class="dt">MARGIN =</span> <span class="dv">1</span>, <span class="dt">FUN =</span> sum)</code></pre></div>
-<pre><code>##   [1] 382 608 489 522 501 472 647 394 433 554 674 348 562 508 520 515 429
-##  [18] 434 457 442 419 386 436 412 415 426 418 503 574 368 543 607 451 505
-##  [35] 403 462 584 415 452 507 586 424 469 388 441 382 354 586 515 484 593
-##  [52] 484 706 706 467 550 349 533 516 512 430 661 389 417 509 519 640 520
-##  [69] 534 653 475 576 464 694 685 483 544 550 257 423 551 607 352 512 513
-##  [86] 614 372 372 366 408 551 497 401 490 517 705 473 527 362 483</code></pre>
+<pre><code>##   [1] 566 459 597 612 515 634 451 524 347 574 645 609 498 510 273 415 488
+##  [18] 377 409 630 403 389 612 533 318 528 600 401 497 360 525 661 548 413
+##  [35] 518 489 433 397 473 519 447 511 502 507 504 456 467 739 570 433 604
+##  [52] 610 500 433 469 438 388 404 446 510 527 588 508 495 428 385 421 403
+##  [69] 373 464 420 575 488 596 424 446 391 410 672 524 570 525 494 685 428
+##  [86] 578 425 641 397 394 510 563 561 354 517 572 459 697 426 589</code></pre>
 <p>Si nous souhaitons connaître la médiane de chaque colonne, l’expression devient :</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">apply</span>(<span class="dt">X =</span> myMat, <span class="dt">MARGIN =</span> <span class="dv">2</span>, <span class="dt">FUN =</span> median)</code></pre></div>
-<pre><code>##  [1] 46.5 54.0 54.0 45.0 56.5 42.5 43.0 51.0 47.0 53.5</code></pre>
+<pre><code>##  [1] 46.5 49.0 46.5 46.5 53.5 51.0 46.5 56.5 40.0 45.5</code></pre>
 <p>L’argument <code>X</code> correspond à l’objet sur lequel la boucle <code>apply</code> va itérer. L’argument <code>MARGIN</code> correspond à la dimension à prendre en compte (1 pour les lignes, et 2 pour les colonnes). L’argument <code>FUN</code> correspond à la fonction à appliquer. Sur un objet de type <code>array</code>, l’argument <code>MARGIN</code> peut prendre autant de valeurs que de dimensions. Dans cet exemple <code>MARGIN = 1</code> correspond à la moyenne de chaque ligne - dimension 1 - (toutes dimensions confondues), <code>MARGIN = 2</code> correspond à la moyenne de chaque colonne - dimension 2 - (toutes dimensions confondues), et <code>MARGIN = 3</code> correspond à la moyenne de chaque dimension 3. Ci-dessous chaque calcul est réalisé de deux manières différentes pour en expliciter le fonctionnement.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">myArr &lt;-<span class="st"> </span><span class="kw">array</span>(<span class="kw">sample</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">100</span>, <span class="dt">size =</span> <span class="dv">1000</span>, <span class="dt">replace =</span> <span class="ot">TRUE</span>), <span class="dt">dim =</span> <span class="kw">c</span>(<span class="dv">10</span>, <span class="dv">20</span>, <span class="dv">5</span>))
 <span class="kw">apply</span>(<span class="dt">X =</span> myArr, <span class="dt">MARGIN =</span> <span class="dv">1</span>, <span class="dt">FUN =</span> mean)</code></pre></div>
-<pre><code>##  [1] 54.51 47.35 54.51 47.32 52.24 50.78 48.35 50.04 44.76 54.91</code></pre>
+<pre><code>##  [1] 46.39 54.47 50.13 55.45 49.50 51.72 43.61 45.42 51.75 48.52</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">(<span class="kw">apply</span>(myArr[,,<span class="dv">1</span>], <span class="dv">1</span>, mean) <span class="op">+</span><span class="st"> </span><span class="kw">apply</span>(myArr[,,<span class="dv">2</span>], <span class="dv">1</span>, mean) <span class="op">+</span><span class="st"> </span>
 <span class="st">  </span><span class="kw">apply</span>(myArr[,,<span class="dv">3</span>], <span class="dv">1</span>, mean) <span class="op">+</span><span class="st"> </span><span class="kw">apply</span>(myArr[,,<span class="dv">4</span>], <span class="dv">1</span>, mean) <span class="op">+</span><span class="st"> </span>
 <span class="st">  </span><span class="kw">apply</span>(myArr[,,<span class="dv">5</span>], <span class="dv">1</span>, mean))<span class="op">/</span><span class="dv">5</span></code></pre></div>
-<pre><code>##  [1] 54.51 47.35 54.51 47.32 52.24 50.78 48.35 50.04 44.76 54.91</code></pre>
+<pre><code>##  [1] 46.39 54.47 50.13 55.45 49.50 51.72 43.61 45.42 51.75 48.52</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">apply</span>(<span class="dt">X =</span> myArr, <span class="dt">MARGIN =</span> <span class="dv">2</span>, <span class="dt">FUN =</span> mean)</code></pre></div>
-<pre><code>##  [1] 52.88 51.30 44.42 51.88 47.66 56.40 49.16 47.88 49.32 55.18 53.08
-## [12] 48.70 51.82 52.16 48.50 53.98 46.06 51.90 47.72 49.54</code></pre>
+<pre><code>##  [1] 53.58 47.18 53.16 44.20 45.80 51.92 47.06 47.58 53.10 52.82 56.92
+## [12] 49.24 50.62 46.96 47.22 51.34 49.94 51.88 43.94 49.46</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">(<span class="kw">apply</span>(myArr[,,<span class="dv">1</span>], <span class="dv">2</span>, mean) <span class="op">+</span><span class="st"> </span><span class="kw">apply</span>(myArr[,,<span class="dv">2</span>], <span class="dv">2</span>, mean) <span class="op">+</span><span class="st"> </span>
 <span class="st">  </span><span class="kw">apply</span>(myArr[,,<span class="dv">3</span>], <span class="dv">2</span>, mean) <span class="op">+</span><span class="st"> </span><span class="kw">apply</span>(myArr[,,<span class="dv">4</span>], <span class="dv">2</span>, mean) <span class="op">+</span><span class="st"> </span>
 <span class="st">  </span><span class="kw">apply</span>(myArr[,,<span class="dv">5</span>], <span class="dv">2</span>, mean))<span class="op">/</span><span class="dv">5</span></code></pre></div>
-<pre><code>##  [1] 52.88 51.30 44.42 51.88 47.66 56.40 49.16 47.88 49.32 55.18 53.08
-## [12] 48.70 51.82 52.16 48.50 53.98 46.06 51.90 47.72 49.54</code></pre>
+<pre><code>##  [1] 53.58 47.18 53.16 44.20 45.80 51.92 47.06 47.58 53.10 52.82 56.92
+## [12] 49.24 50.62 46.96 47.22 51.34 49.94 51.88 43.94 49.46</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">apply</span>(<span class="dt">X =</span> myArr, <span class="dt">MARGIN =</span> <span class="dv">3</span>, <span class="dt">FUN =</span> mean)</code></pre></div>
-<pre><code>## [1] 48.460 51.320 50.115 50.960 51.530</code></pre>
+<pre><code>## [1] 43.285 52.205 50.735 53.585 48.670</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">c</span>(<span class="kw">mean</span>(myArr[,,<span class="dv">1</span>]), <span class="kw">mean</span>(myArr[,,<span class="dv">2</span>]), <span class="kw">mean</span>(myArr[,,<span class="dv">3</span>]), 
   <span class="kw">mean</span>(myArr[,,<span class="dv">4</span>]), <span class="kw">mean</span>(myArr[,,<span class="dv">5</span>]))</code></pre></div>
-<pre><code>## [1] 48.460 51.320 50.115 50.960 51.530</code></pre>
+<pre><code>## [1] 43.285 52.205 50.735 53.585 48.670</code></pre>
 <p>Nous pouvons aussi calculer la moyenne pour chaque valeur de ligne et de colonne (la fonction itère alors sur la dimension 3) :</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">apply</span>(<span class="dt">X =</span> myArr, <span class="dt">MARGIN =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>), <span class="dt">FUN =</span> mean)</code></pre></div>
 <pre><code>##       [,1] [,2] [,3] [,4] [,5] [,6] [,7] [,8] [,9] [,10] [,11] [,12] [,13]
-##  [1,] 55.6 45.4 73.6 49.2 60.4 53.8 43.8 60.6 22.0  71.4  60.2  57.4  65.6
-##  [2,] 61.2 53.2 36.2 57.0 46.8 38.6 51.4 67.6 42.6  46.0  54.6  35.2  44.2
-##  [3,] 68.2 68.2 50.6 39.8 66.2 52.0 42.6 46.2 69.6  37.0  43.8  61.4  55.8
-##  [4,] 54.6 44.0 36.2 57.2 52.8 37.4 36.8 39.0 66.4  73.6  42.4  50.0  35.8
-##  [5,] 43.4 48.8 53.8 87.2 46.2 75.2 57.6 37.6 29.2  50.8  63.8  42.0  71.0
-##  [6,] 39.6 38.6 31.2 47.8 55.2 78.4 46.8 47.0 39.4  74.8  55.2  55.8  31.2
-##  [7,] 62.4 55.2 43.4 56.8 36.0 43.2 32.4 54.0 66.4  51.8  49.8  31.6  47.2
-##  [8,] 41.8 53.8 51.8 33.6 35.4 58.2 52.2 39.4 57.6  40.6  79.4  49.2  48.0
-##  [9,] 61.6 43.2 29.0 40.8 37.2 66.0 74.2 30.8 37.4  36.4  34.0  60.6  51.6
-## [10,] 40.4 62.6 38.4 49.4 40.4 61.2 53.8 56.6 62.6  69.4  47.6  43.8  67.8
+##  [1,] 69.0 31.8 32.8 36.2 39.4 54.4 54.4 36.4 50.2  40.0  55.4  31.2  50.2
+##  [2,] 58.0 38.0 62.8 64.6 65.0 63.0 41.6 59.6 66.0  74.2  52.0  47.6  69.8
+##  [3,] 59.4 59.6 54.8 45.6 52.0 35.6 43.8 47.0 44.4  39.6  72.4  49.6  81.0
+##  [4,] 61.0 70.2 44.8 62.4 57.6 68.8 52.4 65.4 56.8  49.6  74.8  54.6  37.0
+##  [5,] 36.0 35.6 50.4 46.6 44.8 57.4 61.4 34.4 78.8  65.8  31.2  51.0  40.8
+##  [6,] 31.0 69.2 52.6 37.2 26.4 51.8 47.6 53.6 39.6  62.4  39.8  52.6  57.6
+##  [7,] 41.8 39.8 68.6 48.4 44.6 27.8 28.6 42.6 49.0  31.6  38.4  54.4  33.0
+##  [8,] 50.0 43.2 51.0 24.2 27.6 52.8 53.2 48.4 42.6  40.0  66.0  31.2  48.2
+##  [9,] 65.4 37.6 40.8 46.4 56.8 59.4 37.6 47.4 64.0  68.0  67.8  67.2  51.4
+## [10,] 64.2 46.8 73.0 30.4 43.8 48.2 50.0 41.0 39.6  57.0  71.4  53.0  37.2
 ##       [,14] [,15] [,16] [,17] [,18] [,19] [,20]
-##  [1,]  47.8  48.6  56.6  38.6  64.2  53.4  62.0
-##  [2,]  48.6  46.4  35.2  37.2  42.0  58.4  44.6
-##  [3,]  71.2  65.8  57.0  46.4  66.4  40.8  41.2
-##  [4,]  47.6  55.2  32.4  43.8  41.4  47.4  52.4
-##  [5,]  35.6  35.4  67.4  59.0  49.4  40.6  50.8
-##  [6,]  50.2  44.0  70.8  55.4  51.0  54.4  48.8
-##  [7,]  44.4  41.6  31.4  55.8  59.4  36.4  67.8
-##  [8,]  47.6  47.8  59.6  46.0  47.6  59.0  52.2
-##  [9,]  66.6  37.4  53.8  25.8  41.4  27.8  39.6
-## [10,]  62.0  62.8  75.6  52.6  56.2  59.0  36.0</code></pre>
+##  [1,]  45.8  30.2  60.4  57.4  47.4  42.2  63.0
+##  [2,]  50.6  51.6  68.0  37.0  50.4  28.6  41.0
+##  [3,]  45.4  41.8  38.0  52.2  45.6  59.6  35.2
+##  [4,]  48.6  62.8  57.8  35.4  62.0  44.8  42.2
+##  [5,]  47.4  45.2  61.6  55.0  37.2  47.6  61.8
+##  [6,]  40.6  35.0  73.6  80.0  53.8  67.2  62.8
+##  [7,]  54.2  65.2  23.4  45.4  52.2  38.6  44.6
+##  [8,]  37.6  69.0  29.2  44.4  56.2  33.0  60.6
+##  [9,]  42.2  37.2  55.2  51.6  56.6  18.2  64.2
+## [10,]  57.2  34.2  46.2  41.0  57.4  59.6  19.2</code></pre>
 </div>
 <div id="l17sapply" class="section level3">
 <h3><span class="header-section-number">11.7.2</span> <code>lapply</code></h3>
@@ -839,34 +839,34 @@ numberGuess &lt;-<span class="st"> </span><span class="dv">0</span>
 )
 <span class="kw">print</span>(myList)</code></pre></div>
 <pre><code>## $a
-##  [1] 16 70 14 39 93 36 12 29 38 78
+##  [1] 88 29 12 70 36  9 84 68 87 28
 ## 
 ## $b
-##  [1] 41 72 53 24 61 33 34  4 17 70
+##  [1] 81 72 65 83 54 58 16  4 31 71
 ## 
 ## $c
-##  [1] 88 76 89 44 35 49 59 29 48 96
+##  [1]  4  9 85 19 17 34 78 38 44 29
 ## 
 ## $d
-##  [1] 22 41 14 94 37 97 89 11 62 71
+##  [1] 62 78 54  6 66  8 82 80 75 67
 ## 
 ## $e
-##  [1] 70 92 57 91 72 16 14 49 38 93</code></pre>
+##  [1] 73 70 20 18 51 93 98 11 63 29</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">lapply</span>(myList, <span class="dt">FUN =</span> mean)</code></pre></div>
 <pre><code>## $a
-## [1] 42.5
+## [1] 51.1
 ## 
 ## $b
-## [1] 40.9
+## [1] 53.5
 ## 
 ## $c
-## [1] 61.3
+## [1] 35.7
 ## 
 ## $d
-## [1] 53.8
+## [1] 57.8
 ## 
 ## $e
-## [1] 59.2</code></pre>
+## [1] 52.6</code></pre>
 <p>Comme pour la fonction <code>apply()</code>, nous pouvons passer des arguments supplémentaires à la fonction <code>lapply()</code> en les ajoutant à la suite de la fonction. C’est par exemple utile si notre <code>list</code> contient ces valeurs manquantes <code>NA</code> et que nous voulons les ignorer pour le calcul des moyennes (avec l’arguement <code>na.rm = TRUE</code>).</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">myList &lt;-<span class="st"> </span><span class="kw">list</span>(
   <span class="dt">a =</span> <span class="kw">sample</span>(<span class="kw">c</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, <span class="ot">NA</span>), <span class="dt">size =</span> <span class="dv">10</span>, <span class="dt">replace =</span> <span class="ot">TRUE</span>), 
@@ -877,67 +877,67 @@ numberGuess &lt;-<span class="st"> </span><span class="dv">0</span>
 )
 <span class="kw">print</span>(myList)</code></pre></div>
 <pre><code>## $a
-##  [1]  2 NA  3  1  4  3  2 NA  1  5
+##  [1]  2  3  5 NA  1  2  2  3  3  2
 ## 
 ## $b
-##  [1]  1  3  5  2 NA NA  2  2  3  1
+##  [1] 2 4 3 4 1 5 4 2 3 1
 ## 
 ## $c
-##  [1]  4 NA NA  4  4  2  2  5  5  4
+##  [1] NA  4  3  3  1  5  5  4  4  1
 ## 
 ## $d
-##  [1] 5 4 4 3 3 5 3 4 1 3
+##  [1]  5  5  2  4  4  1  3  5 NA  5
 ## 
 ## $e
-##  [1]  1  3  2  2  5 NA  2  3  5  2</code></pre>
+##  [1]  1  4 NA NA NA  4  5  5  2  4</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">lapply</span>(myList, <span class="dt">FUN =</span> mean)</code></pre></div>
 <pre><code>## $a
 ## [1] NA
 ## 
 ## $b
-## [1] NA
+## [1] 2.9
 ## 
 ## $c
 ## [1] NA
 ## 
 ## $d
-## [1] 3.5
+## [1] NA
 ## 
 ## $e
 ## [1] NA</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">lapply</span>(myList, <span class="dt">FUN =</span> mean, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)</code></pre></div>
 <pre><code>## $a
-## [1] 2.625
+## [1] 2.555556
 ## 
 ## $b
-## [1] 2.375
+## [1] 2.9
 ## 
 ## $c
-## [1] 3.75
+## [1] 3.333333
 ## 
 ## $d
-## [1] 3.5
+## [1] 3.777778
 ## 
 ## $e
-## [1] 2.777778</code></pre>
+## [1] 3.571429</code></pre>
 <p>Pour plus de lisibilité ou si plusieurs opérations sont à réaliser au sein de l’argument <code>FUN</code>, nous pouvons utiliser l’écriture suivante :</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">lapply</span>(myList, <span class="dt">FUN =</span> <span class="cf">function</span>(i){
   <span class="kw">mean</span>(i, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)
 })</code></pre></div>
 <pre><code>## $a
-## [1] 2.625
+## [1] 2.555556
 ## 
 ## $b
-## [1] 2.375
+## [1] 2.9
 ## 
 ## $c
-## [1] 3.75
+## [1] 3.333333
 ## 
 ## $d
-## [1] 3.5
+## [1] 3.777778
 ## 
 ## $e
-## [1] 2.777778</code></pre>
+## [1] 3.571429</code></pre>
 <p>Par exemple si nous souhaitons obtenir <code>i^2</code> si la moyenne est supérieure à 3, et <code>i^3</code> sinon :</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">lapply</span>(myList, <span class="dt">FUN =</span> <span class="cf">function</span>(i){
   m &lt;-<span class="st"> </span><span class="kw">mean</span>(i, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)
@@ -948,19 +948,19 @@ numberGuess &lt;-<span class="st"> </span><span class="dv">0</span>
   }
 })</code></pre></div>
 <pre><code>## $a
-##  [1]   8  NA  27   1  64  27   8  NA   1 125
+##  [1]   8  27 125  NA   1   8   8  27  27   8
 ## 
 ## $b
-##  [1]   1  27 125   8  NA  NA   8   8  27   1
+##  [1]   8  64  27  64   1 125  64   8  27   1
 ## 
 ## $c
-##  [1] 16 NA NA 16 16  4  4 25 25 16
+##  [1] NA 16  9  9  1 25 25 16 16  1
 ## 
 ## $d
-##  [1] 25 16 16  9  9 25  9 16  1  9
+##  [1] 25 25  4 16 16  1  9 25 NA 25
 ## 
 ## $e
-##  [1]   1  27   8   8 125  NA   8  27 125   8</code></pre>
+##  [1]  1 16 NA NA NA 16 25 25  4 16</code></pre>
 </div>
 <div id="l17lapply" class="section level3">
 <h3><span class="header-section-number">11.7.3</span> <code>sapply</code></h3>
@@ -969,28 +969,28 @@ numberGuess &lt;-<span class="st"> </span><span class="dv">0</span>
   <span class="kw">mean</span>(i, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)
 })</code></pre></div>
 <pre><code>## $a
-## [1] 2.625
+## [1] 2.555556
 ## 
 ## $b
-## [1] 2.375
+## [1] 2.9
 ## 
 ## $c
-## [1] 3.75
+## [1] 3.333333
 ## 
 ## $d
-## [1] 3.5
+## [1] 3.777778
 ## 
 ## $e
-## [1] 2.777778</code></pre>
+## [1] 3.571429</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">sapply</span>(myList, <span class="dt">FUN =</span> <span class="cf">function</span>(i){
   <span class="kw">mean</span>(i, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)
 })</code></pre></div>
 <pre><code>##        a        b        c        d        e 
-## 2.625000 2.375000 3.750000 3.500000 2.777778</code></pre>
+## 2.555556 2.900000 3.333333 3.777778 3.571429</code></pre>
 <p>La fonction <code>sapply()</code> est intéressante pour récupérer par exemple le nième élément de chacun des éléments d’une <code>list</code>. La fonction qui est appelée pour faire cela est <code>'[['</code>.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">sapply</span>(myList, <span class="dt">FUN =</span> <span class="st">&#39;[[&#39;</span>, <span class="dv">2</span>)</code></pre></div>
-<pre><code>##  a  b  c  d  e 
-## NA  3 NA  4  3</code></pre>
+<pre><code>## a b c d e 
+## 3 4 4 5 4</code></pre>
 </div>
 <div id="l17tapply" class="section level3">
 <h3><span class="header-section-number">11.7.4</span> <code>tapply</code></h3>
@@ -1001,73 +1001,73 @@ perf2 &lt;-<span class="st"> </span><span class="kw">rlnorm</span>(<span class="
 perf3 &lt;-<span class="st"> </span><span class="kw">rgamma</span>(<span class="dt">n =</span> <span class="dv">1000</span>, <span class="dt">shape =</span> <span class="dv">10</span>, <span class="dt">rate =</span> <span class="fl">0.5</span>)
 dfSpecies &lt;-<span class="st"> </span><span class="kw">data.frame</span>(species, perf1, perf2, perf3)
 <span class="kw">print</span>(<span class="kw">head</span>(dfSpecies, <span class="dt">n =</span> <span class="dv">10</span>))</code></pre></div>
-<pre><code>##    species     perf1    perf2    perf3
-## 1        B  9.309536 60823.50 12.38967
-## 2        C 10.138965 17016.78 25.05188
-## 3        D  9.720781 31452.70 15.54096
-## 4        F  8.993058 15929.82 18.73884
-## 5        J  9.857127 13087.03 23.00083
-## 6        E  9.832681 22850.03 25.27428
-## 7        D 10.791163 17749.30 18.71799
-## 8        F  9.864718 18791.19 25.72976
-## 9        H 10.253069 17560.51 17.26061
-## 10       G  9.134189 15970.08 10.64604</code></pre>
+<pre><code>##    species     perf1     perf2    perf3
+## 1        D 10.214927 17792.709 31.60733
+## 2        E 10.406867 44074.797 12.48327
+## 3        I  9.154242 10538.982 16.90622
+## 4        H 10.317436  6954.246 16.82321
+## 5        C 10.693162 13072.818 17.19880
+## 6        H  9.667505 25203.019 21.40313
+## 7        I 10.530918 21200.764 32.55809
+## 8        I  9.143498 13292.115 10.45685
+## 9        H  9.493524 17312.767 20.52039
+## 10       H  9.874423 63590.647 19.03947</code></pre>
 <p>Nous pouvons facilement obtenir un résumé des performances pour chaque espèce avec la fonction <code>tapply()</code> et la fonction <code>summary()</code>.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">tapply</span>(dfSpecies<span class="op">$</span>perf1, <span class="dt">INDEX =</span> dfSpecies<span class="op">$</span>species, <span class="dt">FUN =</span> summary)</code></pre></div>
 <pre><code>## $A
 ##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-##   8.778   9.559   9.927   9.960  10.324  10.914 
+##   8.775   9.677  10.040  10.034  10.425  11.282 
 ## 
 ## $B
 ##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-##   8.828   9.674   9.893   9.930  10.200  11.149 
+##   8.865   9.549   9.872   9.957  10.379  11.291 
 ## 
 ## $C
 ##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-##   8.839   9.683   9.959  10.006  10.317  11.471 
+##   8.908   9.621  10.024  10.001  10.322  11.202 
 ## 
 ## $D
 ##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-##   8.648   9.547   9.946   9.919  10.239  11.104 
+##   8.537   9.653  10.001   9.968  10.249  11.151 
 ## 
 ## $E
 ##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-##   8.466   9.703   9.997   9.971  10.296  10.957 
+##   8.847   9.669   9.928   9.981  10.275  11.713 
 ## 
 ## $F
 ##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-##   8.697   9.725   9.890   9.917  10.156  10.927 
+##   8.838   9.597   9.972   9.974  10.362  11.661 
 ## 
 ## $G
 ##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-##   9.050   9.669   9.986  10.023  10.317  11.104 
+##   8.712   9.621   9.988   9.965  10.322  11.178 
 ## 
 ## $H
 ##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-##   8.594   9.656  10.002   9.960  10.292  11.412 
+##   8.375   9.567   9.937   9.975  10.396  11.358 
 ## 
 ## $I
 ##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-##   8.844   9.721   9.984  10.013  10.239  11.154 
+##   8.884   9.586   9.972  10.005  10.365  11.453 
 ## 
 ## $J
 ##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-##   9.057   9.623   9.958   9.971  10.290  11.723</code></pre>
+##   8.812   9.634  10.042  10.030  10.425  11.318</code></pre>
 <p>Nous pouvons aussi obtenir la valeur moyenne de chacune des performances en combinant une fonction <code>sapply()</code> avec la fonction <code>tapply()</code>et en utilisant la fonction <code>mean()</code>.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">sapply</span>(<span class="dv">2</span><span class="op">:</span><span class="dv">4</span>, <span class="dt">FUN =</span> <span class="cf">function</span>(i){
   <span class="kw">tapply</span>(dfSpecies[,i], <span class="dt">INDEX =</span> dfSpecies<span class="op">$</span>species, <span class="dt">FUN =</span> mean)
 })</code></pre></div>
 <pre><code>##        [,1]     [,2]     [,3]
-## A  9.959867 25076.83 20.82010
-## B  9.929599 24547.61 19.57777
-## C 10.005722 24846.31 19.26826
-## D  9.918761 24197.52 19.98018
-## E  9.970576 22319.37 19.87042
-## F  9.917232 24020.32 20.25261
-## G 10.023339 25455.44 18.43092
-## H  9.959951 25548.66 20.26216
-## I 10.013373 24752.93 19.54705
-## J  9.970551 25728.93 20.28179</code></pre>
+## A 10.033671 24676.82 18.76866
+## B  9.956754 25752.85 20.05985
+## C 10.000562 25152.57 20.09879
+## D  9.968330 25559.51 19.75230
+## E  9.981018 23071.99 20.11000
+## F  9.973830 23519.40 20.77491
+## G  9.964571 27887.94 20.83546
+## H  9.975036 27409.17 19.42566
+## I 10.004688 23794.47 19.36323
+## J 10.029857 23578.77 20.23824</code></pre>
 </div>
 <div id="l17mapply" class="section level3">
 <h3><span class="header-section-number">11.7.5</span> <code>mapply</code></h3>
