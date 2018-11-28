@@ -241,6 +241,27 @@ graphBarplotCol <- function(n){
 graphBarplotCol(n = 1000)
 ```
 
+Un `barplot` peut bien sûr prendre des valeurs positives ou négatives.
+
+```{r}
+barplot(rnorm(20), horiz = TRUE, col = rainbow(20))
+```
+
+Le `barplot` peut aussi être utilisé pour faire une pyramide des âges (il existe des fonctions pour réaliser des pyramides des âges, ici l'objectif est pédagogique).
+
+```{r}
+gender <- data.frame(
+  m = cut(sample(1:75, 1000, replace = TRUE), 
+    breaks = seq(from = 0, to = 80, by = 10)), 
+  f = cut(sample(1:75, 1000, replace = TRUE), 
+    breaks = seq(from = 0, to = 80, by = 10))
+)
+op <- par(no.readonly = TRUE)
+par(mfrow = c(1, 2), mar = c(2, 1, 2, 1))
+barplot(-table(gender$f), horiz = TRUE, col = "salmon")
+barplot(table(gender$m), horiz = TRUE, col = "lightblue")
+par(op)
+```
 
 ## `boxplot`
 
