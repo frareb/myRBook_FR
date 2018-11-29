@@ -275,7 +275,7 @@ XXX
 
 Nous avons vu différentes manières d'utiliser les couleurs : avec leur nom (e.g., `salmon`), avec un numéro de 1 à 8, avec la fonction `rgb()` (pour "red", "green", "blue"), et avec la fonction `colors()`. Il en existe d'autres mais celles-ci sont les principales.
 
-L'utilisation des numéros de 1 à 8 correspond au noir, rouge, vert, bleu, cyan, magenta, jaune et gris. Cette utilisation est pratique pour visualiser rapidement nos résultats mais donne globalement des graphiques visuellements moyens. 
+L'utilisation des numéros de 1 à 8 correspond au noir, rouge, vert, bleu, cyan, magenta, jaune et gris. Cette utilisation est pratique pour visualiser rapidement nos résultats mais donne globalement des graphiques visuellements moyens. Ces couleurs sont plutôt à éviter pour communiquer nos graphiques.
 
 ```{r}
 barplot(sample(10:15, 8, replace = TRUE), col = 1:8, names.arg = 1:8)
@@ -283,11 +283,43 @@ barplot(sample(10:15, 8, replace = TRUE), col = 1:8, names.arg = 1:8)
 
 ## `colors()`
 
+Pour choisir des couleurs plus agréables et mettant plus en avant nos résultats, une option consiste à les choisir dans la liste des couleurs pré-enregistrées dans R. Nous pouvons accéder à la liste des couleurs avec la fonction `colors()`
 
+```{r}
+head(colors(), n = 20)
+```
 
-## RGB
+Nous pouvons utiliser ces couleurs avec leur nom (e.g., "white", "azure3"), ou alors avec leur numéro (e.g., "white" = `colors()[1]`, "azure3" = `colors()[16]`). 
 
-XXX L'espace de couleur RGB
+```{r}
+# adapted from http://www.r-graph-gallery.com/42-colors-names/
+op <- par(no.readonly = TRUE)
+par(mar=c(0,0,0,0))
+plot(0, type = "n", xlim = c(0, 1), ylim = c(0, 1), 
+  axes = FALSE, xlab = "", ylab = "")
+numRow <- 26
+numCol <- 26
+rect(
+  xleft = rep((0:(numCol - 1)/numCol), numRow),  
+  ybottom = sort(rep((0:(numRow - 1)/numRow),numCol), decreasing = TRUE),
+  xright = rep((1:numCol/numCol), numRow),
+  ytop = sort(rep((1:numRow/numRow), numCol), decreasing = TRUE),
+  border = grey(0.5), 
+  col = colors()[seq(1, numRow*numCol)])
+myLabels <- c(as.character(1:657), rep("", numRow*numCol - 657))
+text(
+  x = rep((0:(numCol - 1)/numCol), numRow) + 0.02,
+  y = sort(rep((0:(numRow - 1)/numRow), numCol), decreasing = TRUE) + 0.02,
+  labels = myLabels, 
+  cex = 0.6)
+par(op)
+```
+
+## `rgb()`
+
+Une autre option consiste à construire ses propres couleurs ave la fonction `rgb()` qui prend comme argument la quantité de rouge, de de vert, et de bleu. Par défaut ces valeurs sont comprises entre 0 et 1. Ce réglage par défaut peut être modifié avec l'arguement `maxColorValue` pour par exemple avoir des valeurs entre 0 et 255 (`maxColorValue = 255` ; norme pour la représentation des couleurs RGB).
+
+Nous allons reprendre notre fonction permettant de représenter la distribution de points dans un nuage de points au moyen de `barplot` avec cette fois trois couleurs de points (rouge, vert, bleu), et des `barplot` dont la couleur correspondra à la quantité de chaque couleur avec la fonction `rgb()`.
 
 ```{r}
 graphBarplotCol <- function(n){
@@ -332,6 +364,19 @@ graphBarplotCol <- function(n){
 graphBarplotCol(n = 50)
 ```
 
+
+
 ## Palettes
 
+terrain.colors()
+heat.colors()
+topo.colrs()
+cm.colors()
+rainbow()
+colorRampPalette()
+
+
 # Les packages graphiques {#graph3}
+
+RColorBrewer package
+ggplot2 package
