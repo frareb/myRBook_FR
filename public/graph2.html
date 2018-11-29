@@ -257,11 +257,12 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </ul></li>
 <li class="part"><span><b>II Les graphiques</b></span></li>
 <li class="chapter" data-level="13" data-path="graph1.html"><a href="graph1.html"><i class="fa fa-check"></i><b>13</b> Graphiques simples</a><ul>
-<li class="chapter" data-level="13.1" data-path="graph1.html"><a href="graph1.html#plot"><i class="fa fa-check"></i><b>13.1</b> <code>plot</code></a></li>
-<li class="chapter" data-level="13.2" data-path="graph1.html"><a href="graph1.html#hist"><i class="fa fa-check"></i><b>13.2</b> <code>hist</code></a></li>
-<li class="chapter" data-level="13.3" data-path="graph1.html"><a href="graph1.html#barplot"><i class="fa fa-check"></i><b>13.3</b> <code>barplot</code></a></li>
-<li class="chapter" data-level="13.4" data-path="graph1.html"><a href="graph1.html#boxplot"><i class="fa fa-check"></i><b>13.4</b> <code>boxplot</code></a></li>
+<li class="chapter" data-level="13.1" data-path="graph1.html"><a href="graph1.html#graph1plot"><i class="fa fa-check"></i><b>13.1</b> <code>plot</code></a></li>
+<li class="chapter" data-level="13.2" data-path="graph1.html"><a href="graph1.html#graph1hist"><i class="fa fa-check"></i><b>13.2</b> <code>hist</code></a></li>
+<li class="chapter" data-level="13.3" data-path="graph1.html"><a href="graph1.html#graph1barplot"><i class="fa fa-check"></i><b>13.3</b> <code>barplot</code></a></li>
+<li class="chapter" data-level="13.4" data-path="graph1.html"><a href="graph1.html#graph1boxplot"><i class="fa fa-check"></i><b>13.4</b> <code>boxplot</code></a></li>
 <li class="chapter" data-level="13.5" data-path="graph1.html"><a href="graph1.html#autres-graphiques"><i class="fa fa-check"></i><b>13.5</b> Autres graphiques</a></li>
+<li class="chapter" data-level="13.6" data-path="graph1.html"><a href="graph1.html#conclusion-8"><i class="fa fa-check"></i><b>13.6</b> Conclusion</a></li>
 </ul></li>
 <li class="chapter" data-level="14" data-path="graph2.html"><a href="graph2.html"><i class="fa fa-check"></i><b>14</b> La gestion des couleurs</a><ul>
 <li class="chapter" data-level="14.1" data-path="graph2.html"><a href="graph2.html#colors"><i class="fa fa-check"></i><b>14.1</b> <code>colors()</code></a></li>
@@ -294,10 +295,10 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
             <section class="normal" id="section-">
 <div id="graph2" class="section level1">
 <h1><span class="header-section-number"> 14</span> La gestion des couleurs</h1>
-<p>Nous avons vu différentes manières d’utiliser les couleurs : avec leur nom (e.g., <code>salmon</code>), avec un numéro de 1 à 8, avec la fonction <code>rgb()</code> (pour “red”, “green”, “blue”), et avec la fonction <code>colors()</code>. Il en existe d’autres mais celles-ci sont les principales.</p>
-<p>L’utilisation des numéros de 1 à 8 correspond au noir, rouge, vert, bleu, cyan, magenta, jaune et gris. Cette utilisation est pratique pour visualiser rapidement nos résultats mais donne globalement des graphiques visuellements moyens. Ces couleurs sont plutôt à éviter pour communiquer nos graphiques.</p>
+<p>Nous avons vu différentes manières d’utiliser les couleurs : avec leur nom (e.g., <code>&quot;salmon&quot;</code>), avec un numéro de 1 à 8, avec la fonction <code>rgb()</code> (pour “red”, “green”, “blue”), et avec la fonction <code>colors()</code>. Il en existe d’autres mais celles-ci sont les principales.</p>
+<p>L’utilisation des numéros de 1 à 8 correspond au noir, rouge, vert, bleu, cyan, magenta, jaune et gris. Cette utilisation est pratique pour visualiser rapidement nos résultats mais donne globalement des graphiques visuellement moyens. Ces couleurs sont plutôt à éviter pour communiquer nos graphiques.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">barplot</span>(<span class="kw">sample</span>(<span class="dv">10</span><span class="op">:</span><span class="dv">15</span>, <span class="dv">8</span>, <span class="dt">replace =</span> <span class="ot">TRUE</span>), <span class="dt">col =</span> <span class="dv">1</span><span class="op">:</span><span class="dv">8</span>, <span class="dt">names.arg =</span> <span class="dv">1</span><span class="op">:</span><span class="dv">8</span>)</code></pre></div>
-<p><img src="myRBook_FR_files/figure-html/unnamed-chunk-239-1.png" width="672" /></p>
+<p><img src="myRBook_FR_files/figure-html/unnamed-chunk-242-1.png" width="672" /></p>
 <div id="colors" class="section level2">
 <h2><span class="header-section-number">14.1</span> <code>colors()</code></h2>
 <p>Pour choisir des couleurs plus agréables et mettant plus en avant nos résultats, une option consiste à les choisir dans la liste des couleurs pré-enregistrées dans R. Nous pouvons accéder à la liste des couleurs avec la fonction <code>colors()</code></p>
@@ -328,7 +329,7 @@ myLabels &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="kw
   <span class="dt">y =</span> <span class="kw">sort</span>(<span class="kw">rep</span>((<span class="dv">0</span><span class="op">:</span>(numRow <span class="op">-</span><span class="st"> </span><span class="dv">1</span>)<span class="op">/</span>numRow), numCol), <span class="dt">decreasing =</span> <span class="ot">TRUE</span>) <span class="op">+</span><span class="st"> </span><span class="fl">0.02</span>,
   <span class="dt">labels =</span> myLabels, 
   <span class="dt">cex =</span> <span class="fl">0.6</span>)</code></pre></div>
-<p><img src="myRBook_FR_files/figure-html/unnamed-chunk-241-1.png" width="672" /></p>
+<p><img src="myRBook_FR_files/figure-html/unnamed-chunk-244-1.png" width="672" /></p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">par</span>(op)</code></pre></div>
 </div>
 <div id="rgb" class="section level2">
@@ -375,7 +376,7 @@ myLabels &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="kw
   <span class="kw">par</span>(op)
 }
 <span class="kw">graphBarplotCol</span>(<span class="dt">n =</span> <span class="dv">50</span>)</code></pre></div>
-<p><img src="myRBook_FR_files/figure-html/unnamed-chunk-242-1.png" width="672" /></p>
+<p><img src="myRBook_FR_files/figure-html/unnamed-chunk-245-1.png" width="672" /></p>
 </div>
 <div id="palettes" class="section level2">
 <h2><span class="header-section-number">14.3</span> Palettes</h2>

@@ -257,11 +257,12 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </ul></li>
 <li class="part"><span><b>II Les graphiques</b></span></li>
 <li class="chapter" data-level="13" data-path="graph1.html"><a href="graph1.html"><i class="fa fa-check"></i><b>13</b> Graphiques simples</a><ul>
-<li class="chapter" data-level="13.1" data-path="graph1.html"><a href="graph1.html#plot"><i class="fa fa-check"></i><b>13.1</b> <code>plot</code></a></li>
-<li class="chapter" data-level="13.2" data-path="graph1.html"><a href="graph1.html#hist"><i class="fa fa-check"></i><b>13.2</b> <code>hist</code></a></li>
-<li class="chapter" data-level="13.3" data-path="graph1.html"><a href="graph1.html#barplot"><i class="fa fa-check"></i><b>13.3</b> <code>barplot</code></a></li>
-<li class="chapter" data-level="13.4" data-path="graph1.html"><a href="graph1.html#boxplot"><i class="fa fa-check"></i><b>13.4</b> <code>boxplot</code></a></li>
+<li class="chapter" data-level="13.1" data-path="graph1.html"><a href="graph1.html#graph1plot"><i class="fa fa-check"></i><b>13.1</b> <code>plot</code></a></li>
+<li class="chapter" data-level="13.2" data-path="graph1.html"><a href="graph1.html#graph1hist"><i class="fa fa-check"></i><b>13.2</b> <code>hist</code></a></li>
+<li class="chapter" data-level="13.3" data-path="graph1.html"><a href="graph1.html#graph1barplot"><i class="fa fa-check"></i><b>13.3</b> <code>barplot</code></a></li>
+<li class="chapter" data-level="13.4" data-path="graph1.html"><a href="graph1.html#graph1boxplot"><i class="fa fa-check"></i><b>13.4</b> <code>boxplot</code></a></li>
 <li class="chapter" data-level="13.5" data-path="graph1.html"><a href="graph1.html#autres-graphiques"><i class="fa fa-check"></i><b>13.5</b> Autres graphiques</a></li>
+<li class="chapter" data-level="13.6" data-path="graph1.html"><a href="graph1.html#conclusion-8"><i class="fa fa-check"></i><b>13.6</b> Conclusion</a></li>
 </ul></li>
 <li class="chapter" data-level="14" data-path="graph2.html"><a href="graph2.html"><i class="fa fa-check"></i><b>14</b> La gestion des couleurs</a><ul>
 <li class="chapter" data-level="14.1" data-path="graph2.html"><a href="graph2.html#colors"><i class="fa fa-check"></i><b>14.1</b> <code>colors()</code></a></li>
@@ -294,7 +295,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
             <section class="normal" id="section-">
 <div id="graph1" class="section level1">
 <h1><span class="header-section-number"> 13</span> Graphiques simples</h1>
-<div id="plot" class="section level2">
+<div id="graph1plot" class="section level2">
 <h2><span class="header-section-number">13.1</span> <code>plot</code></h2>
 <p>Le premier type de graphique que nous allons voir est le nuage de points. Dans un nuage de points, chaque point est représenté par sa valeur en x et en y. La fonction permettant de faire un nuage de points est <code>plot()</code>.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">myX &lt;-<span class="st"> </span><span class="kw">rnorm</span>(<span class="dv">50</span>, <span class="dt">mean =</span> <span class="dv">0</span>, <span class="dt">sd =</span> <span class="dv">1</span>)
@@ -383,7 +384,7 @@ myY &lt;-<span class="st"> </span><span class="kw">rnorm</span>(<span class="dv"
 })</code></pre></div>
 <p><img src="myRBook_FR_files/figure-html/unnamed-chunk-231-1.png" width="672" /></p>
 </div>
-<div id="hist" class="section level2">
+<div id="graph1hist" class="section level2">
 <h2><span class="header-section-number">13.2</span> <code>hist</code></h2>
 <p>Pour faire un histogramme nous utilisons la fonction <code>hist()</code>. C’est une fonction graphique utile pour visualiser rapidement la distribution d’un jeu de données.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">op &lt;-<span class="st"> </span><span class="kw">par</span>(<span class="dt">no.readonly =</span> <span class="ot">TRUE</span>)
@@ -404,7 +405,7 @@ tr &lt;-<span class="st"> </span><span class="kw">lapply</span>(<span class="dv"
 <p><img src="myRBook_FR_files/figure-html/unnamed-chunk-232-1.png" width="672" /></p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">par</span>(op)</code></pre></div>
 </div>
-<div id="barplot" class="section level2">
+<div id="graph1barplot" class="section level2">
 <h2><span class="header-section-number">13.3</span> <code>barplot</code></h2>
 <p>Le graphique en barres se fait au moyen de la fonction <code>barplot()</code>.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">myX &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">8</span>)
@@ -501,13 +502,51 @@ op &lt;-<span class="st"> </span><span class="kw">par</span>(<span class="dt">no
 <p><img src="myRBook_FR_files/figure-html/unnamed-chunk-238-1.png" width="672" /></p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">par</span>(op)</code></pre></div>
 </div>
-<div id="boxplot" class="section level2">
+<div id="graph1boxplot" class="section level2">
 <h2><span class="header-section-number">13.4</span> <code>boxplot</code></h2>
-<p>XXX</p>
+<p>Les <code>boxplot</code> ou boîtes à moustache sont des graphiques très courant avec R car ils donnent un bon apperçu d’un jeu de données en représentant les valeurs extrèmes (“outliers”), la médiane, les quartiles, les minimums et les maximums.</p>
+<p>La fonction <code>boxplot()</code> s’applique à un ou plusieurs <code>vector</code>.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">df &lt;-<span class="st"> </span><span class="kw">data.frame</span>(
+  <span class="dt">box1 =</span> <span class="kw">rnorm</span>(<span class="dv">1000</span>), 
+  <span class="dt">box2 =</span> <span class="kw">rgamma</span>(<span class="dv">1000</span>, <span class="dt">shape =</span> <span class="dv">1</span>), 
+  <span class="dt">box3 =</span> <span class="kw">sample</span>(<span class="op">-</span><span class="dv">3</span><span class="op">:</span><span class="dv">3</span>, <span class="dt">size =</span> <span class="dv">1000</span>, <span class="dt">replace =</span> <span class="ot">TRUE</span>),
+  <span class="dt">box4 =</span> <span class="kw">rbeta</span>(<span class="dv">1000</span>, <span class="dt">shape1 =</span> <span class="dv">1</span>, <span class="dt">shape2 =</span> <span class="dv">2</span>)
+)
+<span class="kw">boxplot</span>(df, <span class="dt">col =</span> <span class="kw">c</span>(<span class="kw">rgb</span>(<span class="dv">0</span>, <span class="dv">94</span>, <span class="dv">255</span>, <span class="dt">maxColorValue =</span> <span class="dv">255</span>),  
+  <span class="kw">rgb</span>(<span class="dv">255</span>, <span class="dv">0</span>, <span class="dv">174</span>, <span class="dt">maxColorValue =</span> <span class="dv">255</span>),  
+  <span class="kw">rgb</span>(<span class="dv">255</span>, <span class="dv">136</span>, <span class="dv">0</span>, <span class="dt">maxColorValue =</span> <span class="dv">255</span>),  
+  <span class="kw">rgb</span>(<span class="dv">119</span>, <span class="dv">255</span>, <span class="dv">0</span>, <span class="dt">maxColorValue =</span> <span class="dv">255</span>)))</code></pre></div>
+<p><img src="myRBook_FR_files/figure-html/unnamed-chunk-239-1.png" width="672" /></p>
+<p>Si une variable est de type <code>factor</code>, la fonction <code>boxplot()</code> permet facilement de représenter chaque catégorie. Cela fonctionne aussi avec les variables numériques mais il faut veiller à ne pas avoir trop de valeurs différentes pour que le graphique reste lisible.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">df<span class="op">$</span>cat &lt;-<span class="st"> </span><span class="kw">sample</span>(<span class="kw">c</span>(<span class="st">&quot;w&quot;</span>, <span class="st">&quot;x&quot;</span>, <span class="st">&quot;y&quot;</span>, <span class="st">&quot;z&quot;</span>), <span class="dt">size =</span> <span class="dv">1000</span>, <span class="dt">replace =</span> <span class="ot">TRUE</span>)
+<span class="kw">boxplot</span>(df<span class="op">$</span>box3 <span class="op">~</span><span class="st"> </span>df<span class="op">$</span>cat, <span class="dt">col =</span> <span class="kw">c</span>(<span class="kw">rgb</span>(<span class="dv">0</span>, <span class="dv">94</span>, <span class="dv">255</span>, <span class="dt">maxColorValue =</span> <span class="dv">255</span>),  
+  <span class="kw">rgb</span>(<span class="dv">255</span>, <span class="dv">0</span>, <span class="dv">174</span>, <span class="dt">maxColorValue =</span> <span class="dv">255</span>),  
+  <span class="kw">rgb</span>(<span class="dv">255</span>, <span class="dv">136</span>, <span class="dv">0</span>, <span class="dt">maxColorValue =</span> <span class="dv">255</span>),  
+  <span class="kw">rgb</span>(<span class="dv">119</span>, <span class="dv">255</span>, <span class="dv">0</span>, <span class="dt">maxColorValue =</span> <span class="dv">255</span>)), <span class="dt">ylab =</span> <span class="st">&quot;Box3&quot;</span>)</code></pre></div>
+<p><img src="myRBook_FR_files/figure-html/unnamed-chunk-240-1.png" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">df<span class="op">$</span>cat2 &lt;-<span class="st"> </span><span class="kw">sample</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">3</span>, <span class="dt">size =</span> <span class="dv">1000</span>, <span class="dt">replace =</span> <span class="ot">TRUE</span>)
+<span class="kw">boxplot</span>(df<span class="op">$</span>box4 <span class="op">~</span><span class="st"> </span>df<span class="op">$</span>cat<span class="op">*</span>df<span class="op">$</span>cat2, <span class="dt">col =</span> <span class="kw">c</span>(
+  <span class="kw">rgb</span>(<span class="dv">0</span>, <span class="dv">94</span>, <span class="dv">255</span>, <span class="dt">maxColorValue =</span> <span class="dv">255</span>),  
+  <span class="kw">rgb</span>(<span class="dv">255</span>, <span class="dv">0</span>, <span class="dv">174</span>, <span class="dt">maxColorValue =</span> <span class="dv">255</span>),  
+  <span class="kw">rgb</span>(<span class="dv">255</span>, <span class="dv">136</span>, <span class="dv">0</span>, <span class="dt">maxColorValue =</span> <span class="dv">255</span>),  
+  <span class="kw">rgb</span>(<span class="dv">119</span>, <span class="dv">255</span>, <span class="dv">0</span>, <span class="dt">maxColorValue =</span> <span class="dv">255</span>)), <span class="dt">ylab =</span> <span class="st">&quot;Box4&quot;</span>)</code></pre></div>
+<p><img src="myRBook_FR_files/figure-html/unnamed-chunk-240-2.png" width="672" /></p>
+<p>Le <code>boxplot</code> peut être représenté horizontalement ou verticalement.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">df<span class="op">$</span>cat &lt;-<span class="st"> </span><span class="kw">sample</span>(<span class="kw">c</span>(<span class="st">&quot;w&quot;</span>, <span class="st">&quot;x&quot;</span>, <span class="st">&quot;y&quot;</span>, <span class="st">&quot;z&quot;</span>), <span class="dt">size =</span> <span class="dv">1000</span>, <span class="dt">replace =</span> <span class="ot">TRUE</span>)
+<span class="kw">boxplot</span>(df<span class="op">$</span>box2 <span class="op">~</span><span class="st"> </span>df<span class="op">$</span>cat, <span class="dt">horizontal =</span> <span class="ot">TRUE</span>, 
+  <span class="dt">col =</span> <span class="kw">c</span>(<span class="kw">rgb</span>(<span class="dv">255</span>, <span class="dv">110</span>, <span class="dv">0</span>, <span class="dt">maxColorValue =</span> <span class="dv">255</span>),  
+  <span class="kw">rgb</span>(<span class="dv">230</span>, <span class="dv">255</span>, <span class="dv">0</span>, <span class="dt">maxColorValue =</span> <span class="dv">255</span>),  
+  <span class="kw">rgb</span>(<span class="dv">0</span>, <span class="dv">178</span>, <span class="dv">255</span>, <span class="dt">maxColorValue =</span> <span class="dv">255</span>),  
+  <span class="kw">rgb</span>(<span class="dv">166</span>, <span class="dv">0</span>, <span class="dv">255</span>, <span class="dt">maxColorValue =</span> <span class="dv">255</span>)), <span class="dt">xlab =</span> <span class="st">&quot;Box2&quot;</span>)</code></pre></div>
+<p><img src="myRBook_FR_files/figure-html/unnamed-chunk-241-1.png" width="672" /></p>
 </div>
 <div id="autres-graphiques" class="section level2">
 <h2><span class="header-section-number">13.5</span> Autres graphiques</h2>
-<p>XXX</p>
+<p>Il existe de nombreux autres graphiques mais ceux que nous venons de voir constituent la base. Pour plus d’information et d’idées pour représenter vos données nous pouvons consulter le très beau site <a href="https://www.data-to-viz.com/" class="uri">https://www.data-to-viz.com/</a> ou encore la gallerie de graphiques R <a href="https://www.r-graph-gallery.com/" class="uri">https://www.r-graph-gallery.com/</a> (en anglais ; la plupart des graphiques sont réalisés avec le package ggplot2 que nous verrons plus tard). Pour plus d’idées vous pouvez aussi utiliser la demonstration du package <code>graphics</code> en utilisant la commande <code>demo(&quot;graphics&quot;)</code> (la touche “Entrée” permet d’afficher les graphiques).</p>
+</div>
+<div id="conclusion-8" class="section level2">
+<h2><span class="header-section-number">13.6</span> Conclusion</h2>
+<p>Félicitations, nous sommes arrivés à la fin de ce chapitre sur les graphiques simples ! Nous savons désormais réaliser les principaux graphiques <code>plot()</code>, <code>hist()</code>, <code>barplot()</code>, et <code>boxplot()</code>. Tout au long de ce chapitre nous avons utilisé différentes couleurs et différentes façons de représenter les couleurs : il est temps de formaliser l’utilisation et la gestion des couleurs. C’est le sujet du prochain chapitre !</p>
 </div>
 </div>
             </section>
