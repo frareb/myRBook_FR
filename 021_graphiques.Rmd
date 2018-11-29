@@ -265,11 +265,25 @@ par(op)
 
 ## `boxplot`
 
+XXX
+
 ## Autres graphiques
+
+XXX
 
 # La gestion des couleurs {#graph2}
 
+Nous avons vu différentes manières d'utiliser les couleurs : avec leur nom (e.g., `salmon`), avec un numéro de 1 à 8, avec la fonction `rgb()` (pour "red", "green", "blue"), et avec la fonction `colors()`. Il en existe d'autres mais celles-ci sont les principales.
+
+L'utilisation des numéros de 1 à 8 correspond au noir, rouge, vert, bleu, cyan, magenta, jaune et gris. Cette utilisation est pratique pour visualiser rapidement nos résultats mais donne globalement des graphiques visuellements moyens. 
+
+```{r}
+barplot(sample(10:15, 8, replace = TRUE), col = 1:8, names.arg = 1:8)
+```
+
 ## `colors()`
+
+
 
 ## RGB
 
