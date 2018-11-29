@@ -25,7 +25,7 @@
 <meta name="author" content="François Rebaudo">
 
 
-<meta name="date" content="2018-11-28">
+<meta name="date" content="2018-11-29">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -265,7 +265,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </ul></li>
 <li class="chapter" data-level="14" data-path="graph2.html"><a href="graph2.html"><i class="fa fa-check"></i><b>14</b> La gestion des couleurs</a><ul>
 <li class="chapter" data-level="14.1" data-path="graph2.html"><a href="graph2.html#colors"><i class="fa fa-check"></i><b>14.1</b> <code>colors()</code></a></li>
-<li class="chapter" data-level="14.2" data-path="graph2.html"><a href="graph2.html#rgb"><i class="fa fa-check"></i><b>14.2</b> RGB</a></li>
+<li class="chapter" data-level="14.2" data-path="graph2.html"><a href="graph2.html#rgb"><i class="fa fa-check"></i><b>14.2</b> <code>rgb()</code></a></li>
 <li class="chapter" data-level="14.3" data-path="graph2.html"><a href="graph2.html#palettes"><i class="fa fa-check"></i><b>14.3</b> Palettes</a></li>
 </ul></li>
 <li class="chapter" data-level="15" data-path="graph3.html"><a href="graph3.html"><i class="fa fa-check"></i><b>15</b> Les packages graphiques</a></li>
@@ -294,12 +294,47 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
             <section class="normal" id="section-">
 <div id="graph2" class="section level1">
 <h1><span class="header-section-number"> 14</span> La gestion des couleurs</h1>
+<p>Nous avons vu différentes manières d’utiliser les couleurs : avec leur nom (e.g., <code>salmon</code>), avec un numéro de 1 à 8, avec la fonction <code>rgb()</code> (pour “red”, “green”, “blue”), et avec la fonction <code>colors()</code>. Il en existe d’autres mais celles-ci sont les principales.</p>
+<p>L’utilisation des numéros de 1 à 8 correspond au noir, rouge, vert, bleu, cyan, magenta, jaune et gris. Cette utilisation est pratique pour visualiser rapidement nos résultats mais donne globalement des graphiques visuellements moyens. Ces couleurs sont plutôt à éviter pour communiquer nos graphiques.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">barplot</span>(<span class="kw">sample</span>(<span class="dv">10</span><span class="op">:</span><span class="dv">15</span>, <span class="dv">8</span>, <span class="dt">replace =</span> <span class="ot">TRUE</span>), <span class="dt">col =</span> <span class="dv">1</span><span class="op">:</span><span class="dv">8</span>, <span class="dt">names.arg =</span> <span class="dv">1</span><span class="op">:</span><span class="dv">8</span>)</code></pre></div>
+<p><img src="myRBook_FR_files/figure-html/unnamed-chunk-239-1.png" width="672" /></p>
 <div id="colors" class="section level2">
 <h2><span class="header-section-number">14.1</span> <code>colors()</code></h2>
+<p>Pour choisir des couleurs plus agréables et mettant plus en avant nos résultats, une option consiste à les choisir dans la liste des couleurs pré-enregistrées dans R. Nous pouvons accéder à la liste des couleurs avec la fonction <code>colors()</code></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">head</span>(<span class="kw">colors</span>(), <span class="dt">n =</span> <span class="dv">20</span>)</code></pre></div>
+<pre><code>##  [1] &quot;white&quot;         &quot;aliceblue&quot;     &quot;antiquewhite&quot;  &quot;antiquewhite1&quot;
+##  [5] &quot;antiquewhite2&quot; &quot;antiquewhite3&quot; &quot;antiquewhite4&quot; &quot;aquamarine&quot;   
+##  [9] &quot;aquamarine1&quot;   &quot;aquamarine2&quot;   &quot;aquamarine3&quot;   &quot;aquamarine4&quot;  
+## [13] &quot;azure&quot;         &quot;azure1&quot;        &quot;azure2&quot;        &quot;azure3&quot;       
+## [17] &quot;azure4&quot;        &quot;beige&quot;         &quot;bisque&quot;        &quot;bisque1&quot;</code></pre>
+<p>Nous pouvons utiliser ces couleurs avec leur nom (e.g., “white”, “azure3”), ou alors avec leur numéro (e.g., “white” = <code>colors()[1]</code>, “azure3” = <code>colors()[16]</code>).</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># adapted from http://www.r-graph-gallery.com/42-colors-names/</span>
+op &lt;-<span class="st"> </span><span class="kw">par</span>(<span class="dt">no.readonly =</span> <span class="ot">TRUE</span>)
+<span class="kw">par</span>(<span class="dt">mar=</span><span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>))
+<span class="kw">plot</span>(<span class="dv">0</span>, <span class="dt">type =</span> <span class="st">&quot;n&quot;</span>, <span class="dt">xlim =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">1</span>), <span class="dt">ylim =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">1</span>), 
+  <span class="dt">axes =</span> <span class="ot">FALSE</span>, <span class="dt">xlab =</span> <span class="st">&quot;&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;&quot;</span>)
+numRow &lt;-<span class="st"> </span><span class="dv">26</span>
+numCol &lt;-<span class="st"> </span><span class="dv">26</span>
+<span class="kw">rect</span>(
+  <span class="dt">xleft =</span> <span class="kw">rep</span>((<span class="dv">0</span><span class="op">:</span>(numCol <span class="op">-</span><span class="st"> </span><span class="dv">1</span>)<span class="op">/</span>numCol), numRow),  
+  <span class="dt">ybottom =</span> <span class="kw">sort</span>(<span class="kw">rep</span>((<span class="dv">0</span><span class="op">:</span>(numRow <span class="op">-</span><span class="st"> </span><span class="dv">1</span>)<span class="op">/</span>numRow),numCol), <span class="dt">decreasing =</span> <span class="ot">TRUE</span>),
+  <span class="dt">xright =</span> <span class="kw">rep</span>((<span class="dv">1</span><span class="op">:</span>numCol<span class="op">/</span>numCol), numRow),
+  <span class="dt">ytop =</span> <span class="kw">sort</span>(<span class="kw">rep</span>((<span class="dv">1</span><span class="op">:</span>numRow<span class="op">/</span>numRow), numCol), <span class="dt">decreasing =</span> <span class="ot">TRUE</span>),
+  <span class="dt">border =</span> <span class="kw">grey</span>(<span class="fl">0.5</span>), 
+  <span class="dt">col =</span> <span class="kw">colors</span>()[<span class="kw">seq</span>(<span class="dv">1</span>, numRow<span class="op">*</span>numCol)])
+myLabels &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="kw">as.character</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">657</span>), <span class="kw">rep</span>(<span class="st">&quot;&quot;</span>, numRow<span class="op">*</span>numCol <span class="op">-</span><span class="st"> </span><span class="dv">657</span>))
+<span class="kw">text</span>(
+  <span class="dt">x =</span> <span class="kw">rep</span>((<span class="dv">0</span><span class="op">:</span>(numCol <span class="op">-</span><span class="st"> </span><span class="dv">1</span>)<span class="op">/</span>numCol), numRow) <span class="op">+</span><span class="st"> </span><span class="fl">0.02</span>,
+  <span class="dt">y =</span> <span class="kw">sort</span>(<span class="kw">rep</span>((<span class="dv">0</span><span class="op">:</span>(numRow <span class="op">-</span><span class="st"> </span><span class="dv">1</span>)<span class="op">/</span>numRow), numCol), <span class="dt">decreasing =</span> <span class="ot">TRUE</span>) <span class="op">+</span><span class="st"> </span><span class="fl">0.02</span>,
+  <span class="dt">labels =</span> myLabels, 
+  <span class="dt">cex =</span> <span class="fl">0.6</span>)</code></pre></div>
+<p><img src="myRBook_FR_files/figure-html/unnamed-chunk-241-1.png" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">par</span>(op)</code></pre></div>
 </div>
 <div id="rgb" class="section level2">
-<h2><span class="header-section-number">14.2</span> RGB</h2>
-<p>XXX L’espace de couleur RGB</p>
+<h2><span class="header-section-number">14.2</span> <code>rgb()</code></h2>
+<p>Une autre option consiste à construire ses propres couleurs ave la fonction <code>rgb()</code> qui prend comme argument la quantité de rouge, de de vert, et de bleu. Par défaut ces valeurs sont comprises entre 0 et 1. Ce réglage par défaut peut être modifié avec l’arguement <code>maxColorValue</code> pour par exemple avoir des valeurs entre 0 et 255 (<code>maxColorValue = 255</code> ; norme pour la représentation des couleurs RGB).</p>
+<p>Nous allons reprendre notre fonction permettant de représenter la distribution de points dans un nuage de points au moyen de <code>barplot</code> avec cette fois trois couleurs de points (rouge, vert, bleu), et des <code>barplot</code> dont la couleur correspondra à la quantité de chaque couleur avec la fonction <code>rgb()</code>.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">graphBarplotCol &lt;-<span class="st"> </span><span class="cf">function</span>(n){
   myX &lt;-<span class="st"> </span><span class="kw">rnorm</span>(n)
   myY &lt;-<span class="st"> </span><span class="kw">rnorm</span>(n)
@@ -340,10 +375,11 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
   <span class="kw">par</span>(op)
 }
 <span class="kw">graphBarplotCol</span>(<span class="dt">n =</span> <span class="dv">50</span>)</code></pre></div>
-<p><img src="myRBook_FR_files/figure-html/unnamed-chunk-239-1.png" width="672" /></p>
+<p><img src="myRBook_FR_files/figure-html/unnamed-chunk-242-1.png" width="672" /></p>
 </div>
 <div id="palettes" class="section level2">
 <h2><span class="header-section-number">14.3</span> Palettes</h2>
+<p>terrain.colors() heat.colors() topo.colrs() cm.colors() rainbow() colorRampPalette()</p>
 </div>
 </div>
             </section>
