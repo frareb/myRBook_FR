@@ -2,34 +2,53 @@
 
 ## RColorBrewer package
 
-XXX
+Le package `RColorBrewer` est un package de référence car il contient des palettes complémentaires à celle disponibles dans la version de base de R. Une fois le package installé, il suffit d'appeler les palettes pour les utiliser. Voici les palettes disponibles et un exemple d'utilisation.
+
+```{r}
+pkgCheck <- function(x){ 
+	if (!require(x, character.only = TRUE)){
+		install.packages(x, dependencies = TRUE)
+		if(!require(x, character.only = TRUE)) {
+			stop()
+		}
+	}
+}
+pkgCheck("RColorBrewer")
+display.brewer.all()
+boxplot(matrix(rnorm(1000), ncol = 10), 
+  col = brewer.pal(10, "Paired"), axes = FALSE)
+```
 
 ## ggplot2 package
 
+Le package `ggplot2` est une alternative aux fonctions de base de R pour réaliser des graphiques. Il repose sur "La Grammaire des Graphiques" de Leland Wilkinson et permet de réaliser des graphiques sous forme de couches, avec en général un rendu esthétique supérieur aux graphiques réalisés avec les fonctions R de base. Est-ce qu'il faut pour autant oublier ce qui a été vu jusqu'à présent et se concentrer sur l'utilisation de `ggplot2` ? Heureusement que non ! Si pour explorer un jeu de données et en sortir les tendances principales `ggplot2` s'avère parfois plus puissant, nos graphiques ne viennent jamais seuls et sont accompagnés d'analyses statistiques rendant nécessaire un travail souvent poussé sur la gestion des données. Une fois nos hypothèses de travail testées statistiquement, il devient facile de réaliser nos graphiques quel que soit leur niveau de complexité (avec les fonctions de base ou avec `ggplot2`). Par ailleurs nous verrons dans le chapitre suivant que depuis le graphique jusqu'à la figure dans l'article scientifique, il y a une série de traitements à effectuer et la manipulation des paramètres esthétiques peut se faire indépendamment de R. Donc `ggplot2` est un package intéressant car il apporte une alternative avec une autre philosophie dans la construction des graphiques, mais il ne se substitue pas à ce que nous venons d'apprendre jusqu'à présent. Dans la pratique nous pourrons utiliser l'un ou l'autre en fonction des données et des manipulations que nous souhaitons en faire. 
+
+Pour revenir à `ggplot2`, commençons par un exemple avec les données `iris`. 
+
+```{r}
+pkgCheck <- function(x){ 
+	if (!require(x, character.only = TRUE)){
+		install.packages(x, dependencies = TRUE)
+		if(!require(x, character.only = TRUE)) {
+			stop()
+		}
+	}
+}
+pkgCheck("ggplot2")
+data(iris)
+# ggplot2
+p <- ggplot(data = iris, aes(x = Sepal.Length, y = Sepal.Width))
+p + geom_point() + ggtitle("ggplot2")
+# base
+plot(x = iris$Sepal.Length, y = iris$Sepal.Width, main = "base")
+```
+
 XXX
 
-## Les graphiques dynamiques
 
-<!-- ### `dygraphs`-->
+## Les graphiques interactifs et dynamiques avec `Plotly`
 
-<!-- ```{r, echo = FALSE, message = FALSE}-->
-<!-- pkgCheck <- function(packages){-->
-<!-- 	for(x in packages){-->
-<!-- 		try(if (!require(x, character.only = TRUE)){-->
-<!-- 			install.packages(x, dependencies = TRUE)-->
-<!-- 			if(!require(x, character.only = TRUE)) {-->
-<!-- 				stop()-->
-<!-- 			}-->
-<!-- 		})-->
-<!-- 	}-->
-<!-- }-->
-<!-- pkgCheck("dygraphs")-->
-<!-- dataset <- ts(rnorm(50), frequency = 4, start = c(1959, 2))-->
-<!-- dygraph(dataset)-->
-<!-- ```-->
-
-
-### `Plotly`
+`Plotly` est un package permettant de réaliser des graphiques interactifs et dynamiques. Cela peut être particulièrement utile pour les résultats ayant vocation à être diffusées sur Internet. Le package s'installe comme tous les autres avec `install.packages("plotly")`. Le package est gratuit et open source. 
 
 Cet exemple a été copié depuis le livre de Carson Sievert (https://plotly-book.cpsievert.me). Le code qui a permis de faire ce graphique est sous licence Creative Commons Attribution-NonCommercial-NoDerivs 3.0 United States License (Carson Sievert ; https://creativecommons.org/licenses/by-nc-nd/3.0/us/).
 
@@ -65,3 +84,7 @@ p <- gapminder %>%
   )
 p
 ```
+
+## Conclusion
+
+Ce chapitre nous a permis de survoler d'autres options graphiques et en particulier les packages `ggplot2` et `plotly`. Des livres spécifiques (en anglais) couvrent tous les aspects de ces packages, ici l'objectif est de savoir que ces options existent pour y avoir recours si besoin. Le chapitre suivant quant à lui est essentiel puisqu'il traite des processus nécessaires pour transformer un graphique R en une figure publiable dans un article scientifique. 
