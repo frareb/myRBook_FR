@@ -1,5 +1,11 @@
 language: R
-sudo: false
+sudo: required #false
+dist: trusty
+addons:
+  apt:
+    packages:
+      - libgdal-dev
+      - libproj-dev
 cache:
   packages: true
   directories:
@@ -10,7 +16,6 @@ pandoc_version: 2.1.1
 
 before_install:
 - mkdir ~/.R
-- npm install libgdal-dev gdal-bin libproj-dev
 #- npm install netlify-cli -g
 
 script:
