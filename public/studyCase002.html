@@ -283,9 +283,14 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="15.3" data-path="graph3.html"><a href="graph3.html#les-graphiques-interactifs-et-dynamiques-avec-plotly"><i class="fa fa-check"></i><b>15.3</b> Les graphiques interactifs et dynamiques avec <code>Plotly</code></a></li>
 <li class="chapter" data-level="15.4" data-path="graph3.html"><a href="graph3.html#conclusion-10"><i class="fa fa-check"></i><b>15.4</b> Conclusion</a></li>
 </ul></li>
+<li class="chapter" data-level="16" data-path="graph4.html"><a href="graph4.html"><i class="fa fa-check"></i><b>16</b> Du graphique à la figure dans un article scientifique</a><ul>
+<li class="chapter" data-level="16.1" data-path="graph4.html"><a href="graph4.html#inkscape"><i class="fa fa-check"></i><b>16.1</b> Inkscape</a></li>
+<li class="chapter" data-level="16.2" data-path="graph4.html"><a href="graph4.html#the-gimp"><i class="fa fa-check"></i><b>16.2</b> The Gimp</a></li>
+<li class="chapter" data-level="16.3" data-path="graph4.html"><a href="graph4.html#table-de-reference"><i class="fa fa-check"></i><b>16.3</b> Table de référence</a></li>
+</ul></li>
 <li class="part"><span><b>III Etude de cas</b></span></li>
-<li class="chapter" data-level="16" data-path="studyCase001.html"><a href="studyCase001.html"><i class="fa fa-check"></i><b>16</b> Analyser des données de datalogger de température</a></li>
-<li class="chapter" data-level="17" data-path="studyCase002.html"><a href="studyCase002.html"><i class="fa fa-check"></i><b>17</b> Obtenir le numéro WOS d’un article scientifique à partir de son numéro DOI</a></li>
+<li class="chapter" data-level="17" data-path="studyCase001.html"><a href="studyCase001.html"><i class="fa fa-check"></i><b>17</b> Analyser des données de datalogger de température</a></li>
+<li class="chapter" data-level="18" data-path="studyCase002.html"><a href="studyCase002.html"><i class="fa fa-check"></i><b>18</b> Obtenir le numéro WOS d’un article scientifique à partir de son numéro DOI</a></li>
 <li class="divider"></li>
 <li><a href="http://ird.fr/" target="blank"><img src="myLogos/logo_IRD_2016_LONGUEUR_SP_COUL.png" alt="IRD" width="100"></a></li>
 
@@ -307,7 +312,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 
             <section class="normal" id="section-">
 <div id="studyCase002" class="section level1">
-<h1><span class="header-section-number"> 17</span> Obtenir le numéro WOS d’un article scientifique à partir de son numéro DOI</h1>
+<h1><span class="header-section-number"> 18</span> Obtenir le numéro WOS d’un article scientifique à partir de son numéro DOI</h1>
 <p>Il peut être intéressant d’obtenir le numéro WOS d’un article scientifique. Ce numéro est cependant fastidieux à obtenir, d’autant plus si nous souhaitons le récupérer pour une liste d’articles ! Par chance <em>The Kitchin Research Group</em> dans leur blog de juin 2015 (<a href="http://kitchingroup.cheme.cmu.edu/blog/2015/06/08/Getting-a-WOS-Accession-number-from-a-DOI/" class="uri">http://kitchingroup.cheme.cmu.edu/blog/2015/06/08/Getting-a-WOS-Accession-number-from-a-DOI/</a>) propose une méthode pour récupérer le numéro WOS à partir du numéro DOI. C’est cette méthode que nous allons utiliser avec R et le package <code>httr</code>. En bref, cette méthode consite à interroger le site web du WOS à partir du numéro DOI. Le site web du WOS va répondre en spécifiant qu’il faut se connecter pour accéder à l’article. Il y a pour cela une redirection vers une page web dont l’URL contient le numéro WOS. Il suffit alors d’extraire le numéro WOS de l’URL de la page web. <strong>Si nous utilisons un proxy pour accéder au site web du WOS, il faut donc le désactiver pour que la méthode fonctionne</strong>.</p>
 <p>Tout d’abord si cela n’est pas déjà fait il faut installer le package <code>httr</code> avec <code>install.packages(&quot;httr&quot;)</code>, puis le charger avec <code>library(&quot;httr&quot;)</code>. Une autre solution consiste à utiliser la fonction suivante qui va vérifier si le package est installé puis le charger (il existe de nombreuses déclinaisons de cette fonction sur internet, il s’agit ici d’un mélange de multiples sources).</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">pkgCheck &lt;-<span class="st"> </span><span class="cf">function</span>(packages){

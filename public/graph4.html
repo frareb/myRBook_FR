@@ -25,7 +25,7 @@
 <meta name="author" content="François Rebaudo">
 
 
-<meta name="date" content="2018-11-18">
+<meta name="date" content="2019-01-04">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -33,7 +33,7 @@
   
   
 <link rel="prev" href="graph3.html">
-<link rel="next" href="concluP2.html">
+<link rel="next" href="studyCase001.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -47,6 +47,13 @@
 
 
 
+<script src="libs/htmlwidgets-1.2/htmlwidgets.js"></script>
+<script src="libs/plotly-binding-4.8.0/plotly.js"></script>
+<script src="libs/typedarray-0.1/typedarray.min.js"></script>
+<link href="libs/crosstalk-1.0.0/css/crosstalk.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.0.0/js/crosstalk.min.js"></script>
+<link href="libs/plotly-htmlwidgets-css-1.39.2/plotly-htmlwidgets.css" rel="stylesheet" />
+<script src="libs/plotly-main-1.39.2/plotly-latest.min.js"></script>
 <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-124666641-2"></script>
 <script>
@@ -257,34 +264,33 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </ul></li>
 <li class="part"><span><b>II Les graphiques</b></span></li>
 <li class="chapter" data-level="13" data-path="graph1.html"><a href="graph1.html"><i class="fa fa-check"></i><b>13</b> Graphiques simples</a><ul>
-<li class="chapter" data-level="13.1" data-path="graph1.html"><a href="graph1.html#plot"><i class="fa fa-check"></i><b>13.1</b> <code>plot</code></a></li>
-<li class="chapter" data-level="13.2" data-path="graph1.html"><a href="graph1.html#hist"><i class="fa fa-check"></i><b>13.2</b> <code>hist</code></a></li>
-<li class="chapter" data-level="13.3" data-path="graph1.html"><a href="graph1.html#barplot"><i class="fa fa-check"></i><b>13.3</b> <code>barplot</code></a></li>
-<li class="chapter" data-level="13.4" data-path="graph1.html"><a href="graph1.html#boxplot"><i class="fa fa-check"></i><b>13.4</b> <code>boxplot</code></a></li>
-<li class="chapter" data-level="13.5" data-path="graph1.html"><a href="graph1.html#image-et-contour"><i class="fa fa-check"></i><b>13.5</b> <code>image</code> et <code>contour</code></a></li>
+<li class="chapter" data-level="13.1" data-path="graph1.html"><a href="graph1.html#graph1plot"><i class="fa fa-check"></i><b>13.1</b> <code>plot</code></a></li>
+<li class="chapter" data-level="13.2" data-path="graph1.html"><a href="graph1.html#graph1hist"><i class="fa fa-check"></i><b>13.2</b> <code>hist</code></a></li>
+<li class="chapter" data-level="13.3" data-path="graph1.html"><a href="graph1.html#graph1barplot"><i class="fa fa-check"></i><b>13.3</b> <code>barplot</code></a></li>
+<li class="chapter" data-level="13.4" data-path="graph1.html"><a href="graph1.html#graph1boxplot"><i class="fa fa-check"></i><b>13.4</b> <code>boxplot</code></a></li>
+<li class="chapter" data-level="13.5" data-path="graph1.html"><a href="graph1.html#autres-graphiques"><i class="fa fa-check"></i><b>13.5</b> Autres graphiques</a></li>
+<li class="chapter" data-level="13.6" data-path="graph1.html"><a href="graph1.html#conclusion-8"><i class="fa fa-check"></i><b>13.6</b> Conclusion</a></li>
 </ul></li>
 <li class="chapter" data-level="14" data-path="graph2.html"><a href="graph2.html"><i class="fa fa-check"></i><b>14</b> La gestion des couleurs</a><ul>
 <li class="chapter" data-level="14.1" data-path="graph2.html"><a href="graph2.html#colors"><i class="fa fa-check"></i><b>14.1</b> <code>colors()</code></a></li>
-<li class="chapter" data-level="14.2" data-path="graph2.html"><a href="graph2.html#rgb"><i class="fa fa-check"></i><b>14.2</b> RGB</a></li>
+<li class="chapter" data-level="14.2" data-path="graph2.html"><a href="graph2.html#rgb"><i class="fa fa-check"></i><b>14.2</b> <code>rgb()</code></a></li>
 <li class="chapter" data-level="14.3" data-path="graph2.html"><a href="graph2.html#palettes"><i class="fa fa-check"></i><b>14.3</b> Palettes</a></li>
+<li class="chapter" data-level="14.4" data-path="graph2.html"><a href="graph2.html#conclusion-9"><i class="fa fa-check"></i><b>14.4</b> Conclusion</a></li>
 </ul></li>
-<li class="chapter" data-level="15" data-path="graph3.html"><a href="graph3.html"><i class="fa fa-check"></i><b>15</b> Graphiques composés</a><ul>
-<li class="chapter" data-level="15.1" data-path="graph3.html"><a href="graph3.html#mfrow"><i class="fa fa-check"></i><b>15.1</b> <code>mfrow</code></a></li>
-<li class="chapter" data-level="15.2" data-path="graph3.html"><a href="graph3.html#layout"><i class="fa fa-check"></i><b>15.2</b> <code>layout</code></a></li>
+<li class="chapter" data-level="15" data-path="graph3.html"><a href="graph3.html"><i class="fa fa-check"></i><b>15</b> Les packages graphiques</a><ul>
+<li class="chapter" data-level="15.1" data-path="graph3.html"><a href="graph3.html#rcolorbrewer-package"><i class="fa fa-check"></i><b>15.1</b> RColorBrewer package</a></li>
+<li class="chapter" data-level="15.2" data-path="graph3.html"><a href="graph3.html#ggplot2-package"><i class="fa fa-check"></i><b>15.2</b> ggplot2 package</a></li>
+<li class="chapter" data-level="15.3" data-path="graph3.html"><a href="graph3.html#les-graphiques-interactifs-et-dynamiques-avec-plotly"><i class="fa fa-check"></i><b>15.3</b> Les graphiques interactifs et dynamiques avec <code>Plotly</code></a></li>
+<li class="chapter" data-level="15.4" data-path="graph3.html"><a href="graph3.html#conclusion-10"><i class="fa fa-check"></i><b>15.4</b> Conclusion</a></li>
 </ul></li>
-<li class="chapter" data-level="16" data-path="graph4.html"><a href="graph4.html"><i class="fa fa-check"></i><b>16</b> Manipuler les graphiques</a><ul>
+<li class="chapter" data-level="16" data-path="graph4.html"><a href="graph4.html"><i class="fa fa-check"></i><b>16</b> Du graphique à la figure dans un article scientifique</a><ul>
 <li class="chapter" data-level="16.1" data-path="graph4.html"><a href="graph4.html#inkscape"><i class="fa fa-check"></i><b>16.1</b> Inkscape</a></li>
 <li class="chapter" data-level="16.2" data-path="graph4.html"><a href="graph4.html#the-gimp"><i class="fa fa-check"></i><b>16.2</b> The Gimp</a></li>
+<li class="chapter" data-level="16.3" data-path="graph4.html"><a href="graph4.html#table-de-reference"><i class="fa fa-check"></i><b>16.3</b> Table de référence</a></li>
 </ul></li>
-<li class="chapter" data-level="17" data-path="concluP2.html"><a href="concluP2.html"><i class="fa fa-check"></i><b>17</b> Conclusion</a></li>
-<li class="part"><span><b>III Publier ses résultats</b></span></li>
-<li class="chapter" data-level="18" data-path="p3script.html"><a href="p3script.html"><i class="fa fa-check"></i><b>18</b> Les scripts</a></li>
-<li class="chapter" data-level="19" data-path="p3data.html"><a href="p3data.html"><i class="fa fa-check"></i><b>19</b> Les données</a></li>
-<li class="chapter" data-level="20" data-path="p3example.html"><a href="p3example.html"><i class="fa fa-check"></i><b>20</b> Quelques exemples</a></li>
-<li class="chapter" data-level="21" data-path="p3conclu.html"><a href="p3conclu.html"><i class="fa fa-check"></i><b>21</b> Conclusion</a></li>
-<li class="part"><span><b>IV Etude de cas</b></span></li>
-<li class="chapter" data-level="22" data-path="studyCase001.html"><a href="studyCase001.html"><i class="fa fa-check"></i><b>22</b> Analyser des données de datalogger de température</a></li>
-<li class="chapter" data-level="23" data-path="studyCase002.html"><a href="studyCase002.html"><i class="fa fa-check"></i><b>23</b> Obtenir le numéro WOS d’un article scientifique à partir de son numéro DOI</a></li>
+<li class="part"><span><b>III Etude de cas</b></span></li>
+<li class="chapter" data-level="17" data-path="studyCase001.html"><a href="studyCase001.html"><i class="fa fa-check"></i><b>17</b> Analyser des données de datalogger de température</a></li>
+<li class="chapter" data-level="18" data-path="studyCase002.html"><a href="studyCase002.html"><i class="fa fa-check"></i><b>18</b> Obtenir le numéro WOS d’un article scientifique à partir de son numéro DOI</a></li>
 <li class="divider"></li>
 <li><a href="http://ird.fr/" target="blank"><img src="myLogos/logo_IRD_2016_LONGUEUR_SP_COUL.png" alt="IRD" width="100"></a></li>
 
@@ -306,22 +312,86 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 
             <section class="normal" id="section-">
 <div id="graph4" class="section level1">
-<h1><span class="header-section-number"> 16</span> Manipuler les graphiques</h1>
+<h1><span class="header-section-number"> 16</span> Du graphique à la figure dans un article scientifique</h1>
+<p>Une fois nos résultats obtenus, il est primordial de les publier. Ce n’est qu’en publiant nos résultats que nous participons à la science. Cela peut se faire via des communications dans des congrès, via des posters, ou encore (et c’est le plus fréquent), via des articles scientifiques.</p>
+<p>Dans les articles scientifiques, les résultats graphiques prennent la forme de <em>figures</em> qui sont souvent le fruit de un ou plusieurs graphiques. Ces figures suivent des critères bien précis dictés par la revue. Prenons cet exemple adapté et traduit du guide de la revue PLoS :</p>
+<p><em>Les fichiers doivent être au format TIFF (avec compression LZW et une seule couche), ou EPS. Les dimensions doivent être de 789 à 2250 pixels et une hauteur maximum de 2625 pixels pour une résolution de 300 dpi (entre 6.68 et 19.05 cm de large - maximum 13.2 cm pour un alignement sur une colonne - et maximum 22.23 cm de haut). La police doit être Arial, Times, ou Symbol et d’une taille entre 8 et 12 points.</em></p>
+<p>Il est difficile de respecter toutes ces contraintes avec R. C’est pourquoi nous allons utiliser des logiciels tiers pour transformer nos graphiques en figures. Nous allons utiliser Inkscape pour la mise en page et Gimp pour la transformation dans les formats requis.</p>
 <div id="inkscape" class="section level2">
 <h2><span class="header-section-number">16.1</span> Inkscape</h2>
+<p>XXX</p>
 </div>
 <div id="the-gimp" class="section level2">
 <h2><span class="header-section-number">16.2</span> The Gimp</h2>
+<p>XXX</p>
+</div>
+<div id="table-de-reference" class="section level2">
+<h2><span class="header-section-number">16.3</span> Table de référence</h2>
+<p>XXX <a href="graph4.html#tab:tabRefPub">16.1</a></p>
+<table>
+<caption><span id="tab:tabRefPub">Table 16.1: </span>Table de référence pour la construction des figures.</caption>
+<thead>
+<tr class="header">
+<th align="left">Revue</th>
+<th align="left">Largeur</th>
+<th align="left">Hauteur</th>
+<th align="left">Format</th>
+<th align="left">Resolution</th>
+<th align="left">Police</th>
+<th align="left">Taille</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">PLoS</td>
+<td align="left">6.68-19.05</td>
+<td align="left">max 22.23</td>
+<td align="left">TIFF, EPS</td>
+<td align="left">300-600 dpi</td>
+<td align="left">Arial, Times, Symbol</td>
+<td align="left">9-12</td>
+</tr>
+<tr class="even">
+<td align="left">PNAS</td>
+<td align="left">8.7; 11.4; 17.8</td>
+<td align="left">max 22.5</td>
+<td align="left">TIF, EPS</td>
+<td align="left">300 dpi</td>
+<td align="left">Arial, Helvetica, Times, Symbol, Mathematical Pi, European Pi</td>
+<td align="left">min 6-8</td>
+</tr>
+<tr class="odd">
+<td align="left">Science</td>
+<td align="left">9; 12.7; 18.4</td>
+<td align="left">NA</td>
+<td align="left">AI, EPS, PDF, TIF, JPEG</td>
+<td align="left">300 dpi</td>
+<td align="left">Helvetica</td>
+<td align="left">panel 10, axis 6-9, font 5</td>
+</tr>
+</tbody>
+</table>
+
+<!-- # Conclusion {#concluP2} -->
+
+<!-- # (PART) Publier ses résultats {-} -->
+<!-- # Les scripts {#p3script} -->
+<!-- # Les données {#p3data} -->
+<!-- # Quelques exemples {#p3example} -->
+<!-- # Conclusion {#p3conclu} -->
 
 </div>
 </div>
+
+
+
             </section>
 
           </div>
         </div>
       </div>
 <a href="graph3.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="concluP2.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="studyCase001.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

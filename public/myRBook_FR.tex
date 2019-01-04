@@ -8023,7 +8023,7 @@ le gain de temps est presque nul dans notre cas).
 
 \begin{verbatim}
 ##    user  system elapsed 
-##    0.23    0.00    0.24
+##    0.25    0.00    0.25
 \end{verbatim}
 
 \begin{Shaded}
@@ -8034,7 +8034,7 @@ le gain de temps est presque nul dans notre cas).
 
 \begin{verbatim}
 ##    user  system elapsed 
-##    0.25    0.00    0.25
+##    0.24    0.00    0.23
 \end{verbatim}
 
 Une fonction peut avoir des valeurs par défaut pour ses arguments. C'est
@@ -9017,12 +9017,12 @@ dates.
 
 \begin{verbatim}
 ##      date01    date02
-## 1 12.171608 10.140209
-## 2 10.218572 10.503678
-## 3  9.894788 10.801189
-## 4 10.749557  8.781023
-## 5  9.193599 10.402598
-## 6 12.633876 10.305642
+## 1 10.375317 10.335502
+## 2 11.028842 10.163232
+## 3 10.432698  9.593436
+## 4  9.931294 10.340406
+## 5 11.751182 10.076786
+## 6 10.246333  9.516810
 \end{verbatim}
 
 Nous voudrions quantifier la différence entre la première et la deuxième
@@ -9162,27 +9162,27 @@ Ensuite nous allons utiliser \protect\hyperlink{l015nrow}{la fonction
 \end{Shaded}
 
 \begin{verbatim}
-##       date01    date02       dif isDifBig
-## 1  12.171608 10.140209 2.0313990    small
-## 2  10.218572 10.503678 0.2851067    small
-## 3   9.894788 10.801189 0.9064012    small
-## 4  10.749557  8.781023 1.9685339    small
-## 5   9.193599 10.402598 1.2089989    small
-## 6  12.633876 10.305642 2.3282345    small
-## 7  11.479894 10.128556 1.3513386    small
-## 8   9.361711 11.186316 1.8246048    small
-## 9   9.406196 10.340637 0.9344412    small
-## 10  8.312782 10.493261 2.1804798    small
-## 11  9.244594 12.665252 3.4206575      big
-## 12  9.016066  7.432949 1.5831167    small
-## 13  9.951865 11.849728 1.8978627    small
-## 14 10.447562  9.648718 0.7988442    small
-## 15 10.990434 11.915896 0.9254621    small
-## 16  8.834870  9.976210 1.1413403    small
-## 17  9.850355  8.945829 0.9045260    small
-## 18  9.941965 10.133875 0.1919101    small
-## 19 10.201111  9.853421 0.3476902    small
-## 20 10.543768  8.039454 2.5043146    small
+##       date01    date02        dif isDifBig
+## 1  10.375317 10.335502 0.03981493    small
+## 2  11.028842 10.163232 0.86560954    small
+## 3  10.432698  9.593436 0.83926171    small
+## 4   9.931294 10.340406 0.40911225    small
+## 5  11.751182 10.076786 1.67439606    small
+## 6  10.246333  9.516810 0.72952305    small
+## 7   8.774650  9.388297 0.61364671    small
+## 8   9.542972 10.427808 0.88483546    small
+## 9   7.757148  8.923102 1.16595438    small
+## 10  9.084136  8.599668 0.48446827    small
+## 11 10.570490 10.254868 0.31562251    small
+## 12 10.628910  8.943981 1.68492901    small
+## 13  9.266809  9.788719 0.52191050    small
+## 14 10.565971 10.887346 0.32137494    small
+## 15  9.198614  9.750664 0.55204949    small
+## 16 10.932172 10.502739 0.42943333    small
+## 17  9.667854  9.418048 0.24980600    small
+## 18 11.387479 10.109961 1.27751871    small
+## 19 10.217597  9.877737 0.33986083    small
+## 20 10.677922 11.563900 0.88597883    small
 \end{verbatim}
 
 En pratique ce n'est pas la meilleure façon de réaliser cet exercice car
@@ -9202,27 +9202,27 @@ devient :
 \end{Shaded}
 
 \begin{verbatim}
-##       date01    date02       dif isDifBig
-## 1  12.171608 10.140209 2.0313990    small
-## 2  10.218572 10.503678 0.2851067    small
-## 3   9.894788 10.801189 0.9064012    small
-## 4  10.749557  8.781023 1.9685339    small
-## 5   9.193599 10.402598 1.2089989    small
-## 6  12.633876 10.305642 2.3282345    small
-## 7  11.479894 10.128556 1.3513386    small
-## 8   9.361711 11.186316 1.8246048    small
-## 9   9.406196 10.340637 0.9344412    small
-## 10  8.312782 10.493261 2.1804798    small
-## 11  9.244594 12.665252 3.4206575      big
-## 12  9.016066  7.432949 1.5831167    small
-## 13  9.951865 11.849728 1.8978627    small
-## 14 10.447562  9.648718 0.7988442    small
-## 15 10.990434 11.915896 0.9254621    small
-## 16  8.834870  9.976210 1.1413403    small
-## 17  9.850355  8.945829 0.9045260    small
-## 18  9.941965 10.133875 0.1919101    small
-## 19 10.201111  9.853421 0.3476902    small
-## 20 10.543768  8.039454 2.5043146    small
+##       date01    date02        dif isDifBig
+## 1  10.375317 10.335502 0.03981493    small
+## 2  11.028842 10.163232 0.86560954    small
+## 3  10.432698  9.593436 0.83926171    small
+## 4   9.931294 10.340406 0.40911225    small
+## 5  11.751182 10.076786 1.67439606    small
+## 6  10.246333  9.516810 0.72952305    small
+## 7   8.774650  9.388297 0.61364671    small
+## 8   9.542972 10.427808 0.88483546    small
+## 9   7.757148  8.923102 1.16595438    small
+## 10  9.084136  8.599668 0.48446827    small
+## 11 10.570490 10.254868 0.31562251    small
+## 12 10.628910  8.943981 1.68492901    small
+## 13  9.266809  9.788719 0.52191050    small
+## 14 10.565971 10.887346 0.32137494    small
+## 15  9.198614  9.750664 0.55204949    small
+## 16 10.932172 10.502739 0.42943333    small
+## 17  9.667854  9.418048 0.24980600    small
+## 18 11.387479 10.109961 1.27751871    small
+## 19 10.217597  9.877737 0.33986083    small
+## 20 10.677922 11.563900 0.88597883    small
 \end{verbatim}
 
 La plupart des exemples que l'on peut trouver sur Internet à propos de
@@ -9245,7 +9245,7 @@ les vecteurs. Voici quelques exemples adaptés de plusieurs sources :
 \end{Shaded}
 
 \begin{verbatim}
-## [1] 8
+## [1] 11
 \end{verbatim}
 
 \begin{Shaded}
@@ -9256,7 +9256,7 @@ les vecteurs. Voici quelques exemples adaptés de plusieurs sources :
 \end{Shaded}
 
 \begin{verbatim}
-## [1] 8
+## [1] 11
 \end{verbatim}
 
 \begin{Shaded}
@@ -9302,7 +9302,7 @@ les vecteurs. Voici quelques exemples adaptés de plusieurs sources :
 \end{Shaded}
 
 \begin{verbatim}
-## [1] 3.55
+## [1] 3.551
 \end{verbatim}
 
 \begin{Shaded}
@@ -9313,7 +9313,7 @@ les vecteurs. Voici quelques exemples adaptés de plusieurs sources :
 \end{Shaded}
 
 \begin{verbatim}
-## [1] 3.521
+## [1] 3.566
 \end{verbatim}
 
 C'est un bon exercice de parcourir les nombreux exemples disponibles sur
@@ -9339,12 +9339,12 @@ ligne (nous verrons plus loin comment faire avec la fonction
 \end{Shaded}
 
 \begin{verbatim}
-##   [1] 615 465 490 551 389 396 476 620 420 593 622 410 613 574 458 651 524
-##  [18] 560 480 534 489 611 533 467 648 428 610 574 505 600 376 575 557 494
-##  [35] 242 341 470 608 601 577 444 558 452 532 354 429 396 541 571 432 464
-##  [52] 409 423 499 579 504 641 407 465 471 415 394 485 579 444 514 370 538
-##  [69] 617 605 470 463 588 598 358 345 415 508 490 367 447 721 385 630 530
-##  [86] 563 692 480 554 436 461 280 541 429 570 458 460 416 392 327
+##   [1] 604 401 464 373 567 558 451 503 379 618 610 445 477 426 562 621 461
+##  [18] 525 683 631 459 435 452 432 574 465 395 504 410 457 451 292 460 555
+##  [35] 442 669 417 509 734 671 468 516 577 613 559 593 528 440 512 546 438
+##  [52] 149 520 596 556 574 559 552 336 663 545 545 645 649 692 363 549 552
+##  [69] 358 630 374 494 495 668 467 513 583 641 457 551 389 489 393 596 572
+##  [86] 517 540 511 416 511 545 564 571 414 526 629 512 535 351 408
 \end{verbatim}
 
 \begin{Shaded}
@@ -9359,12 +9359,12 @@ ligne (nous verrons plus loin comment faire avec la fonction
 \end{Shaded}
 
 \begin{verbatim}
-##   [1] 615 465 490 551 389 396 476 620 420 593 622 410 613 574 458 651 524
-##  [18] 560 480 534 489 611 533 467 648 428 610 574 505 600 376 575 557 494
-##  [35] 242 341 470 608 601 577 444 558 452 532 354 429 396 541 571 432 464
-##  [52] 409 423 499 579 504 641 407 465 471 415 394 485 579 444 514 370 538
-##  [69] 617 605 470 463 588 598 358 345 415 508 490 367 447 721 385 630 530
-##  [86] 563 692 480 554 436 461 280 541 429 570 458 460 416 392 327
+##   [1] 604 401 464 373 567 558 451 503 379 618 610 445 477 426 562 621 461
+##  [18] 525 683 631 459 435 452 432 574 465 395 504 410 457 451 292 460 555
+##  [35] 442 669 417 509 734 671 468 516 577 613 559 593 528 440 512 546 438
+##  [52] 149 520 596 556 574 559 552 336 663 545 545 645 649 692 363 549 552
+##  [69] 358 630 374 494 495 668 467 513 583 641 457 551 389 489 393 596 572
+##  [86] 517 540 511 416 511 545 564 571 414 526 629 512 535 351 408
 \end{verbatim}
 
 En conclusion, il est recommandé de ne pas utiliser la boucle
@@ -9445,7 +9445,7 @@ coups sur un ordinateur de bureau classique pouvant facilement effectuer
 
 \begin{verbatim}
 ## [1] "Number found !"
-## [1] "And I have plenty of time left: 1.68 sec"
+## [1] "And I have plenty of time left: 1.71 sec"
 \end{verbatim}
 
 Dans ce script nous générons un nombre aléatoire à deviner avec la
@@ -9524,11 +9524,11 @@ Si nous reprenons l'exemple précédent, nous pouvons utiliser une boucle
 \end{Shaded}
 
 \begin{verbatim}
-## [1] 0.015
-## [1] 0.429
-## [1] 0.115
-## [1] 0.161
-## [1] 0.045
+## [1] 0.313
+## [1] 0.287
+## [1] 0.83
+## [1] 0.047
+## [1] 0.172
 \end{verbatim}
 
 Comme la boucle \texttt{while()}, la boucle \texttt{repeat()} reste peu
@@ -9647,12 +9647,12 @@ de 10 colonnes et 100 lignes :
 \end{Shaded}
 
 \begin{verbatim}
-##   [1] 538 555 645 596 377 532 419 597 424 292 500 506 575 531 611 302 643
-##  [18] 433 377 641 633 360 573 476 406 681 598 417 391 440 599 402 450 639
-##  [35] 554 703 477 579 455 324 411 555 560 402 461 642 710 575 300 360 453
-##  [52] 606 500 502 470 579 499 575 385 482 506 452 419 456 464 510 541 667
-##  [69] 517 568 460 497 388 425 499 678 605 429 291 598 339 628 733 430 408
-##  [86] 446 477 503 500 467 519 602 457 425 606 512 661 426 425 571
+##   [1] 483 465 445 615 508 646 487 364 573 399 505 476 375 390 409 470 570
+##  [18] 599 479 442 437 486 386 543 594 578 516 498 526 404 485 482 485 477
+##  [35] 452 606 487 556 504 489 445 533 520 443 351 445 375 405 529 496 566
+##  [52] 345 376 452 611 485 503 455 694 467 340 406 512 567 682 477 205 615
+##  [69] 374 479 533 372 524 352 554 664 376 566 472 498 641 437 447 445 634
+##  [86] 607 467 519 605 426 674 453 686 551 538 556 525 441 411 541
 \end{verbatim}
 
 Si nous souhaitons connaître la médiane de chaque colonne, l'expression
@@ -9665,7 +9665,7 @@ devient :
 \end{Shaded}
 
 \begin{verbatim}
-##  [1] 52.0 51.5 47.0 51.5 57.0 61.0 56.5 40.5 48.5 51.0
+##  [1] 56.5 50.0 54.5 46.5 42.5 42.0 49.0 54.5 47.5 45.5
 \end{verbatim}
 
 L'argument \texttt{X} correspond à l'objet sur lequel la boucle
@@ -9689,7 +9689,7 @@ manières différentes pour en expliciter le fonctionnement.
 \end{Shaded}
 
 \begin{verbatim}
-##  [1] 51.97 49.66 50.29 53.24 54.16 55.22 52.54 54.21 52.51 46.28
+##  [1] 54.68 54.09 55.02 49.43 53.13 50.85 49.31 49.99 45.97 50.82
 \end{verbatim}
 
 \begin{Shaded}
@@ -9701,7 +9701,7 @@ manières différentes pour en expliciter le fonctionnement.
 \end{Shaded}
 
 \begin{verbatim}
-##  [1] 51.97 49.66 50.29 53.24 54.16 55.22 52.54 54.21 52.51 46.28
+##  [1] 54.68 54.09 55.02 49.43 53.13 50.85 49.31 49.99 45.97 50.82
 \end{verbatim}
 
 \begin{Shaded}
@@ -9711,8 +9711,8 @@ manières différentes pour en expliciter le fonctionnement.
 \end{Shaded}
 
 \begin{verbatim}
-##  [1] 56.30 48.76 49.48 53.82 55.50 51.92 56.24 53.18 51.94 50.84 49.72
-## [12] 56.26 44.78 55.52 51.30 51.68 54.58 51.32 44.78 52.24
+##  [1] 48.26 46.76 51.52 49.98 51.12 54.48 56.22 52.78 48.46 52.52 51.74
+## [12] 47.30 55.66 51.12 55.82 46.28 49.74 52.72 51.90 52.20
 \end{verbatim}
 
 \begin{Shaded}
@@ -9724,8 +9724,8 @@ manières différentes pour en expliciter le fonctionnement.
 \end{Shaded}
 
 \begin{verbatim}
-##  [1] 56.30 48.76 49.48 53.82 55.50 51.92 56.24 53.18 51.94 50.84 49.72
-## [12] 56.26 44.78 55.52 51.30 51.68 54.58 51.32 44.78 52.24
+##  [1] 48.26 46.76 51.52 49.98 51.12 54.48 56.22 52.78 48.46 52.52 51.74
+## [12] 47.30 55.66 51.12 55.82 46.28 49.74 52.72 51.90 52.20
 \end{verbatim}
 
 \begin{Shaded}
@@ -9735,7 +9735,7 @@ manières différentes pour en expliciter le fonctionnement.
 \end{Shaded}
 
 \begin{verbatim}
-## [1] 52.260 52.255 52.070 52.535 50.920
+## [1] 51.845 49.160 48.560 50.360 56.720
 \end{verbatim}
 
 \begin{Shaded}
@@ -9746,7 +9746,7 @@ manières différentes pour en expliciter le fonctionnement.
 \end{Shaded}
 
 \begin{verbatim}
-## [1] 52.260 52.255 52.070 52.535 50.920
+## [1] 51.845 49.160 48.560 50.360 56.720
 \end{verbatim}
 
 Nous pouvons aussi calculer la moyenne pour chaque valeur de ligne et de
@@ -9760,27 +9760,27 @@ colonne (la fonction itère alors sur la dimension 3) :
 
 \begin{verbatim}
 ##       [,1] [,2] [,3] [,4] [,5] [,6] [,7] [,8] [,9] [,10] [,11] [,12] [,13]
-##  [1,] 53.4 39.0 69.2 54.2 55.8 61.6 75.0 34.6 60.2  61.6  44.0  67.8  33.6
-##  [2,] 50.2 52.0 60.6 56.0 46.6 34.8 43.6 53.0 62.6  43.2  58.4  46.6  42.6
-##  [3,] 30.4 60.6 51.2 43.4 76.4 42.0 85.0 51.2 29.2  46.2  49.2  46.0  47.6
-##  [4,] 64.2 25.4 33.8 35.0 38.4 72.4 55.4 73.2 50.6  52.6  53.0  55.2  50.0
-##  [5,] 63.6 58.2 38.2 64.4 44.2 38.2 59.6 39.0 63.2  42.4  36.6  75.0  54.8
-##  [6,] 59.8 41.8 60.2 64.2 68.8 58.4 44.8 64.8 65.4  31.8  46.4  60.8  35.6
-##  [7,] 54.8 56.2 38.0 47.0 57.0 79.2 32.0 58.6 51.4  60.0  35.2  76.6  58.6
-##  [8,] 44.0 66.2 40.6 71.8 53.8 55.4 49.2 57.8 61.0  52.2  62.6  37.2  58.4
-##  [9,] 77.6 51.0 54.4 61.0 46.4 42.6 60.2 39.2 54.4  70.2  73.0  37.4  39.0
-## [10,] 65.0 37.2 48.6 41.2 67.6 34.6 57.6 60.4 21.4  48.2  38.8  60.0  27.6
+##  [1,] 59.6 55.2 40.0 47.4 57.4 52.6 72.6 45.4 45.6  60.0  65.2  59.2  59.4
+##  [2,] 60.6 36.8 62.2 56.4 50.0 44.2 65.6 59.8 49.0  67.0  59.2  35.0  74.0
+##  [3,] 55.6 36.6 51.8 56.4 66.4 32.2 65.4 49.0 46.2  34.4  76.8  29.0  57.2
+##  [4,] 30.2 42.0 59.8 47.8 54.8 53.0 46.0 59.6 33.4  42.2  39.0  63.2  56.4
+##  [5,] 33.6 60.0 48.0 46.0 55.8 64.4 71.0 60.2 61.2  64.0  29.0  26.8  55.4
+##  [6,] 25.6 75.8 48.6 44.4 52.2 66.0 36.8 53.8 72.0  60.8  51.6  58.0  56.2
+##  [7,] 63.6 37.2 49.0 48.0 29.2 54.2 65.6 29.6 36.8  57.4  57.0  59.6  69.0
+##  [8,] 60.2 47.6 39.2 55.6 48.8 63.4 49.0 49.6 45.4  50.4  54.0  52.4  55.2
+##  [9,] 55.2 45.0 39.6 26.4 45.2 39.2 41.0 53.8 49.4  65.4  43.4  47.2  40.4
+## [10,] 38.4 31.4 77.0 71.4 51.4 75.6 49.2 67.0 45.6  23.6  42.2  42.6  33.4
 ##       [,14] [,15] [,16] [,17] [,18] [,19] [,20]
-##  [1,]  61.6  28.2  35.8  55.0  52.4  46.6  49.8
-##  [2,]  20.4  55.2  44.8  82.6  54.6  39.4  46.0
-##  [3,]  75.2  21.6  52.0  53.4  58.2  48.8  38.2
-##  [4,]  68.2  65.4  68.2  54.2  50.0  29.8  69.8
-##  [5,]  68.0  57.4  76.4  51.4  59.6  36.2  56.8
-##  [6,]  54.4  69.6  36.6  60.6  68.0  52.2  60.2
-##  [7,]  72.0  61.0  35.2  45.8  38.8  41.4  52.0
-##  [8,]  51.4  52.0  68.0  59.0  31.6  54.0  58.0
-##  [9,]  50.8  63.8  40.4  45.0  51.0  43.8  49.0
-## [10,]  33.2  38.8  59.4  38.8  49.0  55.6  42.6
+##  [1,]  43.2  56.8  66.8  57.2  35.4  58.2  56.4
+##  [2,]  34.8  34.2  82.8  49.4  56.8  41.2  62.8
+##  [3,]  50.6  86.6  44.8  55.0  55.2  68.2  83.0
+##  [4,]  51.2  57.8  44.2  48.2  70.4  44.0  45.4
+##  [5,]  51.6  44.2  56.2  55.0  73.6  52.4  54.2
+##  [6,]  76.0  22.2  33.6  31.8  48.2  46.8  56.6
+##  [7,]  69.6  57.0  30.4  53.4  23.2  49.0  47.4
+##  [8,]  37.2  71.8  27.8  42.0  54.4  53.8  42.0
+##  [9,]  66.4  41.4  27.2  50.4  69.8  42.4  30.6
+## [10,]  30.6  86.2  49.0  55.0  40.2  63.0  43.6
 \end{verbatim}
 
 \subsection{\texorpdfstring{\texttt{lapply}}{lapply}}\label{l17sapply}
@@ -9807,19 +9807,19 @@ nous cherchons à obtenir la moyenne de chacun des éléments de la
 
 \begin{verbatim}
 ## $a
-##  [1]  7  2 47 98 94 88 92 15 62 30
+##  [1] 69 91 61 78 67 21 55 24  2 49
 ## 
 ## $b
-##  [1] 54  3 51  4 18 78 33 66 71 11
+##  [1] 45 38 71 97  7 47  6 57 62 64
 ## 
 ## $c
-##  [1] 81 13 93  1 97 95  2 26 71 51
+##  [1]  6 73 17 37 86 75 99 41 32 59
 ## 
 ## $d
-##  [1] 64 22 29 92 39 40 66 34  7 30
+##  [1] 65  5 84  7 53 44 79  6 99 51
 ## 
 ## $e
-##  [1] 55 90 88 14 25 64  1 92  8 89
+##  [1] 44 25  2 92 96 39 82 46 88 81
 \end{verbatim}
 
 \begin{Shaded}
@@ -9830,19 +9830,19 @@ nous cherchons à obtenir la moyenne de chacun des éléments de la
 
 \begin{verbatim}
 ## $a
-## [1] 53.5
+## [1] 51.7
 ## 
 ## $b
-## [1] 38.9
+## [1] 49.4
 ## 
 ## $c
-## [1] 53
+## [1] 52.5
 ## 
 ## $d
-## [1] 42.3
+## [1] 49.3
 ## 
 ## $e
-## [1] 52.6
+## [1] 59.5
 \end{verbatim}
 
 Comme pour la fonction \texttt{apply()}, nous pouvons passer des
@@ -9867,19 +9867,19 @@ voulons les ignorer pour le calcul des moyennes (avec l'arguement
 
 \begin{verbatim}
 ## $a
-##  [1]  1  4  5  3  4  3  4  4  5 NA
+##  [1] NA NA NA  2  5  3  2  1  4  1
 ## 
 ## $b
-##  [1]  4 NA  4  1 NA  5  5  3  3  2
+##  [1] 1 3 5 2 1 3 3 4 4 1
 ## 
 ## $c
-##  [1] NA  2  4  1  1 NA  5  1  1  4
+##  [1]  5 NA  4  4  2  3  4 NA  4  3
 ## 
 ## $d
-##  [1]  4  5  5  4 NA  2  4  3  3  5
+##  [1]  5  1  1 NA  4  5 NA  2 NA  5
 ## 
 ## $e
-##  [1]  2  5  3  2  3 NA  3  2  5  2
+##  [1] NA  2  2  5  1  4  3 NA  4 NA
 \end{verbatim}
 
 \begin{Shaded}
@@ -9893,7 +9893,7 @@ voulons les ignorer pour le calcul des moyennes (avec l'arguement
 ## [1] NA
 ## 
 ## $b
-## [1] NA
+## [1] 2.7
 ## 
 ## $c
 ## [1] NA
@@ -9913,16 +9913,16 @@ voulons les ignorer pour le calcul des moyennes (avec l'arguement
 
 \begin{verbatim}
 ## $a
-## [1] 3.666667
+## [1] 2.571429
 ## 
 ## $b
-## [1] 3.375
+## [1] 2.7
 ## 
 ## $c
-## [1] 2.375
+## [1] 3.625
 ## 
 ## $d
-## [1] 3.888889
+## [1] 3.285714
 ## 
 ## $e
 ## [1] 3
@@ -9942,16 +9942,16 @@ suivante :
 
 \begin{verbatim}
 ## $a
-## [1] 3.666667
+## [1] 2.571429
 ## 
 ## $b
-## [1] 3.375
+## [1] 2.7
 ## 
 ## $c
-## [1] 2.375
+## [1] 3.625
 ## 
 ## $d
-## [1] 3.888889
+## [1] 3.285714
 ## 
 ## $e
 ## [1] 3
@@ -9975,19 +9975,19 @@ supérieure à 3, et \texttt{i\^{}3} sinon :
 
 \begin{verbatim}
 ## $a
-##  [1]  1 16 25  9 16  9 16 16 25 NA
+##  [1]  NA  NA  NA   8 125  27   8   1  64   1
 ## 
 ## $b
-##  [1] 16 NA 16  1 NA 25 25  9  9  4
+##  [1]   1  27 125   8   1  27  27  64  64   1
 ## 
 ## $c
-##  [1]  NA   8  64   1   1  NA 125   1   1  64
+##  [1] 25 NA 16 16  4  9 16 NA 16  9
 ## 
 ## $d
-##  [1] 16 25 25 16 NA  4 16  9  9 25
+##  [1] 25  1  1 NA 16 25 NA  4 NA 25
 ## 
 ## $e
-##  [1]   8 125  27   8  27  NA  27   8 125   8
+##  [1]  NA   8   8 125   1  64  27  NA  64  NA
 \end{verbatim}
 
 \subsection{\texorpdfstring{\texttt{sapply}}{sapply}}\label{l17lapply}
@@ -10006,16 +10006,16 @@ résultat sous un format simplifié lorsque c'est possible.
 
 \begin{verbatim}
 ## $a
-## [1] 3.666667
+## [1] 2.571429
 ## 
 ## $b
-## [1] 3.375
+## [1] 2.7
 ## 
 ## $c
-## [1] 2.375
+## [1] 3.625
 ## 
 ## $d
-## [1] 3.888889
+## [1] 3.285714
 ## 
 ## $e
 ## [1] 3
@@ -10031,7 +10031,7 @@ résultat sous un format simplifié lorsque c'est possible.
 
 \begin{verbatim}
 ##        a        b        c        d        e 
-## 3.666667 3.375000 2.375000 3.888889 3.000000
+## 2.571429 2.700000 3.625000 3.285714 3.000000
 \end{verbatim}
 
 La fonction \texttt{sapply()} est intéressante pour récupérer par
@@ -10047,7 +10047,7 @@ fonction qui est appelée pour faire cela est
 
 \begin{verbatim}
 ##  a  b  c  d  e 
-##  4 NA  2  5  5
+## NA  3 NA  1  2
 \end{verbatim}
 
 \subsection{\texorpdfstring{\texttt{tapply}}{tapply}}\label{l17tapply}
@@ -10070,17 +10070,17 @@ localisations.
 \end{Shaded}
 
 \begin{verbatim}
-##    species     perf1     perf2     perf3
-## 1        G 10.836687 12457.421 23.375338
-## 2        F 10.847208 33106.212 14.146245
-## 3        E 10.219356 17051.366 13.356543
-## 4        I  9.433825 17508.503 15.922538
-## 5        H  9.594697 27729.445 15.137085
-## 6        C  9.904942 15863.787 22.787925
-## 7        E  9.415912 19290.242  8.896094
-## 8        G 10.073180 61258.255 19.509753
-## 9        E  9.548926 22591.584 17.204689
-## 10       F  9.855173  8685.546 16.965852
+##    species     perf1     perf2    perf3
+## 1        G  9.881967 14181.270 20.98815
+## 2        A 10.527470 48415.815 14.27099
+## 3        F  9.990198 10668.387 21.86658
+## 4        D  9.420961 11029.020 18.18331
+## 5        H  8.989053 16973.177 25.37554
+## 6        B 10.555341  9219.167 12.63206
+## 7        I  9.828875 24786.273 11.24521
+## 8        A 10.328315 34107.741 16.26342
+## 9        H 10.002349 14824.446 18.74830
+## 10       C  9.093316 47454.014 16.24468
 \end{verbatim}
 
 Nous pouvons facilement obtenir un résumé des performances pour chaque
@@ -10096,43 +10096,43 @@ espèce avec la fonction \texttt{tapply()} et la fonction
 \begin{verbatim}
 ## $A
 ##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-##   8.984   9.766  10.050  10.051  10.411  11.101 
+##   9.062   9.637   9.956   9.976  10.322  10.881 
 ## 
 ## $B
 ##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-##   8.818   9.645  10.030  10.005  10.347  11.391 
+##   8.868   9.646   9.965   9.969  10.285  11.328 
 ## 
 ## $C
 ##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-##   8.721   9.543   9.941   9.938  10.315  11.326 
+##   8.044   9.669  10.046  10.010  10.421  11.345 
 ## 
 ## $D
 ##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-##   8.696   9.646   9.969   9.974  10.328  11.367 
+##   8.715   9.514   9.972   9.967  10.364  11.675 
 ## 
 ## $E
 ##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-##   8.608   9.624   9.943   9.939  10.280  11.370 
+##   8.637   9.568   9.978   9.956  10.348  11.525 
 ## 
 ## $F
 ##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-##   8.863   9.586   9.890   9.947  10.209  10.952 
+##   9.091   9.789  10.070  10.073  10.328  11.269 
 ## 
 ## $G
 ##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-##   8.783   9.765  10.025  10.056  10.355  11.287 
+##   8.918   9.672   9.984  10.007  10.326  11.148 
 ## 
 ## $H
 ##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-##   8.800   9.641   9.948   9.928  10.167  11.304 
+##   8.573   9.667  10.048  10.045  10.416  11.468 
 ## 
 ## $I
 ##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-##   8.831   9.664   9.995  10.014  10.318  11.949 
+##   8.855   9.687  10.041  10.045  10.393  11.482 
 ## 
 ## $J
 ##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-##   8.857   9.629  10.013   9.981  10.319  11.141
+##   8.847   9.704  10.028  10.059  10.411  11.306
 \end{verbatim}
 
 Nous pouvons aussi obtenir la valeur moyenne de chacune des performances
@@ -10149,16 +10149,16 @@ en combinant une fonction \texttt{sapply()} avec la fonction
 
 \begin{verbatim}
 ##        [,1]     [,2]     [,3]
-## A 10.050821 23182.17 19.24653
-## B 10.004570 25533.19 19.32508
-## C  9.937886 25369.85 19.79914
-## D  9.974325 23390.84 19.45910
-## E  9.939297 25318.98 18.78285
-## F  9.946811 24741.06 19.60201
-## G 10.055552 26663.25 19.69100
-## H  9.928161 26293.69 20.35157
-## I 10.013682 25660.08 20.20351
-## J  9.981096 24238.39 20.67337
+## A  9.975503 23777.67 19.96271
+## B  9.968530 27136.08 19.41080
+## C 10.009544 23577.59 19.69694
+## D  9.967065 22984.83 20.21121
+## E  9.955686 27800.81 20.50503
+## F 10.073177 24593.25 20.19407
+## G 10.007362 22984.09 20.42888
+## H 10.044885 24267.77 20.03797
+## I 10.045045 25978.14 20.55009
+## J 10.058598 22594.91 19.78307
 \end{verbatim}
 
 \subsection{\texorpdfstring{\texttt{mapply}}{mapply}}\label{l17mapply}
@@ -11575,6 +11575,61 @@ des possibilités offertes par R quant aux représentations graphiques. Le
 chapitre suivant traite des processus nécessaires pour transformer un
 graphique R en une figure publiable dans un article scientifique. A très
 bientôt !
+
+\chapter{Du graphique à la figure dans un article
+scientifique}\label{graph4}
+
+Une fois nos résultats obtenus, il est primordial de les publier. Ce
+n'est qu'en publiant nos résultats que nous participons à la science.
+Cela peut se faire via des communications dans des congrès, via des
+posters, ou encore (et c'est le plus fréquent), via des articles
+scientifiques.
+
+Dans les articles scientifiques, les résultats graphiques prennent la
+forme de \emph{figures} qui sont souvent le fruit de un ou plusieurs
+graphiques. Ces figures suivent des critères bien précis dictés par la
+revue. Prenons cet exemple adapté et traduit du guide de la revue PLoS :
+
+\emph{Les fichiers doivent être au format TIFF (avec compression LZW et
+une seule couche), ou EPS. Les dimensions doivent être de 789 à 2250
+pixels et une hauteur maximum de 2625 pixels pour une résolution de 300
+dpi (entre 6.68 et 19.05 cm de large - maximum 13.2 cm pour un
+alignement sur une colonne - et maximum 22.23 cm de haut). La police
+doit être Arial, Times, ou Symbol et d'une taille entre 8 et 12 points.}
+
+Il est difficile de respecter toutes ces contraintes avec R. C'est
+pourquoi nous allons utiliser des logiciels tiers pour transformer nos
+graphiques en figures. Nous allons utiliser Inkscape pour la mise en
+page et Gimp pour la transformation dans les formats requis.
+
+\section{Inkscape}\label{inkscape}
+
+XXX
+
+\section{The Gimp}\label{the-gimp}
+
+XXX
+
+\section{Table de référence}\label{table-de-reference}
+
+XXX \ref{tab:tabRefPub}
+
+\begin{table}
+
+\caption{\label{tab:tabRefPub}Table de référence pour la construction des figures.\label{tab:tabRefPub}}
+\centering
+\begin{tabular}[t]{l|l|l|l|l|l|l}
+\hline
+Revue & Largeur & Hauteur & Format & Resolution & Police & Taille\\
+\hline
+PLoS & 6.68-19.05 & max 22.23 & TIFF, EPS & 300-600 dpi & Arial, Times, Symbol & 9-12\\
+\hline
+PNAS & 8.7; 11.4; 17.8 & max 22.5 & TIF, EPS & 300 dpi & Arial, Helvetica, Times, Symbol, Mathematical Pi, European Pi & min 6-8\\
+\hline
+Science & 9; 12.7; 18.4 & NA & AI, EPS, PDF, TIF, JPEG & 300 dpi & Helvetica & panel 10, axis 6-9, font 5\\
+\hline
+\end{tabular}
+\end{table}
 
 \part{Etude de cas}\label{part-etude-de-cas}
 
