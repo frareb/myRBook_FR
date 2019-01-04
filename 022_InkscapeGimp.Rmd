@@ -1,5 +1,33 @@
-<!-- # Manipuler les graphiques {#graph4} -->
+# Du graphique à la figure dans un article scientifique {#graph4}
 
-<!-- ## Inkscape -->
+Une fois nos résultats obtenus, il est primordial de les publier. Ce n'est qu'en publiant nos résultats que nous participons à la science. Cela peut se faire via des communications dans des congrès, via des posters, ou encore (et c'est le plus fréquent), via des articles scientifiques. 
 
-<!-- ## The Gimp -->
+Dans les articles scientifiques, les résultats graphiques prennent la forme de *figures* qui sont souvent le fruit de un ou plusieurs graphiques. Ces figures suivent des critères bien précis dictés par la revue. Prenons cet exemple adapté et traduit du guide de la revue PLoS :
+
+*Les fichiers doivent être au format TIFF (avec compression LZW et une seule couche), ou EPS. Les dimensions doivent être de 789 à 2250 pixels et une hauteur maximum de 2625 pixels pour une résolution de 300 dpi (entre 6.68 et 19.05 cm de large - maximum 13.2 cm pour un alignement sur une colonne - et maximum 22.23 cm de haut). La police doit être Arial, Times, ou Symbol et d'une taille entre 8 et 12 points.*
+
+Il est difficile de respecter toutes ces contraintes avec R. C'est pourquoi nous allons utiliser des logiciels tiers pour transformer nos graphiques en figures. Nous allons utiliser Inkscape pour la mise en page et Gimp pour la transformation dans les formats requis.
+
+## Inkscape
+
+XXX
+
+## The Gimp
+
+XXX
+
+## Table de référence
+
+XXX \@ref(tab:tabRefPub)
+
+```{r tabRefPub, echo = FALSE}
+tabRef <- data.frame(
+  Revue = c("PLoS", "PNAS", "Science"), 
+  Largeur = c("6.68-19.05", "8.7; 11.4; 17.8", "9; 12.7; 18.4"), 
+  Hauteur = c("max 22.23", "max 22.5", "NA"), 
+  Format = c("TIFF, EPS", "TIF, EPS", "AI, EPS, PDF, TIF, JPEG"), 
+  Resolution = c("300-600 dpi", "300 dpi", "300 dpi"), 
+  Police = c("Arial, Times, Symbol", "Arial, Helvetica, Times, Symbol, Mathematical Pi, European Pi", "Helvetica"), 
+  Taille = c("9-12", "min 6-8", "panel 10, axis 6-9, font 5"))
+knitr::kable(tabRef, caption = "Table de référence pour la construction des figures.\\label{tab:tabRefPub}")
+```
