@@ -125,7 +125,8 @@ tempDayEachMonth <- lapply(sort(unique(bddMonth)), function(myMonth){
 	return(data.frame(tempHourMean, tempHourMin, tempHourMax))
 })
 
-for (i in seq_along(tempDayEachMonth)){
+# for (i in seq_along(tempDayEachMonth)){ # 12 months
+for (i in 1:2){ # only January and February
 	plot(x = hours, y = tempDayEachMonth[[i]][, 2], 
 		type = 'l', ylim = c(-15, 40), 
 		xlab = "", ylab = "Température (°C)", lwd = 2, 
@@ -183,3 +184,35 @@ for (i in seq_along(tempDayEachMonth)){
 legend("topright", ncol = 4, legend = meses, col = myColors, 
 	lty = 1, lwd = 2, cex = 0.8)
 ```
+
+Nous pouvons aussi représenter les températures journalières avec des graphiques de type "ridgeline" et le package `ggplot2` (https://www.data-to-viz.com/graph/ridgeline.html).
+
+```{r}
+pkgCheck <- function(x){ 
+	if (!require(x, character.only = TRUE)){
+		install.packages(x, dependencies = TRUE)
+		if(!require(x, character.only = TRUE)) {
+			stop()
+		}
+	}
+}
+pkgCheck("ggplot2")
+pkgCheck("ggridges")
+pkgCheck("viridis")
+meanTemps <- unlist(lapply(tempDayEachMonth, "[[", 2))
+labelMonth <- rep(meses, each = 48)
+dfTemps <- data.frame(month = labelMonth, value = meanTemps, 
+  stringsAsFactors = FALSE)
+dfTemps$month <- factor(dfTemps$month, levels = rev(meses))
+p <- ggplot(data = dfTemps, aes(y = month, x = value,  fill = ..x..))
+p <- p + geom_density_ridges_gradient(stat="binline")
+p <- p + scale_fill_viridis(name = "Temp. [°C]", option = "C")
+p <- p + xlab("Temperature") + ylab("") +
+    theme(
+      legend.position="none",
+      panel.spacing = unit(0.1, "lines"),
+      strip.text.x = element_text(size = 8)
+    ) 
+p
+```
+
