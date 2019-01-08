@@ -1,8 +1,10 @@
 # Les packages graphiques {#graph3}
 
-## RColorBrewer package
+## les packages de palettes
 
-Le package `RColorBrewer` est un package de référence car il contient des palettes complémentaires à celle disponibles dans la version de base de R. Une fois le package installé, il suffit d'appeler les palettes pour les utiliser. Voici les palettes disponibles et un exemple d'utilisation.
+### `RColorBrewer`
+
+Le package `RColorBrewer` est un package populaire qui contient des palettes complémentaires à celle disponibles dans la version de base de R. Une fois le package installé, il suffit d'appeler les palettes pour les utiliser. Voici les palettes disponibles et un exemple d'utilisation.
 
 ```{r}
 pkgCheck <- function(x){ 
@@ -18,6 +20,15 @@ display.brewer.all()
 boxplot(matrix(rnorm(1000), ncol = 10), 
   col = brewer.pal(10, "Paired"), axes = FALSE)
 ```
+
+### Les autres packages
+
+Il existe de très nombreux packages contenant des palettes. Par exemple :
+
+* `viridis` (https://CRAN.R-project.org/package=viridis)
+* `jcolors` (https://CRAN.R-project.org/package=jcolors)
+* `scico` (https://CRAN.R-project.org/package=scico)
+* ...
 
 ## ggplot2 package
 
