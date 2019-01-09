@@ -321,12 +321,33 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <p>Dans les articles scientifiques, les résultats graphiques prennent la forme de <em>figures</em> qui sont souvent le fruit de un ou plusieurs graphiques. Ces figures suivent des critères bien précis dictés par la revue. Prenons cet exemple adapté et traduit du guide de la revue PLoS :</p>
 <p><em>Les fichiers doivent être au format TIFF (avec compression LZW et une seule couche), ou EPS. Les dimensions doivent être de 789 à 2250 pixels et une hauteur maximum de 2625 pixels pour une résolution de 300 dpi (entre 6.68 et 19.05 cm de large - maximum 13.2 cm pour un alignement sur une colonne - et maximum 22.23 cm de haut). La police doit être Arial, Times, ou Symbol et d’une taille entre 8 et 12 points.</em></p>
 <p>Il est difficile de respecter toutes ces contraintes avec R. C’est pourquoi nous allons utiliser des logiciels tiers pour transformer nos graphiques en figures. Nous allons utiliser Inkscape pour la mise en page et Gimp pour la transformation dans les formats requis.</p>
+<p>Quant on prend une photo, chaque pixel prend une valeur qui va définir la couleur du pixel, donc en zoomant sur une photo on va voir apparaître les pixels (nous perdons en netteté). C’est une image <em>matricielle</em>. Dans une image <em>vectorielle</em>, les éléments sont codés sous forme de segments, nous ne perdons pas en qualité car chaque élément conserve ses coordonées (Figure <a href="graph4.html#fig:matVec">14.1</a>). L’avantage des images vectorielles est que l’on peut modifier les éléments de l’image sans perdre en qualité. C’est ce que nous allons faire avec Inkscape. L’avantage des images matricielles est que l’on peut choisir entre de très nombreux formats (dont TIFF). C’est ce que nous allons faire avec Gimp.</p>
+<div class="figure"><span id="fig:matVec"></span>
+<img src="myFigures/matVec.png" alt="Image matricielle et vectorielle.\label{fig:matVec}"  />
+<p class="caption">
+Figure 14.1: Image matricielle et vectorielle.
+</p>
+</div>
 <div id="inkscape" class="section level2">
 <h2><span class="header-section-number">14.1</span> Inkscape</h2>
+<div class="figure"><span id="fig:logoInkscape"></span>
+<img src="myLogos/logoInkscape.png" alt="Logo Inkscape (https://inkscape.org).\label{fig:logoInkscape}"  />
+<p class="caption">
+Figure 14.2: Logo Inkscape (<a href="https://inkscape.org" class="uri">https://inkscape.org</a>).
+</p>
+</div>
+<p>Inkscape est un logiciel de dessin vectoriel disponible sous Windows, Mac OS X et GNU/Linux. C’est un logiciel libre et open source sous licence GPL. Nous pouvons le télécharger à l’adresse suivante <a href="https://inkscape.org" class="uri">https://inkscape.org</a>. Inksacpe est déjà installé par défaut sur de nombreuses distributions de Linux.</p>
 <p>XXX</p>
 </div>
 <div id="the-gimp" class="section level2">
 <h2><span class="header-section-number">14.2</span> The Gimp</h2>
+<div class="figure"><span id="fig:logoGimp"></span>
+<img src="myLogos/logoGimp.png" alt="Logo Gimp (https://www.gimp.org/).\label{fig:logoGimp}"  />
+<p class="caption">
+Figure 14.3: Logo Gimp (<a href="https://www.gimp.org/" class="uri">https://www.gimp.org/</a>).
+</p>
+</div>
+<p>Gimp est un logiciel de dessin matriciel disponible sous Windows, Mac OS X et GNU/Linux. C’est un logiciel libre et open source sous licence GPL. Nous pouvons le télécharger à l’adresse suivante <a href="https://www.gimp.org/" class="uri">https://www.gimp.org/</a>. Gimp signifie “GNU Image Manipulation Program”. Gimp est déjà installé par défaut sur de nombreuses distributions de Linux.</p>
 <p>XXX</p>
 </div>
 <div id="table-de-reference" class="section level2">
