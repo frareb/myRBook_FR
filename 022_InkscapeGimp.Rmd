@@ -8,11 +8,29 @@ Dans les articles scientifiques, les résultats graphiques prennent la forme de 
 
 Il est difficile de respecter toutes ces contraintes avec R. C'est pourquoi nous allons utiliser des logiciels tiers pour transformer nos graphiques en figures. Nous allons utiliser Inkscape pour la mise en page et Gimp pour la transformation dans les formats requis.
 
+Quant on prend une photo, chaque pixel prend une valeur qui va définir la couleur du pixel, donc en zoomant sur une photo on va voir apparaître les pixels (nous perdons en netteté). C'est une image *matricielle*. Dans une image *vectorielle*, les éléments sont codés sous forme de segments, nous ne perdons pas en qualité car chaque élément conserve ses coordonées (Figure \@ref(fig:matVec)). L'avantage des images vectorielles est que l'on peut modifier les éléments de l'image sans perdre en qualité. C'est ce que nous allons faire avec Inkscape. L'avantage des images matricielles est que l'on peut choisir entre de très nombreux formats (dont TIFF). C'est ce que nous allons faire avec Gimp.
+
+```{r matVec, fig.cap = "Image matricielle et vectorielle.\\label{fig:matVec}", echo = FALSE}
+knitr::include_graphics("myFigures/matVec.png")
+```
+
 ## Inkscape
+
+```{r logoInkscape, fig.cap = "Logo Inkscape (https://inkscape.org).\\label{fig:logoInkscape}", echo = FALSE}
+knitr::include_graphics("myLogos/logoInkscape.png")
+```
+
+Inkscape est un logiciel de dessin vectoriel disponible sous Windows, Mac OS X et GNU/Linux. C'est un logiciel libre et open source sous licence GPL. Nous pouvons le télécharger à l'adresse suivante https://inkscape.org. Inksacpe est déjà installé par défaut sur de nombreuses distributions de Linux. 
 
 XXX
 
 ## The Gimp
+
+```{r logoGimp, fig.cap = "Logo Gimp (https://www.gimp.org/).\\label{fig:logoGimp}", echo = FALSE}
+knitr::include_graphics("myLogos/logoGimp.png")
+```
+
+Gimp est un logiciel de dessin matriciel disponible sous Windows, Mac OS X et GNU/Linux. C'est un logiciel libre et open source sous licence GPL. Nous pouvons le télécharger à l'adresse suivante https://www.gimp.org/. Gimp signifie "GNU Image Manipulation Program". Gimp est déjà installé par défaut sur de nombreuses distributions de Linux. 
 
 XXX
 
