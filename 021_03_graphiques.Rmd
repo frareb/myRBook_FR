@@ -21,6 +21,33 @@ boxplot(matrix(rnorm(1000), ncol = 10),
   col = brewer.pal(10, "Paired"), axes = FALSE)
 ```
 
+### `palettesForR`
+
+Le package `palettesForR` est un autre package contenant des palettes prêtes à l'emploi, issues des projets 'Gimp' et 'Inkscape'. Comme pour `RColorBrewer`, il suffit d'appeler les palettes pour les utiliser. Les nombreuses palettes disponibles sont listées dans l'aide du package. Voici un exemple d'utilisation.
+
+```{r}
+pkgCheck <- function(x){ 
+	if (!require(x, character.only = TRUE)){
+		install.packages(x, dependencies = TRUE)
+		if(!require(x, character.only = TRUE)) {
+			stop()
+		}
+	}
+}
+pkgCheck("palettesForR")
+showPalette(Echo_gpl)
+groupTest <- sample(1:3, size = 100, replace = TRUE) 
+valueTest <- sample(1:7, size = 100, replace = TRUE)
+tableTest <- table(groupTest, valueTest)
+barplot(tableTest, 
+  col = Echo_gpl, axes = FALSE, beside = TRUE)
+groupTest <- sample(1:3, size = 100, replace = TRUE) 
+valueTest <- sample(1:7, size = 100, replace = TRUE)
+tableTest <- table(groupTest, valueTest)
+barplot(tableTest, 
+  col = Tango_gpl, axes = FALSE, beside = TRUE)
+```
+
 ### Les autres packages
 
 Il existe de très nombreux packages contenant des palettes. Par exemple :
