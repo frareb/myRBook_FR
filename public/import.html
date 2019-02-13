@@ -25,7 +25,7 @@
 <meta name="author" content="François Rebaudo">
 
 
-<meta name="date" content="2019-01-22">
+<meta name="date" content="2019-02-13">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -47,7 +47,7 @@
 
 
 
-<script src="libs/htmlwidgets-1.3/htmlwidgets.js"></script>
+<script src="libs/htmlwidgets-1.2/htmlwidgets.js"></script>
 <script src="libs/plotly-binding-4.8.0/plotly.js"></script>
 <script src="libs/typedarray-0.1/typedarray.min.js"></script>
 <link href="libs/crosstalk-1.0.0/css/crosstalk.css" rel="stylesheet" />
@@ -334,13 +334,13 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <p>Le répertoire de travail par défaut peut être obtenu avec la fonction <a href="fonctions.html#l015getwd"><code>getwd()</code></a> et spécifier avec la fonction <a href="fonctions.html#l015setwd"><code>setwd()</code></a>.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">oldWd &lt;-<span class="st"> </span><span class="kw">getwd</span>()
 <span class="kw">print</span>(oldWd)</code></pre></div>
-<pre><code>## [1] &quot;C:/Users/nous/Documents/Francois/TRAVAIL/GitHub/myRBook_FR&quot;</code></pre>
+<pre><code>## [1] &quot;D:/GitHub/myRBook_FR&quot;</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">setwd</span>(<span class="st">&quot;..&quot;</span>)
 <span class="kw">getwd</span>()</code></pre></div>
-<pre><code>## [1] &quot;C:/Users/nous/Documents/Francois/TRAVAIL/GitHub&quot;</code></pre>
+<pre><code>## [1] &quot;D:/GitHub&quot;</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">setwd</span>(oldWd)
 <span class="kw">getwd</span>()</code></pre></div>
-<pre><code>## [1] &quot;C:/Users/nous/Documents/Francois/TRAVAIL/GitHub/myRBook_FR&quot;</code></pre>
+<pre><code>## [1] &quot;D:/GitHub/myRBook_FR&quot;</code></pre>
 <p>Nous avons donc quatre options :</p>
 <ul>
 <li>nous pouvons lire le contenu d’un fichier en indiquant à R son chemin complet (à proscrire pour la reproductibilité des résultats)</li>
