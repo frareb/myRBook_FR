@@ -1,15 +1,14 @@
 <!DOCTYPE html>
-<html >
-
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
 <head>
 
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Se former au logiciel R : initiation et perfectionnement</title>
-  <meta name="description" content="Un guide pour acquérir les bases de la programmation avec R et conduire efficacement la gestion et l’analyse de ses données.">
-  <meta name="generator" content="bookdown 0.7 and GitBook 2.6.7">
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title> 8 Importer et exporter des données | Se former au logiciel R : initiation et perfectionnement</title>
+  <meta name="description" content="Un guide pour acquérir les bases de la programmation avec R et conduire efficacement la gestion et l’analyse de ses données." />
+  <meta name="generator" content="bookdown 0.10 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Se former au logiciel R : initiation et perfectionnement" />
+  <meta property="og:title" content=" 8 Importer et exporter des données | Se former au logiciel R : initiation et perfectionnement" />
   <meta property="og:type" content="book" />
   
   <meta property="og:image" content="myFigures/cover.png" />
@@ -17,25 +16,26 @@
   <meta name="github-repo" content="frareb/myRBook_FR" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Se former au logiciel R : initiation et perfectionnement" />
+  <meta name="twitter:title" content=" 8 Importer et exporter des données | Se former au logiciel R : initiation et perfectionnement" />
   
   <meta name="twitter:description" content="Un guide pour acquérir les bases de la programmation avec R et conduire efficacement la gestion et l’analyse de ses données." />
   <meta name="twitter:image" content="myFigures/cover.png" />
 
-<meta name="author" content="François Rebaudo">
+<meta name="author" content="François Rebaudo" />
 
 
-<meta name="date" content="2019-02-13">
+<meta name="date" content="2019-06-27" />
 
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
 <link rel="prev" href="fonctions.html">
 <link rel="next" href="algo.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
@@ -47,13 +47,13 @@
 
 
 
-<script src="libs/htmlwidgets-1.2/htmlwidgets.js"></script>
-<script src="libs/plotly-binding-4.8.0/plotly.js"></script>
+<script src="libs/htmlwidgets-1.3/htmlwidgets.js"></script>
+<script src="libs/plotly-binding-4.9.0/plotly.js"></script>
 <script src="libs/typedarray-0.1/typedarray.min.js"></script>
 <link href="libs/crosstalk-1.0.0/css/crosstalk.css" rel="stylesheet" />
 <script src="libs/crosstalk-1.0.0/js/crosstalk.min.js"></script>
-<link href="libs/plotly-htmlwidgets-css-1.39.2/plotly-htmlwidgets.css" rel="stylesheet" />
-<script src="libs/plotly-main-1.39.2/plotly-latest.min.js"></script>
+<link href="libs/plotly-htmlwidgets-css-1.46.1/plotly-htmlwidgets.css" rel="stylesheet" />
+<script src="libs/plotly-main-1.46.1/plotly-latest.min.js"></script>
 <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-124666641-2"></script>
 <script>
@@ -66,41 +66,67 @@
 
 
 <style type="text/css">
-div.sourceCode { overflow-x: auto; }
-table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
-  margin: 0; padding: 0; vertical-align: baseline; border: none; }
-table.sourceCode { width: 100%; line-height: 100%; }
-td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
-td.sourceCode { padding-left: 5px; }
-code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code > span.dt { color: #902000; } /* DataType */
-code > span.dv { color: #40a070; } /* DecVal */
-code > span.bn { color: #40a070; } /* BaseN */
-code > span.fl { color: #40a070; } /* Float */
-code > span.ch { color: #4070a0; } /* Char */
-code > span.st { color: #4070a0; } /* String */
-code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code > span.ot { color: #007020; } /* Other */
-code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code > span.fu { color: #06287e; } /* Function */
-code > span.er { color: #ff0000; font-weight: bold; } /* Error */
-code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
-code > span.cn { color: #880000; } /* Constant */
-code > span.sc { color: #4070a0; } /* SpecialChar */
-code > span.vs { color: #4070a0; } /* VerbatimString */
-code > span.ss { color: #bb6688; } /* SpecialString */
-code > span.im { } /* Import */
-code > span.va { color: #19177c; } /* Variable */
-code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code > span.op { color: #666666; } /* Operator */
-code > span.bu { } /* BuiltIn */
-code > span.ex { } /* Extension */
-code > span.pp { color: #bc7a00; } /* Preprocessor */
-code > span.at { color: #7d9029; } /* Attribute */
-code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(title);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
 <link rel="stylesheet" href="myStyle.css" type="text/css" />
@@ -332,15 +358,15 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <p>C’est la source d’erreur la plus commune chez les débutants en R. C’est pourquoi il est important de lire et de relire ce chapitre et celui sur la gestion d’un projet R avec beaucoup d’attention.</p>
 <p>Commençons par préciser que R travaille dans un répertoire défini par défaut. Les utilisateurs de Rstudio ou autre <a href="IDE.html#IDE">environnement de développement</a> spécialisés pour R seront tenter d’utiliser les options disponibles via les menus pour définir leur répertoire de travail ou pour charger le contenu d’un fichier. Dans ce livre ces techniques ne seront jamais utilisées car elles ne permettent pas la reproductibilité des résultats. Un script doit toujours pouvoir fonctionner pour tous les systèmes d’exploitation et quel que soit <a href="IDE.html#IDE">l’environnement de développement</a> de l’utilisateur.</p>
 <p>Le répertoire de travail par défaut peut être obtenu avec la fonction <a href="fonctions.html#l015getwd"><code>getwd()</code></a> et spécifier avec la fonction <a href="fonctions.html#l015setwd"><code>setwd()</code></a>.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">oldWd &lt;-<span class="st"> </span><span class="kw">getwd</span>()
-<span class="kw">print</span>(oldWd)</code></pre></div>
-<pre><code>## [1] &quot;D:/GitHub/myRBook_FR&quot;</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">setwd</span>(<span class="st">&quot;..&quot;</span>)
-<span class="kw">getwd</span>()</code></pre></div>
-<pre><code>## [1] &quot;D:/GitHub&quot;</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">setwd</span>(oldWd)
-<span class="kw">getwd</span>()</code></pre></div>
-<pre><code>## [1] &quot;D:/GitHub/myRBook_FR&quot;</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r">oldWd &lt;-<span class="st"> </span><span class="kw">getwd</span>()
+<span class="kw">print</span>(oldWd)</code></pre>
+<pre><code>## [1] &quot;C:/Users/nous/Documents/Francois/TRAVAIL/GitHub/myRBook_FR&quot;</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">setwd</span>(<span class="st">&quot;..&quot;</span>)
+<span class="kw">getwd</span>()</code></pre>
+<pre><code>## [1] &quot;C:/Users/nous/Documents/Francois/TRAVAIL/GitHub&quot;</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">setwd</span>(oldWd)
+<span class="kw">getwd</span>()</code></pre>
+<pre><code>## [1] &quot;C:/Users/nous/Documents/Francois/TRAVAIL/GitHub/myRBook_FR&quot;</code></pre>
 <p>Nous avons donc quatre options :</p>
 <ul>
 <li>nous pouvons lire le contenu d’un fichier en indiquant à R son chemin complet (à proscrire pour la reproductibilité des résultats)</li>
@@ -366,20 +392,20 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 ## |-|-myFirstScript.R</code></pre>
 <p>Le chemin relatif vers le fichier <code>data01.csv</code> serait <code>../myFiles/data01.csv</code></p>
 <p>Donc pour lire le contenu du fichier <code>data01.csv</code>, nous allons privilégier l’option 2 (lire le contenu d’un fichier en indiquant à R son chemin relatif) ou l’option 4 (modifier le répertoire de travail de R pour qu’il corresponde à l’emplacement de notre fichier). Dans ce dernier cas :</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">myWD &lt;-<span class="st"> &quot;../myFiles/&quot;</span>
+<pre class="sourceCode r"><code class="sourceCode r">myWD &lt;-<span class="st"> &quot;../myFiles/&quot;</span>
 <span class="kw">setwd</span>(myWd)
 <span class="kw">getwd</span>() <span class="co"># pour verifier que nous sommes dans le bon repertoire</span>
-<span class="kw">list.files</span>() <span class="co"># pour verifier que le fichier se trouve bien ici</span></code></pre></div>
+<span class="kw">list.files</span>() <span class="co"># pour verifier que le fichier se trouve bien ici</span></code></pre>
 <p>L’erreur la plus commune :</p>
 <pre><code>## Error in setwd(&quot;../myFiles/&quot;) : 
 ## impossible de changer de répertoire de travail</code></pre>
 <p>Cela veut dire que le répertoire n’existe pas (il faut vérifier que la syntaxe est correcte et que le répertoire existe bien avec ce chemin).</p>
 <p>Une fois le répertoire de travail correctement défini ou le chemin relatif vers le fichier correctement établi, nous pouvons lire le fichier avec la fonction <code>read.table()</code>. Certains utilisent la fonction <code>read.csv()</code> mais ce n’est qu’un cas particulier de la fonction <code>read.table()</code>.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">myWD &lt;-<span class="st"> &quot;../myFiles/&quot;</span>
+<pre class="sourceCode r"><code class="sourceCode r">myWD &lt;-<span class="st"> &quot;../myFiles/&quot;</span>
 <span class="kw">setwd</span>(myWd)
-<span class="kw">read.table</span>(<span class="dt">file =</span> <span class="st">&quot;data01.csv&quot;</span>)</code></pre></div>
+<span class="kw">read.table</span>(<span class="dt">file =</span> <span class="st">&quot;data01.csv&quot;</span>)</code></pre>
 <p>ou alternativement :</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">read.table</span>(<span class="dt">file =</span> <span class="st">&quot;../myFiles/data01.csv&quot;</span>)</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">read.table</span>(<span class="dt">file =</span> <span class="st">&quot;../myFiles/data01.csv&quot;</span>)</code></pre>
 <p>Si le chemin n’est pas correctement renseigné ou si le fichier de données n’existe pas, R renverra l’erreur suivante :</p>
 <pre><code>## Error in file(file, &quot;rt&quot;) : impossible d&#39;ouvrir la connexion
 ## De plus : Warning message:
@@ -389,21 +415,21 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <p>En consultant l’aide sur la fonction <code>read.table()</code>, nous puvons voir qu’elle possède de nombreux arguments. Les principaux sont les suivants :</p>
 <ul>
 <li><code>header = FALSE</code> : est-ce que le fichier contient des noms de colonnes ? Si oui alors il faut changer la valeur pour <code>header = TRUE</code></li>
-<li><code>sep = &quot;&quot;</code> : comment sont séparées les données de la table ? Dans un fichier CSV il s’agit de la virgule ou du point virgule, donc à changer pour <code>sep = &quot;,&quot;</code> ou <code>sep = &quot;;&quot;</code></li>
-<li><code>dec = &quot;.&quot;</code> : quel est le séparateur des nombres décimaux ? Si c’est la virgule alors il faut changer pour <code>dec = &quot;,&quot;</code></li>
+<li><code>sep = ""</code> : comment sont séparées les données de la table ? Dans un fichier CSV il s’agit de la virgule ou du point virgule, donc à changer pour <code>sep = ","</code> ou <code>sep = ";"</code></li>
+<li><code>dec = "."</code> : quel est le séparateur des nombres décimaux ? Si c’est la virgule alors il faut changer pour <code>dec = ","</code></li>
 </ul>
 <p>Avec ces trois arguments la plupart des fichiers pourront être lus sans aucun problème. En cas de besoin l’aide est faite pour être consultée, et elle est très complète.</p>
 <p>La fonction <code>read.table()</code> renvoie le contenu du fichier sous forme d’une <code>data.frame</code>. Pour pouvoir utiliser le contenu du fichier nous allons donc stocker la <code>data.frame</code> dans un objet.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">myWD &lt;-<span class="st"> &quot;../myFiles/&quot;</span>
+<pre class="sourceCode r"><code class="sourceCode r">myWD &lt;-<span class="st"> &quot;../myFiles/&quot;</span>
 <span class="kw">setwd</span>(myWd)
 data01 &lt;-<span class="st"> </span><span class="kw">read.table</span>(<span class="dt">file =</span> <span class="st">&quot;data01.csv&quot;</span>)
 <span class="kw">str</span>(data01) <span class="co"># verifier format des donnees</span>
-<span class="kw">head</span>(data01) <span class="co"># verifier les premieres donnees</span></code></pre></div>
+<span class="kw">head</span>(data01) <span class="co"># verifier les premieres donnees</span></code></pre>
 <p><a href="studyCase001.html#studyCase001">L’étude de cas sur l’analyse de données de dataloggers</a> se base sur un fichier CSV. En voici un extrait :</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">bdd &lt;-<span class="st"> </span><span class="kw">read.table</span>(<span class="st">&quot;myFiles/E05C13.csv&quot;</span>, <span class="dt">skip =</span> <span class="dv">1</span>, <span class="dt">header =</span> <span class="ot">TRUE</span>, 
+<pre class="sourceCode r"><code class="sourceCode r">bdd &lt;-<span class="st"> </span><span class="kw">read.table</span>(<span class="st">&quot;myFiles/E05C13.csv&quot;</span>, <span class="dt">skip =</span> <span class="dv">1</span>, <span class="dt">header =</span> <span class="ot">TRUE</span>, 
   <span class="dt">sep =</span> <span class="st">&quot;,&quot;</span>, <span class="dt">dec =</span> <span class="st">&quot;.&quot;</span>, <span class="dt">stringsAsFactors =</span> <span class="ot">FALSE</span>)
 <span class="kw">colnames</span>(bdd) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;id&quot;</span>, <span class="st">&quot;date&quot;</span>, <span class="st">&quot;temp&quot;</span>)
-<span class="kw">head</span>(bdd)</code></pre></div>
+<span class="kw">head</span>(bdd)</code></pre>
 <pre><code>##   id              date  temp
 ## 1  1 11/12/15 23:00:00 4.973
 ## 2  2 11/12/15 23:30:00 4.766
@@ -411,7 +437,7 @@ data01 &lt;-<span class="st"> </span><span class="kw">read.table</span>(<span cl
 ## 4  4 11/13/15 00:30:00 4.844
 ## 5  5 11/13/15 01:00:00 5.076
 ## 6  6 11/13/15 01:30:00 5.282</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">tail</span>(bdd)</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">tail</span>(bdd)</code></pre>
 <pre><code>##          id              date  temp
 ## 32781 32781 09/25/17 21:00:00 7.091
 ## 32782 32782 09/25/17 21:30:00 6.914
@@ -419,7 +445,7 @@ data01 &lt;-<span class="st"> </span><span class="kw">read.table</span>(<span cl
 ## 32784 32784 09/25/17 22:30:00 6.611
 ## 32785 32785 09/25/17 23:00:00 6.331
 ## 32786 32786 09/25/17 23:30:00 5.385</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">str</span>(bdd)</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">str</span>(bdd)</code></pre>
 <pre><code>## &#39;data.frame&#39;:    32786 obs. of  3 variables:
 ##  $ id  : int  1 2 3 4 5 6 7 8 9 10 ...
 ##  $ date: chr  &quot;11/12/15 23:00:00&quot; &quot;11/12/15 23:30:00&quot; &quot;11/13/15 00:00:00&quot; &quot;11/13/15 00:30:00&quot; ...
@@ -428,12 +454,12 @@ data01 &lt;-<span class="st"> </span><span class="kw">read.table</span>(<span cl
 <div id="l016readTXT" class="section level3">
 <h3><span class="header-section-number">8.1.3</span> Lire un fichier texte</h3>
 <p>La fonction la plus simple pour lire un fichier contenant du texte est <code>readlines()</code>. Voici un exemple avec le fichier README.md de ce livre, que l’on retrouve sur GitHub.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">readmeGitHub &lt;-<span class="st"> &quot;https://raw.githubusercontent.com/frareb/myRBook_FR/master/README.md&quot;</span>
-<span class="kw">readLines</span>(readmeGitHub)</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r">readmeGitHub &lt;-<span class="st"> &quot;https://raw.githubusercontent.com/frareb/myRBook_FR/master/README.md&quot;</span>
+<span class="kw">readLines</span>(readmeGitHub)</code></pre>
 <pre><code>## [1] &quot;# myRBook_FR&quot;                                                                                                                   
 ## [2] &quot;Vous trouverez ici le code source du livre *Se former au logiciel R : initiation et perfectionnement*, construit avec bookdown.&quot;</code></pre>
 <p>Il existe aussi la fonction <code>scan()</code> qui va renvoyer l’ensemble des mots séparés par des espaces. Nous pouvons consulter l’aide pour plus d’information.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">scan</span>(readmeGitHub, <span class="dt">what =</span> <span class="st">&quot;character&quot;</span>)</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">scan</span>(readmeGitHub, <span class="dt">what =</span> <span class="st">&quot;character&quot;</span>)</code></pre>
 <pre><code>##  [1] &quot;#&quot;                  &quot;myRBook_FR&quot;         &quot;Vous&quot;              
 ##  [4] &quot;trouverez&quot;          &quot;ici&quot;                &quot;le&quot;                
 ##  [7] &quot;code&quot;               &quot;source&quot;             &quot;du&quot;                
@@ -448,30 +474,30 @@ data01 &lt;-<span class="st"> </span><span class="kw">read.table</span>(<span cl
 <h2><span class="header-section-number">8.2</span> Exporter ou charger des données pour R</h2>
 <p>Il est parfois utile de pouvoir sauvegarder un objet R pour pouvoir le réutiliser plus tard. C’est le cas par exemple lorsque le temps de calcul pour arriver à un résultat est très long, ou alors lorsque l’on souhaite libérer de l’espace dans la RAM. Pour ce faire il existe la fonction <code>save()</code> qui prend comme argument principal le nom de ou des objets que nous voulons sauvegarder.</p>
 <p>L’objet sauvé va être stocké dans un fichier. Par convention, il est bon de donner le nom d’extension <code>.RData</code> aux fichiers contenant des objets R, de préférer un seul objet par fichier, et de donner le nom de l’objet comme nom de fichier.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">myObject &lt;-<span class="st"> </span><span class="dv">5</span>
-<span class="kw">ls</span>(<span class="dt">pattern =</span> <span class="st">&quot;myObject&quot;</span>)</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r">myObject &lt;-<span class="st"> </span><span class="dv">5</span>
+<span class="kw">ls</span>(<span class="dt">pattern =</span> <span class="st">&quot;myObject&quot;</span>)</code></pre>
 <pre><code>## [1] &quot;myObject&quot;</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">save</span>(myObject, <span class="dt">file =</span> <span class="st">&quot;myFiles/myObject.RData&quot;</span>)
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">save</span>(myObject, <span class="dt">file =</span> <span class="st">&quot;myFiles/myObject.RData&quot;</span>)
 <span class="kw">rm</span>(myObject)
-<span class="kw">ls</span>(<span class="dt">pattern =</span> <span class="st">&quot;myObject&quot;</span>)</code></pre></div>
+<span class="kw">ls</span>(<span class="dt">pattern =</span> <span class="st">&quot;myObject&quot;</span>)</code></pre>
 <pre><code>## character(0)</code></pre>
 <p>Lors de la session de R suivante ou si nous avons à nouveau besoin de l’objet sauvegardé dans un fichier, nous pouvons le recharger avec la fonction <code>load()</code>.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ls</span>(<span class="dt">pattern =</span> <span class="st">&quot;myObject&quot;</span>)</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ls</span>(<span class="dt">pattern =</span> <span class="st">&quot;myObject&quot;</span>)</code></pre>
 <pre><code>## character(0)</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">load</span>(<span class="st">&quot;myFiles/myObject.RData&quot;</span>)
-<span class="kw">ls</span>(<span class="dt">pattern =</span> <span class="st">&quot;myObject&quot;</span>)</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">load</span>(<span class="st">&quot;myFiles/myObject.RData&quot;</span>)
+<span class="kw">ls</span>(<span class="dt">pattern =</span> <span class="st">&quot;myObject&quot;</span>)</code></pre>
 <pre><code>## [1] &quot;myObject&quot;</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">print</span>(myObject)</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">print</span>(myObject)</code></pre>
 <pre><code>## [1] 5</code></pre>
 </div>
 <div id="l016write" class="section level2">
 <h2><span class="header-section-number">8.3</span> Exporter des données</h2>
 <p>Le meilleur moyen de communiquer vos résultats ou vos données est de transmettre vos scripts et vos fichiers de données. Parfois ce n’est pas possible ou pas adapté, et il peut être utile d’exporter ses données dans un fichier texte ou CSV. Pour ce faire il existe la fonction générique <code>write()</code> et la fonction <code>write.table()</code> pour les <code>data.frame</code>.</p>
 <p>Par exemple nous allons créer une <code>data.frame</code> avec les numéros de 1 à 26 et les lettres correspondantes, puis les sauver dans un fichier CSV, puis lire les données contenues dans ce fichier.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">dfLetters &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">num =</span> <span class="dv">1</span><span class="op">:</span><span class="dv">26</span>, <span class="dt">letters =</span> letters)
+<pre class="sourceCode r"><code class="sourceCode r">dfLetters &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">num =</span> <span class="dv">1</span><span class="op">:</span><span class="dv">26</span>, <span class="dt">letters =</span> letters)
 <span class="kw">write.table</span>(dfLetters, <span class="dt">file =</span> <span class="st">&quot;myFiles/dfLetters.csv&quot;</span>, 
   <span class="dt">sep =</span> <span class="st">&quot;,&quot;</span>, <span class="dt">col.names =</span> <span class="ot">TRUE</span>, <span class="dt">row.names =</span> <span class="ot">FALSE</span>)
-<span class="kw">read.table</span>(<span class="dt">file =</span> <span class="st">&quot;myFiles/dfLetters.csv&quot;</span>, <span class="dt">header =</span> <span class="ot">TRUE</span>, <span class="dt">sep =</span> <span class="st">&quot;,&quot;</span>)</code></pre></div>
+<span class="kw">read.table</span>(<span class="dt">file =</span> <span class="st">&quot;myFiles/dfLetters.csv&quot;</span>, <span class="dt">header =</span> <span class="ot">TRUE</span>, <span class="dt">sep =</span> <span class="st">&quot;,&quot;</span>)</code></pre>
 <pre><code>##    num letters
 ## 1    1       a
 ## 2    2       b
@@ -532,7 +558,7 @@ gitbook.start({
 "google": false,
 "linkedin": false,
 "weibo": false,
-"instapper": false,
+"instapaper": false,
 "vk": false,
 "all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
 },
@@ -544,6 +570,10 @@ gitbook.start({
 "edit": {
 "link": "https://github.com/frareb/myRBook_FR/edit/master/016_importExport.Rmd",
 "text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
 },
 "download": ["myRBook_FR.pdf", "myRBook_FR.epub"],
 "toc": {

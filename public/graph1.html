@@ -1,15 +1,14 @@
 <!DOCTYPE html>
-<html >
-
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
 <head>
 
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Se former au logiciel R : initiation et perfectionnement</title>
-  <meta name="description" content="Un guide pour acquérir les bases de la programmation avec R et conduire efficacement la gestion et l’analyse de ses données.">
-  <meta name="generator" content="bookdown 0.7 and GitBook 2.6.7">
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title> 11 Graphiques simples | Se former au logiciel R : initiation et perfectionnement</title>
+  <meta name="description" content="Un guide pour acquérir les bases de la programmation avec R et conduire efficacement la gestion et l’analyse de ses données." />
+  <meta name="generator" content="bookdown 0.10 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Se former au logiciel R : initiation et perfectionnement" />
+  <meta property="og:title" content=" 11 Graphiques simples | Se former au logiciel R : initiation et perfectionnement" />
   <meta property="og:type" content="book" />
   
   <meta property="og:image" content="myFigures/cover.png" />
@@ -17,25 +16,26 @@
   <meta name="github-repo" content="frareb/myRBook_FR" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Se former au logiciel R : initiation et perfectionnement" />
+  <meta name="twitter:title" content=" 11 Graphiques simples | Se former au logiciel R : initiation et perfectionnement" />
   
   <meta name="twitter:description" content="Un guide pour acquérir les bases de la programmation avec R et conduire efficacement la gestion et l’analyse de ses données." />
   <meta name="twitter:image" content="myFigures/cover.png" />
 
-<meta name="author" content="François Rebaudo">
+<meta name="author" content="François Rebaudo" />
 
 
-<meta name="date" content="2019-02-13">
+<meta name="date" content="2019-06-27" />
 
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
 <link rel="prev" href="project.html">
 <link rel="next" href="graph2.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
@@ -47,13 +47,13 @@
 
 
 
-<script src="libs/htmlwidgets-1.2/htmlwidgets.js"></script>
-<script src="libs/plotly-binding-4.8.0/plotly.js"></script>
+<script src="libs/htmlwidgets-1.3/htmlwidgets.js"></script>
+<script src="libs/plotly-binding-4.9.0/plotly.js"></script>
 <script src="libs/typedarray-0.1/typedarray.min.js"></script>
 <link href="libs/crosstalk-1.0.0/css/crosstalk.css" rel="stylesheet" />
 <script src="libs/crosstalk-1.0.0/js/crosstalk.min.js"></script>
-<link href="libs/plotly-htmlwidgets-css-1.39.2/plotly-htmlwidgets.css" rel="stylesheet" />
-<script src="libs/plotly-main-1.39.2/plotly-latest.min.js"></script>
+<link href="libs/plotly-htmlwidgets-css-1.46.1/plotly-htmlwidgets.css" rel="stylesheet" />
+<script src="libs/plotly-main-1.46.1/plotly-latest.min.js"></script>
 <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-124666641-2"></script>
 <script>
@@ -66,41 +66,67 @@
 
 
 <style type="text/css">
-div.sourceCode { overflow-x: auto; }
-table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
-  margin: 0; padding: 0; vertical-align: baseline; border: none; }
-table.sourceCode { width: 100%; line-height: 100%; }
-td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
-td.sourceCode { padding-left: 5px; }
-code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code > span.dt { color: #902000; } /* DataType */
-code > span.dv { color: #40a070; } /* DecVal */
-code > span.bn { color: #40a070; } /* BaseN */
-code > span.fl { color: #40a070; } /* Float */
-code > span.ch { color: #4070a0; } /* Char */
-code > span.st { color: #4070a0; } /* String */
-code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code > span.ot { color: #007020; } /* Other */
-code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code > span.fu { color: #06287e; } /* Function */
-code > span.er { color: #ff0000; font-weight: bold; } /* Error */
-code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
-code > span.cn { color: #880000; } /* Constant */
-code > span.sc { color: #4070a0; } /* SpecialChar */
-code > span.vs { color: #4070a0; } /* VerbatimString */
-code > span.ss { color: #bb6688; } /* SpecialString */
-code > span.im { } /* Import */
-code > span.va { color: #19177c; } /* Variable */
-code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code > span.op { color: #666666; } /* Operator */
-code > span.bu { } /* BuiltIn */
-code > span.ex { } /* Extension */
-code > span.pp { color: #bc7a00; } /* Preprocessor */
-code > span.at { color: #7d9029; } /* Attribute */
-code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(title);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
 <link rel="stylesheet" href="myStyle.css" type="text/css" />
@@ -321,40 +347,40 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <div id="graph1plot" class="section level2">
 <h2><span class="header-section-number">11.1</span> <code>plot</code></h2>
 <p>Le premier type de graphique que nous allons voir est le nuage de points. Dans un nuage de points, chaque point est représenté par sa valeur en x et en y. La fonction permettant de faire un nuage de points est <code>plot()</code>.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">myX &lt;-<span class="st"> </span><span class="kw">rnorm</span>(<span class="dv">50</span>, <span class="dt">mean =</span> <span class="dv">0</span>, <span class="dt">sd =</span> <span class="dv">1</span>)
+<pre class="sourceCode r"><code class="sourceCode r">myX &lt;-<span class="st"> </span><span class="kw">rnorm</span>(<span class="dv">50</span>, <span class="dt">mean =</span> <span class="dv">0</span>, <span class="dt">sd =</span> <span class="dv">1</span>)
 myY &lt;-<span class="st"> </span><span class="kw">rnorm</span>(<span class="dv">50</span>, <span class="dt">mean =</span> <span class="dv">10</span>, <span class="dt">sd =</span> <span class="dv">1</span>)
-<span class="kw">plot</span>(<span class="dt">x =</span> myX, <span class="dt">y =</span> myY)</code></pre></div>
+<span class="kw">plot</span>(<span class="dt">x =</span> myX, <span class="dt">y =</span> myY)</code></pre>
 <p><img src="myRBook_FR_files/figure-html/unnamed-chunk-221-1.png" width="672" /></p>
 <p>Comme pour tous les types de graphiques, nous pouvons ajouter une légende sur l’axe des x et des y.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(<span class="dt">x =</span> myX, <span class="dt">y =</span> myY, 
-  <span class="dt">xlab =</span> <span class="st">&quot;X&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;Y&quot;</span>)</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(<span class="dt">x =</span> myX, <span class="dt">y =</span> myY, 
+  <span class="dt">xlab =</span> <span class="st">&quot;X&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;Y&quot;</span>)</code></pre>
 <p><img src="myRBook_FR_files/figure-html/unnamed-chunk-222-1.png" width="672" /></p>
 <p>Nous pouvons aussi définir les limites des axes en X et en Y.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(<span class="dt">x =</span> myX, <span class="dt">y =</span> myY, 
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(<span class="dt">x =</span> myX, <span class="dt">y =</span> myY, 
   <span class="dt">xlab =</span> <span class="st">&quot;X&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;Y&quot;</span>, 
-  <span class="dt">xlim =</span> <span class="kw">c</span>(<span class="op">-</span><span class="dv">3</span>, <span class="dv">3</span>), <span class="dt">ylim =</span> <span class="kw">c</span>(<span class="dv">7</span>, <span class="dv">13</span>))</code></pre></div>
+  <span class="dt">xlim =</span> <span class="kw">c</span>(<span class="op">-</span><span class="dv">3</span>, <span class="dv">3</span>), <span class="dt">ylim =</span> <span class="kw">c</span>(<span class="dv">7</span>, <span class="dv">13</span>))</code></pre>
 <p><img src="myRBook_FR_files/figure-html/unnamed-chunk-223-1.png" width="672" /></p>
 <p>Le type de point peut être défini avec l’argument <code>pch</code> qui peut prendre un caractère ou un chiffre de 1 à 25.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(<span class="dt">x =</span> <span class="kw">rep</span>(<span class="kw">seq</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>), <span class="dv">5</span>), <span class="dt">y =</span> <span class="kw">rep</span>(<span class="kw">seq</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>), <span class="dt">each =</span> <span class="dv">5</span>),
-  <span class="dt">pch =</span> <span class="dv">1</span><span class="op">:</span><span class="dv">25</span>)</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(<span class="dt">x =</span> <span class="kw">rep</span>(<span class="kw">seq</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>), <span class="dv">5</span>), <span class="dt">y =</span> <span class="kw">rep</span>(<span class="kw">seq</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>), <span class="dt">each =</span> <span class="dv">5</span>),
+  <span class="dt">pch =</span> <span class="dv">1</span><span class="op">:</span><span class="dv">25</span>)</code></pre>
 <p><img src="myRBook_FR_files/figure-html/unnamed-chunk-224-1.png" width="672" /></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(<span class="dt">x =</span> myX, <span class="dt">y =</span> myY, 
-  <span class="dt">pch =</span> <span class="kw">c</span>(<span class="st">&quot;a&quot;</span>, <span class="st">&quot;@&quot;</span>, <span class="st">&quot;#&quot;</span>, <span class="st">&quot;1&quot;</span>, <span class="st">&quot;=&quot;</span>, <span class="st">&quot;-&quot;</span>, <span class="st">&quot;_&quot;</span>, <span class="st">&quot;o&quot;</span>, <span class="st">&quot;O&quot;</span>, <span class="st">&quot;0&quot;</span>, letters[<span class="dv">1</span><span class="op">:</span><span class="dv">15</span>]))</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(<span class="dt">x =</span> myX, <span class="dt">y =</span> myY, 
+  <span class="dt">pch =</span> <span class="kw">c</span>(<span class="st">&quot;a&quot;</span>, <span class="st">&quot;@&quot;</span>, <span class="st">&quot;#&quot;</span>, <span class="st">&quot;1&quot;</span>, <span class="st">&quot;=&quot;</span>, <span class="st">&quot;-&quot;</span>, <span class="st">&quot;_&quot;</span>, <span class="st">&quot;o&quot;</span>, <span class="st">&quot;O&quot;</span>, <span class="st">&quot;0&quot;</span>, letters[<span class="dv">1</span><span class="op">:</span><span class="dv">15</span>]))</code></pre>
 <p><img src="myRBook_FR_files/figure-html/unnamed-chunk-224-2.png" width="672" /></p>
 <p>La taille des points peut se définir avec l’argument <code>cex</code>.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(<span class="dt">x =</span> myX, <span class="dt">y =</span> myY, 
-  <span class="dt">cex =</span> <span class="kw">seq</span>(<span class="dt">from =</span> <span class="fl">0.5</span>, <span class="dt">to =</span> <span class="dv">3</span>, <span class="dt">length.out =</span> <span class="dv">50</span>))</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(<span class="dt">x =</span> myX, <span class="dt">y =</span> myY, 
+  <span class="dt">cex =</span> <span class="kw">seq</span>(<span class="dt">from =</span> <span class="fl">0.5</span>, <span class="dt">to =</span> <span class="dv">3</span>, <span class="dt">length.out =</span> <span class="dv">50</span>))</code></pre>
 <p><img src="myRBook_FR_files/figure-html/unnamed-chunk-225-1.png" width="672" /></p>
 <p>La couleur des points peut se définir avec l’argument <code>col</code>. Nous reviendrons sur les couleurs dans un prochain chapitre.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">myX &lt;-<span class="st"> </span><span class="kw">rnorm</span>(<span class="dv">100</span>, <span class="dt">mean =</span> <span class="dv">0</span>, <span class="dt">sd =</span> <span class="dv">1</span>)
+<pre class="sourceCode r"><code class="sourceCode r">myX &lt;-<span class="st"> </span><span class="kw">rnorm</span>(<span class="dv">100</span>, <span class="dt">mean =</span> <span class="dv">0</span>, <span class="dt">sd =</span> <span class="dv">1</span>)
 myY &lt;-<span class="st"> </span><span class="kw">rnorm</span>(<span class="dv">100</span>, <span class="dt">mean =</span> <span class="dv">10</span>, <span class="dt">sd =</span> <span class="dv">1</span>)
 <span class="kw">plot</span>(<span class="dt">x =</span> myX, <span class="dt">y =</span> myY, 
   <span class="dt">cex =</span> <span class="kw">seq</span>(<span class="dt">from =</span> <span class="fl">0.5</span>, <span class="dt">to =</span> <span class="dv">3</span>, <span class="dt">length.out =</span> <span class="dv">100</span>),
   <span class="dt">pch =</span> <span class="dv">16</span>,
-  <span class="dt">col =</span> <span class="kw">sample</span>(<span class="kw">colors</span>(), <span class="dv">100</span>))</code></pre></div>
+  <span class="dt">col =</span> <span class="kw">sample</span>(<span class="kw">colors</span>(), <span class="dv">100</span>))</code></pre>
 <p><img src="myRBook_FR_files/figure-html/unnamed-chunk-226-1.png" width="672" /></p>
 <p>Pour représenter nos points la couleur et la taille des points peuvent représenter des informations complémentaires. Ici nous allons représenter par un gradient de taille la variable <code>myY</code> et par un gradient de couleur la variable <code>myX</code>.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">myX &lt;-<span class="st"> </span><span class="kw">rnorm</span>(<span class="dv">100</span>)
+<pre class="sourceCode r"><code class="sourceCode r">myX &lt;-<span class="st"> </span><span class="kw">rnorm</span>(<span class="dv">100</span>)
 myY &lt;-<span class="st"> </span><span class="kw">rnorm</span>(<span class="dv">100</span>)
 dfGraph &lt;-<span class="st"> </span><span class="kw">data.frame</span>(myX, myY)
 dfGraph &lt;-<span class="st"> </span>dfGraph[<span class="kw">order</span>(dfGraph<span class="op">$</span>myX),]
@@ -363,36 +389,36 @@ dfGraph &lt;-<span class="st"> </span>dfGraph[<span class="kw">order</span>(dfGr
 dfGraph<span class="op">$</span>myCex &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="dt">from =</span> <span class="fl">0.5</span>, <span class="dt">to =</span> <span class="dv">3</span>, <span class="dt">length.out =</span> <span class="dv">100</span>)
 <span class="kw">plot</span>(<span class="dt">x =</span> dfGraph<span class="op">$</span>myX, <span class="dt">y =</span> dfGraph<span class="op">$</span>myY, 
   <span class="dt">cex =</span> dfGraph<span class="op">$</span>myCex, <span class="dt">pch =</span> <span class="dv">16</span>, <span class="dt">col =</span> dfGraph<span class="op">$</span>myCol, 
-  <span class="dt">xlab =</span> <span class="st">&quot;&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;&quot;</span>)</code></pre></div>
+  <span class="dt">xlab =</span> <span class="st">&quot;&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;&quot;</span>)</code></pre>
 <p><img src="myRBook_FR_files/figure-html/unnamed-chunk-227-1.png" width="672" /></p>
 <p>R offre la possibilité de relier les points des nuages de points de différentes façons. Les différentes options sont disponibles dans l’aide de la fonction <code>plot()</code> et <code>plot.default()</code>.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">myX &lt;-<span class="st"> </span><span class="dv">1</span><span class="op">:</span><span class="dv">20</span>
+<pre class="sourceCode r"><code class="sourceCode r">myX &lt;-<span class="st"> </span><span class="dv">1</span><span class="op">:</span><span class="dv">20</span>
 myY &lt;-<span class="st"> </span><span class="kw">rnorm</span>(<span class="dv">20</span>, <span class="dt">mean =</span> <span class="dv">10</span>, <span class="dt">sd =</span> <span class="dv">1</span>)
 <span class="kw">plot</span>(<span class="dt">x =</span> myX, <span class="dt">y =</span> myY, 
-  <span class="dt">type =</span> <span class="st">&#39;b&#39;</span>) <span class="co"># &#39;p&#39;, &#39;l&#39;, &#39;b&#39;, &#39;c&#39;, &#39;o&#39;, &#39;h&#39;, &#39;s&#39;, &#39;S&#39;, &#39;n&#39;</span></code></pre></div>
+  <span class="dt">type =</span> <span class="st">&#39;b&#39;</span>) <span class="co"># &#39;p&#39;, &#39;l&#39;, &#39;b&#39;, &#39;c&#39;, &#39;o&#39;, &#39;h&#39;, &#39;s&#39;, &#39;S&#39;, &#39;n&#39;</span></code></pre>
 <p><img src="myRBook_FR_files/figure-html/unnamed-chunk-228-1.png" width="672" /></p>
 <p>Une dernière option très utile est l’argument <code>panel.first</code> qui permet de réaliser une opération graphique sur une couche située en dessous de notre graphique. Voici un exemple illustratif avec une grille réalisée avec et sans <code>panel.first</code>. La grille se fait grâce à la fonction <code>grid()</code>. Pour mettre les graphiques côte à côte nous allons utiliser <code>mfrow</code>.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">par</span>(<span class="dt">mfrow =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>))
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">par</span>(<span class="dt">mfrow =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>))
 <span class="kw">plot</span>(<span class="dt">x =</span> myX, <span class="dt">y =</span> myY, 
   <span class="dt">type =</span> <span class="st">&#39;b&#39;</span>, <span class="dt">pch =</span> <span class="dv">16</span>, <span class="dt">cex =</span> <span class="dv">3</span>) 
 <span class="kw">grid</span>(<span class="dt">lwd =</span> <span class="dv">3</span>, <span class="dt">lty =</span> <span class="dv">1</span>)
 <span class="kw">plot</span>(<span class="dt">x =</span> myX, <span class="dt">y =</span> myY, 
   <span class="dt">type =</span> <span class="st">&#39;b&#39;</span>, <span class="dt">pch =</span> <span class="dv">16</span>, <span class="dt">cex =</span> <span class="dv">3</span>, 
-  <span class="dt">panel.first =</span> <span class="kw">grid</span>(<span class="dt">lwd =</span> <span class="dv">3</span>, <span class="dt">lty =</span> <span class="dv">1</span>)) </code></pre></div>
+  <span class="dt">panel.first =</span> <span class="kw">grid</span>(<span class="dt">lwd =</span> <span class="dv">3</span>, <span class="dt">lty =</span> <span class="dv">1</span>)) </code></pre>
 <p><img src="myRBook_FR_files/figure-html/unnamed-chunk-229-1.png" width="672" /></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">par</span>(<span class="dt">mfrow =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">1</span>))</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">par</span>(<span class="dt">mfrow =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">1</span>))</code></pre>
 <p>La fonction <code>par()</code> permet d’accéder aux paramètres graphiques. Parmi ces paramètres il y a <code>mfrow</code> qui permet de diviser l’espace graphique comme une matrice. <code>mfrow</code> prend comme arguments un vecteur numérique de taille 2 : le premier élément correspond au nombre de lignes et le deuxième élément au nombre de colonnes. Le paramètre <code>mar</code> permet de contrôler les marges en bas, à gauche, en haut et à droite, respectivement, au moyen d’un vecteur numérique de taille 4. Après avoir modifié les paramètres graphiques par défaut il est recommandé de les réinitialiser pour que cela n’affecte pas les graphiques à venir. Les valeurs par défaut de <code>mfrow</code> sont <code>c(1, 1)</code> et <code>mar = c(4, 4, 4, 4)</code>. Nous pouvons remettre ces valeurs par défaut comme ci-dessus en redéfinissant chacun des paramètres. Nous pouvons également enregistrer au préalable les valeurs courantes (dans un objet <code>op</code>), puis les modifier pour les besoins de nos graphiques, puis ensuite rappeler les valeurs contenues dans l’objet <code>op</code>. Ici nous utilisons <code>lapply</code> pour réaliser rapidement quatre graphiques.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">op &lt;-<span class="st"> </span><span class="kw">par</span>(<span class="dt">no.readonly =</span> <span class="ot">TRUE</span>)
+<pre class="sourceCode r"><code class="sourceCode r">op &lt;-<span class="st"> </span><span class="kw">par</span>(<span class="dt">no.readonly =</span> <span class="ot">TRUE</span>)
 <span class="kw">par</span>(<span class="dt">mfrow =</span> <span class="kw">c</span>(<span class="dv">2</span>, <span class="dv">2</span>), <span class="dt">mar =</span> <span class="kw">c</span>(<span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">1</span>))
 graph4 &lt;-<span class="st"> </span><span class="kw">lapply</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">4</span>, <span class="cf">function</span>(i){
   <span class="kw">plot</span>(<span class="dt">x =</span> <span class="kw">rnorm</span>(<span class="dv">100</span>), 
     <span class="dt">y =</span> <span class="kw">rnorm</span>(<span class="dv">100</span>), 
     <span class="dt">col =</span> i, <span class="dt">pch =</span> <span class="dv">16</span>)
-})</code></pre></div>
+})</code></pre>
 <p><img src="myRBook_FR_files/figure-html/unnamed-chunk-230-1.png" width="672" /></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">par</span>(op)</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">par</span>(op)</code></pre>
 <p>Il est souvent utile de faire figurer des lignes verticales ou horizontales pour représenter des valeurs particulières. Ces lignes peuvent être ajoutées avec la fonction <code>abline()</code>.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">myX &lt;-<span class="st"> </span><span class="kw">rnorm</span>(<span class="dv">100</span>)
+<pre class="sourceCode r"><code class="sourceCode r">myX &lt;-<span class="st"> </span><span class="kw">rnorm</span>(<span class="dv">100</span>)
 myY &lt;-<span class="st"> </span><span class="kw">rnorm</span>(<span class="dv">100</span>)
 <span class="kw">plot</span>(<span class="dt">x =</span> myX, <span class="dt">y =</span> myY, 
   <span class="dt">xlim =</span> <span class="kw">c</span>(<span class="op">-</span><span class="dv">4</span>, <span class="dv">4</span>), <span class="dt">ylim =</span> <span class="kw">c</span>(<span class="op">-</span><span class="dv">4</span>, <span class="dv">4</span>),   
@@ -404,13 +430,13 @@ myY &lt;-<span class="st"> </span><span class="kw">rnorm</span>(<span class="dv"
     <span class="kw">abline</span>(<span class="dt">h =</span> <span class="kw">c</span>(<span class="kw">min</span>(myY), <span class="kw">max</span>(myY)), <span class="dt">lty =</span> <span class="dv">2</span>)
     <span class="kw">abline</span>(<span class="dt">v =</span> <span class="kw">mean</span>(myX), <span class="dt">lty =</span> <span class="dv">1</span>)
     <span class="kw">abline</span>(<span class="dt">h =</span> <span class="kw">mean</span>(myY), <span class="dt">lty =</span> <span class="dv">1</span>)
-})</code></pre></div>
+})</code></pre>
 <p><img src="myRBook_FR_files/figure-html/unnamed-chunk-231-1.png" width="672" /></p>
 </div>
 <div id="graph1hist" class="section level2">
 <h2><span class="header-section-number">11.2</span> <code>hist</code></h2>
 <p>Pour faire un histogramme nous utilisons la fonction <code>hist()</code>. C’est une fonction graphique utile pour visualiser rapidement la distribution d’un jeu de données.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">op &lt;-<span class="st"> </span><span class="kw">par</span>(<span class="dt">no.readonly =</span> <span class="ot">TRUE</span>)
+<pre class="sourceCode r"><code class="sourceCode r">op &lt;-<span class="st"> </span><span class="kw">par</span>(<span class="dt">no.readonly =</span> <span class="ot">TRUE</span>)
 <span class="kw">par</span>(<span class="dt">mfrow =</span> <span class="kw">c</span>(<span class="dv">2</span>, <span class="dv">2</span>), <span class="dt">mar =</span> <span class="kw">c</span>(<span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">1</span>))
 myX &lt;-<span class="st"> </span><span class="kw">list</span>(
   <span class="kw">rnorm</span>(<span class="dv">1000</span>),
@@ -424,36 +450,36 @@ tr &lt;-<span class="st"> </span><span class="kw">lapply</span>(<span class="dv"
     <span class="dt">col =</span> <span class="kw">heat.colors</span>(<span class="dv">15</span>), 
     <span class="dt">main =</span> myTitle[i]
   )
-})</code></pre></div>
+})</code></pre>
 <p><img src="myRBook_FR_files/figure-html/unnamed-chunk-232-1.png" width="672" /></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">par</span>(op)</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">par</span>(op)</code></pre>
 </div>
 <div id="graph1barplot" class="section level2">
 <h2><span class="header-section-number">11.3</span> <code>barplot</code></h2>
 <p>Le graphique en barres se fait au moyen de la fonction <code>barplot()</code>.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">myX &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">8</span>)
-<span class="kw">barplot</span>(myX, <span class="dt">names.arg =</span> <span class="kw">c</span>(<span class="st">&quot;A&quot;</span>, <span class="st">&quot;B&quot;</span>, <span class="st">&quot;C&quot;</span>))</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r">myX &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">8</span>)
+<span class="kw">barplot</span>(myX, <span class="dt">names.arg =</span> <span class="kw">c</span>(<span class="st">&quot;A&quot;</span>, <span class="st">&quot;B&quot;</span>, <span class="st">&quot;C&quot;</span>))</code></pre>
 <p><img src="myRBook_FR_files/figure-html/unnamed-chunk-233-1.png" width="672" /></p>
 <p>Quand l’objet envoyé à cette fonction est un <code>vector</code> alors la fonction <code>barplot()</code> renvoie un graphique en barres simples. Quand c’est une <code>matrix</code> alors les barres sont multiples.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">op &lt;-<span class="st"> </span><span class="kw">par</span>(<span class="dt">no.readonly =</span> <span class="ot">TRUE</span>)
+<pre class="sourceCode r"><code class="sourceCode r">op &lt;-<span class="st"> </span><span class="kw">par</span>(<span class="dt">no.readonly =</span> <span class="ot">TRUE</span>)
 <span class="kw">par</span>(<span class="dt">mfrow =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>), <span class="dt">mar =</span> <span class="kw">c</span>(<span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">1</span>))
 myX &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">8</span>, <span class="dv">4</span>, <span class="dv">6</span>, <span class="dv">2</span>), <span class="dt">nrow =</span> <span class="dv">2</span>)
 <span class="kw">barplot</span>(myX, <span class="dt">names.arg =</span> <span class="kw">c</span>(<span class="st">&quot;A&quot;</span>, <span class="st">&quot;B&quot;</span>, <span class="st">&quot;C&quot;</span>))
 myX &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">8</span>, <span class="dv">4</span>, <span class="dv">6</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>), <span class="dt">nrow =</span> <span class="dv">3</span>)
-<span class="kw">barplot</span>(myX, <span class="dt">names.arg =</span> <span class="kw">c</span>(<span class="st">&quot;A&quot;</span>, <span class="st">&quot;B&quot;</span>, <span class="st">&quot;C&quot;</span>))</code></pre></div>
+<span class="kw">barplot</span>(myX, <span class="dt">names.arg =</span> <span class="kw">c</span>(<span class="st">&quot;A&quot;</span>, <span class="st">&quot;B&quot;</span>, <span class="st">&quot;C&quot;</span>))</code></pre>
 <p><img src="myRBook_FR_files/figure-html/unnamed-chunk-234-1.png" width="672" /></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">par</span>(op)</code></pre></div>
-<p>La fonction <code>barplot()</code> peut aussi être utilisée pour représenter l’équivalent d’un histogramme. Cela peut être utile pour représenter la distribution d’une variable en fonction de l’axe des abscisses et l’axe des ordonnées. Dans l’exemple qui suit nous avons <code>n</code> points tirés au hasard dans une loi normale de paramètres <code>mean = 0</code> et <code>sd = 1</code> (<code>myX &lt;- rnorm(n)</code>). Ces points sont soit représentés en bleu, soit représentés en rouge (la couleur bleue est codée avec la valeur 4 et la couleur rouge avec la valeur 2, nous en reparlerons dans un prochain chapitre). Le tirage au hasard de la couleur se fait avec la fonction <code>sample()</code> (<code>myCol &lt;- sample(c(4, 2), size = n, replace = TRUE)</code>). Ici nous voulons représenter un nuage de points avec les points en rouge ou en bleu, puis pour l’axe des abscisses et l’axe des ordonnées, des histogrammes pour voir la répartition des points et un gradient de couleur du bleu au rouge en fonction de la proportion des points de couleur dans chaque catégorie. Le gradient de couleur avec 100 valeurs entre bleu et rouge se réalise avec la fonction <code>colorRampPalette()</code> (<code>myColors &lt;- colorRampPalette(c(&quot;blue&quot;, &quot;red&quot;))(100)</code>).</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">par</span>(op)</code></pre>
+<p>La fonction <code>barplot()</code> peut aussi être utilisée pour représenter l’équivalent d’un histogramme. Cela peut être utile pour représenter la distribution d’une variable en fonction de l’axe des abscisses et l’axe des ordonnées. Dans l’exemple qui suit nous avons <code>n</code> points tirés au hasard dans une loi normale de paramètres <code>mean = 0</code> et <code>sd = 1</code> (<code>myX &lt;- rnorm(n)</code>). Ces points sont soit représentés en bleu, soit représentés en rouge (la couleur bleue est codée avec la valeur 4 et la couleur rouge avec la valeur 2, nous en reparlerons dans un prochain chapitre). Le tirage au hasard de la couleur se fait avec la fonction <code>sample()</code> (<code>myCol &lt;- sample(c(4, 2), size = n, replace = TRUE)</code>). Ici nous voulons représenter un nuage de points avec les points en rouge ou en bleu, puis pour l’axe des abscisses et l’axe des ordonnées, des histogrammes pour voir la répartition des points et un gradient de couleur du bleu au rouge en fonction de la proportion des points de couleur dans chaque catégorie. Le gradient de couleur avec 100 valeurs entre bleu et rouge se réalise avec la fonction <code>colorRampPalette()</code> (<code>myColors &lt;- colorRampPalette(c("blue", "red"))(100)</code>).</p>
 <p>Pour faire l’histogramme nous allons découper les données avec la fonction <code>cut()</code> en spécifiant que nous souhaitons des séparations faites entre -4 et 4 par pas de 1 (<code>myYCut &lt;- cut(myY, breaks = -4:4)</code>). Pour avoir le compte du nombre de points dans chacune des catégories et pour chaque couleur il nous suffit d’utiliser la fonction <code>table()</code> (<code>myYCutCol &lt;- table(myCol, myYCut)</code>). Dans cette table la première ligne correspond à la première couleur rencontrée dans le jeu de données et la deuxième ligne à l’autre couleur. C’est pourquoi il nous faut modifier le tirage aléatoire des couleurs pour que la première ligne corresponde toujours au bleu et la deuxième ligne au rouge : <code>myCol &lt;- c(2, sample(c(4, 2), size = (n - 1), replace = TRUE))</code>.</p>
 <p>Ensuite nous pouvons calculer la proportion de rouge en divisant la première ligne par la somme des deux lignes que nous allons représenter en pourcentage en multipliant par 100 : <code>myXCutCol[1,] / (myXCutCol[1,] + myXCutCol[2,]) * 100</code>. Pour que ce chiffre corresponde à une couleur nous n’allons conserver que sa partie entière avec la fonction <code>round()</code>. Si le pourcentage est de zéro ou si le résultat n’est pas possible du fait d’une division par zéro alors il nous faut le remplacer par 1 afin que cela corresponde à une couleur dans notre gradient qui va de 1 à 100 (<code>xCol[is.na(xCol) | xCol == 0] &lt;- 1</code>).</p>
 <p>Il ne nous reste plus qu’à organiser l’espace graphique avec la fonction <code>layout()</code> qui prend comme argument une matrice dont les valeurs et leur position vont correspondre à l’agencement des différents graphiques que nous souhaitons réaliser. Le graphique 1 correspond au barplot du haut, le graphique 2 au nuage de points et le graphique 3 au barplot de droite.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">n &lt;-<span class="st"> </span><span class="dv">50</span>
+<pre class="sourceCode r"><code class="sourceCode r">n &lt;-<span class="st"> </span><span class="dv">50</span>
 myX &lt;-<span class="st"> </span><span class="kw">rnorm</span>(n)
 myY &lt;-<span class="st"> </span><span class="kw">rnorm</span>(n)
 myCol &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">2</span>, <span class="kw">sample</span>(<span class="kw">c</span>(<span class="dv">4</span>, <span class="dv">2</span>), <span class="dt">size =</span> (n <span class="op">-</span><span class="st"> </span><span class="dv">1</span>), <span class="dt">replace =</span> <span class="ot">TRUE</span>))
 myColors &lt;-<span class="st"> </span><span class="kw">colorRampPalette</span>(<span class="kw">c</span>(<span class="st">&quot;blue&quot;</span>, <span class="st">&quot;red&quot;</span>))(<span class="dv">100</span>)
-myYCut &lt;-<span class="st"> </span><span class="kw">cut</span>(myY, <span class="dt">breaks =</span> <span class="op">-</span><span class="dv">4</span><span class="op">:</span><span class="dv">4</span>)
-myXCut &lt;-<span class="st"> </span><span class="kw">cut</span>(myX, <span class="dt">breaks =</span> <span class="op">-</span><span class="dv">4</span><span class="op">:</span><span class="dv">4</span>)
+myYCut &lt;-<span class="st"> </span><span class="kw">cut</span>(myY, <span class="dt">breaks =</span> <span class="dv">-4</span><span class="op">:</span><span class="dv">4</span>)
+myXCut &lt;-<span class="st"> </span><span class="kw">cut</span>(myX, <span class="dt">breaks =</span> <span class="dv">-4</span><span class="op">:</span><span class="dv">4</span>)
 myYCutCol &lt;-<span class="st"> </span><span class="kw">table</span>(myCol, myYCut)
 myXCutCol &lt;-<span class="st"> </span><span class="kw">table</span>(myCol, myXCut)
 xCol &lt;-<span class="st"> </span><span class="kw">round</span>(
@@ -473,17 +499,17 @@ op &lt;-<span class="st"> </span><span class="kw">par</span>(<span class="dt">no
 <span class="kw">plot</span>(<span class="dt">x =</span> myX, <span class="dt">y =</span> myY, <span class="dt">col =</span> myCol, <span class="dt">pch =</span> <span class="dv">16</span>, 
   <span class="dt">xlim =</span> <span class="kw">c</span>(<span class="op">-</span><span class="dv">4</span>, <span class="dv">4</span>), <span class="dt">ylim =</span> <span class="kw">c</span>(<span class="op">-</span><span class="dv">4</span>, <span class="dv">4</span>), <span class="dt">cex =</span> <span class="fl">1.5</span>, 
   <span class="dt">panel.first =</span> <span class="kw">grid</span>())
-<span class="kw">barplot</span>(<span class="kw">table</span>(myYCut), <span class="dt">las =</span> <span class="dv">1</span>, <span class="dt">horiz =</span> <span class="ot">TRUE</span>, <span class="dt">col =</span> myColors[yCol])</code></pre></div>
+<span class="kw">barplot</span>(<span class="kw">table</span>(myYCut), <span class="dt">las =</span> <span class="dv">1</span>, <span class="dt">horiz =</span> <span class="ot">TRUE</span>, <span class="dt">col =</span> myColors[yCol])</code></pre>
 <p><img src="myRBook_FR_files/figure-html/unnamed-chunk-235-1.png" width="672" /></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">par</span>(op)</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">par</span>(op)</code></pre>
 <p>Nous pouvons ensuite intégrer ce script dans une fonction pour par exemple étudier l’effet de la variable <code>n</code>.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">graphBarplotCol &lt;-<span class="st"> </span><span class="cf">function</span>(n){
+<pre class="sourceCode r"><code class="sourceCode r">graphBarplotCol &lt;-<span class="st"> </span><span class="cf">function</span>(n){
   myX &lt;-<span class="st"> </span><span class="kw">rnorm</span>(n)
   myY &lt;-<span class="st"> </span><span class="kw">rnorm</span>(n)
   myCol &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">2</span>, <span class="kw">sample</span>(<span class="kw">c</span>(<span class="dv">4</span>, <span class="dv">2</span>), <span class="dt">size =</span> (n <span class="op">-</span><span class="st"> </span><span class="dv">1</span>), <span class="dt">replace =</span> <span class="ot">TRUE</span>))
   myColors &lt;-<span class="st"> </span><span class="kw">colorRampPalette</span>(<span class="kw">c</span>(<span class="st">&quot;blue&quot;</span>, <span class="st">&quot;red&quot;</span>))(<span class="dv">100</span>)
-  myYCut &lt;-<span class="st"> </span><span class="kw">cut</span>(myY, <span class="dt">breaks =</span> <span class="op">-</span><span class="dv">4</span><span class="op">:</span><span class="dv">4</span>)
-  myXCut &lt;-<span class="st"> </span><span class="kw">cut</span>(myX, <span class="dt">breaks =</span> <span class="op">-</span><span class="dv">4</span><span class="op">:</span><span class="dv">4</span>)
+  myYCut &lt;-<span class="st"> </span><span class="kw">cut</span>(myY, <span class="dt">breaks =</span> <span class="dv">-4</span><span class="op">:</span><span class="dv">4</span>)
+  myXCut &lt;-<span class="st"> </span><span class="kw">cut</span>(myX, <span class="dt">breaks =</span> <span class="dv">-4</span><span class="op">:</span><span class="dv">4</span>)
   myYCutCol &lt;-<span class="st"> </span><span class="kw">table</span>(myCol, myYCut)
   myXCutCol &lt;-<span class="st"> </span><span class="kw">table</span>(myCol, myXCut)
   xCol &lt;-<span class="st"> </span><span class="kw">round</span>(
@@ -506,13 +532,13 @@ op &lt;-<span class="st"> </span><span class="kw">par</span>(<span class="dt">no
   <span class="kw">barplot</span>(<span class="kw">table</span>(myYCut), <span class="dt">las =</span> <span class="dv">1</span>, <span class="dt">horiz =</span> <span class="ot">TRUE</span>, <span class="dt">col =</span> myColors[yCol])
   <span class="kw">par</span>(op)
 }
-<span class="kw">graphBarplotCol</span>(<span class="dt">n =</span> <span class="dv">1000</span>)</code></pre></div>
+<span class="kw">graphBarplotCol</span>(<span class="dt">n =</span> <span class="dv">1000</span>)</code></pre>
 <p><img src="myRBook_FR_files/figure-html/unnamed-chunk-236-1.png" width="672" /></p>
 <p>Un <code>barplot</code> peut bien sûr prendre des valeurs positives ou négatives.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">barplot</span>(<span class="kw">rnorm</span>(<span class="dv">20</span>), <span class="dt">horiz =</span> <span class="ot">TRUE</span>, <span class="dt">col =</span> <span class="kw">rainbow</span>(<span class="dv">20</span>))</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">barplot</span>(<span class="kw">rnorm</span>(<span class="dv">20</span>), <span class="dt">horiz =</span> <span class="ot">TRUE</span>, <span class="dt">col =</span> <span class="kw">rainbow</span>(<span class="dv">20</span>))</code></pre>
 <p><img src="myRBook_FR_files/figure-html/unnamed-chunk-237-1.png" width="672" /></p>
 <p>Le <code>barplot</code> peut aussi être utilisé pour faire une pyramide des âges (il existe des fonctions pour réaliser des pyramides des âges, ici l’objectif est pédagogique).</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">gender &lt;-<span class="st"> </span><span class="kw">data.frame</span>(
+<pre class="sourceCode r"><code class="sourceCode r">gender &lt;-<span class="st"> </span><span class="kw">data.frame</span>(
   <span class="dt">m =</span> <span class="kw">cut</span>(<span class="kw">sample</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">75</span>, <span class="dv">1000</span>, <span class="dt">replace =</span> <span class="ot">TRUE</span>), 
     <span class="dt">breaks =</span> <span class="kw">seq</span>(<span class="dt">from =</span> <span class="dv">0</span>, <span class="dt">to =</span> <span class="dv">80</span>, <span class="dt">by =</span> <span class="dv">10</span>)), 
   <span class="dt">f =</span> <span class="kw">cut</span>(<span class="kw">sample</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">75</span>, <span class="dv">1000</span>, <span class="dt">replace =</span> <span class="ot">TRUE</span>), 
@@ -521,15 +547,15 @@ op &lt;-<span class="st"> </span><span class="kw">par</span>(<span class="dt">no
 op &lt;-<span class="st"> </span><span class="kw">par</span>(<span class="dt">no.readonly =</span> <span class="ot">TRUE</span>)
 <span class="kw">par</span>(<span class="dt">mfrow =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>), <span class="dt">mar =</span> <span class="kw">c</span>(<span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">1</span>))
 <span class="kw">barplot</span>(<span class="op">-</span><span class="kw">table</span>(gender<span class="op">$</span>f), <span class="dt">horiz =</span> <span class="ot">TRUE</span>, <span class="dt">col =</span> <span class="st">&quot;salmon&quot;</span>)
-<span class="kw">barplot</span>(<span class="kw">table</span>(gender<span class="op">$</span>m), <span class="dt">horiz =</span> <span class="ot">TRUE</span>, <span class="dt">col =</span> <span class="st">&quot;lightblue&quot;</span>)</code></pre></div>
+<span class="kw">barplot</span>(<span class="kw">table</span>(gender<span class="op">$</span>m), <span class="dt">horiz =</span> <span class="ot">TRUE</span>, <span class="dt">col =</span> <span class="st">&quot;lightblue&quot;</span>)</code></pre>
 <p><img src="myRBook_FR_files/figure-html/unnamed-chunk-238-1.png" width="672" /></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">par</span>(op)</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">par</span>(op)</code></pre>
 </div>
 <div id="graph1boxplot" class="section level2">
 <h2><span class="header-section-number">11.4</span> <code>boxplot</code></h2>
 <p>Les <code>boxplot</code> ou boîtes à moustache sont des graphiques très courant avec R car ils donnent un bon apperçu d’un jeu de données en représentant les valeurs extrèmes (“outliers”), la médiane, les quartiles, les minimums et les maximums.</p>
 <p>La fonction <code>boxplot()</code> s’applique à un ou plusieurs <code>vector</code>.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">df &lt;-<span class="st"> </span><span class="kw">data.frame</span>(
+<pre class="sourceCode r"><code class="sourceCode r">df &lt;-<span class="st"> </span><span class="kw">data.frame</span>(
   <span class="dt">box1 =</span> <span class="kw">rnorm</span>(<span class="dv">1000</span>), 
   <span class="dt">box2 =</span> <span class="kw">rgamma</span>(<span class="dv">1000</span>, <span class="dt">shape =</span> <span class="dv">1</span>), 
   <span class="dt">box3 =</span> <span class="kw">sample</span>(<span class="op">-</span><span class="dv">3</span><span class="op">:</span><span class="dv">3</span>, <span class="dt">size =</span> <span class="dv">1000</span>, <span class="dt">replace =</span> <span class="ot">TRUE</span>),
@@ -538,34 +564,34 @@ op &lt;-<span class="st"> </span><span class="kw">par</span>(<span class="dt">no
 <span class="kw">boxplot</span>(df, <span class="dt">col =</span> <span class="kw">c</span>(<span class="kw">rgb</span>(<span class="dv">0</span>, <span class="dv">94</span>, <span class="dv">255</span>, <span class="dt">maxColorValue =</span> <span class="dv">255</span>),  
   <span class="kw">rgb</span>(<span class="dv">255</span>, <span class="dv">0</span>, <span class="dv">174</span>, <span class="dt">maxColorValue =</span> <span class="dv">255</span>),  
   <span class="kw">rgb</span>(<span class="dv">255</span>, <span class="dv">136</span>, <span class="dv">0</span>, <span class="dt">maxColorValue =</span> <span class="dv">255</span>),  
-  <span class="kw">rgb</span>(<span class="dv">119</span>, <span class="dv">255</span>, <span class="dv">0</span>, <span class="dt">maxColorValue =</span> <span class="dv">255</span>)))</code></pre></div>
+  <span class="kw">rgb</span>(<span class="dv">119</span>, <span class="dv">255</span>, <span class="dv">0</span>, <span class="dt">maxColorValue =</span> <span class="dv">255</span>)))</code></pre>
 <p><img src="myRBook_FR_files/figure-html/unnamed-chunk-239-1.png" width="672" /></p>
 <p>Si une variable est de type <code>factor</code>, la fonction <code>boxplot()</code> permet facilement de représenter chaque catégorie. Cela fonctionne aussi avec les variables numériques mais il faut veiller à ne pas avoir trop de valeurs différentes pour que le graphique reste lisible.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">df<span class="op">$</span>cat &lt;-<span class="st"> </span><span class="kw">sample</span>(<span class="kw">c</span>(<span class="st">&quot;w&quot;</span>, <span class="st">&quot;x&quot;</span>, <span class="st">&quot;y&quot;</span>, <span class="st">&quot;z&quot;</span>), <span class="dt">size =</span> <span class="dv">1000</span>, <span class="dt">replace =</span> <span class="ot">TRUE</span>)
+<pre class="sourceCode r"><code class="sourceCode r">df<span class="op">$</span>cat &lt;-<span class="st"> </span><span class="kw">sample</span>(<span class="kw">c</span>(<span class="st">&quot;w&quot;</span>, <span class="st">&quot;x&quot;</span>, <span class="st">&quot;y&quot;</span>, <span class="st">&quot;z&quot;</span>), <span class="dt">size =</span> <span class="dv">1000</span>, <span class="dt">replace =</span> <span class="ot">TRUE</span>)
 <span class="kw">boxplot</span>(df<span class="op">$</span>box3 <span class="op">~</span><span class="st"> </span>df<span class="op">$</span>cat, <span class="dt">col =</span> <span class="kw">c</span>(<span class="kw">rgb</span>(<span class="dv">0</span>, <span class="dv">94</span>, <span class="dv">255</span>, <span class="dt">maxColorValue =</span> <span class="dv">255</span>),  
   <span class="kw">rgb</span>(<span class="dv">255</span>, <span class="dv">0</span>, <span class="dv">174</span>, <span class="dt">maxColorValue =</span> <span class="dv">255</span>),  
   <span class="kw">rgb</span>(<span class="dv">255</span>, <span class="dv">136</span>, <span class="dv">0</span>, <span class="dt">maxColorValue =</span> <span class="dv">255</span>),  
-  <span class="kw">rgb</span>(<span class="dv">119</span>, <span class="dv">255</span>, <span class="dv">0</span>, <span class="dt">maxColorValue =</span> <span class="dv">255</span>)), <span class="dt">ylab =</span> <span class="st">&quot;Box3&quot;</span>)</code></pre></div>
+  <span class="kw">rgb</span>(<span class="dv">119</span>, <span class="dv">255</span>, <span class="dv">0</span>, <span class="dt">maxColorValue =</span> <span class="dv">255</span>)), <span class="dt">ylab =</span> <span class="st">&quot;Box3&quot;</span>)</code></pre>
 <p><img src="myRBook_FR_files/figure-html/unnamed-chunk-240-1.png" width="672" /></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">df<span class="op">$</span>cat2 &lt;-<span class="st"> </span><span class="kw">sample</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">3</span>, <span class="dt">size =</span> <span class="dv">1000</span>, <span class="dt">replace =</span> <span class="ot">TRUE</span>)
+<pre class="sourceCode r"><code class="sourceCode r">df<span class="op">$</span>cat2 &lt;-<span class="st"> </span><span class="kw">sample</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">3</span>, <span class="dt">size =</span> <span class="dv">1000</span>, <span class="dt">replace =</span> <span class="ot">TRUE</span>)
 <span class="kw">boxplot</span>(df<span class="op">$</span>box4 <span class="op">~</span><span class="st"> </span>df<span class="op">$</span>cat<span class="op">*</span>df<span class="op">$</span>cat2, <span class="dt">col =</span> <span class="kw">c</span>(
   <span class="kw">rgb</span>(<span class="dv">0</span>, <span class="dv">94</span>, <span class="dv">255</span>, <span class="dt">maxColorValue =</span> <span class="dv">255</span>),  
   <span class="kw">rgb</span>(<span class="dv">255</span>, <span class="dv">0</span>, <span class="dv">174</span>, <span class="dt">maxColorValue =</span> <span class="dv">255</span>),  
   <span class="kw">rgb</span>(<span class="dv">255</span>, <span class="dv">136</span>, <span class="dv">0</span>, <span class="dt">maxColorValue =</span> <span class="dv">255</span>),  
-  <span class="kw">rgb</span>(<span class="dv">119</span>, <span class="dv">255</span>, <span class="dv">0</span>, <span class="dt">maxColorValue =</span> <span class="dv">255</span>)), <span class="dt">ylab =</span> <span class="st">&quot;Box4&quot;</span>)</code></pre></div>
+  <span class="kw">rgb</span>(<span class="dv">119</span>, <span class="dv">255</span>, <span class="dv">0</span>, <span class="dt">maxColorValue =</span> <span class="dv">255</span>)), <span class="dt">ylab =</span> <span class="st">&quot;Box4&quot;</span>)</code></pre>
 <p><img src="myRBook_FR_files/figure-html/unnamed-chunk-240-2.png" width="672" /></p>
 <p>Le <code>boxplot</code> peut être représenté horizontalement ou verticalement.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">df<span class="op">$</span>cat &lt;-<span class="st"> </span><span class="kw">sample</span>(<span class="kw">c</span>(<span class="st">&quot;w&quot;</span>, <span class="st">&quot;x&quot;</span>, <span class="st">&quot;y&quot;</span>, <span class="st">&quot;z&quot;</span>), <span class="dt">size =</span> <span class="dv">1000</span>, <span class="dt">replace =</span> <span class="ot">TRUE</span>)
+<pre class="sourceCode r"><code class="sourceCode r">df<span class="op">$</span>cat &lt;-<span class="st"> </span><span class="kw">sample</span>(<span class="kw">c</span>(<span class="st">&quot;w&quot;</span>, <span class="st">&quot;x&quot;</span>, <span class="st">&quot;y&quot;</span>, <span class="st">&quot;z&quot;</span>), <span class="dt">size =</span> <span class="dv">1000</span>, <span class="dt">replace =</span> <span class="ot">TRUE</span>)
 <span class="kw">boxplot</span>(df<span class="op">$</span>box2 <span class="op">~</span><span class="st"> </span>df<span class="op">$</span>cat, <span class="dt">horizontal =</span> <span class="ot">TRUE</span>, 
   <span class="dt">col =</span> <span class="kw">c</span>(<span class="kw">rgb</span>(<span class="dv">255</span>, <span class="dv">110</span>, <span class="dv">0</span>, <span class="dt">maxColorValue =</span> <span class="dv">255</span>),  
   <span class="kw">rgb</span>(<span class="dv">230</span>, <span class="dv">255</span>, <span class="dv">0</span>, <span class="dt">maxColorValue =</span> <span class="dv">255</span>),  
   <span class="kw">rgb</span>(<span class="dv">0</span>, <span class="dv">178</span>, <span class="dv">255</span>, <span class="dt">maxColorValue =</span> <span class="dv">255</span>),  
-  <span class="kw">rgb</span>(<span class="dv">166</span>, <span class="dv">0</span>, <span class="dv">255</span>, <span class="dt">maxColorValue =</span> <span class="dv">255</span>)), <span class="dt">xlab =</span> <span class="st">&quot;Box2&quot;</span>)</code></pre></div>
+  <span class="kw">rgb</span>(<span class="dv">166</span>, <span class="dv">0</span>, <span class="dv">255</span>, <span class="dt">maxColorValue =</span> <span class="dv">255</span>)), <span class="dt">xlab =</span> <span class="st">&quot;Box2&quot;</span>)</code></pre>
 <p><img src="myRBook_FR_files/figure-html/unnamed-chunk-241-1.png" width="672" /></p>
 </div>
 <div id="autres-graphiques" class="section level2">
 <h2><span class="header-section-number">11.5</span> Autres graphiques</h2>
-<p>Il existe de nombreux autres graphiques mais ceux que nous venons de voir constituent la base. Pour plus d’information et d’idées pour représenter vos données nous pouvons consulter le très beau site <a href="https://www.data-to-viz.com/" class="uri">https://www.data-to-viz.com/</a> ou encore la gallerie de graphiques R <a href="https://www.r-graph-gallery.com/" class="uri">https://www.r-graph-gallery.com/</a> (en anglais ; la plupart des graphiques sont réalisés avec le package ggplot2 que nous verrons plus tard). Pour plus d’idées vous pouvez aussi utiliser la demonstration du package <code>graphics</code> en utilisant la commande <code>demo(&quot;graphics&quot;)</code> (la touche “Entrée” permet d’afficher les graphiques).</p>
+<p>Il existe de nombreux autres graphiques mais ceux que nous venons de voir constituent la base. Pour plus d’information et d’idées pour représenter vos données nous pouvons consulter le très beau site <a href="https://www.data-to-viz.com/" class="uri">https://www.data-to-viz.com/</a> ou encore la gallerie de graphiques R <a href="https://www.r-graph-gallery.com/" class="uri">https://www.r-graph-gallery.com/</a> (en anglais ; la plupart des graphiques sont réalisés avec le package ggplot2 que nous verrons plus tard). Pour plus d’idées vous pouvez aussi utiliser la demonstration du package <code>graphics</code> en utilisant la commande <code>demo("graphics")</code> (la touche “Entrée” permet d’afficher les graphiques).</p>
 </div>
 <div id="conclusion-8" class="section level2">
 <h2><span class="header-section-number">11.6</span> Conclusion</h2>
@@ -599,7 +625,7 @@ gitbook.start({
 "google": false,
 "linkedin": false,
 "weibo": false,
-"instapper": false,
+"instapaper": false,
 "vk": false,
 "all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
 },
@@ -611,6 +637,10 @@ gitbook.start({
 "edit": {
 "link": "https://github.com/frareb/myRBook_FR/edit/master/021_01_graphiques.Rmd",
 "text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
 },
 "download": ["myRBook_FR.pdf", "myRBook_FR.epub"],
 "toc": {

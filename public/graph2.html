@@ -1,15 +1,14 @@
 <!DOCTYPE html>
-<html >
-
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
 <head>
 
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Se former au logiciel R : initiation et perfectionnement</title>
-  <meta name="description" content="Un guide pour acquérir les bases de la programmation avec R et conduire efficacement la gestion et l’analyse de ses données.">
-  <meta name="generator" content="bookdown 0.7 and GitBook 2.6.7">
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title> 12 La gestion des couleurs | Se former au logiciel R : initiation et perfectionnement</title>
+  <meta name="description" content="Un guide pour acquérir les bases de la programmation avec R et conduire efficacement la gestion et l’analyse de ses données." />
+  <meta name="generator" content="bookdown 0.10 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Se former au logiciel R : initiation et perfectionnement" />
+  <meta property="og:title" content=" 12 La gestion des couleurs | Se former au logiciel R : initiation et perfectionnement" />
   <meta property="og:type" content="book" />
   
   <meta property="og:image" content="myFigures/cover.png" />
@@ -17,25 +16,26 @@
   <meta name="github-repo" content="frareb/myRBook_FR" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Se former au logiciel R : initiation et perfectionnement" />
+  <meta name="twitter:title" content=" 12 La gestion des couleurs | Se former au logiciel R : initiation et perfectionnement" />
   
   <meta name="twitter:description" content="Un guide pour acquérir les bases de la programmation avec R et conduire efficacement la gestion et l’analyse de ses données." />
   <meta name="twitter:image" content="myFigures/cover.png" />
 
-<meta name="author" content="François Rebaudo">
+<meta name="author" content="François Rebaudo" />
 
 
-<meta name="date" content="2019-02-13">
+<meta name="date" content="2019-06-27" />
 
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
 <link rel="prev" href="graph1.html">
 <link rel="next" href="graph3.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
@@ -47,13 +47,13 @@
 
 
 
-<script src="libs/htmlwidgets-1.2/htmlwidgets.js"></script>
-<script src="libs/plotly-binding-4.8.0/plotly.js"></script>
+<script src="libs/htmlwidgets-1.3/htmlwidgets.js"></script>
+<script src="libs/plotly-binding-4.9.0/plotly.js"></script>
 <script src="libs/typedarray-0.1/typedarray.min.js"></script>
 <link href="libs/crosstalk-1.0.0/css/crosstalk.css" rel="stylesheet" />
 <script src="libs/crosstalk-1.0.0/js/crosstalk.min.js"></script>
-<link href="libs/plotly-htmlwidgets-css-1.39.2/plotly-htmlwidgets.css" rel="stylesheet" />
-<script src="libs/plotly-main-1.39.2/plotly-latest.min.js"></script>
+<link href="libs/plotly-htmlwidgets-css-1.46.1/plotly-htmlwidgets.css" rel="stylesheet" />
+<script src="libs/plotly-main-1.46.1/plotly-latest.min.js"></script>
 <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-124666641-2"></script>
 <script>
@@ -66,41 +66,67 @@
 
 
 <style type="text/css">
-div.sourceCode { overflow-x: auto; }
-table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
-  margin: 0; padding: 0; vertical-align: baseline; border: none; }
-table.sourceCode { width: 100%; line-height: 100%; }
-td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
-td.sourceCode { padding-left: 5px; }
-code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code > span.dt { color: #902000; } /* DataType */
-code > span.dv { color: #40a070; } /* DecVal */
-code > span.bn { color: #40a070; } /* BaseN */
-code > span.fl { color: #40a070; } /* Float */
-code > span.ch { color: #4070a0; } /* Char */
-code > span.st { color: #4070a0; } /* String */
-code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code > span.ot { color: #007020; } /* Other */
-code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code > span.fu { color: #06287e; } /* Function */
-code > span.er { color: #ff0000; font-weight: bold; } /* Error */
-code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
-code > span.cn { color: #880000; } /* Constant */
-code > span.sc { color: #4070a0; } /* SpecialChar */
-code > span.vs { color: #4070a0; } /* VerbatimString */
-code > span.ss { color: #bb6688; } /* SpecialString */
-code > span.im { } /* Import */
-code > span.va { color: #19177c; } /* Variable */
-code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code > span.op { color: #666666; } /* Operator */
-code > span.bu { } /* BuiltIn */
-code > span.ex { } /* Extension */
-code > span.pp { color: #bc7a00; } /* Preprocessor */
-code > span.at { color: #7d9029; } /* Attribute */
-code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(title);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
 <link rel="stylesheet" href="myStyle.css" type="text/css" />
@@ -318,21 +344,21 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
             <section class="normal" id="section-">
 <div id="graph2" class="section level1">
 <h1><span class="header-section-number"> 12</span> La gestion des couleurs</h1>
-<p>Nous avons vu différentes manières d’utiliser les couleurs : avec leur nom (e.g., <code>&quot;salmon&quot;</code>), avec un numéro de 1 à 8, avec la fonction <code>rgb()</code> (pour “red”, “green”, “blue”), et avec la fonction <code>colors()</code>. Il en existe d’autres mais celles-ci sont les principales.</p>
+<p>Nous avons vu différentes manières d’utiliser les couleurs : avec leur nom (e.g., <code>"salmon"</code>), avec un numéro de 1 à 8, avec la fonction <code>rgb()</code> (pour “red”, “green”, “blue”), et avec la fonction <code>colors()</code>. Il en existe d’autres mais celles-ci sont les principales.</p>
 <p>L’utilisation des numéros de 1 à 8 correspond au noir, rouge, vert, bleu, cyan, magenta, jaune et gris. Cette utilisation est pratique pour visualiser rapidement nos résultats mais donne globalement des graphiques visuellement moyens. Ces couleurs sont plutôt à éviter pour communiquer nos graphiques.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">barplot</span>(<span class="kw">sample</span>(<span class="dv">10</span><span class="op">:</span><span class="dv">15</span>, <span class="dv">8</span>, <span class="dt">replace =</span> <span class="ot">TRUE</span>), <span class="dt">col =</span> <span class="dv">1</span><span class="op">:</span><span class="dv">8</span>, <span class="dt">names.arg =</span> <span class="dv">1</span><span class="op">:</span><span class="dv">8</span>)</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">barplot</span>(<span class="kw">sample</span>(<span class="dv">10</span><span class="op">:</span><span class="dv">15</span>, <span class="dv">8</span>, <span class="dt">replace =</span> <span class="ot">TRUE</span>), <span class="dt">col =</span> <span class="dv">1</span><span class="op">:</span><span class="dv">8</span>, <span class="dt">names.arg =</span> <span class="dv">1</span><span class="op">:</span><span class="dv">8</span>)</code></pre>
 <p><img src="myRBook_FR_files/figure-html/unnamed-chunk-242-1.png" width="672" /></p>
 <div id="colors" class="section level2">
 <h2><span class="header-section-number">12.1</span> <code>colors()</code></h2>
 <p>Pour choisir des couleurs plus agréables et mettant plus en avant nos résultats, une option consiste à les choisir dans la liste des couleurs pré-enregistrées dans R. Nous pouvons accéder à la liste des couleurs avec la fonction <code>colors()</code></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">head</span>(<span class="kw">colors</span>(), <span class="dt">n =</span> <span class="dv">20</span>)</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">head</span>(<span class="kw">colors</span>(), <span class="dt">n =</span> <span class="dv">20</span>)</code></pre>
 <pre><code>##  [1] &quot;white&quot;         &quot;aliceblue&quot;     &quot;antiquewhite&quot;  &quot;antiquewhite1&quot;
 ##  [5] &quot;antiquewhite2&quot; &quot;antiquewhite3&quot; &quot;antiquewhite4&quot; &quot;aquamarine&quot;   
 ##  [9] &quot;aquamarine1&quot;   &quot;aquamarine2&quot;   &quot;aquamarine3&quot;   &quot;aquamarine4&quot;  
 ## [13] &quot;azure&quot;         &quot;azure1&quot;        &quot;azure2&quot;        &quot;azure3&quot;       
 ## [17] &quot;azure4&quot;        &quot;beige&quot;         &quot;bisque&quot;        &quot;bisque1&quot;</code></pre>
 <p>Nous pouvons utiliser ces couleurs avec leur nom (e.g., “white”, “azure3”), ou alors avec leur numéro (e.g., “white” = <code>colors()[1]</code>, “azure3” = <code>colors()[16]</code>).</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># adapted from http://www.r-graph-gallery.com/42-colors-names/</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co"># adapted from http://www.r-graph-gallery.com/42-colors-names/</span>
 op &lt;-<span class="st"> </span><span class="kw">par</span>(<span class="dt">no.readonly =</span> <span class="ot">TRUE</span>)
 <span class="kw">par</span>(<span class="dt">mar =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>))
 <span class="kw">plot</span>(<span class="dv">0</span>, <span class="dt">type =</span> <span class="st">&quot;n&quot;</span>, <span class="dt">xlim =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">1</span>), <span class="dt">ylim =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">1</span>), 
@@ -351,20 +377,20 @@ myLabels &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="kw
   <span class="dt">x =</span> <span class="kw">rep</span>((<span class="dv">0</span><span class="op">:</span>(numCol <span class="op">-</span><span class="st"> </span><span class="dv">1</span>)<span class="op">/</span>numCol), numRow) <span class="op">+</span><span class="st"> </span><span class="fl">0.02</span>,
   <span class="dt">y =</span> <span class="kw">sort</span>(<span class="kw">rep</span>((<span class="dv">0</span><span class="op">:</span>(numRow <span class="op">-</span><span class="st"> </span><span class="dv">1</span>)<span class="op">/</span>numRow), numCol), <span class="dt">decreasing =</span> <span class="ot">TRUE</span>) <span class="op">+</span><span class="st"> </span><span class="fl">0.02</span>,
   <span class="dt">labels =</span> myLabels, 
-  <span class="dt">cex =</span> <span class="fl">0.6</span>)</code></pre></div>
+  <span class="dt">cex =</span> <span class="fl">0.6</span>)</code></pre>
 <p><img src="myRBook_FR_files/figure-html/unnamed-chunk-244-1.png" width="672" /></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">par</span>(op)</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">par</span>(op)</code></pre>
 </div>
 <div id="rgb" class="section level2">
 <h2><span class="header-section-number">12.2</span> <code>rgb()</code></h2>
 <p>Une autre option consiste à construire ses propres couleurs ave la fonction <code>rgb()</code> qui prend comme argument la quantité de rouge, de de vert, et de bleu. Par défaut ces valeurs sont comprises entre 0 et 1. Ce réglage par défaut peut être modifié avec l’arguement <code>maxColorValue</code> pour par exemple avoir des valeurs entre 0 et 255 (<code>maxColorValue = 255</code> ; norme pour la représentation des couleurs RGB).</p>
 <p>Nous allons reprendre notre fonction permettant de représenter la distribution de points dans un nuage de points au moyen de <code>barplot</code> avec cette fois trois couleurs de points (rouge, vert, bleu), et des <code>barplot</code> dont la couleur correspondra à la quantité de chaque couleur avec la fonction <code>rgb()</code>.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">graphBarplotCol &lt;-<span class="st"> </span><span class="cf">function</span>(n){
+<pre class="sourceCode r"><code class="sourceCode r">graphBarplotCol &lt;-<span class="st"> </span><span class="cf">function</span>(n){
   myX &lt;-<span class="st"> </span><span class="kw">rnorm</span>(n)
   myY &lt;-<span class="st"> </span><span class="kw">rnorm</span>(n)
   myCol &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="kw">sample</span>(<span class="dv">2</span><span class="op">:</span><span class="dv">4</span>, <span class="dt">size =</span> (n <span class="op">-</span><span class="st"> </span><span class="dv">3</span>), <span class="dt">replace =</span> <span class="ot">TRUE</span>))
-  myYCut &lt;-<span class="st"> </span><span class="kw">cut</span>(myY, <span class="dt">breaks =</span> <span class="op">-</span><span class="dv">4</span><span class="op">:</span><span class="dv">4</span>)
-  myXCut &lt;-<span class="st"> </span><span class="kw">cut</span>(myX, <span class="dt">breaks =</span> <span class="op">-</span><span class="dv">4</span><span class="op">:</span><span class="dv">4</span>)
+  myYCut &lt;-<span class="st"> </span><span class="kw">cut</span>(myY, <span class="dt">breaks =</span> <span class="dv">-4</span><span class="op">:</span><span class="dv">4</span>)
+  myXCut &lt;-<span class="st"> </span><span class="kw">cut</span>(myX, <span class="dt">breaks =</span> <span class="dv">-4</span><span class="op">:</span><span class="dv">4</span>)
   myYCutCol &lt;-<span class="st"> </span><span class="kw">table</span>(myCol, myYCut)
   myXCutCol &lt;-<span class="st"> </span><span class="kw">table</span>(myCol, myXCut)
   rColX &lt;-<span class="st"> </span>myXCutCol[<span class="dv">1</span>,] <span class="op">/</span><span class="st"> </span>(myXCutCol[<span class="dv">1</span>,] <span class="op">+</span><span class="st"> </span>myXCutCol[<span class="dv">2</span>,] <span class="op">+</span><span class="st"> </span>
@@ -398,26 +424,27 @@ myLabels &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="kw
     <span class="dt">col =</span> <span class="kw">rgb</span>(rColY, gColY, bColY))
   <span class="kw">par</span>(op)
 }
-<span class="kw">graphBarplotCol</span>(<span class="dt">n =</span> <span class="dv">50</span>)</code></pre></div>
+<span class="kw">graphBarplotCol</span>(<span class="dt">n =</span> <span class="dv">50</span>)</code></pre>
 <p><img src="myRBook_FR_files/figure-html/unnamed-chunk-245-1.png" width="672" /></p>
 <p>Avec la fonction <code>rgb()</code> nous pouvons donc représenter <code>256^3</code> couleurs, soit 167 777 216 couleurs différentes. Notre objectif reste cependant de faire des graphiques agréables à lire et qui mettent bien en valeurs nos résultats scientifiques. Il faut donc choisir les couleurs adéquates au regard de notre objectif. C’est pour cela que nous allons utiliser des palettes.</p>
 </div>
 <div id="palettes" class="section level2">
 <h2><span class="header-section-number">12.3</span> Palettes</h2>
 <p>Les palettes sont des jeux de couleurs représentées sous forme d’un <code>vector</code> avec les couleurs au format hexadécimal (valeur renvoyée par la fonction <code>rgb()</code> par exemple).</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">myPal &lt;-<span class="st"> </span><span class="kw">c</span>(
+<pre class="sourceCode r"><code class="sourceCode r">myPal &lt;-<span class="st"> </span><span class="kw">c</span>(
   <span class="kw">rgb</span>(<span class="dv">0</span>, <span class="dv">94</span>, <span class="dv">255</span>, <span class="dt">maxColorValue =</span> <span class="dv">255</span>),  
   <span class="kw">rgb</span>(<span class="dv">255</span>, <span class="dv">0</span>, <span class="dv">174</span>, <span class="dt">maxColorValue =</span> <span class="dv">255</span>),  
   <span class="kw">rgb</span>(<span class="dv">255</span>, <span class="dv">136</span>, <span class="dv">0</span>, <span class="dt">maxColorValue =</span> <span class="dv">255</span>),  
   <span class="kw">rgb</span>(<span class="dv">119</span>, <span class="dv">255</span>, <span class="dv">0</span>, <span class="dt">maxColorValue =</span> <span class="dv">255</span>))
-<span class="kw">print</span>(myPal)</code></pre></div>
+<span class="kw">print</span>(myPal)</code></pre>
 <pre><code>## [1] &quot;#005EFF&quot; &quot;#FF00AE&quot; &quot;#FF8800&quot; &quot;#77FF00&quot;</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">boxplot</span>(<span class="kw">matrix</span>(<span class="kw">rnorm</span>(<span class="dv">100</span>), <span class="dt">ncol =</span> <span class="dv">5</span>), <span class="dt">col =</span> myPal, <span class="dt">axes =</span> <span class="ot">FALSE</span>)
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">boxplot</span>(<span class="kw">matrix</span>(<span class="kw">rnorm</span>(<span class="dv">100</span>), <span class="dt">ncol =</span> <span class="dv">5</span>), <span class="dt">col =</span> myPal, <span class="dt">axes =</span> <span class="ot">FALSE</span>)
 <span class="kw">axis</span>(<span class="dv">1</span>)
-<span class="kw">axis</span>(<span class="dv">2</span>)</code></pre></div>
+<span class="kw">axis</span>(<span class="dv">2</span>)</code></pre>
 <p><img src="myRBook_FR_files/figure-html/unnamed-chunk-246-1.png" width="672" /></p>
-<p>Il existe des palettes inclues dans R : <code>terrain.colors()</code>, <code>heat.colors()</code>, <code>topo.colors()</code>, <code>cm.colors()</code>, <code>rainbow()</code>.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">op &lt;-<span class="st"> </span><span class="kw">par</span>(<span class="dt">no.readonly =</span> <span class="ot">TRUE</span>)
+<p>Il existe des palettes inclues dans R : <code>terrain.colors()</code>, <code>heat.colors()</code>, <code>topo.colors()</code>,
+<code>cm.colors()</code>, <code>rainbow()</code>.</p>
+<pre class="sourceCode r"><code class="sourceCode r">op &lt;-<span class="st"> </span><span class="kw">par</span>(<span class="dt">no.readonly =</span> <span class="ot">TRUE</span>)
 <span class="kw">par</span>(<span class="dt">mfrow =</span> <span class="kw">c</span>(<span class="dv">2</span>, <span class="dv">3</span>), <span class="dt">mar =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">2</span>, <span class="dv">0</span>))
 <span class="kw">boxplot</span>(<span class="kw">matrix</span>(<span class="kw">rnorm</span>(<span class="dv">1000</span>), <span class="dt">ncol =</span> <span class="dv">10</span>), <span class="dt">main =</span> <span class="st">&quot;terrain.colors()&quot;</span>, 
   <span class="dt">col =</span> <span class="kw">terrain.colors</span>(<span class="dv">10</span>), <span class="dt">axes =</span> <span class="ot">FALSE</span>)
@@ -429,10 +456,10 @@ myLabels &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="kw
   <span class="dt">col =</span> <span class="kw">cm.colors</span>(<span class="dv">10</span>), <span class="dt">axes =</span> <span class="ot">FALSE</span>)
 <span class="kw">boxplot</span>(<span class="kw">matrix</span>(<span class="kw">rnorm</span>(<span class="dv">1000</span>), <span class="dt">ncol =</span> <span class="dv">10</span>), <span class="dt">main =</span> <span class="st">&quot;rainbow()&quot;</span>, 
   <span class="dt">col =</span> <span class="kw">rainbow</span>(<span class="dv">10</span>), <span class="dt">axes =</span> <span class="ot">FALSE</span>)
-<span class="kw">par</span>(op)</code></pre></div>
+<span class="kw">par</span>(op)</code></pre>
 <p><img src="myRBook_FR_files/figure-html/unnamed-chunk-247-1.png" width="672" /></p>
 <p>Il existe aussi une fonction <code>colorRampPalette()</code> qui permet de créer un dégradé de couleur.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">op &lt;-<span class="st"> </span><span class="kw">par</span>(<span class="dt">no.readonly =</span> <span class="ot">TRUE</span>)
+<pre class="sourceCode r"><code class="sourceCode r">op &lt;-<span class="st"> </span><span class="kw">par</span>(<span class="dt">no.readonly =</span> <span class="ot">TRUE</span>)
 <span class="kw">par</span>(<span class="dt">mfrow =</span> <span class="kw">c</span>(<span class="dv">3</span>, <span class="dv">1</span>), <span class="dt">mar =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>))
 <span class="kw">boxplot</span>(<span class="kw">matrix</span>(<span class="kw">rnorm</span>(<span class="dv">2500</span>), <span class="dt">ncol =</span> <span class="dv">25</span>), 
   <span class="dt">col =</span> <span class="kw">colorRampPalette</span>(<span class="kw">c</span>(<span class="st">&#39;blue&#39;</span>, <span class="st">&#39;red&#39;</span>))(<span class="dv">25</span>), <span class="dt">axes =</span> <span class="ot">FALSE</span>)
@@ -440,13 +467,13 @@ myLabels &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="kw
   <span class="dt">col =</span> <span class="kw">colorRampPalette</span>(<span class="kw">c</span>(<span class="st">&#39;blue&#39;</span>, <span class="st">&#39;white&#39;</span>, <span class="st">&#39;red&#39;</span>))(<span class="dv">25</span>), <span class="dt">axes =</span> <span class="ot">FALSE</span>)
 <span class="kw">boxplot</span>(<span class="kw">matrix</span>(<span class="kw">rnorm</span>(<span class="dv">2500</span>), <span class="dt">ncol =</span> <span class="dv">25</span>), 
   <span class="dt">col =</span>  <span class="kw">colorRampPalette</span>(<span class="kw">c</span>(<span class="kw">rgb</span>(<span class="dv">255</span>, <span class="dv">136</span>, <span class="dv">0</span>, <span class="dt">maxColorValue =</span> <span class="dv">255</span>),  
-  <span class="kw">rgb</span>(<span class="dv">0</span>, <span class="dv">94</span>, <span class="dv">255</span>, <span class="dt">maxColorValue =</span> <span class="dv">255</span>)))(<span class="dv">25</span>), <span class="dt">axes =</span> <span class="ot">FALSE</span>)</code></pre></div>
+  <span class="kw">rgb</span>(<span class="dv">0</span>, <span class="dv">94</span>, <span class="dv">255</span>, <span class="dt">maxColorValue =</span> <span class="dv">255</span>)))(<span class="dv">25</span>), <span class="dt">axes =</span> <span class="ot">FALSE</span>)</code></pre>
 <p><img src="myRBook_FR_files/figure-html/unnamed-chunk-248-1.png" width="672" /></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">par</span>(op)</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">par</span>(op)</code></pre>
 <p>Nous pouvons aussi créer nos propres palettes en utilisant des sites web dédiés à la sélection des couleurs comme <a href="http://paletton.com/" class="uri">http://paletton.com/</a> ou <a href="https://coolors.co/" class="uri">https://coolors.co/</a> (il en existe bien d’autres), puis les utiliser dans R en recopiant dans un vecteur les valeurs héxadécimales ou rgb.</p>
 <p>R est un language de programmation très puissant. Nous pouvons imaginer de nombreuses façons de créer automatiquement des palettes en fonction de critères variés. Par exemple nous pouvons importer une image dont les teintes nous semblent pertinentes, puis extraire les informations de chacun des points pour ensuite sélectionner les couleurs dominantes via un regroupement par cluster. C’est ce que fait la fonction suivante.</p>
 <p>Tout d’abord nous allons charger les packages <code>raster</code>, <code>rgdal</code> et <code>jpeg</code> qui vont nous servir à manipuler notre image sous R.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">pkgCheck &lt;-<span class="st"> </span><span class="cf">function</span>(x){ 
+<pre class="sourceCode r"><code class="sourceCode r">pkgCheck &lt;-<span class="st"> </span><span class="cf">function</span>(x){ 
     <span class="cf">if</span> (<span class="op">!</span><span class="kw">require</span>(x, <span class="dt">character.only =</span> <span class="ot">TRUE</span>)){
         <span class="kw">install.packages</span>(x, <span class="dt">dependencies =</span> <span class="ot">TRUE</span>)
         <span class="cf">if</span>(<span class="op">!</span><span class="kw">require</span>(x, <span class="dt">character.only =</span> <span class="ot">TRUE</span>)) {
@@ -454,23 +481,23 @@ myLabels &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="kw
         }
     }
 }
-<span class="kw">pkgCheck</span>(<span class="st">&quot;raster&quot;</span>)</code></pre></div>
+<span class="kw">pkgCheck</span>(<span class="st">&quot;raster&quot;</span>)</code></pre>
 <pre><code>## Loading required package: raster</code></pre>
 <pre><code>## Loading required package: sp</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">pkgCheck</span>(<span class="st">&quot;rgdal&quot;</span>)</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">pkgCheck</span>(<span class="st">&quot;rgdal&quot;</span>)</code></pre>
 <pre><code>## Loading required package: rgdal</code></pre>
-<pre><code>## rgdal: version: 1.3-4, (SVN revision 766)
+<pre><code>## rgdal: version: 1.4-3, (SVN revision 828)
 ##  Geospatial Data Abstraction Library extensions to R successfully loaded
 ##  Loaded GDAL runtime: GDAL 2.2.3, released 2017/11/20
-##  Path to GDAL shared files: C:/Users/rebaudo/Documents/R/win-library/3.5/rgdal/gdal
+##  Path to GDAL shared files: C:/Users/nous/Documents/R/win-library/3.6/rgdal/gdal
 ##  GDAL binary built with GEOS: TRUE 
 ##  Loaded PROJ.4 runtime: Rel. 4.9.3, 15 August 2016, [PJ_VERSION: 493]
-##  Path to PROJ.4 shared files: C:/Users/rebaudo/Documents/R/win-library/3.5/rgdal/proj
+##  Path to PROJ.4 shared files: C:/Users/nous/Documents/R/win-library/3.6/rgdal/proj
 ##  Linking to sp version: 1.3-1</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">pkgCheck</span>(<span class="st">&quot;jpeg&quot;</span>)</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">pkgCheck</span>(<span class="st">&quot;jpeg&quot;</span>)</code></pre>
 <pre><code>## Loading required package: jpeg</code></pre>
 <p>Ensuite nous allons utiliser la fonction <code>kmeans()</code> pour effectuer des groupes de couleurs en utilisant les valeurs RGB de chacun des points de notre image. Ici nous avons deux méthodes possibles, la première utilise la fonction <code>kmeans()</code> pour les trois valeurs RGB, et la seconde utilise la fonction <code>kmeans()</code> pour chaque valeur RGB individuellement (cette seconde fonction donne une palette qui pourra être assez éloignée des couleurs de l’image de départ).</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">createPal &lt;-<span class="st"> </span><span class="cf">function</span>(photo, <span class="dt">met =</span> <span class="dv">1</span>, <span class="dt">graph =</span> <span class="ot">TRUE</span>, <span class="dt">k =</span> <span class="dv">9</span>){
+<pre class="sourceCode r"><code class="sourceCode r">createPal &lt;-<span class="st"> </span><span class="cf">function</span>(photo, <span class="dt">met =</span> <span class="dv">1</span>, <span class="dt">graph =</span> <span class="ot">TRUE</span>, <span class="dt">k =</span> <span class="dv">9</span>){
     <span class="cf">if</span>(met <span class="op">==</span><span class="st"> </span><span class="dv">1</span>){
         colR &lt;-<span class="st"> </span><span class="kw">getValues</span>(<span class="kw">raster</span>(photo, <span class="dt">band =</span> <span class="dv">1</span>))
         colG &lt;-<span class="st"> </span><span class="kw">getValues</span>(<span class="kw">raster</span>(photo, <span class="dt">band =</span> <span class="dv">2</span>))
@@ -510,7 +537,7 @@ myLabels &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="kw
                     <span class="dt">xlim =</span> <span class="kw">c</span>(<span class="dv">0</span>, k), <span class="dt">axes =</span> <span class="ot">FALSE</span>, <span class="dt">xlab =</span> <span class="st">&quot;&quot;</span>, 
                     <span class="dt">ylab =</span> <span class="st">&quot;&quot;</span>, <span class="dt">type =</span> <span class="st">&quot;n&quot;</span>)
                 <span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span>k){
-                    <span class="kw">polygon</span>(<span class="dt">x =</span> <span class="kw">c</span>(i<span class="op">-</span><span class="dv">1</span>, i, i, i<span class="op">-</span><span class="dv">1</span>), <span class="dt">y =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>), 
+                    <span class="kw">polygon</span>(<span class="dt">x =</span> <span class="kw">c</span>(i<span class="dv">-1</span>, i, i, i<span class="dv">-1</span>), <span class="dt">y =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>), 
                         <span class="dt">col =</span> kCol[i])
                     <span class="kw">text</span>(<span class="dt">x =</span> i <span class="op">-</span><span class="st"> </span><span class="fl">0.5</span>, <span class="dt">y =</span> <span class="fl">0.5</span>, 
                         <span class="dt">labels =</span> <span class="kw">as.character</span>(kCol[i]), <span class="dt">srt =</span> <span class="dv">90</span>)
@@ -526,13 +553,13 @@ myLabels &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="kw
 }
 
 myPalMet1 &lt;-<span class="st"> </span><span class="kw">createPal</span>(<span class="dt">photo =</span> <span class="st">&quot;./myFiles/photoKmeans.jpg&quot;</span>, 
-  <span class="dt">met =</span> <span class="dv">1</span>, <span class="dt">graph =</span> <span class="ot">TRUE</span>, <span class="dt">k =</span> <span class="dv">5</span>)</code></pre></div>
+  <span class="dt">met =</span> <span class="dv">1</span>, <span class="dt">graph =</span> <span class="ot">TRUE</span>, <span class="dt">k =</span> <span class="dv">5</span>)</code></pre>
 <p><img src="myRBook_FR_files/figure-html/unnamed-chunk-250-1.png" width="672" /></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">myPalMet2 &lt;-<span class="st"> </span><span class="kw">createPal</span>(<span class="dt">photo =</span> <span class="st">&quot;./myFiles/photoKmeans.jpg&quot;</span>, 
-  <span class="dt">met =</span> <span class="dv">2</span>, <span class="dt">graph =</span> <span class="ot">TRUE</span>, <span class="dt">k =</span> <span class="dv">5</span>)</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r">myPalMet2 &lt;-<span class="st"> </span><span class="kw">createPal</span>(<span class="dt">photo =</span> <span class="st">&quot;./myFiles/photoKmeans.jpg&quot;</span>, 
+  <span class="dt">met =</span> <span class="dv">2</span>, <span class="dt">graph =</span> <span class="ot">TRUE</span>, <span class="dt">k =</span> <span class="dv">5</span>)</code></pre>
 <p><img src="myRBook_FR_files/figure-html/unnamed-chunk-250-2.png" width="672" /></p>
 <p>La fonction nous renvoie les couleurs de la palette avec un graphique en barres représentant le nombre de points de l’image dans chacun des groupes de couleurs. Nous pouvons désormais utiliser notre nouvelle palette pour réaliser nos graphiques.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">makeImpact &lt;-<span class="st"> </span><span class="cf">function</span>(myPal, <span class="dt">numP =</span> <span class="dv">300</span>, <span class="dt">impact =</span> <span class="fl">0.33</span>, <span class="dt">multCex =</span> <span class="dv">3</span>){
+<pre class="sourceCode r"><code class="sourceCode r">makeImpact &lt;-<span class="st"> </span><span class="cf">function</span>(myPal, <span class="dt">numP =</span> <span class="dv">300</span>, <span class="dt">impact =</span> <span class="fl">0.33</span>, <span class="dt">multCex =</span> <span class="dv">3</span>){
     myX &lt;-<span class="st"> </span><span class="kw">sample</span>(<span class="dv">0</span><span class="op">:</span><span class="dv">1000</span>, <span class="dt">size =</span> numP, <span class="dt">replace =</span> <span class="ot">TRUE</span>)<span class="op">/</span><span class="dv">1000</span>
     myY &lt;-<span class="st"> </span><span class="kw">sample</span>(<span class="dv">0</span><span class="op">:</span><span class="dv">1000</span>, <span class="dt">size =</span> numP, <span class="dt">replace =</span> <span class="ot">TRUE</span>)<span class="op">/</span><span class="dv">1000</span>
     distImpact &lt;-<span class="st"> </span><span class="kw">sqrt</span>((myX <span class="op">-</span><span class="st"> </span>impact)<span class="op">^</span><span class="dv">2</span> <span class="op">+</span><span class="st"> </span>(myY <span class="op">-</span><span class="st"> </span>impact)<span class="op">^</span><span class="dv">2</span>)
@@ -545,9 +572,9 @@ myPalMet1 &lt;-<span class="st"> </span><span class="kw">createPal</span>(<span 
 op &lt;-<span class="st"> </span><span class="kw">par</span>(<span class="dt">no.readonly =</span> <span class="ot">TRUE</span>)
 <span class="kw">par</span>(<span class="dt">mfrow =</span> <span class="kw">c</span> (<span class="dv">1</span>, <span class="dv">2</span>), <span class="dt">mar =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>))
 <span class="kw">makeImpact</span>(<span class="dt">myPal =</span> myPalMet1, <span class="dt">numP =</span> <span class="dv">3000</span>, <span class="dt">impact =</span> <span class="fl">0.33</span>)
-<span class="kw">makeImpact</span>(<span class="dt">myPal =</span> myPalMet2, <span class="dt">numP =</span> <span class="dv">3000</span>, <span class="dt">impact =</span> <span class="fl">0.66</span>)</code></pre></div>
+<span class="kw">makeImpact</span>(<span class="dt">myPal =</span> myPalMet2, <span class="dt">numP =</span> <span class="dv">3000</span>, <span class="dt">impact =</span> <span class="fl">0.66</span>)</code></pre>
 <p><img src="myRBook_FR_files/figure-html/unnamed-chunk-251-1.png" width="672" /></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">par</span>(op)</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">par</span>(op)</code></pre>
 </div>
 <div id="conclusion-9" class="section level2">
 <h2><span class="header-section-number">12.4</span> Conclusion</h2>
@@ -581,7 +608,7 @@ gitbook.start({
 "google": false,
 "linkedin": false,
 "weibo": false,
-"instapper": false,
+"instapaper": false,
 "vk": false,
 "all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
 },
@@ -593,6 +620,10 @@ gitbook.start({
 "edit": {
 "link": "https://github.com/frareb/myRBook_FR/edit/master/021_02_graphiques.Rmd",
 "text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
 },
 "download": ["myRBook_FR.pdf", "myRBook_FR.epub"],
 "toc": {

@@ -1,15 +1,14 @@
 <!DOCTYPE html>
-<html >
-
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
 <head>
 
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Se former au logiciel R : initiation et perfectionnement</title>
-  <meta name="description" content="Un guide pour acquérir les bases de la programmation avec R et conduire efficacement la gestion et l’analyse de ses données.">
-  <meta name="generator" content="bookdown 0.7 and GitBook 2.6.7">
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title> 7 Les fonctions | Se former au logiciel R : initiation et perfectionnement</title>
+  <meta name="description" content="Un guide pour acquérir les bases de la programmation avec R et conduire efficacement la gestion et l’analyse de ses données." />
+  <meta name="generator" content="bookdown 0.10 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Se former au logiciel R : initiation et perfectionnement" />
+  <meta property="og:title" content=" 7 Les fonctions | Se former au logiciel R : initiation et perfectionnement" />
   <meta property="og:type" content="book" />
   
   <meta property="og:image" content="myFigures/cover.png" />
@@ -17,25 +16,26 @@
   <meta name="github-repo" content="frareb/myRBook_FR" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Se former au logiciel R : initiation et perfectionnement" />
+  <meta name="twitter:title" content=" 7 Les fonctions | Se former au logiciel R : initiation et perfectionnement" />
   
   <meta name="twitter:description" content="Un guide pour acquérir les bases de la programmation avec R et conduire efficacement la gestion et l’analyse de ses données." />
   <meta name="twitter:image" content="myFigures/cover.png" />
 
-<meta name="author" content="François Rebaudo">
+<meta name="author" content="François Rebaudo" />
 
 
-<meta name="date" content="2019-02-13">
+<meta name="date" content="2019-06-27" />
 
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
 <link rel="prev" href="dataType2.html">
 <link rel="next" href="import.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
@@ -47,13 +47,13 @@
 
 
 
-<script src="libs/htmlwidgets-1.2/htmlwidgets.js"></script>
-<script src="libs/plotly-binding-4.8.0/plotly.js"></script>
+<script src="libs/htmlwidgets-1.3/htmlwidgets.js"></script>
+<script src="libs/plotly-binding-4.9.0/plotly.js"></script>
 <script src="libs/typedarray-0.1/typedarray.min.js"></script>
 <link href="libs/crosstalk-1.0.0/css/crosstalk.css" rel="stylesheet" />
 <script src="libs/crosstalk-1.0.0/js/crosstalk.min.js"></script>
-<link href="libs/plotly-htmlwidgets-css-1.39.2/plotly-htmlwidgets.css" rel="stylesheet" />
-<script src="libs/plotly-main-1.39.2/plotly-latest.min.js"></script>
+<link href="libs/plotly-htmlwidgets-css-1.46.1/plotly-htmlwidgets.css" rel="stylesheet" />
+<script src="libs/plotly-main-1.46.1/plotly-latest.min.js"></script>
 <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-124666641-2"></script>
 <script>
@@ -66,41 +66,67 @@
 
 
 <style type="text/css">
-div.sourceCode { overflow-x: auto; }
-table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
-  margin: 0; padding: 0; vertical-align: baseline; border: none; }
-table.sourceCode { width: 100%; line-height: 100%; }
-td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
-td.sourceCode { padding-left: 5px; }
-code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code > span.dt { color: #902000; } /* DataType */
-code > span.dv { color: #40a070; } /* DecVal */
-code > span.bn { color: #40a070; } /* BaseN */
-code > span.fl { color: #40a070; } /* Float */
-code > span.ch { color: #4070a0; } /* Char */
-code > span.st { color: #4070a0; } /* String */
-code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code > span.ot { color: #007020; } /* Other */
-code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code > span.fu { color: #06287e; } /* Function */
-code > span.er { color: #ff0000; font-weight: bold; } /* Error */
-code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
-code > span.cn { color: #880000; } /* Constant */
-code > span.sc { color: #4070a0; } /* SpecialChar */
-code > span.vs { color: #4070a0; } /* VerbatimString */
-code > span.ss { color: #bb6688; } /* SpecialString */
-code > span.im { } /* Import */
-code > span.va { color: #19177c; } /* Variable */
-code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code > span.op { color: #666666; } /* Operator */
-code > span.bu { } /* BuiltIn */
-code > span.ex { } /* Extension */
-code > span.pp { color: #bc7a00; } /* Preprocessor */
-code > span.at { color: #7d9029; } /* Attribute */
-code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(title);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
 <link rel="stylesheet" href="myStyle.css" type="text/css" />
@@ -322,9 +348,9 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <h2><span class="header-section-number">7.1</span> Qu’est-ce qu’une fonction</h2>
 <p>Avec ce chapitre nous allons avoir un premier apperçu de la puissance de R grâce aux fonctions. Une fonction est un ensemble de lignes de code permettant d’exécuter une tâche particulière. Nous avons vu de nombreuses fonctions lors des précédents chapitres, la plus simple étant la fonction <code>+</code> permettant d’ajouter deux nombres entre eux, ou d’autres plus complexes comme <code>c()</code> ou <code>data.frame()</code> permettant de créer un <code>vector</code> ou un <code>data.frame</code>. Dans tous les cas une fonction se reconnait grâce aux parenthèses qui la suive dans laquelle nous allons renseigner des <strong>arguments</strong>. Les arguments correspondent aux informations que nous souhaitons transmettre à notre fonction pour qu’elle exécute la tâche que nous souhaitons réaliser.</p>
 <p>Pour les fonctions les plus simples comme <code>+</code>, les parenthèses ont été supprimés pour que le code soit plus facile à lire, mais il s’agit bien d’une fonction qui peut s’utiliser avec des parenthèses si nous utilisons le signe <code>+</code> entre guillemets. Les arguments sont les chiffres que nous souhaitons ajouter.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="dv">5</span> <span class="op">+</span><span class="st"> </span><span class="dv">2</span></code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="dv">5</span> <span class="op">+</span><span class="st"> </span><span class="dv">2</span></code></pre>
 <pre><code>## [1] 7</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="st">&#39;+&#39;</span>(<span class="dv">5</span>, <span class="dv">2</span>)</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="st">&#39;+&#39;</span>(<span class="dv">5</span>, <span class="dv">2</span>)</code></pre>
 <pre><code>## [1] 7</code></pre>
 <p>Dans ce chapitre nous allons nous focaliser sur les fonctions les plus courantes de façon à ce que ce chapitre soit consultable comme un dictionnaire. Il ne s’agit donc pas de tout apprendre par coeur mais bien de savoir que ces fonctions existent et de pouvoir consulter ce chapitre plus tard comme référence. Avec le temps et la pratique nous finirons par les connaître par coeur ! Il y a plus de 1000 fonctions à ce jour dans la version de base de R, et plus de 10000 packages complémentaires pouvant être installés, chacun contenant plusieurs dizaines de fonctions. Avant de nous lancer dans l’écriture d’une nouvelle fonction, il faudra toujours vérifier qu’elle n’existe pas déjà.</p>
 </div>
@@ -336,21 +362,21 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <div id="l015help" class="section level4">
 <h4><span class="header-section-number">7.2.1.1</span> <code>help()</code></h4>
 <p>La fonction indispensable de R est celle permettant d’accèder à la documentation. Toutes les fonctions et tous les jeux de données de R possèdent une documentation. Nous pouvons accéder à la documentation avec la fonction <code>help()</code> ou en utilisant le raccourci <code>?</code>.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">help</span>(matrix) <span class="co"># équivalent à ?matrix</span></code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">help</span>(matrix) <span class="co"># équivalent à ?matrix</span></code></pre>
 <p>La documentation est toujours structurée de la même manière. Tout d’abord nous avons le nom de la fonction recherchée <code>matrix</code>, suivie entre accolades par le nom du package R dont la fonction dépend. Nous verrons comment installer des packages additionnels plus tard. Pour l’instant nous disposons de ceux fournis avec la version de base de R. Ici nous pouvons voir que la fonction <code>matrix()</code> dépend du package <code>base</code>.</p>
 <p>Ensuite nous pouvons voir le libellé de la fonction (<code>Matrices</code>), suivi des paragraphes <code>Description</code>, <code>Usage</code>, et <code>Arguments</code>. Parfois vient s’ajouter les paragraphes <code>Details</code>, <code>Note</code>, <code>References</code>, et <code>See also</code>. Le dernier paragraphe est <code>Examples</code>. La dernière ligne de la documentation permet de revenir à l’index du package dont dépend la fonction consultée.</p>
 <p>En copiant collant <code>help(matrix)</code> dans notre console R, nous pouvons voir que le paragraphe <code>Description</code> indique ce que fait la fonction. Dans le cas de <code>help(matrix)</code>, il y a trois fonctions qui sont présentées : <code>matrix()</code>, <code>as.matrix()</code>, et <code>is.matrix()</code>.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Description</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Description</span>
 <span class="co"># matrix creates a matrix from the given set of values.</span>
 <span class="co"># as.matrix attempts to turn its argument into a matrix.</span>
-<span class="co"># is.matrix tests if its argument is a (strict) matrix.</span></code></pre></div>
+<span class="co"># is.matrix tests if its argument is a (strict) matrix.</span></code></pre>
 <p>Le paragraphe <code>Usage</code> explique comment utiliser la fonction et quels sont les valeurs par défaut éventuelles pour chacun des paramètres.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Usage</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Usage</span>
 <span class="co"># matrix(data = NA, nrow = 1, ncol = 1, byrow = FALSE,</span>
-<span class="co">#        dimnames = NULL)</span></code></pre></div>
+<span class="co">#        dimnames = NULL)</span></code></pre>
 <p>La fonction <code>matrix()</code> peut prendre 5 arguments : <code>data</code>, <code>nrow</code>, <code>ncol</code>, <code>byrow</code>, et <code>dimnames</code>. Nous pouvons voir que par défaut une <code>matrix</code> sera composée d’une seule ligne et d’une seule colonne, et que les informations serons renseignées par colonne.</p>
 <p>Le paragraphe <code>Arguments</code> détaille les valeurs et le type de conteneur de chacun des arguments de notre fonction. Par exemple nous pouvons voir que l’argument <code>dimnames</code> doit être de type <code>list</code>. C’est pouquoi nous avons utilisé ce format lors de la section sur les <a href="dataType2.html#l014matrix"><code>matrix</code></a>.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Arguments</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Arguments</span>
 <span class="co"># data      an optional data vector (including a list or expression vector). </span>
 <span class="co">#           Non-atomic classed R objects are coerced by as.vector and all </span>
 <span class="co">#           attributes discarded.</span>
@@ -362,26 +388,26 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <span class="co">#           giving the row and column names respectively. An empty list is </span>
 <span class="co">#           treated as NULL, and a list of length one as row names. The </span>
 <span class="co">#           list can be named, and the list names will be used as names for </span>
-<span class="co">#           the dimensions.</span></code></pre></div>
+<span class="co">#           the dimensions.</span></code></pre>
 <p>Le paragraphe <code>Details</code> apporte des éléments complémentaires sur la fonction. Le paragraphe <code>Examples</code> procure des exemples reproductibles dans la console.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## Example of setting row and column names
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co">## Example of setting row and column names</span>
 mdat &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>, <span class="dv">11</span>,<span class="dv">12</span>,<span class="dv">13</span>), <span class="dt">nrow =</span> <span class="dv">2</span>, <span class="dt">ncol =</span> <span class="dv">3</span>, <span class="dt">byrow =</span> <span class="ot">TRUE</span>,
                <span class="dt">dimnames =</span> <span class="kw">list</span>(<span class="kw">c</span>(<span class="st">&quot;row1&quot;</span>, <span class="st">&quot;row2&quot;</span>),
                                <span class="kw">c</span>(<span class="st">&quot;C.1&quot;</span>, <span class="st">&quot;C.2&quot;</span>, <span class="st">&quot;C.3&quot;</span>)))
-mdat</code></pre></div>
+mdat</code></pre>
 <pre><code>##      C.1 C.2 C.3
 ## row1   1   2   3
 ## row2  11  12  13</code></pre>
 <p>Le nom des arguments n’est pas nécessaire pour qu’une fonction soit correctement interprété par R. Néanmoins par soucis de clarté il est préférable d’utiliser le nom des arguments suivi du signe <code>=</code> pour que le code soit plus lisible.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># bon exemple</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co"># bon exemple</span>
 mdat &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>, <span class="dv">11</span>,<span class="dv">12</span>,<span class="dv">13</span>), <span class="dt">nrow =</span> <span class="dv">2</span>, <span class="dt">ncol =</span> <span class="dv">3</span>, <span class="dt">byrow =</span> <span class="ot">TRUE</span>)
 <span class="co"># mauvais exemple</span>
-mdat &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>, <span class="dv">11</span>,<span class="dv">12</span>,<span class="dv">13</span>), <span class="dv">2</span>, <span class="dv">3</span>, <span class="ot">TRUE</span>)</code></pre></div>
+mdat &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>, <span class="dv">11</span>,<span class="dv">12</span>,<span class="dv">13</span>), <span class="dv">2</span>, <span class="dv">3</span>, <span class="ot">TRUE</span>)</code></pre>
 </div>
 <div id="l015helpsearch" class="section level4">
 <h4><span class="header-section-number">7.2.1.2</span> <code>help.search()</code></h4>
 <p>La fonction <code>help.search()</code> ou <code>??</code> permet de rechercher une expression dans l’ensemble de la documentation. Elle est utile lorsque l’on cherche une fonctionnalité sans connaître le nom de la fonction sous R.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">help.search</span>(<span class="st">&quot;average&quot;</span>)</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">help.search</span>(<span class="st">&quot;average&quot;</span>)</code></pre>
 <p>La fonction <code>help.search()</code> renvoie vers une page contenant la liste des pages où l’expression a été retrouvée sous la forme <code>nom-du-package::nom-de-la-fonction</code>.</p>
 </div>
 </div>
@@ -390,7 +416,7 @@ mdat &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="k
 <div id="l015str" class="section level4">
 <h4><span class="header-section-number">7.2.2.1</span> <code>str()</code></h4>
 <p>La fonction <code>str()</code> permet de visualiser la structure interne d’un objet, comme indiqué dans la documentation que nous pouvons consulter avec <code>help(str)</code>.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">str</span>(iris)</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">str</span>(iris)</code></pre>
 <pre><code>## &#39;data.frame&#39;:    150 obs. of  5 variables:
 ##  $ Sepal.Length: num  5.1 4.9 4.7 4.6 5 5.4 4.6 5 4.4 4.9 ...
 ##  $ Sepal.Width : num  3.5 3 3.2 3.1 3.6 3.9 3.4 3.4 2.9 3.1 ...
@@ -402,7 +428,7 @@ mdat &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="k
 <div id="l015head" class="section level4">
 <h4><span class="header-section-number">7.2.2.2</span> <code>head()</code> et <code>tail()</code></h4>
 <p>La fonction <code>head()</code> renvoie les premières valeurs d’un objet, et la fonction <code>tail()</code> les dernières valeurs d’un objet. Par défaut six valeurs sont retournées, l’argument <code>n</code> contrôle le nombre de valeurs à retourner.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">head</span>(iris)</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">head</span>(iris)</code></pre>
 <pre><code>##   Sepal.Length Sepal.Width Petal.Length Petal.Width Species
 ## 1          5.1         3.5          1.4         0.2  setosa
 ## 2          4.9         3.0          1.4         0.2  setosa
@@ -410,7 +436,7 @@ mdat &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="k
 ## 4          4.6         3.1          1.5         0.2  setosa
 ## 5          5.0         3.6          1.4         0.2  setosa
 ## 6          5.4         3.9          1.7         0.4  setosa</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">tail</span>(iris)</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">tail</span>(iris)</code></pre>
 <pre><code>##     Sepal.Length Sepal.Width Petal.Length Petal.Width   Species
 ## 145          6.7         3.3          5.7         2.5 virginica
 ## 146          6.7         3.0          5.2         2.3 virginica
@@ -418,7 +444,7 @@ mdat &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="k
 ## 148          6.5         3.0          5.2         2.0 virginica
 ## 149          6.2         3.4          5.4         2.3 virginica
 ## 150          5.9         3.0          5.1         1.8 virginica</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">head</span>(iris, <span class="dt">n =</span> <span class="dv">2</span>)</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">head</span>(iris, <span class="dt">n =</span> <span class="dv">2</span>)</code></pre>
 <pre><code>##   Sepal.Length Sepal.Width Petal.Length Petal.Width Species
 ## 1          5.1         3.5          1.4         0.2  setosa
 ## 2          4.9         3.0          1.4         0.2  setosa</code></pre>
@@ -426,27 +452,27 @@ mdat &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="k
 <div id="l015names" class="section level4">
 <h4><span class="header-section-number">7.2.2.3</span> <code>names()</code></h4>
 <p>Nous avons déjà vu la fonction <code>names()</code> qui permet à la fois de connaître le nom des éléments d’un objet, mais aussi d’assigner des noms aux éléments d’un objet comme une <a href="dataType2.html#l014matrix"><code>matrix</code></a>, une <a href="dataType2.html#l014list"><code>list</code></a> ou un <a href="dataType2.html#l014dataframe"><code>data.frame</code></a>.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">names</span>(iris)</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">names</span>(iris)</code></pre>
 <pre><code>## [1] &quot;Sepal.Length&quot; &quot;Sepal.Width&quot;  &quot;Petal.Length&quot; &quot;Petal.Width&quot; 
 ## [5] &quot;Species&quot;</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">irisCopy &lt;-<span class="st"> </span>iris
+<pre class="sourceCode r"><code class="sourceCode r">irisCopy &lt;-<span class="st"> </span>iris
 <span class="kw">names</span>(irisCopy) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;a&quot;</span>, <span class="st">&quot;b&quot;</span>, <span class="st">&quot;c&quot;</span>, <span class="st">&quot;d&quot;</span>, <span class="st">&quot;e&quot;</span>)
-<span class="kw">names</span>(irisCopy)</code></pre></div>
+<span class="kw">names</span>(irisCopy)</code></pre>
 <pre><code>## [1] &quot;a&quot; &quot;b&quot; &quot;c&quot; &quot;d&quot; &quot;e&quot;</code></pre>
 </div>
 <div id="l015print" class="section level4">
 <h4><span class="header-section-number">7.2.2.4</span> <code>cat()</code> et <code>print()</code></h4>
 <p>La fonction <code>cat()</code> permet d’afficher le contenu d’un objet alors que la fonction <code>print()</code> retourne la valeur d’un objet avec la possibilité d’effectuer des conversions.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">cat</span>(<span class="kw">names</span>(iris))</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">cat</span>(<span class="kw">names</span>(iris))</code></pre>
 <pre><code>## Sepal.Length Sepal.Width Petal.Length Petal.Width Species</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">print</span>(<span class="kw">names</span>(iris))</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">print</span>(<span class="kw">names</span>(iris))</code></pre>
 <pre><code>## [1] &quot;Sepal.Length&quot; &quot;Sepal.Width&quot;  &quot;Petal.Length&quot; &quot;Petal.Width&quot; 
 ## [5] &quot;Species&quot;</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">cat</span>(iris[<span class="dv">1</span>, <span class="dv">1</span>])</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">cat</span>(iris[<span class="dv">1</span>, <span class="dv">1</span>])</code></pre>
 <pre><code>## 5.1</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">print</span>(iris[<span class="dv">1</span>, <span class="dv">1</span>])</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">print</span>(iris[<span class="dv">1</span>, <span class="dv">1</span>])</code></pre>
 <pre><code>## [1] 5.1</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">print</span>(iris[<span class="dv">1</span>, <span class="dv">1</span>], <span class="dt">digits =</span> <span class="dv">0</span>)</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">print</span>(iris[<span class="dv">1</span>, <span class="dv">1</span>], <span class="dt">digits =</span> <span class="dv">0</span>)</code></pre>
 <pre><code>## [1] 5</code></pre>
 </div>
 </div>
@@ -455,17 +481,17 @@ mdat &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="k
 <div id="l015rank" class="section level4">
 <h4><span class="header-section-number">7.2.3.1</span> <code>rank()</code></h4>
 <p>La fonction <code>rank()</code> renvoie pour un ensemble d’éléments le numéro de la position de chacun des éléments. En cas d’éléments de même valeur, l’argument <code>ties.method</code> permet de faire un choix sur le classement. Comme pour toutes les fonctions, les détails sont présents dans la documentation.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">vecManip &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">10</span>, <span class="dv">20</span>, <span class="dv">30</span>, <span class="dv">70</span>, <span class="dv">60</span>, <span class="dv">50</span>, <span class="dv">40</span>)
-<span class="kw">rank</span>(vecManip)</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r">vecManip &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">10</span>, <span class="dv">20</span>, <span class="dv">30</span>, <span class="dv">70</span>, <span class="dv">60</span>, <span class="dv">50</span>, <span class="dv">40</span>)
+<span class="kw">rank</span>(vecManip)</code></pre>
 <pre><code>## [1] 1 2 3 7 6 5 4</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">vecManip2 &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">10</span>, <span class="dv">20</span>, <span class="dv">30</span>, <span class="dv">10</span>, <span class="dv">50</span>, <span class="dv">10</span>, <span class="dv">40</span>)
-<span class="kw">rank</span>(vecManip2)</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r">vecManip2 &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">10</span>, <span class="dv">20</span>, <span class="dv">30</span>, <span class="dv">10</span>, <span class="dv">50</span>, <span class="dv">10</span>, <span class="dv">40</span>)
+<span class="kw">rank</span>(vecManip2)</code></pre>
 <pre><code>## [1] 2 4 5 2 7 2 6</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">rank</span>(vecManip2, <span class="dt">ties.method =</span> <span class="st">&quot;first&quot;</span>)</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">rank</span>(vecManip2, <span class="dt">ties.method =</span> <span class="st">&quot;first&quot;</span>)</code></pre>
 <pre><code>## [1] 1 4 5 2 7 3 6</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">rank</span>(vecManip2, <span class="dt">ties.method =</span> <span class="st">&quot;min&quot;</span>)</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">rank</span>(vecManip2, <span class="dt">ties.method =</span> <span class="st">&quot;min&quot;</span>)</code></pre>
 <pre><code>## [1] 1 4 5 1 7 1 6</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">print</span>(iris[, <span class="dv">1</span>])</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">print</span>(iris[, <span class="dv">1</span>])</code></pre>
 <pre><code>##   [1] 5.1 4.9 4.7 4.6 5.0 5.4 4.6 5.0 4.4 4.9 5.4 4.8 4.8 4.3 5.8 5.7 5.4
 ##  [18] 5.1 5.7 5.1 5.4 5.1 4.6 5.1 4.8 5.0 5.0 5.2 5.2 4.7 4.8 5.4 5.2 5.5
 ##  [35] 4.9 5.0 5.5 4.9 4.4 5.1 5.0 4.5 4.4 5.0 5.1 4.8 5.1 4.6 5.3 5.0 7.0
@@ -475,7 +501,7 @@ mdat &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="k
 ## [103] 7.1 6.3 6.5 7.6 4.9 7.3 6.7 7.2 6.5 6.4 6.8 5.7 5.8 6.4 6.5 7.7 7.7
 ## [120] 6.0 6.9 5.6 7.7 6.3 6.7 7.2 6.2 6.1 6.4 7.2 7.4 7.9 6.4 6.3 6.1 7.7
 ## [137] 6.3 6.4 6.0 6.9 6.7 6.9 5.8 6.8 6.7 6.7 6.3 6.5 6.2 5.9</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">rank</span>(iris[, <span class="dv">1</span>], <span class="dt">ties.method =</span> <span class="st">&quot;average&quot;</span>)</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">rank</span>(iris[, <span class="dv">1</span>], <span class="dt">ties.method =</span> <span class="st">&quot;average&quot;</span>)</code></pre>
 <pre><code>##   [1]  37.0  19.5  10.5   7.5  27.5  49.5   7.5  27.5   3.0  19.5  49.5
 ##  [12]  14.0  14.0   1.0  77.0  69.5  49.5  37.0  69.5  37.0  49.5  37.0
 ##  [23]   7.5  37.0  14.0  27.5  27.5  43.5  43.5  10.5  14.0  49.5  43.5
@@ -490,23 +516,23 @@ mdat &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="k
 ## [122]  62.5 147.5 104.0 126.5 141.0  97.5  92.5 112.0 141.0 144.0 150.0
 ## [133] 112.0 104.0  92.5 147.5 104.0 112.0  86.5 135.5 126.5 135.5  77.0
 ## [144] 132.0 126.5 126.5 104.0 118.0  97.5  82.0</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># help(rank)</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co"># help(rank)</span>
 <span class="co"># ...</span>
 <span class="co"># Usage</span>
 <span class="co"># rank(x, na.last = TRUE,</span>
 <span class="co">#     ties.method = c(&quot;average&quot;, &quot;first&quot;, &quot;last&quot;, </span>
-<span class="co">#       &quot;random&quot;, &quot;max&quot;, &quot;min&quot;))</span></code></pre></div>
+<span class="co">#       &quot;random&quot;, &quot;max&quot;, &quot;min&quot;))</span></code></pre>
 </div>
 <div id="l015order" class="section level4">
 <h4><span class="header-section-number">7.2.3.2</span> <code>order()</code></h4>
 <p>La fonction <code>order()</code> retourne le numéro du réarrangement des éléments en focntion de leur position. Elle est très utile par exemple pour trier un <code>data.frame</code> en focntion d’une colonne.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">print</span>(vecManip2)</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">print</span>(vecManip2)</code></pre>
 <pre><code>## [1] 10 20 30 10 50 10 40</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">rank</span>(vecManip2)</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">rank</span>(vecManip2)</code></pre>
 <pre><code>## [1] 2 4 5 2 7 2 6</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">order</span>(vecManip2)</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">order</span>(vecManip2)</code></pre>
 <pre><code>## [1] 1 4 6 2 3 7 5</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">print</span>(iris[, <span class="dv">1</span>])</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">print</span>(iris[, <span class="dv">1</span>])</code></pre>
 <pre><code>##   [1] 5.1 4.9 4.7 4.6 5.0 5.4 4.6 5.0 4.4 4.9 5.4 4.8 4.8 4.3 5.8 5.7 5.4
 ##  [18] 5.1 5.7 5.1 5.4 5.1 4.6 5.1 4.8 5.0 5.0 5.2 5.2 4.7 4.8 5.4 5.2 5.5
 ##  [35] 4.9 5.0 5.5 4.9 4.4 5.1 5.0 4.5 4.4 5.0 5.1 4.8 5.1 4.6 5.3 5.0 7.0
@@ -516,7 +542,7 @@ mdat &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="k
 ## [103] 7.1 6.3 6.5 7.6 4.9 7.3 6.7 7.2 6.5 6.4 6.8 5.7 5.8 6.4 6.5 7.7 7.7
 ## [120] 6.0 6.9 5.6 7.7 6.3 6.7 7.2 6.2 6.1 6.4 7.2 7.4 7.9 6.4 6.3 6.1 7.7
 ## [137] 6.3 6.4 6.0 6.9 6.7 6.9 5.8 6.8 6.7 6.7 6.3 6.5 6.2 5.9</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">rank</span>(iris[, <span class="dv">1</span>])</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">rank</span>(iris[, <span class="dv">1</span>])</code></pre>
 <pre><code>##   [1]  37.0  19.5  10.5   7.5  27.5  49.5   7.5  27.5   3.0  19.5  49.5
 ##  [12]  14.0  14.0   1.0  77.0  69.5  49.5  37.0  69.5  37.0  49.5  37.0
 ##  [23]   7.5  37.0  14.0  27.5  27.5  43.5  43.5  10.5  14.0  49.5  43.5
@@ -531,7 +557,7 @@ mdat &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="k
 ## [122]  62.5 147.5 104.0 126.5 141.0  97.5  92.5 112.0 141.0 144.0 150.0
 ## [133] 112.0 104.0  92.5 147.5 104.0 112.0  86.5 135.5 126.5 135.5  77.0
 ## [144] 132.0 126.5 126.5 104.0 118.0  97.5  82.0</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">order</span>(iris[, <span class="dv">1</span>])</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">order</span>(iris[, <span class="dv">1</span>])</code></pre>
 <pre><code>##   [1]  14   9  39  43  42   4   7  23  48   3  30  12  13  25  31  46   2
 ##  [18]  10  35  38  58 107   5   8  26  27  36  41  44  50  61  94   1  18
 ##  [35]  20  22  24  40  45  47  99  28  29  33  60  49   6  11  17  21  32
@@ -541,7 +567,7 @@ mdat &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="k
 ## [103] 101 104 124 134 137 147  52  75 112 116 129 133 138  55 105 111 117
 ## [120] 148  59  76  66  78  87 109 125 141 145 146  77 113 144  53 121 140
 ## [137] 142  51 103 110 126 130 108 131 106 118 119 123 136 132</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">head</span>(iris[<span class="kw">order</span>(iris[, <span class="dv">1</span>]),], <span class="dt">n =</span> <span class="dv">10</span>)</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">head</span>(iris[<span class="kw">order</span>(iris[, <span class="dv">1</span>]),], <span class="dt">n =</span> <span class="dv">10</span>)</code></pre>
 <pre><code>##    Sepal.Length Sepal.Width Petal.Length Petal.Width Species
 ## 14          4.3         3.0          1.1         0.1  setosa
 ## 9           4.4         2.9          1.4         0.2  setosa
@@ -557,11 +583,11 @@ mdat &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="k
 <div id="l015sort" class="section level4">
 <h4><span class="header-section-number">7.2.3.3</span> <code>sort()</code></h4>
 <p>La fonction <code>sort()</code> permet de trier les éléments d’un objet. Elle ne permet pas de trier selon plusieurs variables comme c’est le cas avec <code>order()</code>.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">print</span>(vecManip2)</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">print</span>(vecManip2)</code></pre>
 <pre><code>## [1] 10 20 30 10 50 10 40</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">sort</span>(vecManip2)</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">sort</span>(vecManip2)</code></pre>
 <pre><code>## [1] 10 10 10 20 30 40 50</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">print</span>(iris[, <span class="dv">1</span>])</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">print</span>(iris[, <span class="dv">1</span>])</code></pre>
 <pre><code>##   [1] 5.1 4.9 4.7 4.6 5.0 5.4 4.6 5.0 4.4 4.9 5.4 4.8 4.8 4.3 5.8 5.7 5.4
 ##  [18] 5.1 5.7 5.1 5.4 5.1 4.6 5.1 4.8 5.0 5.0 5.2 5.2 4.7 4.8 5.4 5.2 5.5
 ##  [35] 4.9 5.0 5.5 4.9 4.4 5.1 5.0 4.5 4.4 5.0 5.1 4.8 5.1 4.6 5.3 5.0 7.0
@@ -571,7 +597,7 @@ mdat &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="k
 ## [103] 7.1 6.3 6.5 7.6 4.9 7.3 6.7 7.2 6.5 6.4 6.8 5.7 5.8 6.4 6.5 7.7 7.7
 ## [120] 6.0 6.9 5.6 7.7 6.3 6.7 7.2 6.2 6.1 6.4 7.2 7.4 7.9 6.4 6.3 6.1 7.7
 ## [137] 6.3 6.4 6.0 6.9 6.7 6.9 5.8 6.8 6.7 6.7 6.3 6.5 6.2 5.9</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">sort</span>(iris[, <span class="dv">1</span>])</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">sort</span>(iris[, <span class="dv">1</span>])</code></pre>
 <pre><code>##   [1] 4.3 4.4 4.4 4.4 4.5 4.6 4.6 4.6 4.6 4.7 4.7 4.8 4.8 4.8 4.8 4.8 4.9
 ##  [18] 4.9 4.9 4.9 4.9 4.9 5.0 5.0 5.0 5.0 5.0 5.0 5.0 5.0 5.0 5.0 5.1 5.1
 ##  [35] 5.1 5.1 5.1 5.1 5.1 5.1 5.1 5.2 5.2 5.2 5.2 5.3 5.4 5.4 5.4 5.4 5.4
@@ -585,17 +611,17 @@ mdat &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="k
 <div id="l015append" class="section level4">
 <h4><span class="header-section-number">7.2.3.4</span> <code>append()</code></h4>
 <p>Cette fonction permet d’ajouter un élément à un <code>vector</code> à une position déterminée par l’argument <code>after</code>. Cette fonction est aussi plus rapide que son alternative consistant à utiliser la fonction <a href="dataType2.html#l014vector"><code>c()</code></a>.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">print</span>(vecManip2)</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">print</span>(vecManip2)</code></pre>
 <pre><code>## [1] 10 20 30 10 50 10 40</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">append</span>(vecManip2, <span class="dv">5</span>)</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">append</span>(vecManip2, <span class="dv">5</span>)</code></pre>
 <pre><code>## [1] 10 20 30 10 50 10 40  5</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">append</span>(vecManip2, <span class="dv">5</span>, <span class="dt">after =</span> <span class="dv">2</span>)</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">append</span>(vecManip2, <span class="dv">5</span>, <span class="dt">after =</span> <span class="dv">2</span>)</code></pre>
 <pre><code>## [1] 10 20  5 30 10 50 10 40</code></pre>
 </div>
 <div id="l015cbind" class="section level4">
 <h4><span class="header-section-number">7.2.3.5</span> <code>cbind()</code> et <code>rbind()</code></h4>
 <p>Les fonctions <code>cbind()</code> et <code>rbind()</code> permettent de combiner des éléments par colonne ou par ligne.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">cbind</span>(vecManip2, vecManip2)</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">cbind</span>(vecManip2, vecManip2)</code></pre>
 <pre><code>##      vecManip2 vecManip2
 ## [1,]        10        10
 ## [2,]        20        20
@@ -604,7 +630,7 @@ mdat &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="k
 ## [5,]        50        50
 ## [6,]        10        10
 ## [7,]        40        40</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">rbind</span>(vecManip2, vecManip2)</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">rbind</span>(vecManip2, vecManip2)</code></pre>
 <pre><code>##           [,1] [,2] [,3] [,4] [,5] [,6] [,7]
 ## vecManip2   10   20   30   10   50   10   40
 ## vecManip2   10   20   30   10   50   10   40</code></pre>
@@ -612,70 +638,70 @@ mdat &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="k
 <div id="l015paste" class="section level4">
 <h4><span class="header-section-number">7.2.3.6</span> <code>paste()</code> et <code>paste0()</code></h4>
 <p>Voilà deux fonctions que nous allons beaucoup utiliser par la suite. Les fonctions <code>paste()</code> et <code>paste0()</code> permettent de concaténer des chaines de caractère. La fonction <code>paste0()</code> est équivalente à <code>paste()</code> sans proposer de séparateur entre les éléments à concaténer. Elle est aussi plus rapide.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">paste</span>(<span class="dv">1</span>, <span class="st">&quot;a&quot;</span>)</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">paste</span>(<span class="dv">1</span>, <span class="st">&quot;a&quot;</span>)</code></pre>
 <pre><code>## [1] &quot;1 a&quot;</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">paste0</span>(<span class="dv">1</span>, <span class="st">&quot;a&quot;</span>)</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">paste0</span>(<span class="dv">1</span>, <span class="st">&quot;a&quot;</span>)</code></pre>
 <pre><code>## [1] &quot;1a&quot;</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">paste</span>(<span class="dv">1</span>, <span class="st">&quot;a&quot;</span>, <span class="dt">sep =</span> <span class="st">&quot;_&quot;</span>)</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">paste</span>(<span class="dv">1</span>, <span class="st">&quot;a&quot;</span>, <span class="dt">sep =</span> <span class="st">&quot;_&quot;</span>)</code></pre>
 <pre><code>## [1] &quot;1_a&quot;</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">paste0</span>(<span class="st">&quot;prefix_&quot;</span>, vecManip2, <span class="st">&quot;_suffix&quot;</span>)</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">paste0</span>(<span class="st">&quot;prefix_&quot;</span>, vecManip2, <span class="st">&quot;_suffix&quot;</span>)</code></pre>
 <pre><code>## [1] &quot;prefix_10_suffix&quot; &quot;prefix_20_suffix&quot; &quot;prefix_30_suffix&quot;
 ## [4] &quot;prefix_10_suffix&quot; &quot;prefix_50_suffix&quot; &quot;prefix_10_suffix&quot;
 ## [7] &quot;prefix_40_suffix&quot;</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">paste</span>(vecManip2, <span class="kw">rank</span>(vecManip2), <span class="dt">sep =</span> <span class="st">&quot;_&quot;</span>)</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">paste</span>(vecManip2, <span class="kw">rank</span>(vecManip2), <span class="dt">sep =</span> <span class="st">&quot;_&quot;</span>)</code></pre>
 <pre><code>## [1] &quot;10_2&quot; &quot;20_4&quot; &quot;30_5&quot; &quot;10_2&quot; &quot;50_7&quot; &quot;10_2&quot; &quot;40_6&quot;</code></pre>
 </div>
 <div id="l015rev" class="section level4">
 <h4><span class="header-section-number">7.2.3.7</span> <code>rev()</code></h4>
 <p>La fonction <code>rev()</code> renvoie les éléments d’un objet dans l’ordre inverse.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">print</span>(vecManip2)</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">print</span>(vecManip2)</code></pre>
 <pre><code>## [1] 10 20 30 10 50 10 40</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">rev</span>(vecManip2)</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">rev</span>(vecManip2)</code></pre>
 <pre><code>## [1] 40 10 50 10 30 20 10</code></pre>
 </div>
 <div id="l015in" class="section level4">
 <h4><span class="header-section-number">7.2.3.8</span> <code>%in%</code></h4>
 <p>La fonction <code>%in%</code> peut être assimilée à un <a href="premiersPas.html#l011opcomp">opérateur de comparaison</a>. Cette fonction prend deux objets comme arguments et renvoie <code>TRUE</code> ou <code>FALSE</code> pour chacun des éléments du premier objet en fonction de leur présence ou absence dans le second objet. Pour accéder à la documentation de la fonction, il faut utiliser des guillemets <code>help('%in%')</code>.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">print</span>(vecManip)</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">print</span>(vecManip)</code></pre>
 <pre><code>## [1] 10 20 30 70 60 50 40</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">print</span>(vecManip2)</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">print</span>(vecManip2)</code></pre>
 <pre><code>## [1] 10 20 30 10 50 10 40</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">vecManip <span class="op">%in%</span><span class="st"> </span>vecManip2</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r">vecManip <span class="op">%in%</span><span class="st"> </span>vecManip2</code></pre>
 <pre><code>## [1]  TRUE  TRUE  TRUE FALSE FALSE  TRUE  TRUE</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">vecManip2 <span class="op">%in%</span><span class="st"> </span>vecManip</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r">vecManip2 <span class="op">%in%</span><span class="st"> </span>vecManip</code></pre>
 <pre><code>## [1] TRUE TRUE TRUE TRUE TRUE TRUE TRUE</code></pre>
 </div>
 </div>
 <div id="fonctions-mathematiques" class="section level3">
 <h3><span class="header-section-number">7.2.4</span> Fonctions mathématiques</h3>
 <p>Nous avons déjà vu les fonctions <code>+</code>, <code>-</code>, <code>*</code>, <code>/</code>, <code>^</code>, <code>%%</code> et autres <a href="premiersPas.html#l011opari">opérateurs arithmétiques</a>. R possède également les fonctions mathématiques de base comme exponetielle <code>exp()</code>, racine carrée <code>sqrt()</code>, valeur absolue <code>abs()</code>, sinus <code>sin()</code>, cosinus <code>cos()</code>, tangente <code>tan()</code>, logarithme népérien <code>log()</code>, logarithme décimal <code>log10()</code>, arc cosinus <code>acos()</code>, arc sinus <code>asin()</code>, et arc tangente <code>atan()</code>.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">print</span>(vecManip2)</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">print</span>(vecManip2)</code></pre>
 <pre><code>## [1] 10 20 30 10 50 10 40</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">exp</span>(vecManip2)</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">exp</span>(vecManip2)</code></pre>
 <pre><code>## [1] 2.202647e+04 4.851652e+08 1.068647e+13 2.202647e+04 5.184706e+21
 ## [6] 2.202647e+04 2.353853e+17</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">sqrt</span>(vecManip2)</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">sqrt</span>(vecManip2)</code></pre>
 <pre><code>## [1] 3.162278 4.472136 5.477226 3.162278 7.071068 3.162278 6.324555</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">abs</span>(<span class="op">-</span>vecManip2)</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">abs</span>(<span class="op">-</span>vecManip2)</code></pre>
 <pre><code>## [1] 10 20 30 10 50 10 40</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">sin</span>(vecManip2)</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">sin</span>(vecManip2)</code></pre>
 <pre><code>## [1] -0.5440211  0.9129453 -0.9880316 -0.5440211 -0.2623749 -0.5440211
 ## [7]  0.7451132</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">cos</span>(vecManip2)</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">cos</span>(vecManip2)</code></pre>
 <pre><code>## [1] -0.8390715  0.4080821  0.1542514 -0.8390715  0.9649660 -0.8390715
 ## [7] -0.6669381</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">tan</span>(vecManip2)</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">tan</span>(vecManip2)</code></pre>
 <pre><code>## [1]  0.6483608  2.2371609 -6.4053312  0.6483608 -0.2719006  0.6483608
 ## [7] -1.1172149</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">log</span>(vecManip2)</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">log</span>(vecManip2)</code></pre>
 <pre><code>## [1] 2.302585 2.995732 3.401197 2.302585 3.912023 2.302585 3.688879</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">log10</span>(vecManip2)</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">log10</span>(vecManip2)</code></pre>
 <pre><code>## [1] 1.000000 1.301030 1.477121 1.000000 1.698970 1.000000 1.602060</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">acos</span>(vecManip2<span class="op">/</span><span class="dv">100</span>)</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">acos</span>(vecManip2<span class="op">/</span><span class="dv">100</span>)</code></pre>
 <pre><code>## [1] 1.470629 1.369438 1.266104 1.470629 1.047198 1.470629 1.159279</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">asin</span>(vecManip2<span class="op">/</span><span class="dv">100</span>)</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">asin</span>(vecManip2<span class="op">/</span><span class="dv">100</span>)</code></pre>
 <pre><code>## [1] 0.1001674 0.2013579 0.3046927 0.1001674 0.5235988 0.1001674 0.4115168</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">atan</span>(vecManip2<span class="op">/</span><span class="dv">100</span>)</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">atan</span>(vecManip2<span class="op">/</span><span class="dv">100</span>)</code></pre>
 <pre><code>## [1] 0.09966865 0.19739556 0.29145679 0.09966865 0.46364761 0.09966865
 ## [7] 0.38050638</code></pre>
 </div>
@@ -685,121 +711,121 @@ mdat &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="k
 <div id="l015mean" class="section level4">
 <h4><span class="header-section-number">7.2.5.1</span> <code>mean()</code></h4>
 <p>La fonction <code>mean()</code> renvoie la moyenne. Pour ignorer les valeurs manquantes <code>NA</code>, il faut donner la valeur <code>TRUE</code> à l’argument <code>na.rm()</code>.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">mean</span>(iris[, <span class="dv">1</span>])</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">mean</span>(iris[, <span class="dv">1</span>])</code></pre>
 <pre><code>## [1] 5.843333</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">vecManip3 &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">5</span>, <span class="dv">6</span>, <span class="dv">8</span>, <span class="ot">NA</span>, <span class="dv">45</span>, <span class="ot">NA</span>, <span class="dv">14</span>)
-<span class="kw">mean</span>(vecManip3)</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r">vecManip3 &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">5</span>, <span class="dv">6</span>, <span class="dv">8</span>, <span class="ot">NA</span>, <span class="dv">45</span>, <span class="ot">NA</span>, <span class="dv">14</span>)
+<span class="kw">mean</span>(vecManip3)</code></pre>
 <pre><code>## [1] NA</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">mean</span>(vecManip3, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">mean</span>(vecManip3, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)</code></pre>
 <pre><code>## [1] 13.16667</code></pre>
 </div>
 <div id="l015sd" class="section level4">
 <h4><span class="header-section-number">7.2.5.2</span> <code>sd()</code></h4>
 <p>La fonction <code>sd()</code> renvoie l’écart type.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">sd</span>(iris[, <span class="dv">1</span>])</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">sd</span>(iris[, <span class="dv">1</span>])</code></pre>
 <pre><code>## [1] 0.8280661</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">print</span>(vecManip3)</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">print</span>(vecManip3)</code></pre>
 <pre><code>## [1]  1  5  6  8 NA 45 NA 14</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">sd</span>(vecManip3)</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">sd</span>(vecManip3)</code></pre>
 <pre><code>## [1] NA</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">sd</span>(vecManip3, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">sd</span>(vecManip3, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)</code></pre>
 <pre><code>## [1] 16.16684</code></pre>
 </div>
 <div id="l015max" class="section level4">
 <h4><span class="header-section-number">7.2.5.3</span> <code>max()</code> et <code>min()</code></h4>
 <p>La fonction <code>max()</code> renvoie la valeur maximale et <code>min()</code> la valeur minimale.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">max</span>(iris[, <span class="dv">1</span>])</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">max</span>(iris[, <span class="dv">1</span>])</code></pre>
 <pre><code>## [1] 7.9</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">print</span>(vecManip3)</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">print</span>(vecManip3)</code></pre>
 <pre><code>## [1]  1  5  6  8 NA 45 NA 14</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">max</span>(vecManip3)</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">max</span>(vecManip3)</code></pre>
 <pre><code>## [1] NA</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">max</span>(vecManip3, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">max</span>(vecManip3, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)</code></pre>
 <pre><code>## [1] 45</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">min</span>(iris[, <span class="dv">1</span>])</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">min</span>(iris[, <span class="dv">1</span>])</code></pre>
 <pre><code>## [1] 4.3</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">min</span>(vecManip3)</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">min</span>(vecManip3)</code></pre>
 <pre><code>## [1] NA</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">min</span>(vecManip3, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">min</span>(vecManip3, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)</code></pre>
 <pre><code>## [1] 1</code></pre>
 </div>
 <div id="l015quantile" class="section level4">
 <h4><span class="header-section-number">7.2.5.4</span> <code>quantile()</code></h4>
 <p>La fonction <code>quantile()</code> renvoie le quantile défini par l’argument <code>probs</code>.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">quantile</span>(iris[, <span class="dv">1</span>])</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">quantile</span>(iris[, <span class="dv">1</span>])</code></pre>
 <pre><code>##   0%  25%  50%  75% 100% 
 ##  4.3  5.1  5.8  6.4  7.9</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">quantile</span>(iris[, <span class="dv">1</span>], <span class="dt">probs =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="fl">0.25</span>, <span class="fl">0.5</span>, <span class="fl">0.75</span>, <span class="dv">1</span>))</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">quantile</span>(iris[, <span class="dv">1</span>], <span class="dt">probs =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="fl">0.25</span>, <span class="fl">0.5</span>, <span class="fl">0.75</span>, <span class="dv">1</span>))</code></pre>
 <pre><code>##   0%  25%  50%  75% 100% 
 ##  4.3  5.1  5.8  6.4  7.9</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">quantile</span>(iris[, <span class="dv">1</span>], <span class="dt">probs =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="fl">0.1</span>, <span class="fl">0.5</span>, <span class="fl">0.9</span>, <span class="dv">1</span>))</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">quantile</span>(iris[, <span class="dv">1</span>], <span class="dt">probs =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="fl">0.1</span>, <span class="fl">0.5</span>, <span class="fl">0.9</span>, <span class="dv">1</span>))</code></pre>
 <pre><code>##   0%  10%  50%  90% 100% 
 ##  4.3  4.8  5.8  6.9  7.9</code></pre>
 </div>
 <div id="l015summary" class="section level4">
 <h4><span class="header-section-number">7.2.5.5</span> <code>summary()</code></h4>
 <p>La fonction <code>summary()</code> renvoie un résumé composé du minimum, premier quartile, médiane, moyenne, troisième quartile et maximum.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">summary</span>(iris[, <span class="dv">1</span>])</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">summary</span>(iris[, <span class="dv">1</span>])</code></pre>
 <pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
 ##   4.300   5.100   5.800   5.843   6.400   7.900</code></pre>
 </div>
 <div id="l015median" class="section level4">
 <h4><span class="header-section-number">7.2.5.6</span> <code>median()</code></h4>
 <p>La fonction <code>median()</code> renvoie la médiane.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">median</span>(iris[, <span class="dv">1</span>])</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">median</span>(iris[, <span class="dv">1</span>])</code></pre>
 <pre><code>## [1] 5.8</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">print</span>(vecManip3)</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">print</span>(vecManip3)</code></pre>
 <pre><code>## [1]  1  5  6  8 NA 45 NA 14</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">median</span>(vecManip3)</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">median</span>(vecManip3)</code></pre>
 <pre><code>## [1] NA</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">median</span>(vecManip3, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">median</span>(vecManip3, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)</code></pre>
 <pre><code>## [1] 7</code></pre>
 </div>
 <div id="l015length" class="section level4">
 <h4><span class="header-section-number">7.2.5.7</span> <code>length()</code></h4>
 <p>La fonction <code>length()</code> renvoie la taille d’un objet (nombre d’éléments).</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">length</span>(iris[, <span class="dv">1</span>])</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">length</span>(iris[, <span class="dv">1</span>])</code></pre>
 <pre><code>## [1] 150</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">print</span>(vecManip3)</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">print</span>(vecManip3)</code></pre>
 <pre><code>## [1]  1  5  6  8 NA 45 NA 14</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">length</span>(vecManip3)</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">length</span>(vecManip3)</code></pre>
 <pre><code>## [1] 8</code></pre>
 </div>
 <div id="l015nrow" class="section level4">
 <h4><span class="header-section-number">7.2.5.8</span> <code>nrow()</code> et <code>ncol()</code></h4>
 <p>La fonction <code>nrow()</code> renvoie le nombre de lignes et la fonction <code>ncol()</code> le nombre de colonnes d’un objet.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">nrow</span>(iris)</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">nrow</span>(iris)</code></pre>
 <pre><code>## [1] 150</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ncol</span>(iris)</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ncol</span>(iris)</code></pre>
 <pre><code>## [1] 5</code></pre>
 </div>
 <div id="l015round" class="section level4">
 <h4><span class="header-section-number">7.2.5.9</span> <code>round()</code>, <code>ceiling()</code>, <code>floor()</code>, et <code>trunc()</code></h4>
 <p>La fonction <code>round()</code> permet de sélectionner un certain nombre de décimales (0 par défaut)</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">round</span>(<span class="fl">5.56874258564</span>)</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">round</span>(<span class="fl">5.56874258564</span>)</code></pre>
 <pre><code>## [1] 6</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">round</span>(<span class="fl">5.56874258564</span>, <span class="dt">digits =</span> <span class="dv">2</span>)</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">round</span>(<span class="fl">5.56874258564</span>, <span class="dt">digits =</span> <span class="dv">2</span>)</code></pre>
 <pre><code>## [1] 5.57</code></pre>
 <p>La fonction <code>ceiling()</code> renvoie le plus petit nombre entier qui ne soit pas inférieure à la valeur rensignée.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ceiling</span>(<span class="fl">5.9999</span>)</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ceiling</span>(<span class="fl">5.9999</span>)</code></pre>
 <pre><code>## [1] 6</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ceiling</span>(<span class="fl">5.0001</span>)</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ceiling</span>(<span class="fl">5.0001</span>)</code></pre>
 <pre><code>## [1] 6</code></pre>
 <p>La fonction <code>floor()</code> renvoie le plus grand nombre entier qui ne soit pas supérieure à la valeur renseignée.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">floor</span>(<span class="fl">5.9999</span>)</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">floor</span>(<span class="fl">5.9999</span>)</code></pre>
 <pre><code>## [1] 5</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">floor</span>(<span class="fl">5.0001</span>)</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">floor</span>(<span class="fl">5.0001</span>)</code></pre>
 <pre><code>## [1] 5</code></pre>
 <p>La fonction <code>trunc()</code> renvoie la partie entière de la valeur rensignée.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">trunc</span>(<span class="fl">5.9999</span>)</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">trunc</span>(<span class="fl">5.9999</span>)</code></pre>
 <pre><code>## [1] 5</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">trunc</span>(<span class="fl">5.0001</span>)</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">trunc</span>(<span class="fl">5.0001</span>)</code></pre>
 <pre><code>## [1] 5</code></pre>
 </div>
 <div id="l015rowsums" class="section level4">
 <h4><span class="header-section-number">7.2.5.10</span> <code>rowSums()</code> et <code>colSums()</code></h4>
 <p>Les fonctions <code>rowSums()</code> et <code>colSums()</code> calculent la somme des lignes et des colonnes.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">rowSums</span>(iris[, <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>)])</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">rowSums</span>(iris[, <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>)])</code></pre>
 <pre><code>##   [1] 10.2  9.5  9.4  9.4 10.2 11.4  9.7 10.1  8.9  9.6 10.8 10.0  9.3  8.5
 ##  [15] 11.2 12.0 11.0 10.3 11.5 10.7 10.7 10.7  9.4 10.6 10.3  9.8 10.4 10.4
 ##  [29] 10.2  9.7  9.7 10.7 10.9 11.3  9.7  9.6 10.5 10.0  8.9 10.2 10.1  8.4
@@ -811,14 +837,14 @@ mdat &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="k
 ## [113] 17.4 15.2 16.1 17.2 16.8 20.4 19.5 14.7 18.1 15.3 19.2 15.7 17.8 18.2
 ## [127] 15.6 15.8 16.9 17.6 18.2 20.1 17.0 15.7 15.7 19.1 17.7 16.8 15.6 17.5
 ## [141] 17.8 17.4 15.5 18.2 18.2 17.2 15.7 16.7 17.3 15.8</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">colSums</span>(iris[, <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>)])</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">colSums</span>(iris[, <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>)])</code></pre>
 <pre><code>## Sepal.Length  Sepal.Width Petal.Length  Petal.Width 
 ##        876.5        458.6        563.7        179.9</code></pre>
 </div>
 <div id="l015rowmeans" class="section level4">
 <h4><span class="header-section-number">7.2.5.11</span> <code>rowMeans()</code> et <code>colMeans()</code></h4>
 <p>Les fonctions <code>rowMeans()</code> et <code>colMeans()</code> calculent la moyenne des lignes et des colonnes.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">rowMeans</span>(iris[, <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>)])</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">rowMeans</span>(iris[, <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>)])</code></pre>
 <pre><code>##   [1] 2.550 2.375 2.350 2.350 2.550 2.850 2.425 2.525 2.225 2.400 2.700
 ##  [12] 2.500 2.325 2.125 2.800 3.000 2.750 2.575 2.875 2.675 2.675 2.675
 ##  [23] 2.350 2.650 2.575 2.450 2.600 2.600 2.550 2.425 2.425 2.675 2.725
@@ -833,19 +859,19 @@ mdat &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="k
 ## [122] 3.825 4.800 3.925 4.450 4.550 3.900 3.950 4.225 4.400 4.550 5.025
 ## [133] 4.250 3.925 3.925 4.775 4.425 4.200 3.900 4.375 4.450 4.350 3.875
 ## [144] 4.550 4.550 4.300 3.925 4.175 4.325 3.950</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">colMeans</span>(iris[, <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>)])</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">colMeans</span>(iris[, <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>)])</code></pre>
 <pre><code>## Sepal.Length  Sepal.Width Petal.Length  Petal.Width 
 ##     5.843333     3.057333     3.758000     1.199333</code></pre>
 </div>
 <div id="l015aggregate" class="section level4">
 <h4><span class="header-section-number">7.2.5.12</span> <code>aggregate()</code></h4>
 <p>La fonction <code>aggregate()</code> permet de grouper les éléments d’un objet en fonction d’une valeur. L’argument <code>by</code> définit l’élément sur lequel est effectué le regroupement. Il doit être de type <a href="dataType2.html#l014list"><code>list</code></a>.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">aggregate</span>(iris[, <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>)], <span class="dt">by =</span> <span class="kw">list</span>(iris<span class="op">$</span>Species), <span class="dt">FUN =</span> mean)</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">aggregate</span>(iris[, <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>)], <span class="dt">by =</span> <span class="kw">list</span>(iris<span class="op">$</span>Species), <span class="dt">FUN =</span> mean)</code></pre>
 <pre><code>##      Group.1 Sepal.Length Sepal.Width Petal.Length Petal.Width
 ## 1     setosa        5.006       3.428        1.462       0.246
 ## 2 versicolor        5.936       2.770        4.260       1.326
 ## 3  virginica        6.588       2.974        5.552       2.026</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">aggregate</span>(iris[, <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>)], <span class="dt">by =</span> <span class="kw">list</span>(iris<span class="op">$</span>Species), <span class="dt">FUN =</span> summary)</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">aggregate</span>(iris[, <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>)], <span class="dt">by =</span> <span class="kw">list</span>(iris<span class="op">$</span>Species), <span class="dt">FUN =</span> summary)</code></pre>
 <pre><code>##      Group.1 Sepal.Length.Min. Sepal.Length.1st Qu. Sepal.Length.Median
 ## 1     setosa             4.300                4.800               5.000
 ## 2 versicolor             4.900                5.600               5.900
@@ -866,25 +892,25 @@ mdat &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="k
 <div id="l015range" class="section level4">
 <h4><span class="header-section-number">7.2.5.13</span> <code>range()</code></h4>
 <p>La fonction <code>range()</code> renvoie le minimum et le maximum.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">range</span>(iris[, <span class="dv">1</span>])</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">range</span>(iris[, <span class="dv">1</span>])</code></pre>
 <pre><code>## [1] 4.3 7.9</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">print</span>(vecManip3)</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">print</span>(vecManip3)</code></pre>
 <pre><code>## [1]  1  5  6  8 NA 45 NA 14</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">range</span>(vecManip3)</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">range</span>(vecManip3)</code></pre>
 <pre><code>## [1] NA NA</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">range</span>(vecManip3, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">range</span>(vecManip3, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)</code></pre>
 <pre><code>## [1]  1 45</code></pre>
 </div>
 <div id="l015unique" class="section level4">
 <h4><span class="header-section-number">7.2.5.14</span> <code>unique()</code></h4>
 <p>La fonction <code>unique()</code> renvoie les valeurs uniques d’un objet (sans les doublons).</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">unique</span>(iris[, <span class="dv">1</span>])</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">unique</span>(iris[, <span class="dv">1</span>])</code></pre>
 <pre><code>##  [1] 5.1 4.9 4.7 4.6 5.0 5.4 4.4 4.8 4.3 5.8 5.7 5.2 5.5 4.5 5.3 7.0 6.4
 ## [18] 6.9 6.5 6.3 6.6 5.9 6.0 6.1 5.6 6.7 6.2 6.8 7.1 7.6 7.3 7.2 7.7 7.4
 ## [35] 7.9</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">print</span>(vecManip3)</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">print</span>(vecManip3)</code></pre>
 <pre><code>## [1]  1  5  6  8 NA 45 NA 14</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">unique</span>(vecManip3)</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">unique</span>(vecManip3)</code></pre>
 <pre><code>## [1]  1  5  6  8 NA 45 14</code></pre>
 </div>
 </div>
@@ -895,17 +921,17 @@ mdat &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="k
 <div id="l015seqalong" class="section level3">
 <h3><span class="header-section-number">7.3.1</span> <code>seq_along()</code></h3>
 <p>La fonction <code>seq_along()</code> permet de créer un <code>vector</code> de la taille de l’objet renseigné et prenant comme valeurs les chiffres de 1 à N (N correspondant aux nombres d’éléments de l’objet). Cette fonction nous servira beaucoup lors du chapitre sur les boucles.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">print</span>(vecManip3)</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">print</span>(vecManip3)</code></pre>
 <pre><code>## [1]  1  5  6  8 NA 45 NA 14</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">seq_along</span>(vecManip3)</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">seq_along</span>(vecManip3)</code></pre>
 <pre><code>## [1] 1 2 3 4 5 6 7 8</code></pre>
 </div>
 <div id="l0152points" class="section level3">
 <h3><span class="header-section-number">7.3.2</span> <code>:</code></h3>
 <p>La fonction <code>:</code> permet de créer une séquence de <code>a</code> à <code>b</code> par pas de 1, avec <code>a</code> et <code>b</code> le début et la fin de la séquence souhaitée. Il a été difficile d’écrire les chapitres précédents sans y avoir recours tant cette fonction est utile. Voici quelques exemples.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="dv">5</span><span class="op">:</span><span class="dv">10</span></code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="dv">5</span><span class="op">:</span><span class="dv">10</span></code></pre>
 <pre><code>## [1]  5  6  7  8  9 10</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">head</span>(iris[, <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>)])</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">head</span>(iris[, <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>)])</code></pre>
 <pre><code>##   Sepal.Length Sepal.Width Petal.Length Petal.Width
 ## 1          5.1         3.5          1.4         0.2
 ## 2          4.9         3.0          1.4         0.2
@@ -913,7 +939,7 @@ mdat &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="k
 ## 4          4.6         3.1          1.5         0.2
 ## 5          5.0         3.6          1.4         0.2
 ## 6          5.4         3.9          1.7         0.4</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">head</span>(iris[, <span class="dv">1</span><span class="op">:</span><span class="dv">4</span>]) <span class="co"># ;-)</span></code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">head</span>(iris[, <span class="dv">1</span><span class="op">:</span><span class="dv">4</span>]) <span class="co"># ;-)</span></code></pre>
 <pre><code>##   Sepal.Length Sepal.Width Petal.Length Petal.Width
 ## 1          5.1         3.5          1.4         0.2
 ## 2          4.9         3.0          1.4         0.2
@@ -921,74 +947,74 @@ mdat &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="k
 ## 4          4.6         3.1          1.5         0.2
 ## 5          5.0         3.6          1.4         0.2
 ## 6          5.4         3.9          1.7         0.4</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">miVec01 &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>)
+<pre class="sourceCode r"><code class="sourceCode r">miVec01 &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>)
 miVec01 &lt;-<span class="st"> </span><span class="dv">1</span><span class="op">:</span><span class="dv">4</span> <span class="co"># ;-)</span>
-<span class="op">-</span><span class="dv">10</span><span class="op">:</span><span class="dv">12</span></code></pre></div>
+<span class="dv">-10</span><span class="op">:</span><span class="dv">12</span></code></pre>
 <pre><code>##  [1] -10  -9  -8  -7  -6  -5  -4  -3  -2  -1   0   1   2   3   4   5   6
 ## [18]   7   8   9  10  11  12</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="dv">5</span><span class="op">:-</span><span class="dv">5</span></code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="dv">5</span><span class="op">:-</span><span class="dv">5</span></code></pre>
 <pre><code>##  [1]  5  4  3  2  1  0 -1 -2 -3 -4 -5</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">paste</span>(<span class="st">&quot;X&quot;</span>, <span class="dv">1</span><span class="op">:</span><span class="dv">10</span>, <span class="dt">sep =</span> <span class="st">&quot;_&quot;</span>)</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">paste</span>(<span class="st">&quot;X&quot;</span>, <span class="dv">1</span><span class="op">:</span><span class="dv">10</span>, <span class="dt">sep =</span> <span class="st">&quot;_&quot;</span>)</code></pre>
 <pre><code>##  [1] &quot;X_1&quot;  &quot;X_2&quot;  &quot;X_3&quot;  &quot;X_4&quot;  &quot;X_5&quot;  &quot;X_6&quot;  &quot;X_7&quot;  &quot;X_8&quot;  &quot;X_9&quot;  &quot;X_10&quot;</code></pre>
 </div>
 <div id="l015rep" class="section level3">
 <h3><span class="header-section-number">7.3.3</span> <code>rep()</code></h3>
 <p>La fonction <code>rep()</code> permet de répéter des éléments.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">miVec12 &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>)
+<pre class="sourceCode r"><code class="sourceCode r">miVec12 &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>)
 miVec12 &lt;-<span class="st"> </span><span class="kw">rep</span>(<span class="dv">1</span>, <span class="dt">times =</span> <span class="dv">9</span>) <span class="co"># ;-)</span>
-<span class="kw">rep</span>(<span class="st">&quot;Hola&quot;</span>, <span class="dt">times =</span> <span class="dv">3</span>)</code></pre></div>
+<span class="kw">rep</span>(<span class="st">&quot;Hola&quot;</span>, <span class="dt">times =</span> <span class="dv">3</span>)</code></pre>
 <pre><code>## [1] &quot;Hola&quot; &quot;Hola&quot; &quot;Hola&quot;</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">rep</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">3</span>, <span class="dt">time =</span> <span class="dv">3</span>)</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">rep</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">3</span>, <span class="dt">time =</span> <span class="dv">3</span>)</code></pre>
 <pre><code>## [1] 1 2 3 1 2 3 1 2 3</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">rep</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">3</span>, <span class="dt">length.out =</span> <span class="dv">10</span>)</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">rep</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">3</span>, <span class="dt">length.out =</span> <span class="dv">10</span>)</code></pre>
 <pre><code>##  [1] 1 2 3 1 2 3 1 2 3 1</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">rep</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">3</span>, <span class="dt">each =</span> <span class="dv">3</span>)</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">rep</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">3</span>, <span class="dt">each =</span> <span class="dv">3</span>)</code></pre>
 <pre><code>## [1] 1 1 1 2 2 2 3 3 3</code></pre>
 </div>
 <div id="l015seq" class="section level3">
 <h3><span class="header-section-number">7.3.4</span> <code>seq()</code></h3>
 <p>La fonction <code>seq()</code> permet de créer une séquence personnalisée.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">seq</span>(<span class="dt">from =</span> <span class="dv">0</span>, <span class="dt">to =</span> <span class="dv">1</span>, <span class="dt">by =</span> <span class="fl">0.2</span>)</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">seq</span>(<span class="dt">from =</span> <span class="dv">0</span>, <span class="dt">to =</span> <span class="dv">1</span>, <span class="dt">by =</span> <span class="fl">0.2</span>)</code></pre>
 <pre><code>## [1] 0.0 0.2 0.4 0.6 0.8 1.0</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">seq</span>(<span class="dt">from =</span> <span class="dv">20</span>, <span class="dt">to =</span> <span class="dv">10</span>, <span class="dt">length.out =</span> <span class="dv">10</span>)</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">seq</span>(<span class="dt">from =</span> <span class="dv">20</span>, <span class="dt">to =</span> <span class="dv">10</span>, <span class="dt">length.out =</span> <span class="dv">10</span>)</code></pre>
 <pre><code>##  [1] 20.00000 18.88889 17.77778 16.66667 15.55556 14.44444 13.33333
 ##  [8] 12.22222 11.11111 10.00000</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">letters[<span class="kw">seq</span>(<span class="dt">from =</span> <span class="dv">1</span>, <span class="dt">to =</span> <span class="dv">26</span>, <span class="dt">by =</span> <span class="dv">2</span>)]</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r">letters[<span class="kw">seq</span>(<span class="dt">from =</span> <span class="dv">1</span>, <span class="dt">to =</span> <span class="dv">26</span>, <span class="dt">by =</span> <span class="dv">2</span>)]</code></pre>
 <pre><code>##  [1] &quot;a&quot; &quot;c&quot; &quot;e&quot; &quot;g&quot; &quot;i&quot; &quot;k&quot; &quot;m&quot; &quot;o&quot; &quot;q&quot; &quot;s&quot; &quot;u&quot; &quot;w&quot; &quot;y&quot;</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">rep</span>(<span class="kw">seq</span>(<span class="dt">from =</span> <span class="dv">1</span>, <span class="dt">to =</span> <span class="dv">2</span>, <span class="dt">by =</span> <span class="fl">0.5</span>), <span class="dt">times =</span> <span class="dv">3</span>)</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">rep</span>(<span class="kw">seq</span>(<span class="dt">from =</span> <span class="dv">1</span>, <span class="dt">to =</span> <span class="dv">2</span>, <span class="dt">by =</span> <span class="fl">0.5</span>), <span class="dt">times =</span> <span class="dv">3</span>)</code></pre>
 <pre><code>## [1] 1.0 1.5 2.0 1.0 1.5 2.0 1.0 1.5 2.0</code></pre>
 </div>
 <div id="l015getwd" class="section level3">
 <h3><span class="header-section-number">7.3.5</span> <code>getwd()</code></h3>
 <p>La fonction <code>getwd()</code> définit le répertoire de travail. Cela correspond à l’endroit relatif à partir duquel R se positionne pour identifier les fichiers. Ce concept prendra son sens lorsque nous verrons comment importer et exporter des données.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">getwd</span>()</code></pre></div>
-<pre><code>## [1] &quot;D:/GitHub/myRBook_FR&quot;</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">getwd</span>()</code></pre>
+<pre><code>## [1] &quot;C:/Users/nous/Documents/Francois/TRAVAIL/GitHub/myRBook_FR&quot;</code></pre>
 </div>
 <div id="l015setwd" class="section level3">
 <h3><span class="header-section-number">7.3.6</span> <code>setwd()</code></h3>
 <p>La fonction <code>setwd()</code> permet de définir un nouveau répertoire de travail.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">oldWd &lt;-<span class="st"> </span><span class="kw">getwd</span>()
-<span class="kw">print</span>(oldWd)</code></pre></div>
-<pre><code>## [1] &quot;D:/GitHub/myRBook_FR&quot;</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">setwd</span>(<span class="st">&quot;..&quot;</span>)
-<span class="kw">getwd</span>()</code></pre></div>
-<pre><code>## [1] &quot;D:/GitHub&quot;</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">setwd</span>(oldWd)
-<span class="kw">getwd</span>()</code></pre></div>
-<pre><code>## [1] &quot;D:/GitHub/myRBook_FR&quot;</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r">oldWd &lt;-<span class="st"> </span><span class="kw">getwd</span>()
+<span class="kw">print</span>(oldWd)</code></pre>
+<pre><code>## [1] &quot;C:/Users/nous/Documents/Francois/TRAVAIL/GitHub/myRBook_FR&quot;</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">setwd</span>(<span class="st">&quot;..&quot;</span>)
+<span class="kw">getwd</span>()</code></pre>
+<pre><code>## [1] &quot;C:/Users/nous/Documents/Francois/TRAVAIL/GitHub&quot;</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">setwd</span>(oldWd)
+<span class="kw">getwd</span>()</code></pre>
+<pre><code>## [1] &quot;C:/Users/nous/Documents/Francois/TRAVAIL/GitHub/myRBook_FR&quot;</code></pre>
 </div>
 <div id="l015listfiles" class="section level3">
 <h3><span class="header-section-number">7.3.7</span> <code>list.files()</code></h3>
 <p>La fonction <code>list.files()</code> permet de faire la liste de tous les fichiers présents dans le répertoire de travail.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">list.files</span>(<span class="dt">pattern =</span> <span class="st">&quot;(html)$&quot;</span>) <span class="co"># html</span></code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">list.files</span>(<span class="dt">pattern =</span> <span class="st">&quot;(html)$&quot;</span>) <span class="co"># html</span></code></pre>
 <pre><code>## [1] &quot;google_analytics_FR.html&quot;</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">list.files</span>(<span class="dt">pattern =</span> <span class="st">&quot;(pdf)$&quot;</span>) <span class="co"># pdf</span></code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">list.files</span>(<span class="dt">pattern =</span> <span class="st">&quot;(pdf)$&quot;</span>) <span class="co"># pdf</span></code></pre>
 <pre><code>## character(0)</code></pre>
 </div>
 <div id="l015ls" class="section level3">
 <h3><span class="header-section-number">7.3.8</span> <code>ls()</code></h3>
 <p>Tout comme la fonction <code>list.files()</code> permet de faire la liste de tous les fichiers présents dans le répertoire de travail, la fonction <code>ls()</code> permet de faire la liste de tous les objets présents dans l’environnement de travail de R.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ls</span>()</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ls</span>()</code></pre>
 <pre><code>##  [1] &quot;aLogic&quot;       &quot;bddInsect&quot;    &quot;characters&quot;   &quot;contrib&quot;     
 ##  [5] &quot;dfForMat&quot;     &quot;factor01&quot;     &quot;i&quot;            &quot;irisCopy&quot;    
 ##  [9] &quot;j&quot;            &quot;k&quot;            &quot;logicals&quot;     &quot;mdat&quot;        
@@ -1010,8 +1036,8 @@ miVec12 &lt;-<span class="st"> </span><span class="kw">rep</span>(<span class="d
 ## [73] &quot;terme01&quot;      &quot;terme02&quot;      &quot;vecForMat01&quot;  &quot;vecForMat02&quot; 
 ## [77] &quot;vecForMat03&quot;  &quot;vecForMatrix&quot; &quot;vecManip&quot;     &quot;vecManip2&quot;   
 ## [81] &quot;vecManip3&quot;</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">zzz &lt;-<span class="st"> &quot;a new object&quot;</span>
-<span class="kw">ls</span>()</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r">zzz &lt;-<span class="st"> &quot;a new object&quot;</span>
+<span class="kw">ls</span>()</code></pre>
 <pre><code>##  [1] &quot;aLogic&quot;       &quot;bddInsect&quot;    &quot;characters&quot;   &quot;contrib&quot;     
 ##  [5] &quot;dfForMat&quot;     &quot;factor01&quot;     &quot;i&quot;            &quot;irisCopy&quot;    
 ##  [9] &quot;j&quot;            &quot;k&quot;            &quot;logicals&quot;     &quot;mdat&quot;        
@@ -1037,8 +1063,8 @@ miVec12 &lt;-<span class="st"> </span><span class="kw">rep</span>(<span class="d
 <div id="l015rm" class="section level3">
 <h3><span class="header-section-number">7.3.9</span> <code>rm()</code></h3>
 <p>La fonction <code>rm()</code> permet de supprimer un objet présent dans l’environnement de travail de R.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">rm</span>(zzz)
-<span class="kw">ls</span>()</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">rm</span>(zzz)
+<span class="kw">ls</span>()</code></pre>
 <pre><code>##  [1] &quot;aLogic&quot;       &quot;bddInsect&quot;    &quot;characters&quot;   &quot;contrib&quot;     
 ##  [5] &quot;dfForMat&quot;     &quot;factor01&quot;     &quot;i&quot;            &quot;irisCopy&quot;    
 ##  [9] &quot;j&quot;            &quot;k&quot;            &quot;logicals&quot;     &quot;mdat&quot;        
@@ -1078,15 +1104,15 @@ miVec12 &lt;-<span class="st"> </span><span class="kw">rep</span>(<span class="d
 </div>
 <div id="solutions-possibles-car-il-y-a-toujours-plusieurs-solutions" class="section level4">
 <h4><span class="header-section-number">7.4.1.2</span> Solutions possibles (car il y a toujours plusieurs solutions) :</h4>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="op">-</span><span class="dv">3</span><span class="op">:-</span><span class="dv">11</span></code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="dv">-3</span><span class="op">:-</span><span class="dv">11</span></code></pre>
 <pre><code>## [1]  -3  -4  -5  -6  -7  -8  -9 -10 -11</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">seq</span>(<span class="dt">from =</span> <span class="op">-</span><span class="dv">3</span>, <span class="dt">to =</span> <span class="dv">11</span>, <span class="dt">by =</span> <span class="dv">2</span>)</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">seq</span>(<span class="dt">from =</span> <span class="dv">-3</span>, <span class="dt">to =</span> <span class="dv">11</span>, <span class="dt">by =</span> <span class="dv">2</span>)</code></pre>
 <pre><code>## [1] -3 -1  1  3  5  7  9 11</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">seq</span>(<span class="dt">from =</span> <span class="fl">3.0</span>, <span class="dt">to =</span> <span class="fl">4.0</span>, <span class="dt">by =</span> <span class="fl">0.2</span>)</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">seq</span>(<span class="dt">from =</span> <span class="fl">3.0</span>, <span class="dt">to =</span> <span class="fl">4.0</span>, <span class="dt">by =</span> <span class="fl">0.2</span>)</code></pre>
 <pre><code>## [1] 3.0 3.2 3.4 3.6 3.8 4.0</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">letters[<span class="kw">seq</span>(<span class="dt">from =</span> <span class="dv">1</span>, <span class="dt">to =</span> <span class="dv">26</span>, <span class="dt">by =</span> <span class="dv">5</span>)]</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r">letters[<span class="kw">seq</span>(<span class="dt">from =</span> <span class="dv">1</span>, <span class="dt">to =</span> <span class="dv">26</span>, <span class="dt">by =</span> <span class="dv">5</span>)]</code></pre>
 <pre><code>## [1] &quot;a&quot; &quot;f&quot; &quot;k&quot; &quot;p&quot; &quot;u&quot; &quot;z&quot;</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">letters[<span class="kw">rep</span>(<span class="kw">seq</span>(<span class="dt">from =</span> <span class="dv">1</span>, <span class="dt">to =</span> <span class="dv">26</span>, <span class="dt">by =</span> <span class="dv">5</span>), <span class="dt">each =</span> <span class="dv">5</span>)]</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r">letters[<span class="kw">rep</span>(<span class="kw">seq</span>(<span class="dt">from =</span> <span class="dv">1</span>, <span class="dt">to =</span> <span class="dv">26</span>, <span class="dt">by =</span> <span class="dv">5</span>), <span class="dt">each =</span> <span class="dv">5</span>)]</code></pre>
 <pre><code>##  [1] &quot;a&quot; &quot;a&quot; &quot;a&quot; &quot;a&quot; &quot;a&quot; &quot;f&quot; &quot;f&quot; &quot;f&quot; &quot;f&quot; &quot;f&quot; &quot;k&quot; &quot;k&quot; &quot;k&quot; &quot;k&quot; &quot;k&quot; &quot;p&quot; &quot;p&quot;
 ## [18] &quot;p&quot; &quot;p&quot; &quot;p&quot; &quot;u&quot; &quot;u&quot; &quot;u&quot; &quot;u&quot; &quot;u&quot; &quot;z&quot; &quot;z&quot; &quot;z&quot; &quot;z&quot; &quot;z&quot;</code></pre>
 </div>
@@ -1099,89 +1125,89 @@ miVec12 &lt;-<span class="st"> </span><span class="kw">rep</span>(<span class="d
 <p>Comment calculer un intervalle contenant 90% des valeurs ?</p>
 <p>Si la distribution des données était Normale, quelle serait la valeur théorique de cet intervalle de 90% (fonction <code>qnorm()</code>) ?</p>
 <p>Solutions :</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">length</span>(iris<span class="op">$</span>Sepal.Width[iris<span class="op">$</span>Sepal.Width <span class="op">&gt;</span><span class="st"> </span><span class="dv">3</span>])</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">length</span>(iris<span class="op">$</span>Sepal.Width[iris<span class="op">$</span>Sepal.Width <span class="op">&gt;</span><span class="st"> </span><span class="dv">3</span>])</code></pre>
 <pre><code>## [1] 67</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">length</span>(iris<span class="op">$</span>Sepal.Width[iris<span class="op">$</span>Sepal.Width <span class="op">&gt;</span><span class="st"> </span><span class="fl">2.8</span> <span class="op">&amp;</span><span class="st"> </span>
-<span class="st">  </span>iris<span class="op">$</span>Sepal.Width <span class="op">&lt;</span><span class="st"> </span><span class="fl">3.2</span>])</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">length</span>(iris<span class="op">$</span>Sepal.Width[iris<span class="op">$</span>Sepal.Width <span class="op">&gt;</span><span class="st"> </span><span class="fl">2.8</span> <span class="op">&amp;</span><span class="st"> </span>
+<span class="st">  </span>iris<span class="op">$</span>Sepal.Width <span class="op">&lt;</span><span class="st"> </span><span class="fl">3.2</span>])</code></pre>
 <pre><code>## [1] 47</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">table</span>(iris<span class="op">$</span>Sepal.Width)</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">table</span>(iris<span class="op">$</span>Sepal.Width)</code></pre>
 <pre><code>## 
 ##   2 2.2 2.3 2.4 2.5 2.6 2.7 2.8 2.9   3 3.1 3.2 3.3 3.4 3.5 3.6 3.7 3.8 
 ##   1   3   4   3   8   5   9  14  10  26  11  13   6  12   6   4   3   6 
 ## 3.9   4 4.1 4.2 4.4 
 ##   2   1   1   1   1</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">table</span>(<span class="kw">round</span>(iris<span class="op">$</span>Sepal.Width))</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">table</span>(<span class="kw">round</span>(iris<span class="op">$</span>Sepal.Width))</code></pre>
 <pre><code>## 
 ##   2   3   4 
 ##  19 106  25</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">irisSepWCopy &lt;-<span class="st"> </span>iris<span class="op">$</span>Sepal.Width
+<pre class="sourceCode r"><code class="sourceCode r">irisSepWCopy &lt;-<span class="st"> </span>iris<span class="op">$</span>Sepal.Width
 irisSepWCopy &lt;-<span class="st"> </span>irisSepWCopy[<span class="kw">order</span>(irisSepWCopy)]
-<span class="kw">head</span>(irisSepWCopy, <span class="dt">n =</span> <span class="dv">10</span>)</code></pre></div>
+<span class="kw">head</span>(irisSepWCopy, <span class="dt">n =</span> <span class="dv">10</span>)</code></pre>
 <pre><code>##  [1] 2.0 2.2 2.2 2.2 2.3 2.3 2.3 2.3 2.4 2.4</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">quantile</span>(irisSepWCopy, <span class="dt">probs =</span> <span class="kw">c</span>(<span class="fl">0.05</span>, <span class="fl">0.95</span>))</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">quantile</span>(irisSepWCopy, <span class="dt">probs =</span> <span class="kw">c</span>(<span class="fl">0.05</span>, <span class="fl">0.95</span>))</code></pre>
 <pre><code>##    5%   95% 
 ## 2.345 3.800</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">qnorm</span>(
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">qnorm</span>(
   <span class="dt">p =</span> <span class="kw">c</span>(<span class="fl">0.05</span>, <span class="fl">0.95</span>), 
   <span class="dt">mean =</span> <span class="kw">mean</span>(irisSepWCopy), 
   <span class="dt">sd =</span> <span class="kw">sd</span>(irisSepWCopy)
-)</code></pre></div>
+)</code></pre>
 <pre><code>## [1] 2.340397 3.774270</code></pre>
 </div>
 </div>
 <div id="l015function" class="section level2">
 <h2><span class="header-section-number">7.5</span> Ecrire une fonction</h2>
 <p>Lorsque nous reproduisons plusieurs fois les mêmes opérations, le code devient fastidieux à écrire, et plus difficile à maintenir car si nous devons effectuer une modification, il faudra la répéter chaque fois que nous l’avons utilisée. C’est un signe indiquant la nécesité de recourir à une <strong>fonction</strong>. Dans l’exemple qui suit, il est fastidieux de modifier le code si nous souhaitons ajouter +45 au lieu de +20 à chaque ligne.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="dv">35</span> <span class="op">+</span><span class="st"> </span><span class="dv">20</span></code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="dv">35</span> <span class="op">+</span><span class="st"> </span><span class="dv">20</span></code></pre>
 <pre><code>## [1] 55</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="dv">758</span> <span class="op">+</span><span class="st"> </span><span class="dv">20</span></code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="dv">758</span> <span class="op">+</span><span class="st"> </span><span class="dv">20</span></code></pre>
 <pre><code>## [1] 778</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="dv">862</span> <span class="op">+</span><span class="st"> </span><span class="dv">20</span></code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="dv">862</span> <span class="op">+</span><span class="st"> </span><span class="dv">20</span></code></pre>
 <pre><code>## [1] 882</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="dv">782</span> <span class="op">+</span><span class="st"> </span><span class="dv">20</span></code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="dv">782</span> <span class="op">+</span><span class="st"> </span><span class="dv">20</span></code></pre>
 <pre><code>## [1] 802</code></pre>
-<p>Comme pour les fonctions de base de R, nos fonction vont avoir un <strong>nom</strong>, et des <strong>arguments</strong>. Comme pour les noms des objets et les noms des fichiers, il est important de bien choisir le nom de notre fonction (cf. <a href="premiersPas.html#l011object">section sur les objets</a>). Pour créer une fonction nous allons utiliser la fonction <code>function()</code> qui prend comme arguments les arguments de notre fonction. La fonction va retourner le résultat souhaité. Par défaut le résultat renvoyé est le dernier utilisé, mais il est préférable de l’expliciter avec la fonction <code>return()</code>. La fonction suivante <code>addX</code> prend comme argument <code>x</code> et renvoie <code>x + 20</code>.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">addX &lt;-<span class="st"> </span><span class="cf">function</span>(x){
+<p>Comme pour les fonctions de base de R, nos fonction vont avoir un <strong>nom</strong>, et des <strong>arguments</strong>. Comme pour les noms des objets et les noms des fichiers, il est important de bien choisir le nom de notre fonction (cf. <a href="premiersPas.html#l011object">section sur les objets</a>). Pour créer une fonction nous allons utiliser la fonction <code>function()</code> qui prend comme arguments les arguments de notre fonction. La fonction va retourner le résultat souhaité. Par défaut le résultat renvoyé est le dernier utilisé, mais il est préférable de l’expliciter avec la fonction <code>return()</code>. La fonction suivante <code>addX</code> prend comme argument <code>x</code> et renvoie <code>x + 20</code>.</p>
+<pre class="sourceCode r"><code class="sourceCode r">addX &lt;-<span class="st"> </span><span class="cf">function</span>(x){
   <span class="kw">return</span>(x <span class="op">+</span><span class="st"> </span><span class="dv">20</span>)
-}</code></pre></div>
+}</code></pre>
 <p>Notre code devient :</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">addX</span>(<span class="dv">35</span>)</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">addX</span>(<span class="dv">35</span>)</code></pre>
 <pre><code>## [1] 55</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">addX</span>(<span class="dv">758</span>)</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">addX</span>(<span class="dv">758</span>)</code></pre>
 <pre><code>## [1] 778</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">addX</span>(<span class="dv">862</span>)</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">addX</span>(<span class="dv">862</span>)</code></pre>
 <pre><code>## [1] 882</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">addX</span>(<span class="dv">782</span>)</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">addX</span>(<span class="dv">782</span>)</code></pre>
 <pre><code>## [1] 802</code></pre>
 <p>Si nous souhaitons modifier le code pour ajouter 45 plutôt que 20, il suffit alors de modifier la fonction <code>addX()</code>.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">addX &lt;-<span class="st"> </span><span class="cf">function</span>(x){
+<pre class="sourceCode r"><code class="sourceCode r">addX &lt;-<span class="st"> </span><span class="cf">function</span>(x){
   <span class="kw">return</span>(x <span class="op">+</span><span class="st"> </span><span class="dv">45</span>)
 }
-<span class="kw">addX</span>(<span class="dv">35</span>)</code></pre></div>
+<span class="kw">addX</span>(<span class="dv">35</span>)</code></pre>
 <pre><code>## [1] 80</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">addX</span>(<span class="dv">758</span>)</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">addX</span>(<span class="dv">758</span>)</code></pre>
 <pre><code>## [1] 803</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">addX</span>(<span class="dv">862</span>)</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">addX</span>(<span class="dv">862</span>)</code></pre>
 <pre><code>## [1] 907</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">addX</span>(<span class="dv">782</span>)</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">addX</span>(<span class="dv">782</span>)</code></pre>
 <pre><code>## [1] 827</code></pre>
 <p>Ici nous aurions pu utiliser le format <code>vector</code> pour éviter les répétitions, mais ce n’est pas toujours possible.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">c</span>(<span class="dv">35</span>, <span class="dv">758</span>, <span class="dv">862</span>, <span class="dv">782</span>) <span class="op">+</span><span class="st"> </span><span class="dv">20</span></code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">c</span>(<span class="dv">35</span>, <span class="dv">758</span>, <span class="dv">862</span>, <span class="dv">782</span>) <span class="op">+</span><span class="st"> </span><span class="dv">20</span></code></pre>
 <pre><code>## [1]  55 778 882 802</code></pre>
 <p>Voyons cette fonction qui va compter le nombre de consonnes et de voyelles en minuscule dans un mot. Tout d’abord nous allons séparer toutes les lettres avec la fonction <code>strsplit</code> (nous pouvons consulter l’aide pour en savoir plus sur cette fonction). Ensuite nous allons compter les voyelles et les consonnes avec la fonction <a href="fonctions.html#l015length"><code>length()</code></a>. Pour avoir la liste des lettres nous allons utiliser la constante <code>letters</code> (consulter l’aide).</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">countVowelConso &lt;-<span class="st"> </span><span class="cf">function</span>(word){
+<pre class="sourceCode r"><code class="sourceCode r">countVowelConso &lt;-<span class="st"> </span><span class="cf">function</span>(word){
   wordSplit &lt;-<span class="st"> </span><span class="kw">strsplit</span>(word, <span class="dt">split =</span> <span class="st">&quot;&quot;</span>)[[<span class="dv">1</span>]]
   vowels &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;a&quot;</span>, <span class="st">&quot;e&quot;</span>, <span class="st">&quot;i&quot;</span>, <span class="st">&quot;o&quot;</span>, <span class="st">&quot;u&quot;</span>, <span class="st">&quot;y&quot;</span>)
   numVowel &lt;-<span class="st"> </span><span class="kw">length</span>(wordSplit[wordSplit <span class="op">%in%</span><span class="st"> </span>vowels])
   consonants &lt;-<span class="st"> </span>letters[<span class="op">!</span>letters <span class="op">%in%</span><span class="st"> </span>vowels]
   numConso &lt;-<span class="st"> </span><span class="kw">length</span>(wordSplit[wordSplit <span class="op">%in%</span><span class="st"> </span>consonants])
   <span class="kw">return</span>(<span class="kw">c</span>(numVowel, numConso))
-}</code></pre></div>
+}</code></pre>
 <p>Nous pouvons maintenant utiliser notre fonction.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">countVowelConso</span>(<span class="dt">word =</span> <span class="st">&quot;qwertyuiop azertyuiop&quot;</span>)</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">countVowelConso</span>(<span class="dt">word =</span> <span class="st">&quot;qwertyuiop azertyuiop&quot;</span>)</code></pre>
 <pre><code>## [1] 11  9</code></pre>
 <p>Cette fonction peut être modifiée en affichant un message plus explicite. Même si en général ce genre de message est à éviter pour ne pas surcharger les fonctions, il peut être utile pour vérifier que tout se déroule correctement (nous le supprimerons ensuite).</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">countVowelConso &lt;-<span class="st"> </span><span class="cf">function</span>(word){
+<pre class="sourceCode r"><code class="sourceCode r">countVowelConso &lt;-<span class="st"> </span><span class="cf">function</span>(word){
   wordSplit &lt;-<span class="st"> </span><span class="kw">strsplit</span>(word, <span class="dt">split =</span> <span class="st">&quot;&quot;</span>)[[<span class="dv">1</span>]]
   vowels &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;a&quot;</span>, <span class="st">&quot;e&quot;</span>, <span class="st">&quot;i&quot;</span>, <span class="st">&quot;o&quot;</span>, <span class="st">&quot;u&quot;</span>, <span class="st">&quot;y&quot;</span>)
   numVowel &lt;-<span class="st"> </span><span class="kw">length</span>(wordSplit[wordSplit <span class="op">%in%</span><span class="st"> </span>vowels])
@@ -1191,11 +1217,11 @@ irisSepWCopy &lt;-<span class="st"> </span>irisSepWCopy[<span class="kw">order</
     numConso, <span class="st">&quot; consonnes dans le mot &#39;&quot;</span>, word, <span class="st">&quot;&#39;.&quot;</span>))
   <span class="kw">return</span>(<span class="kw">c</span>(numVowel, numConso))
 }
-<span class="kw">countVowelConso</span>(<span class="dt">word =</span> <span class="st">&quot;qwertyuiop azertyuiop&quot;</span>)</code></pre></div>
+<span class="kw">countVowelConso</span>(<span class="dt">word =</span> <span class="st">&quot;qwertyuiop azertyuiop&quot;</span>)</code></pre>
 <pre><code>## [1] &quot;Il y a 11 voyelles et 9 consonnes dans le mot &#39;qwertyuiop azertyuiop&#39;.&quot;</code></pre>
 <pre><code>## [1] 11  9</code></pre>
 <p>Par contre si nous utilisons <code>countVowelConso(word = 5)</code>, une erreur va être renvoyée car notre fonction attend un objet de type <code>character</code>. De manière générale il est recommandée de gérer les erreurs renvoyées par nos fonctions afin que notre code soit plus facile à débogger. Ici nous allons simplement vérifier que l’argument est de type <code>character</code>, dans un <code>vector</code> de taille 1. Nous allons aussi commenter notre fonction pour rapidement retrouver ce qu’elle réalise (commentaire inséré sur la première ligne, que l’on retrouve aussi parfois sur la dernière ligne des fonctions).</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">countVowelConso &lt;-<span class="st"> </span><span class="cf">function</span>(word){ <span class="co"># compte les voyelles et les consonnes</span>
+<pre class="sourceCode r"><code class="sourceCode r">countVowelConso &lt;-<span class="st"> </span><span class="cf">function</span>(word){ <span class="co"># compte les voyelles et les consonnes</span>
   <span class="cf">if</span>(<span class="kw">is.vector</span>(word) <span class="op">&amp;</span><span class="st"> </span><span class="kw">is.character</span>(word) <span class="op">&amp;</span><span class="st"> </span><span class="kw">length</span>(word) <span class="op">==</span><span class="st"> </span><span class="dv">1</span>){
     wordSplit &lt;-<span class="st"> </span><span class="kw">strsplit</span>(word, <span class="dt">split =</span> <span class="st">&quot;&quot;</span>)[[<span class="dv">1</span>]]
     vowels &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;a&quot;</span>, <span class="st">&quot;e&quot;</span>, <span class="st">&quot;i&quot;</span>, <span class="st">&quot;o&quot;</span>, <span class="st">&quot;u&quot;</span>, <span class="st">&quot;y&quot;</span>)
@@ -1208,12 +1234,12 @@ irisSepWCopy &lt;-<span class="st"> </span>irisSepWCopy[<span class="kw">order</
       <span class="st">&quot;argument &#39;word&#39; incorrect (&quot;</span>, word, <span class="st">&quot;)&quot;</span>))
   }
 } 
-<span class="kw">countVowelConso</span>(<span class="dt">word =</span> <span class="st">&quot;qwertyuiop azertyuiop&quot;</span>)</code></pre></div>
+<span class="kw">countVowelConso</span>(<span class="dt">word =</span> <span class="st">&quot;qwertyuiop azertyuiop&quot;</span>)</code></pre>
 <pre><code>## [1] 11  9</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">countVowelConso</span>(<span class="dt">word =</span> <span class="dv">5</span>)</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">countVowelConso</span>(<span class="dt">word =</span> <span class="dv">5</span>)</code></pre>
 <pre><code>## [1] &quot;Erreur dans la fonction countVowelConso, argument &#39;word&#39; incorrect (5)&quot;</code></pre>
 <p>Avec R comme pour tout langage de programmation, pour un problème il existe toujours de multiples solutions. Nous nous souvenons de la section sur les types de données (<a href="dataType1.html#l013logi">type de données <code>logical</code></a>), ainsi que de la section sur les <a href="premiersPas.html#l011opcomp">opérateurs de comparaison</a> que la valeur de <code>TRUE</code> est de 1 et la valeur de <code>FALSE</code> est de 0. Nous venons de voir ci-dessus que la fonction <a href="fonctions.html#l015in"><code>%in%</code></a> renvoie <code>TRUE</code> ou <code>FALSE</code> pour chacun des éléments du premier objet en fonction de leur présence ou absence dans le second objet. Notre fonction aurait pu donc se passer de la fonction <code>length()</code> pour le comptage des voyelles et des consonnes et utiliser la fonction <code>sum()</code>.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">countVowelConsoAlt &lt;-<span class="st"> </span><span class="cf">function</span>(word){ <span class="co"># compte les voyelles et les consonnes</span>
+<pre class="sourceCode r"><code class="sourceCode r">countVowelConsoAlt &lt;-<span class="st"> </span><span class="cf">function</span>(word){ <span class="co"># compte les voyelles et les consonnes</span>
   <span class="cf">if</span>(<span class="kw">is.vector</span>(word) <span class="op">&amp;</span><span class="st"> </span><span class="kw">is.character</span>(word) <span class="op">&amp;</span><span class="st"> </span><span class="kw">length</span>(word) <span class="op">==</span><span class="st"> </span><span class="dv">1</span>){
     wordSplit &lt;-<span class="st"> </span><span class="kw">strsplit</span>(word, <span class="dt">split =</span> <span class="st">&quot;&quot;</span>)[[<span class="dv">1</span>]]
     vowels &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;a&quot;</span>, <span class="st">&quot;e&quot;</span>, <span class="st">&quot;i&quot;</span>, <span class="st">&quot;o&quot;</span>, <span class="st">&quot;u&quot;</span>, <span class="st">&quot;y&quot;</span>)
@@ -1226,17 +1252,17 @@ irisSepWCopy &lt;-<span class="st"> </span>irisSepWCopy[<span class="kw">order</
       <span class="st">&quot;argument &#39;word&#39; incorrect (&quot;</span>, word, <span class="st">&quot;)&quot;</span>))
   }
 } 
-<span class="kw">countVowelConsoAlt</span>(<span class="dt">word =</span> <span class="st">&quot;qwertyuiop azertyuiop&quot;</span>)</code></pre></div>
+<span class="kw">countVowelConsoAlt</span>(<span class="dt">word =</span> <span class="st">&quot;qwertyuiop azertyuiop&quot;</span>)</code></pre>
 <pre><code>## [1] 11  9</code></pre>
 <p>Il n’y a pas de solution optimale dans l’absolu, tout dépend des objectifs recherchés. La première solution est peut être plus facile à comprendre, et la seconde peut être plus rapide en terme de vitesse d’exécution (même en répétant l’utilisation de la fonction 10000 fois, le gain de temps est presque nul dans notre cas).</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">system.time</span>(<span class="kw">replicate</span>(<span class="dt">n =</span> <span class="dv">10000</span>, <span class="kw">countVowelConso</span>(<span class="dt">word =</span> <span class="st">&quot;qwertyuiop azertyuiop&quot;</span>)))</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">system.time</span>(<span class="kw">replicate</span>(<span class="dt">n =</span> <span class="dv">10000</span>, <span class="kw">countVowelConso</span>(<span class="dt">word =</span> <span class="st">&quot;qwertyuiop azertyuiop&quot;</span>)))</code></pre>
 <pre><code>##    user  system elapsed 
-##    0.09    0.02    0.11</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">system.time</span>(<span class="kw">replicate</span>(<span class="dt">n =</span> <span class="dv">10000</span>, <span class="kw">countVowelConsoAlt</span>(<span class="dt">word =</span> <span class="st">&quot;qwertyuiop azertyuiop&quot;</span>)))</code></pre></div>
+##    0.17    0.00    0.17</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">system.time</span>(<span class="kw">replicate</span>(<span class="dt">n =</span> <span class="dv">10000</span>, <span class="kw">countVowelConsoAlt</span>(<span class="dt">word =</span> <span class="st">&quot;qwertyuiop azertyuiop&quot;</span>)))</code></pre>
 <pre><code>##    user  system elapsed 
-##    0.09    0.00    0.09</code></pre>
+##    0.15    0.00    0.15</code></pre>
 <p>Une fonction peut avoir des valeurs par défaut pour ses arguments. C’est le cas de la plupart des fonctions existantes. Par défaut, notre fonction va désormais compter le nombre de voyelles et de consonnes dans le mot <code>qwerty</code> (les parenthèses restent nécessaires même en l’absence d’arguments).</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">countVowelConsoAlt &lt;-<span class="st"> </span><span class="cf">function</span>(<span class="dt">word =</span> <span class="st">&quot;qwerty&quot;</span>){ <span class="co"># compte les voyelles et les consonnes</span>
+<pre class="sourceCode r"><code class="sourceCode r">countVowelConsoAlt &lt;-<span class="st"> </span><span class="cf">function</span>(<span class="dt">word =</span> <span class="st">&quot;qwerty&quot;</span>){ <span class="co"># compte les voyelles et les consonnes</span>
   <span class="cf">if</span>(<span class="kw">is.vector</span>(word) <span class="op">&amp;</span><span class="st"> </span><span class="kw">is.character</span>(word) <span class="op">&amp;</span><span class="st"> </span><span class="kw">length</span>(word) <span class="op">==</span><span class="st"> </span><span class="dv">1</span>){
     wordSplit &lt;-<span class="st"> </span><span class="kw">strsplit</span>(word, <span class="dt">split =</span> <span class="st">&quot;&quot;</span>)[[<span class="dv">1</span>]]
     vowels &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;a&quot;</span>, <span class="st">&quot;e&quot;</span>, <span class="st">&quot;i&quot;</span>, <span class="st">&quot;o&quot;</span>, <span class="st">&quot;u&quot;</span>, <span class="st">&quot;y&quot;</span>)
@@ -1249,7 +1275,7 @@ irisSepWCopy &lt;-<span class="st"> </span>irisSepWCopy[<span class="kw">order</
       <span class="st">&quot;argument &#39;word&#39; incorrect (&quot;</span>, word, <span class="st">&quot;)&quot;</span>))
   }
 } 
-<span class="kw">countVowelConsoAlt</span>()</code></pre></div>
+<span class="kw">countVowelConsoAlt</span>()</code></pre>
 <pre><code>## [1] 2 4</code></pre>
 <p>R compte de nombreuses fonctions, donc avant de vous lancer dans l’écriture d’une nouvelle fonction, il faut toujours vérifier que celle-ci n’existe pas déjà soit dans la version de base de R, soit dans des <strong>packages</strong> développés par la communauté des utilisateurs. Pour cela nous pouvons utiliser l’aide et la fonction <code>??</code>, mais aussi notre navigateur Internet.</p>
 </div>
@@ -1260,19 +1286,19 @@ irisSepWCopy &lt;-<span class="st"> </span>irisSepWCopy[<span class="kw">order</
 <div id="installer-un-package" class="section level3">
 <h3><span class="header-section-number">7.6.1</span> Installer un package</h3>
 <p>Une fois notre package sélectionné, nous pouvons le télécharger et l’installer avec la fonction <code>install.packages()</code> qui prend comme argument le nom du package entre guillemets (la fonction tolère l’absence de guillemets mais il est préférable de les utiliser pour que le code soit plus lisible). Certains packages sont installés par défault avec R, c’est le cas par exemple de <code>stats</code> (qui est aussi chargé par défaut).</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">install.packages</span>(<span class="st">&quot;stats&quot;</span>) <span class="co"># R statistical functions</span></code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">install.packages</span>(<span class="st">&quot;stats&quot;</span>) <span class="co"># R statistical functions</span></code></pre>
 <p>L’installation d’un package est à réaliser une seule fois, ensuite le package est sur notre ordinateur.</p>
 </div>
 <div id="charger-un-package" class="section level3">
 <h3><span class="header-section-number">7.6.2</span> Charger un package</h3>
 <p>Pour pouvoir utiliser les fonctions d’un package, nous devons le charger dans notre session de R. Il y a tellement de packages disponibles que R ne va pas charger par défault tous ceux que nous avons installé, mais seulement ceux dont nous allons avoir besoin pour notre étude en cours. Pour charger un package nous utilisons la fonction <code>library()</code>.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(<span class="st">&quot;stats&quot;</span>)</code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(<span class="st">&quot;stats&quot;</span>)</code></pre>
 <p>Le chargement du package est à réaliser à chaque fois que nous souhaitons exécuter notre code, il fait donc partie intégrante de notre script.</p>
 </div>
 <div id="portabilite-du-code" class="section level3">
 <h3><span class="header-section-number">7.6.3</span> Portabilité du code</h3>
 <p>Nous venons de voir que l’installation d’un package est à faire une seule fois par ordinateur, et que par contre le chargement d’un package est à réaliser pour chaque nouvelle session de R. Si l’on change d’ordinateur ou si l’on partage un script avec un collègue, il peut donc y avoir des erreurs à l’exécution liées à l’absence de l’installation d’un package. Pour pallier à ce problème, il est recommandé d’utiliser une fonction qui va vérifier si les packages nécessaires à l’exécution d’un script sont installés, si besoin les installer, puis les charger. Il existe de nombreuses fonctions pour faire cela sur Internet. La solution que nous proposons ici est un mélange adapté de différentes sources. Il n’est pas nécessaire de comprendre les détails de ce script pour le moment, mais simplement de comprendre ce qu’il fait. Voici un exemple pour les packages <code>stats</code> et <code>graphics</code> qui sont deux packages déjà présents avec la version de base de R, mais nous pouvons essayer avec tous les packages disponibles sur le CRAN, dont la liste se trouve ici : <a href="https://cran.r-project.org/web/packages/available_packages_by_name.html" class="uri">https://cran.r-project.org/web/packages/available_packages_by_name.html</a>.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">pkgCheck &lt;-<span class="st"> </span><span class="cf">function</span>(packages){
+<pre class="sourceCode r"><code class="sourceCode r">pkgCheck &lt;-<span class="st"> </span><span class="cf">function</span>(packages){
     <span class="cf">for</span>(x <span class="cf">in</span> packages){
         <span class="kw">try</span>(<span class="cf">if</span>(<span class="op">!</span><span class="kw">require</span>(x, <span class="dt">character.only =</span> <span class="ot">TRUE</span>)){
             <span class="kw">install.packages</span>(x, <span class="dt">dependencies =</span> <span class="ot">TRUE</span>)
@@ -1282,15 +1308,15 @@ irisSepWCopy &lt;-<span class="st"> </span>irisSepWCopy[<span class="kw">order</
         })
     }
 }
-<span class="kw">pkgCheck</span>(<span class="kw">c</span>(<span class="st">&quot;stats&quot;</span>, <span class="st">&quot;graphics&quot;</span>))</code></pre></div>
+<span class="kw">pkgCheck</span>(<span class="kw">c</span>(<span class="st">&quot;stats&quot;</span>, <span class="st">&quot;graphics&quot;</span>))</code></pre>
 <p>Alternativement nous pouvons utiliser la fonction <code>.packages()</code> pour lister les packages disponibles sur le CRAN par ordre alphabétique.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">head</span>(<span class="kw">.packages</span>(<span class="dt">all.available =</span> <span class="ot">TRUE</span>), <span class="dt">n =</span> <span class="dv">30</span>)</code></pre></div>
-<pre><code>##  [1] &quot;abind&quot;      &quot;acepack&quot;    &quot;actuar&quot;     &quot;ade4&quot;       &quot;adehabitat&quot;
-##  [6] &quot;agricolae&quot;  &quot;AlgDesign&quot;  &quot;alr4&quot;       &quot;animation&quot;  &quot;ape&quot;       
-## [11] &quot;arm&quot;        &quot;arules&quot;     &quot;arulesViz&quot;  &quot;assertthat&quot; &quot;audio&quot;     
-## [16] &quot;babynames&quot;  &quot;backports&quot;  &quot;base64&quot;     &quot;base64enc&quot;  &quot;BDgraph&quot;   
-## [21] &quot;beanplot&quot;   &quot;BH&quot;         &quot;bibtex&quot;     &quot;bindr&quot;      &quot;bindrcpp&quot;  
-## [26] &quot;binom&quot;      &quot;bitops&quot;     &quot;biwavelet&quot;  &quot;bold&quot;       &quot;bookdown&quot;</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">head</span>(<span class="kw">.packages</span>(<span class="dt">all.available =</span> <span class="ot">TRUE</span>), <span class="dt">n =</span> <span class="dv">30</span>)</code></pre>
+<pre><code>##  [1] &quot;abind&quot;       &quot;acepack&quot;     &quot;ade4&quot;        &quot;agricolae&quot;   &quot;AlgDesign&quot;  
+##  [6] &quot;ape&quot;         &quot;askpass&quot;     &quot;assertthat&quot;  &quot;backports&quot;   &quot;base64enc&quot;  
+## [11] &quot;BH&quot;          &quot;bibtex&quot;      &quot;bindr&quot;       &quot;bindrcpp&quot;    &quot;BioFTF&quot;     
+## [16] &quot;bitops&quot;      &quot;bookdown&quot;    &quot;brew&quot;        &quot;broom&quot;       &quot;ca&quot;         
+## [21] &quot;callr&quot;       &quot;caret&quot;       &quot;cartography&quot; &quot;caTools&quot;     &quot;cellranger&quot; 
+## [26] &quot;checkmate&quot;   &quot;CircStats&quot;   &quot;classInt&quot;    &quot;cli&quot;         &quot;clipr&quot;</code></pre>
 <p>La fonction <code>pkgCheck()</code> assure la <strong>portabilité</strong> de nos scripts : ils fonctionneront sur tous les ordinateurs sans avoir à effectuer de modification. Ainsi nos scipts pourront par exemple être joints à nos articles scientifiques et assurer ainsi la <strong>reproductibilité</strong> de nos résultats.</p>
 </div>
 </div>
@@ -1326,7 +1352,7 @@ gitbook.start({
 "google": false,
 "linkedin": false,
 "weibo": false,
-"instapper": false,
+"instapaper": false,
 "vk": false,
 "all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
 },
@@ -1338,6 +1364,10 @@ gitbook.start({
 "edit": {
 "link": "https://github.com/frareb/myRBook_FR/edit/master/015_fonctions.Rmd",
 "text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
 },
 "download": ["myRBook_FR.pdf", "myRBook_FR.epub"],
 "toc": {
