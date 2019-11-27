@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title> 5 Les types de données | Se former au logiciel R : initiation et perfectionnement</title>
   <meta name="description" content="Un guide pour acquérir les bases de la programmation avec R et conduire efficacement la gestion et l’analyse de ses données." />
-  <meta name="generator" content="bookdown 0.10 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.16 and GitBook 2.6.7" />
 
   <meta property="og:title" content=" 5 Les types de données | Se former au logiciel R : initiation et perfectionnement" />
   <meta property="og:type" content="book" />
@@ -24,15 +24,15 @@
 <meta name="author" content="François Rebaudo" />
 
 
-<meta name="date" content="2019-06-27" />
+<meta name="date" content="2019-11-27" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="IDE.html">
-<link rel="next" href="dataType2.html">
+<link rel="prev" href="IDE.html"/>
+<link rel="next" href="dataType2.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -40,6 +40,7 @@
 <link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
 
 
 
@@ -47,13 +48,15 @@
 
 
 
-<script src="libs/htmlwidgets-1.3/htmlwidgets.js"></script>
-<script src="libs/plotly-binding-4.9.0/plotly.js"></script>
+
+
+<script src="libs/htmlwidgets-1.5.1/htmlwidgets.js"></script>
+<script src="libs/plotly-binding-4.9.1/plotly.js"></script>
 <script src="libs/typedarray-0.1/typedarray.min.js"></script>
 <link href="libs/crosstalk-1.0.0/css/crosstalk.css" rel="stylesheet" />
 <script src="libs/crosstalk-1.0.0/js/crosstalk.min.js"></script>
-<link href="libs/plotly-htmlwidgets-css-1.46.1/plotly-htmlwidgets.css" rel="stylesheet" />
-<script src="libs/plotly-main-1.46.1/plotly-latest.min.js"></script>
+<link href="libs/plotly-htmlwidgets-css-1.49.4/plotly-htmlwidgets.css" rel="stylesheet" />
+<script src="libs/plotly-main-1.49.4/plotly-latest.min.js"></script>
 <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-124666641-2"></script>
 <script>
@@ -71,7 +74,6 @@ a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
 a.sourceLine:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode { white-space: pre; position: relative; }
-div.sourceCode { margin: 1em 0; }
 pre.sourceCode { margin: 0; }
 @media screen {
 div.sourceCode { overflow: auto; }
@@ -150,9 +152,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#licence"><i class="fa fa-check"></i><b>1.2</b> Licence</a></li>
 </ul></li>
 <li class="chapter" data-level="2" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>2</b> Introduction</a><ul>
-<li class="chapter" data-level="2.1" data-path="intro.html"><a href="intro.html#pourquoi-se-former-a-r"><i class="fa fa-check"></i><b>2.1</b> Pourquoi se former à R</a></li>
+<li class="chapter" data-level="2.1" data-path="intro.html"><a href="intro.html#pourquoi-se-former-à-r"><i class="fa fa-check"></i><b>2.1</b> Pourquoi se former à R</a></li>
 <li class="chapter" data-level="2.2" data-path="intro.html"><a href="intro.html#ce-livre"><i class="fa fa-check"></i><b>2.2</b> Ce livre</a></li>
-<li class="chapter" data-level="2.3" data-path="intro.html"><a href="intro.html#lectures-complementaires-en-francais"><i class="fa fa-check"></i><b>2.3</b> Lectures complémentaires en français</a></li>
+<li class="chapter" data-level="2.3" data-path="intro.html"><a href="intro.html#lectures-complémentaires-en-français"><i class="fa fa-check"></i><b>2.3</b> Lectures complémentaires en français</a></li>
 </ul></li>
 <li class="part"><span><b>I Concepts de base</b></span></li>
 <li class="chapter" data-level="3" data-path="premiersPas.html"><a href="premiersPas.html"><i class="fa fa-check"></i><b>3</b> Premiers pas</a><ul>
@@ -161,17 +163,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.2.1" data-path="premiersPas.html"><a href="premiersPas.html#l011opari"><i class="fa fa-check"></i><b>3.2.1</b> Les opérateurs arithmétiques</a></li>
 <li class="chapter" data-level="3.2.2" data-path="premiersPas.html"><a href="premiersPas.html#l011opcomp"><i class="fa fa-check"></i><b>3.2.2</b> Les opérateurs de comparaison</a></li>
 <li class="chapter" data-level="3.2.3" data-path="premiersPas.html"><a href="premiersPas.html#l011oplog"><i class="fa fa-check"></i><b>3.2.3</b> Les opérateurs logiques</a></li>
-<li class="chapter" data-level="3.2.4" data-path="premiersPas.html"><a href="premiersPas.html#aide-sur-les-operateurs"><i class="fa fa-check"></i><b>3.2.4</b> Aide sur les opérateurs</a></li>
+<li class="chapter" data-level="3.2.4" data-path="premiersPas.html"><a href="premiersPas.html#aide-sur-les-opérateurs"><i class="fa fa-check"></i><b>3.2.4</b> Aide sur les opérateurs</a></li>
 </ul></li>
 <li class="chapter" data-level="3.3" data-path="premiersPas.html"><a href="premiersPas.html#l011object"><i class="fa fa-check"></i><b>3.3</b> La notion d’objet</a></li>
 <li class="chapter" data-level="3.4" data-path="premiersPas.html"><a href="premiersPas.html#les-scripts"><i class="fa fa-check"></i><b>3.4</b> Les scripts</a><ul>
-<li class="chapter" data-level="3.4.1" data-path="premiersPas.html"><a href="premiersPas.html#creer-un-script-et-le-documenter"><i class="fa fa-check"></i><b>3.4.1</b> Créer un script et le documenter</a></li>
-<li class="chapter" data-level="3.4.2" data-path="premiersPas.html"><a href="premiersPas.html#executer-un-script"><i class="fa fa-check"></i><b>3.4.2</b> Exécuter un script</a></li>
+<li class="chapter" data-level="3.4.1" data-path="premiersPas.html"><a href="premiersPas.html#créer-un-script-et-le-documenter"><i class="fa fa-check"></i><b>3.4.1</b> Créer un script et le documenter</a></li>
+<li class="chapter" data-level="3.4.2" data-path="premiersPas.html"><a href="premiersPas.html#exécuter-un-script"><i class="fa fa-check"></i><b>3.4.2</b> Exécuter un script</a></li>
 </ul></li>
 <li class="chapter" data-level="3.5" data-path="premiersPas.html"><a href="premiersPas.html#conclusion"><i class="fa fa-check"></i><b>3.5</b> Conclusion</a></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="IDE.html"><a href="IDE.html"><i class="fa fa-check"></i><b>4</b> Choisir un environnement de développement</a><ul>
-<li class="chapter" data-level="4.1" data-path="IDE.html"><a href="IDE.html#editeurs-de-texte-et-environnement-de-developpement"><i class="fa fa-check"></i><b>4.1</b> Editeurs de texte et environnement de développement</a></li>
+<li class="chapter" data-level="4.1" data-path="IDE.html"><a href="IDE.html#editeurs-de-texte-et-environnement-de-développement"><i class="fa fa-check"></i><b>4.1</b> Editeurs de texte et environnement de développement</a></li>
 <li class="chapter" data-level="4.2" data-path="IDE.html"><a href="IDE.html#rstudio"><i class="fa fa-check"></i><b>4.2</b> RStudio</a><ul>
 <li class="chapter" data-level="4.2.1" data-path="IDE.html"><a href="IDE.html#installer-rstudio"><i class="fa fa-check"></i><b>4.2.1</b> Installer RStudio</a></li>
 <li class="chapter" data-level="4.2.2" data-path="IDE.html"><a href="IDE.html#un-script-avec-rstudio"><i class="fa fa-check"></i><b>4.2.2</b> Un script avec RStudio</a></li>
@@ -198,29 +200,29 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="6" data-path="dataType2.html"><a href="dataType2.html"><i class="fa fa-check"></i><b>6</b> Les conteneurs de données</a><ul>
 <li class="chapter" data-level="6.1" data-path="dataType2.html"><a href="dataType2.html#l014vector"><i class="fa fa-check"></i><b>6.1</b> Le conteneur <code>vector</code></a><ul>
-<li class="chapter" data-level="6.1.1" data-path="dataType2.html"><a href="dataType2.html#creer-un-vector"><i class="fa fa-check"></i><b>6.1.1</b> Créer un <code>vector</code></a></li>
-<li class="chapter" data-level="6.1.2" data-path="dataType2.html"><a href="dataType2.html#operations-sur-un-vector"><i class="fa fa-check"></i><b>6.1.2</b> Opérations sur un <code>vector</code></a></li>
-<li class="chapter" data-level="6.1.3" data-path="dataType2.html"><a href="dataType2.html#acceder-aux-valeurs-dun-vector"><i class="fa fa-check"></i><b>6.1.3</b> Accèder aux valeurs d’un <code>vector</code></a></li>
-<li class="chapter" data-level="6.1.4" data-path="dataType2.html"><a href="dataType2.html#nommer-les-elements-dun-vector"><i class="fa fa-check"></i><b>6.1.4</b> Nommer les éléments d’un <code>vector</code></a></li>
-<li class="chapter" data-level="6.1.5" data-path="dataType2.html"><a href="dataType2.html#modifier-les-elements-dun-vector"><i class="fa fa-check"></i><b>6.1.5</b> Modifier les éléments d’un <code>vector</code></a></li>
+<li class="chapter" data-level="6.1.1" data-path="dataType2.html"><a href="dataType2.html#créer-un-vector"><i class="fa fa-check"></i><b>6.1.1</b> Créer un <code>vector</code></a></li>
+<li class="chapter" data-level="6.1.2" data-path="dataType2.html"><a href="dataType2.html#opérations-sur-un-vector"><i class="fa fa-check"></i><b>6.1.2</b> Opérations sur un <code>vector</code></a></li>
+<li class="chapter" data-level="6.1.3" data-path="dataType2.html"><a href="dataType2.html#accèder-aux-valeurs-dun-vector"><i class="fa fa-check"></i><b>6.1.3</b> Accèder aux valeurs d’un <code>vector</code></a></li>
+<li class="chapter" data-level="6.1.4" data-path="dataType2.html"><a href="dataType2.html#nommer-les-éléments-dun-vector"><i class="fa fa-check"></i><b>6.1.4</b> Nommer les éléments d’un <code>vector</code></a></li>
+<li class="chapter" data-level="6.1.5" data-path="dataType2.html"><a href="dataType2.html#modifier-les-éléments-dun-vector"><i class="fa fa-check"></i><b>6.1.5</b> Modifier les éléments d’un <code>vector</code></a></li>
 </ul></li>
 <li class="chapter" data-level="6.2" data-path="dataType2.html"><a href="dataType2.html#l014list"><i class="fa fa-check"></i><b>6.2</b> Le conteneur <code>list</code></a><ul>
-<li class="chapter" data-level="6.2.1" data-path="dataType2.html"><a href="dataType2.html#creer-une-list"><i class="fa fa-check"></i><b>6.2.1</b> Créer une <code>list</code></a></li>
-<li class="chapter" data-level="6.2.2" data-path="dataType2.html"><a href="dataType2.html#acceder-aux-valeurs-dune-list"><i class="fa fa-check"></i><b>6.2.2</b> Accéder aux valeurs d’une <code>list</code></a></li>
+<li class="chapter" data-level="6.2.1" data-path="dataType2.html"><a href="dataType2.html#créer-une-list"><i class="fa fa-check"></i><b>6.2.1</b> Créer une <code>list</code></a></li>
+<li class="chapter" data-level="6.2.2" data-path="dataType2.html"><a href="dataType2.html#accéder-aux-valeurs-dune-list"><i class="fa fa-check"></i><b>6.2.2</b> Accéder aux valeurs d’une <code>list</code></a></li>
 <li class="chapter" data-level="6.2.3" data-path="dataType2.html"><a href="dataType2.html#modification-dune-list"><i class="fa fa-check"></i><b>6.2.3</b> Modification d’une <code>list</code></a></li>
 </ul></li>
 <li class="chapter" data-level="6.3" data-path="dataType2.html"><a href="dataType2.html#l014dataframe"><i class="fa fa-check"></i><b>6.3</b> Le conteneur <code>data.frame</code></a><ul>
-<li class="chapter" data-level="6.3.1" data-path="dataType2.html"><a href="dataType2.html#creer-un-data.frame"><i class="fa fa-check"></i><b>6.3.1</b> Créer un <code>data.frame</code></a></li>
-<li class="chapter" data-level="6.3.2" data-path="dataType2.html"><a href="dataType2.html#acceder-aux-valeurs-dun-data.frame"><i class="fa fa-check"></i><b>6.3.2</b> Accèder aux valeurs d’un <code>data.frame</code></a></li>
+<li class="chapter" data-level="6.3.1" data-path="dataType2.html"><a href="dataType2.html#créer-un-data.frame"><i class="fa fa-check"></i><b>6.3.1</b> Créer un <code>data.frame</code></a></li>
+<li class="chapter" data-level="6.3.2" data-path="dataType2.html"><a href="dataType2.html#accèder-aux-valeurs-dun-data.frame"><i class="fa fa-check"></i><b>6.3.2</b> Accèder aux valeurs d’un <code>data.frame</code></a></li>
 <li class="chapter" data-level="6.3.3" data-path="dataType2.html"><a href="dataType2.html#modifier-un-data.frame"><i class="fa fa-check"></i><b>6.3.3</b> Modifier un <code>data.frame</code></a></li>
 </ul></li>
 <li class="chapter" data-level="6.4" data-path="dataType2.html"><a href="dataType2.html#l014matrix"><i class="fa fa-check"></i><b>6.4</b> Le conteneur <code>matrix</code></a><ul>
-<li class="chapter" data-level="6.4.1" data-path="dataType2.html"><a href="dataType2.html#creer-une-matrix"><i class="fa fa-check"></i><b>6.4.1</b> Créer une <code>matrix</code></a></li>
-<li class="chapter" data-level="6.4.2" data-path="dataType2.html"><a href="dataType2.html#manipuler-et-faire-des-operations-sur-une-matrix"><i class="fa fa-check"></i><b>6.4.2</b> Manipuler et faire des opérations sur une <code>matrix</code></a></li>
-<li class="chapter" data-level="6.4.3" data-path="dataType2.html"><a href="dataType2.html#acceder-aux-elements-dune-matrix"><i class="fa fa-check"></i><b>6.4.3</b> Accèder aux éléments d’une <code>matrix</code></a></li>
+<li class="chapter" data-level="6.4.1" data-path="dataType2.html"><a href="dataType2.html#créer-une-matrix"><i class="fa fa-check"></i><b>6.4.1</b> Créer une <code>matrix</code></a></li>
+<li class="chapter" data-level="6.4.2" data-path="dataType2.html"><a href="dataType2.html#manipuler-et-faire-des-opérations-sur-une-matrix"><i class="fa fa-check"></i><b>6.4.2</b> Manipuler et faire des opérations sur une <code>matrix</code></a></li>
+<li class="chapter" data-level="6.4.3" data-path="dataType2.html"><a href="dataType2.html#accèder-aux-éléments-dune-matrix"><i class="fa fa-check"></i><b>6.4.3</b> Accèder aux éléments d’une <code>matrix</code></a></li>
 </ul></li>
 <li class="chapter" data-level="6.5" data-path="dataType2.html"><a href="dataType2.html#l014array"><i class="fa fa-check"></i><b>6.5</b> Le conteneur <code>array</code></a><ul>
-<li class="chapter" data-level="6.5.1" data-path="dataType2.html"><a href="dataType2.html#creer-un-array"><i class="fa fa-check"></i><b>6.5.1</b> Créer un <code>array</code></a></li>
+<li class="chapter" data-level="6.5.1" data-path="dataType2.html"><a href="dataType2.html#créer-un-array"><i class="fa fa-check"></i><b>6.5.1</b> Créer un <code>array</code></a></li>
 <li class="chapter" data-level="6.5.2" data-path="dataType2.html"><a href="dataType2.html#manipuler-un-array"><i class="fa fa-check"></i><b>6.5.2</b> Manipuler un <code>array</code></a></li>
 </ul></li>
 <li class="chapter" data-level="6.6" data-path="dataType2.html"><a href="dataType2.html#conclusion-3"><i class="fa fa-check"></i><b>6.6</b> Conclusion</a></li>
@@ -228,10 +230,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="7" data-path="fonctions.html"><a href="fonctions.html"><i class="fa fa-check"></i><b>7</b> Les fonctions</a><ul>
 <li class="chapter" data-level="7.1" data-path="fonctions.html"><a href="fonctions.html#quest-ce-quune-fonction"><i class="fa fa-check"></i><b>7.1</b> Qu’est-ce qu’une fonction</a></li>
 <li class="chapter" data-level="7.2" data-path="fonctions.html"><a href="fonctions.html#l015mainfun"><i class="fa fa-check"></i><b>7.2</b> Les fonctions les plus courantes</a><ul>
-<li class="chapter" data-level="7.2.1" data-path="fonctions.html"><a href="fonctions.html#lacces-a-la-documentation"><i class="fa fa-check"></i><b>7.2.1</b> L’accès à la documentation</a></li>
-<li class="chapter" data-level="7.2.2" data-path="fonctions.html"><a href="fonctions.html#visualiser-les-donnees"><i class="fa fa-check"></i><b>7.2.2</b> Visualiser les données</a></li>
-<li class="chapter" data-level="7.2.3" data-path="fonctions.html"><a href="fonctions.html#manipuler-les-donnees"><i class="fa fa-check"></i><b>7.2.3</b> Manipuler les données</a></li>
-<li class="chapter" data-level="7.2.4" data-path="fonctions.html"><a href="fonctions.html#fonctions-mathematiques"><i class="fa fa-check"></i><b>7.2.4</b> Fonctions mathématiques</a></li>
+<li class="chapter" data-level="7.2.1" data-path="fonctions.html"><a href="fonctions.html#laccès-à-la-documentation"><i class="fa fa-check"></i><b>7.2.1</b> L’accès à la documentation</a></li>
+<li class="chapter" data-level="7.2.2" data-path="fonctions.html"><a href="fonctions.html#visualiser-les-données"><i class="fa fa-check"></i><b>7.2.2</b> Visualiser les données</a></li>
+<li class="chapter" data-level="7.2.3" data-path="fonctions.html"><a href="fonctions.html#manipuler-les-données"><i class="fa fa-check"></i><b>7.2.3</b> Manipuler les données</a></li>
+<li class="chapter" data-level="7.2.4" data-path="fonctions.html"><a href="fonctions.html#fonctions-mathématiques"><i class="fa fa-check"></i><b>7.2.4</b> Fonctions mathématiques</a></li>
 <li class="chapter" data-level="7.2.5" data-path="fonctions.html"><a href="fonctions.html#statistiques-descriptives"><i class="fa fa-check"></i><b>7.2.5</b> Statistiques descriptives</a></li>
 </ul></li>
 <li class="chapter" data-level="7.3" data-path="fonctions.html"><a href="fonctions.html#autres-fonctions-utiles"><i class="fa fa-check"></i><b>7.3</b> Autres fonctions utiles</a><ul>
@@ -246,14 +248,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="7.3.9" data-path="fonctions.html"><a href="fonctions.html#l015rm"><i class="fa fa-check"></i><b>7.3.9</b> <code>rm()</code></a></li>
 </ul></li>
 <li class="chapter" data-level="7.4" data-path="fonctions.html"><a href="fonctions.html#quelques-exercices"><i class="fa fa-check"></i><b>7.4</b> Quelques exercices</a><ul>
-<li class="chapter" data-level="7.4.1" data-path="fonctions.html"><a href="fonctions.html#sequences"><i class="fa fa-check"></i><b>7.4.1</b> Séquences</a></li>
+<li class="chapter" data-level="7.4.1" data-path="fonctions.html"><a href="fonctions.html#séquences"><i class="fa fa-check"></i><b>7.4.1</b> Séquences</a></li>
 <li class="chapter" data-level="7.4.2" data-path="fonctions.html"><a href="fonctions.html#statistiques-descriptives-1"><i class="fa fa-check"></i><b>7.4.2</b> Statistiques descriptives</a></li>
 </ul></li>
 <li class="chapter" data-level="7.5" data-path="fonctions.html"><a href="fonctions.html#l015function"><i class="fa fa-check"></i><b>7.5</b> Ecrire une fonction</a></li>
-<li class="chapter" data-level="7.6" data-path="fonctions.html"><a href="fonctions.html#autres-fonctions-developpees-par-la-communaute-des-utilisateurs-les-packages"><i class="fa fa-check"></i><b>7.6</b> Autres fonctions développées par la communauté des utilisateurs : les packages</a><ul>
+<li class="chapter" data-level="7.6" data-path="fonctions.html"><a href="fonctions.html#autres-fonctions-développées-par-la-communauté-des-utilisateurs-les-packages"><i class="fa fa-check"></i><b>7.6</b> Autres fonctions développées par la communauté des utilisateurs : les packages</a><ul>
 <li class="chapter" data-level="7.6.1" data-path="fonctions.html"><a href="fonctions.html#installer-un-package"><i class="fa fa-check"></i><b>7.6.1</b> Installer un package</a></li>
 <li class="chapter" data-level="7.6.2" data-path="fonctions.html"><a href="fonctions.html#charger-un-package"><i class="fa fa-check"></i><b>7.6.2</b> Charger un package</a></li>
-<li class="chapter" data-level="7.6.3" data-path="fonctions.html"><a href="fonctions.html#portabilite-du-code"><i class="fa fa-check"></i><b>7.6.3</b> Portabilité du code</a></li>
+<li class="chapter" data-level="7.6.3" data-path="fonctions.html"><a href="fonctions.html#portabilité-du-code"><i class="fa fa-check"></i><b>7.6.3</b> Portabilité du code</a></li>
 </ul></li>
 <li class="chapter" data-level="7.7" data-path="fonctions.html"><a href="fonctions.html#conclusion-4"><i class="fa fa-check"></i><b>7.7</b> Conclusion</a></li>
 </ul></li>
@@ -284,7 +286,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="9.8" data-path="algo.html"><a href="algo.html#conclusion-6"><i class="fa fa-check"></i><b>9.8</b> Conclusion</a></li>
 </ul></li>
 <li class="chapter" data-level="10" data-path="project.html"><a href="project.html"><i class="fa fa-check"></i><b>10</b> Gestion d’un projet avec R</a><ul>
-<li class="chapter" data-level="10.1" data-path="project.html"><a href="project.html#gestion-des-fichiers-et-des-repertoires-de-travail"><i class="fa fa-check"></i><b>10.1</b> Gestion des fichiers et des répertoires de travail</a></li>
+<li class="chapter" data-level="10.1" data-path="project.html"><a href="project.html#gestion-des-fichiers-et-des-répertoires-de-travail"><i class="fa fa-check"></i><b>10.1</b> Gestion des fichiers et des répertoires de travail</a></li>
 <li class="chapter" data-level="10.2" data-path="project.html"><a href="project.html#gestion-des-versions-de-script"><i class="fa fa-check"></i><b>10.2</b> Gestion des versions de script</a></li>
 <li class="chapter" data-level="10.3" data-path="project.html"><a href="project.html#gestion-de-la-documentation"><i class="fa fa-check"></i><b>10.3</b> Gestion de la documentation</a></li>
 <li class="chapter" data-level="10.4" data-path="project.html"><a href="project.html#conclusion-7"><i class="fa fa-check"></i><b>10.4</b> Conclusion</a></li>
@@ -317,7 +319,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="14" data-path="graph4.html"><a href="graph4.html"><i class="fa fa-check"></i><b>14</b> Du graphique à la figure dans un article scientifique</a><ul>
 <li class="chapter" data-level="14.1" data-path="graph4.html"><a href="graph4.html#inkscape"><i class="fa fa-check"></i><b>14.1</b> Inkscape</a></li>
 <li class="chapter" data-level="14.2" data-path="graph4.html"><a href="graph4.html#the-gimp"><i class="fa fa-check"></i><b>14.2</b> The Gimp</a></li>
-<li class="chapter" data-level="14.3" data-path="graph4.html"><a href="graph4.html#table-de-reference"><i class="fa fa-check"></i><b>14.3</b> Table de référence</a></li>
+<li class="chapter" data-level="14.3" data-path="graph4.html"><a href="graph4.html#table-de-référence"><i class="fa fa-check"></i><b>14.3</b> Table de référence</a></li>
 </ul></li>
 <li class="part"><span><b>III Etude de cas</b></span></li>
 <li class="chapter" data-level="15" data-path="studyCase001.html"><a href="studyCase001.html"><i class="fa fa-check"></i><b>15</b> Analyser des données de datalogger de température</a></li>
@@ -349,152 +351,152 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">5.1</span> Le type <code>numeric</code></h2>
 <p>Le type <code>numeric</code> correspond à ce que nous avons fait jusqu’à présent, stocker des nombres. Il existe deux principaux types de nombres avec R: les nombres entiers (<em>integers</em>), et les nombres à virgule (<em>double</em>). Par défaut R considère tous les nombres comme des nombres à virgule et attribue le type <code>double</code>.
 Pour vérifier le type de données nous allons utiliser la fonction <code>typeof()</code> qui prend comme argument un objet (ou directement l’information que nous souhaitons tester). Nous pouvons également utiliser la fonction <code>is.double()</code> qui va renvoyer <code>TRUE</code> si le nombre est au format <code>double</code> et <code>FALSE</code> dans le cas contraire. La fonction générique <code>is.numeric()</code> va quant à elle renvoyer <code>TRUE</code> si l’objet est au format <code>numeric</code> et <code>FALSE</code> dans le cas contraire.</p>
-<pre class="sourceCode r"><code class="sourceCode r">nbrRep &lt;-<span class="st"> </span><span class="dv">5</span>
-<span class="kw">typeof</span>(nbrRep)</code></pre>
+<div class="sourceCode" id="cb114"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb114-1" title="1">nbrRep &lt;-<span class="st"> </span><span class="dv">5</span></a>
+<a class="sourceLine" id="cb114-2" title="2"><span class="kw">typeof</span>(nbrRep)</a></code></pre></div>
 <pre><code>## [1] &quot;double&quot;</code></pre>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">typeof</span>(<span class="fl">5.32</span>)</code></pre>
+<div class="sourceCode" id="cb116"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb116-1" title="1"><span class="kw">typeof</span>(<span class="fl">5.32</span>)</a></code></pre></div>
 <pre><code>## [1] &quot;double&quot;</code></pre>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">is.numeric</span>(<span class="dv">5</span>)</code></pre>
+<div class="sourceCode" id="cb118"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb118-1" title="1"><span class="kw">is.numeric</span>(<span class="dv">5</span>)</a></code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">is.double</span>(<span class="dv">5</span>)</code></pre>
+<div class="sourceCode" id="cb120"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb120-1" title="1"><span class="kw">is.double</span>(<span class="dv">5</span>)</a></code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
 <p>Si nous voulons spécifier à R que nous allons travailler avec un nombre entier, alors il nous faut transformer notre nombre à virgule en nombre entier avec la fonction <code>as.integer()</code>. Nous pouvons également utiliser la fonction <code>is.integer()</code> qui va renvoyer <code>TRUE</code> si le nombre est au format <code>integer</code> et <code>FALSE</code> dans le cas contraire.</p>
-<pre class="sourceCode r"><code class="sourceCode r">nbrRep &lt;-<span class="st"> </span><span class="kw">as.integer</span>(<span class="dv">5</span>)
-<span class="kw">typeof</span>(nbrRep)</code></pre>
+<div class="sourceCode" id="cb122"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb122-1" title="1">nbrRep &lt;-<span class="st"> </span><span class="kw">as.integer</span>(<span class="dv">5</span>)</a>
+<a class="sourceLine" id="cb122-2" title="2"><span class="kw">typeof</span>(nbrRep)</a></code></pre></div>
 <pre><code>## [1] &quot;integer&quot;</code></pre>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">typeof</span>(<span class="fl">5.32</span>)</code></pre>
+<div class="sourceCode" id="cb124"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb124-1" title="1"><span class="kw">typeof</span>(<span class="fl">5.32</span>)</a></code></pre></div>
 <pre><code>## [1] &quot;double&quot;</code></pre>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">typeof</span>(<span class="kw">as.integer</span>(<span class="fl">5.32</span>))</code></pre>
+<div class="sourceCode" id="cb126"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb126-1" title="1"><span class="kw">typeof</span>(<span class="kw">as.integer</span>(<span class="fl">5.32</span>))</a></code></pre></div>
 <pre><code>## [1] &quot;integer&quot;</code></pre>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">as.integer</span>(<span class="fl">5.32</span>)</code></pre>
+<div class="sourceCode" id="cb128"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb128-1" title="1"><span class="kw">as.integer</span>(<span class="fl">5.32</span>)</a></code></pre></div>
 <pre><code>## [1] 5</code></pre>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">as.integer</span>(<span class="fl">5.99</span>)</code></pre>
+<div class="sourceCode" id="cb130"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb130-1" title="1"><span class="kw">as.integer</span>(<span class="fl">5.99</span>)</a></code></pre></div>
 <pre><code>## [1] 5</code></pre>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">is.numeric</span>(nbrRep)</code></pre>
+<div class="sourceCode" id="cb132"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb132-1" title="1"><span class="kw">is.numeric</span>(nbrRep)</a></code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
 <p>Nous voyons ici que transformer un nombre comme <code>5.99</code> au format <code>integer</code> va renvoyer uniquement la partie entière, soit <code>5</code>.</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">is.integer</span>(<span class="dv">5</span>)</code></pre>
+<div class="sourceCode" id="cb134"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb134-1" title="1"><span class="kw">is.integer</span>(<span class="dv">5</span>)</a></code></pre></div>
 <pre><code>## [1] FALSE</code></pre>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">is.numeric</span>(<span class="dv">5</span>)</code></pre>
+<div class="sourceCode" id="cb136"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb136-1" title="1"><span class="kw">is.numeric</span>(<span class="dv">5</span>)</a></code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">is.integer</span>(<span class="kw">as.integer</span>(<span class="dv">5</span>))</code></pre>
+<div class="sourceCode" id="cb138"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb138-1" title="1"><span class="kw">is.integer</span>(<span class="kw">as.integer</span>(<span class="dv">5</span>))</a></code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">is.numeric</span>(<span class="kw">as.integer</span>(<span class="dv">5</span>))</code></pre>
+<div class="sourceCode" id="cb140"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb140-1" title="1"><span class="kw">is.numeric</span>(<span class="kw">as.integer</span>(<span class="dv">5</span>))</a></code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
 <p>La somme d’un nombre entier et d’un nombre à virgule renvoie un nombre à virgule.</p>
-<pre class="sourceCode r"><code class="sourceCode r">sumIntDou &lt;-<span class="st"> </span><span class="kw">as.integer</span>(<span class="dv">5</span>) <span class="op">+</span><span class="st"> </span><span class="fl">5.2</span>
-<span class="kw">typeof</span>(sumIntDou)</code></pre>
+<div class="sourceCode" id="cb142"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb142-1" title="1">sumIntDou &lt;-<span class="st"> </span><span class="kw">as.integer</span>(<span class="dv">5</span>) <span class="op">+</span><span class="st"> </span><span class="fl">5.2</span></a>
+<a class="sourceLine" id="cb142-2" title="2"><span class="kw">typeof</span>(sumIntDou)</a></code></pre></div>
 <pre><code>## [1] &quot;double&quot;</code></pre>
-<pre class="sourceCode r"><code class="sourceCode r">sumIntInt &lt;-<span class="st"> </span><span class="kw">as.integer</span>(<span class="dv">5</span>) <span class="op">+</span><span class="st"> </span><span class="kw">as.integer</span>(<span class="dv">5</span>)
-<span class="kw">typeof</span>(sumIntInt)</code></pre>
+<div class="sourceCode" id="cb144"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb144-1" title="1">sumIntInt &lt;-<span class="st"> </span><span class="kw">as.integer</span>(<span class="dv">5</span>) <span class="op">+</span><span class="st"> </span><span class="kw">as.integer</span>(<span class="dv">5</span>)</a>
+<a class="sourceLine" id="cb144-2" title="2"><span class="kw">typeof</span>(sumIntInt)</a></code></pre></div>
 <pre><code>## [1] &quot;integer&quot;</code></pre>
 <p>Pour résumer, le type <code>numeric</code> contient deux sous-types, les types <code>integer</code> pour les nombres entiers et le type <code>double</code> pour les nombres à virgule. Par défaut R attribue le type <code>double</code> aux nombres.</p>
 <p>Deux nombres particuliers doivent être considérés. <code>Inf</code> est un nombre de type <code>double</code>. Il désigne un nombre infini. Par exemple, <code>1/0</code> retourne <code>Inf</code> et aucun nombre ne peut être plus grand que <code>Inf</code>. <code>NaN</code> est une valeur qui signifie <code>Not a Number</code> : par exemple <code>0/0</code> retourne <code>NaN</code>. Cela peut être testé par <code>is.nan(0/0)</code>. Attention à ne pas confondre avec NA qui désigne une donnée absente (voir plus loin).</p>
 <p>Attention, il y a un piège à l’utilisation de la fonction <code>is.integer()</code>. Elle ne nous dit pas si le nombre est un entier mais si il est du type <code>integer</code>. En effet, on peut très bien stocker un nombre entier dans une variable de type <code>double</code>.</p>
 <p>Les nombres stockés dans une variable <code>integer</code> sont codés sur 32 bits et donc peuvent prendre des valeurs comprises entre 0 et 2^32-1=4294967295. Il existe une autre façon d’indiquer à R qu’un nombre est un entier, en utilisant le suffixe L. Par exemple, <code>5L</code> est la même chose que <code>as.integer(5)</code>. L’origine de ce suffixe <code>L</code> date d’une époque où les ordinateurs utilisaient des mots de 16 bits et 32 bits étaient bien un type <code>Long</code>. Maintenant les ordinateurs utilisent des mots de 64 bits et 32 bits est plutôt court !</p>
 <p>On ne peut pas quitter cette section sans mentionner les fonctions <a href="fonctions.html#l015round"><code>ceiling()</code></a>, <a href="fonctions.html#l015round"><code>floor()</code></a>, <a href="fonctions.html#l015round"><code>trunc()</code></a> ou <a href="fonctions.html#l015round"><code>round()</code></a> qui retournent la partie entière d’un nombre mais le laisse au type <code>double</code>. Pour en savoir plus, nous pouvons utiliser <a href="fonctions.html#l015help">l’aide de R</a> avec <code>?round</code>.</p>
-<pre class="sourceCode r"><code class="sourceCode r">roundDou &lt;-<span class="st"> </span><span class="kw">round</span>(<span class="fl">5.2</span>)
-<span class="kw">typeof</span>(roundDou)</code></pre>
+<div class="sourceCode" id="cb146"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb146-1" title="1">roundDou &lt;-<span class="st"> </span><span class="kw">round</span>(<span class="fl">5.2</span>)</a>
+<a class="sourceLine" id="cb146-2" title="2"><span class="kw">typeof</span>(roundDou)</a></code></pre></div>
 <pre><code>## [1] &quot;double&quot;</code></pre>
 </div>
 <div id="le-type-character" class="section level2">
 <h2><span class="header-section-number">5.2</span> Le type <code>character</code></h2>
 <p>Le type <code>character</code> correspond au texte. En effet, R permet de travailler avec du texte. pour spécifier à R que l’information contenue dans un objet est au format texte (ou de manière générale pour tous les textes), il faut utiliser les guillemets doubles (<code>"</code>), ou simples (<code>'</code>).</p>
-<pre class="sourceCode r"><code class="sourceCode r">myText &lt;-<span class="st"> &quot;azerty&quot;</span>
-myText2 &lt;-<span class="st"> &#39;azerty&#39;</span>
-myText3 &lt;-<span class="st"> &#39;azerty uiop qsdfg hjklm&#39;</span>
-<span class="kw">typeof</span>(myText3)</code></pre>
+<div class="sourceCode" id="cb148"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb148-1" title="1">myText &lt;-<span class="st"> &quot;azerty&quot;</span></a>
+<a class="sourceLine" id="cb148-2" title="2">myText2 &lt;-<span class="st"> &#39;azerty&#39;</span></a>
+<a class="sourceLine" id="cb148-3" title="3">myText3 &lt;-<span class="st"> &#39;azerty uiop qsdfg hjklm&#39;</span></a>
+<a class="sourceLine" id="cb148-4" title="4"><span class="kw">typeof</span>(myText3)</a></code></pre></div>
 <pre><code>## [1] &quot;character&quot;</code></pre>
 <p>Les guillemets doubles ou simples sont utiles si l’on souhaite mettre des guillemets dans notre texte. Nous pouvons également <em>échapper</em> un caractère spécial comme un guillemet grâce au signe backslash <code>\</code>.</p>
-<pre class="sourceCode r"><code class="sourceCode r">myText &lt;-<span class="st"> &quot;a &#39;ze&#39; &#39;rt&#39; y&quot;</span>
-myText2 &lt;-<span class="st"> &#39;a &quot;zert&quot; y&#39;</span>
-myText3 &lt;-<span class="st"> &#39;azerty uiop qsdfg hjklm&#39;</span>
-myText4 &lt;-<span class="st"> &quot;qwerty </span><span class="ch">\&quot;</span><span class="st"> azerty &quot;</span>
-myText5 &lt;-<span class="st"> &quot;qwerty </span><span class="ch">\\</span><span class="st"> azerty &quot;</span></code></pre>
+<div class="sourceCode" id="cb150"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb150-1" title="1">myText &lt;-<span class="st"> &quot;a &#39;ze&#39; &#39;rt&#39; y&quot;</span></a>
+<a class="sourceLine" id="cb150-2" title="2">myText2 &lt;-<span class="st"> &#39;a &quot;zert&quot; y&#39;</span></a>
+<a class="sourceLine" id="cb150-3" title="3">myText3 &lt;-<span class="st"> &#39;azerty uiop qsdfg hjklm&#39;</span></a>
+<a class="sourceLine" id="cb150-4" title="4">myText4 &lt;-<span class="st"> &quot;qwerty </span><span class="ch">\&quot;</span><span class="st"> azerty &quot;</span></a>
+<a class="sourceLine" id="cb150-5" title="5">myText5 &lt;-<span class="st"> &quot;qwerty </span><span class="ch">\\</span><span class="st"> azerty &quot;</span></a></code></pre></div>
 <p>Par défaut lorsque nous créons un objet, son contenu n’est pas renvoyé par la console. Sur Internet ou dans de nombreux ouvrages nous pouvons retrouver le nom de l’objet sur une ligne pour renvoyer son contenu:</p>
-<pre class="sourceCode r"><code class="sourceCode r">myText &lt;-<span class="st"> &quot;a &#39;ze&#39; &#39;rt&#39; y&quot;</span>
-myText</code></pre>
+<div class="sourceCode" id="cb151"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb151-1" title="1">myText &lt;-<span class="st"> &quot;a &#39;ze&#39; &#39;rt&#39; y&quot;</span></a>
+<a class="sourceLine" id="cb151-2" title="2">myText</a></code></pre></div>
 <pre><code>## [1] &quot;a &#39;ze&#39; &#39;rt&#39; y&quot;</code></pre>
 <p>Dans ce livre nous n’utiliserons jamais cette façon de faire et préfèrerons l’utilisation de la fonction <code>print()</code>, qui permet d’afficher dans la console le contenu d’un objet. Le résultat est le même mais le code est alors plus facile à lire et plus explicite sur ce qui est fait.</p>
-<pre class="sourceCode r"><code class="sourceCode r">myText &lt;-<span class="st"> &quot;a &#39;ze&#39; &#39;rt&#39; y&quot;</span>
-<span class="kw">print</span>(myText)</code></pre>
+<div class="sourceCode" id="cb153"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb153-1" title="1">myText &lt;-<span class="st"> &quot;a &#39;ze&#39; &#39;rt&#39; y&quot;</span></a>
+<a class="sourceLine" id="cb153-2" title="2"><span class="kw">print</span>(myText)</a></code></pre></div>
 <pre><code>## [1] &quot;a &#39;ze&#39; &#39;rt&#39; y&quot;</code></pre>
-<pre class="sourceCode r"><code class="sourceCode r">nbrRep &lt;-<span class="st"> </span><span class="dv">5</span>
-<span class="kw">print</span>(nbrRep)</code></pre>
+<div class="sourceCode" id="cb155"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb155-1" title="1">nbrRep &lt;-<span class="st"> </span><span class="dv">5</span></a>
+<a class="sourceLine" id="cb155-2" title="2"><span class="kw">print</span>(nbrRep)</a></code></pre></div>
 <pre><code>## [1] 5</code></pre>
 <p>Nous pouvons également mettre des chiffres au format texte, mais il ne faut pas oublier de mettre des guillemets pour spécifier le type <code>character</code> ou utiliser la fonction <code>as.character()</code>. Une opération entre du texte et un nombre renvoie une erreur. Par exemple si l’on ajoute <code>10</code> à <code>"5"</code>, R nous signale qu’un <strong>argument</strong> de la <strong>fonction</strong> <code>+</code> n’est pas de type <code>numeric</code> et que donc l’opération n’est pas possible. Nous ne pouvons pas non plus ajouter du texte à du texte, mais verrons plus tard comment <em>concaténer</em> deux <em>chaines de texte</em>.</p>
-<pre class="sourceCode r"><code class="sourceCode r">myText &lt;-<span class="st"> &quot;qwerty&quot;</span>
-<span class="kw">typeof</span>(myText)</code></pre>
+<div class="sourceCode" id="cb157"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb157-1" title="1">myText &lt;-<span class="st"> &quot;qwerty&quot;</span></a>
+<a class="sourceLine" id="cb157-2" title="2"><span class="kw">typeof</span>(myText)</a></code></pre></div>
 <pre><code>## [1] &quot;character&quot;</code></pre>
-<pre class="sourceCode r"><code class="sourceCode r">myText2 &lt;-<span class="st"> </span><span class="dv">5</span>
-<span class="kw">typeof</span>(myText2)</code></pre>
+<div class="sourceCode" id="cb159"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb159-1" title="1">myText2 &lt;-<span class="st"> </span><span class="dv">5</span></a>
+<a class="sourceLine" id="cb159-2" title="2"><span class="kw">typeof</span>(myText2)</a></code></pre></div>
 <pre><code>## [1] &quot;double&quot;</code></pre>
-<pre class="sourceCode r"><code class="sourceCode r">myText3 &lt;-<span class="st"> &quot;5&quot;</span>
-<span class="kw">typeof</span>(myText3)</code></pre>
+<div class="sourceCode" id="cb161"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb161-1" title="1">myText3 &lt;-<span class="st"> &quot;5&quot;</span></a>
+<a class="sourceLine" id="cb161-2" title="2"><span class="kw">typeof</span>(myText3)</a></code></pre></div>
 <pre><code>## [1] &quot;character&quot;</code></pre>
-<pre class="sourceCode r"><code class="sourceCode r">myText2 <span class="op">+</span><span class="st"> </span><span class="dv">10</span></code></pre>
+<div class="sourceCode" id="cb163"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb163-1" title="1">myText2 <span class="op">+</span><span class="st"> </span><span class="dv">10</span></a></code></pre></div>
 <pre><code>## [1] 15</code></pre>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">as.character</span>(<span class="dv">5</span>)</code></pre>
+<div class="sourceCode" id="cb165"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb165-1" title="1"><span class="kw">as.character</span>(<span class="dv">5</span>)</a></code></pre></div>
 <pre><code>## [1] &quot;5&quot;</code></pre>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="co"># myText3 + 10 # Error in myText3 + 10 : non-numeric argument to binary operator</span>
-<span class="co"># &quot;a&quot; + &quot;b&quot; # Error in &quot;a&quot; + &quot;b&quot; : non-numeric argument to binary operator</span></code></pre>
+<div class="sourceCode" id="cb167"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb167-1" title="1"><span class="co"># myText3 + 10 # Error in myText3 + 10 : non-numeric argument to binary operator</span></a>
+<a class="sourceLine" id="cb167-2" title="2"><span class="co"># &quot;a&quot; + &quot;b&quot; # Error in &quot;a&quot; + &quot;b&quot; : non-numeric argument to binary operator</span></a></code></pre></div>
 <p>Pour résumer, le type <code>character</code> permet la saisie de texte, nous pouvons le reconnaître grâce aux guillemets simples ou doubles.</p>
 </div>
 <div id="le-type-factor" class="section level2">
 <h2><span class="header-section-number">5.3</span> Le type <code>factor</code></h2>
 <p>Le type <code>factor</code> correspond aux facteurs. Les facteurs sont un choix parmi une liste finie de possibilités. Par exemple les pays sont des facteurs car il y a une liste finie de pays dans le monde à un temps donné. Un facteur peut être défini avec la fonction <code>factor()</code> ou transformé en utilisant la fonction <code>as.factor()</code>. Comme pour les autres types de donnée nous pouvons utiliser la fonction <code>is.factor()</code> pour vérifier le type de donnée. Pour avoir la liste de toutes les possibilités, il existe la fonction <code>levels()</code> (cette fonction prendra plus de sens quand nous aurons abordé les types de conteneur de l’information).</p>
-<pre class="sourceCode r"><code class="sourceCode r">factor01 &lt;-<span class="st"> </span><span class="kw">factor</span>(<span class="st">&quot;aaa&quot;</span>)
-<span class="kw">print</span>(factor01)</code></pre>
+<div class="sourceCode" id="cb168"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb168-1" title="1">factor01 &lt;-<span class="st"> </span><span class="kw">factor</span>(<span class="st">&quot;aaa&quot;</span>)</a>
+<a class="sourceLine" id="cb168-2" title="2"><span class="kw">print</span>(factor01)</a></code></pre></div>
 <pre><code>## [1] aaa
 ## Levels: aaa</code></pre>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">typeof</span>(factor01)</code></pre>
+<div class="sourceCode" id="cb170"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb170-1" title="1"><span class="kw">typeof</span>(factor01)</a></code></pre></div>
 <pre><code>## [1] &quot;integer&quot;</code></pre>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">is.factor</span>(factor01)</code></pre>
+<div class="sourceCode" id="cb172"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb172-1" title="1"><span class="kw">is.factor</span>(factor01)</a></code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">levels</span>(factor01)</code></pre>
+<div class="sourceCode" id="cb174"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb174-1" title="1"><span class="kw">levels</span>(factor01)</a></code></pre></div>
 <pre><code>## [1] &quot;aaa&quot;</code></pre>
 <p>Un facteur peut être transformé en texte avec la fonction <code>as.character()</code> mais également en nombre avec <code>as.numeric()</code>. Lors de la transformation en nombre chaque facteur prend la valeur de sa position dans la liste des possibilités. Dans notre cas il n’y a qu’une seule possibilité donc la fonction <code>as.numeric()</code> va renvoyer <code>1</code>:</p>
-<pre class="sourceCode r"><code class="sourceCode r">factor01 &lt;-<span class="st"> </span><span class="kw">factor</span>(<span class="st">&quot;aaa&quot;</span>)
-<span class="kw">as.character</span>(factor01)</code></pre>
+<div class="sourceCode" id="cb176"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb176-1" title="1">factor01 &lt;-<span class="st"> </span><span class="kw">factor</span>(<span class="st">&quot;aaa&quot;</span>)</a>
+<a class="sourceLine" id="cb176-2" title="2"><span class="kw">as.character</span>(factor01)</a></code></pre></div>
 <pre><code>## [1] &quot;aaa&quot;</code></pre>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">as.numeric</span>(factor01)</code></pre>
+<div class="sourceCode" id="cb178"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb178-1" title="1"><span class="kw">as.numeric</span>(factor01)</a></code></pre></div>
 <pre><code>## [1] 1</code></pre>
 </div>
 <div id="l013logi" class="section level2">
 <h2><span class="header-section-number">5.4</span> Le type <code>logical</code></h2>
 <p>Le type <code>logical</code> correspond aux valeurs <code>TRUE</code> et <code>FALSE</code> (et <code>NA</code>) que nous avons déjà vu avec les opérateurs de comparaison.</p>
-<pre class="sourceCode r"><code class="sourceCode r">aLogic &lt;-<span class="st"> </span><span class="ot">TRUE</span>
-<span class="kw">print</span>(aLogic)</code></pre>
+<div class="sourceCode" id="cb180"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb180-1" title="1">aLogic &lt;-<span class="st"> </span><span class="ot">TRUE</span></a>
+<a class="sourceLine" id="cb180-2" title="2"><span class="kw">print</span>(aLogic)</a></code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">typeof</span>(aLogic)</code></pre>
+<div class="sourceCode" id="cb182"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb182-1" title="1"><span class="kw">typeof</span>(aLogic)</a></code></pre></div>
 <pre><code>## [1] &quot;logical&quot;</code></pre>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">is.logical</span>(aLogic)</code></pre>
+<div class="sourceCode" id="cb184"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb184-1" title="1"><span class="kw">is.logical</span>(aLogic)</a></code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
-<pre class="sourceCode r"><code class="sourceCode r">aLogic <span class="op">+</span><span class="st"> </span><span class="dv">1</span></code></pre>
+<div class="sourceCode" id="cb186"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb186-1" title="1">aLogic <span class="op">+</span><span class="st"> </span><span class="dv">1</span></a></code></pre></div>
 <pre><code>## [1] 2</code></pre>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">as.numeric</span>(aLogic)</code></pre>
+<div class="sourceCode" id="cb188"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb188-1" title="1"><span class="kw">as.numeric</span>(aLogic)</a></code></pre></div>
 <pre><code>## [1] 1</code></pre>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">as.character</span>(aLogic)</code></pre>
+<div class="sourceCode" id="cb190"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb190-1" title="1"><span class="kw">as.character</span>(aLogic)</a></code></pre></div>
 <pre><code>## [1] &quot;TRUE&quot;</code></pre>
 </div>
 <div id="a-propos-de-na" class="section level2">
 <h2><span class="header-section-number">5.5</span> A propos de <code>NA</code></h2>
 <p>La valeur <code>NA</code> peut être utilisée pour spécifier l’absence de données ou les données manquantes. Par défaut <code>NA</code> est de type <code>logical</code> mais il peut être utilisé pour du texte, ou des nombres.</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">print</span>(<span class="ot">NA</span>)</code></pre>
+<div class="sourceCode" id="cb192"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb192-1" title="1"><span class="kw">print</span>(<span class="ot">NA</span>)</a></code></pre></div>
 <pre><code>## [1] NA</code></pre>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">typeof</span>(<span class="ot">NA</span>)</code></pre>
+<div class="sourceCode" id="cb194"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb194-1" title="1"><span class="kw">typeof</span>(<span class="ot">NA</span>)</a></code></pre></div>
 <pre><code>## [1] &quot;logical&quot;</code></pre>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">typeof</span>(<span class="kw">as.integer</span>(<span class="ot">NA</span>))</code></pre>
+<div class="sourceCode" id="cb196"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb196-1" title="1"><span class="kw">typeof</span>(<span class="kw">as.integer</span>(<span class="ot">NA</span>))</a></code></pre></div>
 <pre><code>## [1] &quot;integer&quot;</code></pre>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">typeof</span>(<span class="kw">as.character</span>(<span class="ot">NA</span>))</code></pre>
+<div class="sourceCode" id="cb198"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb198-1" title="1"><span class="kw">typeof</span>(<span class="kw">as.character</span>(<span class="ot">NA</span>))</a></code></pre></div>
 <pre><code>## [1] &quot;character&quot;</code></pre>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="ot">NA</span> <span class="op">==</span><span class="st"> </span><span class="ot">TRUE</span></code></pre>
+<div class="sourceCode" id="cb200"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb200-1" title="1"><span class="ot">NA</span> <span class="op">==</span><span class="st"> </span><span class="ot">TRUE</span></a></code></pre></div>
 <pre><code>## [1] NA</code></pre>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="ot">NA</span> <span class="op">==</span><span class="st"> </span><span class="ot">FALSE</span></code></pre>
+<div class="sourceCode" id="cb202"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb202-1" title="1"><span class="ot">NA</span> <span class="op">==</span><span class="st"> </span><span class="ot">FALSE</span></a></code></pre></div>
 <pre><code>## [1] NA</code></pre>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="ot">NA</span> <span class="op">&gt;</span><span class="st"> </span><span class="dv">1</span></code></pre>
+<div class="sourceCode" id="cb204"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb204-1" title="1"><span class="ot">NA</span> <span class="op">&gt;</span><span class="st"> </span><span class="dv">1</span></a></code></pre></div>
 <pre><code>## [1] NA</code></pre>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="ot">NA</span> <span class="op">+</span><span class="st"> </span><span class="dv">1</span></code></pre>
+<div class="sourceCode" id="cb206"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb206-1" title="1"><span class="ot">NA</span> <span class="op">+</span><span class="st"> </span><span class="dv">1</span></a></code></pre></div>
 <pre><code>## [1] NA</code></pre>
 </div>
 <div id="conclusion-2" class="section level2">
@@ -519,11 +521,13 @@ myText</code></pre>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
 <script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
 <script>
 gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({
@@ -531,12 +535,11 @@ gitbook.start({
 "github": false,
 "facebook": true,
 "twitter": true,
-"google": false,
 "linkedin": false,
 "weibo": false,
 "instapaper": false,
 "vk": false,
-"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {
 "theme": "white",
@@ -548,6 +551,10 @@ gitbook.start({
 "text": "Edit"
 },
 "history": {
+"link": null,
+"text": null
+},
+"view": {
 "link": null,
 "text": null
 },
