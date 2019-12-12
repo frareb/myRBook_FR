@@ -6,7 +6,7 @@ Maintenant Que nous avons vu les concepts de base de R, il nous reste à aborder
 
 Entre les fichiers d'entrée (i.e., les fichiers qui contiennent nos données brutes), les fichiers de sortie (e.g., avec la fonction `write()`), les graphiques (prochain chapitre), et les nombreux scripts associés à un projet de recherche, un minimum d'organisation s'impose pour pouvoir être efficace et reprendre rapidement son projet en cours. La solution la plus simple consiste à structurer son environnement de travail en dossiers en fonction de chaque catégorie de fichiers. Par exemple avec un dossier "myProject" pour le projet en cours, contenant lui-même les dossiers "myFiles" pour les fichiers d'entrée, un dossier "myScripts" pour les fichiers script R, et un dossier "myOutputs" pour les fichiers de sortie (e.g., les graphiques et les analyses).
 
-```{r, echo = FALSE}
+```{r 018-gestproj-1, echo = FALSE}
 cat("-myProject
 |-myFiles
 |-|-data01.csv
@@ -26,7 +26,7 @@ Dans la plupart des laboratoire il y a des services de gestion des versions, les
 
 L'utilisation de ces différents services de gestion des versions sort du cadre de ce livre. Pour le débutant ou pour les projets ne nécessitant pas un travail collaboratif sur les scripts, une alternative consiste à gérer ses versions manuellement. Par exemple une solution consiste à ajouter un numéro à la fin de son nom de fichier de script (e.g., "myFirstScript_01.R"). Dès qu'une modification importante est apportée à ce script, il suffira alors de le sauver avec un nouveau nom (e.g., "myFirstScript_02.R") et de placer l'ancien script dans un dossier d'archive pour ne pas encombrer l'espace de travail et risquer des erreurs. En cas de problème, nous pourrons ainsi facilement retourner au script antérieur et reprendre notre travail.
 
-```{r, echo = FALSE}
+```{r 018-gestproj-2, echo = FALSE}
 cat("-myProject
 |-myFiles
 |-|-data01.csv
@@ -52,7 +52,7 @@ La deuxième étape est de commenter son code. Les commentaires sont indispensab
 
 Pour un petit projet R il est indispensable que chaque script commence par une description de son contenu pour que nous puissions rapidement savoir de quoi il traite. C'est ce que nous avions fait au début de ce livre : 
 
-```{r, eval = FALSE}
+```{r 018-gestproj-3, eval = FALSE}
 # ------------------------------------------------------------
 # Voici un script pour acquérir les concepts de base 
 # avec R
@@ -73,7 +73,7 @@ pi * nbrRep^2
 
 Ici les commentaires qui suivent l'en-tête ne sont pas nécessaires car le nom de l'objet se comprend de lui même. Notre fichier devient :
 
-```{r, eval = FALSE}
+```{r 018-gestproj-4, eval = FALSE}
 # ------------------------------------------------------------
 # Voici un script pour acquérir les concepts de base 
 # avec R
@@ -87,7 +87,7 @@ pi * nbrRep^2
 
 Pour un gros projet avec de nombreuses fonctions destinées à être utilisées par d'autres usagers, il est préférable que la documentation du code soit à part, dans un fichier d'aide spécifique. C'est le cas de tous les packages R ! Pour gérer la documentation d'un package (et donc de toutes les fonctions), là encore il existe de nombreuses possibilités. La plus répandue consiste à utiliser la package R roxigen2. Sans entrer dans les détails, voici quelques examples issus de la documentation du package. 
 
-```{r, eval = FALSE}
+```{r 018-gestproj-5, eval = FALSE}
 #' Add together two numbers
 #'
 #' @param x A number
@@ -101,7 +101,7 @@ add <- function(x, y) {
 }
 ```
 
-```{r, eval = FALSE}
+```{r 018-gestproj-6, eval = FALSE}
 #' Sum of vector elements.
 #'
 #' `sum` returns the sum of all the values present in its arguments.
