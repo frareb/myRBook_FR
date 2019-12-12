@@ -20,9 +20,17 @@ knitr::include_graphics("myFigures/matVec.png")
 knitr::include_graphics("myLogos/logoInkscape.png")
 ```
 
-Inkscape est un logiciel de dessin vectoriel disponible sous Windows, Mac OS X et GNU/Linux. C'est un logiciel libre et open source sous licence GPL. Nous pouvons le télécharger à l'adresse suivante https://inkscape.org. Inksacpe est déjà installé par défaut sur de nombreuses distributions de Linux. 
+Inkscape est un logiciel de dessin vectoriel disponible sous Windows, Mac OS X et GNU/Linux. C'est un logiciel libre et open source sous licence GPL. Nous pouvons le télécharger à l'adresse suivante https://inkscape.org. Inkscape est déjà installé par défaut sur de nombreuses distributions de Linux. 
 
-XXX
+Expliciter toutes les fonctionnalités de Inkscape sort du cadre de ce livre, mais nous pourrons trouver de nombreux tutoriels en lignes pour rapidement maîtriser cet outil. Brièvement, pour respecter le guide de construction d'une figure d'une revue, nous allons tout d'abord construire notre figure *brute* sous R, puis l'exporter au format PDF à l'aide de la fonction `pdf()`. 
+
+```{r ex1, eval=FALSE}
+pdf("maFigure.pdf")
+  plot(0)
+dev.off()
+```
+
+Ensuite il nous suffira d'importer notre pdf sous Inkscape pour le modifier. Par défaut le PDF sera *groupé* en un seul élément. Pour accéder aux sous éléments de notre figure, nous pouvons degrouper l'élément avec le raccourci `Ctrl+Shift+g`. Il est conseillé d'ajouter un fond blanc à notre figure pour éviter la transparence (un simple rectangle blanc sans bordure fera l'affaire). Une fois notre figure prête à être exportée, il nous faut la sauvegarder dans un fichier PNG avec le raccourci `Ctrl+Shift+e`, et passer à The Gimp.
 
 ## The Gimp
 
@@ -32,11 +40,11 @@ knitr::include_graphics("myLogos/logoGimp.png")
 
 Gimp est un logiciel de dessin matriciel disponible sous Windows, Mac OS X et GNU/Linux. C'est un logiciel libre et open source sous licence GPL. Nous pouvons le télécharger à l'adresse suivante https://www.gimp.org/. Gimp signifie "GNU Image Manipulation Program". Gimp est déjà installé par défaut sur de nombreuses distributions de Linux. 
 
-XXX
+Nous allons importer notre fichier PNG puis tout simplement l'exporter dans un autre format avec le raccourci `Ctrl+Shift+e`. Une fenêtre nous proposera alors de choisir le nouveau format, par exemple TIFF avec une compression LZW. Notre figure est alors prête pour soumission.
 
 ## Table de référence
 
-XXX \@ref(tab:tabRefPub)
+Voici une Table de référence (Table \@ref(tab:tabRefPub)) avec quelques revues illustrant la diversité des formats pour les figures scientifiques. 
 
 ```{r tabRefPub, echo = FALSE}
 tabRef <- data.frame(
