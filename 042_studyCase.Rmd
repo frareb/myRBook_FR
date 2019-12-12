@@ -5,7 +5,7 @@ Il peut être intéressant d'obtenir le numéro WOS d'un article scientifique. C
 
 Tout d'abord si cela n'est pas déjà fait il faut installer le package `httr` avec `install.packages("httr")`, puis le charger avec `library("httr")`. Une autre solution consiste à utiliser la fonction suivante qui va vérifier si le package est installé puis le charger (il existe de nombreuses déclinaisons de cette fonction sur internet, il s'agit ici d'un mélange de multiples sources).
 
-```{r eval = FALSE}
+```{r 042-studyCase-1, eval = FALSE}
 pkgCheck <- function(packages){
 	for(x in packages){
 		try(if (!require(x, character.only = TRUE)){
@@ -21,14 +21,14 @@ pkgCheck("httr")
 
 La liste des numéros DOI est la suivante (contenu dans un `vector`) : 
 
-```{r}
+```{r 042-studyCase-2}
 myDOIs <- c("10.1111/2041-210X.12935", "10.1007/s13355-017-0480-5")
 print(myDOIs)
 ```
 
 Pour chaque DOI, nous allons interroger le site web du WOS, récupérer l'URL de redirection, puis récupérer le numéro WOS. Nous allons donc faire une boucle sur notre `vector` contenant les DOI. Nous utilisons la fonction `seq_along()` qui va prendre comme valeurs les éléments d'une séquence de 1 à la taille de l'objet `myDOIs`, soit : `i = 1`, puis `i = 2`.
 
-```{r eval = FALSE}
+```{r 042-studyCase-3, eval = FALSE}
 for(i in seq_along(myDOIs)){
   # ...
 }
@@ -36,7 +36,7 @@ for(i in seq_along(myDOIs)){
 
 Dans la boucle, le DOI que nous allons traiter est donc `myDOIs[i]` que nous allons appeler `myDOI`. La page d'interrogation du WOS correspond à la concaténation de l'URL du WOS avec le numéro WOS (l'URL est présentée sur plusieurs lignes pour respecter la largeur de page de ce livre).
 
-```{r eval = FALSE}
+```{r 042-studyCase-4, eval = FALSE}
 for(i in seq_along(myDOIs)){
   myDOI <- myDOIs[i]
   myWebPage <- paste0(
@@ -48,7 +48,7 @@ for(i in seq_along(myDOIs)){
 
 Maintenant nous allons utiliser la fonction `GET()` du package `httr` pour récupérer l'URL.
 
-```{r eval = FALSE}
+```{r 042-studyCase-5, eval = FALSE}
 for(i in seq_along(myDOIs)){
   myDOI <- myDOIs[i]
   myWebPage <- paste0(
@@ -62,7 +62,7 @@ for(i in seq_along(myDOIs)){
 
 Il se peut que pour un article, il n'y ait pas de numéro WOS correspondant. Pour que notre script ne soit pas arrêté en cas d'erreur il faut donc **gérer cette exception**. Nous allons créer un objet `tryExtract` qui va prendre comme valeur une chaîne de caractères vide `""`. Ensuite nous allons essayer avec la fonction `try()` d'extraire le numéro WOS avec la fonction `substr()`. Le numéro WOS se situe depuis le caractère numéro 117 jusqu'au caractère numéro 131 de l'URL. 
 
-```{r eval = FALSE}
+```{r 042-studyCase-6, eval = FALSE}
 for(i in seq_along(myDOIs)){
   myDOI <- myDOIs[i]
   myWebPage <- paste0(
@@ -78,7 +78,7 @@ for(i in seq_along(myDOIs)){
 
 Nous pouvons ensuite vérifier que l'extraction correspond bien à un numéro en utilisant une **expression régulière**. Ici nous allons simplement vérifier que l'extraction ne contient que des chiffres. Dans le cas contraire `tryExtract` reprendra sa valeur initiale `""`.
 
-```{r eval = FALSE}
+```{r 042-studyCase-7, eval = FALSE}
 for(i in seq_along(myDOIs)){
   myDOI <- myDOIs[i]
   myWebPage <- paste0(
@@ -95,7 +95,7 @@ for(i in seq_along(myDOIs)){
 
 Le résultat est ensuite stocké dans un `vector` créé au préalable et appelé `vecWOS`.
 
-```{r eval = FALSE}
+```{r 042-studyCase-8, eval = FALSE}
 vecWOS <- vector()
 for(i in seq_along(myDOIs)){
   myDOI <- myDOIs[i]
@@ -114,14 +114,14 @@ for(i in seq_along(myDOIs)){
 
 Nous pouvons alors créer un objet de type `data.frame` qui va contenir les numéros DOI et les numéros WOS, et éventuellement l'exporter dans un fichier CSV.
 
-```{r eval = FALSE}
+```{r 042-studyCase-9, eval = FALSE}
 dfDOIWOS <- data.frame(DOI = myDOIs, WOS = vecWOS)
 write.csv(dfDOIWOS, file = "dfDOIWOS.csv", row.names = FALSE)
 ```
 
 Le résultat est le suivant (non exécuté car la procédure d'interrogation avec la fonction `GET()` est très lente : **si nous souhaitons travailler sur un liste de plusieurs dizaines ou centaines d'articles, plusieurs heures seront nécessaires** avant d'obtenir le résultat).
 
-```{r eval = FALSE}
+```{r 042-studyCase-10, eval = FALSE}
 #                         DOI             WOS
 # 1   10.1111/2041-210X.12935 000429421800031
 # 2 10.1007/s13355-017-0480-5 000400381400016
@@ -129,7 +129,7 @@ Le résultat est le suivant (non exécuté car la procédure d'interrogation ave
 
 Voici le code complet : 
 
-```{r eval = FALSE}
+```{r 042-studyCase-11, eval = FALSE}
 pkgCheck <- function(packages){
 	for(x in packages){
 		try(if (!require(x, character.only = TRUE)){
@@ -165,7 +165,7 @@ write.csv(dfDOIWOS, file = "dfDOIWOS.csv", row.names = FALSE)
 
 La boucle `for()` pourrait être remplacée par une boucle `sapply()` pour gagner en temps d'exécution. Un gain serait également possible en effectuant une parallélisation sur cette boucle. Pour information, voici un exemple de temps d'exécution renvoyé par la fonction `system.time()` et `microbenchmark::microbenchmark()` : 
 
-```{r eval = FALSE}
+```{r 042-studyCase-12, eval = FALSE}
 # system.time()
 #   user  system elapsed
 #   0.10    0.01   35.00
