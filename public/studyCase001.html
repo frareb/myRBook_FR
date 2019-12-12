@@ -486,7 +486,7 @@ bdd &lt;-<span class="st"> </span><span class="kw">read.table</span>(<span class
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(<span class="dt">x =</span> bdd<span class="op">$</span>day, <span class="dt">y =</span> bdd<span class="op">$</span>temp, 
     <span class="dt">type =</span> <span class="st">&#39;l&#39;</span>, <span class="dt">ylim =</span> <span class="kw">c</span>(<span class="op">-</span><span class="dv">15</span>, <span class="dv">40</span>), 
     <span class="dt">xlab =</span> <span class="st">&quot;Temps&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;Température (°C)&quot;</span>)</code></pre>
-<p><img src="myRBook_FR_files/figure-html/unnamed-chunk-9-1.png" width="672" /></p>
+<p><img src="myRBook_FR_files/figure-html/041-studyCase-8-1.png" width="672" /></p>
 <p>Nous pouvons simplifier les informations en ne calculant que les températures minimales, moyennes et maximales avec la fonction <code>tapply()</code>.</p>
 <pre class="sourceCode r"><code class="sourceCode r">tempDayMean &lt;-<span class="st"> </span><span class="kw">tapply</span>(bdd<span class="op">$</span>temp, <span class="dt">INDEX =</span> bdd<span class="op">$</span>day, <span class="dt">FUN =</span> mean)
 tempDayMin &lt;-<span class="st"> </span><span class="kw">tapply</span>(bdd<span class="op">$</span>temp, <span class="dt">INDEX =</span> bdd<span class="op">$</span>day, <span class="dt">FUN =</span> min)
@@ -500,7 +500,7 @@ tempDayMax &lt;-<span class="st"> </span><span class="kw">tapply</span>(bdd<span
     <span class="dt">y =</span> tempDayMax, <span class="dt">type =</span> <span class="st">&#39;l&#39;</span>, <span class="dt">col =</span> <span class="dv">2</span>)
 <span class="kw">legend</span>(<span class="st">&quot;topright&quot;</span>, <span class="dt">legend =</span> <span class="kw">c</span>(<span class="st">&quot;min&quot;</span>, <span class="st">&quot;max&quot;</span>, <span class="st">&quot;mean&quot;</span>), 
   <span class="dt">lty =</span> <span class="dv">1</span>, <span class="dt">lwd =</span> <span class="dv">2</span>, <span class="dt">col =</span> <span class="kw">c</span>(<span class="dv">4</span>, <span class="dv">2</span>, <span class="dv">1</span>))</code></pre>
-<p><img src="myRBook_FR_files/figure-html/unnamed-chunk-10-1.png" width="672" /></p>
+<p><img src="myRBook_FR_files/figure-html/041-studyCase-9-1.png" width="672" /></p>
 <p>Nous pouvons très facilement représenter le même information par semaine. Il suffit de changer l’argument <code>INDEX</code> pour une date en semaine. Voici un exemple de format par semaine :</p>
 <pre class="sourceCode r"><code class="sourceCode r">anoSem &lt;-<span class="st"> </span><span class="kw">format</span>(bdd<span class="op">$</span>posix, <span class="dt">format =</span> <span class="st">&quot;%Y-%W&quot;</span>)
 <span class="kw">head</span>(anoSem)</code></pre>
@@ -521,11 +521,11 @@ tempWeekMax &lt;-<span class="st"> </span><span class="kw">tapply</span>(bdd<spa
     <span class="dt">y =</span> tempWeekMax, <span class="dt">type =</span> <span class="st">&#39;l&#39;</span>, <span class="dt">col =</span> <span class="dv">2</span>)
 <span class="kw">legend</span>(<span class="st">&quot;topright&quot;</span>, <span class="dt">legend =</span> <span class="kw">c</span>(<span class="st">&quot;min&quot;</span>, <span class="st">&quot;max&quot;</span>, <span class="st">&quot;promedio&quot;</span>), 
   <span class="dt">lty =</span> <span class="dv">1</span>, <span class="dt">lwd =</span> <span class="dv">2</span>, <span class="dt">col =</span> <span class="kw">c</span>(<span class="dv">4</span>, <span class="dv">2</span>, <span class="dv">1</span>))</code></pre>
-<p><img src="myRBook_FR_files/figure-html/unnamed-chunk-12-1.png" width="672" /></p>
+<p><img src="myRBook_FR_files/figure-html/041-studyCase-11-1.png" width="672" /></p>
 <p>Dans ce type de représentation nous perdons l’information sur la variabilité des températures par semaine. En focntion des objectifs il pourra être intéressant de préférer une représentation sous forme de <code>boxplot</code> (ici un boxplot par mois en formattant la date avec <code>"%Y-%m"</code>).</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">boxplot</span>(bdd<span class="op">$</span>temp <span class="op">~</span><span class="st"> </span><span class="kw">format</span>(bdd<span class="op">$</span>posix, <span class="dt">format =</span> <span class="st">&quot;%Y-%m&quot;</span>), <span class="dt">las =</span> <span class="dv">3</span>,
   <span class="dt">xlab =</span> <span class="st">&quot;&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;Température (°C)&quot;</span>)</code></pre>
-<p><img src="myRBook_FR_files/figure-html/unnamed-chunk-13-1.png" width="672" /></p>
+<p><img src="myRBook_FR_files/figure-html/041-studyCase-12-1.png" width="672" /></p>
 <p>Pour comparer les différentes valeurs de température, il peut être utile d’attribuer une couleur à chaque boxplot. Par exemple, nous pouvons utiliser un gradient de couleur du bleu au rouge en utilisant la valeur de la température moyenne.</p>
 <pre class="sourceCode r"><code class="sourceCode r">tempMonthMean &lt;-<span class="st"> </span><span class="kw">tapply</span>(bdd<span class="op">$</span>temp, 
   <span class="dt">INDEX =</span> <span class="kw">format</span>(bdd<span class="op">$</span>posix, <span class="dt">format =</span> <span class="st">&quot;%Y-%m&quot;</span>), <span class="dt">FUN =</span> mean)
@@ -536,7 +536,7 @@ tempMeanDayPos &lt;-<span class="st"> </span><span class="kw">round</span>(
 <span class="kw">boxplot</span>(bdd<span class="op">$</span>temp <span class="op">~</span><span class="st"> </span><span class="kw">format</span>(bdd<span class="op">$</span>posix, <span class="dt">format =</span> <span class="st">&quot;%Y-%m&quot;</span>), <span class="dt">las =</span> <span class="dv">3</span>, 
   <span class="dt">col =</span> myCol[tempMeanDayPos],
   <span class="dt">xlab =</span> <span class="st">&quot;&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;Température (°C)&quot;</span>)</code></pre>
-<p><img src="myRBook_FR_files/figure-html/unnamed-chunk-14-1.png" width="672" /></p>
+<p><img src="myRBook_FR_files/figure-html/041-studyCase-13-1.png" width="672" /></p>
 <p>Et pour celles et ceux qui utilisent <code>ggplot2</code> :</p>
 <pre class="sourceCode r"><code class="sourceCode r">pkgCheck &lt;-<span class="st"> </span><span class="cf">function</span>(x){ 
     <span class="cf">if</span> (<span class="op">!</span><span class="kw">require</span>(x, <span class="dt">character.only =</span> <span class="ot">TRUE</span>)){
@@ -562,13 +562,13 @@ p01 &lt;-<span class="st"> </span><span class="kw">ggplot</span>(<span class="dt
 <span class="st">    </span><span class="kw">geom_boxplot</span>(<span class="dt">outlier.colour =</span> <span class="st">&quot;black&quot;</span>, <span class="dt">fill =</span> myCol[tempMeanDayPos])
 p01</code></pre>
 <pre><code>## Warning: Removed 4 rows containing missing values (stat_boxplot).</code></pre>
-<p><img src="myRBook_FR_files/figure-html/unnamed-chunk-15-1.png" width="672" /></p>
+<p><img src="myRBook_FR_files/figure-html/041-studyCase-14-1.png" width="672" /></p>
 <p>Nous pouvons également calculer la différence entre la température maximale et la température minimale (variation de la température diurne).</p>
 <pre class="sourceCode r"><code class="sourceCode r">tempDayTR &lt;-<span class="st"> </span>tempDayMax <span class="op">-</span><span class="st"> </span>tempDayMin
 <span class="kw">plot</span>(<span class="dt">x =</span> <span class="kw">as.Date</span>(<span class="kw">names</span>(tempDayMean), <span class="dt">format =</span> <span class="st">&quot;%Y-%m-%d&quot;</span>), 
     <span class="dt">y =</span> tempDayTR, <span class="dt">type =</span> <span class="st">&#39;l&#39;</span>, <span class="dt">ylim =</span> <span class="kw">c</span>(<span class="dv">5</span>, <span class="dv">45</span>), 
     <span class="dt">xlab =</span> <span class="st">&quot;Fecha&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;Variation de température diurne (°C)&quot;</span>)</code></pre>
-<p><img src="myRBook_FR_files/figure-html/unnamed-chunk-16-1.png" width="672" /></p>
+<p><img src="myRBook_FR_files/figure-html/041-studyCase-15-1.png" width="672" /></p>
 <p>Une autre possibilité est de regrouper les données pour avoir la température moyenne des heures de la journée avec la fonction <code>aggregate()</code>.</p>
 <pre class="sourceCode r"><code class="sourceCode r">tempHourMean &lt;-<span class="st"> </span><span class="kw">aggregate</span>(<span class="dt">x =</span> bdd<span class="op">$</span>temp, 
   <span class="dt">by =</span> <span class="kw">list</span>(<span class="kw">format</span>(bdd<span class="op">$</span>posix, <span class="dt">format =</span> <span class="st">&quot;%H:%M&quot;</span>)), <span class="dt">FUN =</span> mean)
@@ -587,7 +587,7 @@ hours &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="dt"
 <span class="kw">axis</span>(<span class="dt">side =</span> <span class="dv">1</span>, <span class="dt">at =</span> hours, <span class="dt">labels =</span> tempHourMean[, <span class="dv">1</span>], <span class="dt">las =</span> <span class="dv">2</span>)
 <span class="kw">points</span>(<span class="dt">x =</span> hours, <span class="dt">y =</span> tempHourMin[, <span class="dv">2</span>], <span class="dt">type =</span> <span class="st">&#39;l&#39;</span>, <span class="dt">col =</span> <span class="dv">4</span>, <span class="dt">lwd =</span> <span class="dv">2</span>)
 <span class="kw">points</span>(<span class="dt">x =</span> hours, <span class="dt">y =</span> tempHourMax[, <span class="dv">2</span>], <span class="dt">type =</span> <span class="st">&#39;l&#39;</span>, <span class="dt">col =</span> <span class="dv">2</span>, <span class="dt">lwd =</span> <span class="dv">2</span>)</code></pre>
-<p><img src="myRBook_FR_files/figure-html/unnamed-chunk-17-1.png" width="672" /></p>
+<p><img src="myRBook_FR_files/figure-html/041-studyCase-16-1.png" width="672" /></p>
 <p>Nous pouvons également calculer les températures des heures de la journée pour chaque mois.</p>
 <pre class="sourceCode r"><code class="sourceCode r">meses &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Janvier&quot;</span>, <span class="st">&quot;Février&quot;</span>, <span class="st">&quot;Mars&quot;</span>, <span class="st">&quot;Avril&quot;</span>, <span class="st">&quot;Mai&quot;</span>, <span class="st">&quot;Juin&quot;</span>, 
     <span class="st">&quot;Juillet&quot;</span>, <span class="st">&quot;Août&quot;</span>, <span class="st">&quot;Septembre&quot;</span>, <span class="st">&quot;Octobre&quot;</span>, <span class="st">&quot;Novembre&quot;</span>, <span class="st">&quot;Décembre&quot;</span>)
@@ -617,7 +617,7 @@ tempDayEachMonth &lt;-<span class="st"> </span><span class="kw">lapply</span>(<s
     <span class="kw">points</span>(<span class="dt">x =</span> hours, <span class="dt">y =</span> tempDayEachMonth[[i]][, <span class="dv">6</span>], 
         <span class="dt">type =</span> <span class="st">&#39;l&#39;</span>, <span class="dt">col =</span> <span class="dv">2</span>, <span class="dt">lwd =</span> <span class="dv">2</span>)
 }</code></pre>
-<p><img src="myRBook_FR_files/figure-html/unnamed-chunk-18-1.png" width="672" /><img src="myRBook_FR_files/figure-html/unnamed-chunk-18-2.png" width="672" /></p>
+<p><img src="myRBook_FR_files/figure-html/041-studyCase-17-1.png" width="672" /><img src="myRBook_FR_files/figure-html/041-studyCase-17-2.png" width="672" /></p>
 <p>Ou les regrouper dans un même graphique, ainsi que la variation diurne des températures pour chaque mois.</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(<span class="dt">x =</span> hours, <span class="dt">y =</span> tempDayEachMonth[[<span class="dv">1</span>]][, <span class="dv">2</span>], <span class="dt">type =</span> <span class="st">&#39;n&#39;</span>, <span class="dt">ylim =</span> <span class="kw">c</span>(<span class="op">-</span><span class="dv">10</span>, <span class="dv">35</span>),
     <span class="dt">xlab =</span> <span class="st">&quot;&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;Température moyenne (°C)&quot;</span>,
@@ -637,7 +637,7 @@ myColors &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st
 }
 <span class="kw">legend</span>(<span class="st">&quot;topright&quot;</span>, <span class="dt">ncol =</span> <span class="dv">4</span>, <span class="dt">legend =</span> meses, <span class="dt">col =</span> myColors, 
     <span class="dt">lty =</span> <span class="dv">1</span>, <span class="dt">lwd =</span> <span class="dv">2</span>, <span class="dt">cex =</span> <span class="fl">0.8</span>)</code></pre>
-<p><img src="myRBook_FR_files/figure-html/unnamed-chunk-19-1.png" width="672" /></p>
+<p><img src="myRBook_FR_files/figure-html/041-studyCase-18-1.png" width="672" /></p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(<span class="dt">x =</span> hours, <span class="dt">y =</span> tempDayEachMonth[[<span class="dv">1</span>]][, <span class="dv">2</span>], <span class="dt">type =</span> <span class="st">&#39;n&#39;</span>, <span class="dt">ylim =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">30</span>),
     <span class="dt">xlab =</span> <span class="st">&quot;&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;Variation de température diurne (°C)&quot;</span>,
     <span class="dt">xaxt =</span> <span class="st">&quot;n&quot;</span>, 
@@ -656,7 +656,7 @@ myColors &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st
 }
 <span class="kw">legend</span>(<span class="st">&quot;topright&quot;</span>, <span class="dt">ncol =</span> <span class="dv">4</span>, <span class="dt">legend =</span> meses, <span class="dt">col =</span> myColors, 
     <span class="dt">lty =</span> <span class="dv">1</span>, <span class="dt">lwd =</span> <span class="dv">2</span>, <span class="dt">cex =</span> <span class="fl">0.8</span>)</code></pre>
-<p><img src="myRBook_FR_files/figure-html/unnamed-chunk-19-2.png" width="672" /></p>
+<p><img src="myRBook_FR_files/figure-html/041-studyCase-18-2.png" width="672" /></p>
 <p>Nous pouvons aussi représenter les températures journalières avec des graphiques de type “ridgeline” et le package <code>ggplot2</code> (<a href="https://www.data-to-viz.com/graph/ridgeline.html" class="uri">https://www.data-to-viz.com/graph/ridgeline.html</a>).</p>
 <pre class="sourceCode r"><code class="sourceCode r">pkgCheck &lt;-<span class="st"> </span><span class="cf">function</span>(x){ 
     <span class="cf">if</span> (<span class="op">!</span><span class="kw">require</span>(x, <span class="dt">character.only =</span> <span class="ot">TRUE</span>)){
@@ -693,7 +693,7 @@ p &lt;-<span class="st"> </span>p <span class="op">+</span><span class="st"> </s
     ) 
 p</code></pre>
 <pre><code>## `stat_binline()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
-<p><img src="myRBook_FR_files/figure-html/unnamed-chunk-20-1.png" width="672" /></p>
+<p><img src="myRBook_FR_files/figure-html/041-studyCase-19-1.png" width="672" /></p>
 
 </div>
             </section>
