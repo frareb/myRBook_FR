@@ -4,7 +4,7 @@ Nous avons vu différentes manières d'utiliser les couleurs : avec leur nom (e.
 
 L'utilisation des numéros de 1 à 8 correspond au noir, rouge, vert, bleu, cyan, magenta, jaune et gris. Cette utilisation est pratique pour visualiser rapidement nos résultats mais donne globalement des graphiques visuellement moyens. Ces couleurs sont plutôt à éviter pour communiquer nos graphiques.
 
-```{r}
+```{r 021-02-graphiques-1}
 barplot(sample(10:15, 8, replace = TRUE), col = 1:8, names.arg = 1:8)
 ```
 
@@ -12,13 +12,13 @@ barplot(sample(10:15, 8, replace = TRUE), col = 1:8, names.arg = 1:8)
 
 Pour choisir des couleurs plus agréables et mettant plus en avant nos résultats, une option consiste à les choisir dans la liste des couleurs pré-enregistrées dans R. Nous pouvons accéder à la liste des couleurs avec la fonction `colors()`
 
-```{r}
+```{r 021-02-graphiques-2}
 head(colors(), n = 20)
 ```
 
 Nous pouvons utiliser ces couleurs avec leur nom (e.g., "white", "azure3"), ou alors avec leur numéro (e.g., "white" = `colors()[1]`, "azure3" = `colors()[16]`). 
 
-```{r}
+```{r 021-02-graphiques-3}
 # adapted from http://www.r-graph-gallery.com/42-colors-names/
 op <- par(no.readonly = TRUE)
 par(mar = c(0, 0, 0, 0))
@@ -48,7 +48,7 @@ Une autre option consiste à construire ses propres couleurs ave la fonction `rg
 
 Nous allons reprendre notre fonction permettant de représenter la distribution de points dans un nuage de points au moyen de `barplot` avec cette fois trois couleurs de points (rouge, vert, bleu), et des `barplot` dont la couleur correspondra à la quantité de chaque couleur avec la fonction `rgb()`.
 
-```{r}
+```{r 021-02-graphiques-4}
 graphBarplotCol <- function(n){
   myX <- rnorm(n)
   myY <- rnorm(n)
@@ -97,7 +97,7 @@ Avec la fonction `rgb()` nous pouvons donc représenter `256^3` couleurs, soit 1
 
 Les palettes sont des jeux de couleurs représentées sous forme d'un `vector` avec les couleurs au format hexadécimal (valeur renvoyée par la fonction `rgb()` par exemple).
 
-```{r}
+```{r 021-02-graphiques-5}
 myPal <- c(
   rgb(0, 94, 255, maxColorValue = 255),  
   rgb(255, 0, 174, maxColorValue = 255),  
@@ -112,7 +112,7 @@ axis(2)
 Il existe des palettes inclues dans R : `terrain.colors()`, `heat.colors()`, `topo.colors()`, 
 `cm.colors()`, `rainbow()`. 
 
-```{r}
+```{r 021-02-graphiques-6}
 op <- par(no.readonly = TRUE)
 par(mfrow = c(2, 3), mar = c(0, 0, 2, 0))
 boxplot(matrix(rnorm(1000), ncol = 10), main = "terrain.colors()", 
@@ -130,7 +130,7 @@ par(op)
 
 Il existe aussi une fonction `colorRampPalette()` qui permet de créer un dégradé de couleur.
 
-```{r}
+```{r 021-02-graphiques-7}
 op <- par(no.readonly = TRUE)
 par(mfrow = c(3, 1), mar = c(0, 0, 0, 0))
 boxplot(matrix(rnorm(2500), ncol = 25), 
@@ -149,7 +149,7 @@ R est un language de programmation très puissant. Nous pouvons imaginer de nomb
 
 Tout d'abord nous allons charger les packages `raster`, `rgdal` et `jpeg` qui vont nous servir à manipuler notre image sous R.
 
-```{r}
+```{r 021-02-graphiques-8}
 pkgCheck <- function(x){ 
 	if (!require(x, character.only = TRUE)){
 		install.packages(x, dependencies = TRUE)
@@ -165,7 +165,7 @@ pkgCheck("jpeg")
 
 Ensuite nous allons utiliser la fonction `kmeans()` pour effectuer des groupes de couleurs en utilisant les valeurs RGB de chacun des points de notre image. Ici nous avons deux méthodes possibles, la première utilise la fonction `kmeans()` pour les trois valeurs RGB, et la seconde utilise la fonction `kmeans()` pour chaque valeur RGB individuellement (cette seconde fonction donne une palette qui pourra être assez éloignée des couleurs de l'image de départ).
 
-```{r}
+```{r 021-02-graphiques-9}
 createPal <- function(photo, met = 1, graph = TRUE, k = 9){
 	if(met == 1){
 		colR <- getValues(raster(photo, band = 1))
@@ -230,7 +230,7 @@ myPalMet2 <- createPal(photo = "./myFiles/photoKmeans.jpg",
 
 La fonction nous renvoie les couleurs de la palette avec un graphique en barres représentant le nombre de points de l'image dans chacun des groupes de couleurs. Nous pouvons désormais utiliser notre nouvelle palette pour réaliser nos graphiques. 
 
-```{r}
+```{r 021-02-graphiques-10}
 makeImpact <- function(myPal, numP = 300, impact = 0.33, multCex = 3){
 	myX <- sample(0:1000, size = numP, replace = TRUE)/1000
 	myY <- sample(0:1000, size = numP, replace = TRUE)/1000
