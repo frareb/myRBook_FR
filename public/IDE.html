@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title> 4 Choisir un environnement de développement | Se former au logiciel R : initiation et perfectionnement</title>
   <meta name="description" content="Un guide pour acquérir les bases de la programmation avec R et conduire efficacement la gestion et l’analyse de ses données." />
-  <meta name="generator" content="bookdown 0.16 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.11 and GitBook 2.6.7" />
 
   <meta property="og:title" content=" 4 Choisir un environnement de développement | Se former au logiciel R : initiation et perfectionnement" />
   <meta property="og:type" content="book" />
@@ -24,15 +24,15 @@
 <meta name="author" content="François Rebaudo" />
 
 
-<meta name="date" content="2019-11-27" />
+<meta name="date" content="2019-12-12" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="premiersPas.html"/>
-<link rel="next" href="dataType1.html"/>
+<link rel="prev" href="premiersPas.html">
+<link rel="next" href="dataType1.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -40,7 +40,6 @@
 <link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
 
 
 
@@ -48,15 +47,13 @@
 
 
 
-
-
-<script src="libs/htmlwidgets-1.5.1/htmlwidgets.js"></script>
-<script src="libs/plotly-binding-4.9.1/plotly.js"></script>
+<script src="libs/htmlwidgets-1.3/htmlwidgets.js"></script>
+<script src="libs/plotly-binding-4.9.0/plotly.js"></script>
 <script src="libs/typedarray-0.1/typedarray.min.js"></script>
 <link href="libs/crosstalk-1.0.0/css/crosstalk.css" rel="stylesheet" />
 <script src="libs/crosstalk-1.0.0/js/crosstalk.min.js"></script>
-<link href="libs/plotly-htmlwidgets-css-1.49.4/plotly-htmlwidgets.css" rel="stylesheet" />
-<script src="libs/plotly-main-1.49.4/plotly-latest.min.js"></script>
+<link href="libs/plotly-htmlwidgets-css-1.46.1/plotly-htmlwidgets.css" rel="stylesheet" />
+<script src="libs/plotly-main-1.46.1/plotly-latest.min.js"></script>
 <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-124666641-2"></script>
 <script>
@@ -74,6 +71,7 @@ a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
 a.sourceLine:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
 pre.sourceCode { margin: 0; }
 @media screen {
 div.sourceCode { overflow: auto; }
@@ -152,9 +150,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#licence"><i class="fa fa-check"></i><b>1.2</b> Licence</a></li>
 </ul></li>
 <li class="chapter" data-level="2" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>2</b> Introduction</a><ul>
-<li class="chapter" data-level="2.1" data-path="intro.html"><a href="intro.html#pourquoi-se-former-à-r"><i class="fa fa-check"></i><b>2.1</b> Pourquoi se former à R</a></li>
+<li class="chapter" data-level="2.1" data-path="intro.html"><a href="intro.html#pourquoi-se-former-a-r"><i class="fa fa-check"></i><b>2.1</b> Pourquoi se former à R</a></li>
 <li class="chapter" data-level="2.2" data-path="intro.html"><a href="intro.html#ce-livre"><i class="fa fa-check"></i><b>2.2</b> Ce livre</a></li>
-<li class="chapter" data-level="2.3" data-path="intro.html"><a href="intro.html#lectures-complémentaires-en-français"><i class="fa fa-check"></i><b>2.3</b> Lectures complémentaires en français</a></li>
+<li class="chapter" data-level="2.3" data-path="intro.html"><a href="intro.html#lectures-complementaires-en-francais"><i class="fa fa-check"></i><b>2.3</b> Lectures complémentaires en français</a></li>
 </ul></li>
 <li class="part"><span><b>I Concepts de base</b></span></li>
 <li class="chapter" data-level="3" data-path="premiersPas.html"><a href="premiersPas.html"><i class="fa fa-check"></i><b>3</b> Premiers pas</a><ul>
@@ -163,17 +161,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.2.1" data-path="premiersPas.html"><a href="premiersPas.html#l011opari"><i class="fa fa-check"></i><b>3.2.1</b> Les opérateurs arithmétiques</a></li>
 <li class="chapter" data-level="3.2.2" data-path="premiersPas.html"><a href="premiersPas.html#l011opcomp"><i class="fa fa-check"></i><b>3.2.2</b> Les opérateurs de comparaison</a></li>
 <li class="chapter" data-level="3.2.3" data-path="premiersPas.html"><a href="premiersPas.html#l011oplog"><i class="fa fa-check"></i><b>3.2.3</b> Les opérateurs logiques</a></li>
-<li class="chapter" data-level="3.2.4" data-path="premiersPas.html"><a href="premiersPas.html#aide-sur-les-opérateurs"><i class="fa fa-check"></i><b>3.2.4</b> Aide sur les opérateurs</a></li>
+<li class="chapter" data-level="3.2.4" data-path="premiersPas.html"><a href="premiersPas.html#aide-sur-les-operateurs"><i class="fa fa-check"></i><b>3.2.4</b> Aide sur les opérateurs</a></li>
 </ul></li>
 <li class="chapter" data-level="3.3" data-path="premiersPas.html"><a href="premiersPas.html#l011object"><i class="fa fa-check"></i><b>3.3</b> La notion d’objet</a></li>
 <li class="chapter" data-level="3.4" data-path="premiersPas.html"><a href="premiersPas.html#les-scripts"><i class="fa fa-check"></i><b>3.4</b> Les scripts</a><ul>
-<li class="chapter" data-level="3.4.1" data-path="premiersPas.html"><a href="premiersPas.html#créer-un-script-et-le-documenter"><i class="fa fa-check"></i><b>3.4.1</b> Créer un script et le documenter</a></li>
-<li class="chapter" data-level="3.4.2" data-path="premiersPas.html"><a href="premiersPas.html#exécuter-un-script"><i class="fa fa-check"></i><b>3.4.2</b> Exécuter un script</a></li>
+<li class="chapter" data-level="3.4.1" data-path="premiersPas.html"><a href="premiersPas.html#creer-un-script-et-le-documenter"><i class="fa fa-check"></i><b>3.4.1</b> Créer un script et le documenter</a></li>
+<li class="chapter" data-level="3.4.2" data-path="premiersPas.html"><a href="premiersPas.html#executer-un-script"><i class="fa fa-check"></i><b>3.4.2</b> Exécuter un script</a></li>
 </ul></li>
 <li class="chapter" data-level="3.5" data-path="premiersPas.html"><a href="premiersPas.html#conclusion"><i class="fa fa-check"></i><b>3.5</b> Conclusion</a></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="IDE.html"><a href="IDE.html"><i class="fa fa-check"></i><b>4</b> Choisir un environnement de développement</a><ul>
-<li class="chapter" data-level="4.1" data-path="IDE.html"><a href="IDE.html#editeurs-de-texte-et-environnement-de-développement"><i class="fa fa-check"></i><b>4.1</b> Editeurs de texte et environnement de développement</a></li>
+<li class="chapter" data-level="4.1" data-path="IDE.html"><a href="IDE.html#editeurs-de-texte-et-environnement-de-developpement"><i class="fa fa-check"></i><b>4.1</b> Editeurs de texte et environnement de développement</a></li>
 <li class="chapter" data-level="4.2" data-path="IDE.html"><a href="IDE.html#rstudio"><i class="fa fa-check"></i><b>4.2</b> RStudio</a><ul>
 <li class="chapter" data-level="4.2.1" data-path="IDE.html"><a href="IDE.html#installer-rstudio"><i class="fa fa-check"></i><b>4.2.1</b> Installer RStudio</a></li>
 <li class="chapter" data-level="4.2.2" data-path="IDE.html"><a href="IDE.html#un-script-avec-rstudio"><i class="fa fa-check"></i><b>4.2.2</b> Un script avec RStudio</a></li>
@@ -200,29 +198,29 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="6" data-path="dataType2.html"><a href="dataType2.html"><i class="fa fa-check"></i><b>6</b> Les conteneurs de données</a><ul>
 <li class="chapter" data-level="6.1" data-path="dataType2.html"><a href="dataType2.html#l014vector"><i class="fa fa-check"></i><b>6.1</b> Le conteneur <code>vector</code></a><ul>
-<li class="chapter" data-level="6.1.1" data-path="dataType2.html"><a href="dataType2.html#créer-un-vector"><i class="fa fa-check"></i><b>6.1.1</b> Créer un <code>vector</code></a></li>
-<li class="chapter" data-level="6.1.2" data-path="dataType2.html"><a href="dataType2.html#opérations-sur-un-vector"><i class="fa fa-check"></i><b>6.1.2</b> Opérations sur un <code>vector</code></a></li>
-<li class="chapter" data-level="6.1.3" data-path="dataType2.html"><a href="dataType2.html#accèder-aux-valeurs-dun-vector"><i class="fa fa-check"></i><b>6.1.3</b> Accèder aux valeurs d’un <code>vector</code></a></li>
-<li class="chapter" data-level="6.1.4" data-path="dataType2.html"><a href="dataType2.html#nommer-les-éléments-dun-vector"><i class="fa fa-check"></i><b>6.1.4</b> Nommer les éléments d’un <code>vector</code></a></li>
-<li class="chapter" data-level="6.1.5" data-path="dataType2.html"><a href="dataType2.html#modifier-les-éléments-dun-vector"><i class="fa fa-check"></i><b>6.1.5</b> Modifier les éléments d’un <code>vector</code></a></li>
+<li class="chapter" data-level="6.1.1" data-path="dataType2.html"><a href="dataType2.html#creer-un-vector"><i class="fa fa-check"></i><b>6.1.1</b> Créer un <code>vector</code></a></li>
+<li class="chapter" data-level="6.1.2" data-path="dataType2.html"><a href="dataType2.html#operations-sur-un-vector"><i class="fa fa-check"></i><b>6.1.2</b> Opérations sur un <code>vector</code></a></li>
+<li class="chapter" data-level="6.1.3" data-path="dataType2.html"><a href="dataType2.html#acceder-aux-valeurs-dun-vector"><i class="fa fa-check"></i><b>6.1.3</b> Accèder aux valeurs d’un <code>vector</code></a></li>
+<li class="chapter" data-level="6.1.4" data-path="dataType2.html"><a href="dataType2.html#nommer-les-elements-dun-vector"><i class="fa fa-check"></i><b>6.1.4</b> Nommer les éléments d’un <code>vector</code></a></li>
+<li class="chapter" data-level="6.1.5" data-path="dataType2.html"><a href="dataType2.html#modifier-les-elements-dun-vector"><i class="fa fa-check"></i><b>6.1.5</b> Modifier les éléments d’un <code>vector</code></a></li>
 </ul></li>
 <li class="chapter" data-level="6.2" data-path="dataType2.html"><a href="dataType2.html#l014list"><i class="fa fa-check"></i><b>6.2</b> Le conteneur <code>list</code></a><ul>
-<li class="chapter" data-level="6.2.1" data-path="dataType2.html"><a href="dataType2.html#créer-une-list"><i class="fa fa-check"></i><b>6.2.1</b> Créer une <code>list</code></a></li>
-<li class="chapter" data-level="6.2.2" data-path="dataType2.html"><a href="dataType2.html#accéder-aux-valeurs-dune-list"><i class="fa fa-check"></i><b>6.2.2</b> Accéder aux valeurs d’une <code>list</code></a></li>
+<li class="chapter" data-level="6.2.1" data-path="dataType2.html"><a href="dataType2.html#creer-une-list"><i class="fa fa-check"></i><b>6.2.1</b> Créer une <code>list</code></a></li>
+<li class="chapter" data-level="6.2.2" data-path="dataType2.html"><a href="dataType2.html#acceder-aux-valeurs-dune-list"><i class="fa fa-check"></i><b>6.2.2</b> Accéder aux valeurs d’une <code>list</code></a></li>
 <li class="chapter" data-level="6.2.3" data-path="dataType2.html"><a href="dataType2.html#modification-dune-list"><i class="fa fa-check"></i><b>6.2.3</b> Modification d’une <code>list</code></a></li>
 </ul></li>
 <li class="chapter" data-level="6.3" data-path="dataType2.html"><a href="dataType2.html#l014dataframe"><i class="fa fa-check"></i><b>6.3</b> Le conteneur <code>data.frame</code></a><ul>
-<li class="chapter" data-level="6.3.1" data-path="dataType2.html"><a href="dataType2.html#créer-un-data.frame"><i class="fa fa-check"></i><b>6.3.1</b> Créer un <code>data.frame</code></a></li>
-<li class="chapter" data-level="6.3.2" data-path="dataType2.html"><a href="dataType2.html#accèder-aux-valeurs-dun-data.frame"><i class="fa fa-check"></i><b>6.3.2</b> Accèder aux valeurs d’un <code>data.frame</code></a></li>
+<li class="chapter" data-level="6.3.1" data-path="dataType2.html"><a href="dataType2.html#creer-un-data.frame"><i class="fa fa-check"></i><b>6.3.1</b> Créer un <code>data.frame</code></a></li>
+<li class="chapter" data-level="6.3.2" data-path="dataType2.html"><a href="dataType2.html#acceder-aux-valeurs-dun-data.frame"><i class="fa fa-check"></i><b>6.3.2</b> Accèder aux valeurs d’un <code>data.frame</code></a></li>
 <li class="chapter" data-level="6.3.3" data-path="dataType2.html"><a href="dataType2.html#modifier-un-data.frame"><i class="fa fa-check"></i><b>6.3.3</b> Modifier un <code>data.frame</code></a></li>
 </ul></li>
 <li class="chapter" data-level="6.4" data-path="dataType2.html"><a href="dataType2.html#l014matrix"><i class="fa fa-check"></i><b>6.4</b> Le conteneur <code>matrix</code></a><ul>
-<li class="chapter" data-level="6.4.1" data-path="dataType2.html"><a href="dataType2.html#créer-une-matrix"><i class="fa fa-check"></i><b>6.4.1</b> Créer une <code>matrix</code></a></li>
-<li class="chapter" data-level="6.4.2" data-path="dataType2.html"><a href="dataType2.html#manipuler-et-faire-des-opérations-sur-une-matrix"><i class="fa fa-check"></i><b>6.4.2</b> Manipuler et faire des opérations sur une <code>matrix</code></a></li>
-<li class="chapter" data-level="6.4.3" data-path="dataType2.html"><a href="dataType2.html#accèder-aux-éléments-dune-matrix"><i class="fa fa-check"></i><b>6.4.3</b> Accèder aux éléments d’une <code>matrix</code></a></li>
+<li class="chapter" data-level="6.4.1" data-path="dataType2.html"><a href="dataType2.html#creer-une-matrix"><i class="fa fa-check"></i><b>6.4.1</b> Créer une <code>matrix</code></a></li>
+<li class="chapter" data-level="6.4.2" data-path="dataType2.html"><a href="dataType2.html#manipuler-et-faire-des-operations-sur-une-matrix"><i class="fa fa-check"></i><b>6.4.2</b> Manipuler et faire des opérations sur une <code>matrix</code></a></li>
+<li class="chapter" data-level="6.4.3" data-path="dataType2.html"><a href="dataType2.html#acceder-aux-elements-dune-matrix"><i class="fa fa-check"></i><b>6.4.3</b> Accèder aux éléments d’une <code>matrix</code></a></li>
 </ul></li>
 <li class="chapter" data-level="6.5" data-path="dataType2.html"><a href="dataType2.html#l014array"><i class="fa fa-check"></i><b>6.5</b> Le conteneur <code>array</code></a><ul>
-<li class="chapter" data-level="6.5.1" data-path="dataType2.html"><a href="dataType2.html#créer-un-array"><i class="fa fa-check"></i><b>6.5.1</b> Créer un <code>array</code></a></li>
+<li class="chapter" data-level="6.5.1" data-path="dataType2.html"><a href="dataType2.html#creer-un-array"><i class="fa fa-check"></i><b>6.5.1</b> Créer un <code>array</code></a></li>
 <li class="chapter" data-level="6.5.2" data-path="dataType2.html"><a href="dataType2.html#manipuler-un-array"><i class="fa fa-check"></i><b>6.5.2</b> Manipuler un <code>array</code></a></li>
 </ul></li>
 <li class="chapter" data-level="6.6" data-path="dataType2.html"><a href="dataType2.html#conclusion-3"><i class="fa fa-check"></i><b>6.6</b> Conclusion</a></li>
@@ -230,10 +228,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="7" data-path="fonctions.html"><a href="fonctions.html"><i class="fa fa-check"></i><b>7</b> Les fonctions</a><ul>
 <li class="chapter" data-level="7.1" data-path="fonctions.html"><a href="fonctions.html#quest-ce-quune-fonction"><i class="fa fa-check"></i><b>7.1</b> Qu’est-ce qu’une fonction</a></li>
 <li class="chapter" data-level="7.2" data-path="fonctions.html"><a href="fonctions.html#l015mainfun"><i class="fa fa-check"></i><b>7.2</b> Les fonctions les plus courantes</a><ul>
-<li class="chapter" data-level="7.2.1" data-path="fonctions.html"><a href="fonctions.html#laccès-à-la-documentation"><i class="fa fa-check"></i><b>7.2.1</b> L’accès à la documentation</a></li>
-<li class="chapter" data-level="7.2.2" data-path="fonctions.html"><a href="fonctions.html#visualiser-les-données"><i class="fa fa-check"></i><b>7.2.2</b> Visualiser les données</a></li>
-<li class="chapter" data-level="7.2.3" data-path="fonctions.html"><a href="fonctions.html#manipuler-les-données"><i class="fa fa-check"></i><b>7.2.3</b> Manipuler les données</a></li>
-<li class="chapter" data-level="7.2.4" data-path="fonctions.html"><a href="fonctions.html#fonctions-mathématiques"><i class="fa fa-check"></i><b>7.2.4</b> Fonctions mathématiques</a></li>
+<li class="chapter" data-level="7.2.1" data-path="fonctions.html"><a href="fonctions.html#lacces-a-la-documentation"><i class="fa fa-check"></i><b>7.2.1</b> L’accès à la documentation</a></li>
+<li class="chapter" data-level="7.2.2" data-path="fonctions.html"><a href="fonctions.html#visualiser-les-donnees"><i class="fa fa-check"></i><b>7.2.2</b> Visualiser les données</a></li>
+<li class="chapter" data-level="7.2.3" data-path="fonctions.html"><a href="fonctions.html#manipuler-les-donnees"><i class="fa fa-check"></i><b>7.2.3</b> Manipuler les données</a></li>
+<li class="chapter" data-level="7.2.4" data-path="fonctions.html"><a href="fonctions.html#fonctions-mathematiques"><i class="fa fa-check"></i><b>7.2.4</b> Fonctions mathématiques</a></li>
 <li class="chapter" data-level="7.2.5" data-path="fonctions.html"><a href="fonctions.html#statistiques-descriptives"><i class="fa fa-check"></i><b>7.2.5</b> Statistiques descriptives</a></li>
 </ul></li>
 <li class="chapter" data-level="7.3" data-path="fonctions.html"><a href="fonctions.html#autres-fonctions-utiles"><i class="fa fa-check"></i><b>7.3</b> Autres fonctions utiles</a><ul>
@@ -248,14 +246,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="7.3.9" data-path="fonctions.html"><a href="fonctions.html#l015rm"><i class="fa fa-check"></i><b>7.3.9</b> <code>rm()</code></a></li>
 </ul></li>
 <li class="chapter" data-level="7.4" data-path="fonctions.html"><a href="fonctions.html#quelques-exercices"><i class="fa fa-check"></i><b>7.4</b> Quelques exercices</a><ul>
-<li class="chapter" data-level="7.4.1" data-path="fonctions.html"><a href="fonctions.html#séquences"><i class="fa fa-check"></i><b>7.4.1</b> Séquences</a></li>
+<li class="chapter" data-level="7.4.1" data-path="fonctions.html"><a href="fonctions.html#sequences"><i class="fa fa-check"></i><b>7.4.1</b> Séquences</a></li>
 <li class="chapter" data-level="7.4.2" data-path="fonctions.html"><a href="fonctions.html#statistiques-descriptives-1"><i class="fa fa-check"></i><b>7.4.2</b> Statistiques descriptives</a></li>
 </ul></li>
 <li class="chapter" data-level="7.5" data-path="fonctions.html"><a href="fonctions.html#l015function"><i class="fa fa-check"></i><b>7.5</b> Ecrire une fonction</a></li>
-<li class="chapter" data-level="7.6" data-path="fonctions.html"><a href="fonctions.html#autres-fonctions-développées-par-la-communauté-des-utilisateurs-les-packages"><i class="fa fa-check"></i><b>7.6</b> Autres fonctions développées par la communauté des utilisateurs : les packages</a><ul>
+<li class="chapter" data-level="7.6" data-path="fonctions.html"><a href="fonctions.html#autres-fonctions-developpees-par-la-communaute-des-utilisateurs-les-packages"><i class="fa fa-check"></i><b>7.6</b> Autres fonctions développées par la communauté des utilisateurs : les packages</a><ul>
 <li class="chapter" data-level="7.6.1" data-path="fonctions.html"><a href="fonctions.html#installer-un-package"><i class="fa fa-check"></i><b>7.6.1</b> Installer un package</a></li>
 <li class="chapter" data-level="7.6.2" data-path="fonctions.html"><a href="fonctions.html#charger-un-package"><i class="fa fa-check"></i><b>7.6.2</b> Charger un package</a></li>
-<li class="chapter" data-level="7.6.3" data-path="fonctions.html"><a href="fonctions.html#portabilité-du-code"><i class="fa fa-check"></i><b>7.6.3</b> Portabilité du code</a></li>
+<li class="chapter" data-level="7.6.3" data-path="fonctions.html"><a href="fonctions.html#portabilite-du-code"><i class="fa fa-check"></i><b>7.6.3</b> Portabilité du code</a></li>
 </ul></li>
 <li class="chapter" data-level="7.7" data-path="fonctions.html"><a href="fonctions.html#conclusion-4"><i class="fa fa-check"></i><b>7.7</b> Conclusion</a></li>
 </ul></li>
@@ -286,7 +284,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="9.8" data-path="algo.html"><a href="algo.html#conclusion-6"><i class="fa fa-check"></i><b>9.8</b> Conclusion</a></li>
 </ul></li>
 <li class="chapter" data-level="10" data-path="project.html"><a href="project.html"><i class="fa fa-check"></i><b>10</b> Gestion d’un projet avec R</a><ul>
-<li class="chapter" data-level="10.1" data-path="project.html"><a href="project.html#gestion-des-fichiers-et-des-répertoires-de-travail"><i class="fa fa-check"></i><b>10.1</b> Gestion des fichiers et des répertoires de travail</a></li>
+<li class="chapter" data-level="10.1" data-path="project.html"><a href="project.html#gestion-des-fichiers-et-des-repertoires-de-travail"><i class="fa fa-check"></i><b>10.1</b> Gestion des fichiers et des répertoires de travail</a></li>
 <li class="chapter" data-level="10.2" data-path="project.html"><a href="project.html#gestion-des-versions-de-script"><i class="fa fa-check"></i><b>10.2</b> Gestion des versions de script</a></li>
 <li class="chapter" data-level="10.3" data-path="project.html"><a href="project.html#gestion-de-la-documentation"><i class="fa fa-check"></i><b>10.3</b> Gestion de la documentation</a></li>
 <li class="chapter" data-level="10.4" data-path="project.html"><a href="project.html#conclusion-7"><i class="fa fa-check"></i><b>10.4</b> Conclusion</a></li>
@@ -319,7 +317,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="14" data-path="graph4.html"><a href="graph4.html"><i class="fa fa-check"></i><b>14</b> Du graphique à la figure dans un article scientifique</a><ul>
 <li class="chapter" data-level="14.1" data-path="graph4.html"><a href="graph4.html#inkscape"><i class="fa fa-check"></i><b>14.1</b> Inkscape</a></li>
 <li class="chapter" data-level="14.2" data-path="graph4.html"><a href="graph4.html#the-gimp"><i class="fa fa-check"></i><b>14.2</b> The Gimp</a></li>
-<li class="chapter" data-level="14.3" data-path="graph4.html"><a href="graph4.html#table-de-référence"><i class="fa fa-check"></i><b>14.3</b> Table de référence</a></li>
+<li class="chapter" data-level="14.3" data-path="graph4.html"><a href="graph4.html#table-de-reference"><i class="fa fa-check"></i><b>14.3</b> Table de référence</a></li>
 </ul></li>
 <li class="part"><span><b>III Etude de cas</b></span></li>
 <li class="chapter" data-level="15" data-path="studyCase001.html"><a href="studyCase001.html"><i class="fa fa-check"></i><b>15</b> Analyser des données de datalogger de température</a></li>
@@ -346,7 +344,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="IDE" class="section level1">
 <h1><span class="header-section-number"> 4</span> Choisir un environnement de développement</h1>
-<div id="editeurs-de-texte-et-environnement-de-développement" class="section level2">
+<div id="editeurs-de-texte-et-environnement-de-developpement" class="section level2">
 <h2><span class="header-section-number">4.1</span> Editeurs de texte et environnement de développement</h2>
 <p>Il existe de très nombreux éditeurs de texte, le chapitre précédent a permis d’en introduire quelques uns parmi les plus simples comme le bloc note de Windows. Rapidement les limites de ces éditeurs ont rendu la tâche d’écrire un script fastidieuse. En effet, même en structurant son script avec des commentaires, il reste difficile de se répérer dans celui-ci. C’est là qu’interviennent les éditeurs de texte spécialisés qui vont permettre une écriture et une lecture agréable et simplifiée.
 L’éditeur de texte pour R certainement le plus répandu est Rstudio, mais il en existe bien d’autres. Faire une liste exhaustive de toutes les solutions disponibles sort du cadre de ce livre, ainsi nous nous focaliserons sur les trois solutions que j’utilise au quotidien que sont <strong>Notepad++</strong>, <strong>Rstudio</strong>, et <strong>Geany</strong>.</p>
@@ -354,7 +352,7 @@ L’éditeur de texte pour R certainement le plus répandu est Rstudio, mais il 
 <div id="rstudio" class="section level2">
 <h2><span class="header-section-number">4.2</span> RStudio</h2>
 <div class="figure"><span id="fig:logoRStudio"></span>
-<img src="myLogos/RStudio.png" alt="Logo RStudio.\label{fig:logoRStudio}"  />
+<img src="myLogos/RStudio.png" alt="Logo RStudio.\label{fig:logoRStudio}" width="280" />
 <p class="caption">
 Figure 4.1: Logo RStudio.
 </p>
@@ -368,27 +366,27 @@ Figure 4.1: Logo RStudio.
 <p>Nous pouvons alors ouvrir RStudio. Lors de la première ouverture, l’interface est divisée en deux avec à gauche la console R que nous avons vu au chapitre précédent (Figure <a href="IDE.html#fig:screenCapRStudio01">4.2</a>). Pour ouvrir un nouveau script, nous allons dans le menu <em>File</em>, <em>New File</em>, <em>R script</em>. Par défaut ce fichier a comme nom <em>Untitled1</em>. Nous avons vu au chapitre précédent l’importance de donner un nom pertinent à nos scripts, c’est pourquoi nous allons le renommer <em>selecEnvDev.R</em>, dans le menu <em>File</em>, avec l’option <em>Save As…</em>.
 Nous avons pu noter que la partie gauche de RStudio est désormais séparée en deux, avec en bas de l’écran la console et en haut de l’écran le script.</p>
 <div class="figure"><span id="fig:screenCapRStudio01"></span>
-<img src="myFigures/screencap_RStudio_01.png" alt="Capture d'écran de RStudio sous Windows : fenêtre par défaut.\label{fig:screenCapRStudio01}"  />
+<img src="myFigures/screencap_RStudio_01.png" alt="Capture d'écran de RStudio sous Windows : fenêtre par défaut.\label{fig:screenCapRStudio01}" width="360" />
 <p class="caption">
 Figure 4.2: Capture d’écran de RStudio sous Windows : fenêtre par défaut.
 </p>
 </div>
 <p>Nous pouvons alors commencer l’écriture de notre script avec les commentaires décrivant ce que nous allons y trouver, et y ajouter un calcul simple. Une fois que nous avons recopié le code suivant, nous pouvons sauver notre script avec la commande <code>CTRL + S</code> ou en se rendant dans <em>File</em>, puis <em>Save</em>.</p>
-<div class="sourceCode" id="cb112"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb112-1" title="1"><span class="co"># ------------------------------------------------------------</span></a>
-<a class="sourceLine" id="cb112-2" title="2"><span class="co"># Un script pour choisir son IDE</span></a>
-<a class="sourceLine" id="cb112-3" title="3"><span class="co"># créé le 27/06/2018</span></a>
-<a class="sourceLine" id="cb112-4" title="4"><span class="co"># modifié le 06/11/2018</span></a>
-<a class="sourceLine" id="cb112-5" title="5"><span class="co"># François Rebaudo</span></a>
-<a class="sourceLine" id="cb112-6" title="6"><span class="co"># ------------------------------------------------------------</span></a>
-<a class="sourceLine" id="cb112-7" title="7"></a>
-<a class="sourceLine" id="cb112-8" title="8"><span class="co"># [1] calcul simple</span></a>
-<a class="sourceLine" id="cb112-9" title="9"><span class="co"># ------------------------------------------------------------</span></a>
-<a class="sourceLine" id="cb112-10" title="10">nbrRep &lt;-<span class="st"> </span><span class="dv">5</span></a>
-<a class="sourceLine" id="cb112-11" title="11">pi <span class="op">*</span><span class="st"> </span>nbrRep<span class="op">^</span><span class="dv">2</span></a></code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co"># ------------------------------------------------------------</span>
+<span class="co"># Un script pour choisir son IDE</span>
+<span class="co"># créé le 27/06/2018</span>
+<span class="co"># modifié le 06/11/2018</span>
+<span class="co"># François Rebaudo</span>
+<span class="co"># ------------------------------------------------------------</span>
+
+<span class="co"># [1] calcul simple</span>
+<span class="co"># ------------------------------------------------------------</span>
+nbrRep &lt;-<span class="st"> </span><span class="dv">5</span>
+pi <span class="op">*</span><span class="st"> </span>nbrRep<span class="op">^</span><span class="dv">2</span></code></pre>
 <pre><code>## [1] 78.53982</code></pre>
 <p>Pour exécuter notre script, il suffit de sélectionner les lignes que nous souhaitons exécuter et d’utiliser la combinaison de touches <code>CTRL + ENTER</code>. Le résultat apparaît dans la console (Figure <a href="IDE.html#fig:screenCapRStudio02">4.3</a>).</p>
 <div class="figure"><span id="fig:screenCapRStudio02"></span>
-<img src="myFigures/screencap_RStudio_02.png" alt="Capture d'écran de RStudio sous Windows : exécuter un script avec CTRL + ENTER.\label{fig:screenCapRStudio02}"  />
+<img src="myFigures/screencap_RStudio_02.png" alt="Capture d'écran de RStudio sous Windows : exécuter un script avec CTRL + ENTER.\label{fig:screenCapRStudio02}" width="360" />
 <p class="caption">
 Figure 4.3: Capture d’écran de RStudio sous Windows : exécuter un script avec CTRL + ENTER.
 </p>
@@ -396,7 +394,7 @@ Figure 4.3: Capture d’écran de RStudio sous Windows : exécuter un script ave
 <p>Nous pouvons voir que par défaut dans la partie du script les commentaires apparaissent en vert, les chiffres en bleu, et le reste du code en noir. Dans la partie de la console ce qui a été exécuté apparaît en bleu et les résultats de l’exécution en noir.
 Nous pouvons également noter que dans la partie du code chaque ligne comporte un numéro correspondant au numéro de ligne à gauche sur fond gris. Il s’agit de la coloration syntaxique par défaut avec RStudio. Cette coloration syntaxique peut être modifiée en se rendant dans le menu <em>Tools</em>, <em>Global Options…</em>, <em>Appearance</em>, puis en choisissant un autre thème dans la liste <em>Editor theme:</em>. Nous allons choisir le thème <em>Cobalt</em>, puis <em>OK</em> (Figure <a href="IDE.html#fig:screenCapRStudio03">4.4</a>).</p>
 <div class="figure"><span id="fig:screenCapRStudio03"></span>
-<img src="myFigures/screencap_RStudio_03.png" alt="Capture d'écran de RStudio sous Windows : changer les paramètres de coloration syntaxique.\label{fig:screenCapRStudio03}"  />
+<img src="myFigures/screencap_RStudio_03.png" alt="Capture d'écran de RStudio sous Windows : changer les paramètres de coloration syntaxique.\label{fig:screenCapRStudio03}" width="360" />
 <p class="caption">
 Figure 4.4: Capture d’écran de RStudio sous Windows : changer les paramètres de coloration syntaxique.
 </p>
@@ -407,7 +405,7 @@ Figure 4.4: Capture d’écran de RStudio sous Windows : changer les paramètres
 <div id="notepad-avec-npp2r" class="section level2">
 <h2><span class="header-section-number">4.3</span> Notepad++ avec Npp2R</h2>
 <div class="figure"><span id="fig:logoNotepad"></span>
-<img src="myLogos/Notepadpp.png" alt="Logo Notepad++\label{fig:logoNotepad}"  />
+<img src="myLogos/Notepadpp.png" alt="Logo Notepad++\label{fig:logoNotepad}" width="280" />
 <p class="caption">
 Figure 4.5: Logo Notepad++
 </p>
@@ -424,28 +422,28 @@ Figure 4.5: Logo Notepad++
 <h3><span class="header-section-number">4.3.3</span> Un script avec Notepad++</h3>
 <p>Lors de la première ouverture Notepad++ affiche un fichier vide <em>new 1</em> (Figura <a href="IDE.html#fig:screenCapNpp01">4.6</a>).</p>
 <div class="figure"><span id="fig:screenCapNpp01"></span>
-<img src="myFigures/screencap_Npp_01.png" alt="Capture d'écran de Notepad++ sous Windows : fenêtre par défaut.\label{fig:screenCapNpp01}"  />
+<img src="myFigures/screencap_Npp_01.png" alt="Capture d'écran de Notepad++ sous Windows : fenêtre par défaut.\label{fig:screenCapNpp01}" width="360" />
 <p class="caption">
 Figure 4.6: Capture d’écran de Notepad++ sous Windows : fenêtre par défaut.
 </p>
 </div>
 <p>Puisque nous avons déjà créer un script pour le tester avec RStudio, nous allons l’ouvrir à nouveau avec Notepad++. Dans <em>Fichier</em>, selectionnons <em>Ouvrir…</em> puis choisir le script <em>selecEnvDev.R</em> créé précédemment. Une fois le script ouvert, allons dans <em>Langage</em>, puis <em>R</em>, et encore une fois <em>R</em>. La coloration syntaxique apparaît (Figura <a href="IDE.html#fig:screenCapNpp02">4.7</a>).</p>
 <div class="figure"><span id="fig:screenCapNpp02"></span>
-<img src="myFigures/screencap_Npp_02.png" alt="Capture d'écran de Notepad++ sous Windows : exécuter un script avec F8.\label{fig:screenCapNpp02}"  />
+<img src="myFigures/screencap_Npp_02.png" alt="Capture d'écran de Notepad++ sous Windows : exécuter un script avec F8.\label{fig:screenCapNpp02}" width="360" />
 <p class="caption">
 Figure 4.7: Capture d’écran de Notepad++ sous Windows : exécuter un script avec F8.
 </p>
 </div>
 <p>L’execution du script ne peut se faire que si Npp2R est en cours d’exécution. Pour se faire il est nécessaire de lancer le programme Npp2R depuis l’invite de Windows. Un icône devrait apparaître en bas de votre écran. L’exécution automatique du code depuis Notepad++ se fait en sélectionnant le code à exécuter puis en utilisant la commande <code>F8</code>. Si la commande ne fonctionne pas et que vous venez d’installer Notepad++, il est peut être nécessaire de redémarrer votre ordinateur. Si la commande fonctionne, une nouvelle fenêtre va s’ouvrir avec une consol exécutant les lignes souhaitées (Figura <a href="IDE.html#fig:screenCapNpp03">4.8</a>.</p>
 <div class="figure"><span id="fig:screenCapNpp03"></span>
-<img src="myFigures/screencap_Npp_03.png" alt="Capture d'écran de Notepad++ sous Windows : la console avec F8.\label{fig:screenCapNpp03}"  />
+<img src="myFigures/screencap_Npp_03.png" alt="Capture d'écran de Notepad++ sous Windows : la console avec F8.\label{fig:screenCapNpp03}" width="534" />
 <p class="caption">
 Figure 4.8: Capture d’écran de Notepad++ sous Windows : la console avec F8.
 </p>
 </div>
 <p>Comme pour RStudio, la coloration syntaxique peut être modifiée depuis le menu <em>Paramètres</em>, et un nouveau thème peut être sélectionné (par exemple <em>Solarized</em> dans la Figura <a href="IDE.html#fig:screenCapNpp04">4.9</a>)</p>
 <div class="figure"><span id="fig:screenCapNpp04"></span>
-<img src="myFigures/screencap_Npp_04.png" alt="Capture d'écran de Notepad++ sous Windows : coloration syntaxique avec le thème Solarized.\label{fig:screenCapNpp04}"  />
+<img src="myFigures/screencap_Npp_04.png" alt="Capture d'écran de Notepad++ sous Windows : coloration syntaxique avec le thème Solarized.\label{fig:screenCapNpp04}" width="360" />
 <p class="caption">
 Figure 4.9: Capture d’écran de Notepad++ sous Windows : coloration syntaxique avec le thème Solarized.
 </p>
@@ -456,7 +454,7 @@ Figure 4.9: Capture d’écran de Notepad++ sous Windows : coloration syntaxique
 <div id="geany-pour-linux-mac-osx-et-windows" class="section level2">
 <h2><span class="header-section-number">4.4</span> Geany (pour Linux, Mac OSX et Windows)</h2>
 <div class="figure"><span id="fig:logoGeany"></span>
-<img src="myLogos/Geany.png" alt="Logo Geany\label{fig:logoGeany}"  />
+<img src="myLogos/Geany.png" alt="Logo Geany\label{fig:logoGeany}" width="280" />
 <p class="caption">
 Figure 4.10: Logo Geany
 </p>
@@ -469,14 +467,14 @@ Figure 4.10: Logo Geany
 <h3><span class="header-section-number">4.4.2</span> Un script avec Geany</h3>
 <p>Lors de la première ouverture, comme pour RStudio et Notepad++, un fichier vide est créé (Figure <a href="IDE.html#fig:screenCapGeany01">4.11</a>).</p>
 <div class="figure"><span id="fig:screenCapGeany01"></span>
-<img src="myFigures/screencap_Geany_01.png" alt="Capture d'écran de Geany sous Windows : fenêtre par défaut.\label{fig:screenCapGeany01}"  />
+<img src="myFigures/screencap_Geany_01.png" alt="Capture d'écran de Geany sous Windows : fenêtre par défaut.\label{fig:screenCapGeany01}" width="360" />
 <p class="caption">
 Figure 4.11: Capture d’écran de Geany sous Windows : fenêtre par défaut.
 </p>
 </div>
 <p>Nous pouvons ouvrir notre script avec <em>Fichier</em>, <em>Ouvrir</em> (Figure <a href="IDE.html#fig:screenCapGeany02">4.12</a>).</p>
 <div class="figure"><span id="fig:screenCapGeany02"></span>
-<img src="myFigures/screencap_Geany_02.png" alt="Capture d'écran de Geany sous Windows : ouvrir un script.\label{fig:screenCapGeany02}"  />
+<img src="myFigures/screencap_Geany_02.png" alt="Capture d'écran de Geany sous Windows : ouvrir un script.\label{fig:screenCapGeany02}" width="360" />
 <p class="caption">
 Figure 4.12: Capture d’écran de Geany sous Windows : ouvrir un script.
 </p>
@@ -484,7 +482,7 @@ Figure 4.12: Capture d’écran de Geany sous Windows : ouvrir un script.
 <p>Pour exécuter notre script, la version de Geany pour Windows ne dispose pas d’un terminal intégré, ce qui rend son utilisation limitée sous ce système d’exploitation. L’exécution d’un script peut se faire en ouvrant R dans une fenêtre à part et en copiant et collant les lignes à exécuter. Sous Linux et Mac OSX, il suffit d’ouvrir R dans le terminal situé dans la partie basse de la fenêtre de Geany avec la commande <code>R</code>. Nous pouvons ensuite paramétré Geany pour qu’une combinaison de touches permette d’exécuter le code selectionné (par exemple <code>CTRL + R</code>). Pour cela il faut tout d’abord autoriser l’envoi de sélection vers le terminal (<code>send_selection_unsafe=true</code>) dans le fichier <code>geany.conf</code> puis choisir la commande d’envoi vers le terminal (dans <em>Editar</em>, <em>Preferencias</em>, <em>Combinaciones</em>).
 Pour changer le thème de Geany, il existe une collection de thèmes accessibles sur GitHub (<a href="https://github.com/geany/geany-themes/" class="uri">https://github.com/geany/geany-themes/</a>). Le thème peut ensuite être changé via le menu <em>Ver</em>, <em>Cambiar esquema de color…</em> (un exemple avec le thème <em>Solarized</em>, Figure <a href="IDE.html#fig:screenCapGeany03">4.13</a>).</p>
 <div class="figure"><span id="fig:screenCapGeany03"></span>
-<img src="myFigures/screencap_Geany_03.png" alt="Capture d'écran de Geany sous Windows : changer les paramètres de coloration syntaxique.\label{fig:screenCapGeany03}"  />
+<img src="myFigures/screencap_Geany_03.png" alt="Capture d'écran de Geany sous Windows : changer les paramètres de coloration syntaxique.\label{fig:screenCapGeany03}" width="360" />
 <p class="caption">
 Figure 4.13: Capture d’écran de Geany sous Windows : changer les paramètres de coloration syntaxique.
 </p>
@@ -517,13 +515,11 @@ Figure 4.13: Capture d’écran de Geany sous Windows : changer les paramètres 
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/lunr.js"></script>
-<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
 <script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
 <script>
 gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({
@@ -531,11 +527,12 @@ gitbook.start({
 "github": false,
 "facebook": true,
 "twitter": true,
+"google": false,
 "linkedin": false,
 "weibo": false,
 "instapaper": false,
 "vk": false,
-"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {
 "theme": "white",
@@ -547,10 +544,6 @@ gitbook.start({
 "text": "Edit"
 },
 "history": {
-"link": null,
-"text": null
-},
-"view": {
 "link": null,
 "text": null
 },
