@@ -347,7 +347,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Nous avons vu différentes manières d’utiliser les couleurs : avec leur nom (e.g., <code>"salmon"</code>), avec un numéro de 1 à 8, avec la fonction <code>rgb()</code> (pour “red”, “green”, “blue”), et avec la fonction <code>colors()</code>. Il en existe d’autres mais celles-ci sont les principales.</p>
 <p>L’utilisation des numéros de 1 à 8 correspond au noir, rouge, vert, bleu, cyan, magenta, jaune et gris. Cette utilisation est pratique pour visualiser rapidement nos résultats mais donne globalement des graphiques visuellement moyens. Ces couleurs sont plutôt à éviter pour communiquer nos graphiques.</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">barplot</span>(<span class="kw">sample</span>(<span class="dv">10</span><span class="op">:</span><span class="dv">15</span>, <span class="dv">8</span>, <span class="dt">replace =</span> <span class="ot">TRUE</span>), <span class="dt">col =</span> <span class="dv">1</span><span class="op">:</span><span class="dv">8</span>, <span class="dt">names.arg =</span> <span class="dv">1</span><span class="op">:</span><span class="dv">8</span>)</code></pre>
-<p><img src="myRBook_FR_files/figure-html/unnamed-chunk-242-1.png" width="672" /></p>
+<p><img src="myRBook_FR_files/figure-html/021-02-graphiques-1-1.png" width="672" /></p>
 <div id="colors" class="section level2">
 <h2><span class="header-section-number">12.1</span> <code>colors()</code></h2>
 <p>Pour choisir des couleurs plus agréables et mettant plus en avant nos résultats, une option consiste à les choisir dans la liste des couleurs pré-enregistrées dans R. Nous pouvons accéder à la liste des couleurs avec la fonction <code>colors()</code></p>
@@ -378,7 +378,7 @@ myLabels &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="kw
   <span class="dt">y =</span> <span class="kw">sort</span>(<span class="kw">rep</span>((<span class="dv">0</span><span class="op">:</span>(numRow <span class="op">-</span><span class="st"> </span><span class="dv">1</span>)<span class="op">/</span>numRow), numCol), <span class="dt">decreasing =</span> <span class="ot">TRUE</span>) <span class="op">+</span><span class="st"> </span><span class="fl">0.02</span>,
   <span class="dt">labels =</span> myLabels, 
   <span class="dt">cex =</span> <span class="fl">0.6</span>)</code></pre>
-<p><img src="myRBook_FR_files/figure-html/unnamed-chunk-244-1.png" width="672" /></p>
+<p><img src="myRBook_FR_files/figure-html/021-02-graphiques-3-1.png" width="672" /></p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">par</span>(op)</code></pre>
 </div>
 <div id="rgb" class="section level2">
@@ -425,7 +425,7 @@ myLabels &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="kw
   <span class="kw">par</span>(op)
 }
 <span class="kw">graphBarplotCol</span>(<span class="dt">n =</span> <span class="dv">50</span>)</code></pre>
-<p><img src="myRBook_FR_files/figure-html/unnamed-chunk-245-1.png" width="672" /></p>
+<p><img src="myRBook_FR_files/figure-html/021-02-graphiques-4-1.png" width="672" /></p>
 <p>Avec la fonction <code>rgb()</code> nous pouvons donc représenter <code>256^3</code> couleurs, soit 167 777 216 couleurs différentes. Notre objectif reste cependant de faire des graphiques agréables à lire et qui mettent bien en valeurs nos résultats scientifiques. Il faut donc choisir les couleurs adéquates au regard de notre objectif. C’est pour cela que nous allons utiliser des palettes.</p>
 </div>
 <div id="palettes" class="section level2">
@@ -441,7 +441,7 @@ myLabels &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="kw
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">boxplot</span>(<span class="kw">matrix</span>(<span class="kw">rnorm</span>(<span class="dv">100</span>), <span class="dt">ncol =</span> <span class="dv">5</span>), <span class="dt">col =</span> myPal, <span class="dt">axes =</span> <span class="ot">FALSE</span>)
 <span class="kw">axis</span>(<span class="dv">1</span>)
 <span class="kw">axis</span>(<span class="dv">2</span>)</code></pre>
-<p><img src="myRBook_FR_files/figure-html/unnamed-chunk-246-1.png" width="672" /></p>
+<p><img src="myRBook_FR_files/figure-html/021-02-graphiques-5-1.png" width="672" /></p>
 <p>Il existe des palettes inclues dans R : <code>terrain.colors()</code>, <code>heat.colors()</code>, <code>topo.colors()</code>,
 <code>cm.colors()</code>, <code>rainbow()</code>.</p>
 <pre class="sourceCode r"><code class="sourceCode r">op &lt;-<span class="st"> </span><span class="kw">par</span>(<span class="dt">no.readonly =</span> <span class="ot">TRUE</span>)
@@ -457,7 +457,7 @@ myLabels &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="kw
 <span class="kw">boxplot</span>(<span class="kw">matrix</span>(<span class="kw">rnorm</span>(<span class="dv">1000</span>), <span class="dt">ncol =</span> <span class="dv">10</span>), <span class="dt">main =</span> <span class="st">&quot;rainbow()&quot;</span>, 
   <span class="dt">col =</span> <span class="kw">rainbow</span>(<span class="dv">10</span>), <span class="dt">axes =</span> <span class="ot">FALSE</span>)
 <span class="kw">par</span>(op)</code></pre>
-<p><img src="myRBook_FR_files/figure-html/unnamed-chunk-247-1.png" width="672" /></p>
+<p><img src="myRBook_FR_files/figure-html/021-02-graphiques-6-1.png" width="672" /></p>
 <p>Il existe aussi une fonction <code>colorRampPalette()</code> qui permet de créer un dégradé de couleur.</p>
 <pre class="sourceCode r"><code class="sourceCode r">op &lt;-<span class="st"> </span><span class="kw">par</span>(<span class="dt">no.readonly =</span> <span class="ot">TRUE</span>)
 <span class="kw">par</span>(<span class="dt">mfrow =</span> <span class="kw">c</span>(<span class="dv">3</span>, <span class="dv">1</span>), <span class="dt">mar =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>))
@@ -468,7 +468,7 @@ myLabels &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="kw
 <span class="kw">boxplot</span>(<span class="kw">matrix</span>(<span class="kw">rnorm</span>(<span class="dv">2500</span>), <span class="dt">ncol =</span> <span class="dv">25</span>), 
   <span class="dt">col =</span>  <span class="kw">colorRampPalette</span>(<span class="kw">c</span>(<span class="kw">rgb</span>(<span class="dv">255</span>, <span class="dv">136</span>, <span class="dv">0</span>, <span class="dt">maxColorValue =</span> <span class="dv">255</span>),  
   <span class="kw">rgb</span>(<span class="dv">0</span>, <span class="dv">94</span>, <span class="dv">255</span>, <span class="dt">maxColorValue =</span> <span class="dv">255</span>)))(<span class="dv">25</span>), <span class="dt">axes =</span> <span class="ot">FALSE</span>)</code></pre>
-<p><img src="myRBook_FR_files/figure-html/unnamed-chunk-248-1.png" width="672" /></p>
+<p><img src="myRBook_FR_files/figure-html/021-02-graphiques-7-1.png" width="672" /></p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">par</span>(op)</code></pre>
 <p>Nous pouvons aussi créer nos propres palettes en utilisant des sites web dédiés à la sélection des couleurs comme <a href="http://paletton.com/" class="uri">http://paletton.com/</a> ou <a href="https://coolors.co/" class="uri">https://coolors.co/</a> (il en existe bien d’autres), puis les utiliser dans R en recopiant dans un vecteur les valeurs héxadécimales ou rgb.</p>
 <p>R est un language de programmation très puissant. Nous pouvons imaginer de nombreuses façons de créer automatiquement des palettes en fonction de critères variés. Par exemple nous pouvons importer une image dont les teintes nous semblent pertinentes, puis extraire les informations de chacun des points pour ensuite sélectionner les couleurs dominantes via un regroupement par cluster. C’est ce que fait la fonction suivante.</p>
@@ -554,10 +554,10 @@ myLabels &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="kw
 
 myPalMet1 &lt;-<span class="st"> </span><span class="kw">createPal</span>(<span class="dt">photo =</span> <span class="st">&quot;./myFiles/photoKmeans.jpg&quot;</span>, 
   <span class="dt">met =</span> <span class="dv">1</span>, <span class="dt">graph =</span> <span class="ot">TRUE</span>, <span class="dt">k =</span> <span class="dv">5</span>)</code></pre>
-<p><img src="myRBook_FR_files/figure-html/unnamed-chunk-250-1.png" width="672" /></p>
+<p><img src="myRBook_FR_files/figure-html/021-02-graphiques-9-1.png" width="672" /></p>
 <pre class="sourceCode r"><code class="sourceCode r">myPalMet2 &lt;-<span class="st"> </span><span class="kw">createPal</span>(<span class="dt">photo =</span> <span class="st">&quot;./myFiles/photoKmeans.jpg&quot;</span>, 
   <span class="dt">met =</span> <span class="dv">2</span>, <span class="dt">graph =</span> <span class="ot">TRUE</span>, <span class="dt">k =</span> <span class="dv">5</span>)</code></pre>
-<p><img src="myRBook_FR_files/figure-html/unnamed-chunk-250-2.png" width="672" /></p>
+<p><img src="myRBook_FR_files/figure-html/021-02-graphiques-9-2.png" width="672" /></p>
 <p>La fonction nous renvoie les couleurs de la palette avec un graphique en barres représentant le nombre de points de l’image dans chacun des groupes de couleurs. Nous pouvons désormais utiliser notre nouvelle palette pour réaliser nos graphiques.</p>
 <pre class="sourceCode r"><code class="sourceCode r">makeImpact &lt;-<span class="st"> </span><span class="cf">function</span>(myPal, <span class="dt">numP =</span> <span class="dv">300</span>, <span class="dt">impact =</span> <span class="fl">0.33</span>, <span class="dt">multCex =</span> <span class="dv">3</span>){
     myX &lt;-<span class="st"> </span><span class="kw">sample</span>(<span class="dv">0</span><span class="op">:</span><span class="dv">1000</span>, <span class="dt">size =</span> numP, <span class="dt">replace =</span> <span class="ot">TRUE</span>)<span class="op">/</span><span class="dv">1000</span>
@@ -573,7 +573,7 @@ op &lt;-<span class="st"> </span><span class="kw">par</span>(<span class="dt">no
 <span class="kw">par</span>(<span class="dt">mfrow =</span> <span class="kw">c</span> (<span class="dv">1</span>, <span class="dv">2</span>), <span class="dt">mar =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>))
 <span class="kw">makeImpact</span>(<span class="dt">myPal =</span> myPalMet1, <span class="dt">numP =</span> <span class="dv">3000</span>, <span class="dt">impact =</span> <span class="fl">0.33</span>)
 <span class="kw">makeImpact</span>(<span class="dt">myPal =</span> myPalMet2, <span class="dt">numP =</span> <span class="dv">3000</span>, <span class="dt">impact =</span> <span class="fl">0.66</span>)</code></pre>
-<p><img src="myRBook_FR_files/figure-html/unnamed-chunk-251-1.png" width="672" /></p>
+<p><img src="myRBook_FR_files/figure-html/021-02-graphiques-10-1.png" width="672" /></p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">par</span>(op)</code></pre>
 </div>
 <div id="conclusion-9" class="section level2">
