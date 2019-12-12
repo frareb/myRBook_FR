@@ -6,7 +6,7 @@ Avec ce chapitre nous allons avoir un premier apperçu de la puissance de R grâ
 
 Pour les fonctions les plus simples comme `+`, les parenthèses ont été supprimés pour que le code soit plus facile à lire, mais il s'agit bien d'une fonction qui peut s'utiliser avec des parenthèses si nous utilisons le signe `+` entre guillemets. Les arguments sont les chiffres que nous souhaitons ajouter.
 
-```{r}
+```{r 015-fonctions-1}
 5 + 2
 '+'(5, 2)
 ```
@@ -23,7 +23,7 @@ Pour travailler avec les fonctions nous allons utiliser le jeu de données `iris
 
 La fonction indispensable de R est celle permettant d'accèder à la documentation. Toutes les fonctions et tous les jeux de données de R possèdent une documentation. Nous pouvons accéder à la documentation avec la fonction `help()` ou en utilisant le raccourci `?`. 
 
-```{r eval = FALSE}
+```{r 015-fonctions-2, eval = FALSE}
 help(matrix) # équivalent à ?matrix
 ```
 
@@ -33,7 +33,7 @@ Ensuite nous pouvons voir le libellé de la fonction (`Matrices`), suivi des par
 
 En copiant collant `help(matrix)` dans notre console R, nous pouvons voir que le paragraphe `Description` indique ce que fait la fonction. Dans le cas de `help(matrix)`, il y a trois fonctions qui sont présentées : `matrix()`, `as.matrix()`, et `is.matrix()`.
 
-```{r}
+```{r 015-fonctions-3}
 # Description
 # matrix creates a matrix from the given set of values.
 # as.matrix attempts to turn its argument into a matrix.
@@ -42,7 +42,7 @@ En copiant collant `help(matrix)` dans notre console R, nous pouvons voir que le
 
 Le paragraphe `Usage` explique comment utiliser la fonction et quels sont les valeurs par défaut éventuelles pour chacun des paramètres.
 
-```{r}
+```{r 015-fonctions-4}
 # Usage
 # matrix(data = NA, nrow = 1, ncol = 1, byrow = FALSE,
 #        dimnames = NULL)
@@ -52,7 +52,7 @@ La fonction `matrix()` peut prendre 5 arguments : `data`, `nrow`, `ncol`, `byrow
 
 Le paragraphe `Arguments` détaille les valeurs et le type de conteneur de chacun des arguments de notre fonction. Par exemple nous pouvons voir que l'argument `dimnames` doit être de type `list`. C'est pouquoi nous avons utilisé ce format lors de la section sur les  [`matrix`](#l014matrix). 
 
-```{r}
+```{r 015-fonctions-5}
 # Arguments
 # data      an optional data vector (including a list or expression vector). 
 #           Non-atomic classed R objects are coerced by as.vector and all 
@@ -70,7 +70,7 @@ Le paragraphe `Arguments` détaille les valeurs et le type de conteneur de chacu
 
 Le paragraphe `Details` apporte des éléments complémentaires sur la fonction. Le paragraphe `Examples` procure des exemples reproductibles dans la console.
 
-```{r}
+```{r 015-fonctions-6}
 ## Example of setting row and column names
 mdat <- matrix(c(1,2,3, 11,12,13), nrow = 2, ncol = 3, byrow = TRUE,
                dimnames = list(c("row1", "row2"),
@@ -80,7 +80,7 @@ mdat
 
 Le nom des arguments n'est pas nécessaire pour qu'une fonction soit correctement interprété par R. Néanmoins par soucis de clarté il est préférable d'utiliser le nom des arguments suivi du signe `=` pour que le code soit plus lisible. 
 
-```{r}
+```{r 015-fonctions-7}
 # bon exemple
 mdat <- matrix(c(1,2,3, 11,12,13), nrow = 2, ncol = 3, byrow = TRUE)
 # mauvais exemple
@@ -91,7 +91,7 @@ mdat <- matrix(c(1,2,3, 11,12,13), 2, 3, TRUE)
 
 La fonction `help.search()` ou `??` permet de rechercher une expression dans l'ensemble de la documentation. Elle est utile lorsque l'on cherche une fonctionnalité sans connaître le nom de la fonction sous R.
 
-```{r eval = FALSE}
+```{r 015-fonctions-8, eval = FALSE}
 help.search("average")
 ```
 
@@ -103,7 +103,7 @@ La fonction `help.search()` renvoie vers une page contenant la liste des pages o
 
 La fonction `str()` permet de visualiser la structure interne d'un objet, comme indiqué dans la documentation que nous pouvons consulter avec `help(str)`.
 
-```{r}
+```{r 015-fonctions-9}
 str(iris)
 ```
 
@@ -113,7 +113,7 @@ La fonction `str()` renvoie le type d'objet (`data.frame`), le nombre d'observat
 
 La fonction `head()` renvoie les premières valeurs d'un objet, et la fonction `tail()` les dernières valeurs d'un objet. Par défaut six valeurs sont retournées, l'argument `n` contrôle le nombre de valeurs à retourner. 
 
-```{r}
+```{r 015-fonctions-10}
 head(iris)
 tail(iris)
 head(iris, n = 2)
@@ -123,7 +123,7 @@ head(iris, n = 2)
 
 Nous avons déjà vu la fonction `names()` qui permet à la fois de connaître le nom des éléments d'un objet, mais aussi d'assigner des noms aux éléments d'un objet comme une [`matrix`](#l014matrix), une [`list`](#l014list) ou un [`data.frame`](#l014dataframe).
 
-```{r}
+```{r 015-fonctions-11}
 names(iris)
 irisCopy <- iris
 names(irisCopy) <- c("a", "b", "c", "d", "e")
@@ -134,7 +134,7 @@ names(irisCopy)
 
 La fonction `cat()` permet d'afficher le contenu d'un objet alors que la fonction `print()` retourne la valeur d'un objet avec la possibilité d'effectuer des conversions.
 
-```{r}
+```{r 015-fonctions-12}
 cat(names(iris))
 print(names(iris))
 cat(iris[1, 1])
@@ -148,7 +148,7 @@ print(iris[1, 1], digits = 0)
 
 La fonction `rank()` renvoie pour un ensemble d'éléments le numéro de la position de chacun des éléments. En cas d'éléments de même valeur, l'argument `ties.method` permet de faire un choix sur le classement. Comme pour toutes les fonctions, les détails sont présents dans la documentation.
 
-```{r}
+```{r 015-fonctions-13}
 vecManip <- c(10, 20, 30, 70, 60, 50, 40)
 rank(vecManip)
 vecManip2 <- c(10, 20, 30, 10, 50, 10, 40)
@@ -169,7 +169,7 @@ rank(iris[, 1], ties.method = "average")
 
 La fonction `order()` retourne le numéro du réarrangement des éléments en focntion de leur position. Elle est très utile par exemple pour trier un `data.frame` en focntion d'une colonne.
 
-```{r}
+```{r 015-fonctions-14}
 print(vecManip2)
 rank(vecManip2)
 order(vecManip2)
@@ -183,7 +183,7 @@ head(iris[order(iris[, 1]),], n = 10)
 
 La fonction `sort()` permet de trier les éléments d'un objet. Elle ne permet pas de trier selon plusieurs variables comme c'est le cas avec `order()`.
 
-```{r}
+```{r 015-fonctions-15}
 print(vecManip2)
 sort(vecManip2)
 print(iris[, 1])
@@ -194,7 +194,7 @@ sort(iris[, 1])
 
 Cette fonction permet d'ajouter un élément à un `vector` à une position déterminée par l'argument `after`. Cette fonction est aussi plus rapide que son alternative consistant à utiliser la fonction [`c()`](#l014vector).
 
-```{r}
+```{r 015-fonctions-16}
 print(vecManip2)
 append(vecManip2, 5)
 append(vecManip2, 5, after = 2)
@@ -204,7 +204,7 @@ append(vecManip2, 5, after = 2)
 
 Les fonctions `cbind()` et `rbind()` permettent de combiner des éléments par colonne ou par ligne.
 
-```{r}
+```{r 015-fonctions-17}
 cbind(vecManip2, vecManip2)
 rbind(vecManip2, vecManip2)
 ```
@@ -213,7 +213,7 @@ rbind(vecManip2, vecManip2)
 
 Voilà deux fonctions que nous allons beaucoup utiliser par la suite. Les fonctions `paste()` et `paste0()` permettent de concaténer des chaines de caractère. La fonction `paste0()` est équivalente à `paste()` sans proposer de séparateur entre les éléments à concaténer. Elle est aussi plus rapide.
 
-```{r}
+```{r 015-fonctions-18}
 paste(1, "a")
 paste0(1, "a")
 paste(1, "a", sep = "_")
@@ -225,7 +225,7 @@ paste(vecManip2, rank(vecManip2), sep = "_")
 
 La fonction `rev()` renvoie les éléments d'un objet dans l'ordre inverse.
 
-```{r}
+```{r 015-fonctions-19}
 print(vecManip2)
 rev(vecManip2)
 ```
@@ -234,7 +234,7 @@ rev(vecManip2)
 
 La fonction `%in%` peut être assimilée à un [opérateur de comparaison](#l011opcomp). Cette fonction prend deux objets comme arguments et renvoie `TRUE` ou `FALSE` pour chacun des éléments du premier objet en fonction de leur présence ou absence dans le second objet. Pour accéder à la documentation de la fonction, il faut utiliser des guillemets `help('%in%')`.
 
-```{r}
+```{r 015-fonctions-20}
 print(vecManip)
 print(vecManip2)
 vecManip %in% vecManip2
@@ -245,7 +245,7 @@ vecManip2 %in% vecManip
 
 Nous avons déjà vu les fonctions `+`, `-`, `*`, `/`, `^`, `%%` et autres [opérateurs arithmétiques](#l011opari). R possède également les fonctions mathématiques de base comme exponetielle `exp()`, racine carrée `sqrt()`, valeur absolue `abs()`, sinus `sin()`, cosinus `cos()`, tangente `tan()`, logarithme népérien `log()`, logarithme décimal `log10()`, arc cosinus `acos()`, arc sinus `asin()`, et arc tangente `atan()`.
 
-```{r}
+```{r 015-fonctions-21}
 print(vecManip2)
 exp(vecManip2)
 sqrt(vecManip2)
@@ -268,7 +268,7 @@ Nous pouvons également effectuer des statistiques descriptives très simplement
 
 La fonction `mean()` renvoie la moyenne. Pour ignorer les valeurs manquantes `NA`, il faut donner la valeur `TRUE` à l'argument `na.rm()`.
 
-```{r}
+```{r 015-fonctions-22}
 mean(iris[, 1])
 vecManip3 <- c(1, 5, 6, 8, NA, 45, NA, 14)
 mean(vecManip3)
@@ -279,7 +279,7 @@ mean(vecManip3, na.rm = TRUE)
 
 La fonction `sd()` renvoie l'écart type.
 
-```{r}
+```{r 015-fonctions-23}
 sd(iris[, 1])
 print(vecManip3)
 sd(vecManip3)
@@ -290,7 +290,7 @@ sd(vecManip3, na.rm = TRUE)
 
 La fonction `max()` renvoie la valeur maximale et `min()` la valeur minimale.
 
-```{r}
+```{r 015-fonctions-24}
 max(iris[, 1])
 print(vecManip3)
 max(vecManip3)
@@ -305,7 +305,7 @@ min(vecManip3, na.rm = TRUE)
 
 La fonction `quantile()` renvoie le quantile défini par l'argument `probs`.
 
-```{r}
+```{r 015-fonctions-25}
 quantile(iris[, 1])
 quantile(iris[, 1], probs = c(0, 0.25, 0.5, 0.75, 1))
 quantile(iris[, 1], probs = c(0, 0.1, 0.5, 0.9, 1))
@@ -315,7 +315,7 @@ quantile(iris[, 1], probs = c(0, 0.1, 0.5, 0.9, 1))
 
 La fonction `summary()` renvoie un résumé composé du minimum, premier quartile, médiane, moyenne, troisième quartile et maximum.
 
-```{r}
+```{r 015-fonctions-26}
 summary(iris[, 1])
 ```
 
@@ -323,7 +323,7 @@ summary(iris[, 1])
 
 La fonction `median()` renvoie la médiane.
 
-```{r}
+```{r 015-fonctions-27}
 median(iris[, 1])
 print(vecManip3)
 median(vecManip3)
@@ -334,7 +334,7 @@ median(vecManip3, na.rm = TRUE)
 
 La fonction `length()` renvoie la taille d'un objet (nombre d'éléments).
 
-```{r}
+```{r 015-fonctions-28}
 length(iris[, 1])
 print(vecManip3)
 length(vecManip3)
@@ -344,7 +344,7 @@ length(vecManip3)
 
 La fonction `nrow()` renvoie le nombre de lignes et la fonction `ncol()` le nombre de colonnes d'un objet.
 
-```{r}
+```{r 015-fonctions-29}
 nrow(iris)
 ncol(iris)
 ```
@@ -353,28 +353,28 @@ ncol(iris)
 
 La fonction `round()` permet de sélectionner un certain nombre de décimales (0 par défaut)
 
-```{r}
+```{r 015-fonctions-30}
 round(5.56874258564)
 round(5.56874258564, digits = 2)
 ```
 
 La fonction `ceiling()` renvoie le plus petit nombre entier qui ne soit pas inférieure à la valeur rensignée.
 
-```{r}
+```{r 015-fonctions-31}
 ceiling(5.9999)
 ceiling(5.0001)
 ```
 
 La fonction `floor()` renvoie le plus grand nombre entier qui ne soit pas supérieure à la valeur renseignée.
 
-```{r}
+```{r 015-fonctions-32}
 floor(5.9999)
 floor(5.0001)
 ```
 
 La fonction `trunc()` renvoie la partie entière de la valeur rensignée.
 
-```{r}
+```{r 015-fonctions-33}
 trunc(5.9999)
 trunc(5.0001)
 ```
@@ -383,7 +383,7 @@ trunc(5.0001)
 
 Les fonctions `rowSums()` et `colSums()` calculent la somme des lignes et des colonnes.
 
-```{r}
+```{r 015-fonctions-34}
 rowSums(iris[, c(1, 2, 3, 4)])
 colSums(iris[, c(1, 2, 3, 4)])
 ```
@@ -392,7 +392,7 @@ colSums(iris[, c(1, 2, 3, 4)])
 
 Les fonctions `rowMeans()` et `colMeans()` calculent la moyenne des lignes et des colonnes.
 
-```{r}
+```{r 015-fonctions-35}
 rowMeans(iris[, c(1, 2, 3, 4)])
 colMeans(iris[, c(1, 2, 3, 4)])
 ```
@@ -401,7 +401,7 @@ colMeans(iris[, c(1, 2, 3, 4)])
 
 La fonction `aggregate()` permet de grouper les éléments d'un objet en fonction d'une valeur. L'argument `by` définit l'élément sur lequel est effectué le regroupement. Il doit être de type [`list`](#l014list).
 
-```{r}
+```{r 015-fonctions-36}
 aggregate(iris[, c(1, 2, 3, 4)], by = list(iris$Species), FUN = mean)
 aggregate(iris[, c(1, 2)], by = list(iris$Species), FUN = summary)
 ```
@@ -410,7 +410,7 @@ aggregate(iris[, c(1, 2)], by = list(iris$Species), FUN = summary)
 
 La fonction `range()` renvoie le minimum et le maximum.
 
-```{r}
+```{r 015-fonctions-37}
 range(iris[, 1])
 print(vecManip3)
 range(vecManip3)
@@ -421,7 +421,7 @@ range(vecManip3, na.rm = TRUE)
 
 La fonction `unique()` renvoie les valeurs uniques d'un objet (sans les doublons).
 
-```{r}
+```{r 015-fonctions-38}
 unique(iris[, 1])
 print(vecManip3)
 unique(vecManip3)
@@ -435,7 +435,7 @@ Nous ne pouvons aborder toutes les fonctions utiles, ici nous ne ferons qu'abord
 
 La fonction `seq_along()` permet de créer un `vector` de la taille de l'objet renseigné et prenant comme valeurs les chiffres de 1 à N (N correspondant aux nombres d'éléments de l'objet). Cette fonction nous servira beaucoup lors du chapitre sur les boucles.
 
-```{r}
+```{r 015-fonctions-39}
 print(vecManip3)
 seq_along(vecManip3)
 ```
@@ -444,7 +444,7 @@ seq_along(vecManip3)
 
 La fonction `:` permet de créer une séquence de `a` à `b` par pas de 1, avec `a` et `b` le début et la fin de la séquence souhaitée. Il a été difficile d'écrire les chapitres précédents sans y avoir recours tant cette fonction est utile. Voici quelques exemples.
 
-```{r}
+```{r 015-fonctions-40}
 5:10
 head(iris[, c(1, 2, 3, 4)])
 head(iris[, 1:4]) # ;-)
@@ -459,7 +459,7 @@ paste("X", 1:10, sep = "_")
 
 La fonction `rep()` permet de répéter des éléments.
 
-```{r}
+```{r 015-fonctions-41}
 miVec12 <- c(1, 1, 1, 1, 1, 1, 1, 1, 1)
 miVec12 <- rep(1, times = 9) # ;-)
 rep("Hola", times = 3)
@@ -472,7 +472,7 @@ rep(1:3, each = 3)
 
 La fonction `seq()` permet de créer une séquence personnalisée.
 
-```{r}
+```{r 015-fonctions-42}
 seq(from = 0, to = 1, by = 0.2)
 seq(from = 20, to = 10, length.out = 10)
 letters[seq(from = 1, to = 26, by = 2)]
@@ -483,7 +483,7 @@ rep(seq(from = 1, to = 2, by = 0.5), times = 3)
 
 La fonction `getwd()` définit le répertoire de travail. Cela correspond à l'endroit relatif à partir duquel R se positionne pour identifier les fichiers. Ce concept prendra son sens lorsque nous verrons comment importer et exporter des données.
 
-```{r}
+```{r 015-fonctions-43}
 getwd()
 ```
 
@@ -491,7 +491,7 @@ getwd()
 
 La fonction `setwd()` permet de définir un nouveau répertoire de travail.
 
-```{r}
+```{r 015-fonctions-44}
 oldWd <- getwd()
 print(oldWd)
 setwd("..")
@@ -504,7 +504,7 @@ getwd()
 
 La fonction `list.files()` permet de faire la liste de tous les fichiers présents dans le répertoire de travail. 
 
-```{r}
+```{r 015-fonctions-45}
 list.files(pattern = "(html)$") # html
 list.files(pattern = "(pdf)$") # pdf
 ```
@@ -513,7 +513,7 @@ list.files(pattern = "(pdf)$") # pdf
 
 Tout comme la fonction `list.files()` permet de faire la liste de tous les fichiers présents dans le répertoire de travail, la fonction `ls()` permet de faire la liste de tous les objets présents dans l'environnement de travail de R.
 
-```{r}
+```{r 015-fonctions-46}
 ls()
 zzz <- "a new object"
 ls()
@@ -523,7 +523,7 @@ ls()
 
 La fonction `rm()` permet de supprimer un objet présent dans l'environnement de travail de R.
 
-```{r}
+```{r 015-fonctions-47}
 rm(zzz)
 ls()
 ```
@@ -550,7 +550,7 @@ Voici quelques exercices pour se perfectionner dans l'usage des fonctions et en 
 
 #### Solutions possibles (car il y a toujours plusieurs solutions) : 
 
-```{r}
+```{r 015-fonctions-48}
 -3:-11
 seq(from = -3, to = 11, by = 2)
 seq(from = 3.0, to = 4.0, by = 0.2)
@@ -572,7 +572,7 @@ Si la distribution des données était Normale, quelle serait la valeur théoriq
 
 Solutions :
 
-```{r}
+```{r 015-fonctions-49}
 length(iris$Sepal.Width[iris$Sepal.Width > 3])
 length(iris$Sepal.Width[iris$Sepal.Width > 2.8 & 
   iris$Sepal.Width < 3.2])
@@ -593,7 +593,7 @@ qnorm(
 
 Lorsque nous reproduisons plusieurs fois les mêmes opérations, le code devient fastidieux à écrire, et plus difficile à maintenir car si nous devons effectuer une modification, il faudra la répéter chaque fois que nous l'avons utilisée. C'est un signe indiquant la nécesité de recourir à une **fonction**. Dans l'exemple qui suit, il est fastidieux de modifier le code si nous souhaitons ajouter +45 au lieu de +20 à chaque ligne.
 
-```{r}
+```{r 015-fonctions-50}
 35 + 20
 758 + 20
 862 + 20
@@ -602,7 +602,7 @@ Lorsque nous reproduisons plusieurs fois les mêmes opérations, le code devient
 
 Comme pour les fonctions de base de R, nos fonction vont avoir un **nom**, et des **arguments**. Comme pour les noms des objets et les noms des fichiers, il est important de bien choisir le nom de notre fonction (cf. [section sur les objets](#l011object)). Pour créer une fonction nous allons utiliser la fonction `function()` qui prend comme arguments les arguments de notre fonction. La fonction va retourner le résultat souhaité. Par défaut le résultat renvoyé est le dernier utilisé, mais il est préférable de l'expliciter avec la fonction `return()`. La fonction suivante `addX` prend comme argument `x` et renvoie `x + 20`.
 
-```{r}
+```{r 015-fonctions-51}
 addX <- function(x){
   return(x + 20)
 }
@@ -610,7 +610,7 @@ addX <- function(x){
 
 Notre code devient :
 
-```{r}
+```{r 015-fonctions-52}
 addX(35)
 addX(758)
 addX(862)
@@ -619,7 +619,7 @@ addX(782)
 
 Si nous souhaitons modifier le code pour ajouter 45 plutôt que 20, il suffit alors de modifier la fonction `addX()`.
 
-```{r}
+```{r 015-fonctions-53}
 addX <- function(x){
   return(x + 45)
 }
@@ -631,13 +631,13 @@ addX(782)
 
 Ici nous aurions pu utiliser le format `vector` pour éviter les répétitions, mais ce n'est pas toujours possible.
 
-```{r}
+```{r 015-fonctions-54}
 c(35, 758, 862, 782) + 20
 ```
 
 Voyons cette fonction qui va compter le nombre de consonnes et de voyelles en minuscule dans un mot. Tout d'abord nous allons séparer toutes les lettres avec la fonction `strsplit` (nous pouvons consulter l'aide pour en savoir plus sur cette fonction). Ensuite nous allons compter les voyelles et les consonnes avec la fonction [`length()`](#l015length). Pour avoir la liste des lettres nous allons utiliser la constante `letters` (consulter l'aide). 
 
-```{r}
+```{r 015-fonctions-55}
 countVowelConso <- function(word){
   wordSplit <- strsplit(word, split = "")[[1]]
   vowels <- c("a", "e", "i", "o", "u", "y")
@@ -650,13 +650,13 @@ countVowelConso <- function(word){
 
 Nous pouvons maintenant utiliser notre fonction.
 
-```{r}
+```{r 015-fonctions-56}
 countVowelConso(word = "qwertyuiop azertyuiop")
 ```
 
 Cette fonction peut être modifiée en affichant un message plus explicite. Même si en général ce genre de message est à éviter pour ne pas surcharger les fonctions, il peut être utile pour vérifier que tout se déroule correctement (nous le supprimerons ensuite).
 
-```{r}
+```{r 015-fonctions-57}
 countVowelConso <- function(word){
   wordSplit <- strsplit(word, split = "")[[1]]
   vowels <- c("a", "e", "i", "o", "u", "y")
@@ -672,7 +672,7 @@ countVowelConso(word = "qwertyuiop azertyuiop")
 
 Par contre si nous utilisons `countVowelConso(word = 5)`, une erreur va être renvoyée car notre fonction attend un objet de type `character`. De manière générale il est recommandée de gérer les erreurs renvoyées par nos fonctions afin que notre code soit plus facile à débogger. Ici nous allons simplement vérifier que l'argument est de type `character`, dans un `vector` de taille 1. Nous allons aussi commenter notre fonction pour rapidement retrouver ce qu'elle réalise (commentaire inséré sur la première ligne, que l'on retrouve aussi parfois sur la dernière ligne des fonctions).
 
-```{r}
+```{r 015-fonctions-58}
 countVowelConso <- function(word){ # compte les voyelles et les consonnes
   if(is.vector(word) & is.character(word) & length(word) == 1){
     wordSplit <- strsplit(word, split = "")[[1]]
@@ -692,7 +692,7 @@ countVowelConso(word = 5)
 
 Avec R comme pour tout langage de programmation, pour un problème il existe toujours de multiples solutions. Nous nous souvenons de la section sur les types de données ([type de données `logical`](#l013logi)), ainsi que de la section sur les [opérateurs de comparaison](#l011opcomp) que la valeur de `TRUE` est de 1 et la valeur de `FALSE` est de 0. Nous venons de voir ci-dessus que la fonction [`%in%`](#l015in) renvoie `TRUE` ou `FALSE` pour chacun des éléments du premier objet en fonction de leur présence ou absence dans le second objet. Notre fonction aurait pu donc se passer de la fonction `length()` pour le comptage des voyelles et des consonnes et utiliser la fonction `sum()`. 
 
-```{r}
+```{r 015-fonctions-59}
 countVowelConsoAlt <- function(word){ # compte les voyelles et les consonnes
   if(is.vector(word) & is.character(word) & length(word) == 1){
     wordSplit <- strsplit(word, split = "")[[1]]
@@ -711,14 +711,14 @@ countVowelConsoAlt(word = "qwertyuiop azertyuiop")
 
 Il n'y a pas de solution optimale dans l'absolu, tout dépend des objectifs recherchés. La première solution est peut être plus facile à comprendre, et la seconde peut être plus rapide en terme de vitesse d'exécution (même en répétant l'utilisation de la fonction 10000 fois, le gain de temps est presque nul dans notre cas).
 
-```{r}
+```{r 015-fonctions-60}
 system.time(replicate(n = 10000, countVowelConso(word = "qwertyuiop azertyuiop")))
 system.time(replicate(n = 10000, countVowelConsoAlt(word = "qwertyuiop azertyuiop")))
 ```
 
 Une fonction peut avoir des valeurs par défaut pour ses arguments. C'est le cas de la plupart des fonctions existantes. Par défaut, notre fonction va désormais compter le nombre de voyelles et de consonnes dans le mot `qwerty` (les parenthèses restent nécessaires même en l'absence d'arguments).
 
-```{r}
+```{r 015-fonctions-61}
 countVowelConsoAlt <- function(word = "qwerty"){ # compte les voyelles et les consonnes
   if(is.vector(word) & is.character(word) & length(word) == 1){
     wordSplit <- strsplit(word, split = "")[[1]]
@@ -747,7 +747,7 @@ Pour utiliser un package il nous faut tout d'abord l'**installer**, puis le **ch
 
 Une fois notre package sélectionné, nous pouvons le télécharger et l'installer avec la fonction `install.packages()` qui prend comme argument le nom du package entre guillemets (la fonction tolère l'absence de guillemets mais il est préférable de les utiliser pour que le code soit plus lisible). Certains packages sont installés par défault avec R, c'est le cas par exemple de `stats` (qui est aussi chargé par défaut).
 
-```{r eval = FALSE}
+```{r 015-fonctions-62, eval = FALSE}
 install.packages("stats") # R statistical functions
 ```
 
@@ -757,7 +757,7 @@ L'installation d'un package est à réaliser une seule fois, ensuite le package 
 
 Pour pouvoir utiliser les fonctions d'un package, nous devons le charger dans notre session de R. Il y a tellement de packages disponibles que R ne va pas charger par défault tous ceux que nous avons installé, mais seulement ceux dont nous allons avoir besoin pour notre étude en cours. Pour charger un package nous utilisons la fonction `library()`. 
 
-```{r eval = FALSE}
+```{r 015-fonctions-63, eval = FALSE}
 library("stats")
 ```
 
@@ -767,7 +767,7 @@ Le chargement du package est à réaliser à chaque fois que nous souhaitons ex�
 
 Nous venons de voir que l'installation d'un package est à faire une seule fois par ordinateur, et que par contre le chargement d'un package est à réaliser pour chaque nouvelle session de R. Si l'on change d'ordinateur ou si l'on partage un script avec un collègue, il peut donc y avoir des erreurs à l'exécution liées à l'absence de l'installation d'un package. Pour pallier à ce problème, il est recommandé d'utiliser une fonction qui va vérifier si les packages nécessaires à l'exécution d'un script sont installés, si besoin les installer, puis les charger. Il existe de nombreuses fonctions pour faire cela sur Internet. La solution que nous proposons ici est un mélange adapté de différentes sources. Il n'est pas nécessaire de comprendre les détails de ce script pour le moment, mais simplement de comprendre ce qu'il fait. Voici un exemple pour les packages `stats` et `graphics` qui sont deux packages déjà présents avec la version de base de R, mais nous pouvons essayer avec tous les packages disponibles sur le CRAN, dont la liste se trouve ici : https://cran.r-project.org/web/packages/available_packages_by_name.html.
 
-```{r eval = FALSE}
+```{r 015-fonctions-64, eval = FALSE}
 pkgCheck <- function(packages){
 	for(x in packages){
 		try(if(!require(x, character.only = TRUE)){
@@ -783,7 +783,7 @@ pkgCheck(c("stats", "graphics"))
 
 Alternativement nous pouvons utiliser la fonction `.packages()` pour lister les packages disponibles sur le CRAN par ordre alphabétique.
 
-```{r}
+```{r 015-fonctions-65}
 head(.packages(all.available = TRUE), n = 30)
 ```
 
