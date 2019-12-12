@@ -20,7 +20,7 @@ Commençons par préciser que R travaille dans un répertoire défini par défau
 
 Le répertoire de travail par défaut peut être obtenu avec la fonction [`getwd()`](#l015getwd) et spécifier avec la fonction [`setwd()`](#l015setwd).
 
-```{r}
+```{r 016-importExport-1}
 oldWd <- getwd()
 print(oldWd)
 setwd("..")
@@ -47,7 +47,7 @@ Un chemin relatif serait :
 
 Pour naviguer dans les chemins relatifs nous pouvons utiliser `..` qui permet de remonter dans le répertoire source. Par exemple si le répertoire de travail est `myScripts` et que l'arborescence de mes fichiers est ainsi : 
 
-```{r, echo = FALSE}
+```{r 016-importExport-2, echo = FALSE}
 cat("-myProject
 |-myFiles
 |-|-data01.csv
@@ -60,7 +60,7 @@ Le chemin relatif vers le fichier `data01.csv` serait `../myFiles/data01.csv`
 
 Donc pour lire le contenu du fichier `data01.csv`, nous allons privilégier l'option 2 (lire le contenu d'un fichier en indiquant à R son chemin relatif) ou l'option 4 (modifier le répertoire de travail de R pour qu'il corresponde à l'emplacement de notre fichier). Dans ce dernier cas :
 
-```{r, eval = FALSE}
+```{r 016-importExport-3, eval = FALSE}
 myWD <- "../myFiles/"
 setwd(myWd)
 getwd() # pour verifier que nous sommes dans le bon repertoire
@@ -69,7 +69,7 @@ list.files() # pour verifier que le fichier se trouve bien ici
 
 L'erreur la plus commune :
 
-```{r, echo = FALSE}
+```{r 016-importExport-4, echo = FALSE}
 cat("Error in setwd(\"../myFiles/\") : 
 impossible de changer de répertoire de travail")
 ```
@@ -78,7 +78,7 @@ Cela veut dire que le répertoire n'existe pas (il faut vérifier que la syntaxe
 
 Une fois le répertoire de travail correctement défini ou le chemin relatif vers le fichier correctement établi, nous pouvons lire le fichier avec la fonction `read.table()`. Certains utilisent la fonction `read.csv()` mais ce n'est qu'un cas particulier de la fonction `read.table()`.
 
-```{r, eval = FALSE}
+```{r 016-importExport-5, eval = FALSE}
 myWD <- "../myFiles/"
 setwd(myWd)
 read.table(file = "data01.csv")
@@ -86,13 +86,13 @@ read.table(file = "data01.csv")
 
 ou alternativement :
 
-```{r, eval = FALSE}
+```{r 016-importExport-6, eval = FALSE}
 read.table(file = "../myFiles/data01.csv")
 ```
 
 Si le chemin n'est pas correctement renseigné ou si le fichier de données n'existe pas, R renverra l'erreur suivante :
 
-```{r, echo = FALSE}
+```{r 016-importExport-7, echo = FALSE}
 cat("Error in file(file, \"rt\") : impossible d'ouvrir la connexion
 De plus : Warning message:
 In file(file, \"rt\") :
@@ -111,7 +111,7 @@ Avec ces trois arguments la plupart des fichiers pourront être lus sans aucun p
 
 La fonction `read.table()` renvoie le contenu du fichier sous forme d'une `data.frame`. Pour pouvoir utiliser le contenu du fichier nous allons donc stocker la `data.frame` dans un objet.
 
-```{r, eval = FALSE}
+```{r 016-importExport-8, eval = FALSE}
 myWD <- "../myFiles/"
 setwd(myWd)
 data01 <- read.table(file = "data01.csv")
@@ -121,7 +121,7 @@ head(data01) # verifier les premieres donnees
 
 [L'étude de cas sur l'analyse de données de dataloggers](#studyCase001) se base sur un fichier CSV. En voici un extrait :
 
-```{r}
+```{r 016-importExport-9}
 bdd <- read.table("myFiles/E05C13.csv", skip = 1, header = TRUE, 
   sep = ",", dec = ".", stringsAsFactors = FALSE)
 colnames(bdd) <- c("id", "date", "temp")
@@ -134,14 +134,14 @@ str(bdd)
 
 La fonction la plus simple pour lire un fichier contenant du texte est `readlines()`. Voici un exemple avec le fichier README.md de ce livre, que l'on retrouve sur GitHub.
 
-```{r}
+```{r 016-importExport-10}
 readmeGitHub <- "https://raw.githubusercontent.com/frareb/myRBook_FR/master/README.md"
 readLines(readmeGitHub)
 ```
 
 Il existe aussi la fonction `scan()` qui va renvoyer l'ensemble des mots séparés par des espaces. Nous pouvons consulter l'aide pour plus d'information. 
 
-```{r}
+```{r 016-importExport-11}
 scan(readmeGitHub, what = "character")
 ```
 
@@ -151,7 +151,7 @@ Il est parfois utile de pouvoir sauvegarder un objet R pour pouvoir le réutilis
 
 L'objet sauvé va être stocké dans un fichier. Par convention, il est bon de donner le nom d'extension `.RData` aux fichiers contenant des objets R, de préférer un seul objet par fichier, et de donner le nom de l'objet comme nom de fichier. 
 
-```{r}
+```{r 016-importExport-12}
 myObject <- 5
 ls(pattern = "myObject")
 save(myObject, file = "myFiles/myObject.RData")
@@ -161,7 +161,7 @@ ls(pattern = "myObject")
 
 Lors de la session de R suivante ou si nous avons à nouveau besoin de l'objet sauvegardé dans un fichier, nous pouvons le recharger avec la fonction `load()`.
 
-```{r}
+```{r 016-importExport-13}
 ls(pattern = "myObject")
 load("myFiles/myObject.RData")
 ls(pattern = "myObject")
@@ -174,7 +174,7 @@ Le meilleur moyen de communiquer vos résultats ou vos données est de transmett
 
 Par exemple nous allons créer une `data.frame` avec les numéros de 1 à 26 et les lettres correspondantes, puis les sauver dans un fichier CSV, puis lire les données contenues dans ce fichier.
 
-```{r}
+```{r 016-importExport-14}
 dfLetters <- data.frame(num = 1:26, letters = letters)
 write.table(dfLetters, file = "myFiles/dfLetters.csv", 
   sep = ",", col.names = TRUE, row.names = FALSE)
