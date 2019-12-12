@@ -6,7 +6,7 @@
 
 Le premier type de graphique que nous allons voir est le nuage de points. Dans un nuage de points, chaque point est représenté par sa valeur en x et en y. La fonction permettant de faire un nuage de points est `plot()`. 
 
-```{r}
+```{r 021-01-graphiques-1}
 myX <- rnorm(50, mean = 0, sd = 1)
 myY <- rnorm(50, mean = 10, sd = 1)
 plot(x = myX, y = myY)
@@ -14,14 +14,14 @@ plot(x = myX, y = myY)
 
 Comme pour tous les types de graphiques, nous pouvons ajouter une légende sur l'axe des x et des y.
 
-```{r}
+```{r 021-01-graphiques-2}
 plot(x = myX, y = myY, 
   xlab = "X", ylab = "Y")
 ```
 
 Nous pouvons aussi définir les limites des axes en X et en Y.
 
-```{r}
+```{r 021-01-graphiques-3}
 plot(x = myX, y = myY, 
   xlab = "X", ylab = "Y", 
   xlim = c(-3, 3), ylim = c(7, 13))
@@ -29,7 +29,7 @@ plot(x = myX, y = myY,
 
 Le type de point peut être défini avec l'argument `pch` qui peut prendre un caractère ou un chiffre de 1 à 25.
 
-```{r}
+```{r 021-01-graphiques-4}
 plot(x = rep(seq(1:5), 5), y = rep(seq(1:5), each = 5),
   pch = 1:25)
 plot(x = myX, y = myY, 
@@ -38,14 +38,14 @@ plot(x = myX, y = myY,
 
 La taille des points peut se définir avec l'argument `cex`.
 
-```{r}
+```{r 021-01-graphiques-5}
 plot(x = myX, y = myY, 
   cex = seq(from = 0.5, to = 3, length.out = 50))
 ```
 
 La couleur des points peut se définir avec l'argument `col`. Nous reviendrons sur les couleurs dans un prochain chapitre.
 
-```{r}
+```{r 021-01-graphiques-6}
 myX <- rnorm(100, mean = 0, sd = 1)
 myY <- rnorm(100, mean = 10, sd = 1)
 plot(x = myX, y = myY, 
@@ -56,7 +56,7 @@ plot(x = myX, y = myY,
 
 Pour représenter nos points la couleur et la taille des points peuvent représenter des informations complémentaires. Ici nous allons représenter par un gradient de taille la variable `myY` et par un gradient de couleur la variable `myX`.
 
-```{r}
+```{r 021-01-graphiques-7}
 myX <- rnorm(100)
 myY <- rnorm(100)
 dfGraph <- data.frame(myX, myY)
@@ -72,7 +72,7 @@ plot(x = dfGraph$myX, y = dfGraph$myY,
 
 R offre la possibilité de relier les points des nuages de points de différentes façons. Les différentes options sont disponibles dans l'aide de la fonction `plot()` et `plot.default()`.
 
-```{r}
+```{r 021-01-graphiques-8}
 myX <- 1:20
 myY <- rnorm(20, mean = 10, sd = 1)
 plot(x = myX, y = myY, 
@@ -81,7 +81,7 @@ plot(x = myX, y = myY,
 
 Une dernière option très utile est l'argument `panel.first` qui permet de réaliser une opération graphique sur une couche située en dessous de notre graphique. Voici un exemple illustratif avec une grille réalisée avec et sans `panel.first`. La grille se fait grâce à la fonction `grid()`. Pour mettre les graphiques côte à côte nous allons utiliser `mfrow`.
 
-```{r}
+```{r 021-01-graphiques-9}
 par(mfrow = c(1, 2))
 plot(x = myX, y = myY, 
   type = 'b', pch = 16, cex = 3) 
@@ -94,7 +94,7 @@ par(mfrow = c(1, 1))
 
 La fonction `par()` permet d'accéder aux paramètres graphiques. Parmi ces paramètres il y a `mfrow` qui permet de diviser l'espace graphique comme une matrice. `mfrow` prend comme arguments un vecteur numérique de taille 2 : le premier élément correspond au nombre de lignes et le deuxième élément au nombre de colonnes. Le paramètre `mar` permet de contrôler les marges en bas, à gauche, en haut et à droite, respectivement, au moyen d'un vecteur numérique de taille 4. Après avoir modifié les paramètres graphiques par défaut il est recommandé de les réinitialiser pour que cela n'affecte pas les graphiques à venir. Les valeurs par défaut de `mfrow` sont `c(1, 1)` et `mar = c(4, 4, 4, 4)`. Nous pouvons remettre ces valeurs par défaut comme ci-dessus en redéfinissant chacun des paramètres. Nous pouvons également enregistrer au préalable les valeurs courantes (dans un objet `op`), puis les modifier pour les besoins de nos graphiques, puis ensuite rappeler les valeurs contenues dans l'objet `op`. Ici nous utilisons `lapply` pour réaliser rapidement quatre graphiques.
 
-```{r}
+```{r 021-01-graphiques-10}
 op <- par(no.readonly = TRUE)
 par(mfrow = c(2, 2), mar = c(2, 2, 1, 1))
 graph4 <- lapply(1:4, function(i){
@@ -107,7 +107,7 @@ par(op)
 
 Il est souvent utile de faire figurer des lignes verticales ou horizontales pour représenter des valeurs particulières. Ces lignes peuvent être ajoutées avec la fonction `abline()`. 
 
-```{r}
+```{r 021-01-graphiques-11}
 myX <- rnorm(100)
 myY <- rnorm(100)
 plot(x = myX, y = myY, 
@@ -127,7 +127,7 @@ plot(x = myX, y = myY,
 
 Pour faire un histogramme nous utilisons la fonction `hist()`. C'est une fonction graphique utile pour visualiser rapidement la distribution d'un jeu de données. 
 
-```{r}
+```{r 021-01-graphiques-12}
 op <- par(no.readonly = TRUE)
 par(mfrow = c(2, 2), mar = c(2, 2, 1, 1))
 myX <- list(
@@ -150,14 +150,14 @@ par(op)
 
 Le graphique en barres se fait au moyen de la fonction `barplot()`.
 
-```{r}
+```{r 021-01-graphiques-13}
 myX <- c(4, 5, 8)
 barplot(myX, names.arg = c("A", "B", "C"))
 ```
 
 Quand l'objet envoyé à cette fonction est un `vector` alors la fonction `barplot()` renvoie un graphique en barres simples. Quand c'est une `matrix` alors les barres sont multiples.
 
-```{r}
+```{r 021-01-graphiques-14}
 op <- par(no.readonly = TRUE)
 par(mfrow = c(1, 2), mar = c(2, 2, 1, 1))
 myX <- matrix(c(4, 5, 8, 4, 6, 2), nrow = 2)
@@ -175,7 +175,7 @@ Ensuite nous pouvons calculer la proportion de rouge en divisant la première li
 
 Il ne nous reste plus qu'à organiser l'espace graphique avec la fonction `layout()` qui prend comme argument une matrice dont les valeurs et leur position vont correspondre à l'agencement des différents graphiques que nous souhaitons réaliser. Le graphique 1 correspond au barplot du haut, le graphique 2 au nuage de points et le graphique 3 au barplot de droite.  
 
-```{r}
+```{r 021-01-graphiques-15}
 n <- 50
 myX <- rnorm(n)
 myY <- rnorm(n)
@@ -208,7 +208,7 @@ par(op)
 
 Nous pouvons ensuite intégrer ce script dans une fonction pour par exemple étudier l'effet de la variable `n`.
 
-```{r}
+```{r 021-01-graphiques-16}
 graphBarplotCol <- function(n){
   myX <- rnorm(n)
   myY <- rnorm(n)
@@ -243,13 +243,13 @@ graphBarplotCol(n = 1000)
 
 Un `barplot` peut bien sûr prendre des valeurs positives ou négatives.
 
-```{r}
+```{r 021-01-graphiques-17}
 barplot(rnorm(20), horiz = TRUE, col = rainbow(20))
 ```
 
 Le `barplot` peut aussi être utilisé pour faire une pyramide des âges (il existe des fonctions pour réaliser des pyramides des âges, ici l'objectif est pédagogique).
 
-```{r}
+```{r 021-01-graphiques-18}
 gender <- data.frame(
   m = cut(sample(1:75, 1000, replace = TRUE), 
     breaks = seq(from = 0, to = 80, by = 10)), 
@@ -269,7 +269,7 @@ Les `boxplot` ou boîtes à moustache sont des graphiques très courant avec R c
 
 La fonction `boxplot()` s'applique à un ou plusieurs `vector`.
 
-```{r}
+```{r 021-01-graphiques-19}
 df <- data.frame(
   box1 = rnorm(1000), 
   box2 = rgamma(1000, shape = 1), 
@@ -284,7 +284,7 @@ boxplot(df, col = c(rgb(0, 94, 255, maxColorValue = 255),
 
 Si une variable est de type `factor`, la fonction `boxplot()` permet facilement de représenter chaque catégorie. Cela fonctionne aussi avec les variables numériques mais il faut veiller à ne pas avoir trop de valeurs différentes pour que le graphique reste lisible.
 
-```{r}
+```{r 021-01-graphiques-20}
 df$cat <- sample(c("w", "x", "y", "z"), size = 1000, replace = TRUE)
 boxplot(df$box3 ~ df$cat, col = c(rgb(0, 94, 255, maxColorValue = 255),  
   rgb(255, 0, 174, maxColorValue = 255),  
@@ -300,7 +300,7 @@ boxplot(df$box4 ~ df$cat*df$cat2, col = c(
 
 Le `boxplot` peut être représenté horizontalement ou verticalement.
 
-```{r}
+```{r 021-01-graphiques-21}
 df$cat <- sample(c("w", "x", "y", "z"), size = 1000, replace = TRUE)
 boxplot(df$box2 ~ df$cat, horizontal = TRUE, 
   col = c(rgb(255, 110, 0, maxColorValue = 255),  
