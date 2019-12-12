@@ -26,7 +26,7 @@ knitr::include_graphics("myFigures/screencap_rConsoleCalculatrice.png")
 
 ### Les opérateurs arithmétiques {#l011opari}
 
-```{r}
+```{r 011-conceptBase-1}
 5 + 5
 ```
 
@@ -44,14 +44,14 @@ knitr::kable(opAriDf, caption = "Opérateurs arithmétiques.\\label{tab:tabOpAri
 
 Classiquement, les multiplications et les divisions sont prioritaires sur les additions et les soustractions. Au besoin nous pouvons utiliser des parenthèses.
 
-```{r}
+```{r 011-conceptBase-2}
 5 + 5 * 2
 (5 + 5) * 2
 ```
 
 L'opérateur modulo correspond au  reste de la division euclidienne. Il est souvent utilisé en informatique par exemple pour savoir si un nombre est pair ou impair (un nombre modulo 2 va renvoyer 1 si il est impair et 0 si il est pair).
 
-```{r}
+```{r 011-conceptBase-3}
 451 %% 2
 288 %% 2
 (5 + 5 * 2) %% 2
@@ -60,7 +60,7 @@ L'opérateur modulo correspond au  reste de la division euclidienne. Il est souv
 
 R intègre également certaines constantes dont `pi`. Par ailleurs le signe infini est représenté par `Inf`
 
-```{r}
+```{r 011-conceptBase-4}
 pi
 pi * 5^2
 1/0
@@ -82,13 +82,13 @@ knitr::kable(opAriDf, caption = "Opérateurs de comparaison.\\label{tab:tabOpCom
 
 Par exemple si nous voulons savoir si un chiffre est plus grand qu'un autre, nous pouvons écrire :
 
-```{r}
+```{r 011-conceptBase-5}
 5 > 3 
 ```
 
 R renvoie la valeur `TRUE` si la comparasion est vraie et `FALSE` si la comparaison est fausse.
 
-```{r}
+```{r 011-conceptBase-6}
 5 > 3
 2 < 1.5
 2 <= 2
@@ -97,7 +97,7 @@ R renvoie la valeur `TRUE` si la comparasion est vraie et `FALSE` si la comparai
 
 Nous pouvons combiner les opérateurs arithmétiques avec les opérateurs de comparasion.
 
-```{r}
+```{r 011-conceptBase-7}
 (5 + 8) > (3 * 45/2) 
 ```
 
@@ -105,14 +105,14 @@ Dans la comparasion `(5 + 8) > (3 * 45/2)` les parenthèses ne sont pas nécessa
 
 Un opérateur de comparaison particulier est *égal à*. Nous verrons dans la section suivante que le signe `=` est réservé à un autre usage : il permet d'affecter une valeur à un objet. L'opérateur de comparaison *égal à* doit donc être différent, c'est pour cela que R utilise `==`. 
 
-```{r}
+```{r 011-conceptBase-8}
 42 == 53
 58 == 58
 ```
 
 Un autre opérateur particulier est *différent de*. Il est utilisé avec *un point d'intérrogation* suivi de *égal*, `!=`. Cet opérateur permet d'obtenir la réponse inverse à `==`.
 
-```{r}
+```{r 011-conceptBase-9}
 42 == 53
 42 != 53
 (3 + 2) != 5
@@ -121,7 +121,7 @@ Un autre opérateur particulier est *différent de*. Il est utilisé avec *un po
 
 R utilise `TRUE` et `FALSE` qui sont aussi des valeurs qui peuvent être testées avec les opérateurs de comparasion. Mais R attribue également une valeur à `TRUE` et `FALSE` :
 
-```{r}
+```{r 011-conceptBase-10}
 TRUE == TRUE
 TRUE > FALSE
 1 == TRUE
@@ -135,7 +135,7 @@ La valeur de `TRUE` est de 1 et la valeur de `FALSE` est de 0. Nous verrons plus
 
 R est aussi un langage relativement permissif, cela veut dire qu'il admet une certaine flexibilité dans la manière de rédiger le code. Débattre du bien fondé de cette flexibilité sort du cadre de ce livre mais nous pourrons trouver dans du code R sur Internet ou dans d'autres ouvrages le raccourcis `T` pour `TRUE` et `F` pour `FALSE`. 
 
-```{r}
+```{r 011-conceptBase-11}
 T == TRUE
 F == FALSE
 T == 1
@@ -155,7 +155,7 @@ opAriDf <- data.frame(Label = c("n'est pas", "et", "ou", "ou exclusif"),
 knitr::kable(opAriDf, caption = "Opérateurs logiques.\\label{tab:tabOpLog}")
 ```
 
-```{r}
+```{r 011-conceptBase-12}
 !TRUE
 !FALSE
 ((3 + 2) == 5) & ((3 + 3) == 5)
@@ -166,7 +166,7 @@ knitr::kable(opAriDf, caption = "Opérateurs logiques.\\label{tab:tabOpLog}")
 
 L'opérateur logique `xor()` correspond à un *ou exclusif*. C'est à dire que l'un des deux **arguments** de la **fonction** `xor()` doit être vrai, mais pas les deux. Nous reviendrons plus tard sur les **fonctions** et leurs **arguments**, mais retenons que l'on identifie une fonction par ses parenthèses qui contiennent des arguments séparés par des virgules.
 
-```{r}
+```{r 011-conceptBase-13}
 xor((3 + 2) == 5, (3 + 3) == 6)
 xor((3 + 2) == 5, (3 + 2) == 6)
 xor((3 + 3) == 5, (3 + 2) == 6)
@@ -199,7 +199,7 @@ Maintenant que nous avons choisi un nom pour notre objet, il faut le créer et f
 * avec le signe `=`
 * avec le signe `->`
 
-```{r}
+```{r 011-conceptBase-14}
 nbrRep <- 5
 nbrRep = 5
 5 -> nbrRep
@@ -207,13 +207,13 @@ nbrRep = 5
 
 Dans ce livre nous utiliserons toujours la forme `<-` par souci de consistance et aussi parce que c'est la forme la plus répandue.
 
-```{r}
+```{r 011-conceptBase-15}
 nbrRep <- 5
 ```
 
 Nous venons de créer un objet `nbrRep` et de lui affecter la valeur 5. Cet objet est désormais disponible dans notre environnement de calcul et peut donc être utilisé. Voici quelques exemples :
 
-```{r}
+```{r 011-conceptBase-16}
 nbrRep + 2
 nbrRep * 5 - 45/56
 pi * nbrRep^2
@@ -221,7 +221,7 @@ pi * nbrRep^2
 
 La valeur associée à notre objet `nbrRep` peut être modifiée de la même manière que lors de sa création :
 
-```{r}
+```{r 011-conceptBase-17}
 nbrRep <- 5
 nbrRep + 2
 nbrRep <- 10
@@ -232,7 +232,7 @@ nbrRep + 2
 
 L'utilisation des objets prend tout son sens lorsque nous avons des opérations complexes à réaliser et rend le code plus agréable à lire et à comprendre. 
 
-```{r}
+```{r 011-conceptBase-18}
 (5 + 9^2 - 1/18) / (32 * 45/8 + 3)
 terme01 <- 5 + 9^2 - 1/18
 terme02 <- 32 * 45/8 + 3
@@ -248,21 +248,21 @@ R est un langage de programmation souvent dénommé *langage de script*. Cela fa
 Pour ouvrir un nouveau script il suffit de créer un fichier texte vide qui sera édité par un éditeur de texte comme le bloc note sous Windows ou Mac OS, ou encore Gedit ou même nano sous Linux. Par convention ce fichier prend l'extension ".r" ou plus souvent ".R". C'est cette dernière convention qui sera utilisée dans ce livre. Depuis l'interface graphique de R il est possible de créer un nouveux script sous Mac OS et Windows via *fichier* puis *nouveau script* et *enregistrer sous*.
 Tout comme le nom des objets, le nom du script est important pour que nous puissions facilement identifier son contenu. Par exemple nous pourrions créer un fichier `formRConceptsBase.R` contenant les objets que nous venons de créer et les calculs effectués. Mais même avec des noms de variables et un nom de fichier bien définis, il sera difficile de se rappeler le sens de ce fichier sans une documentation accompagnant le script. Pour docummenter un script nous allons utiliser des *commentaires*. Les commentaires sont des éléments qui seront identifiés par R et qui ne seront pas exécutés. Pour spécifier à R que nous allons faire un commentaire, il faut utiliser le caractère octothorpe (croisillon) `#`. Les commentaires peuvent être insérés sur une nouvelle ligne ou en fin de ligne.
 
-```{r}
+```{r 011-conceptBase-19}
 # creation objet nombre de repetitions
 nbrRep <- 5 # commentaire de fin de ligne
 ```
 
 Les commentaires peuvent aussi être utilisés pour qu'une ligne ne soit plus exécutée.
 
-```{r}
+```{r 011-conceptBase-20}
 nbrRep <- 5
 # nbrRep + 5
 ```
 
 Pour en revenir à la documentation du script, il est recommandé de commencer chacun de ses scripts par une brève description de son contenu, puis lorsque le script devient long, de le structurer en différentes parties pour faciliter sa lecture.
 
-```{r}
+```{r 011-conceptBase-21}
 # ------------------------------------------------------------
 # Voici un script pour acquérir les concepts de base 
 # avec R
