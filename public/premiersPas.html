@@ -348,19 +348,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h1><span class="header-section-number"> 3</span> Premiers pas</h1>
 <div id="installation-de-r" class="section level2">
 <h2><span class="header-section-number">3.1</span> Installation de R</h2>
-<p>Le programme permettant l’installation du logiciel R peut être téléchargé depuis le site web de R : <a href="https://www.r-project.org/" class="uri">https://www.r-project.org/</a>. Sur le site de R il faut au préalable choisir un mirroir CRAN (serveur depuis lequel télécharger R ; sauf cas particulier le plus proche de sa localisation géographique), puis télécharger le fichier <em>base</em>. Les utilisateurs de Linux pourront préférer un <code>sudo apt-get install r-base</code>.</p>
+<p>Le programme permettant l’installation du logiciel R peut être téléchargé depuis le site web de R : <a href="https://www.r-project.org/" class="uri">https://www.r-project.org/</a>. Sur le site de R il faut au préalable choisir un miroir CRAN (serveur depuis lequel télécharger R ; sauf cas particulier le plus proche de sa localisation géographique), puis télécharger le fichier <em>base</em>. Les utilisateurs de Linux pourront préférer un <code>sudo apt-get install r-base</code>.</p>
 <p>Le logiciel R peut être téléchargé depuis de nombreux serveurs du CRAN (Comprehensive R Archive Network) à travers le monde. Ces serveurs s’appellent des miroirs. Le choix du miroir est manuel.</p>
 </div>
 <div id="r-comme-calculatrice" class="section level2">
 <h2><span class="header-section-number">3.2</span> R comme calculatrice</h2>
-<p>Une fois le programme lancé, une fenêtre apparaît dont l’aspect peut varier en fonction de votre système d’exploitation (Figure <a href="premiersPas.html#fig:screenCapConsole">3.1</a>). Cette fenêtre est dénommée la <em>console</em>.</p>
+<p>Une fois le programme lancé, une fenêtre apparaît dont l’aspect peut varier en fonction de votre système d’exploitation (Figure <a href="premiersPas.html#fig:screenCapConsole">3.1</a>). Cette fenêtre est dénommée la <em>console</em>. La première information que l’on peut trouver sur la console est la version de R utilisée. Il est recommandé de mettre à jour régulièrement sa version de R afin de bénéficier des dernières fonctionnalités. Au moment d’écrire ce livre, la version disponible est la 3.6.1 dénommée “Action of the Toes”.</p>
 <div class="figure"><span id="fig:screenCapConsole"></span>
 <img src="myFigures/screencap_rConsoleFR.png" alt="Capture d'écran de la console R sous Windows.\label{fig:screenCapConsole}" width="271" />
 <p class="caption">
 Figure 3.1: Capture d’écran de la console R sous Windows.
 </p>
 </div>
-<p>La console correspond à l’interface où va être interprété le code, c’est à dire à l’endroit où le code va être transformé en langage machine, exécuté par l’ordinateur, puis retransmis sous une forme lisible par des humains. Cela correspond à l’écran d’affichage d’une calculatrice (Figure <a href="premiersPas.html#fig:screenCapConsoleCal">3.2</a>). C’est de cette manière que R va être utilisé dans la suite de cette section.</p>
+<p>La console correspond à l’interface où va être interprété le code, c’est à dire à l’endroit depuis lequel le code va être transformé en langage machine, puis exécuté par l’ordinateur. Le résultat de cette exécution sera retransmis dans la console sous une forme lisible par des humains. Cela correspond à l’écran d’affichage d’une calculatrice (Figure <a href="premiersPas.html#fig:screenCapConsoleCal">3.2</a>). C’est de cette manière que R va être utilisé dans la suite de cette section.</p>
 <p>Tout au long de ce livre, les exemples de code R apparaîtront sur fond en gris. Ils peuvent être copiés et collés directement dans la console, bien qu’il soit préférable de reproduire soit même les exemples dans la console (ou plus tard dans les scripts). Le résultat de ce qui est envoyé dans la console apparaîtra également sur fond en gris avec <code>##</code> devant le code afin de bien faire la distinction entre le code et le résultat du code.</p>
 <div class="figure"><span id="fig:screenCapConsoleCal"></span>
 <img src="myFigures/screencap_rConsoleCalculatrice.png" alt="Capture d'écran de la console R sous Windows avec la calculatrice Windows.\label{fig:screenCapConsoleCal}" width="242" />
@@ -372,8 +372,8 @@ Figure 3.2: Capture d’écran de la console R sous Windows avec la calculatrice
 <h3><span class="header-section-number">3.2.1</span> Les opérateurs arithmétiques</h3>
 <div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" title="1"><span class="dv">5</span> <span class="op">+</span><span class="st"> </span><span class="dv">5</span></a></code></pre></div>
 <pre><code>## [1] 10</code></pre>
-<p>Si nous écrivons <code>5 + 5</code> dans la console puis <code>Entrée</code>, le résultat apparaît précédé du chiffre [1] entre crochets. Ce chiffre correspond au numéro du résultat (dans notre cas, il n’y a qu’un seul résultat ; nous reviendrons sur cet aspect plus tard). Nous pouvons également noter dans cet exemple l’utilisation d’espaces avant et après le signe <code>+</code>. Ces espaces ne sont pas nécessaires mais permettent au code d’être plus lisible par les humains (i.e., plus agréable à lire pour nous comme pour les personnes avec qui nous serons amenés à partager notre code).
-Les opérateurs aritmétiques disponibles sous R sont résumés dans la table <a href="premiersPas.html#tab:tabOpAri">3.1</a>.</p>
+<p>Si nous écrivons <code>5 + 5</code> dans la console puis la touche du clavier <code>Entrée</code>, le résultat apparaît précédé du chiffre [1] entre crochets. Ce chiffre correspond au numéro du résultat (dans notre cas, il n’y a qu’un seul résultat ; nous reviendrons sur cet aspect plus tard). Nous pouvons également noter dans cet exemple l’utilisation d’espaces avant et après le signe <code>+</code>. Ces espaces ne sont pas nécessaires mais permettent au code d’être plus lisible par les humains (i.e., plus agréable à lire pour nous comme pour les personnes avec qui nous serons amenés à partager notre code).
+Les opérateurs arithmétiques disponibles sous R sont résumés dans la table <a href="premiersPas.html#tab:tabOpAri">3.1</a>.</p>
 <table>
 <caption><span id="tab:tabOpAri">Table 3.1: </span>Opérateurs arithmétiques.</caption>
 <thead>
@@ -422,7 +422,7 @@ Les opérateurs aritmétiques disponibles sous R sont résumés dans la table <a
 <td align="left">0</td>
 </tr>
 <tr class="odd">
-<td align="left">Quotien Décimal</td>
+<td align="left">Quotient Décimal</td>
 <td align="left">%/%</td>
 <td align="left">5 %/% 5</td>
 <td align="left">1</td>
@@ -443,18 +443,18 @@ Les opérateurs aritmétiques disponibles sous R sont résumés dans la table <a
 <pre><code>## [1] 1</code></pre>
 <div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb14-1" title="1">((<span class="dv">5</span> <span class="op">+</span><span class="st"> </span><span class="dv">5</span>) <span class="op">*</span><span class="st"> </span><span class="dv">2</span>) <span class="op">%%</span><span class="st"> </span><span class="dv">2</span></a></code></pre></div>
 <pre><code>## [1] 0</code></pre>
-<p>R intègre également certaines constantes dont <code>pi</code>. Par ailleurs le signe infini est représenté par <code>Inf</code></p>
+<p>R intègre également certaines constantes comme <code>pi</code> (3.141593). Par ailleurs le signe infini est représenté par <code>Inf</code>.</p>
 <div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb16-1" title="1">pi</a></code></pre></div>
 <pre><code>## [1] 3.141593</code></pre>
 <div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb18-1" title="1">pi <span class="op">*</span><span class="st"> </span><span class="dv">5</span><span class="op">^</span><span class="dv">2</span></a></code></pre></div>
 <pre><code>## [1] 78.53982</code></pre>
 <div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb20-1" title="1"><span class="dv">1</span><span class="op">/</span><span class="dv">0</span></a></code></pre></div>
 <pre><code>## [1] Inf</code></pre>
-<p>le <em>style</em> du code est important car le code est destiné à être lisible par nous plus tard et par d’autres personnes de manière générale. Pour avoir un style lisible il est recommandé de mettre des espaces avant et après les opérateurs arithmétiques.</p>
+<p>Le <em>style</em> du code est important car le code est destiné à être lisible par nous plus tard et par d’autres personnes de manière générale. Pour avoir un style lisible il est recommandé de mettre des espaces avant et après les opérateurs arithmétiques (bonnes pratiques de programmation).</p>
 </div>
 <div id="l011opcomp" class="section level3">
 <h3><span class="header-section-number">3.2.2</span> Les opérateurs de comparaison</h3>
-<p>R est cependant bien plus qu’une simple calculatrice puisque’il permet un autre type d’opérateurs : les opérateurs de comparaison. Ils servent comme leur nom l’indique à <em>comparer</em> des valeurs entre elles (Table <a href="premiersPas.html#tab:tabOpCom">3.2</a>).</p>
+<p>R est cependant bien plus qu’une simple calculatrice puisqu’il permet un autre type d’opérateurs : les opérateurs de comparaison. Ils servent comme leur nom l’indique à <em>comparer</em> des valeurs entre elles (Table <a href="premiersPas.html#tab:tabOpCom">3.2</a>).</p>
 <table>
 <caption><span id="tab:tabOpCom">Table 3.2: </span>Opérateurs de comparaison.</caption>
 <thead>
@@ -507,7 +507,7 @@ Les opérateurs aritmétiques disponibles sous R sont résumés dans la table <a
 <p>Par exemple si nous voulons savoir si un chiffre est plus grand qu’un autre, nous pouvons écrire :</p>
 <div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb22-1" title="1"><span class="dv">5</span> <span class="op">&gt;</span><span class="st"> </span><span class="dv">3</span> </a></code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
-<p>R renvoie la valeur <code>TRUE</code> si la comparasion est vraie et <code>FALSE</code> si la comparaison est fausse.</p>
+<p>R renvoie la valeur <code>TRUE</code> si la comparaison est vraie et <code>FALSE</code> si la comparaison est fausse.</p>
 <div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb24-1" title="1"><span class="dv">5</span> <span class="op">&gt;</span><span class="st"> </span><span class="dv">3</span></a></code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
 <div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb26-1" title="1"><span class="dv">2</span> <span class="op">&lt;</span><span class="st"> </span><span class="fl">1.5</span></a></code></pre></div>
@@ -516,16 +516,16 @@ Les opérateurs aritmétiques disponibles sous R sont résumés dans la table <a
 <pre><code>## [1] TRUE</code></pre>
 <div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb30-1" title="1"><span class="fl">3.2</span> <span class="op">&gt;=</span><span class="st"> </span><span class="fl">1.5</span></a></code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
-<p>Nous pouvons combiner les opérateurs arithmétiques avec les opérateurs de comparasion.</p>
+<p>Nous pouvons combiner les opérateurs arithmétiques avec les opérateurs de comparaison.</p>
 <div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb32-1" title="1">(<span class="dv">5</span> <span class="op">+</span><span class="st"> </span><span class="dv">8</span>) <span class="op">&gt;</span><span class="st"> </span>(<span class="dv">3</span> <span class="op">*</span><span class="st"> </span><span class="dv">45</span><span class="op">/</span><span class="dv">2</span>) </a></code></pre></div>
 <pre><code>## [1] FALSE</code></pre>
-<p>Dans la comparasion <code>(5 + 8) &gt; (3 * 45/2)</code> les parenthèses ne sont pas nécessaires mais elles permettent au code d’être plus facile à lire.</p>
+<p>Dans la comparaison <code>(5 + 8) &gt; (3 * 45/2)</code> les parenthèses ne sont pas nécessaires mais elles permettent au code d’être plus facile à lire.</p>
 <p>Un opérateur de comparaison particulier est <em>égal à</em>. Nous verrons dans la section suivante que le signe <code>=</code> est réservé à un autre usage : il permet d’affecter une valeur à un objet. L’opérateur de comparaison <em>égal à</em> doit donc être différent, c’est pour cela que R utilise <code>==</code>.</p>
 <div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb34-1" title="1"><span class="dv">42</span> <span class="op">==</span><span class="st"> </span><span class="dv">53</span></a></code></pre></div>
 <pre><code>## [1] FALSE</code></pre>
 <div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb36-1" title="1"><span class="dv">58</span> <span class="op">==</span><span class="st"> </span><span class="dv">58</span></a></code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
-<p>Un autre opérateur particulier est <em>différent de</em>. Il est utilisé avec <em>un point d’intérrogation</em> suivi de <em>égal</em>, <code>!=</code>. Cet opérateur permet d’obtenir la réponse inverse à <code>==</code>.</p>
+<p>Un autre opérateur particulier est <em>différent de</em>. Il est utilisé avec <em>un point d’interrogation</em> suivi de <em>égal</em>, <code>!=</code>. Cet opérateur permet d’obtenir la réponse inverse à <code>==</code>.</p>
 <div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb38-1" title="1"><span class="dv">42</span> <span class="op">==</span><span class="st"> </span><span class="dv">53</span></a></code></pre></div>
 <pre><code>## [1] FALSE</code></pre>
 <div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb40-1" title="1"><span class="dv">42</span> <span class="op">!=</span><span class="st"> </span><span class="dv">53</span></a></code></pre></div>
@@ -534,7 +534,7 @@ Les opérateurs aritmétiques disponibles sous R sont résumés dans la table <a
 <pre><code>## [1] FALSE</code></pre>
 <div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb44-1" title="1"><span class="dv">10</span><span class="op">/</span><span class="dv">2</span> <span class="op">==</span><span class="st"> </span><span class="dv">5</span></a></code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
-<p>R utilise <code>TRUE</code> et <code>FALSE</code> qui sont aussi des valeurs qui peuvent être testées avec les opérateurs de comparasion. Mais R attribue également une valeur à <code>TRUE</code> et <code>FALSE</code> :</p>
+<p>R utilise <code>TRUE</code> et <code>FALSE</code> qui sont aussi des valeurs qui peuvent être testées avec les opérateurs de comparaison. Mais R attribue également une valeur à <code>TRUE</code> et <code>FALSE</code> :</p>
 <div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb46-1" title="1"><span class="ot">TRUE</span> <span class="op">==</span><span class="st"> </span><span class="ot">TRUE</span></a></code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
 <div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb48-1" title="1"><span class="ot">TRUE</span> <span class="op">&gt;</span><span class="st"> </span><span class="ot">FALSE</span></a></code></pre></div>
@@ -549,8 +549,8 @@ Les opérateurs aritmétiques disponibles sous R sont résumés dans la table <a
 <pre><code>## [1] 1</code></pre>
 <div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb58-1" title="1">(<span class="ot">FALSE</span> <span class="op">+</span><span class="st"> </span><span class="dv">1</span>) <span class="op">==</span><span class="st"> </span><span class="ot">TRUE</span></a></code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
-<p>La valeur de <code>TRUE</code> est de 1 et la valeur de <code>FALSE</code> est de 0. Nous verrons plus tard comment utiliser cette information dans les prochains chapitres.</p>
-<p>R est aussi un langage relativement permissif, cela veut dire qu’il admet une certaine flexibilité dans la manière de rédiger le code. Débattre du bien fondé de cette flexibilité sort du cadre de ce livre mais nous pourrons trouver dans du code R sur Internet ou dans d’autres ouvrages le raccourcis <code>T</code> pour <code>TRUE</code> et <code>F</code> pour <code>FALSE</code>.</p>
+<p>La valeur de <code>TRUE</code> est de 1 et la valeur de <code>FALSE</code> est de 0. Si cela peut paraître étrange à ce stade, nous verrons plus tard comment utiliser cette information et toutes les fonctionnalités qu’elle permet.</p>
+<p>R est aussi un langage relativement permissif, cela veut dire qu’il admet une certaine flexibilité dans la manière de rédiger le code. Débattre du bien-fondé de cette flexibilité sort du cadre de ce livre mais nous pourrons trouver dans du code R sur Internet ou dans d’autres ouvrages le raccourcis <code>T</code> pour <code>TRUE</code> et <code>F</code> pour <code>FALSE</code>.</p>
 <div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb60-1" title="1">T <span class="op">==</span><span class="st"> </span><span class="ot">TRUE</span></a></code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
 <div class="sourceCode" id="cb62"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb62-1" title="1">F <span class="op">==</span><span class="st"> </span><span class="ot">FALSE</span></a></code></pre></div>
@@ -561,7 +561,7 @@ Les opérateurs aritmétiques disponibles sous R sont résumés dans la table <a
 <pre><code>## [1] TRUE</code></pre>
 <div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb68-1" title="1">(F <span class="op">+</span><span class="st"> </span><span class="dv">1</span>) <span class="op">==</span><span class="st"> </span><span class="ot">TRUE</span></a></code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
-<p>Bien que cette façon de se référer à <code>TRUE</code> et <code>FALSE</code> par <code>T</code> et <code>F</code> soit assez répandue, dans ce livre nous utiliserons toujours <code>TRUE</code> et <code>FALSE</code> afin que le code soit plus facile à lire. Encore une fois l’objectif d’un code est de non seuleument être fonctionnel mais aussi d’être facile à lire et à relire.</p>
+<p>Bien que cette façon de se référer à <code>TRUE</code> et <code>FALSE</code> par <code>T</code> et <code>F</code> soit assez répandue, dans ce livre nous utiliserons toujours <code>TRUE</code> et <code>FALSE</code> afin que le code soit plus facile à lire. Encore une fois l’objectif d’un code est de non seulement être fonctionnel mais aussi d’être facile à lire et à relire.</p>
 </div>
 <div id="l011oplog" class="section level3">
 <h3><span class="header-section-number">3.2.3</span> Les opérateurs logiques</h3>
@@ -614,16 +614,16 @@ Les opérateurs aritmétiques disponibles sous R sont résumés dans la table <a
 <pre><code>## [1] FALSE</code></pre>
 <div class="sourceCode" id="cb88"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb88-1" title="1"><span class="kw">xor</span>((<span class="dv">3</span> <span class="op">+</span><span class="st"> </span><span class="dv">3</span>) <span class="op">==</span><span class="st"> </span><span class="dv">5</span>, (<span class="dv">3</span> <span class="op">+</span><span class="st"> </span><span class="dv">3</span>) <span class="op">==</span><span class="st"> </span><span class="dv">6</span>)</a></code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
-<p>Il est recommandé que les virgules <code>,</code> soient suivies par un espace afin que le code soit plus agréable à lire.</p>
+<p>Il est recommandé que les virgules (<code>,</code>) soient suivies par un espace afin que le code soit plus agréable à lire. Cela fait beaucoup de recommandations sur le style du code qui peuvent sembler à ce stade superflues. Néanmoins il est important d’adopter de bonnes pratiques de programmation dès le début de notre apprentissage de R (il est toujours plus facile de prendre de bonnes habitudes que de devoir corriger de mauvaises habitudes par la suite).</p>
 </div>
 <div id="aide-sur-les-opérateurs" class="section level3">
 <h3><span class="header-section-number">3.2.4</span> Aide sur les opérateurs</h3>
-<p>Le fichier d’aide en anglais sur les opérateurs arithmétiques peut être obtenue avec la commande <code>?'+'</code> celui sur les opérateurs de comparaison avec la commande <code>?'=='</code> et celui sur les opérateurs logiques avec la commande <code>?'&amp;'</code>.</p>
+<p>Le fichier d’aide en anglais sur les opérateurs arithmétiques peut être obtenu avec la commande <code>?'+'</code>. Le fichier d’aide sur les opérateurs de comparaison peut être obtenu avec la commande <code>?'=='</code> et celui sur les opérateurs logiques avec la commande <code>?'&amp;'</code>.</p>
 </div>
 </div>
 <div id="l011object" class="section level2">
 <h2><span class="header-section-number">3.3</span> La notion d’objet</h2>
-<p>Un aspect important de la programmation avec R, mais aussi de la programmation en général est la notion d’objet. Comme indiqué sur la page web de wikipedia (<a href="https://fr.wikipedia.org/wiki/Objet_(informatique)" class="uri">https://fr.wikipedia.org/wiki/Objet_(informatique)</a>), en informatique, un objet est un <em>conteneur</em>, c’est à dire quelque chose qui va contenir de l’information. L’inforamtion contenue dans un objet peut être très diverse, mais pour le moment nous allons contenir dans un objet le chiffre 5. Pour ce faire (et pour pouvoir le réutiliser par la suite), il nous faut donner un nom à notre objet. Avec R le nom des objets ne doit pas comprendre de caractères spéciaux comme <em>^$?|+()[]}{</em>, ne doit pas commencer par un chiffre ni contenir d’espaces. Le nom de l’objet doit être représentatif de ce qu’il contient, tout en étant ni trop court ni trop long. Imaginons que notre chiffre 5 corresponde au nombre de répétitions d’une expérience. Nous voudrions lui donner un nom faisant référence à <em>nombre</em> et à <em>répétition</em>, que nous pourrions réduire à <em>nbr</em> et <em>rep</em>, respectivement. Il existe plusieurs possibilités qui sont toutes assez répandues sous R :</p>
+<p>Un aspect important de la programmation avec R, mais aussi de la programmation en général est la notion d’objet. Comme indiqué sur la page web de wikipedia (<a href="https://fr.wikipedia.org/wiki/Objet_(informatique)" class="uri">https://fr.wikipedia.org/wiki/Objet_(informatique)</a>), en informatique, un objet est un <em>conteneur</em>, c’est à dire quelque chose qui va contenir de l’information. L’information contenue dans un objet peut être très variée, mais pour le moment nous allons contenir dans un objet le chiffre 5. Pour ce faire (et pour pouvoir le réutiliser par la suite), il nous faut donner un nom à notre objet. Avec R le nom des objets ne doit pas comprendre de caractères spéciaux comme <em>^$?|+()[]}{</em>, ne doit pas commencer par un chiffre ni contenir d’espaces. Le nom de l’objet doit être représentatif de ce qu’il contient, tout en étant ni trop court ni trop long. Imaginons que notre chiffre 5 corresponde au nombre de répétitions d’une expérience. Nous voudrions lui donner un nom faisant référence à <em>nombre</em> et à <em>répétition</em>, que nous pourrions réduire à <em>nbr</em> et <em>rep</em>, respectivement. Il existe plusieurs possibilités qui sont toutes assez répandues sous R :</p>
 <ul>
 <li>la séparation au moyen du caractère <em>tiret bas</em> : <code>nbr_rep</code></li>
 <li>la séparation au moyen du caractère <em>point</em> : <code>nbr.rep</code></li>
@@ -631,9 +631,9 @@ Les opérateurs aritmétiques disponibles sous R sont résumés dans la table <a
 <li>le style <em>lowerCamelCase</em> consistant en un premier mot en minuscules et des suivants avec une majuscule : <code>nbrRep</code></li>
 <li>le style <em>UpperCamelCase</em> consistant à mettre une majuscule au début de chacun des mots : <code>NbrRep</code></li>
 </ul>
-<p>Toutes ces formes de nommer un objet sont équivalentes. Dans ce livre nous utiliserons le style <em>lowerCamelCase</em>. De manière générale il faut éviter les noms trop longs comme <code>leNombreDeRepetitions</code> ou trop courts comme <code>nR</code>, et les noms ne permettant pas d’identifier le contenu comme <code>maVariable</code> ou <code>monChiffre</code>, mais aussi <code>a</code> ou <code>b</code>…</p>
-<p>Il existe différentes façons de définir un nom pour les objets que nous allons créer avec R. Dans ce livre nous utilisons le style <em>lowerCamelCase</em>. L’important n’est pas le choix du style mais la consistence dans son choix. L’objectif est d’avoir un code fonctionnel mais également un code facile et agréable à lire.</p>
-<p>Maintenant que nous avons choisi un nom pour notre objet, il faut le créer et faire comprendre à R que notre objet doit contenir le chiffre 5. Il existe trois façons de créer un objet sous R:</p>
+<p>Toutes ces formes de nommer un objet sont équivalentes. De manière générale il faut éviter les noms trop longs comme <code>leNombreDeRepetitions</code> ou trop courts comme <code>nR</code>, et les noms ne permettant pas d’identifier le contenu comme <code>maVariable</code> ou <code>monChiffre</code>, mais aussi <code>a</code> ou <code>b</code>…</p>
+<p>Il existe différentes façons de définir un nom pour les objets que nous allons créer avec R. Dans ce livre nous utilisons le style <em>lowerCamelCase</em>. L’important n’est pas le choix du style mais la consistance dans son choix. L’objectif est d’avoir un code fonctionnel mais également un code facile et agréable à lire pour soi et pour les autres.</p>
+<p>Maintenant que nous avons choisi un nom pour notre objet, il faut le créer et faire comprendre à R que notre objet doit contenir le chiffre 5. Il existe trois façons de créer un objet sous R et de lui assigner un contenu:</p>
 <ul>
 <li>avec le signe <code>&lt;-</code></li>
 <li>avec le signe <code>=</code></li>
@@ -671,12 +671,12 @@ Les opérateurs aritmétiques disponibles sous R sont résumés dans la table <a
 </div>
 <div id="les-scripts" class="section level2">
 <h2><span class="header-section-number">3.4</span> Les scripts</h2>
-<p>R est un langage de programmation souvent dénommé <em>langage de script</em>. Cela fait référence au fait que la plupart des utilisateurs vont écrire des petits bouts de code plutôt que des programmes entiers. R peut être utilisé comme une simple calculatrice, et dans ce cas il ne sera pas nécessaire de conserver un historique des opérations qui ont été réalisées. Mais si les opérations à réliser sont longues et complexes, il peut devenir nécessaire de pouvoir sauvegarder ce qui a été fait à un moment donné pour pouvoir poursuivre plus tard. Le fichier dans lequel seront conservées les opérations consitue ce que l’on appelle communement le script. Un script est donc un fichier contenant une succession d’informations compréhensibles par R et qu’il est possible d’exécuter.</p>
+<p>R est un langage de programmation souvent dénommé <em>langage de script</em>. Cela fait référence au fait que la plupart des utilisateurs vont écrire des petits bouts de code plutôt que des programmes entiers. R peut être utilisé comme une simple calculatrice, et dans ce cas il ne sera pas nécessaire de conserver un historique des opérations qui ont été réalisées. Mais si les opérations à réaliser sont longues et complexes, il peut devenir nécessaire de pouvoir sauvegarder ce qui a été fait à un moment donné pour pouvoir poursuivre plus tard. Le fichier dans lequel seront conservées les opérations constitue ce que l’on appelle communément le script. Un script est donc un fichier contenant une succession d’informations compréhensibles par R et qu’il est possible d’exécuter.</p>
 <div id="créer-un-script-et-le-documenter" class="section level3">
 <h3><span class="header-section-number">3.4.1</span> Créer un script et le documenter</h3>
-<p>Pour ouvrir un nouveau script il suffit de créer un fichier texte vide qui sera édité par un éditeur de texte comme le bloc note sous Windows ou Mac OS, ou encore Gedit ou même nano sous Linux. Par convention ce fichier prend l’extension “.r” ou plus souvent “.R”. C’est cette dernière convention qui sera utilisée dans ce livre. Depuis l’interface graphique de R il est possible de créer un nouveux script sous Mac OS et Windows via <em>fichier</em> puis <em>nouveau script</em> et <em>enregistrer sous</em>.
-Tout comme le nom des objets, le nom du script est important pour que nous puissions facilement identifier son contenu. Par exemple nous pourrions créer un fichier <code>formRConceptsBase.R</code> contenant les objets que nous venons de créer et les calculs effectués. Mais même avec des noms de variables et un nom de fichier bien définis, il sera difficile de se rappeler le sens de ce fichier sans une documentation accompagnant le script. Pour docummenter un script nous allons utiliser des <em>commentaires</em>. Les commentaires sont des éléments qui seront identifiés par R et qui ne seront pas exécutés. Pour spécifier à R que nous allons faire un commentaire, il faut utiliser le caractère octothorpe (croisillon) <code>#</code>. Les commentaires peuvent être insérés sur une nouvelle ligne ou en fin de ligne.</p>
-<div class="sourceCode" id="cb108"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb108-1" title="1"><span class="co"># creation objet nombre de repetitions</span></a>
+<p>Pour ouvrir un nouveau script il suffit de créer un fichier texte vide qui sera édité par un éditeur de texte comme le <em>bloc note</em> sous Windows ou Mac OS, ou encore <em>Gedit</em> ou même <em>nano</em> sous Linux. Par convention ce fichier prend l’extension “.r” ou plus souvent “.R”. C’est cette dernière convention qui sera utilisée dans ce livre. Depuis l’interface graphique de R il est possible de créer un nouveau script sous Mac OS et Windows via <em>fichier</em> puis <em>nouveau script</em> et <em>enregistrer sous</em>.
+Tout comme le nom des objets, le nom du script est important pour que nous puissions facilement identifier son contenu. Par exemple nous pourrions créer un fichier <code>formRConceptsBase.R</code> contenant les objets que nous venons de créer et les calculs effectués. Mais même avec des noms de variables et un nom de fichier bien définis, il sera difficile de se rappeler le sens de ce fichier sans une documentation accompagnant le script. Pour documenter un script nous allons utiliser des <em>commentaires</em>. Les commentaires sont des éléments qui seront identifiés par R et qui ne seront pas exécutés. Pour spécifier à R que nous allons faire un commentaire, il faut utiliser le caractère octothorpe (croisillon ; différent du caractère dièse) <code>#</code>. Les commentaires peuvent être insérés sur une nouvelle ligne ou en fin de ligne.</p>
+<div class="sourceCode" id="cb108"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb108-1" title="1"><span class="co"># création objet nombre de répétitions</span></a>
 <a class="sourceLine" id="cb108-2" title="2">nbrRep &lt;-<span class="st"> </span><span class="dv">5</span> <span class="co"># commentaire de fin de ligne</span></a></code></pre></div>
 <p>Les commentaires peuvent aussi être utilisés pour qu’une ligne ne soit plus exécutée.</p>
 <div class="sourceCode" id="cb109"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb109-1" title="1">nbrRep &lt;-<span class="st"> </span><span class="dv">5</span></a>
@@ -699,11 +699,11 @@ Tout comme le nom des objets, le nom du script est important pour que nous puiss
 <a class="sourceLine" id="cb110-15" title="15"></a>
 <a class="sourceLine" id="cb110-16" title="16">pi <span class="op">*</span><span class="st"> </span>nbrRep<span class="op">^</span><span class="dv">2</span></a></code></pre></div>
 <pre><code>## [1] 78.53982</code></pre>
-<p>Pour aller plus loin sur le style de code, un guide complet de recommandations est disponible en ligne (en anglais ; <a href="http://style.tidyverse.org/" class="uri">http://style.tidyverse.org/</a>).</p>
+<p>Pour aller plus loin sur le style de code, un guide de recommandations est disponible en ligne sur le site de tidyverse (en anglais ; <a href="http://style.tidyverse.org/" class="uri">http://style.tidyverse.org/</a>). Nous verrons que ce livre suit les principales recommandations de ce site, mais pas toutes car notre préoccupation principale est d’avoir un code lisible et reproductible.</p>
 </div>
 <div id="exécuter-un-script" class="section level3">
 <h3><span class="header-section-number">3.4.2</span> Exécuter un script</h3>
-<p>Depuis que nous avons un script, nous ne travaillons plus directement dans la console. Or seule la console est capable d’interpérter le code R et de nous renvoyer les résultats que nous souhaitons obtenir. Pour l’instant la technique la plus simple consiste à copier-coller les lignes que nous souhaitons exécuter depuis notre script vers la console. A partir de maintenant nous n’allons plus utiliser les éditeurs de texte comme le bloc note mais des éditeurs spécialisés pour la confection de scripts R. C’est l’objet du chapitre suivant.</p>
+<p>Depuis que nous avons un script, nous ne travaillons plus directement dans la console. Or seule la console est capable d’interpréter le code R et de nous renvoyer les résultats que nous souhaitons obtenir. Pour l’instant la technique la plus simple consiste à copier-coller les lignes que nous souhaitons exécuter depuis notre script vers la console. A partir de maintenant nous n’allons plus utiliser les éditeurs de texte comme le bloc note mais des éditeurs spécialisés pour la confection de scripts R. C’est l’objet du chapitre suivant.</p>
 </div>
 </div>
 <div id="conclusion" class="section level2">
