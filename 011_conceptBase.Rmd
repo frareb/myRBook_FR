@@ -4,19 +4,19 @@
 
 ## Installation de R
 
-Le programme permettant l'installation du logiciel R peut être téléchargé depuis le site web de R : https://www.r-project.org/. Sur le site de R il faut au préalable choisir un mirroir CRAN (serveur depuis lequel télécharger R ; sauf cas particulier le plus proche de sa localisation géographique), puis télécharger le fichier *base*. Les utilisateurs de Linux pourront préférer un `sudo apt-get install r-base`. 
+Le programme permettant l'installation du logiciel R peut être téléchargé depuis le site web de R : https://www.r-project.org/. Sur le site de R il faut au préalable choisir un miroir CRAN (serveur depuis lequel télécharger R ; sauf cas particulier le plus proche de sa localisation géographique), puis télécharger le fichier *base*. Les utilisateurs de Linux pourront préférer un `sudo apt-get install r-base`. 
 
 Le logiciel R peut être téléchargé depuis de nombreux serveurs du CRAN (Comprehensive R Archive Network) à travers le monde. Ces serveurs s'appellent des miroirs. Le choix du miroir est manuel. 
 
 ## R comme calculatrice
 
-Une fois le programme lancé, une fenêtre apparaît dont l'aspect peut varier en fonction de votre système d'exploitation (Figure \@ref(fig:screenCapConsole)). Cette fenêtre est dénommée la *console*.
+Une fois le programme lancé, une fenêtre apparaît dont l'aspect peut varier en fonction de votre système d'exploitation (Figure \@ref(fig:screenCapConsole)). Cette fenêtre est dénommée la *console*. La première information que l’on peut trouver sur la console est la version de R utilisée. Il est recommandé de mettre à jour régulièrement sa version de R afin de bénéficier des dernières fonctionnalités. Au moment d’écrire ce livre, la version disponible est la 3.6.1 dénommée "Action of the Toes".
 
 ```{r screenCapConsole, fig.cap = "Capture d'écran de la console R sous Windows.\\label{fig:screenCapConsole}", echo = FALSE}
 knitr::include_graphics("myFigures/screencap_rConsoleFR.png")
 ```
 
-La console correspond à l'interface où va être interprété le code, c'est à dire à l'endroit où le code va être transformé en langage machine, exécuté par l'ordinateur, puis retransmis sous une forme lisible par des humains. Cela correspond à l'écran d'affichage d'une calculatrice (Figure \@ref(fig:screenCapConsoleCal)). C'est de cette manière que R va être utilisé dans la suite de cette section.
+La console correspond à l'interface où va être interprété le code, c'est à dire à l'endroit depuis lequel le code va être transformé en langage machine, puis exécuté par l'ordinateur. Le résultat de cette exécution sera retransmis dans la console sous une forme lisible par des humains. Cela correspond à l'écran d'affichage d'une calculatrice (Figure \@ref(fig:screenCapConsoleCal)). C'est de cette manière que R va être utilisé dans la suite de cette section.
 
 Tout au long de ce livre, les exemples de code R apparaîtront sur fond en gris. Ils peuvent être copiés et collés directement dans la console, bien qu'il soit préférable de reproduire soit même les exemples dans la console (ou plus tard dans les scripts). Le résultat de ce qui est envoyé dans la console apparaîtra également sur fond en gris avec `##` devant le code afin de bien faire la distinction entre le code et le résultat du code.
 
@@ -30,12 +30,12 @@ knitr::include_graphics("myFigures/screencap_rConsoleCalculatrice.png")
 5 + 5
 ```
 
-Si nous écrivons `5 + 5` dans la console puis `Entrée`, le résultat apparaît précédé du chiffre [1] entre crochets. Ce chiffre correspond au numéro du résultat (dans notre cas, il n'y a qu'un seul résultat ; nous reviendrons sur cet aspect plus tard). Nous pouvons également noter dans cet exemple l'utilisation d'espaces avant et après le signe `+`. Ces espaces ne sont pas nécessaires mais permettent au code d'être plus lisible par les humains (i.e., plus agréable à lire pour nous comme pour les personnes avec qui nous serons amenés à partager notre code). 
-Les opérateurs aritmétiques disponibles sous R sont résumés dans la table \@ref(tab:tabOpAri).
+Si nous écrivons `5 + 5` dans la console puis la touche du clavier `Entrée`, le résultat apparaît précédé du chiffre [1] entre crochets. Ce chiffre correspond au numéro du résultat (dans notre cas, il n'y a qu'un seul résultat ; nous reviendrons sur cet aspect plus tard). Nous pouvons également noter dans cet exemple l'utilisation d'espaces avant et après le signe `+`. Ces espaces ne sont pas nécessaires mais permettent au code d'être plus lisible par les humains (i.e., plus agréable à lire pour nous comme pour les personnes avec qui nous serons amenés à partager notre code). 
+Les opérateurs arithmétiques disponibles sous R sont résumés dans la table \@ref(tab:tabOpAri).
 
 ```{r tabOpAri, echo = FALSE}
 opAriDf <- data.frame(Label = c("Addition", "Soustraction", "Multiplication", 
-  "Division", "Puissance", "Modulo", "Quotien Décimal"), 
+  "Division", "Puissance", "Modulo", "Quotient Décimal"), 
   Opérateur = c("+", "-", "*", "/", "^", "%%", "%/%"), 
   Exemple = c("5 + 5", "5 - 5", "5*5", "5/5", "5^5", "5 %% 5", "5 %/% 5"), 
   Résultat = c("10", "0", "25", "1", "3125", "0", "1"))
@@ -58,7 +58,7 @@ L'opérateur modulo correspond au  reste de la division euclidienne. Il est souv
 ((5 + 5) * 2) %% 2
 ```
 
-R intègre également certaines constantes dont `pi`. Par ailleurs le signe infini est représenté par `Inf`
+R intègre également certaines constantes comme `pi` (3.141593). Par ailleurs le signe infini est représenté par `Inf`.
 
 ```{r 011-conceptBase-4}
 pi
@@ -66,11 +66,11 @@ pi * 5^2
 1/0
 ```
 
-le *style* du code est important car le code est destiné à être lisible par nous plus tard et par d'autres personnes de manière générale. Pour avoir un style lisible il est recommandé de mettre des espaces avant et après les opérateurs arithmétiques. 
+Le *style* du code est important car le code est destiné à être lisible par nous plus tard et par d'autres personnes de manière générale. Pour avoir un style lisible il est recommandé de mettre des espaces avant et après les opérateurs arithmétiques (bonnes pratiques de programmation). 
 
 ### Les opérateurs de comparaison {#l011opcomp}
 
-R est cependant bien plus qu'une simple calculatrice puisque'il permet un autre type d'opérateurs : les opérateurs de comparaison. Ils servent comme leur nom l'indique à *comparer* des valeurs entre elles (Table \@ref(tab:tabOpCom)).
+R est cependant bien plus qu'une simple calculatrice puisqu'il permet un autre type d'opérateurs : les opérateurs de comparaison. Ils servent comme leur nom l'indique à *comparer* des valeurs entre elles (Table \@ref(tab:tabOpCom)).
 
 ```{r tabOpCom, echo = FALSE}
 opAriDf <- data.frame(Label = c("plus petit que", "plus grand que", "plus petit ou égal à",  "plus grand ou égal à", "égal à", "différent de"), 
@@ -86,7 +86,7 @@ Par exemple si nous voulons savoir si un chiffre est plus grand qu'un autre, nou
 5 > 3 
 ```
 
-R renvoie la valeur `TRUE` si la comparasion est vraie et `FALSE` si la comparaison est fausse.
+R renvoie la valeur `TRUE` si la comparaison est vraie et `FALSE` si la comparaison est fausse.
 
 ```{r 011-conceptBase-6}
 5 > 3
@@ -95,13 +95,13 @@ R renvoie la valeur `TRUE` si la comparasion est vraie et `FALSE` si la comparai
 3.2 >= 1.5
 ```
 
-Nous pouvons combiner les opérateurs arithmétiques avec les opérateurs de comparasion.
+Nous pouvons combiner les opérateurs arithmétiques avec les opérateurs de comparaison.
 
 ```{r 011-conceptBase-7}
 (5 + 8) > (3 * 45/2) 
 ```
 
-Dans la comparasion `(5 + 8) > (3 * 45/2)` les parenthèses ne sont pas nécessaires mais elles permettent au code d'être plus facile à lire.
+Dans la comparaison `(5 + 8) > (3 * 45/2)` les parenthèses ne sont pas nécessaires mais elles permettent au code d'être plus facile à lire.
 
 Un opérateur de comparaison particulier est *égal à*. Nous verrons dans la section suivante que le signe `=` est réservé à un autre usage : il permet d'affecter une valeur à un objet. L'opérateur de comparaison *égal à* doit donc être différent, c'est pour cela que R utilise `==`. 
 
@@ -110,7 +110,7 @@ Un opérateur de comparaison particulier est *égal à*. Nous verrons dans la se
 58 == 58
 ```
 
-Un autre opérateur particulier est *différent de*. Il est utilisé avec *un point d'intérrogation* suivi de *égal*, `!=`. Cet opérateur permet d'obtenir la réponse inverse à `==`.
+Un autre opérateur particulier est *différent de*. Il est utilisé avec *un point d'interrogation* suivi de *égal*, `!=`. Cet opérateur permet d'obtenir la réponse inverse à `==`.
 
 ```{r 011-conceptBase-9}
 42 == 53
@@ -119,7 +119,7 @@ Un autre opérateur particulier est *différent de*. Il est utilisé avec *un po
 10/2 == 5
 ```
 
-R utilise `TRUE` et `FALSE` qui sont aussi des valeurs qui peuvent être testées avec les opérateurs de comparasion. Mais R attribue également une valeur à `TRUE` et `FALSE` :
+R utilise `TRUE` et `FALSE` qui sont aussi des valeurs qui peuvent être testées avec les opérateurs de comparaison. Mais R attribue également une valeur à `TRUE` et `FALSE` :
 
 ```{r 011-conceptBase-10}
 TRUE == TRUE
@@ -131,9 +131,9 @@ FALSE + 1
 (FALSE + 1) == TRUE
 ```
 
-La valeur de `TRUE` est de 1 et la valeur de `FALSE` est de 0. Nous verrons plus tard comment utiliser cette information dans les prochains chapitres.
+La valeur de `TRUE` est de 1 et la valeur de `FALSE` est de 0. Si cela peut paraître étrange à ce stade, nous verrons plus tard comment utiliser cette information et toutes les fonctionnalités qu’elle permet.
 
-R est aussi un langage relativement permissif, cela veut dire qu'il admet une certaine flexibilité dans la manière de rédiger le code. Débattre du bien fondé de cette flexibilité sort du cadre de ce livre mais nous pourrons trouver dans du code R sur Internet ou dans d'autres ouvrages le raccourcis `T` pour `TRUE` et `F` pour `FALSE`. 
+R est aussi un langage relativement permissif, cela veut dire qu'il admet une certaine flexibilité dans la manière de rédiger le code. Débattre du bien-fondé de cette flexibilité sort du cadre de ce livre mais nous pourrons trouver dans du code R sur Internet ou dans d'autres ouvrages le raccourcis `T` pour `TRUE` et `F` pour `FALSE`. 
 
 ```{r 011-conceptBase-11}
 T == TRUE
@@ -143,7 +143,7 @@ F == 0
 (F + 1) == TRUE
 ```
 
-Bien que cette façon de se référer à `TRUE` et `FALSE` par `T` et `F` soit assez répandue, dans ce livre nous utiliserons toujours `TRUE` et `FALSE` afin que le code soit plus facile à lire. Encore une fois l'objectif d'un code est de non seuleument être fonctionnel mais aussi d'être facile à lire et à relire.
+Bien que cette façon de se référer à `TRUE` et `FALSE` par `T` et `F` soit assez répandue, dans ce livre nous utiliserons toujours `TRUE` et `FALSE` afin que le code soit plus facile à lire. Encore une fois l'objectif d'un code est de non seulement être fonctionnel mais aussi d'être facile à lire et à relire.
 
 ### Les opérateurs logiques {#l011oplog}
 
@@ -173,15 +173,15 @@ xor((3 + 3) == 5, (3 + 2) == 6)
 xor((3 + 3) == 5, (3 + 3) == 6)
 ```
 
-Il est recommandé que les virgules `,` soient suivies par un espace afin que le code soit plus agréable à lire.
+Il est recommandé que les virgules (`,`) soient suivies par un espace afin que le code soit plus agréable à lire. Cela fait beaucoup de recommandations sur le style du code qui peuvent sembler à ce stade superflues. Néanmoins il est important d’adopter de bonnes pratiques de programmation dès le début de notre apprentissage de R (il est toujours plus facile de prendre de bonnes habitudes que de devoir corriger de mauvaises habitudes par la suite).
 
 ### Aide sur les opérateurs
 
-Le fichier d'aide en anglais sur les opérateurs arithmétiques peut être obtenue avec la commande `?'+'` celui sur les opérateurs de comparaison avec la commande `?'=='` et celui sur les opérateurs logiques avec la commande `?'&'`.
+Le fichier d'aide en anglais sur les opérateurs arithmétiques peut être obtenu avec la commande `?'+'`. Le fichier d'aide sur les opérateurs de comparaison peut être obtenu avec la commande `?'=='` et celui sur les opérateurs logiques avec la commande `?'&'`.
 
 ## La notion d'objet {#l011object}
 
-Un aspect important de la programmation avec R, mais aussi de la programmation en général est la notion d'objet. Comme indiqué sur la page web de wikipedia (https://fr.wikipedia.org/wiki/Objet_(informatique)), en informatique, un objet est un *conteneur*, c'est à dire quelque chose qui va contenir de l'information. L'inforamtion contenue dans un objet peut être très diverse, mais pour le moment nous allons contenir dans un objet le chiffre 5. Pour ce faire (et pour pouvoir le réutiliser par la suite), il nous faut donner un nom à notre objet. Avec R le nom des objets ne doit pas comprendre de caractères spéciaux comme *^$?|+()[]}{*, ne doit pas commencer par un chiffre ni contenir d'espaces. Le nom de l'objet doit être représentatif de ce qu'il contient, tout en étant ni trop court ni trop long. Imaginons que notre chiffre 5 corresponde au nombre de répétitions d'une expérience. Nous voudrions lui donner un nom faisant référence à *nombre* et à *répétition*, que nous pourrions réduire à *nbr* et *rep*, respectivement. Il existe plusieurs possibilités qui sont toutes assez répandues sous R : 
+Un aspect important de la programmation avec R, mais aussi de la programmation en général est la notion d'objet. Comme indiqué sur la page web de wikipedia (https://fr.wikipedia.org/wiki/Objet_(informatique)), en informatique, un objet est un *conteneur*, c'est à dire quelque chose qui va contenir de l'information. L'information contenue dans un objet peut être très variée, mais pour le moment nous allons contenir dans un objet le chiffre 5. Pour ce faire (et pour pouvoir le réutiliser par la suite), il nous faut donner un nom à notre objet. Avec R le nom des objets ne doit pas comprendre de caractères spéciaux comme *^$?|+()[]}{*, ne doit pas commencer par un chiffre ni contenir d'espaces. Le nom de l'objet doit être représentatif de ce qu'il contient, tout en étant ni trop court ni trop long. Imaginons que notre chiffre 5 corresponde au nombre de répétitions d'une expérience. Nous voudrions lui donner un nom faisant référence à *nombre* et à *répétition*, que nous pourrions réduire à *nbr* et *rep*, respectivement. Il existe plusieurs possibilités qui sont toutes assez répandues sous R : 
 
 * la séparation au moyen du caractère *tiret bas* :  `nbr_rep`
 * la séparation au moyen du caractère *point* : `nbr.rep`
@@ -189,11 +189,11 @@ Un aspect important de la programmation avec R, mais aussi de la programmation e
 * le style *lowerCamelCase* consistant en un premier mot en minuscules et des suivants avec une majuscule : `nbrRep`
 * le style *UpperCamelCase* consistant à mettre une majuscule au début de chacun des mots : `NbrRep`
 
-Toutes ces formes de nommer un objet sont équivalentes. Dans ce livre nous utiliserons le style *lowerCamelCase*. De manière générale il faut éviter les noms trop longs comme `leNombreDeRepetitions` ou trop courts comme `nR`, et les noms ne permettant pas d'identifier le contenu comme `maVariable` ou `monChiffre`, mais aussi `a` ou `b`...
+Toutes ces formes de nommer un objet sont équivalentes. De manière générale il faut éviter les noms trop longs comme `leNombreDeRepetitions` ou trop courts comme `nR`, et les noms ne permettant pas d'identifier le contenu comme `maVariable` ou `monChiffre`, mais aussi `a` ou `b`...
 
-Il existe différentes façons de définir un nom pour les objets que nous allons créer avec R. Dans ce livre nous utilisons le style *lowerCamelCase*. L'important n'est pas le choix du style mais la consistence dans son choix. L'objectif est d'avoir un code fonctionnel mais également un code facile et agréable à lire.
+Il existe différentes façons de définir un nom pour les objets que nous allons créer avec R. Dans ce livre nous utilisons le style *lowerCamelCase*. L'important n'est pas le choix du style mais la consistance dans son choix. L'objectif est d'avoir un code fonctionnel mais également un code facile et agréable à lire pour soi et pour les autres.
 
-Maintenant que nous avons choisi un nom pour notre objet, il faut le créer et faire comprendre à R que notre objet doit contenir le chiffre 5. Il existe trois façons de créer un objet sous R:
+Maintenant que nous avons choisi un nom pour notre objet, il faut le créer et faire comprendre à R que notre objet doit contenir le chiffre 5. Il existe trois façons de créer un objet sous R et de lui assigner un contenu:
 
 * avec le signe `<-`
 * avec le signe `=`
@@ -241,15 +241,15 @@ terme01 / terme02
 
 ## Les scripts
 
-R est un langage de programmation souvent dénommé *langage de script*. Cela fait référence au fait que la plupart des utilisateurs vont écrire des petits bouts de code plutôt que des programmes entiers. R peut être utilisé comme une simple calculatrice, et dans ce cas il ne sera pas nécessaire de conserver un historique des opérations qui ont été réalisées. Mais si les opérations à réliser sont longues et complexes, il peut devenir nécessaire de pouvoir sauvegarder ce qui a été fait à un moment donné pour pouvoir poursuivre plus tard. Le fichier dans lequel seront conservées les opérations consitue ce que l'on appelle communement le script. Un script est donc un fichier contenant une succession d'informations compréhensibles par R et qu'il est possible d'exécuter. 
+R est un langage de programmation souvent dénommé *langage de script*. Cela fait référence au fait que la plupart des utilisateurs vont écrire des petits bouts de code plutôt que des programmes entiers. R peut être utilisé comme une simple calculatrice, et dans ce cas il ne sera pas nécessaire de conserver un historique des opérations qui ont été réalisées. Mais si les opérations à réaliser sont longues et complexes, il peut devenir nécessaire de pouvoir sauvegarder ce qui a été fait à un moment donné pour pouvoir poursuivre plus tard. Le fichier dans lequel seront conservées les opérations constitue ce que l'on appelle communément le script. Un script est donc un fichier contenant une succession d'informations compréhensibles par R et qu'il est possible d'exécuter. 
 
 ### Créer un script et le documenter
 
-Pour ouvrir un nouveau script il suffit de créer un fichier texte vide qui sera édité par un éditeur de texte comme le bloc note sous Windows ou Mac OS, ou encore Gedit ou même nano sous Linux. Par convention ce fichier prend l'extension ".r" ou plus souvent ".R". C'est cette dernière convention qui sera utilisée dans ce livre. Depuis l'interface graphique de R il est possible de créer un nouveux script sous Mac OS et Windows via *fichier* puis *nouveau script* et *enregistrer sous*.
-Tout comme le nom des objets, le nom du script est important pour que nous puissions facilement identifier son contenu. Par exemple nous pourrions créer un fichier `formRConceptsBase.R` contenant les objets que nous venons de créer et les calculs effectués. Mais même avec des noms de variables et un nom de fichier bien définis, il sera difficile de se rappeler le sens de ce fichier sans une documentation accompagnant le script. Pour docummenter un script nous allons utiliser des *commentaires*. Les commentaires sont des éléments qui seront identifiés par R et qui ne seront pas exécutés. Pour spécifier à R que nous allons faire un commentaire, il faut utiliser le caractère octothorpe (croisillon) `#`. Les commentaires peuvent être insérés sur une nouvelle ligne ou en fin de ligne.
+Pour ouvrir un nouveau script il suffit de créer un fichier texte vide qui sera édité par un éditeur de texte comme le *bloc note* sous Windows ou Mac OS, ou encore *Gedit* ou même *nano* sous Linux. Par convention ce fichier prend l'extension ".r" ou plus souvent ".R". C'est cette dernière convention qui sera utilisée dans ce livre. Depuis l'interface graphique de R il est possible de créer un nouveau script sous Mac OS et Windows via *fichier* puis *nouveau script* et *enregistrer sous*.
+Tout comme le nom des objets, le nom du script est important pour que nous puissions facilement identifier son contenu. Par exemple nous pourrions créer un fichier `formRConceptsBase.R` contenant les objets que nous venons de créer et les calculs effectués. Mais même avec des noms de variables et un nom de fichier bien définis, il sera difficile de se rappeler le sens de ce fichier sans une documentation accompagnant le script. Pour documenter un script nous allons utiliser des *commentaires*. Les commentaires sont des éléments qui seront identifiés par R et qui ne seront pas exécutés. Pour spécifier à R que nous allons faire un commentaire, il faut utiliser le caractère octothorpe (croisillon ; différent du caractère dièse) `#`. Les commentaires peuvent être insérés sur une nouvelle ligne ou en fin de ligne.
 
 ```{r 011-conceptBase-19}
-# creation objet nombre de repetitions
+# création objet nombre de répétitions
 nbrRep <- 5 # commentaire de fin de ligne
 ```
 
@@ -281,11 +281,11 @@ nbrRep <- 5
 pi * nbrRep^2
 ```
 
-Pour aller plus loin sur le style de code, un guide complet de recommandations est disponible en ligne (en anglais ; http://style.tidyverse.org/). 
+Pour aller plus loin sur le style de code, un guide de recommandations est disponible en ligne sur le site de tidyverse (en anglais ; http://style.tidyverse.org/). Nous verrons que ce livre suit les principales recommandations de ce site, mais pas toutes car notre préoccupation principale est d’avoir un code lisible et reproductible.
 
 ### Exécuter un script
 
-Depuis que nous avons un script, nous ne travaillons plus directement dans la console. Or seule la console est capable d'interpérter le code R et de nous renvoyer les résultats que nous souhaitons obtenir. Pour l'instant la technique la plus simple consiste à copier-coller les lignes que nous souhaitons exécuter depuis notre script vers la console. A partir de maintenant nous n'allons plus utiliser les éditeurs de texte comme le bloc note mais des éditeurs spécialisés pour la confection de scripts R. C'est l'objet du chapitre suivant.
+Depuis que nous avons un script, nous ne travaillons plus directement dans la console. Or seule la console est capable d'interpréter le code R et de nous renvoyer les résultats que nous souhaitons obtenir. Pour l'instant la technique la plus simple consiste à copier-coller les lignes que nous souhaitons exécuter depuis notre script vers la console. A partir de maintenant nous n'allons plus utiliser les éditeurs de texte comme le bloc note mais des éditeurs spécialisés pour la confection de scripts R. C'est l'objet du chapitre suivant.
 
 ## Conclusion
 
