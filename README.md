@@ -12,6 +12,10 @@ Ce livre est également disponible en espagnol (http://myrbooksp.netlify.com/).
 
 Dernières modifications:
 
+**13/12/2019**
+
+* [Du graphique à la figure dans un article scientifique](#graph4)
+
 **27/11/2019**
 
 * Diapositives du cours [analyse de variance et le modèle linéaire](http://myrbookfr.netlify.com/myHtmls/France_Montpellier_2019/R00_links.html)
