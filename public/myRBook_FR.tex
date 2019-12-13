@@ -1,35 +1,46 @@
-\documentclass[]{book}
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+]{book}
 \usepackage{lmodern}
 \usepackage{amssymb,amsmath}
 \usepackage{ifxetex,ifluatex}
-\usepackage{fixltx2e} % provides \textsubscript
 \ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
   \usepackage[T1]{fontenc}
   \usepackage[utf8]{inputenc}
-\else % if luatex or xelatex
-  \ifxetex
-    \usepackage{mathspec}
-  \else
-    \usepackage{fontspec}
-  \fi
-  \defaultfontfeatures{Ligatures=TeX,Scale=MatchLowercase}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
 \fi
-% use upquote if available, for straight quotes in verbatim environments
+% Use upquote if available, for straight quotes in verbatim environments
 \IfFileExists{upquote.sty}{\usepackage{upquote}}{}
-% use microtype if available
-\IfFileExists{microtype.sty}{%
-\usepackage{microtype}
-\UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
 }{}
-\usepackage{hyperref}
-\hypersetup{unicode=true,
-            pdftitle={Se former au logiciel R : initiation et perfectionnement},
-            pdfauthor={François Rebaudo},
-            pdfborder={0 0 0},
-            breaklinks=true}
-\urlstyle{same}  % don't use monospace font for urls
-\usepackage{natbib}
-\bibliographystyle{apalike}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\hypersetup{
+  pdftitle={Se former au logiciel R : initiation et perfectionnement},
+  pdfauthor={François Rebaudo},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+\urlstyle{same} % disable monospaced font for URLs
 \usepackage{color}
 \usepackage{fancyvrb}
 \newcommand{\VerbBar}{|}
@@ -71,6 +82,14 @@
 \newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
 \newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
 \usepackage{longtable,booktabs}
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
 \usepackage{graphicx,grffile}
 \makeatletter
 \def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
@@ -80,52 +99,14 @@
 % margins by default, and it is still possible to overwrite the defaults
 % using explicit options in \includegraphics[width, height, ...]{}
 \setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
-\IfFileExists{parskip.sty}{%
-\usepackage{parskip}
-}{% else
-\setlength{\parindent}{0pt}
-\setlength{\parskip}{6pt plus 2pt minus 1pt}
-}
-\setlength{\emergencystretch}{3em}  % prevent overfull lines
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
 \providecommand{\tightlist}{%
   \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
 \setcounter{secnumdepth}{5}
-% Redefines (sub)paragraphs to behave more like sections
-\ifx\paragraph\undefined\else
-\let\oldparagraph\paragraph
-\renewcommand{\paragraph}[1]{\oldparagraph{#1}\mbox{}}
-\fi
-\ifx\subparagraph\undefined\else
-\let\oldsubparagraph\subparagraph
-\renewcommand{\subparagraph}[1]{\oldsubparagraph{#1}\mbox{}}
-\fi
-
-%%% Use protect on footnotes to avoid problems with footnotes in titles
-\let\rmarkdownfootnote\footnote%
-\def\footnote{\protect\rmarkdownfootnote}
-
-%%% Change title format to be more compact
-\usepackage{titling}
-
-% Create subtitle command for use in maketitle
-\providecommand{\subtitle}[1]{
-  \posttitle{
-    \begin{center}\large#1\end{center}
-    }
-}
-
-\setlength{\droptitle}{-2em}
-
-  \title{Se former au logiciel R : initiation et perfectionnement}
-    \pretitle{\vspace{\droptitle}\centering\huge}
-  \posttitle{\par}
-    \author{François Rebaudo}
-    \preauthor{\centering\large\emph}
-  \postauthor{\par}
-      \predate{\centering\large\emph}
-  \postdate{\par}
-    \date{2019-12-12}
-
 \usepackage{booktabs}
 \usepackage{longtable}
 \usepackage[bf,singlelinecheck=off]{caption}
@@ -232,16 +213,40 @@
 \makeatother
 
 \mainmatter %frontmatter
+% https://github.com/rstudio/rmarkdown/issues/337
+\let\rmarkdownfootnote\footnote%
+\def\footnote{\protect\rmarkdownfootnote}
+
+% https://github.com/rstudio/rmarkdown/pull/252
+\usepackage{titling}
+\setlength{\droptitle}{-2em}
+
+\pretitle{\vspace{\droptitle}\centering\huge}
+\posttitle{\par}
+
+\preauthor{\centering\large\emph}
+\postauthor{\par}
+
+\predate{\centering\large\emph}
+\postdate{\par}
+\usepackage[]{natbib}
+\bibliographystyle{apalike}
+
+\title{Se former au logiciel R : initiation et perfectionnement}
+\author{François Rebaudo}
+\date{2019-12-13}
 
 \begin{document}
+\frontmatter
 \maketitle
 
 {
 \setcounter{tocdepth}{1}
 \tableofcontents
 }
-\hypertarget{preambule}{%
-\chapter{Préambule}\label{preambule}}
+\mainmatter
+\hypertarget{pruxe9ambule}{%
+\chapter{Préambule}\label{pruxe9ambule}}
 
 \hypertarget{remerciements}{%
 \section{Remerciements}\label{remerciements}}
@@ -299,8 +304,8 @@ Aucune garantie n'est donnée. Il se peut que la licence ne vous donne pas toute
 \hypertarget{intro}{%
 \chapter{Introduction}\label{intro}}
 
-\hypertarget{pourquoi-se-former-a-r}{%
-\section{Pourquoi se former à R}\label{pourquoi-se-former-a-r}}
+\hypertarget{pourquoi-se-former-uxe0-r}{%
+\section{Pourquoi se former à R}\label{pourquoi-se-former-uxe0-r}}
 
 Parce que R s'est imposé comme un incontournable outil pour l'analyse et la gestion des données scientifiques (et des données en général), et qu'il devient dans ce contexte indispensable d'en maîtriser à minima les bases. Le succès de R n'est pas un hasard : R est un logiciel que tout le monde peut se procurer librement assurant ainsi la transparence et la reproductibilité des résultats scientifiques (sous réserve de respecter quelques règles que ce livre abordera). R repose aussi sur une communauté très active avec plusieurs milliers de modules complémentaires (packages) pour effectuer les analyses statistiques les plus pointues.
 
@@ -311,8 +316,8 @@ L'objectif de ce livre est de fournir aux étudiants et aux personnes souhaitant
 
 Ce livre est né de la demande des étudiants des universités partenaires de l'IRD en Amérique du Sud que j'ai eu la chance de rencontrer et de former à R. Sa première version est donc rédigée en espagnol (il existe peu de documents de qualité sur R en espagnol). J'ai entamé sa traduction en français courant 2018 et aujourd'hui les deux versions coévoluent avec des contenus qui peuvent varier.
 
-\hypertarget{lectures-complementaires-en-francais}{%
-\section{Lectures complémentaires en français}\label{lectures-complementaires-en-francais}}
+\hypertarget{lectures-compluxe9mentaires-en-franuxe7ais}{%
+\section{Lectures complémentaires en français}\label{lectures-compluxe9mentaires-en-franuxe7ais}}
 
 \begin{itemize}
 \tightlist
@@ -368,11 +373,11 @@ Tout au long de ce livre, les exemples de code R apparaîtront sur fond en gris.
 Si nous écrivons \texttt{5\ +\ 5} dans la console puis \texttt{Entrée}, le résultat apparaît précédé du chiffre {[}1{]} entre crochets. Ce chiffre correspond au numéro du résultat (dans notre cas, il n'y a qu'un seul résultat ; nous reviendrons sur cet aspect plus tard). Nous pouvons également noter dans cet exemple l'utilisation d'espaces avant et après le signe \texttt{+}. Ces espaces ne sont pas nécessaires mais permettent au code d'être plus lisible par les humains (i.e., plus agréable à lire pour nous comme pour les personnes avec qui nous serons amenés à partager notre code).
 Les opérateurs aritmétiques disponibles sous R sont résumés dans la table \ref{tab:tabOpAri}.
 
-\begin{table}[t]
+\begin{table}
 
 \caption{\label{tab:tabOpAri}Opérateurs arithmétiques.\label{tab:tabOpAri}}
 \centering
-\begin{tabular}{l|l|l|l}
+\begin{tabular}[t]{l|l|l|l}
 \hline
 Label & Opérateur & Exemple & Résultat\\
 \hline
@@ -496,11 +501,11 @@ le \emph{style} du code est important car le code est destiné à être lisible 
 
 R est cependant bien plus qu'une simple calculatrice puisque'il permet un autre type d'opérateurs : les opérateurs de comparaison. Ils servent comme leur nom l'indique à \emph{comparer} des valeurs entre elles (Table \ref{tab:tabOpCom}).
 
-\begin{table}[t]
+\begin{table}
 
 \caption{\label{tab:tabOpCom}Opérateurs de comparaison.\label{tab:tabOpCom}}
 \centering
-\begin{tabular}{l|l|l|l}
+\begin{tabular}[t]{l|l|l|l}
 \hline
 Label & Opérateur & Exemple & Résultat\\
 \hline
@@ -784,11 +789,11 @@ Bien que cette façon de se référer à \texttt{TRUE} et \texttt{FALSE} par \te
 
 Il existe un dernier type d'opérateur, les opérateurs logiques. Ils sont utiles pour combiner des opérateurs de comparaison (Table \ref{tab:tabOpLog}).
 
-\begin{table}[t]
+\begin{table}
 
 \caption{\label{tab:tabOpLog}Opérateurs logiques.\label{tab:tabOpLog}}
 \centering
-\begin{tabular}{l|l}
+\begin{tabular}[t]{l|l}
 \hline
 Label & Operador\\
 \hline
@@ -907,8 +912,8 @@ L'opérateur logique \texttt{xor()} correspond à un \emph{ou exclusif}. C'est �
 
 Il est recommandé que les virgules \texttt{,} soient suivies par un espace afin que le code soit plus agréable à lire.
 
-\hypertarget{aide-sur-les-operateurs}{%
-\subsection{Aide sur les opérateurs}\label{aide-sur-les-operateurs}}
+\hypertarget{aide-sur-les-opuxe9rateurs}{%
+\subsection{Aide sur les opérateurs}\label{aide-sur-les-opuxe9rateurs}}
 
 Le fichier d'aide en anglais sur les opérateurs arithmétiques peut être obtenue avec la commande \texttt{?\textquotesingle{}+\textquotesingle{}} celui sur les opérateurs de comparaison avec la commande \texttt{?\textquotesingle{}==\textquotesingle{}} et celui sur les opérateurs logiques avec la commande \texttt{?\textquotesingle{}\&\textquotesingle{}}.
 
@@ -1059,8 +1064,8 @@ L'utilisation des objets prend tout son sens lorsque nous avons des opérations 
 
 R est un langage de programmation souvent dénommé \emph{langage de script}. Cela fait référence au fait que la plupart des utilisateurs vont écrire des petits bouts de code plutôt que des programmes entiers. R peut être utilisé comme une simple calculatrice, et dans ce cas il ne sera pas nécessaire de conserver un historique des opérations qui ont été réalisées. Mais si les opérations à réliser sont longues et complexes, il peut devenir nécessaire de pouvoir sauvegarder ce qui a été fait à un moment donné pour pouvoir poursuivre plus tard. Le fichier dans lequel seront conservées les opérations consitue ce que l'on appelle communement le script. Un script est donc un fichier contenant une succession d'informations compréhensibles par R et qu'il est possible d'exécuter.
 
-\hypertarget{creer-un-script-et-le-documenter}{%
-\subsection{Créer un script et le documenter}\label{creer-un-script-et-le-documenter}}
+\hypertarget{cruxe9er-un-script-et-le-documenter}{%
+\subsection{Créer un script et le documenter}\label{cruxe9er-un-script-et-le-documenter}}
 
 Pour ouvrir un nouveau script il suffit de créer un fichier texte vide qui sera édité par un éditeur de texte comme le bloc note sous Windows ou Mac OS, ou encore Gedit ou même nano sous Linux. Par convention ce fichier prend l'extension ``.r'' ou plus souvent ``.R''. C'est cette dernière convention qui sera utilisée dans ce livre. Depuis l'interface graphique de R il est possible de créer un nouveux script sous Mac OS et Windows via \emph{fichier} puis \emph{nouveau script} et \emph{enregistrer sous}.
 Tout comme le nom des objets, le nom du script est important pour que nous puissions facilement identifier son contenu. Par exemple nous pourrions créer un fichier \texttt{formRConceptsBase.R} contenant les objets que nous venons de créer et les calculs effectués. Mais même avec des noms de variables et un nom de fichier bien définis, il sera difficile de se rappeler le sens de ce fichier sans une documentation accompagnant le script. Pour docummenter un script nous allons utiliser des \emph{commentaires}. Les commentaires sont des éléments qui seront identifiés par R et qui ne seront pas exécutés. Pour spécifier à R que nous allons faire un commentaire, il faut utiliser le caractère octothorpe (croisillon) \texttt{\#}. Les commentaires peuvent être insérés sur une nouvelle ligne ou en fin de ligne.
@@ -1110,8 +1115,8 @@ Pour en revenir à la documentation du script, il est recommandé de commencer c
 
 Pour aller plus loin sur le style de code, un guide complet de recommandations est disponible en ligne (en anglais ; \url{http://style.tidyverse.org/}).
 
-\hypertarget{executer-un-script}{%
-\subsection{Exécuter un script}\label{executer-un-script}}
+\hypertarget{exuxe9cuter-un-script}{%
+\subsection{Exécuter un script}\label{exuxe9cuter-un-script}}
 
 Depuis que nous avons un script, nous ne travaillons plus directement dans la console. Or seule la console est capable d'interpérter le code R et de nous renvoyer les résultats que nous souhaitons obtenir. Pour l'instant la technique la plus simple consiste à copier-coller les lignes que nous souhaitons exécuter depuis notre script vers la console. A partir de maintenant nous n'allons plus utiliser les éditeurs de texte comme le bloc note mais des éditeurs spécialisés pour la confection de scripts R. C'est l'objet du chapitre suivant.
 
@@ -1145,8 +1150,8 @@ Félicitations, nous avons atteint la fin de ce premier chapitre sur les éléme
 \hypertarget{IDE}{%
 \chapter{Choisir un environnement de développement}\label{IDE}}
 
-\hypertarget{editeurs-de-texte-et-environnement-de-developpement}{%
-\section{Editeurs de texte et environnement de développement}\label{editeurs-de-texte-et-environnement-de-developpement}}
+\hypertarget{editeurs-de-texte-et-environnement-de-duxe9veloppement}{%
+\section{Editeurs de texte et environnement de développement}\label{editeurs-de-texte-et-environnement-de-duxe9veloppement}}
 
 Il existe de très nombreux éditeurs de texte, le chapitre précédent a permis d'en introduire quelques uns parmi les plus simples comme le bloc note de Windows. Rapidement les limites de ces éditeurs ont rendu la tâche d'écrire un script fastidieuse. En effet, même en structurant son script avec des commentaires, il reste difficile de se répérer dans celui-ci. C'est là qu'interviennent les éditeurs de texte spécialisés qui vont permettre une écriture et une lecture agréable et simplifiée.
 L'éditeur de texte pour R certainement le plus répandu est Rstudio, mais il en existe bien d'autres. Faire une liste exhaustive de toutes les solutions disponibles sort du cadre de ce livre, ainsi nous nous focaliserons sur les trois solutions que j'utilise au quotidien que sont \textbf{Notepad++}, \textbf{Rstudio}, et \textbf{Geany}.
@@ -1889,8 +1894,8 @@ Jusqu'à présent nous avons fait des objets simples ne contenant qu'une seule v
 
 Dans R, un \texttt{vector} est une combinaison de données avec la particularité que toutes les données contenues dans un \texttt{vector} sont du même type. Nous pouvons donc stocker plusieurs \texttt{numeric} ou \texttt{character} dans un \texttt{vector}, mais pas les deux. Le conteneur \texttt{vector} est important car c'est l'élément de base de R.
 
-\hypertarget{creer-un-vector}{%
-\subsection{\texorpdfstring{Créer un \texttt{vector}}{Créer un vector}}\label{creer-un-vector}}
+\hypertarget{cruxe9er-un-vector}{%
+\subsection{\texorpdfstring{Créer un \texttt{vector}}{Créer un vector}}\label{cruxe9er-un-vector}}
 
 Pour créer un \texttt{vector} nous allons utiliser la fonction \texttt{c()} qui permet de combiner des éléments en un \texttt{vector}. Les éléments à combiner doivent être séparés par des virgules.
 
@@ -2172,8 +2177,8 @@ Nous pouvons aussi combiner des objets existants au sein d'un \texttt{vector}.
 ## [1] 789   1   2   3   4 564
 \end{verbatim}
 
-\hypertarget{operations-sur-un-vector}{%
-\subsection{\texorpdfstring{Opérations sur un \texttt{vector}}{Opérations sur un vector}}\label{operations-sur-un-vector}}
+\hypertarget{opuxe9rations-sur-un-vector}{%
+\subsection{\texorpdfstring{Opérations sur un \texttt{vector}}{Opérations sur un vector}}\label{opuxe9rations-sur-un-vector}}
 
 Nous pouvons également effectuer des opération sur un \texttt{vector}.
 
@@ -2300,16 +2305,16 @@ Les opérations d'un \texttt{vector} sur un autre sont aussi possibles, mais il 
 \end{Shaded}
 
 \begin{verbatim}
-## Warning in miVec15 + miVec13: la taille d'un objet plus long n'est pas
-## multiple de la taille d'un objet plus court
+## Warning in miVec15 + miVec13: la taille d'un objet plus long n'est pas multiple
+## de la taille d'un objet plus court
 \end{verbatim}
 
 \begin{verbatim}
 ## [1] 11 21 31 11
 \end{verbatim}
 
-\hypertarget{acceder-aux-valeurs-dun-vector}{%
-\subsection{\texorpdfstring{Accèder aux valeurs d'un \texttt{vector}}{Accèder aux valeurs d'un vector}}\label{acceder-aux-valeurs-dun-vector}}
+\hypertarget{accuxe8der-aux-valeurs-dun-vector}{%
+\subsection{\texorpdfstring{Accèder aux valeurs d'un \texttt{vector}}{Accèder aux valeurs d'un vector}}\label{accuxe8der-aux-valeurs-dun-vector}}
 
 Il souvent nécessaire de pouvoir accèder aux valeurs d'un \texttt{vector}, c'est à dire de récupérer une valeur ou un groupe de valeurs au sein d'un \texttt{vector}. Pour à un élément dans un \texttt{vector} nous utilisons les crochets \texttt{{[}{]}}. Entre les crochets, nous pouvons utiliser un numéro correspondant au numéro de l'élément dans le \texttt{vector}.
 
@@ -2566,8 +2571,8 @@ Les éléments d'un \texttt{vector} peuvent aussi être sélectionné sur la bas
 ## [1] "a" "b" "d" "f" "h" "i"
 \end{verbatim}
 
-\hypertarget{nommer-les-elements-dun-vector}{%
-\subsection{\texorpdfstring{Nommer les éléments d'un \texttt{vector}}{Nommer les éléments d'un vector}}\label{nommer-les-elements-dun-vector}}
+\hypertarget{nommer-les-uxe9luxe9ments-dun-vector}{%
+\subsection{\texorpdfstring{Nommer les éléments d'un \texttt{vector}}{Nommer les éléments d'un vector}}\label{nommer-les-uxe9luxe9ments-dun-vector}}
 
 Les éléments d'un \texttt{vector} peuvent être nommé pour pouvoir s'y référer par la suite et opérer une sélection. La fonction \texttt{names()} permet de récupérer les noms des éléments d'un vecteur.
 
@@ -2615,8 +2620,8 @@ Les éléments d'un \texttt{vector} peuvent être nommé pour pouvoir s'y réfé
 ## [1] "aaa" "bbb" "ccc" "ddd" "eee"
 \end{verbatim}
 
-\hypertarget{modifier-les-elements-dun-vector}{%
-\subsection{\texorpdfstring{Modifier les éléments d'un \texttt{vector}}{Modifier les éléments d'un vector}}\label{modifier-les-elements-dun-vector}}
+\hypertarget{modifier-les-uxe9luxe9ments-dun-vector}{%
+\subsection{\texorpdfstring{Modifier les éléments d'un \texttt{vector}}{Modifier les éléments d'un vector}}\label{modifier-les-uxe9luxe9ments-dun-vector}}
 
 Pour modifier un vecteur, nous opérons de la même façon que pour modifier un objet simple, avec le signe \texttt{\textless{}-} et l'élément ou les éléments à modifier entre crochets.
 
@@ -2708,8 +2713,8 @@ Nous pouvons faire bien plus avec un \texttt{vector} et reviendrons sur leur man
 
 Le deuxième type de conteneur que nous allons introduire est le conteneur \texttt{list}, qui est également le deuxième conteneur après le type \texttt{vector} de part son importance dans la programmation avec R. Le conteneur de type \texttt{list} permet de stocker une \textbf{liste} d'éléments. Contrairement à ce que nous avons vu précédement avec le type \texttt{vector}, les éléments du type \texttt{list} peuvent être différents (par exemple un \texttt{vector} de type \texttt{numeric}, puis un vecteur de type \texttt{character}). Les éléments du type \texttt{list} peuvent aussi être des conteneurs différents (par exemple un \texttt{vector}, puis une \texttt{list}). Le type de conteneur \texttt{list} prendra tout son sens lorsque nous aurons étudié les \textbf{boucles} et les \textbf{fonctions} de la famille \texttt{apply}.
 
-\hypertarget{creer-une-list}{%
-\subsection{\texorpdfstring{Créer une \texttt{list}}{Créer une list}}\label{creer-une-list}}
+\hypertarget{cruxe9er-une-list}{%
+\subsection{\texorpdfstring{Créer une \texttt{list}}{Créer une list}}\label{cruxe9er-une-list}}
 
 Pour créer une \texttt{list} nous allons utiliser la fonction \texttt{list()} qui prend comme argument des éléments (objets).
 
@@ -2789,8 +2794,8 @@ La fonction \texttt{is.list()} permet de tester si nous avons bien créer un obj
 ## [1] "list"
 \end{verbatim}
 
-\hypertarget{acceder-aux-valeurs-dune-list}{%
-\subsection{\texorpdfstring{Accéder aux valeurs d'une \texttt{list}}{Accéder aux valeurs d'une list}}\label{acceder-aux-valeurs-dune-list}}
+\hypertarget{accuxe9der-aux-valeurs-dune-list}{%
+\subsection{\texorpdfstring{Accéder aux valeurs d'une \texttt{list}}{Accéder aux valeurs d'une list}}\label{accuxe9der-aux-valeurs-dune-list}}
 
 Les éléments du conteneur \texttt{list} sont identifiables grâce aux double crochets \texttt{{[}{[}\ {]}{]}}.
 
@@ -3592,8 +3597,8 @@ Pour supprimer un élément à une \texttt{list}, la technique la plus rapide co
 
 Le conteneur \texttt{data.frame} peut être assimilé à un \emph{tableau}. Il s'agit en fait d'un cas particulier de \texttt{list} où tous les éléments de la \texttt{list} ont la même longueur.
 
-\hypertarget{creer-un-data.frame}{%
-\subsection{\texorpdfstring{Créer un \texttt{data.frame}}{Créer un data.frame}}\label{creer-un-data.frame}}
+\hypertarget{cruxe9er-un-data.frame}{%
+\subsection{\texorpdfstring{Créer un \texttt{data.frame}}{Créer un data.frame}}\label{cruxe9er-un-data.frame}}
 
 Pour créer un \texttt{data.frame} nous allons utiliser la fonction \texttt{data.frame()} qui prend comme arguments les éléments du tableau que nous souhaitons créer. Les éléments sont de type \texttt{vector} et font tous la même taille. Nous pouvons donner un nom à chaque \emph{colonne} (\texttt{vector}) de notre \emph{tableau} (\texttt{data.frame}).
 
@@ -3636,8 +3641,8 @@ Pour créer un \texttt{data.frame} nous allons utiliser la fonction \texttt{data
 ## 4       4     TRUE          d
 \end{verbatim}
 
-\hypertarget{acceder-aux-valeurs-dun-data.frame}{%
-\subsection{\texorpdfstring{Accèder aux valeurs d'un \texttt{data.frame}}{Accèder aux valeurs d'un data.frame}}\label{acceder-aux-valeurs-dun-data.frame}}
+\hypertarget{accuxe8der-aux-valeurs-dun-data.frame}{%
+\subsection{\texorpdfstring{Accèder aux valeurs d'un \texttt{data.frame}}{Accèder aux valeurs d'un data.frame}}\label{accuxe8der-aux-valeurs-dun-data.frame}}
 
 L'accès aux différentes valeurs d'un \texttt{data.frame} peut se faire de la même façon que pour un conteneur de type \texttt{list}.
 
@@ -4007,8 +4012,8 @@ Un \texttt{vector} peut être transformé en \texttt{data.frame} avec la fonctio
 
 Le conteneur \texttt{matrix} peut être vu comme un \texttt{vector} à deux dimensions, les lignes et les colonnes. Il correspond à une matrice en mathématique, et ne peut contenir qu'un seul type de données (\texttt{logical}, \texttt{numeric}, \texttt{character}, \ldots).
 
-\hypertarget{creer-une-matrix}{%
-\subsection{\texorpdfstring{Créer une \texttt{matrix}}{Créer une matrix}}\label{creer-une-matrix}}
+\hypertarget{cruxe9er-une-matrix}{%
+\subsection{\texorpdfstring{Créer une \texttt{matrix}}{Créer une matrix}}\label{cruxe9er-une-matrix}}
 
 Pour créer une \texttt{matrix} nous allons tout d'abord créer un \texttt{vector}, puis spécifier le nombre souhaité de lignes et de colonnes dans la fonction \texttt{matrix()}.
 
@@ -4203,8 +4208,8 @@ Nous pouvons aussi créer une \texttt{matrix} à partir d'un \texttt{vector} ave
 ## [12,]   12
 \end{verbatim}
 
-\hypertarget{manipuler-et-faire-des-operations-sur-une-matrix}{%
-\subsection{\texorpdfstring{Manipuler et faire des opérations sur une \texttt{matrix}}{Manipuler et faire des opérations sur une matrix}}\label{manipuler-et-faire-des-operations-sur-une-matrix}}
+\hypertarget{manipuler-et-faire-des-opuxe9rations-sur-une-matrix}{%
+\subsection{\texorpdfstring{Manipuler et faire des opérations sur une \texttt{matrix}}{Manipuler et faire des opérations sur une matrix}}\label{manipuler-et-faire-des-opuxe9rations-sur-une-matrix}}
 
 Toutes les opérations terme à terme sont possibles sur les \texttt{matrix}.
 
@@ -4375,8 +4380,8 @@ Il est souvent utile de pouvoir tansposer une \texttt{matrix} (colonnes en ligne
 ## [3,]    9   10   11   12
 \end{verbatim}
 
-\hypertarget{acceder-aux-elements-dune-matrix}{%
-\subsection{\texorpdfstring{Accèder aux éléments d'une \texttt{matrix}}{Accèder aux éléments d'une matrix}}\label{acceder-aux-elements-dune-matrix}}
+\hypertarget{accuxe8der-aux-uxe9luxe9ments-dune-matrix}{%
+\subsection{\texorpdfstring{Accèder aux éléments d'une \texttt{matrix}}{Accèder aux éléments d'une matrix}}\label{accuxe8der-aux-uxe9luxe9ments-dune-matrix}}
 
 Comme pour un \texttt{data.frame}, nous pouvons accèder aux éléments d'une matrice en spécifiant un numéro de ligne et un numéro de colonne entre crochets simples \texttt{{[}\ {]}}, et séparés par une virgule. Si \texttt{i} est le numéro de ligne et \texttt{j} le numéro de colonne, alors \texttt{miMat01{[}i,\ j{]}} renvoie l'élément situé à la ligne \texttt{i} et à la colonne \texttt{j}. \texttt{miMat01{[}i,\ {]}} renvoie tous les éléments de la ligne \texttt{i}, et \texttt{miMat01{[},\ j{]}} tous les éléments de la colonne \texttt{j}. Les sélections multiples sont possibles. Nous pouvons également accèder à un élément en fonction de sa position dans la matrice entre crochets simples \texttt{{[}\ {]}} en comptant par colonne puis par ligne. Dans notre exemple la valeur du dixième élément est 10.
 
@@ -4449,8 +4454,8 @@ Le conteneur de type \texttt{array} est une généralisation du conteneur de typ
 ## [1] 4 3
 \end{verbatim}
 
-\hypertarget{creer-un-array}{%
-\subsection{\texorpdfstring{Créer un \texttt{array}}{Créer un array}}\label{creer-un-array}}
+\hypertarget{cruxe9er-un-array}{%
+\subsection{\texorpdfstring{Créer un \texttt{array}}{Créer un array}}\label{cruxe9er-un-array}}
 
 La création d'un \texttt{array} est similaire à celle d'une \texttt{matrix} avec une dimension supplémentaire.
 
@@ -4680,8 +4685,8 @@ Dans ce chapitre nous allons nous focaliser sur les fonctions les plus courantes
 
 Pour travailler avec les fonctions nous allons utiliser le jeu de données \texttt{iris} qui est inclu avec la version de base de R et qui correspond à la longeur et à la largeur des sépales et des pétales de différentes espèces d'iris. Le jeu de données est sous la forme d'un \texttt{data.frame} de 5 colonnes et de 150 lignes. Pour plus d'information sur le jeu de données \texttt{iris} nous pouvons consulter la documentation de R avec la fonction \texttt{help(iris)}. L'accès à la documentation est l'objet de la section ci-dessous.
 
-\hypertarget{lacces-a-la-documentation}{%
-\subsection{L'accès à la documentation}\label{lacces-a-la-documentation}}
+\hypertarget{laccuxe8s-uxe0-la-documentation}{%
+\subsection{L'accès à la documentation}\label{laccuxe8s-uxe0-la-documentation}}
 
 \hypertarget{l015help}{%
 \subsubsection{\texorpdfstring{\texttt{help()}}{help()}}\label{l015help}}
@@ -4783,8 +4788,8 @@ La fonction \texttt{help.search()} ou \texttt{??} permet de rechercher une expre
 
 La fonction \texttt{help.search()} renvoie vers une page contenant la liste des pages où l'expression a été retrouvée sous la forme \texttt{nom-du-package::nom-de-la-fonction}.
 
-\hypertarget{visualiser-les-donnees}{%
-\subsection{Visualiser les données}\label{visualiser-les-donnees}}
+\hypertarget{visualiser-les-donnuxe9es}{%
+\subsection{Visualiser les données}\label{visualiser-les-donnuxe9es}}
 
 \hypertarget{l015str}{%
 \subsubsection{\texorpdfstring{\texttt{str()}}{str()}}\label{l015str}}
@@ -4869,8 +4874,7 @@ Nous avons déjà vu la fonction \texttt{names()} qui permet à la fois de conna
 \end{Shaded}
 
 \begin{verbatim}
-## [1] "Sepal.Length" "Sepal.Width"  "Petal.Length" "Petal.Width" 
-## [5] "Species"
+## [1] "Sepal.Length" "Sepal.Width"  "Petal.Length" "Petal.Width"  "Species"
 \end{verbatim}
 
 \begin{Shaded}
@@ -4907,8 +4911,7 @@ La fonction \texttt{cat()} permet d'afficher le contenu d'un objet alors que la 
 \end{Shaded}
 
 \begin{verbatim}
-## [1] "Sepal.Length" "Sepal.Width"  "Petal.Length" "Petal.Width" 
-## [5] "Species"
+## [1] "Sepal.Length" "Sepal.Width"  "Petal.Length" "Petal.Width"  "Species"
 \end{verbatim}
 
 \begin{Shaded}
@@ -4941,8 +4944,8 @@ La fonction \texttt{cat()} permet d'afficher le contenu d'un objet alors que la 
 ## [1] 5
 \end{verbatim}
 
-\hypertarget{manipuler-les-donnees}{%
-\subsection{Manipuler les données}\label{manipuler-les-donnees}}
+\hypertarget{manipuler-les-donnuxe9es}{%
+\subsection{Manipuler les données}\label{manipuler-les-donnuxe9es}}
 
 \hypertarget{l015rank}{%
 \subsubsection{\texorpdfstring{\texttt{rank()}}{rank()}}\label{l015rank}}
@@ -4998,15 +5001,15 @@ La fonction \texttt{rank()} renvoie pour un ensemble d'éléments le numéro de 
 \end{Shaded}
 
 \begin{verbatim}
-##   [1] 5.1 4.9 4.7 4.6 5.0 5.4 4.6 5.0 4.4 4.9 5.4 4.8 4.8 4.3 5.8 5.7 5.4
-##  [18] 5.1 5.7 5.1 5.4 5.1 4.6 5.1 4.8 5.0 5.0 5.2 5.2 4.7 4.8 5.4 5.2 5.5
-##  [35] 4.9 5.0 5.5 4.9 4.4 5.1 5.0 4.5 4.4 5.0 5.1 4.8 5.1 4.6 5.3 5.0 7.0
-##  [52] 6.4 6.9 5.5 6.5 5.7 6.3 4.9 6.6 5.2 5.0 5.9 6.0 6.1 5.6 6.7 5.6 5.8
-##  [69] 6.2 5.6 5.9 6.1 6.3 6.1 6.4 6.6 6.8 6.7 6.0 5.7 5.5 5.5 5.8 6.0 5.4
-##  [86] 6.0 6.7 6.3 5.6 5.5 5.5 6.1 5.8 5.0 5.6 5.7 5.7 6.2 5.1 5.7 6.3 5.8
-## [103] 7.1 6.3 6.5 7.6 4.9 7.3 6.7 7.2 6.5 6.4 6.8 5.7 5.8 6.4 6.5 7.7 7.7
-## [120] 6.0 6.9 5.6 7.7 6.3 6.7 7.2 6.2 6.1 6.4 7.2 7.4 7.9 6.4 6.3 6.1 7.7
-## [137] 6.3 6.4 6.0 6.9 6.7 6.9 5.8 6.8 6.7 6.7 6.3 6.5 6.2 5.9
+##   [1] 5.1 4.9 4.7 4.6 5.0 5.4 4.6 5.0 4.4 4.9 5.4 4.8 4.8 4.3 5.8 5.7 5.4 5.1
+##  [19] 5.7 5.1 5.4 5.1 4.6 5.1 4.8 5.0 5.0 5.2 5.2 4.7 4.8 5.4 5.2 5.5 4.9 5.0
+##  [37] 5.5 4.9 4.4 5.1 5.0 4.5 4.4 5.0 5.1 4.8 5.1 4.6 5.3 5.0 7.0 6.4 6.9 5.5
+##  [55] 6.5 5.7 6.3 4.9 6.6 5.2 5.0 5.9 6.0 6.1 5.6 6.7 5.6 5.8 6.2 5.6 5.9 6.1
+##  [73] 6.3 6.1 6.4 6.6 6.8 6.7 6.0 5.7 5.5 5.5 5.8 6.0 5.4 6.0 6.7 6.3 5.6 5.5
+##  [91] 5.5 6.1 5.8 5.0 5.6 5.7 5.7 6.2 5.1 5.7 6.3 5.8 7.1 6.3 6.5 7.6 4.9 7.3
+## [109] 6.7 7.2 6.5 6.4 6.8 5.7 5.8 6.4 6.5 7.7 7.7 6.0 6.9 5.6 7.7 6.3 6.7 7.2
+## [127] 6.2 6.1 6.4 7.2 7.4 7.9 6.4 6.3 6.1 7.7 6.3 6.4 6.0 6.9 6.7 6.9 5.8 6.8
+## [145] 6.7 6.7 6.3 6.5 6.2 5.9
 \end{verbatim}
 
 \begin{Shaded}
@@ -5016,20 +5019,19 @@ La fonction \texttt{rank()} renvoie pour un ensemble d'éléments le numéro de 
 \end{Shaded}
 
 \begin{verbatim}
-##   [1]  37.0  19.5  10.5   7.5  27.5  49.5   7.5  27.5   3.0  19.5  49.5
-##  [12]  14.0  14.0   1.0  77.0  69.5  49.5  37.0  69.5  37.0  49.5  37.0
-##  [23]   7.5  37.0  14.0  27.5  27.5  43.5  43.5  10.5  14.0  49.5  43.5
-##  [34]  56.0  19.5  27.5  56.0  19.5   3.0  37.0  27.5   5.0   3.0  27.5
-##  [45]  37.0  14.0  37.0   7.5  46.0  27.5 138.0 112.0 135.5  56.0 118.0
-##  [56]  69.5 104.0  19.5 121.5  43.5  27.5  82.0  86.5  92.5  62.5 126.5
-##  [67]  62.5  77.0  97.5  62.5  82.0  92.5 104.0  92.5 112.0 121.5 132.0
-##  [78] 126.5  86.5  69.5  56.0  56.0  77.0  86.5  49.5  86.5 126.5 104.0
-##  [89]  62.5  56.0  56.0  92.5  77.0  27.5  62.5  69.5  69.5  97.5  37.0
-## [100]  69.5 104.0  77.0 139.0 104.0 118.0 145.0  19.5 143.0 126.5 141.0
-## [111] 118.0 112.0 132.0  69.5  77.0 112.0 118.0 147.5 147.5  86.5 135.5
-## [122]  62.5 147.5 104.0 126.5 141.0  97.5  92.5 112.0 141.0 144.0 150.0
-## [133] 112.0 104.0  92.5 147.5 104.0 112.0  86.5 135.5 126.5 135.5  77.0
-## [144] 132.0 126.5 126.5 104.0 118.0  97.5  82.0
+##   [1]  37.0  19.5  10.5   7.5  27.5  49.5   7.5  27.5   3.0  19.5  49.5  14.0
+##  [13]  14.0   1.0  77.0  69.5  49.5  37.0  69.5  37.0  49.5  37.0   7.5  37.0
+##  [25]  14.0  27.5  27.5  43.5  43.5  10.5  14.0  49.5  43.5  56.0  19.5  27.5
+##  [37]  56.0  19.5   3.0  37.0  27.5   5.0   3.0  27.5  37.0  14.0  37.0   7.5
+##  [49]  46.0  27.5 138.0 112.0 135.5  56.0 118.0  69.5 104.0  19.5 121.5  43.5
+##  [61]  27.5  82.0  86.5  92.5  62.5 126.5  62.5  77.0  97.5  62.5  82.0  92.5
+##  [73] 104.0  92.5 112.0 121.5 132.0 126.5  86.5  69.5  56.0  56.0  77.0  86.5
+##  [85]  49.5  86.5 126.5 104.0  62.5  56.0  56.0  92.5  77.0  27.5  62.5  69.5
+##  [97]  69.5  97.5  37.0  69.5 104.0  77.0 139.0 104.0 118.0 145.0  19.5 143.0
+## [109] 126.5 141.0 118.0 112.0 132.0  69.5  77.0 112.0 118.0 147.5 147.5  86.5
+## [121] 135.5  62.5 147.5 104.0 126.5 141.0  97.5  92.5 112.0 141.0 144.0 150.0
+## [133] 112.0 104.0  92.5 147.5 104.0 112.0  86.5 135.5 126.5 135.5  77.0 132.0
+## [145] 126.5 126.5 104.0 118.0  97.5  82.0
 \end{verbatim}
 
 \begin{Shaded}
@@ -5085,15 +5087,15 @@ La fonction \texttt{order()} retourne le numéro du réarrangement des élément
 \end{Shaded}
 
 \begin{verbatim}
-##   [1] 5.1 4.9 4.7 4.6 5.0 5.4 4.6 5.0 4.4 4.9 5.4 4.8 4.8 4.3 5.8 5.7 5.4
-##  [18] 5.1 5.7 5.1 5.4 5.1 4.6 5.1 4.8 5.0 5.0 5.2 5.2 4.7 4.8 5.4 5.2 5.5
-##  [35] 4.9 5.0 5.5 4.9 4.4 5.1 5.0 4.5 4.4 5.0 5.1 4.8 5.1 4.6 5.3 5.0 7.0
-##  [52] 6.4 6.9 5.5 6.5 5.7 6.3 4.9 6.6 5.2 5.0 5.9 6.0 6.1 5.6 6.7 5.6 5.8
-##  [69] 6.2 5.6 5.9 6.1 6.3 6.1 6.4 6.6 6.8 6.7 6.0 5.7 5.5 5.5 5.8 6.0 5.4
-##  [86] 6.0 6.7 6.3 5.6 5.5 5.5 6.1 5.8 5.0 5.6 5.7 5.7 6.2 5.1 5.7 6.3 5.8
-## [103] 7.1 6.3 6.5 7.6 4.9 7.3 6.7 7.2 6.5 6.4 6.8 5.7 5.8 6.4 6.5 7.7 7.7
-## [120] 6.0 6.9 5.6 7.7 6.3 6.7 7.2 6.2 6.1 6.4 7.2 7.4 7.9 6.4 6.3 6.1 7.7
-## [137] 6.3 6.4 6.0 6.9 6.7 6.9 5.8 6.8 6.7 6.7 6.3 6.5 6.2 5.9
+##   [1] 5.1 4.9 4.7 4.6 5.0 5.4 4.6 5.0 4.4 4.9 5.4 4.8 4.8 4.3 5.8 5.7 5.4 5.1
+##  [19] 5.7 5.1 5.4 5.1 4.6 5.1 4.8 5.0 5.0 5.2 5.2 4.7 4.8 5.4 5.2 5.5 4.9 5.0
+##  [37] 5.5 4.9 4.4 5.1 5.0 4.5 4.4 5.0 5.1 4.8 5.1 4.6 5.3 5.0 7.0 6.4 6.9 5.5
+##  [55] 6.5 5.7 6.3 4.9 6.6 5.2 5.0 5.9 6.0 6.1 5.6 6.7 5.6 5.8 6.2 5.6 5.9 6.1
+##  [73] 6.3 6.1 6.4 6.6 6.8 6.7 6.0 5.7 5.5 5.5 5.8 6.0 5.4 6.0 6.7 6.3 5.6 5.5
+##  [91] 5.5 6.1 5.8 5.0 5.6 5.7 5.7 6.2 5.1 5.7 6.3 5.8 7.1 6.3 6.5 7.6 4.9 7.3
+## [109] 6.7 7.2 6.5 6.4 6.8 5.7 5.8 6.4 6.5 7.7 7.7 6.0 6.9 5.6 7.7 6.3 6.7 7.2
+## [127] 6.2 6.1 6.4 7.2 7.4 7.9 6.4 6.3 6.1 7.7 6.3 6.4 6.0 6.9 6.7 6.9 5.8 6.8
+## [145] 6.7 6.7 6.3 6.5 6.2 5.9
 \end{verbatim}
 
 \begin{Shaded}
@@ -5103,20 +5105,19 @@ La fonction \texttt{order()} retourne le numéro du réarrangement des élément
 \end{Shaded}
 
 \begin{verbatim}
-##   [1]  37.0  19.5  10.5   7.5  27.5  49.5   7.5  27.5   3.0  19.5  49.5
-##  [12]  14.0  14.0   1.0  77.0  69.5  49.5  37.0  69.5  37.0  49.5  37.0
-##  [23]   7.5  37.0  14.0  27.5  27.5  43.5  43.5  10.5  14.0  49.5  43.5
-##  [34]  56.0  19.5  27.5  56.0  19.5   3.0  37.0  27.5   5.0   3.0  27.5
-##  [45]  37.0  14.0  37.0   7.5  46.0  27.5 138.0 112.0 135.5  56.0 118.0
-##  [56]  69.5 104.0  19.5 121.5  43.5  27.5  82.0  86.5  92.5  62.5 126.5
-##  [67]  62.5  77.0  97.5  62.5  82.0  92.5 104.0  92.5 112.0 121.5 132.0
-##  [78] 126.5  86.5  69.5  56.0  56.0  77.0  86.5  49.5  86.5 126.5 104.0
-##  [89]  62.5  56.0  56.0  92.5  77.0  27.5  62.5  69.5  69.5  97.5  37.0
-## [100]  69.5 104.0  77.0 139.0 104.0 118.0 145.0  19.5 143.0 126.5 141.0
-## [111] 118.0 112.0 132.0  69.5  77.0 112.0 118.0 147.5 147.5  86.5 135.5
-## [122]  62.5 147.5 104.0 126.5 141.0  97.5  92.5 112.0 141.0 144.0 150.0
-## [133] 112.0 104.0  92.5 147.5 104.0 112.0  86.5 135.5 126.5 135.5  77.0
-## [144] 132.0 126.5 126.5 104.0 118.0  97.5  82.0
+##   [1]  37.0  19.5  10.5   7.5  27.5  49.5   7.5  27.5   3.0  19.5  49.5  14.0
+##  [13]  14.0   1.0  77.0  69.5  49.5  37.0  69.5  37.0  49.5  37.0   7.5  37.0
+##  [25]  14.0  27.5  27.5  43.5  43.5  10.5  14.0  49.5  43.5  56.0  19.5  27.5
+##  [37]  56.0  19.5   3.0  37.0  27.5   5.0   3.0  27.5  37.0  14.0  37.0   7.5
+##  [49]  46.0  27.5 138.0 112.0 135.5  56.0 118.0  69.5 104.0  19.5 121.5  43.5
+##  [61]  27.5  82.0  86.5  92.5  62.5 126.5  62.5  77.0  97.5  62.5  82.0  92.5
+##  [73] 104.0  92.5 112.0 121.5 132.0 126.5  86.5  69.5  56.0  56.0  77.0  86.5
+##  [85]  49.5  86.5 126.5 104.0  62.5  56.0  56.0  92.5  77.0  27.5  62.5  69.5
+##  [97]  69.5  97.5  37.0  69.5 104.0  77.0 139.0 104.0 118.0 145.0  19.5 143.0
+## [109] 126.5 141.0 118.0 112.0 132.0  69.5  77.0 112.0 118.0 147.5 147.5  86.5
+## [121] 135.5  62.5 147.5 104.0 126.5 141.0  97.5  92.5 112.0 141.0 144.0 150.0
+## [133] 112.0 104.0  92.5 147.5 104.0 112.0  86.5 135.5 126.5 135.5  77.0 132.0
+## [145] 126.5 126.5 104.0 118.0  97.5  82.0
 \end{verbatim}
 
 \begin{Shaded}
@@ -5126,15 +5127,15 @@ La fonction \texttt{order()} retourne le numéro du réarrangement des élément
 \end{Shaded}
 
 \begin{verbatim}
-##   [1]  14   9  39  43  42   4   7  23  48   3  30  12  13  25  31  46   2
-##  [18]  10  35  38  58 107   5   8  26  27  36  41  44  50  61  94   1  18
-##  [35]  20  22  24  40  45  47  99  28  29  33  60  49   6  11  17  21  32
-##  [52]  85  34  37  54  81  82  90  91  65  67  70  89  95 122  16  19  56
-##  [69]  80  96  97 100 114  15  68  83  93 102 115 143  62  71 150  63  79
-##  [86]  84  86 120 139  64  72  74  92 128 135  69  98 127 149  57  73  88
-## [103] 101 104 124 134 137 147  52  75 112 116 129 133 138  55 105 111 117
-## [120] 148  59  76  66  78  87 109 125 141 145 146  77 113 144  53 121 140
-## [137] 142  51 103 110 126 130 108 131 106 118 119 123 136 132
+##   [1]  14   9  39  43  42   4   7  23  48   3  30  12  13  25  31  46   2  10
+##  [19]  35  38  58 107   5   8  26  27  36  41  44  50  61  94   1  18  20  22
+##  [37]  24  40  45  47  99  28  29  33  60  49   6  11  17  21  32  85  34  37
+##  [55]  54  81  82  90  91  65  67  70  89  95 122  16  19  56  80  96  97 100
+##  [73] 114  15  68  83  93 102 115 143  62  71 150  63  79  84  86 120 139  64
+##  [91]  72  74  92 128 135  69  98 127 149  57  73  88 101 104 124 134 137 147
+## [109]  52  75 112 116 129 133 138  55 105 111 117 148  59  76  66  78  87 109
+## [127] 125 141 145 146  77 113 144  53 121 140 142  51 103 110 126 130 108 131
+## [145] 106 118 119 123 136 132
 \end{verbatim}
 
 \begin{Shaded}
@@ -5189,15 +5190,15 @@ La fonction \texttt{sort()} permet de trier les éléments d'un objet. Elle ne p
 \end{Shaded}
 
 \begin{verbatim}
-##   [1] 5.1 4.9 4.7 4.6 5.0 5.4 4.6 5.0 4.4 4.9 5.4 4.8 4.8 4.3 5.8 5.7 5.4
-##  [18] 5.1 5.7 5.1 5.4 5.1 4.6 5.1 4.8 5.0 5.0 5.2 5.2 4.7 4.8 5.4 5.2 5.5
-##  [35] 4.9 5.0 5.5 4.9 4.4 5.1 5.0 4.5 4.4 5.0 5.1 4.8 5.1 4.6 5.3 5.0 7.0
-##  [52] 6.4 6.9 5.5 6.5 5.7 6.3 4.9 6.6 5.2 5.0 5.9 6.0 6.1 5.6 6.7 5.6 5.8
-##  [69] 6.2 5.6 5.9 6.1 6.3 6.1 6.4 6.6 6.8 6.7 6.0 5.7 5.5 5.5 5.8 6.0 5.4
-##  [86] 6.0 6.7 6.3 5.6 5.5 5.5 6.1 5.8 5.0 5.6 5.7 5.7 6.2 5.1 5.7 6.3 5.8
-## [103] 7.1 6.3 6.5 7.6 4.9 7.3 6.7 7.2 6.5 6.4 6.8 5.7 5.8 6.4 6.5 7.7 7.7
-## [120] 6.0 6.9 5.6 7.7 6.3 6.7 7.2 6.2 6.1 6.4 7.2 7.4 7.9 6.4 6.3 6.1 7.7
-## [137] 6.3 6.4 6.0 6.9 6.7 6.9 5.8 6.8 6.7 6.7 6.3 6.5 6.2 5.9
+##   [1] 5.1 4.9 4.7 4.6 5.0 5.4 4.6 5.0 4.4 4.9 5.4 4.8 4.8 4.3 5.8 5.7 5.4 5.1
+##  [19] 5.7 5.1 5.4 5.1 4.6 5.1 4.8 5.0 5.0 5.2 5.2 4.7 4.8 5.4 5.2 5.5 4.9 5.0
+##  [37] 5.5 4.9 4.4 5.1 5.0 4.5 4.4 5.0 5.1 4.8 5.1 4.6 5.3 5.0 7.0 6.4 6.9 5.5
+##  [55] 6.5 5.7 6.3 4.9 6.6 5.2 5.0 5.9 6.0 6.1 5.6 6.7 5.6 5.8 6.2 5.6 5.9 6.1
+##  [73] 6.3 6.1 6.4 6.6 6.8 6.7 6.0 5.7 5.5 5.5 5.8 6.0 5.4 6.0 6.7 6.3 5.6 5.5
+##  [91] 5.5 6.1 5.8 5.0 5.6 5.7 5.7 6.2 5.1 5.7 6.3 5.8 7.1 6.3 6.5 7.6 4.9 7.3
+## [109] 6.7 7.2 6.5 6.4 6.8 5.7 5.8 6.4 6.5 7.7 7.7 6.0 6.9 5.6 7.7 6.3 6.7 7.2
+## [127] 6.2 6.1 6.4 7.2 7.4 7.9 6.4 6.3 6.1 7.7 6.3 6.4 6.0 6.9 6.7 6.9 5.8 6.8
+## [145] 6.7 6.7 6.3 6.5 6.2 5.9
 \end{verbatim}
 
 \begin{Shaded}
@@ -5207,15 +5208,15 @@ La fonction \texttt{sort()} permet de trier les éléments d'un objet. Elle ne p
 \end{Shaded}
 
 \begin{verbatim}
-##   [1] 4.3 4.4 4.4 4.4 4.5 4.6 4.6 4.6 4.6 4.7 4.7 4.8 4.8 4.8 4.8 4.8 4.9
-##  [18] 4.9 4.9 4.9 4.9 4.9 5.0 5.0 5.0 5.0 5.0 5.0 5.0 5.0 5.0 5.0 5.1 5.1
-##  [35] 5.1 5.1 5.1 5.1 5.1 5.1 5.1 5.2 5.2 5.2 5.2 5.3 5.4 5.4 5.4 5.4 5.4
-##  [52] 5.4 5.5 5.5 5.5 5.5 5.5 5.5 5.5 5.6 5.6 5.6 5.6 5.6 5.6 5.7 5.7 5.7
-##  [69] 5.7 5.7 5.7 5.7 5.7 5.8 5.8 5.8 5.8 5.8 5.8 5.8 5.9 5.9 5.9 6.0 6.0
-##  [86] 6.0 6.0 6.0 6.0 6.1 6.1 6.1 6.1 6.1 6.1 6.2 6.2 6.2 6.2 6.3 6.3 6.3
-## [103] 6.3 6.3 6.3 6.3 6.3 6.3 6.4 6.4 6.4 6.4 6.4 6.4 6.4 6.5 6.5 6.5 6.5
-## [120] 6.5 6.6 6.6 6.7 6.7 6.7 6.7 6.7 6.7 6.7 6.7 6.8 6.8 6.8 6.9 6.9 6.9
-## [137] 6.9 7.0 7.1 7.2 7.2 7.2 7.3 7.4 7.6 7.7 7.7 7.7 7.7 7.9
+##   [1] 4.3 4.4 4.4 4.4 4.5 4.6 4.6 4.6 4.6 4.7 4.7 4.8 4.8 4.8 4.8 4.8 4.9 4.9
+##  [19] 4.9 4.9 4.9 4.9 5.0 5.0 5.0 5.0 5.0 5.0 5.0 5.0 5.0 5.0 5.1 5.1 5.1 5.1
+##  [37] 5.1 5.1 5.1 5.1 5.1 5.2 5.2 5.2 5.2 5.3 5.4 5.4 5.4 5.4 5.4 5.4 5.5 5.5
+##  [55] 5.5 5.5 5.5 5.5 5.5 5.6 5.6 5.6 5.6 5.6 5.6 5.7 5.7 5.7 5.7 5.7 5.7 5.7
+##  [73] 5.7 5.8 5.8 5.8 5.8 5.8 5.8 5.8 5.9 5.9 5.9 6.0 6.0 6.0 6.0 6.0 6.0 6.1
+##  [91] 6.1 6.1 6.1 6.1 6.1 6.2 6.2 6.2 6.2 6.3 6.3 6.3 6.3 6.3 6.3 6.3 6.3 6.3
+## [109] 6.4 6.4 6.4 6.4 6.4 6.4 6.4 6.5 6.5 6.5 6.5 6.5 6.6 6.6 6.7 6.7 6.7 6.7
+## [127] 6.7 6.7 6.7 6.7 6.8 6.8 6.8 6.9 6.9 6.9 6.9 7.0 7.1 7.2 7.2 7.2 7.3 7.4
+## [145] 7.6 7.7 7.7 7.7 7.7 7.9
 \end{verbatim}
 
 \hypertarget{l015append}{%
@@ -5329,9 +5330,8 @@ Voilà deux fonctions que nous allons beaucoup utiliser par la suite. Les foncti
 \end{Shaded}
 
 \begin{verbatim}
-## [1] "prefix_10_suffix" "prefix_20_suffix" "prefix_30_suffix"
-## [4] "prefix_10_suffix" "prefix_50_suffix" "prefix_10_suffix"
-## [7] "prefix_40_suffix"
+## [1] "prefix_10_suffix" "prefix_20_suffix" "prefix_30_suffix" "prefix_10_suffix"
+## [5] "prefix_50_suffix" "prefix_10_suffix" "prefix_40_suffix"
 \end{verbatim}
 
 \begin{Shaded}
@@ -5414,8 +5414,8 @@ La fonction \texttt{\%in\%} peut être assimilée à un \protect\hyperlink{l011o
 ## [1] TRUE TRUE TRUE TRUE TRUE TRUE TRUE
 \end{verbatim}
 
-\hypertarget{fonctions-mathematiques}{%
-\subsection{Fonctions mathématiques}\label{fonctions-mathematiques}}
+\hypertarget{fonctions-mathuxe9matiques}{%
+\subsection{Fonctions mathématiques}\label{fonctions-mathuxe9matiques}}
 
 Nous avons déjà vu les fonctions \texttt{+}, \texttt{-}, \texttt{*}, \texttt{/}, \texttt{\^{}}, \texttt{\%\%} et autres \protect\hyperlink{l011opari}{opérateurs arithmétiques}. R possède également les fonctions mathématiques de base comme exponetielle \texttt{exp()}, racine carrée \texttt{sqrt()}, valeur absolue \texttt{abs()}, sinus \texttt{sin()}, cosinus \texttt{cos()}, tangente \texttt{tan()}, logarithme népérien \texttt{log()}, logarithme décimal \texttt{log10()}, arc cosinus \texttt{acos()}, arc sinus \texttt{asin()}, et arc tangente \texttt{atan()}.
 
@@ -5467,8 +5467,7 @@ Nous avons déjà vu les fonctions \texttt{+}, \texttt{-}, \texttt{*}, \texttt{/
 \end{Shaded}
 
 \begin{verbatim}
-## [1] -0.5440211  0.9129453 -0.9880316 -0.5440211 -0.2623749 -0.5440211
-## [7]  0.7451132
+## [1] -0.5440211  0.9129453 -0.9880316 -0.5440211 -0.2623749 -0.5440211  0.7451132
 \end{verbatim}
 
 \begin{Shaded}
@@ -5478,8 +5477,7 @@ Nous avons déjà vu les fonctions \texttt{+}, \texttt{-}, \texttt{*}, \texttt{/
 \end{Shaded}
 
 \begin{verbatim}
-## [1] -0.8390715  0.4080821  0.1542514 -0.8390715  0.9649660 -0.8390715
-## [7] -0.6669381
+## [1] -0.8390715  0.4080821  0.1542514 -0.8390715  0.9649660 -0.8390715 -0.6669381
 \end{verbatim}
 
 \begin{Shaded}
@@ -5489,8 +5487,7 @@ Nous avons déjà vu les fonctions \texttt{+}, \texttt{-}, \texttt{*}, \texttt{/
 \end{Shaded}
 
 \begin{verbatim}
-## [1]  0.6483608  2.2371609 -6.4053312  0.6483608 -0.2719006  0.6483608
-## [7] -1.1172149
+## [1]  0.6483608  2.2371609 -6.4053312  0.6483608 -0.2719006  0.6483608 -1.1172149
 \end{verbatim}
 
 \begin{Shaded}
@@ -5540,8 +5537,7 @@ Nous avons déjà vu les fonctions \texttt{+}, \texttt{-}, \texttt{*}, \texttt{/
 \end{Shaded}
 
 \begin{verbatim}
-## [1] 0.09966865 0.19739556 0.29145679 0.09966865 0.46364761 0.09966865
-## [7] 0.38050638
+## [1] 0.09966865 0.19739556 0.29145679 0.09966865 0.46364761 0.09966865 0.38050638
 \end{verbatim}
 
 \hypertarget{statistiques-descriptives}{%
@@ -5967,17 +5963,16 @@ Les fonctions \texttt{rowSums()} et \texttt{colSums()} calculent la somme des li
 \end{Shaded}
 
 \begin{verbatim}
-##   [1] 10.2  9.5  9.4  9.4 10.2 11.4  9.7 10.1  8.9  9.6 10.8 10.0  9.3  8.5
-##  [15] 11.2 12.0 11.0 10.3 11.5 10.7 10.7 10.7  9.4 10.6 10.3  9.8 10.4 10.4
-##  [29] 10.2  9.7  9.7 10.7 10.9 11.3  9.7  9.6 10.5 10.0  8.9 10.2 10.1  8.4
-##  [43]  9.1 10.7 11.2  9.5 10.7  9.4 10.7  9.9 16.3 15.6 16.4 13.1 15.4 14.3
-##  [57] 15.9 11.6 15.4 13.2 11.5 14.6 13.2 15.1 13.4 15.6 14.6 13.6 14.4 13.1
-##  [71] 15.7 14.2 15.2 14.8 14.9 15.4 15.8 16.4 14.9 12.8 12.8 12.6 13.6 15.4
-##  [85] 14.4 15.5 16.0 14.3 14.0 13.3 13.7 15.1 13.6 11.6 13.8 14.1 14.1 14.7
-##  [99] 11.7 13.9 18.1 15.5 18.1 16.6 17.5 19.3 13.6 18.3 16.8 19.4 16.8 16.3
-## [113] 17.4 15.2 16.1 17.2 16.8 20.4 19.5 14.7 18.1 15.3 19.2 15.7 17.8 18.2
-## [127] 15.6 15.8 16.9 17.6 18.2 20.1 17.0 15.7 15.7 19.1 17.7 16.8 15.6 17.5
-## [141] 17.8 17.4 15.5 18.2 18.2 17.2 15.7 16.7 17.3 15.8
+##   [1] 10.2  9.5  9.4  9.4 10.2 11.4  9.7 10.1  8.9  9.6 10.8 10.0  9.3  8.5 11.2
+##  [16] 12.0 11.0 10.3 11.5 10.7 10.7 10.7  9.4 10.6 10.3  9.8 10.4 10.4 10.2  9.7
+##  [31]  9.7 10.7 10.9 11.3  9.7  9.6 10.5 10.0  8.9 10.2 10.1  8.4  9.1 10.7 11.2
+##  [46]  9.5 10.7  9.4 10.7  9.9 16.3 15.6 16.4 13.1 15.4 14.3 15.9 11.6 15.4 13.2
+##  [61] 11.5 14.6 13.2 15.1 13.4 15.6 14.6 13.6 14.4 13.1 15.7 14.2 15.2 14.8 14.9
+##  [76] 15.4 15.8 16.4 14.9 12.8 12.8 12.6 13.6 15.4 14.4 15.5 16.0 14.3 14.0 13.3
+##  [91] 13.7 15.1 13.6 11.6 13.8 14.1 14.1 14.7 11.7 13.9 18.1 15.5 18.1 16.6 17.5
+## [106] 19.3 13.6 18.3 16.8 19.4 16.8 16.3 17.4 15.2 16.1 17.2 16.8 20.4 19.5 14.7
+## [121] 18.1 15.3 19.2 15.7 17.8 18.2 15.6 15.8 16.9 17.6 18.2 20.1 17.0 15.7 15.7
+## [136] 19.1 17.7 16.8 15.6 17.5 17.8 17.4 15.5 18.2 18.2 17.2 15.7 16.7 17.3 15.8
 \end{verbatim}
 
 \begin{Shaded}
@@ -6003,20 +5998,19 @@ Les fonctions \texttt{rowMeans()} et \texttt{colMeans()} calculent la moyenne de
 \end{Shaded}
 
 \begin{verbatim}
-##   [1] 2.550 2.375 2.350 2.350 2.550 2.850 2.425 2.525 2.225 2.400 2.700
-##  [12] 2.500 2.325 2.125 2.800 3.000 2.750 2.575 2.875 2.675 2.675 2.675
-##  [23] 2.350 2.650 2.575 2.450 2.600 2.600 2.550 2.425 2.425 2.675 2.725
-##  [34] 2.825 2.425 2.400 2.625 2.500 2.225 2.550 2.525 2.100 2.275 2.675
-##  [45] 2.800 2.375 2.675 2.350 2.675 2.475 4.075 3.900 4.100 3.275 3.850
-##  [56] 3.575 3.975 2.900 3.850 3.300 2.875 3.650 3.300 3.775 3.350 3.900
-##  [67] 3.650 3.400 3.600 3.275 3.925 3.550 3.800 3.700 3.725 3.850 3.950
-##  [78] 4.100 3.725 3.200 3.200 3.150 3.400 3.850 3.600 3.875 4.000 3.575
-##  [89] 3.500 3.325 3.425 3.775 3.400 2.900 3.450 3.525 3.525 3.675 2.925
-## [100] 3.475 4.525 3.875 4.525 4.150 4.375 4.825 3.400 4.575 4.200 4.850
-## [111] 4.200 4.075 4.350 3.800 4.025 4.300 4.200 5.100 4.875 3.675 4.525
-## [122] 3.825 4.800 3.925 4.450 4.550 3.900 3.950 4.225 4.400 4.550 5.025
-## [133] 4.250 3.925 3.925 4.775 4.425 4.200 3.900 4.375 4.450 4.350 3.875
-## [144] 4.550 4.550 4.300 3.925 4.175 4.325 3.950
+##   [1] 2.550 2.375 2.350 2.350 2.550 2.850 2.425 2.525 2.225 2.400 2.700 2.500
+##  [13] 2.325 2.125 2.800 3.000 2.750 2.575 2.875 2.675 2.675 2.675 2.350 2.650
+##  [25] 2.575 2.450 2.600 2.600 2.550 2.425 2.425 2.675 2.725 2.825 2.425 2.400
+##  [37] 2.625 2.500 2.225 2.550 2.525 2.100 2.275 2.675 2.800 2.375 2.675 2.350
+##  [49] 2.675 2.475 4.075 3.900 4.100 3.275 3.850 3.575 3.975 2.900 3.850 3.300
+##  [61] 2.875 3.650 3.300 3.775 3.350 3.900 3.650 3.400 3.600 3.275 3.925 3.550
+##  [73] 3.800 3.700 3.725 3.850 3.950 4.100 3.725 3.200 3.200 3.150 3.400 3.850
+##  [85] 3.600 3.875 4.000 3.575 3.500 3.325 3.425 3.775 3.400 2.900 3.450 3.525
+##  [97] 3.525 3.675 2.925 3.475 4.525 3.875 4.525 4.150 4.375 4.825 3.400 4.575
+## [109] 4.200 4.850 4.200 4.075 4.350 3.800 4.025 4.300 4.200 5.100 4.875 3.675
+## [121] 4.525 3.825 4.800 3.925 4.450 4.550 3.900 3.950 4.225 4.400 4.550 5.025
+## [133] 4.250 3.925 3.925 4.775 4.425 4.200 3.900 4.375 4.450 4.350 3.875 4.550
+## [145] 4.550 4.300 3.925 4.175 4.325 3.950
 \end{verbatim}
 
 \begin{Shaded}
@@ -6059,18 +6053,18 @@ La fonction \texttt{aggregate()} permet de grouper les éléments d'un objet en 
 ## 1     setosa             4.300                4.800               5.000
 ## 2 versicolor             4.900                5.600               5.900
 ## 3  virginica             4.900                6.225               6.500
-##   Sepal.Length.Mean Sepal.Length.3rd Qu. Sepal.Length.Max.
-## 1             5.006                5.200             5.800
-## 2             5.936                6.300             7.000
-## 3             6.588                6.900             7.900
-##   Sepal.Width.Min. Sepal.Width.1st Qu. Sepal.Width.Median Sepal.Width.Mean
-## 1            2.300               3.200              3.400            3.428
-## 2            2.000               2.525              2.800            2.770
-## 3            2.200               2.800              3.000            2.974
-##   Sepal.Width.3rd Qu. Sepal.Width.Max.
-## 1               3.675            4.400
-## 2               3.000            3.400
-## 3               3.175            3.800
+##   Sepal.Length.Mean Sepal.Length.3rd Qu. Sepal.Length.Max. Sepal.Width.Min.
+## 1             5.006                5.200             5.800            2.300
+## 2             5.936                6.300             7.000            2.000
+## 3             6.588                6.900             7.900            2.200
+##   Sepal.Width.1st Qu. Sepal.Width.Median Sepal.Width.Mean Sepal.Width.3rd Qu.
+## 1               3.200              3.400            3.428               3.675
+## 2               2.525              2.800            2.770               3.000
+## 3               2.800              3.000            2.974               3.175
+##   Sepal.Width.Max.
+## 1            4.400
+## 2            3.400
+## 3            3.800
 \end{verbatim}
 
 \hypertarget{l015range}{%
@@ -6130,9 +6124,8 @@ La fonction \texttt{unique()} renvoie les valeurs uniques d'un objet (sans les d
 \end{Shaded}
 
 \begin{verbatim}
-##  [1] 5.1 4.9 4.7 4.6 5.0 5.4 4.4 4.8 4.3 5.8 5.7 5.2 5.5 4.5 5.3 7.0 6.4
-## [18] 6.9 6.5 6.3 6.6 5.9 6.0 6.1 5.6 6.7 6.2 6.8 7.1 7.6 7.3 7.2 7.7 7.4
-## [35] 7.9
+##  [1] 5.1 4.9 4.7 4.6 5.0 5.4 4.4 4.8 4.3 5.8 5.7 5.2 5.5 4.5 5.3 7.0 6.4 6.9 6.5
+## [20] 6.3 6.6 5.9 6.0 6.1 5.6 6.7 6.2 6.8 7.1 7.6 7.3 7.2 7.7 7.4 7.9
 \end{verbatim}
 
 \begin{Shaded}
@@ -6241,8 +6234,8 @@ La fonction \texttt{:} permet de créer une séquence de \texttt{a} à \texttt{b
 \end{Shaded}
 
 \begin{verbatim}
-##  [1] -10  -9  -8  -7  -6  -5  -4  -3  -2  -1   0   1   2   3   4   5   6
-## [18]   7   8   9  10  11  12
+##  [1] -10  -9  -8  -7  -6  -5  -4  -3  -2  -1   0   1   2   3   4   5   6   7   8
+## [20]   9  10  11  12
 \end{verbatim}
 
 \begin{Shaded}
@@ -6334,8 +6327,8 @@ La fonction \texttt{seq()} permet de créer une séquence personnalisée.
 \end{Shaded}
 
 \begin{verbatim}
-##  [1] 20.00000 18.88889 17.77778 16.66667 15.55556 14.44444 13.33333
-##  [8] 12.22222 11.11111 10.00000
+##  [1] 20.00000 18.88889 17.77778 16.66667 15.55556 14.44444 13.33333 12.22222
+##  [9] 11.11111 10.00000
 \end{verbatim}
 
 \begin{Shaded}
@@ -6448,26 +6441,22 @@ Tout comme la fonction \texttt{list.files()} permet de faire la liste de tous le
 \end{Shaded}
 
 \begin{verbatim}
-##  [1] "aLogic"       "bddInsect"    "characters"   "contrib"     
-##  [5] "dfForMat"     "factor01"     "i"            "irisCopy"    
-##  [9] "j"            "k"            "logicals"     "mdat"        
-## [13] "miArray"      "miArray02"    "miDf01"       "miDfSub01"   
-## [17] "miDfSub02"    "miDfSub03"    "miDfSub04"    "miList01"    
-## [21] "miList02"     "miList0203"   "miList03"     "miList04"    
-## [25] "miList05"     "miList06"     "miMat"        "miMat01"     
-## [29] "miMat02"      "miVec01"      "miVec02"      "miVec03"     
-## [33] "miVec04"      "miVec05"      "miVec06"      "miVec07"     
-## [37] "miVec08"      "miVec09"      "miVec10"      "miVec11"     
-## [41] "miVec12"      "miVec13"      "miVec14"      "miVec15"     
-## [45] "miVec20"      "miVec21"      "miVec22"      "miVec23"     
-## [49] "miVec24"      "miVec25"      "miVecArr"     "miVecArr02"  
-## [53] "miVecConf"    "miVecNA"      "miVecOp"      "msg"         
-## [57] "myCol"        "myRow"        "myText"       "myText2"     
-## [61] "myText3"      "myText4"      "myText5"      "nbrRep"      
-## [65] "newVec"       "newVec2"      "numbers"      "oldWd"       
-## [69] "opAriDf"      "roundDou"     "sumIntDou"    "sumIntInt"   
-## [73] "terme01"      "terme02"      "vecForMat01"  "vecForMat02" 
-## [77] "vecForMat03"  "vecForMatrix" "vecManip"     "vecManip2"   
+##  [1] "aLogic"       "bddInsect"    "characters"   "contrib"      "dfForMat"    
+##  [6] "factor01"     "i"            "irisCopy"     "j"            "k"           
+## [11] "logicals"     "mdat"         "miArray"      "miArray02"    "miDf01"      
+## [16] "miDfSub01"    "miDfSub02"    "miDfSub03"    "miDfSub04"    "miList01"    
+## [21] "miList02"     "miList0203"   "miList03"     "miList04"     "miList05"    
+## [26] "miList06"     "miMat"        "miMat01"      "miMat02"      "miVec01"     
+## [31] "miVec02"      "miVec03"      "miVec04"      "miVec05"      "miVec06"     
+## [36] "miVec07"      "miVec08"      "miVec09"      "miVec10"      "miVec11"     
+## [41] "miVec12"      "miVec13"      "miVec14"      "miVec15"      "miVec20"     
+## [46] "miVec21"      "miVec22"      "miVec23"      "miVec24"      "miVec25"     
+## [51] "miVecArr"     "miVecArr02"   "miVecConf"    "miVecNA"      "miVecOp"     
+## [56] "msg"          "myCol"        "myRow"        "myText"       "myText2"     
+## [61] "myText3"      "myText4"      "myText5"      "nbrRep"       "newVec"      
+## [66] "newVec2"      "numbers"      "oldWd"        "opAriDf"      "roundDou"    
+## [71] "sumIntDou"    "sumIntInt"    "terme01"      "terme02"      "vecForMat01" 
+## [76] "vecForMat02"  "vecForMat03"  "vecForMatrix" "vecManip"     "vecManip2"   
 ## [81] "vecManip3"
 \end{verbatim}
 
@@ -6479,26 +6468,22 @@ Tout comme la fonction \texttt{list.files()} permet de faire la liste de tous le
 \end{Shaded}
 
 \begin{verbatim}
-##  [1] "aLogic"       "bddInsect"    "characters"   "contrib"     
-##  [5] "dfForMat"     "factor01"     "i"            "irisCopy"    
-##  [9] "j"            "k"            "logicals"     "mdat"        
-## [13] "miArray"      "miArray02"    "miDf01"       "miDfSub01"   
-## [17] "miDfSub02"    "miDfSub03"    "miDfSub04"    "miList01"    
-## [21] "miList02"     "miList0203"   "miList03"     "miList04"    
-## [25] "miList05"     "miList06"     "miMat"        "miMat01"     
-## [29] "miMat02"      "miVec01"      "miVec02"      "miVec03"     
-## [33] "miVec04"      "miVec05"      "miVec06"      "miVec07"     
-## [37] "miVec08"      "miVec09"      "miVec10"      "miVec11"     
-## [41] "miVec12"      "miVec13"      "miVec14"      "miVec15"     
-## [45] "miVec20"      "miVec21"      "miVec22"      "miVec23"     
-## [49] "miVec24"      "miVec25"      "miVecArr"     "miVecArr02"  
-## [53] "miVecConf"    "miVecNA"      "miVecOp"      "msg"         
-## [57] "myCol"        "myRow"        "myText"       "myText2"     
-## [61] "myText3"      "myText4"      "myText5"      "nbrRep"      
-## [65] "newVec"       "newVec2"      "numbers"      "oldWd"       
-## [69] "opAriDf"      "roundDou"     "sumIntDou"    "sumIntInt"   
-## [73] "terme01"      "terme02"      "vecForMat01"  "vecForMat02" 
-## [77] "vecForMat03"  "vecForMatrix" "vecManip"     "vecManip2"   
+##  [1] "aLogic"       "bddInsect"    "characters"   "contrib"      "dfForMat"    
+##  [6] "factor01"     "i"            "irisCopy"     "j"            "k"           
+## [11] "logicals"     "mdat"         "miArray"      "miArray02"    "miDf01"      
+## [16] "miDfSub01"    "miDfSub02"    "miDfSub03"    "miDfSub04"    "miList01"    
+## [21] "miList02"     "miList0203"   "miList03"     "miList04"     "miList05"    
+## [26] "miList06"     "miMat"        "miMat01"      "miMat02"      "miVec01"     
+## [31] "miVec02"      "miVec03"      "miVec04"      "miVec05"      "miVec06"     
+## [36] "miVec07"      "miVec08"      "miVec09"      "miVec10"      "miVec11"     
+## [41] "miVec12"      "miVec13"      "miVec14"      "miVec15"      "miVec20"     
+## [46] "miVec21"      "miVec22"      "miVec23"      "miVec24"      "miVec25"     
+## [51] "miVecArr"     "miVecArr02"   "miVecConf"    "miVecNA"      "miVecOp"     
+## [56] "msg"          "myCol"        "myRow"        "myText"       "myText2"     
+## [61] "myText3"      "myText4"      "myText5"      "nbrRep"       "newVec"      
+## [66] "newVec2"      "numbers"      "oldWd"        "opAriDf"      "roundDou"    
+## [71] "sumIntDou"    "sumIntInt"    "terme01"      "terme02"      "vecForMat01" 
+## [76] "vecForMat02"  "vecForMat03"  "vecForMatrix" "vecManip"     "vecManip2"   
 ## [81] "vecManip3"    "zzz"
 \end{verbatim}
 
@@ -6515,26 +6500,22 @@ La fonction \texttt{rm()} permet de supprimer un objet présent dans l'environne
 \end{Shaded}
 
 \begin{verbatim}
-##  [1] "aLogic"       "bddInsect"    "characters"   "contrib"     
-##  [5] "dfForMat"     "factor01"     "i"            "irisCopy"    
-##  [9] "j"            "k"            "logicals"     "mdat"        
-## [13] "miArray"      "miArray02"    "miDf01"       "miDfSub01"   
-## [17] "miDfSub02"    "miDfSub03"    "miDfSub04"    "miList01"    
-## [21] "miList02"     "miList0203"   "miList03"     "miList04"    
-## [25] "miList05"     "miList06"     "miMat"        "miMat01"     
-## [29] "miMat02"      "miVec01"      "miVec02"      "miVec03"     
-## [33] "miVec04"      "miVec05"      "miVec06"      "miVec07"     
-## [37] "miVec08"      "miVec09"      "miVec10"      "miVec11"     
-## [41] "miVec12"      "miVec13"      "miVec14"      "miVec15"     
-## [45] "miVec20"      "miVec21"      "miVec22"      "miVec23"     
-## [49] "miVec24"      "miVec25"      "miVecArr"     "miVecArr02"  
-## [53] "miVecConf"    "miVecNA"      "miVecOp"      "msg"         
-## [57] "myCol"        "myRow"        "myText"       "myText2"     
-## [61] "myText3"      "myText4"      "myText5"      "nbrRep"      
-## [65] "newVec"       "newVec2"      "numbers"      "oldWd"       
-## [69] "opAriDf"      "roundDou"     "sumIntDou"    "sumIntInt"   
-## [73] "terme01"      "terme02"      "vecForMat01"  "vecForMat02" 
-## [77] "vecForMat03"  "vecForMatrix" "vecManip"     "vecManip2"   
+##  [1] "aLogic"       "bddInsect"    "characters"   "contrib"      "dfForMat"    
+##  [6] "factor01"     "i"            "irisCopy"     "j"            "k"           
+## [11] "logicals"     "mdat"         "miArray"      "miArray02"    "miDf01"      
+## [16] "miDfSub01"    "miDfSub02"    "miDfSub03"    "miDfSub04"    "miList01"    
+## [21] "miList02"     "miList0203"   "miList03"     "miList04"     "miList05"    
+## [26] "miList06"     "miMat"        "miMat01"      "miMat02"      "miVec01"     
+## [31] "miVec02"      "miVec03"      "miVec04"      "miVec05"      "miVec06"     
+## [36] "miVec07"      "miVec08"      "miVec09"      "miVec10"      "miVec11"     
+## [41] "miVec12"      "miVec13"      "miVec14"      "miVec15"      "miVec20"     
+## [46] "miVec21"      "miVec22"      "miVec23"      "miVec24"      "miVec25"     
+## [51] "miVecArr"     "miVecArr02"   "miVecConf"    "miVecNA"      "miVecOp"     
+## [56] "msg"          "myCol"        "myRow"        "myText"       "myText2"     
+## [61] "myText3"      "myText4"      "myText5"      "nbrRep"       "newVec"      
+## [66] "newVec2"      "numbers"      "oldWd"        "opAriDf"      "roundDou"    
+## [71] "sumIntDou"    "sumIntInt"    "terme01"      "terme02"      "vecForMat01" 
+## [76] "vecForMat02"  "vecForMat03"  "vecForMatrix" "vecManip"     "vecManip2"   
 ## [81] "vecManip3"
 \end{verbatim}
 
@@ -6543,11 +6524,11 @@ La fonction \texttt{rm()} permet de supprimer un objet présent dans l'environne
 
 Voici quelques exercices pour se perfectionner dans l'usage des fonctions et en apprendre de nouvelles grâce à la documentation. Certains exercices sont difficiles, nous pourrons y revenir plus tard.
 
-\hypertarget{sequences}{%
-\subsection{Séquences}\label{sequences}}
+\hypertarget{suxe9quences}{%
+\subsection{Séquences}\label{suxe9quences}}
 
-\hypertarget{reproduisons-les-sequences-suivantes}{%
-\subsubsection{Reproduisons les séquences suivantes :}\label{reproduisons-les-sequences-suivantes}}
+\hypertarget{reproduisons-les-suxe9quences-suivantes}{%
+\subsubsection{Reproduisons les séquences suivantes :}\label{reproduisons-les-suxe9quences-suivantes}}
 
 -3 -4 -5 -6 -7 -8 -9 -10 --11
 
@@ -6611,8 +6592,8 @@ Voici quelques exercices pour se perfectionner dans l'usage des fonctions et en 
 \end{Shaded}
 
 \begin{verbatim}
-##  [1] "a" "a" "a" "a" "a" "f" "f" "f" "f" "f" "k" "k" "k" "k" "k" "p" "p"
-## [18] "p" "p" "p" "u" "u" "u" "u" "u" "z" "z" "z" "z" "z"
+##  [1] "a" "a" "a" "a" "a" "f" "f" "f" "f" "f" "k" "k" "k" "k" "k" "p" "p" "p" "p"
+## [20] "p" "u" "u" "u" "u" "u" "z" "z" "z" "z" "z"
 \end{verbatim}
 
 \hypertarget{statistiques-descriptives-1}{%
@@ -6659,10 +6640,10 @@ Solutions :
 
 \begin{verbatim}
 ## 
-##   2 2.2 2.3 2.4 2.5 2.6 2.7 2.8 2.9   3 3.1 3.2 3.3 3.4 3.5 3.6 3.7 3.8 
-##   1   3   4   3   8   5   9  14  10  26  11  13   6  12   6   4   3   6 
-## 3.9   4 4.1 4.2 4.4 
-##   2   1   1   1   1
+##   2 2.2 2.3 2.4 2.5 2.6 2.7 2.8 2.9   3 3.1 3.2 3.3 3.4 3.5 3.6 3.7 3.8 3.9   4 
+##   1   3   4   3   8   5   9  14  10  26  11  13   6  12   6   4   3   6   2   1 
+## 4.1 4.2 4.4 
+##   1   1   1
 \end{verbatim}
 
 \begin{Shaded}
@@ -6991,7 +6972,7 @@ Il n'y a pas de solution optimale dans l'absolu, tout dépend des objectifs rech
 
 \begin{verbatim}
 ##    user  system elapsed 
-##    0.22    0.00    0.22
+##    0.23    0.01    0.25
 \end{verbatim}
 
 \begin{Shaded}
@@ -7002,7 +6983,7 @@ Il n'y a pas de solution optimale dans l'absolu, tout dépend des objectifs rech
 
 \begin{verbatim}
 ##    user  system elapsed 
-##    0.21    0.00    0.22
+##    0.29    0.00    0.28
 \end{verbatim}
 
 Une fonction peut avoir des valeurs par défaut pour ses arguments. C'est le cas de la plupart des fonctions existantes. Par défaut, notre fonction va désormais compter le nombre de voyelles et de consonnes dans le mot \texttt{qwerty} (les parenthèses restent nécessaires même en l'absence d'arguments).
@@ -7032,8 +7013,8 @@ Une fonction peut avoir des valeurs par défaut pour ses arguments. C'est le cas
 
 R compte de nombreuses fonctions, donc avant de vous lancer dans l'écriture d'une nouvelle fonction, il faut toujours vérifier que celle-ci n'existe pas déjà soit dans la version de base de R, soit dans des \textbf{packages} développés par la communauté des utilisateurs. Pour cela nous pouvons utiliser l'aide et la fonction \texttt{??}, mais aussi notre navigateur Internet.
 
-\hypertarget{autres-fonctions-developpees-par-la-communaute-des-utilisateurs-les-packages}{%
-\section{Autres fonctions développées par la communauté des utilisateurs : les packages}\label{autres-fonctions-developpees-par-la-communaute-des-utilisateurs-les-packages}}
+\hypertarget{autres-fonctions-duxe9veloppuxe9es-par-la-communautuxe9-des-utilisateurs-les-packages}{%
+\section{Autres fonctions développées par la communauté des utilisateurs : les packages}\label{autres-fonctions-duxe9veloppuxe9es-par-la-communautuxe9-des-utilisateurs-les-packages}}
 
 Un package est un ensemble de fichiers que l'on va ajouter à R pour pouvoir utiliser des fonctions (ou des jeux de données) que d'autres personnes ont développés. Il ya à ce jour plus de 10000 packages sur les serveurs de R (CRAN ; \url{https://cran.r-project.org/web/packages/}), plus de 1000 sur les serveurs de BioConductor (pour l'analyse génomique), et plusieurs centaines sur GitHub. Chaque package permet de mettre à disposition des fonctions pour à peu près tout faire\ldots{} Il peut donc être difficile de trouver le package adapté à ce que nous souhaitons réaliser, et il est important de consacrer du temps sa recherche, et de tester plusieurs solutions.
 
@@ -7065,8 +7046,8 @@ Pour pouvoir utiliser les fonctions d'un package, nous devons le charger dans no
 
 Le chargement du package est à réaliser à chaque fois que nous souhaitons exécuter notre code, il fait donc partie intégrante de notre script.
 
-\hypertarget{portabilite-du-code}{%
-\subsection{Portabilité du code}\label{portabilite-du-code}}
+\hypertarget{portabilituxe9-du-code}{%
+\subsection{Portabilité du code}\label{portabilituxe9-du-code}}
 
 Nous venons de voir que l'installation d'un package est à faire une seule fois par ordinateur, et que par contre le chargement d'un package est à réaliser pour chaque nouvelle session de R. Si l'on change d'ordinateur ou si l'on partage un script avec un collègue, il peut donc y avoir des erreurs à l'exécution liées à l'absence de l'installation d'un package. Pour pallier à ce problème, il est recommandé d'utiliser une fonction qui va vérifier si les packages nécessaires à l'exécution d'un script sont installés, si besoin les installer, puis les charger. Il existe de nombreuses fonctions pour faire cela sur Internet. La solution que nous proposons ici est un mélange adapté de différentes sources. Il n'est pas nécessaire de comprendre les détails de ce script pour le moment, mais simplement de comprendre ce qu'il fait. Voici un exemple pour les packages \texttt{stats} et \texttt{graphics} qui sont deux packages déjà présents avec la version de base de R, mais nous pouvons essayer avec tous les packages disponibles sur le CRAN, dont la liste se trouve ici : \url{https://cran.r-project.org/web/packages/available_packages_by_name.html}.
 
@@ -7099,8 +7080,8 @@ Alternativement nous pouvons utiliser la fonction \texttt{.packages()} pour list
 ##  [6] "alr4"        "ape"         "askpass"     "assertthat"  "backports"  
 ## [11] "base64enc"   "bdsmatrix"   "BH"          "bibtex"      "bindr"      
 ## [16] "bindrcpp"    "BioFTF"      "bitops"      "bold"        "bookdown"   
-## [21] "brew"        "broom"       "ca"          "callr"       "car"        
-## [26] "carData"     "caret"       "cartography" "caTools"     "cellranger"
+## [21] "boot"        "brew"        "broom"       "ca"          "callr"      
+## [26] "car"         "carData"     "caret"       "cartography" "caTools"
 \end{verbatim}
 
 La fonction \texttt{pkgCheck()} assure la \textbf{portabilité} de nos scripts : ils fonctionneront sur tous les ordinateurs sans avoir à effectuer de modification. Ainsi nos scipts pourront par exemple être joints à nos articles scientifiques et assurer ainsi la \textbf{reproductibilité} de nos résultats.
@@ -7342,116 +7323,20 @@ La fonction \texttt{read.table()} renvoie le contenu du fichier sous forme d'une
 \hypertarget{l016readTXT}{%
 \subsection{Lire un fichier texte}\label{l016readTXT}}
 
-La fonction la plus simple pour lire un fichier contenant du texte est \texttt{readlines()}. Voici un exemple avec le fichier README.md de ce livre, que l'on retrouve sur GitHub.
+La fonction la plus simple pour lire un fichier contenant du texte est \texttt{readlines()}. Voici un exemple avec le fichier \_bookdown.yml de ce livre, que l'on retrouve sur GitHub.
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{readmeGitHub <-}\StringTok{ "https://raw.githubusercontent.com/frareb/myRBook_FR/master/README.md"}
+\NormalTok{readmeGitHub <-}\StringTok{ "https://raw.githubusercontent.com/frareb/myRBook_FR/master/_bookdown.yml"}
 \KeywordTok{readLines}\NormalTok{(readmeGitHub)}
 \end{Highlighting}
 \end{Shaded}
 
 \begin{verbatim}
-##   [1] "# myRBook_FR"                                                                                                                                                                                                                                                                                               
-##   [2] ""                                                                                                                                                                                                                                                                                                           
-##   [3] "Vous trouverez ici le code source du livre *Se former au logiciel R : initiation et perfectionnement*, construit avec bookdown."                                                                                                                                                                            
-##   [4] ""                                                                                                                                                                                                                                                                                                           
-##   [5] "Ce livre est mis Ã  jour rÃ©guliÃ¨rement, alors n'hÃ©sitez pas Ã  consulter les derniÃ¨res modifications ci-dessous. "                                                                                                                                                                                      
-##   [6] ""                                                                                                                                                                                                                                                                                                           
-##   [7] "Si vous avez des commentaires, des suggestions ou si vous identifiez des erreurs, n'hÃ©sitez pas Ã  m'envoyer un email (francois.rebaudo@ird.fr), ou si vous connaissez GitHub sur le site du projet (https://github.com/frareb/myRBook_FR). Ce livre est collaboratif, il repose sur votre participation. "
-##   [8] ""                                                                                                                                                                                                                                                                                                           
-##   [9] "Les diapositives du [module de 35h sur l'analyse de variance et le modÃ¨le linÃ©aire sont disponibles ici](http://myrbookfr.netlify.com/myHtmls/France_Montpellier_2019/R00_links.html)."                                                                                                                   
-##  [10] ""                                                                                                                                                                                                                                                                                                           
-##  [11] "Ce livre est Ã©galement disponible en espagnol (http://myrbooksp.netlify.com/). "                                                                                                                                                                                                                           
-##  [12] ""                                                                                                                                                                                                                                                                                                           
-##  [13] "DerniÃ¨res modifications:"                                                                                                                                                                                                                                                                                  
-##  [14] ""                                                                                                                                                                                                                                                                                                           
-##  [15] "**27/11/2019**"                                                                                                                                                                                                                                                                                             
-##  [16] ""                                                                                                                                                                                                                                                                                                           
-##  [17] "* Diapositives du cours [analyse de variance et le modÃ¨le linÃ©aire](http://myrbookfr.netlify.com/myHtmls/France_Montpellier_2019/R00_links.html)"                                                                                                                                                         
-##  [18] ""                                                                                                                                                                                                                                                                                                           
-##  [19] "**27/06/2019**"                                                                                                                                                                                                                                                                                             
-##  [20] ""                                                                                                                                                                                                                                                                                                           
-##  [21] "* Modification de l'[Ã©tude de cas sur les dataloggers](#studyCase001)"                                                                                                                                                                                                                                     
-##  [22] ""                                                                                                                                                                                                                                                                                                           
-##  [23] "**22/01/2019**"                                                                                                                                                                                                                                                                                             
-##  [24] ""                                                                                                                                                                                                                                                                                                           
-##  [25] "* Les [packages graphiques](#graph3)"                                                                                                                                                                                                                                                                       
-##  [26] ""                                                                                                                                                                                                                                                                                                           
-##  [27] "**03/12/2018**"                                                                                                                                                                                                                                                                                             
-##  [28] ""                                                                                                                                                                                                                                                                                                           
-##  [29] "* La [gestion des couleurs](#graph2)"                                                                                                                                                                                                                                                                       
-##  [30] ""                                                                                                                                                                                                                                                                                                           
-##  [31] "**29/11/2018**"                                                                                                                                                                                                                                                                                             
-##  [32] ""                                                                                                                                                                                                                                                                                                           
-##  [33] "* Les [graphiques simples](#graph1) (4&5/5)"                                                                                                                                                                                                                                                                
-##  [34] ""                                                                                                                                                                                                                                                                                                           
-##  [35] "**28/11/2018**"                                                                                                                                                                                                                                                                                             
-##  [36] ""                                                                                                                                                                                                                                                                                                           
-##  [37] "* Les [graphiques simples](#graph1) (3/5)"                                                                                                                                                                                                                                                                  
-##  [38] ""                                                                                                                                                                                                                                                                                                           
-##  [39] "**19/11/2018**"                                                                                                                                                                                                                                                                                             
-##  [40] ""                                                                                                                                                                                                                                                                                                           
-##  [41] "* Les [graphiques simples](#graph1) (1&2/5)"                                                                                                                                                                                                                                                                
-##  [42] ""                                                                                                                                                                                                                                                                                                           
-##  [43] "**09/11/2018**"                                                                                                                                                                                                                                                                                             
-##  [44] ""                                                                                                                                                                                                                                                                                                           
-##  [45] "* Nouveau chapitre sur [la gestion de projet avec R](#project)"                                                                                                                                                                                                                                             
-##  [46] "* La partie \"Concepts de base\" est complÃ¨te"                                                                                                                                                                                                                                                             
-##  [47] ""                                                                                                                                                                                                                                                                                                           
-##  [48] "**08/11/2018**"                                                                                                                                                                                                                                                                                             
-##  [49] ""                                                                                                                                                                                                                                                                                                           
-##  [50] "* algorithmique [Les boucles de la famille `apply`](#l17applyfamily) (6/6)"                                                                                                                                                                                                                                 
-##  [51] ""                                                                                                                                                                                                                                                                                                           
-##  [52] "**30/10/2018**"                                                                                                                                                                                                                                                                                             
-##  [53] ""                                                                                                                                                                                                                                                                                                           
-##  [54] "* algorithmique [`next` et `break`](#l17spe) (5/6)"                                                                                                                                                                                                                                                         
-##  [55] ""                                                                                                                                                                                                                                                                                                           
-##  [56] "**18/10/2018**"                                                                                                                                                                                                                                                                                             
-##  [57] ""                                                                                                                                                                                                                                                                                                           
-##  [58] "* algorithmique [La boucle \"while\"](#l17while) (4/6)"                                                                                                                                                                                                                                                     
-##  [59] "* algorithmique [La boucle \"repeat\"](#l17repeat) (4'/6)"                                                                                                                                                                                                                                                  
-##  [60] ""                                                                                                                                                                                                                                                                                                           
-##  [61] "**28/09/2018**"                                                                                                                                                                                                                                                                                             
-##  [62] ""                                                                                                                                                                                                                                                                                                           
-##  [63] "* algorithmique [Tests logiques avec \"switch\"](#l17switch) (2/6)"                                                                                                                                                                                                                                         
-##  [64] "* algorithmique [La boucle \"for\"](#l17for) (3/6)"                                                                                                                                                                                                                                                         
-##  [65] ""                                                                                                                                                                                                                                                                                                           
-##  [66] "**17/09/2018**"                                                                                                                                                                                                                                                                                             
-##  [67] ""                                                                                                                                                                                                                                                                                                           
-##  [68] "* algorithmique [Tests logiques avec \"if\"](#l17if) (1/6)"                                                                                                                                                                                                                                                 
-##  [69] ""                                                                                                                                                                                                                                                                                                           
-##  [70] "**10/09/2018**"                                                                                                                                                                                                                                                                                             
-##  [71] ""                                                                                                                                                                                                                                                                                                           
-##  [72] "* nouveau chapitre [Importer et exporter des donnÃ©es](#import)"                                                                                                                                                                                                                                            
-##  [73] ""                                                                                                                                                                                                                                                                                                           
-##  [74] "**30/08/2018**"                                                                                                                                                                                                                                                                                             
-##  [75] ""                                                                                                                                                                                                                                                                                                           
-##  [76] "* Modifications de Marc G. ([Ã©tude de cas](#studyCase002) ; [types de donnÃ©es](#dataType1))"                                                                                                                                                                                                              
-##  [77] "* nouvelle Ã©tude de cas : [analyse des donnÃ©es de datalogger de tempÃ©rature](#studyCase001)"                                                                                                                                                                                                             
-##  [78] ""                                                                                                                                                                                                                                                                                                           
-##  [79] "**24/08/2018**"                                                                                                                                                                                                                                                                                             
-##  [80] ""                                                                                                                                                                                                                                                                                                           
-##  [81] "* Les fonctions (partie 2/3 et 3/3) : [Ã©crire une fonction et conclusion](#l015function)"                                                                                                                                                                                                                  
-##  [82] ""                                                                                                                                                                                                                                                                                                           
-##  [83] "**27/07/2018**"                                                                                                                                                                                                                                                                                             
-##  [84] ""                                                                                                                                                                                                                                                                                                           
-##  [85] "* Etude de cas : [Obtenir le numÃ©ro WOS d'un article scientifique Ã  partir de son numÃ©ro DOI](#studyCase002)"                                                                                                                                                                                            
-##  [86] "* typos et rÃ©fÃ©rences internes"                                                                                                                                                                                                                                                                           
-##  [87] ""                                                                                                                                                                                                                                                                                                           
-##  [88] "**25/07/2018**"                                                                                                                                                                                                                                                                                             
-##  [89] ""                                                                                                                                                                                                                                                                                                           
-##  [90] "* Les fonctions (partie 1/3) : [les fonctions les plus courantes](#l015mainfun)"                                                                                                                                                                                                                            
-##  [91] ""                                                                                                                                                                                                                                                                                                           
-##  [92] "**17/07/2018**"                                                                                                                                                                                                                                                                                             
-##  [93] ""                                                                                                                                                                                                                                                                                                           
-##  [94] "* Les conteneurs de donnÃ©es (partie 4/5) : [matrix](#l014matrix)"                                                                                                                                                                                                                                          
-##  [95] "* Les conteneurs de donnÃ©es (partie 5/5) : [array](#l014array)"                                                                                                                                                                                                                                            
-##  [96] ""                                                                                                                                                                                                                                                                                                           
-##  [97] "**13/07/2018**"                                                                                                                                                                                                                                                                                             
-##  [98] ""                                                                                                                                                                                                                                                                                                           
-##  [99] "* mise en ligne du contenu en franÃ§ais sur la base du livre en espagnol"                                                                                                                                                                                                                                   
-## [100] "* Les conteneurs de donnÃ©es (partie 3/5) : [data.frame](#l014dataframe)"
+## [1] "---"                           "book_filename: \"myRBook_FR\""
+## [3] "output_dir: public"            "language: "                   
+## [5] "  ui:"                         "    chapter_name: \" \""      
+## [7] "delete_merged_file: true"      "---"
 \end{verbatim}
 
 Il existe aussi la fonction \texttt{scan()} qui va renvoyer l'ensemble des mots séparés par des espaces. Nous pouvons consulter l'aide pour plus d'information.
@@ -7463,369 +7348,10 @@ Il existe aussi la fonction \texttt{scan()} qui va renvoyer l'ensemble des mots 
 \end{Shaded}
 
 \begin{verbatim}
-##   [1] "#"                                                                                      
-##   [2] "myRBook_FR"                                                                             
-##   [3] "Vous"                                                                                   
-##   [4] "trouverez"                                                                              
-##   [5] "ici"                                                                                    
-##   [6] "le"                                                                                     
-##   [7] "code"                                                                                   
-##   [8] "source"                                                                                 
-##   [9] "du"                                                                                     
-##  [10] "livre"                                                                                  
-##  [11] "*Se"                                                                                    
-##  [12] "former"                                                                                 
-##  [13] "au"                                                                                     
-##  [14] "logiciel"                                                                               
-##  [15] "R"                                                                                      
-##  [16] ":"                                                                                      
-##  [17] "initiation"                                                                             
-##  [18] "et"                                                                                     
-##  [19] "perfectionnement*,"                                                                     
-##  [20] "construit"                                                                              
-##  [21] "avec"                                                                                   
-##  [22] "bookdown."                                                                              
-##  [23] "Ce"                                                                                     
-##  [24] "livre"                                                                                  
-##  [25] "est"                                                                                    
-##  [26] "mis"                                                                                    
-##  [27] "Ã"                                                                                      
-##  [28] " "                                                                                      
-##  [29] "jour"                                                                                   
-##  [30] "rÃ©guliÃ¨rement,"                                                                       
-##  [31] "alors"                                                                                  
-##  [32] "n'hÃ©sitez"                                                                             
-##  [33] "pas"                                                                                    
-##  [34] "Ã"                                                                                      
-##  [35] " "                                                                                      
-##  [36] "consulter"                                                                              
-##  [37] "les"                                                                                    
-##  [38] "derniÃ¨res"                                                                             
-##  [39] "modifications"                                                                          
-##  [40] "ci-dessous."                                                                            
-##  [41] "Si"                                                                                     
-##  [42] "vous"                                                                                   
-##  [43] "avez"                                                                                   
-##  [44] "des"                                                                                    
-##  [45] "commentaires,"                                                                          
-##  [46] "des"                                                                                    
-##  [47] "suggestions"                                                                            
-##  [48] "ou"                                                                                     
-##  [49] "si"                                                                                     
-##  [50] "vous"                                                                                   
-##  [51] "identifiez"                                                                             
-##  [52] "des"                                                                                    
-##  [53] "erreurs,"                                                                               
-##  [54] "n'hÃ©sitez"                                                                             
-##  [55] "pas"                                                                                    
-##  [56] "Ã"                                                                                      
-##  [57] " "                                                                                      
-##  [58] "m'envoyer"                                                                              
-##  [59] "un"                                                                                     
-##  [60] "email"                                                                                  
-##  [61] "(francois.rebaudo@ird.fr),"                                                             
-##  [62] "ou"                                                                                     
-##  [63] "si"                                                                                     
-##  [64] "vous"                                                                                   
-##  [65] "connaissez"                                                                             
-##  [66] "GitHub"                                                                                 
-##  [67] "sur"                                                                                    
-##  [68] "le"                                                                                     
-##  [69] "site"                                                                                   
-##  [70] "du"                                                                                     
-##  [71] "projet"                                                                                 
-##  [72] "(https://github.com/frareb/myRBook_FR)."                                                
-##  [73] "Ce"                                                                                     
-##  [74] "livre"                                                                                  
-##  [75] "est"                                                                                    
-##  [76] "collaboratif,"                                                                          
-##  [77] "il"                                                                                     
-##  [78] "repose"                                                                                 
-##  [79] "sur"                                                                                    
-##  [80] "votre"                                                                                  
-##  [81] "participation."                                                                         
-##  [82] "Les"                                                                                    
-##  [83] "diapositives"                                                                           
-##  [84] "du"                                                                                     
-##  [85] "[module"                                                                                
-##  [86] "de"                                                                                     
-##  [87] "35h"                                                                                    
-##  [88] "sur"                                                                                    
-##  [89] "l'analyse"                                                                              
-##  [90] "de"                                                                                     
-##  [91] "variance"                                                                               
-##  [92] "et"                                                                                     
-##  [93] "le"                                                                                     
-##  [94] "modÃ¨le"                                                                                
-##  [95] "linÃ©aire"                                                                              
-##  [96] "sont"                                                                                   
-##  [97] "disponibles"                                                                            
-##  [98] "ici](http://myrbookfr.netlify.com/myHtmls/France_Montpellier_2019/R00_links.html)."     
-##  [99] "Ce"                                                                                     
-## [100] "livre"                                                                                  
-## [101] "est"                                                                                    
-## [102] "Ã©galement"                                                                             
-## [103] "disponible"                                                                             
-## [104] "en"                                                                                     
-## [105] "espagnol"                                                                               
-## [106] "(http://myrbooksp.netlify.com/)."                                                       
-## [107] "DerniÃ¨res"                                                                             
-## [108] "modifications:"                                                                         
-## [109] "**27/11/2019**"                                                                         
-## [110] "*"                                                                                      
-## [111] "Diapositives"                                                                           
-## [112] "du"                                                                                     
-## [113] "cours"                                                                                  
-## [114] "[analyse"                                                                               
-## [115] "de"                                                                                     
-## [116] "variance"                                                                               
-## [117] "et"                                                                                     
-## [118] "le"                                                                                     
-## [119] "modÃ¨le"                                                                                
-## [120] "linÃ©aire](http://myrbookfr.netlify.com/myHtmls/France_Montpellier_2019/R00_links.html)"
-## [121] "**27/06/2019**"                                                                         
-## [122] "*"                                                                                      
-## [123] "Modification"                                                                           
-## [124] "de"                                                                                     
-## [125] "l'[Ã©tude"                                                                              
-## [126] "de"                                                                                     
-## [127] "cas"                                                                                    
-## [128] "sur"                                                                                    
-## [129] "les"                                                                                    
-## [130] "dataloggers](#studyCase001)"                                                            
-## [131] "**22/01/2019**"                                                                         
-## [132] "*"                                                                                      
-## [133] "Les"                                                                                    
-## [134] "[packages"                                                                              
-## [135] "graphiques](#graph3)"                                                                   
-## [136] "**03/12/2018**"                                                                         
-## [137] "*"                                                                                      
-## [138] "La"                                                                                     
-## [139] "[gestion"                                                                               
-## [140] "des"                                                                                    
-## [141] "couleurs](#graph2)"                                                                     
-## [142] "**29/11/2018**"                                                                         
-## [143] "*"                                                                                      
-## [144] "Les"                                                                                    
-## [145] "[graphiques"                                                                            
-## [146] "simples](#graph1)"                                                                      
-## [147] "(4&5/5)"                                                                                
-## [148] "**28/11/2018**"                                                                         
-## [149] "*"                                                                                      
-## [150] "Les"                                                                                    
-## [151] "[graphiques"                                                                            
-## [152] "simples](#graph1)"                                                                      
-## [153] "(3/5)"                                                                                  
-## [154] "**19/11/2018**"                                                                         
-## [155] "*"                                                                                      
-## [156] "Les"                                                                                    
-## [157] "[graphiques"                                                                            
-## [158] "simples](#graph1)"                                                                      
-## [159] "(1&2/5)"                                                                                
-## [160] "**09/11/2018**"                                                                         
-## [161] "*"                                                                                      
-## [162] "Nouveau"                                                                                
-## [163] "chapitre"                                                                               
-## [164] "sur"                                                                                    
-## [165] "[la"                                                                                    
-## [166] "gestion"                                                                                
-## [167] "de"                                                                                     
-## [168] "projet"                                                                                 
-## [169] "avec"                                                                                   
-## [170] "R](#project)"                                                                           
-## [171] "*"                                                                                      
-## [172] "La"                                                                                     
-## [173] "partie"                                                                                 
-## [174] "Concepts de base"                                                                       
-## [175] "est"                                                                                    
-## [176] "complÃ¨te"                                                                              
-## [177] "**08/11/2018**"                                                                         
-## [178] "*"                                                                                      
-## [179] "algorithmique"                                                                          
-## [180] "[Les"                                                                                   
-## [181] "boucles"                                                                                
-## [182] "de"                                                                                     
-## [183] "la"                                                                                     
-## [184] "famille"                                                                                
-## [185] "`apply`](#l17applyfamily)"                                                              
-## [186] "(6/6)"                                                                                  
-## [187] "**30/10/2018**"                                                                         
-## [188] "*"                                                                                      
-## [189] "algorithmique"                                                                          
-## [190] "[`next`"                                                                                
-## [191] "et"                                                                                     
-## [192] "`break`](#l17spe)"                                                                      
-## [193] "(5/6)"                                                                                  
-## [194] "**18/10/2018**"                                                                         
-## [195] "*"                                                                                      
-## [196] "algorithmique"                                                                          
-## [197] "[La"                                                                                    
-## [198] "boucle"                                                                                 
-## [199] "while"                                                                                  
-## [200] "](#l17while)"                                                                           
-## [201] "(4/6)"                                                                                  
-## [202] "*"                                                                                      
-## [203] "algorithmique"                                                                          
-## [204] "[La"                                                                                    
-## [205] "boucle"                                                                                 
-## [206] "repeat"                                                                                 
-## [207] "](#l17repeat)"                                                                          
-## [208] "(4'/6)"                                                                                 
-## [209] "**28/09/2018**"                                                                         
-## [210] "*"                                                                                      
-## [211] "algorithmique"                                                                          
-## [212] "[Tests"                                                                                 
-## [213] "logiques"                                                                               
-## [214] "avec"                                                                                   
-## [215] "switch"                                                                                 
-## [216] "](#l17switch)"                                                                          
-## [217] "(2/6)"                                                                                  
-## [218] "*"                                                                                      
-## [219] "algorithmique"                                                                          
-## [220] "[La"                                                                                    
-## [221] "boucle"                                                                                 
-## [222] "for"                                                                                    
-## [223] "](#l17for)"                                                                             
-## [224] "(3/6)"                                                                                  
-## [225] "**17/09/2018**"                                                                         
-## [226] "*"                                                                                      
-## [227] "algorithmique"                                                                          
-## [228] "[Tests"                                                                                 
-## [229] "logiques"                                                                               
-## [230] "avec"                                                                                   
-## [231] "if"                                                                                     
-## [232] "](#l17if)"                                                                              
-## [233] "(1/6)"                                                                                  
-## [234] "**10/09/2018**"                                                                         
-## [235] "*"                                                                                      
-## [236] "nouveau"                                                                                
-## [237] "chapitre"                                                                               
-## [238] "[Importer"                                                                              
-## [239] "et"                                                                                     
-## [240] "exporter"                                                                               
-## [241] "des"                                                                                    
-## [242] "donnÃ©es](#import)"                                                                     
-## [243] "**30/08/2018**"                                                                         
-## [244] "*"                                                                                      
-## [245] "Modifications"                                                                          
-## [246] "de"                                                                                     
-## [247] "Marc"                                                                                   
-## [248] "G."                                                                                     
-## [249] "([Ã©tude"                                                                               
-## [250] "de"                                                                                     
-## [251] "cas](#studyCase002)"                                                                    
-## [252] ";"                                                                                      
-## [253] "[types"                                                                                 
-## [254] "de"                                                                                     
-## [255] "donnÃ©es](#dataType1))"                                                                 
-## [256] "*"                                                                                      
-## [257] "nouvelle"                                                                               
-## [258] "Ã©tude"                                                                                 
-## [259] "de"                                                                                     
-## [260] "cas"                                                                                    
-## [261] ":"                                                                                      
-## [262] "[analyse"                                                                               
-## [263] "des"                                                                                    
-## [264] "donnÃ©es"                                                                               
-## [265] "de"                                                                                     
-## [266] "datalogger"                                                                             
-## [267] "de"                                                                                     
-## [268] "tempÃ©rature](#studyCase001)"                                                           
-## [269] "**24/08/2018**"                                                                         
-## [270] "*"                                                                                      
-## [271] "Les"                                                                                    
-## [272] "fonctions"                                                                              
-## [273] "(partie"                                                                                
-## [274] "2/3"                                                                                    
-## [275] "et"                                                                                     
-## [276] "3/3)"                                                                                   
-## [277] ":"                                                                                      
-## [278] "[Ã©crire"                                                                               
-## [279] "une"                                                                                    
-## [280] "fonction"                                                                               
-## [281] "et"                                                                                     
-## [282] "conclusion](#l015function)"                                                             
-## [283] "**27/07/2018**"                                                                         
-## [284] "*"                                                                                      
-## [285] "Etude"                                                                                  
-## [286] "de"                                                                                     
-## [287] "cas"                                                                                    
-## [288] ":"                                                                                      
-## [289] "[Obtenir"                                                                               
-## [290] "le"                                                                                     
-## [291] "numÃ©ro"                                                                                
-## [292] "WOS"                                                                                    
-## [293] "d'un"                                                                                   
-## [294] "article"                                                                                
-## [295] "scientifique"                                                                           
-## [296] "Ã"                                                                                      
-## [297] " "                                                                                      
-## [298] "partir"                                                                                 
-## [299] "de"                                                                                     
-## [300] "son"                                                                                    
-## [301] "numÃ©ro"                                                                                
-## [302] "DOI](#studyCase002)"                                                                    
-## [303] "*"                                                                                      
-## [304] "typos"                                                                                  
-## [305] "et"                                                                                     
-## [306] "rÃ©fÃ©rences"                                                                           
-## [307] "internes"                                                                               
-## [308] "**25/07/2018**"                                                                         
-## [309] "*"                                                                                      
-## [310] "Les"                                                                                    
-## [311] "fonctions"                                                                              
-## [312] "(partie"                                                                                
-## [313] "1/3)"                                                                                   
-## [314] ":"                                                                                      
-## [315] "[les"                                                                                   
-## [316] "fonctions"                                                                              
-## [317] "les"                                                                                    
-## [318] "plus"                                                                                   
-## [319] "courantes](#l015mainfun)"                                                               
-## [320] "**17/07/2018**"                                                                         
-## [321] "*"                                                                                      
-## [322] "Les"                                                                                    
-## [323] "conteneurs"                                                                             
-## [324] "de"                                                                                     
-## [325] "donnÃ©es"                                                                               
-## [326] "(partie"                                                                                
-## [327] "4/5)"                                                                                   
-## [328] ":"                                                                                      
-## [329] "[matrix](#l014matrix)"                                                                  
-## [330] "*"                                                                                      
-## [331] "Les"                                                                                    
-## [332] "conteneurs"                                                                             
-## [333] "de"                                                                                     
-## [334] "donnÃ©es"                                                                               
-## [335] "(partie"                                                                                
-## [336] "5/5)"                                                                                   
-## [337] ":"                                                                                      
-## [338] "[array](#l014array)"                                                                    
-## [339] "**13/07/2018**"                                                                         
-## [340] "*"                                                                                      
-## [341] "mise"                                                                                   
-## [342] "en"                                                                                     
-## [343] "ligne"                                                                                  
-## [344] "du"                                                                                     
-## [345] "contenu"                                                                                
-## [346] "en"                                                                                     
-## [347] "franÃ§ais"                                                                              
-## [348] "sur"                                                                                    
-## [349] "la"                                                                                     
-## [350] "base"                                                                                   
-## [351] "du"                                                                                     
-## [352] "livre"                                                                                  
-## [353] "en"                                                                                     
-## [354] "espagnol"                                                                               
-## [355] "*"                                                                                      
-## [356] "Les"                                                                                    
-## [357] "conteneurs"                                                                             
-## [358] "de"                                                                                     
-## [359] "donnÃ©es"                                                                               
-## [360] "(partie"                                                                                
-## [361] "3/5)"                                                                                   
-## [362] ":"                                                                                      
-## [363] "[data.frame](#l014dataframe)"
+##  [1] "---"                 "book_filename:"      "myRBook_FR"         
+##  [4] "output_dir:"         "public"              "language:"          
+##  [7] "ui:"                 "chapter_name:"       " "                  
+## [10] "delete_merged_file:" "true"                "---"
 \end{verbatim}
 
 \hypertarget{l016save}{%
@@ -8231,12 +7757,12 @@ En programmation, lorsque nous sommes amenés à répéter plusieurs fois la mê
 
 \begin{verbatim}
 ##      date01    date02
-## 1  9.190991  9.115880
-## 2  8.623565  9.210308
-## 3  9.940635 10.995126
-## 4  9.526058 10.034558
-## 5 10.350506  9.642587
-## 6  9.080268  9.235231
+## 1 10.233738 10.490338
+## 2 10.746092  9.141437
+## 3 10.687137 10.400753
+## 4  9.257345 10.986878
+## 5  9.000318  9.555166
+## 6  9.610650  9.673664
 \end{verbatim}
 
 Nous voudrions quantifier la différence entre la première et la deuxième date, puis mettre un indicateur pour savoir si cette différence est petite ou grande, par exemple avec un seuil arbitraire de 3. Donc pour chaque ligne nous pourrions faire :
@@ -8358,26 +7884,26 @@ Revenons à notre cas. Nous allons itérer sur le nombre de lignes de notre \tex
 
 \begin{verbatim}
 ##       date01    date02        dif isDifBig
-## 1   9.190991  9.115880 0.07511132    small
-## 2   8.623565  9.210308 0.58674239    small
-## 3   9.940635 10.995126 1.05449191    small
-## 4   9.526058 10.034558 0.50849938    small
-## 5  10.350506  9.642587 0.70791914    small
-## 6   9.080268  9.235231 0.15496372    small
-## 7   8.703592  8.457559 0.24603272    small
-## 8   9.068066 10.939476 1.87140962    small
-## 9   8.888046  9.915474 1.02742783    small
-## 10 10.033339 10.378741 0.34540190    small
-## 11 10.662946  8.999323 1.66362276    small
-## 12 10.825910  9.997452 0.82845829    small
-## 13 10.567622 10.715913 0.14829136    small
-## 14 10.611956 10.131475 0.48048124    small
-## 15 10.115692  9.779054 0.33663832    small
-## 16 11.698118 10.982669 0.71544945    small
-## 17 10.852839 11.117452 0.26461320    small
-## 18  8.766970 10.561642 1.79467244    small
-## 19  9.586512 11.572112 1.98560004    small
-## 20 10.676656 10.805902 0.12924653    small
+## 1  10.233738 10.490338 0.25659930    small
+## 2  10.746092  9.141437 1.60465533    small
+## 3  10.687137 10.400753 0.28638349    small
+## 4   9.257345 10.986878 1.72953283    small
+## 5   9.000318  9.555166 0.55484875    small
+## 6   9.610650  9.673664 0.06301451    small
+## 7   9.544099  7.229636 2.31446337    small
+## 8   9.994521  9.303617 0.69090383    small
+## 9  11.180663 10.819906 0.36075704    small
+## 10  9.769796 10.273283 0.50348687    small
+## 11 10.410086  9.643933 0.76615248    small
+## 12 10.408800 10.493392 0.08459227    small
+## 13 10.307089 10.004161 0.30292793    small
+## 14  9.767787 10.323183 0.55539523    small
+## 15  9.260819 10.404412 1.14359264    small
+## 16  8.819078  8.983405 0.16432657    small
+## 17 10.838240 12.800480 1.96224004    small
+## 18  8.638495  9.152716 0.51422092    small
+## 19  9.445446  8.921376 0.52407035    small
+## 20  9.381820 11.728096 2.34627634    small
 \end{verbatim}
 
 En pratique ce n'est pas la meilleure façon de réaliser cet exercice car il s'agit ici de simples calculs sur des vecteurs contenus dans une \texttt{data.frame}. R est particulièrement puissant pour effectuer des opérations sur des vecteurs. Lorsque cela est possible il faut donc toujours privilégier les opérations sur les vecteurs. Ici notre code devient :
@@ -8393,26 +7919,26 @@ En pratique ce n'est pas la meilleure façon de réaliser cet exercice car il s'
 
 \begin{verbatim}
 ##       date01    date02        dif isDifBig
-## 1   9.190991  9.115880 0.07511132    small
-## 2   8.623565  9.210308 0.58674239    small
-## 3   9.940635 10.995126 1.05449191    small
-## 4   9.526058 10.034558 0.50849938    small
-## 5  10.350506  9.642587 0.70791914    small
-## 6   9.080268  9.235231 0.15496372    small
-## 7   8.703592  8.457559 0.24603272    small
-## 8   9.068066 10.939476 1.87140962    small
-## 9   8.888046  9.915474 1.02742783    small
-## 10 10.033339 10.378741 0.34540190    small
-## 11 10.662946  8.999323 1.66362276    small
-## 12 10.825910  9.997452 0.82845829    small
-## 13 10.567622 10.715913 0.14829136    small
-## 14 10.611956 10.131475 0.48048124    small
-## 15 10.115692  9.779054 0.33663832    small
-## 16 11.698118 10.982669 0.71544945    small
-## 17 10.852839 11.117452 0.26461320    small
-## 18  8.766970 10.561642 1.79467244    small
-## 19  9.586512 11.572112 1.98560004    small
-## 20 10.676656 10.805902 0.12924653    small
+## 1  10.233738 10.490338 0.25659930    small
+## 2  10.746092  9.141437 1.60465533    small
+## 3  10.687137 10.400753 0.28638349    small
+## 4   9.257345 10.986878 1.72953283    small
+## 5   9.000318  9.555166 0.55484875    small
+## 6   9.610650  9.673664 0.06301451    small
+## 7   9.544099  7.229636 2.31446337    small
+## 8   9.994521  9.303617 0.69090383    small
+## 9  11.180663 10.819906 0.36075704    small
+## 10  9.769796 10.273283 0.50348687    small
+## 11 10.410086  9.643933 0.76615248    small
+## 12 10.408800 10.493392 0.08459227    small
+## 13 10.307089 10.004161 0.30292793    small
+## 14  9.767787 10.323183 0.55539523    small
+## 15  9.260819 10.404412 1.14359264    small
+## 16  8.819078  8.983405 0.16432657    small
+## 17 10.838240 12.800480 1.96224004    small
+## 18  8.638495  9.152716 0.51422092    small
+## 19  9.445446  8.921376 0.52407035    small
+## 20  9.381820 11.728096 2.34627634    small
 \end{verbatim}
 
 La plupart des exemples que l'on peut trouver sur Internet à propos de la boucle \texttt{for()} peuvent être remplacés par des opérations sur les vecteurs. Voici quelques exemples adaptés de plusieurs sources :
@@ -8433,7 +7959,7 @@ La plupart des exemples que l'on peut trouver sur Internet à propos de la boucl
 \end{Shaded}
 
 \begin{verbatim}
-## [1] 9
+## [1] 8
 \end{verbatim}
 
 \begin{Shaded}
@@ -8444,7 +7970,7 @@ La plupart des exemples que l'on peut trouver sur Internet à propos de la boucl
 \end{Shaded}
 
 \begin{verbatim}
-## [1] 9
+## [1] 8
 \end{verbatim}
 
 \begin{Shaded}
@@ -8460,8 +7986,8 @@ La plupart des exemples que l'on peut trouver sur Internet à propos de la boucl
 \end{Shaded}
 
 \begin{verbatim}
-##  [1]   1   4   9  16  25  36  49  64  81 100 121 144 169 196 225 256 289
-## [18] 324 361 400
+##  [1]   1   4   9  16  25  36  49  64  81 100 121 144 169 196 225 256 289 324 361
+## [20] 400
 \end{verbatim}
 
 \begin{Shaded}
@@ -8472,8 +7998,8 @@ La plupart des exemples que l'on peut trouver sur Internet à propos de la boucl
 \end{Shaded}
 
 \begin{verbatim}
-##  [1]   1   4   9  16  25  36  49  64  81 100 121 144 169 196 225 256 289
-## [18] 324 361 400
+##  [1]   1   4   9  16  25  36  49  64  81 100 121 144 169 196 225 256 289 324 361
+## [20] 400
 \end{verbatim}
 
 \begin{Shaded}
@@ -8490,7 +8016,7 @@ La plupart des exemples que l'on peut trouver sur Internet à propos de la boucl
 \end{Shaded}
 
 \begin{verbatim}
-## [1] 3.528
+## [1] 3.412
 \end{verbatim}
 
 \begin{Shaded}
@@ -8501,7 +8027,7 @@ La plupart des exemples que l'on peut trouver sur Internet à propos de la boucl
 \end{Shaded}
 
 \begin{verbatim}
-## [1] 3.427
+## [1] 3.464
 \end{verbatim}
 
 C'est un bon exercice de parcourir les nombreux exemples disponibles sur Internet sur la boucle \texttt{for()} et de tenter de les transformer en opérations vectorielles. Cela nous permet d'acquérir les bons réflexes de programmation avec R. La boucle \texttt{for()} reste très utile pour par exemple lire plusieurs fichiers et traiter l'information qu'ils contiennent de la même façon, faire des graphiques, ou encore lorsque les opérations vectorielles deveinnent fastidieuses. Imaginons une matrice de 10 colonnes et 100 lignes. Nous voulons la somme de chaque ligne (nous verrons plus loin comment faire avec la fonction \texttt{apply()}).
@@ -8518,12 +8044,12 @@ C'est un bon exercice de parcourir les nombreux exemples disponibles sur Interne
 \end{Shaded}
 
 \begin{verbatim}
-##   [1] 601 469 610 467 312 376 402 586 626 530 448 459 517 610 545 419 604
-##  [18] 665 613 497 545 526 435 403 511 614 541 449 621 540 586 414 448 454
-##  [35] 369 415 359 509 489 512 367 605 440 416 473 611 455 420 527 567 395
-##  [52] 550 392 460 466 648 655 502 337 609 588 574 503 598 458 555 592 376
-##  [69] 379 529 487 485 394 411 449 573 679 610 436 569 637 420 658 512 359
-##  [86] 491 529 544 447 511 440 382 329 395 493 653 444 431 591 434
+##   [1] 393 372 400 452 458 657 559 549 502 698 669 304 442 544 442 449 598 568
+##  [19] 608 712 471 639 579 498 582 494 494 481 482 326 525 539 615 582 354 431
+##  [37] 460 513 479 322 472 581 339 446 355 378 506 495 572 429 541 430 393 405
+##  [55] 477 543 456 424 570 505 573 411 436 333 660 435 378 486 431 685 660 589
+##  [73] 584 488 478 640 600 598 415 497 388 535 544 655 448 611 561 493 384 486
+##  [91] 460 532 526 519 495 444 641 402 548 631
 \end{verbatim}
 
 \begin{Shaded}
@@ -8538,12 +8064,12 @@ C'est un bon exercice de parcourir les nombreux exemples disponibles sur Interne
 \end{Shaded}
 
 \begin{verbatim}
-##   [1] 601 469 610 467 312 376 402 586 626 530 448 459 517 610 545 419 604
-##  [18] 665 613 497 545 526 435 403 511 614 541 449 621 540 586 414 448 454
-##  [35] 369 415 359 509 489 512 367 605 440 416 473 611 455 420 527 567 395
-##  [52] 550 392 460 466 648 655 502 337 609 588 574 503 598 458 555 592 376
-##  [69] 379 529 487 485 394 411 449 573 679 610 436 569 637 420 658 512 359
-##  [86] 491 529 544 447 511 440 382 329 395 493 653 444 431 591 434
+##   [1] 393 372 400 452 458 657 559 549 502 698 669 304 442 544 442 449 598 568
+##  [19] 608 712 471 639 579 498 582 494 494 481 482 326 525 539 615 582 354 431
+##  [37] 460 513 479 322 472 581 339 446 355 378 506 495 572 429 541 430 393 405
+##  [55] 477 543 456 424 570 505 573 411 436 333 660 435 378 486 431 685 660 589
+##  [73] 584 488 478 640 600 598 415 497 388 535 544 655 448 611 561 493 384 486
+##  [91] 460 532 526 519 495 444 641 402 548 631
 \end{verbatim}
 
 En conclusion, il est recommandé de ne pas utiliser la boucle \texttt{for()} avec R chaque fois que cela est possible, et nous verrons dans ce chapitre des alternatives commes les boucles de la famille \texttt{apply()}.
@@ -8604,7 +8130,7 @@ La boucle \texttt{while()} est très utile pour créer des scripts qui vont effe
 
 \begin{verbatim}
 ## [1] "Number found !"
-## [1] "And I have plenty of time left: 1.92 sec"
+## [1] "And I have plenty of time left: 1.3 sec"
 \end{verbatim}
 
 Dans ce script nous générons un nombre aléatoire à deviner avec la fonction \texttt{sample()}, et chaque essai avec la même fonction \texttt{sample()}. Ensuite nous utilisons la fonction \texttt{Sys.time()} (avec un S majuscule à \texttt{Sys}), pour connaître l'heure de début de la boucle. Tant que la différence entre chaque itération de la boucle et l'heure de démarrage est inférieur à 2 secondes, la boucle \texttt{while()} va vérifier si le bon nombre a été deviner dans le test logique avec \texttt{if()} puis si c'est le cas nous informer que le nombre a été trouvé, nous dire le temps restant avant les deux secondes, puis terminer la boucle avec le mot clef \texttt{break} sur lequel nous reviendrons. En bref, \texttt{break} permet de sortir d'une boucle. Si le nombre n'a pas été deviné, la boucle fait un autre essai avec la fonction \texttt{sample()}.
@@ -8663,11 +8189,11 @@ Si nous reprenons l'exemple précédent, nous pouvons utiliser une boucle \textt
 \end{Shaded}
 
 \begin{verbatim}
-## [1] 0.162
-## [1] 0.096
-## [1] 0.772
-## [1] 0.561
-## [1] 0.336
+## [1] 0.004
+## [1] 0.322
+## [1] 0.107
+## [1] 0.263
+## [1] 0.259
 \end{verbatim}
 
 Comme la boucle \texttt{while()}, la boucle \texttt{repeat()} reste peu utilisée avec R.
@@ -8750,8 +8276,8 @@ Encore une fois nous pourrions éviter la boucle \texttt{for()} avec :
 \end{Shaded}
 
 \begin{verbatim}
-##  [1] "b" "c" "d" "f" "g" "h" "j" "k" "l" "m" "n" "p" "q" "r" "s" "t" "v"
-## [18] "w" "x" "z"
+##  [1] "b" "c" "d" "f" "g" "h" "j" "k" "l" "m" "n" "p" "q" "r" "s" "t" "v" "w" "x"
+## [20] "z"
 \end{verbatim}
 
 En conclusion, si nous utilisons les boucles, alors les mots clefs \texttt{next} et \texttt{break} sont souvent très utiles, mais chaque fois que cela est possible il vaut mieux avoir recours à des opérations sur les vecteurs. Lorsque cela n'est pas possible de travailler sur les vecteurs, il est préférable d'utiliser les boucles de la famille \texttt{apply} qui sont le sujet de la prochaine section.
@@ -8772,12 +8298,12 @@ La fonction \texttt{apply()} permet d'appliquer une fonction à tous les éléme
 \end{Shaded}
 
 \begin{verbatim}
-##   [1] 313 451 615 516 570 510 484 481 484 512 593 398 528 666 401 553 386
-##  [18] 522 516 502 385 364 479 404 473 533 494 523 585 396 548 508 462 621
-##  [35] 461 479 538 625 490 547 412 636 574 454 447 481 647 518 424 562 437
-##  [52] 569 489 399 435 564 614 563 518 420 684 637 482 614 561 560 444 449
-##  [69] 601 533 683 392 568 401 636 502 470 533 354 608 337 628 566 457 535
-##  [86] 503 392 508 539 502 445 550 599 479 431 372 578 431 602 623
+##   [1] 590 342 614 547 496 417 616 497 577 574 513 597 507 618 435 450 437 555
+##  [19] 501 477 514 410 424 681 512 353 421 523 620 360 627 498 555 415 410 287
+##  [37] 472 628 409 268 546 634 635 451 479 546 386 620 614 521 540 413 385 494
+##  [55] 591 528 447 503 593 513 326 660 330 708 408 505 380 432 553 419 489 551
+##  [73] 413 529 638 331 555 466 538 635 684 548 484 585 589 551 455 573 476 529
+##  [91] 497 508 414 385 597 470 586 582 523 424
 \end{verbatim}
 
 Si nous souhaitons connaître la médiane de chaque colonne, l'expression devient :
@@ -8789,7 +8315,7 @@ Si nous souhaitons connaître la médiane de chaque colonne, l'expression devien
 \end{Shaded}
 
 \begin{verbatim}
-##  [1] 50.5 56.0 55.0 54.5 51.0 53.5 43.5 52.5 50.5 49.5
+##  [1] 52.5 51.0 47.5 51.5 56.0 49.5 53.5 53.5 45.0 46.0
 \end{verbatim}
 
 L'argument \texttt{X} correspond à l'objet sur lequel la boucle \texttt{apply} va itérer. L'argument \texttt{MARGIN} correspond à la dimension à prendre en compte (1 pour les lignes, et 2 pour les colonnes). L'argument \texttt{FUN} correspond à la fonction à appliquer. Sur un objet de type \texttt{array}, l'argument \texttt{MARGIN} peut prendre autant de valeurs que de dimensions. Dans cet exemple \texttt{MARGIN\ =\ 1} correspond à la moyenne de chaque ligne - dimension 1 - (toutes dimensions confondues), \texttt{MARGIN\ =\ 2} correspond à la moyenne de chaque colonne - dimension 2 - (toutes dimensions confondues), et \texttt{MARGIN\ =\ 3} correspond à la moyenne de chaque dimension 3. Ci-dessous chaque calcul est réalisé de deux manières différentes pour en expliciter le fonctionnement.
@@ -8802,7 +8328,7 @@ L'argument \texttt{X} correspond à l'objet sur lequel la boucle \texttt{apply} 
 \end{Shaded}
 
 \begin{verbatim}
-##  [1] 49.48 54.07 49.68 50.38 47.86 50.68 44.10 46.90 51.18 46.86
+##  [1] 47.15 52.34 51.44 53.14 52.84 51.96 50.44 43.20 48.28 51.17
 \end{verbatim}
 
 \begin{Shaded}
@@ -8814,7 +8340,7 @@ L'argument \texttt{X} correspond à l'objet sur lequel la boucle \texttt{apply} 
 \end{Shaded}
 
 \begin{verbatim}
-##  [1] 49.48 54.07 49.68 50.38 47.86 50.68 44.10 46.90 51.18 46.86
+##  [1] 47.15 52.34 51.44 53.14 52.84 51.96 50.44 43.20 48.28 51.17
 \end{verbatim}
 
 \begin{Shaded}
@@ -8824,8 +8350,8 @@ L'argument \texttt{X} correspond à l'objet sur lequel la boucle \texttt{apply} 
 \end{Shaded}
 
 \begin{verbatim}
-##  [1] 44.28 46.26 51.72 47.24 41.48 43.90 51.96 52.66 47.58 53.92 47.94
-## [12] 52.02 48.36 47.06 61.62 49.28 51.60 39.42 57.06 47.02
+##  [1] 49.62 51.80 51.00 50.74 52.46 47.98 45.34 42.62 55.76 52.76 46.28 57.40
+## [13] 45.74 54.12 52.68 44.92 49.82 51.90 54.06 46.92
 \end{verbatim}
 
 \begin{Shaded}
@@ -8837,8 +8363,8 @@ L'argument \texttt{X} correspond à l'objet sur lequel la boucle \texttt{apply} 
 \end{Shaded}
 
 \begin{verbatim}
-##  [1] 44.28 46.26 51.72 47.24 41.48 43.90 51.96 52.66 47.58 53.92 47.94
-## [12] 52.02 48.36 47.06 61.62 49.28 51.60 39.42 57.06 47.02
+##  [1] 49.62 51.80 51.00 50.74 52.46 47.98 45.34 42.62 55.76 52.76 46.28 57.40
+## [13] 45.74 54.12 52.68 44.92 49.82 51.90 54.06 46.92
 \end{verbatim}
 
 \begin{Shaded}
@@ -8848,7 +8374,7 @@ L'argument \texttt{X} correspond à l'objet sur lequel la boucle \texttt{apply} 
 \end{Shaded}
 
 \begin{verbatim}
-## [1] 47.345 48.630 50.320 47.525 51.775
+## [1] 48.480 50.545 52.260 50.640 49.055
 \end{verbatim}
 
 \begin{Shaded}
@@ -8859,7 +8385,7 @@ L'argument \texttt{X} correspond à l'objet sur lequel la boucle \texttt{apply} 
 \end{Shaded}
 
 \begin{verbatim}
-## [1] 47.345 48.630 50.320 47.525 51.775
+## [1] 48.480 50.545 52.260 50.640 49.055
 \end{verbatim}
 
 Nous pouvons aussi calculer la moyenne pour chaque valeur de ligne et de colonne (la fonction itère alors sur la dimension 3) :
@@ -8872,27 +8398,27 @@ Nous pouvons aussi calculer la moyenne pour chaque valeur de ligne et de colonne
 
 \begin{verbatim}
 ##       [,1] [,2] [,3] [,4] [,5] [,6] [,7] [,8] [,9] [,10] [,11] [,12] [,13]
-##  [1,] 51.0 56.8 35.2 59.2 28.6 62.8 70.2 66.2 51.4  30.8  42.6  36.6  64.6
-##  [2,] 33.4 64.6 61.6 69.8 66.0 33.2 79.6 33.2 72.0  63.0  43.4  57.8  69.0
-##  [3,] 33.0 46.4 65.4 41.6 44.0 45.8 44.6 38.6 43.4  67.8  17.0  41.6  53.2
-##  [4,] 72.0 32.8 49.6 45.6 42.8 52.0 55.8 51.4 45.4  65.6  53.2  60.2  38.0
-##  [5,] 27.6 44.2 52.8 24.0 40.8 52.2 59.8 40.0 30.8  35.6  80.0  54.4  57.6
-##  [6,] 51.2 27.2 65.8 46.8 14.4 26.8 49.8 52.0 57.2  63.6  54.0  70.6  36.2
-##  [7,] 29.0 42.6 42.4 58.4 64.0 17.0 33.0 51.8 37.8  46.2  43.4  67.6  36.4
-##  [8,] 56.2 37.2 64.6 40.4 38.8 32.2 50.8 75.4 45.2  47.0  38.0  50.6  30.0
-##  [9,] 34.2 56.6 30.2 28.2 49.6 64.2 33.0 71.0 61.2  73.8  68.0  51.4  52.4
-## [10,] 55.2 54.2 49.6 58.4 25.8 52.8 43.0 47.0 31.4  45.8  39.8  29.4  46.2
+##  [1,] 62.4 56.6 33.4 33.4 43.2 58.0 44.0 19.0 33.6  58.0  59.2  67.0  38.8
+##  [2,] 47.6 35.8 75.2 65.8 50.8 59.8 38.0 32.0 64.2  41.8  36.6  51.0  61.0
+##  [3,] 59.4 77.8 68.0 32.4 57.4 57.8 60.0 35.4 68.0  53.0  43.4  49.0  21.6
+##  [4,] 43.2 40.8 60.4 65.4 70.0 35.4 44.4 67.2 53.4  46.4  65.0  60.6  58.2
+##  [5,] 28.0 32.2 46.8 45.8 61.2 68.2 41.2 38.2 57.4  59.8  28.4  60.6  45.8
+##  [6,] 37.8 60.4 45.4 61.2 51.4 53.6 58.8 39.4 41.2  48.2  55.0  59.8  59.8
+##  [7,] 56.0 55.8 48.8 53.8 65.8 39.2 35.6 55.2 58.8  73.4  41.2  57.4  64.8
+##  [8,] 48.6 55.6 31.4 39.6 41.2 32.0 29.8 49.8 60.0  44.2  33.4  50.6  21.0
+##  [9,] 53.2 57.6 52.4 48.0 21.2 30.8 52.4 37.6 56.6  45.8  53.2  60.2  61.4
+## [10,] 60.0 45.4 48.2 62.0 62.4 45.0 49.2 52.4 64.4  57.0  47.4  57.8  25.0
 ##       [,14] [,15] [,16] [,17] [,18] [,19] [,20]
-##  [1,]  46.0  65.2  45.0  48.4  18.4  52.0  58.6
-##  [2,]  28.4  63.6  60.8  62.4  24.2  44.8  50.6
-##  [3,]  54.0  54.4  62.2  48.0  44.2  76.6  71.8
-##  [4,]  42.2  70.2  46.2  41.4  52.6  47.6  43.0
-##  [5,]  49.6  72.0  41.0  76.0  33.0  54.8  31.0
-##  [6,]  47.4  81.8  39.0  76.2  35.8  57.8  60.0
-##  [7,]  58.8  56.4  38.2  53.4  43.8  45.4  16.4
-##  [8,]  54.4  38.2  38.0  32.2  72.0  56.2  40.6
-##  [9,]  50.8  82.0  38.6  29.4  37.6  65.4  46.0
-## [10,]  39.0  32.4  83.8  48.6  32.6  70.0  52.2
+##  [1,]  67.2  37.8  56.2  33.6  69.0  25.8  46.8
+##  [2,]  70.2  64.6  57.4  43.8  53.2  73.2  24.8
+##  [3,]  62.2  48.8  48.4  36.4  51.0  69.4  29.4
+##  [4,]  75.6  55.6  33.4  55.8  42.8  52.6  36.6
+##  [5,]  65.0  76.6  49.4  67.6  56.0  67.2  61.4
+##  [6,]  54.2  60.6  37.6  55.8  44.8  45.0  69.2
+##  [7,]  27.4  40.8  42.2  52.0  58.4  35.6  46.6
+##  [8,]  41.8  55.0  60.2  34.2  39.8  54.0  41.8
+##  [9,]  34.6  40.0  24.0  70.0  41.0  54.8  70.8
+## [10,]  43.0  47.0  40.4  49.0  63.0  63.0  41.8
 \end{verbatim}
 
 \hypertarget{l17sapply}{%
@@ -8915,19 +8441,19 @@ Comme indiqué dans la documentation, \texttt{lapply()} renvoie une liste de mê
 
 \begin{verbatim}
 ## $a
-##  [1] 87 44 38 59 79 28  6  3 86 75
+##  [1] 53  9 56 26  6 30 71 70  3 32
 ## 
 ## $b
-##  [1] 17 73 60 87 91 96 59 71 44 20
+##  [1]  4 36 69 85  2 29 47  8 88 12
 ## 
 ## $c
-##  [1] 78 79  1 75 22 59 62 48 72 36
+##  [1] 99 59 98  8 54 27 57 50 87 53
 ## 
 ## $d
-##  [1] 95 43  6 52 94 65 11 22 68 17
+##  [1] 22 88 78 95 56 93 14 87 77 38
 ## 
 ## $e
-##  [1] 68 93 11 46 14 24  7 89 15  2
+##  [1]  9 55 27 95 50 89 73 91 93 67
 \end{verbatim}
 
 \begin{Shaded}
@@ -8938,19 +8464,19 @@ Comme indiqué dans la documentation, \texttt{lapply()} renvoie une liste de mê
 
 \begin{verbatim}
 ## $a
-## [1] 50.5
+## [1] 35.6
 ## 
 ## $b
-## [1] 61.8
+## [1] 38
 ## 
 ## $c
-## [1] 53.2
+## [1] 59.2
 ## 
 ## $d
-## [1] 47.3
+## [1] 64.8
 ## 
 ## $e
-## [1] 36.9
+## [1] 64.9
 \end{verbatim}
 
 Comme pour la fonction \texttt{apply()}, nous pouvons passer des arguments supplémentaires à la fonction \texttt{lapply()} en les ajoutant à la suite de la fonction. C'est par exemple utile si notre \texttt{list} contient ces valeurs manquantes \texttt{NA} et que nous voulons les ignorer pour le calcul des moyennes (avec l'arguement \texttt{na.rm\ =\ TRUE}).
@@ -8970,19 +8496,19 @@ Comme pour la fonction \texttt{apply()}, nous pouvons passer des arguments suppl
 
 \begin{verbatim}
 ## $a
-##  [1]  5  4 NA  1  4  1  4  3  1  2
+##  [1]  5  1  2  4 NA  5  2  5 NA  1
 ## 
 ## $b
-##  [1] 1 4 1 2 4 3 2 2 4 4
+##  [1]  4  1 NA  1  3  2  2  4 NA  1
 ## 
 ## $c
-##  [1] 5 3 3 1 4 3 4 4 3 4
+##  [1]  3  3  4 NA  2 NA  2  3  4  1
 ## 
 ## $d
-##  [1]  5  1  5 NA NA  4  5  1 NA  4
+##  [1] 1 3 2 1 4 5 5 1 2 4
 ## 
 ## $e
-##  [1] 2 2 5 1 4 2 4 1 4 2
+##  [1]  3  2 NA  2  4  5  2  1  3  2
 \end{verbatim}
 
 \begin{Shaded}
@@ -8996,16 +8522,16 @@ Comme pour la fonction \texttt{apply()}, nous pouvons passer des arguments suppl
 ## [1] NA
 ## 
 ## $b
-## [1] 2.7
-## 
-## $c
-## [1] 3.4
-## 
-## $d
 ## [1] NA
 ## 
+## $c
+## [1] NA
+## 
+## $d
+## [1] 2.8
+## 
 ## $e
-## [1] 2.7
+## [1] NA
 \end{verbatim}
 
 \begin{Shaded}
@@ -9016,19 +8542,19 @@ Comme pour la fonction \texttt{apply()}, nous pouvons passer des arguments suppl
 
 \begin{verbatim}
 ## $a
-## [1] 2.777778
+## [1] 3.125
 ## 
 ## $b
-## [1] 2.7
+## [1] 2.25
 ## 
 ## $c
-## [1] 3.4
+## [1] 2.75
 ## 
 ## $d
-## [1] 3.571429
+## [1] 2.8
 ## 
 ## $e
-## [1] 2.7
+## [1] 2.666667
 \end{verbatim}
 
 Pour plus de lisibilité ou si plusieurs opérations sont à réaliser au sein de l'argument \texttt{FUN}, nous pouvons utiliser l'écriture suivante :
@@ -9043,19 +8569,19 @@ Pour plus de lisibilité ou si plusieurs opérations sont à réaliser au sein d
 
 \begin{verbatim}
 ## $a
-## [1] 2.777778
+## [1] 3.125
 ## 
 ## $b
-## [1] 2.7
+## [1] 2.25
 ## 
 ## $c
-## [1] 3.4
+## [1] 2.75
 ## 
 ## $d
-## [1] 3.571429
+## [1] 2.8
 ## 
 ## $e
-## [1] 2.7
+## [1] 2.666667
 \end{verbatim}
 
 Par exemple si nous souhaitons obtenir \texttt{i\^{}2} si la moyenne est supérieure à 3, et \texttt{i\^{}3} sinon :
@@ -9075,19 +8601,19 @@ Par exemple si nous souhaitons obtenir \texttt{i\^{}2} si la moyenne est supéri
 
 \begin{verbatim}
 ## $a
-##  [1] 125  64  NA   1  64   1  64  27   1   8
+##  [1] 25  1  4 16 NA 25  4 25 NA  1
 ## 
 ## $b
-##  [1]  1 64  1  8 64 27  8  8 64 64
+##  [1] 64  1 NA  1 27  8  8 64 NA  1
 ## 
 ## $c
-##  [1] 25  9  9  1 16  9 16 16  9 16
+##  [1] 27 27 64 NA  8 NA  8 27 64  1
 ## 
 ## $d
-##  [1] 25  1 25 NA NA 16 25  1 NA 16
+##  [1]   1  27   8   1  64 125 125   1   8  64
 ## 
 ## $e
-##  [1]   8   8 125   1  64   8  64   1  64   8
+##  [1]  27   8  NA   8  64 125   8   1  27   8
 \end{verbatim}
 
 \hypertarget{l17lapply}{%
@@ -9105,19 +8631,19 @@ La fonction \texttt{sapply()} est une version modifiée de la fonction \texttt{l
 
 \begin{verbatim}
 ## $a
-## [1] 2.777778
+## [1] 3.125
 ## 
 ## $b
-## [1] 2.7
+## [1] 2.25
 ## 
 ## $c
-## [1] 3.4
+## [1] 2.75
 ## 
 ## $d
-## [1] 3.571429
+## [1] 2.8
 ## 
 ## $e
-## [1] 2.7
+## [1] 2.666667
 \end{verbatim}
 
 \begin{Shaded}
@@ -9130,7 +8656,7 @@ La fonction \texttt{sapply()} est une version modifiée de la fonction \texttt{l
 
 \begin{verbatim}
 ##        a        b        c        d        e 
-## 2.777778 2.700000 3.400000 3.571429 2.700000
+## 3.125000 2.250000 2.750000 2.800000 2.666667
 \end{verbatim}
 
 La fonction \texttt{sapply()} est intéressante pour récupérer par exemple le nième élément de chacun des éléments d'une \texttt{list}. La fonction qui est appelée pour faire cela est \texttt{\textquotesingle{}{[}{[}\textquotesingle{}}.
@@ -9143,7 +8669,7 @@ La fonction \texttt{sapply()} est intéressante pour récupérer par exemple le 
 
 \begin{verbatim}
 ## a b c d e 
-## 4 4 3 1 2
+## 1 1 3 3 2
 \end{verbatim}
 
 \hypertarget{l17tapply}{%
@@ -9164,16 +8690,16 @@ La fonction\texttt{tapply()} permet d'appliquer une fonction en prenant comme é
 
 \begin{verbatim}
 ##    species     perf1    perf2    perf3
-## 1        I  9.993579 14099.55 24.58658
-## 2        J  9.838168 13249.19 18.43436
-## 3        H  9.810875 27991.00 20.53230
-## 4        D  9.328475 40103.59 25.17152
-## 5        B 10.759384 18542.52 12.13162
-## 6        H  9.487357 34621.02 22.48888
-## 7        E 11.097634 30358.68 30.04776
-## 8        B  9.568024 32451.24 16.54152
-## 9        J  9.916056 24982.31 18.89762
-## 10       H 10.472001 14998.75 20.03384
+## 1        H  9.227676 16858.58 16.94304
+## 2        B  9.700158 13162.82 28.02893
+## 3        C  9.842133 23171.20 18.08565
+## 4        B 10.688549 40159.34 22.95996
+## 5        I 10.369972 45932.82 21.34331
+## 6        C  9.410725 44228.08 22.69068
+## 7        I 10.105341 23087.69 25.11496
+## 8        I 10.102936 43928.24 18.20071
+## 9        A  9.775288 20384.22 11.78418
+## 10       B 10.033480 16029.22 16.59701
 \end{verbatim}
 
 Nous pouvons facilement obtenir un résumé des performances pour chaque espèce avec la fonction \texttt{tapply()} et la fonction \texttt{summary()}.
@@ -9187,43 +8713,43 @@ Nous pouvons facilement obtenir un résumé des performances pour chaque espèce
 \begin{verbatim}
 ## $A
 ##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-##   9.010   9.673  10.017  10.067  10.457  11.484 
+##   8.838   9.687   9.920   9.995  10.353  11.278 
 ## 
 ## $B
 ##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-##   8.145   9.702   9.987   9.970  10.317  11.234 
+##   8.802   9.710  10.024  10.009  10.311  11.730 
 ## 
 ## $C
 ##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-##   8.848   9.614   9.878   9.952  10.236  11.138 
+##   8.886   9.728  10.016  10.024  10.278  11.001 
 ## 
 ## $D
 ##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-##   8.182   9.709  10.026  10.027  10.401  11.986 
+##   8.840   9.677   9.977   9.966  10.242  11.049 
 ## 
 ## $E
 ##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-##   8.822   9.602   9.993  10.020  10.388  11.129 
+##   8.737   9.689  10.042  10.003  10.324  10.875 
 ## 
 ## $F
 ##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-##   8.638   9.736  10.052  10.015  10.419  11.382 
+##   8.516   9.616  10.001   9.973  10.290  11.065 
 ## 
 ## $G
 ##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-##   8.921   9.704  10.015  10.060  10.422  11.399 
+##   8.829   9.596   9.957   9.917  10.225  10.879 
 ## 
 ## $H
 ##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-##   8.747   9.684  10.028   9.989  10.281  11.118 
+##   8.506   9.665   9.938   9.939  10.294  11.425 
 ## 
 ## $I
 ##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-##   9.006   9.713  10.027  10.035  10.334  11.079 
+##   8.894   9.747  10.103  10.032  10.274  11.282 
 ## 
 ## $J
 ##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-##   8.669   9.615   9.935   9.938  10.327  10.950
+##   8.960   9.593   9.838   9.851  10.093  11.432
 \end{verbatim}
 
 Nous pouvons aussi obtenir la valeur moyenne de chacune des performances en combinant une fonction \texttt{sapply()} avec la fonction \texttt{tapply()}et en utilisant la fonction \texttt{mean()}.
@@ -9238,16 +8764,16 @@ Nous pouvons aussi obtenir la valeur moyenne de chacune des performances en comb
 
 \begin{verbatim}
 ##        [,1]     [,2]     [,3]
-## A 10.066849 25775.73 19.15785
-## B  9.970282 26839.27 19.62787
-## C  9.952260 26570.03 19.88800
-## D 10.026743 22833.09 19.95953
-## E 10.020474 24310.70 19.27476
-## F 10.014512 24867.74 20.01383
-## G 10.060233 24410.82 19.31922
-## H  9.988804 24542.46 19.81670
-## I 10.034696 23961.51 20.32666
-## J  9.937937 25383.47 20.35426
+## A  9.995005 22551.08 19.07779
+## B 10.008882 26645.22 21.32120
+## C 10.023772 24560.68 20.83292
+## D  9.965940 23973.30 19.66283
+## E 10.003496 23366.37 19.37909
+## F  9.973004 25984.03 19.72470
+## G  9.917052 25670.34 21.13762
+## H  9.939275 24622.17 20.19775
+## I 10.032294 22802.56 19.26673
+## J  9.851481 23205.29 19.61942
 \end{verbatim}
 
 \hypertarget{l17mapply}{%
@@ -9280,8 +8806,8 @@ Félicitations, nous sommes arrivés au bout de ce chapitre sur l'algorithmique.
 
 Maintenant Que nous avons vu les concepts de base de R, il nous reste à aborder un élément déterminant pour le bon déroulement de nos activités scientifiques avec R : la gestion de projet. Cela consiste à intégrer ses développements dans un environnement et avec une logique visant à faciliter son travail et donc augmenter son efficacité. Il s'agit ici que d'une façon de faire parmis les inombrables possibilités, à adapter pour chacun et chacune.
 
-\hypertarget{gestion-des-fichiers-et-des-repertoires-de-travail}{%
-\section{Gestion des fichiers et des répertoires de travail}\label{gestion-des-fichiers-et-des-repertoires-de-travail}}
+\hypertarget{gestion-des-fichiers-et-des-ruxe9pertoires-de-travail}{%
+\section{Gestion des fichiers et des répertoires de travail}\label{gestion-des-fichiers-et-des-ruxe9pertoires-de-travail}}
 
 Entre les fichiers d'entrée (i.e., les fichiers qui contiennent nos données brutes), les fichiers de sortie (e.g., avec la fonction \texttt{write()}), les graphiques (prochain chapitre), et les nombreux scripts associés à un projet de recherche, un minimum d'organisation s'impose pour pouvoir être efficace et reprendre rapidement son projet en cours. La solution la plus simple consiste à structurer son environnement de travail en dossiers en fonction de chaque catégorie de fichiers. Par exemple avec un dossier ``myProject'' pour le projet en cours, contenant lui-même les dossiers ``myFiles'' pour les fichiers d'entrée, un dossier ``myScripts'' pour les fichiers script R, et un dossier ``myOutputs'' pour les fichiers de sortie (e.g., les graphiques et les analyses).
 
@@ -10466,16 +9992,16 @@ Gimp est un logiciel de dessin matriciel disponible sous Windows, Mac OS X et GN
 
 Nous allons importer notre fichier PNG puis tout simplement l'exporter dans un autre format avec le raccourci \texttt{Ctrl+Shift+e}. Une fenêtre nous proposera alors de choisir le nouveau format, par exemple TIFF avec une compression LZW. Notre figure est alors prête pour soumission.
 
-\hypertarget{table-de-reference}{%
-\section{Table de référence}\label{table-de-reference}}
+\hypertarget{table-de-ruxe9fuxe9rence}{%
+\section{Table de référence}\label{table-de-ruxe9fuxe9rence}}
 
 Voici une Table de référence (Table \ref{tab:tabRefPub}) avec quelques revues illustrant la diversité des formats pour les figures scientifiques.
 
-\begin{table}[t]
+\begin{table}
 
 \caption{\label{tab:tabRefPub}Table de référence pour la construction des figures.\label{tab:tabRefPub}}
 \centering
-\begin{tabular}{l|l|l|l|l|l|l}
+\begin{tabular}[t]{l|l|l|l|l|l|l}
 \hline
 Revue & Largeur & Hauteur & Format & Resolution & Police & Taille\\
 \hline
@@ -11183,5 +10709,5 @@ La boucle \texttt{for()} pourrait être remplacée par une boucle \texttt{sapply
 
 Nous venons de faire un script qui permet à partir d'une liste de numéros DOI d'obtenir automatiquement les numéros WOS.
 
-
+\backmatter
 \end{document}

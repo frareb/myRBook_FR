@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title> 15 Analyser des données de datalogger de température | Se former au logiciel R : initiation et perfectionnement</title>
   <meta name="description" content="Un guide pour acquérir les bases de la programmation avec R et conduire efficacement la gestion et l’analyse de ses données." />
-  <meta name="generator" content="bookdown 0.11 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.16 and GitBook 2.6.7" />
 
   <meta property="og:title" content=" 15 Analyser des données de datalogger de température | Se former au logiciel R : initiation et perfectionnement" />
   <meta property="og:type" content="book" />
@@ -24,15 +24,15 @@
 <meta name="author" content="François Rebaudo" />
 
 
-<meta name="date" content="2019-12-12" />
+<meta name="date" content="2019-12-13" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="graph4.html">
-<link rel="next" href="studyCase002.html">
+<link rel="prev" href="graph4.html"/>
+<link rel="next" href="studyCase002.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -40,6 +40,7 @@
 <link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
 
 
 
@@ -47,13 +48,15 @@
 
 
 
-<script src="libs/htmlwidgets-1.3/htmlwidgets.js"></script>
-<script src="libs/plotly-binding-4.9.0/plotly.js"></script>
+
+
+<script src="libs/htmlwidgets-1.5.1/htmlwidgets.js"></script>
+<script src="libs/plotly-binding-4.9.1/plotly.js"></script>
 <script src="libs/typedarray-0.1/typedarray.min.js"></script>
 <link href="libs/crosstalk-1.0.0/css/crosstalk.css" rel="stylesheet" />
 <script src="libs/crosstalk-1.0.0/js/crosstalk.min.js"></script>
-<link href="libs/plotly-htmlwidgets-css-1.46.1/plotly-htmlwidgets.css" rel="stylesheet" />
-<script src="libs/plotly-main-1.46.1/plotly-latest.min.js"></script>
+<link href="libs/plotly-htmlwidgets-css-1.49.4/plotly-htmlwidgets.css" rel="stylesheet" />
+<script src="libs/plotly-main-1.49.4/plotly-latest.min.js"></script>
 <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-124666641-2"></script>
 <script>
@@ -71,7 +74,6 @@ a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
 a.sourceLine:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode { white-space: pre; position: relative; }
-div.sourceCode { margin: 1em 0; }
 pre.sourceCode { margin: 0; }
 @media screen {
 div.sourceCode { overflow: auto; }
@@ -150,9 +152,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#licence"><i class="fa fa-check"></i><b>1.2</b> Licence</a></li>
 </ul></li>
 <li class="chapter" data-level="2" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>2</b> Introduction</a><ul>
-<li class="chapter" data-level="2.1" data-path="intro.html"><a href="intro.html#pourquoi-se-former-a-r"><i class="fa fa-check"></i><b>2.1</b> Pourquoi se former à R</a></li>
+<li class="chapter" data-level="2.1" data-path="intro.html"><a href="intro.html#pourquoi-se-former-à-r"><i class="fa fa-check"></i><b>2.1</b> Pourquoi se former à R</a></li>
 <li class="chapter" data-level="2.2" data-path="intro.html"><a href="intro.html#ce-livre"><i class="fa fa-check"></i><b>2.2</b> Ce livre</a></li>
-<li class="chapter" data-level="2.3" data-path="intro.html"><a href="intro.html#lectures-complementaires-en-francais"><i class="fa fa-check"></i><b>2.3</b> Lectures complémentaires en français</a></li>
+<li class="chapter" data-level="2.3" data-path="intro.html"><a href="intro.html#lectures-complémentaires-en-français"><i class="fa fa-check"></i><b>2.3</b> Lectures complémentaires en français</a></li>
 </ul></li>
 <li class="part"><span><b>I Concepts de base</b></span></li>
 <li class="chapter" data-level="3" data-path="premiersPas.html"><a href="premiersPas.html"><i class="fa fa-check"></i><b>3</b> Premiers pas</a><ul>
@@ -161,17 +163,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.2.1" data-path="premiersPas.html"><a href="premiersPas.html#l011opari"><i class="fa fa-check"></i><b>3.2.1</b> Les opérateurs arithmétiques</a></li>
 <li class="chapter" data-level="3.2.2" data-path="premiersPas.html"><a href="premiersPas.html#l011opcomp"><i class="fa fa-check"></i><b>3.2.2</b> Les opérateurs de comparaison</a></li>
 <li class="chapter" data-level="3.2.3" data-path="premiersPas.html"><a href="premiersPas.html#l011oplog"><i class="fa fa-check"></i><b>3.2.3</b> Les opérateurs logiques</a></li>
-<li class="chapter" data-level="3.2.4" data-path="premiersPas.html"><a href="premiersPas.html#aide-sur-les-operateurs"><i class="fa fa-check"></i><b>3.2.4</b> Aide sur les opérateurs</a></li>
+<li class="chapter" data-level="3.2.4" data-path="premiersPas.html"><a href="premiersPas.html#aide-sur-les-opérateurs"><i class="fa fa-check"></i><b>3.2.4</b> Aide sur les opérateurs</a></li>
 </ul></li>
 <li class="chapter" data-level="3.3" data-path="premiersPas.html"><a href="premiersPas.html#l011object"><i class="fa fa-check"></i><b>3.3</b> La notion d’objet</a></li>
 <li class="chapter" data-level="3.4" data-path="premiersPas.html"><a href="premiersPas.html#les-scripts"><i class="fa fa-check"></i><b>3.4</b> Les scripts</a><ul>
-<li class="chapter" data-level="3.4.1" data-path="premiersPas.html"><a href="premiersPas.html#creer-un-script-et-le-documenter"><i class="fa fa-check"></i><b>3.4.1</b> Créer un script et le documenter</a></li>
-<li class="chapter" data-level="3.4.2" data-path="premiersPas.html"><a href="premiersPas.html#executer-un-script"><i class="fa fa-check"></i><b>3.4.2</b> Exécuter un script</a></li>
+<li class="chapter" data-level="3.4.1" data-path="premiersPas.html"><a href="premiersPas.html#créer-un-script-et-le-documenter"><i class="fa fa-check"></i><b>3.4.1</b> Créer un script et le documenter</a></li>
+<li class="chapter" data-level="3.4.2" data-path="premiersPas.html"><a href="premiersPas.html#exécuter-un-script"><i class="fa fa-check"></i><b>3.4.2</b> Exécuter un script</a></li>
 </ul></li>
 <li class="chapter" data-level="3.5" data-path="premiersPas.html"><a href="premiersPas.html#conclusion"><i class="fa fa-check"></i><b>3.5</b> Conclusion</a></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="IDE.html"><a href="IDE.html"><i class="fa fa-check"></i><b>4</b> Choisir un environnement de développement</a><ul>
-<li class="chapter" data-level="4.1" data-path="IDE.html"><a href="IDE.html#editeurs-de-texte-et-environnement-de-developpement"><i class="fa fa-check"></i><b>4.1</b> Editeurs de texte et environnement de développement</a></li>
+<li class="chapter" data-level="4.1" data-path="IDE.html"><a href="IDE.html#editeurs-de-texte-et-environnement-de-développement"><i class="fa fa-check"></i><b>4.1</b> Editeurs de texte et environnement de développement</a></li>
 <li class="chapter" data-level="4.2" data-path="IDE.html"><a href="IDE.html#rstudio"><i class="fa fa-check"></i><b>4.2</b> RStudio</a><ul>
 <li class="chapter" data-level="4.2.1" data-path="IDE.html"><a href="IDE.html#installer-rstudio"><i class="fa fa-check"></i><b>4.2.1</b> Installer RStudio</a></li>
 <li class="chapter" data-level="4.2.2" data-path="IDE.html"><a href="IDE.html#un-script-avec-rstudio"><i class="fa fa-check"></i><b>4.2.2</b> Un script avec RStudio</a></li>
@@ -198,29 +200,29 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="6" data-path="dataType2.html"><a href="dataType2.html"><i class="fa fa-check"></i><b>6</b> Les conteneurs de données</a><ul>
 <li class="chapter" data-level="6.1" data-path="dataType2.html"><a href="dataType2.html#l014vector"><i class="fa fa-check"></i><b>6.1</b> Le conteneur <code>vector</code></a><ul>
-<li class="chapter" data-level="6.1.1" data-path="dataType2.html"><a href="dataType2.html#creer-un-vector"><i class="fa fa-check"></i><b>6.1.1</b> Créer un <code>vector</code></a></li>
-<li class="chapter" data-level="6.1.2" data-path="dataType2.html"><a href="dataType2.html#operations-sur-un-vector"><i class="fa fa-check"></i><b>6.1.2</b> Opérations sur un <code>vector</code></a></li>
-<li class="chapter" data-level="6.1.3" data-path="dataType2.html"><a href="dataType2.html#acceder-aux-valeurs-dun-vector"><i class="fa fa-check"></i><b>6.1.3</b> Accèder aux valeurs d’un <code>vector</code></a></li>
-<li class="chapter" data-level="6.1.4" data-path="dataType2.html"><a href="dataType2.html#nommer-les-elements-dun-vector"><i class="fa fa-check"></i><b>6.1.4</b> Nommer les éléments d’un <code>vector</code></a></li>
-<li class="chapter" data-level="6.1.5" data-path="dataType2.html"><a href="dataType2.html#modifier-les-elements-dun-vector"><i class="fa fa-check"></i><b>6.1.5</b> Modifier les éléments d’un <code>vector</code></a></li>
+<li class="chapter" data-level="6.1.1" data-path="dataType2.html"><a href="dataType2.html#créer-un-vector"><i class="fa fa-check"></i><b>6.1.1</b> Créer un <code>vector</code></a></li>
+<li class="chapter" data-level="6.1.2" data-path="dataType2.html"><a href="dataType2.html#opérations-sur-un-vector"><i class="fa fa-check"></i><b>6.1.2</b> Opérations sur un <code>vector</code></a></li>
+<li class="chapter" data-level="6.1.3" data-path="dataType2.html"><a href="dataType2.html#accèder-aux-valeurs-dun-vector"><i class="fa fa-check"></i><b>6.1.3</b> Accèder aux valeurs d’un <code>vector</code></a></li>
+<li class="chapter" data-level="6.1.4" data-path="dataType2.html"><a href="dataType2.html#nommer-les-éléments-dun-vector"><i class="fa fa-check"></i><b>6.1.4</b> Nommer les éléments d’un <code>vector</code></a></li>
+<li class="chapter" data-level="6.1.5" data-path="dataType2.html"><a href="dataType2.html#modifier-les-éléments-dun-vector"><i class="fa fa-check"></i><b>6.1.5</b> Modifier les éléments d’un <code>vector</code></a></li>
 </ul></li>
 <li class="chapter" data-level="6.2" data-path="dataType2.html"><a href="dataType2.html#l014list"><i class="fa fa-check"></i><b>6.2</b> Le conteneur <code>list</code></a><ul>
-<li class="chapter" data-level="6.2.1" data-path="dataType2.html"><a href="dataType2.html#creer-une-list"><i class="fa fa-check"></i><b>6.2.1</b> Créer une <code>list</code></a></li>
-<li class="chapter" data-level="6.2.2" data-path="dataType2.html"><a href="dataType2.html#acceder-aux-valeurs-dune-list"><i class="fa fa-check"></i><b>6.2.2</b> Accéder aux valeurs d’une <code>list</code></a></li>
+<li class="chapter" data-level="6.2.1" data-path="dataType2.html"><a href="dataType2.html#créer-une-list"><i class="fa fa-check"></i><b>6.2.1</b> Créer une <code>list</code></a></li>
+<li class="chapter" data-level="6.2.2" data-path="dataType2.html"><a href="dataType2.html#accéder-aux-valeurs-dune-list"><i class="fa fa-check"></i><b>6.2.2</b> Accéder aux valeurs d’une <code>list</code></a></li>
 <li class="chapter" data-level="6.2.3" data-path="dataType2.html"><a href="dataType2.html#modification-dune-list"><i class="fa fa-check"></i><b>6.2.3</b> Modification d’une <code>list</code></a></li>
 </ul></li>
 <li class="chapter" data-level="6.3" data-path="dataType2.html"><a href="dataType2.html#l014dataframe"><i class="fa fa-check"></i><b>6.3</b> Le conteneur <code>data.frame</code></a><ul>
-<li class="chapter" data-level="6.3.1" data-path="dataType2.html"><a href="dataType2.html#creer-un-data.frame"><i class="fa fa-check"></i><b>6.3.1</b> Créer un <code>data.frame</code></a></li>
-<li class="chapter" data-level="6.3.2" data-path="dataType2.html"><a href="dataType2.html#acceder-aux-valeurs-dun-data.frame"><i class="fa fa-check"></i><b>6.3.2</b> Accèder aux valeurs d’un <code>data.frame</code></a></li>
+<li class="chapter" data-level="6.3.1" data-path="dataType2.html"><a href="dataType2.html#créer-un-data.frame"><i class="fa fa-check"></i><b>6.3.1</b> Créer un <code>data.frame</code></a></li>
+<li class="chapter" data-level="6.3.2" data-path="dataType2.html"><a href="dataType2.html#accèder-aux-valeurs-dun-data.frame"><i class="fa fa-check"></i><b>6.3.2</b> Accèder aux valeurs d’un <code>data.frame</code></a></li>
 <li class="chapter" data-level="6.3.3" data-path="dataType2.html"><a href="dataType2.html#modifier-un-data.frame"><i class="fa fa-check"></i><b>6.3.3</b> Modifier un <code>data.frame</code></a></li>
 </ul></li>
 <li class="chapter" data-level="6.4" data-path="dataType2.html"><a href="dataType2.html#l014matrix"><i class="fa fa-check"></i><b>6.4</b> Le conteneur <code>matrix</code></a><ul>
-<li class="chapter" data-level="6.4.1" data-path="dataType2.html"><a href="dataType2.html#creer-une-matrix"><i class="fa fa-check"></i><b>6.4.1</b> Créer une <code>matrix</code></a></li>
-<li class="chapter" data-level="6.4.2" data-path="dataType2.html"><a href="dataType2.html#manipuler-et-faire-des-operations-sur-une-matrix"><i class="fa fa-check"></i><b>6.4.2</b> Manipuler et faire des opérations sur une <code>matrix</code></a></li>
-<li class="chapter" data-level="6.4.3" data-path="dataType2.html"><a href="dataType2.html#acceder-aux-elements-dune-matrix"><i class="fa fa-check"></i><b>6.4.3</b> Accèder aux éléments d’une <code>matrix</code></a></li>
+<li class="chapter" data-level="6.4.1" data-path="dataType2.html"><a href="dataType2.html#créer-une-matrix"><i class="fa fa-check"></i><b>6.4.1</b> Créer une <code>matrix</code></a></li>
+<li class="chapter" data-level="6.4.2" data-path="dataType2.html"><a href="dataType2.html#manipuler-et-faire-des-opérations-sur-une-matrix"><i class="fa fa-check"></i><b>6.4.2</b> Manipuler et faire des opérations sur une <code>matrix</code></a></li>
+<li class="chapter" data-level="6.4.3" data-path="dataType2.html"><a href="dataType2.html#accèder-aux-éléments-dune-matrix"><i class="fa fa-check"></i><b>6.4.3</b> Accèder aux éléments d’une <code>matrix</code></a></li>
 </ul></li>
 <li class="chapter" data-level="6.5" data-path="dataType2.html"><a href="dataType2.html#l014array"><i class="fa fa-check"></i><b>6.5</b> Le conteneur <code>array</code></a><ul>
-<li class="chapter" data-level="6.5.1" data-path="dataType2.html"><a href="dataType2.html#creer-un-array"><i class="fa fa-check"></i><b>6.5.1</b> Créer un <code>array</code></a></li>
+<li class="chapter" data-level="6.5.1" data-path="dataType2.html"><a href="dataType2.html#créer-un-array"><i class="fa fa-check"></i><b>6.5.1</b> Créer un <code>array</code></a></li>
 <li class="chapter" data-level="6.5.2" data-path="dataType2.html"><a href="dataType2.html#manipuler-un-array"><i class="fa fa-check"></i><b>6.5.2</b> Manipuler un <code>array</code></a></li>
 </ul></li>
 <li class="chapter" data-level="6.6" data-path="dataType2.html"><a href="dataType2.html#conclusion-3"><i class="fa fa-check"></i><b>6.6</b> Conclusion</a></li>
@@ -228,10 +230,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="7" data-path="fonctions.html"><a href="fonctions.html"><i class="fa fa-check"></i><b>7</b> Les fonctions</a><ul>
 <li class="chapter" data-level="7.1" data-path="fonctions.html"><a href="fonctions.html#quest-ce-quune-fonction"><i class="fa fa-check"></i><b>7.1</b> Qu’est-ce qu’une fonction</a></li>
 <li class="chapter" data-level="7.2" data-path="fonctions.html"><a href="fonctions.html#l015mainfun"><i class="fa fa-check"></i><b>7.2</b> Les fonctions les plus courantes</a><ul>
-<li class="chapter" data-level="7.2.1" data-path="fonctions.html"><a href="fonctions.html#lacces-a-la-documentation"><i class="fa fa-check"></i><b>7.2.1</b> L’accès à la documentation</a></li>
-<li class="chapter" data-level="7.2.2" data-path="fonctions.html"><a href="fonctions.html#visualiser-les-donnees"><i class="fa fa-check"></i><b>7.2.2</b> Visualiser les données</a></li>
-<li class="chapter" data-level="7.2.3" data-path="fonctions.html"><a href="fonctions.html#manipuler-les-donnees"><i class="fa fa-check"></i><b>7.2.3</b> Manipuler les données</a></li>
-<li class="chapter" data-level="7.2.4" data-path="fonctions.html"><a href="fonctions.html#fonctions-mathematiques"><i class="fa fa-check"></i><b>7.2.4</b> Fonctions mathématiques</a></li>
+<li class="chapter" data-level="7.2.1" data-path="fonctions.html"><a href="fonctions.html#laccès-à-la-documentation"><i class="fa fa-check"></i><b>7.2.1</b> L’accès à la documentation</a></li>
+<li class="chapter" data-level="7.2.2" data-path="fonctions.html"><a href="fonctions.html#visualiser-les-données"><i class="fa fa-check"></i><b>7.2.2</b> Visualiser les données</a></li>
+<li class="chapter" data-level="7.2.3" data-path="fonctions.html"><a href="fonctions.html#manipuler-les-données"><i class="fa fa-check"></i><b>7.2.3</b> Manipuler les données</a></li>
+<li class="chapter" data-level="7.2.4" data-path="fonctions.html"><a href="fonctions.html#fonctions-mathématiques"><i class="fa fa-check"></i><b>7.2.4</b> Fonctions mathématiques</a></li>
 <li class="chapter" data-level="7.2.5" data-path="fonctions.html"><a href="fonctions.html#statistiques-descriptives"><i class="fa fa-check"></i><b>7.2.5</b> Statistiques descriptives</a></li>
 </ul></li>
 <li class="chapter" data-level="7.3" data-path="fonctions.html"><a href="fonctions.html#autres-fonctions-utiles"><i class="fa fa-check"></i><b>7.3</b> Autres fonctions utiles</a><ul>
@@ -246,14 +248,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="7.3.9" data-path="fonctions.html"><a href="fonctions.html#l015rm"><i class="fa fa-check"></i><b>7.3.9</b> <code>rm()</code></a></li>
 </ul></li>
 <li class="chapter" data-level="7.4" data-path="fonctions.html"><a href="fonctions.html#quelques-exercices"><i class="fa fa-check"></i><b>7.4</b> Quelques exercices</a><ul>
-<li class="chapter" data-level="7.4.1" data-path="fonctions.html"><a href="fonctions.html#sequences"><i class="fa fa-check"></i><b>7.4.1</b> Séquences</a></li>
+<li class="chapter" data-level="7.4.1" data-path="fonctions.html"><a href="fonctions.html#séquences"><i class="fa fa-check"></i><b>7.4.1</b> Séquences</a></li>
 <li class="chapter" data-level="7.4.2" data-path="fonctions.html"><a href="fonctions.html#statistiques-descriptives-1"><i class="fa fa-check"></i><b>7.4.2</b> Statistiques descriptives</a></li>
 </ul></li>
 <li class="chapter" data-level="7.5" data-path="fonctions.html"><a href="fonctions.html#l015function"><i class="fa fa-check"></i><b>7.5</b> Ecrire une fonction</a></li>
-<li class="chapter" data-level="7.6" data-path="fonctions.html"><a href="fonctions.html#autres-fonctions-developpees-par-la-communaute-des-utilisateurs-les-packages"><i class="fa fa-check"></i><b>7.6</b> Autres fonctions développées par la communauté des utilisateurs : les packages</a><ul>
+<li class="chapter" data-level="7.6" data-path="fonctions.html"><a href="fonctions.html#autres-fonctions-développées-par-la-communauté-des-utilisateurs-les-packages"><i class="fa fa-check"></i><b>7.6</b> Autres fonctions développées par la communauté des utilisateurs : les packages</a><ul>
 <li class="chapter" data-level="7.6.1" data-path="fonctions.html"><a href="fonctions.html#installer-un-package"><i class="fa fa-check"></i><b>7.6.1</b> Installer un package</a></li>
 <li class="chapter" data-level="7.6.2" data-path="fonctions.html"><a href="fonctions.html#charger-un-package"><i class="fa fa-check"></i><b>7.6.2</b> Charger un package</a></li>
-<li class="chapter" data-level="7.6.3" data-path="fonctions.html"><a href="fonctions.html#portabilite-du-code"><i class="fa fa-check"></i><b>7.6.3</b> Portabilité du code</a></li>
+<li class="chapter" data-level="7.6.3" data-path="fonctions.html"><a href="fonctions.html#portabilité-du-code"><i class="fa fa-check"></i><b>7.6.3</b> Portabilité du code</a></li>
 </ul></li>
 <li class="chapter" data-level="7.7" data-path="fonctions.html"><a href="fonctions.html#conclusion-4"><i class="fa fa-check"></i><b>7.7</b> Conclusion</a></li>
 </ul></li>
@@ -284,7 +286,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="9.8" data-path="algo.html"><a href="algo.html#conclusion-6"><i class="fa fa-check"></i><b>9.8</b> Conclusion</a></li>
 </ul></li>
 <li class="chapter" data-level="10" data-path="project.html"><a href="project.html"><i class="fa fa-check"></i><b>10</b> Gestion d’un projet avec R</a><ul>
-<li class="chapter" data-level="10.1" data-path="project.html"><a href="project.html#gestion-des-fichiers-et-des-repertoires-de-travail"><i class="fa fa-check"></i><b>10.1</b> Gestion des fichiers et des répertoires de travail</a></li>
+<li class="chapter" data-level="10.1" data-path="project.html"><a href="project.html#gestion-des-fichiers-et-des-répertoires-de-travail"><i class="fa fa-check"></i><b>10.1</b> Gestion des fichiers et des répertoires de travail</a></li>
 <li class="chapter" data-level="10.2" data-path="project.html"><a href="project.html#gestion-des-versions-de-script"><i class="fa fa-check"></i><b>10.2</b> Gestion des versions de script</a></li>
 <li class="chapter" data-level="10.3" data-path="project.html"><a href="project.html#gestion-de-la-documentation"><i class="fa fa-check"></i><b>10.3</b> Gestion de la documentation</a></li>
 <li class="chapter" data-level="10.4" data-path="project.html"><a href="project.html#conclusion-7"><i class="fa fa-check"></i><b>10.4</b> Conclusion</a></li>
@@ -317,7 +319,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="14" data-path="graph4.html"><a href="graph4.html"><i class="fa fa-check"></i><b>14</b> Du graphique à la figure dans un article scientifique</a><ul>
 <li class="chapter" data-level="14.1" data-path="graph4.html"><a href="graph4.html#inkscape"><i class="fa fa-check"></i><b>14.1</b> Inkscape</a></li>
 <li class="chapter" data-level="14.2" data-path="graph4.html"><a href="graph4.html#the-gimp"><i class="fa fa-check"></i><b>14.2</b> The Gimp</a></li>
-<li class="chapter" data-level="14.3" data-path="graph4.html"><a href="graph4.html#table-de-reference"><i class="fa fa-check"></i><b>14.3</b> Table de référence</a></li>
+<li class="chapter" data-level="14.3" data-path="graph4.html"><a href="graph4.html#table-de-référence"><i class="fa fa-check"></i><b>14.3</b> Table de référence</a></li>
 </ul></li>
 <li class="part"><span><b>III Etude de cas</b></span></li>
 <li class="chapter" data-level="15" data-path="studyCase001.html"><a href="studyCase001.html"><i class="fa fa-check"></i><b>15</b> Analyser des données de datalogger de température</a></li>
@@ -345,14 +347,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="studyCase001" class="section level1">
 <h1><span class="header-section-number"> 15</span> Analyser des données de datalogger de température</h1>
 <p>Dans les études de biologie, d’écologie ou d’agronomie, nous utilisons fréquemment des données de température provenant de dataloggers. Dans cette étude de cas, nous verrons comment analyser ces données en utilisant les données de température de l’altiplano bolivien près de la ville de El Alto. La première étape consiste à transformer les données du datalogger en un format facile à lire pour R. Nous utiliserons un fichier CSV et la fonction <a href="import.html#import"><code>read.table()</code></a>. Le fichier peut être téléchargé à partir du site Web du livre sur GitHub (<a href="https://github.com/frareb/myRBook_FR/blob/master/myFiles/E05C13.csv" class="uri">https://github.com/frareb/myRBook_FR/blob/master/myFiles/E05C13.csv</a>), ou alors lu directement par R depuis sa source (<a href="https://raw.githubusercontent.com/frareb/myRBook_FR/master/myFiles/E05C13.csv" class="uri">https://raw.githubusercontent.com/frareb/myRBook_FR/master/myFiles/E05C13.csv</a>).</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Lecture du fichier en local après téléchargement : </span>
-bdd &lt;-<span class="st"> </span><span class="kw">read.table</span>(<span class="st">&quot;myFiles/E05C13.csv&quot;</span>, <span class="dt">skip =</span> <span class="dv">1</span>, <span class="dt">header =</span> <span class="ot">TRUE</span>, 
-  <span class="dt">sep =</span> <span class="st">&quot;,&quot;</span>, <span class="dt">dec =</span> <span class="st">&quot;.&quot;</span>, <span class="dt">stringsAsFactors =</span> <span class="ot">FALSE</span>)
-<span class="co"># Lecture du fichier depuis GitHub : </span>
-<span class="co"># bdd &lt;- read.table(&quot;https://raw.githubusercontent.com/frareb/myRBook_FR/master/myFiles/E05C13.csv&quot;, </span>
-<span class="co">#   skip = 1, header = TRUE, sep = &quot;,&quot;, dec = &quot;.&quot;, stringsAsFactors = FALSE)</span>
-<span class="kw">colnames</span>(bdd) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;id&quot;</span>, <span class="st">&quot;date&quot;</span>, <span class="st">&quot;temp&quot;</span>)
-<span class="kw">head</span>(bdd)</code></pre>
+<div class="sourceCode" id="cb1175"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1175-1" title="1"><span class="co"># Lecture du fichier en local après téléchargement : </span></a>
+<a class="sourceLine" id="cb1175-2" title="2">bdd &lt;-<span class="st"> </span><span class="kw">read.table</span>(<span class="st">&quot;myFiles/E05C13.csv&quot;</span>, <span class="dt">skip =</span> <span class="dv">1</span>, <span class="dt">header =</span> <span class="ot">TRUE</span>, </a>
+<a class="sourceLine" id="cb1175-3" title="3">  <span class="dt">sep =</span> <span class="st">&quot;,&quot;</span>, <span class="dt">dec =</span> <span class="st">&quot;.&quot;</span>, <span class="dt">stringsAsFactors =</span> <span class="ot">FALSE</span>)</a>
+<a class="sourceLine" id="cb1175-4" title="4"><span class="co"># Lecture du fichier depuis GitHub : </span></a>
+<a class="sourceLine" id="cb1175-5" title="5"><span class="co"># bdd &lt;- read.table(&quot;https://raw.githubusercontent.com/frareb/myRBook_FR/master/myFiles/E05C13.csv&quot;, </span></a>
+<a class="sourceLine" id="cb1175-6" title="6"><span class="co">#   skip = 1, header = TRUE, sep = &quot;,&quot;, dec = &quot;.&quot;, stringsAsFactors = FALSE)</span></a>
+<a class="sourceLine" id="cb1175-7" title="7"><span class="kw">colnames</span>(bdd) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;id&quot;</span>, <span class="st">&quot;date&quot;</span>, <span class="st">&quot;temp&quot;</span>)</a>
+<a class="sourceLine" id="cb1175-8" title="8"><span class="kw">head</span>(bdd)</a></code></pre></div>
 <pre><code>##   id              date  temp
 ## 1  1 11/12/15 23:00:00 4.973
 ## 2  2 11/12/15 23:30:00 4.766
@@ -360,7 +362,7 @@ bdd &lt;-<span class="st"> </span><span class="kw">read.table</span>(<span class
 ## 4  4 11/13/15 00:30:00 4.844
 ## 5  5 11/13/15 01:00:00 5.076
 ## 6  6 11/13/15 01:30:00 5.282</code></pre>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">tail</span>(bdd)</code></pre>
+<div class="sourceCode" id="cb1177"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1177-1" title="1"><span class="kw">tail</span>(bdd)</a></code></pre></div>
 <pre><code>##          id              date  temp
 ## 32781 32781 09/25/17 21:00:00 7.091
 ## 32782 32782 09/25/17 21:30:00 6.914
@@ -368,43 +370,43 @@ bdd &lt;-<span class="st"> </span><span class="kw">read.table</span>(<span class
 ## 32784 32784 09/25/17 22:30:00 6.611
 ## 32785 32785 09/25/17 23:00:00 6.331
 ## 32786 32786 09/25/17 23:30:00 5.385</code></pre>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">str</span>(bdd)</code></pre>
+<div class="sourceCode" id="cb1179"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1179-1" title="1"><span class="kw">str</span>(bdd)</a></code></pre></div>
 <pre><code>## &#39;data.frame&#39;:    32786 obs. of  3 variables:
 ##  $ id  : int  1 2 3 4 5 6 7 8 9 10 ...
 ##  $ date: chr  &quot;11/12/15 23:00:00&quot; &quot;11/12/15 23:30:00&quot; &quot;11/13/15 00:00:00&quot; &quot;11/13/15 00:30:00&quot; ...
 ##  $ temp: num  4.97 4.77 4.84 4.84 5.08 ...</code></pre>
 <p>Nous pouvons voir que la date est au format <code>character</code> et qu’elle contient la date avec le mois, le jour et l’année séparés par <code>/</code>, puis vient un espace et l’heure avec des heures de 0 à 24, minutes et secondes, séparés par <code>:</code> (exemple: <code>11/12/15 23:00:00</code> pour le 12 novembre 2015 à 11 heures du soir). Nous allons séparer les informations en plusieurs objets. Séparons d’abord la date de l’heure. Pour cela, nous utiliserons la fonction <code>strsplit()</code> en utilisant l’espace entre la date et l’heure comme séparateur.</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">strsplit</span>(<span class="st">&quot;11/12/15 23:00:00&quot;</span>, <span class="dt">split =</span> <span class="st">&quot; &quot;</span>)</code></pre>
+<div class="sourceCode" id="cb1181"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1181-1" title="1"><span class="kw">strsplit</span>(<span class="st">&quot;11/12/15 23:00:00&quot;</span>, <span class="dt">split =</span> <span class="st">&quot; &quot;</span>)</a></code></pre></div>
 <pre><code>## [[1]]
 ## [1] &quot;11/12/15&quot; &quot;23:00:00&quot;</code></pre>
 <p>Comme l’indiquent les doubles crochets, la fonction <code>strsplit()</code> renvoie un objet au format <code>list</code>. Nous voulons le vecteur qui correspond au premier élément de la liste, donc nous allons ajouter <code>[[1]]</code>.</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">strsplit</span>(<span class="st">&quot;11/12/15 23:00:00&quot;</span>, <span class="dt">split =</span> <span class="st">&quot; &quot;</span>)[[<span class="dv">1</span>]]</code></pre>
+<div class="sourceCode" id="cb1183"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1183-1" title="1"><span class="kw">strsplit</span>(<span class="st">&quot;11/12/15 23:00:00&quot;</span>, <span class="dt">split =</span> <span class="st">&quot; &quot;</span>)[[<span class="dv">1</span>]]</a></code></pre></div>
 <pre><code>## [1] &quot;11/12/15&quot; &quot;23:00:00&quot;</code></pre>
 <p>Le premier élément du <code>vector</code> est la date. Pour avoir toutes les dates, nous allons faire une boucle avec la fonction <code>sapply()</code>.</p>
-<pre class="sourceCode r"><code class="sourceCode r">bddDay &lt;-<span class="st"> </span><span class="kw">sapply</span>(<span class="kw">strsplit</span>(bdd[, <span class="dv">2</span>], <span class="dt">split =</span> <span class="st">&quot; &quot;</span>), <span class="st">&quot;[[&quot;</span>, <span class="dv">1</span>)
-<span class="kw">head</span>(bddDay)</code></pre>
+<div class="sourceCode" id="cb1185"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1185-1" title="1">bddDay &lt;-<span class="st"> </span><span class="kw">sapply</span>(<span class="kw">strsplit</span>(bdd[, <span class="dv">2</span>], <span class="dt">split =</span> <span class="st">&quot; &quot;</span>), <span class="st">&quot;[[&quot;</span>, <span class="dv">1</span>)</a>
+<a class="sourceLine" id="cb1185-2" title="2"><span class="kw">head</span>(bddDay)</a></code></pre></div>
 <pre><code>## [1] &quot;11/12/15&quot; &quot;11/12/15&quot; &quot;11/13/15&quot; &quot;11/13/15&quot; &quot;11/13/15&quot; &quot;11/13/15&quot;</code></pre>
 <p>Ensuite, nous aurons besoin des dates dans le format <code>Date</code>. pour cela nous allons transformer l’objet au format <code>Date</code> avec la fonction <code>as.Date()</code>.</p>
-<pre class="sourceCode r"><code class="sourceCode r">bddDay &lt;-<span class="st"> </span><span class="kw">as.Date</span>(<span class="kw">sapply</span>(<span class="kw">strsplit</span>(bdd[, <span class="dv">2</span>], <span class="dt">split =</span> <span class="st">&quot; &quot;</span>), <span class="st">&quot;[[&quot;</span>, <span class="dv">1</span>), <span class="dt">format =</span> <span class="st">&quot;%m/%d/%y&quot;</span>)
-<span class="kw">head</span>(bddDay)</code></pre>
+<div class="sourceCode" id="cb1187"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1187-1" title="1">bddDay &lt;-<span class="st"> </span><span class="kw">as.Date</span>(<span class="kw">sapply</span>(<span class="kw">strsplit</span>(bdd[, <span class="dv">2</span>], <span class="dt">split =</span> <span class="st">&quot; &quot;</span>), <span class="st">&quot;[[&quot;</span>, <span class="dv">1</span>), <span class="dt">format =</span> <span class="st">&quot;%m/%d/%y&quot;</span>)</a>
+<a class="sourceLine" id="cb1187-2" title="2"><span class="kw">head</span>(bddDay)</a></code></pre></div>
 <pre><code>## [1] &quot;2015-11-12&quot; &quot;2015-11-12&quot; &quot;2015-11-13&quot; &quot;2015-11-13&quot; &quot;2015-11-13&quot;
 ## [6] &quot;2015-11-13&quot;</code></pre>
 <p>Nous allons maintenant ajouter l’objet <code>bddDay</code> à notre <code>data.frame</code> <code>bdd</code>. Ensuite, nous allons vérifier que cette nouvelle colonne dans notre <code>data.frame</code> est bien au format <code>Date</code> avec la fonction <code>str()</code></p>
-<pre class="sourceCode r"><code class="sourceCode r">bdd<span class="op">$</span>day &lt;-<span class="st"> </span>bddDay
-<span class="kw">str</span>(bdd)</code></pre>
+<div class="sourceCode" id="cb1189"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1189-1" title="1">bdd<span class="op">$</span>day &lt;-<span class="st"> </span>bddDay</a>
+<a class="sourceLine" id="cb1189-2" title="2"><span class="kw">str</span>(bdd)</a></code></pre></div>
 <pre><code>## &#39;data.frame&#39;:    32786 obs. of  4 variables:
 ##  $ id  : int  1 2 3 4 5 6 7 8 9 10 ...
 ##  $ date: chr  &quot;11/12/15 23:00:00&quot; &quot;11/12/15 23:30:00&quot; &quot;11/13/15 00:00:00&quot; &quot;11/13/15 00:30:00&quot; ...
 ##  $ temp: num  4.97 4.77 4.84 4.84 5.08 ...
 ##  $ day : Date, format: &quot;2015-11-12&quot; &quot;2015-11-12&quot; ...</code></pre>
 <p>Si l’information concernant la date n’est pas suffisante, nous pouvons ajouter l’heure. Dans ce cas c’est le format <code>POSIX</code> qu’il faudra utiliser avec la fonction <code>as.POSIXct()</code>. De la même manière nous allons ajouter l’information dans notre objet <code>bdd</code> et vérifier le format avec la fonction <code>str()</code>.</p>
-<pre class="sourceCode r"><code class="sourceCode r">bddPosix &lt;-<span class="st"> </span><span class="kw">as.POSIXct</span>(bdd<span class="op">$</span>date, <span class="dt">format =</span> <span class="st">&quot;%m/%d/%y %H:%M:%S&quot;</span>)
-<span class="kw">head</span>(bddPosix)</code></pre>
+<div class="sourceCode" id="cb1191"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1191-1" title="1">bddPosix &lt;-<span class="st"> </span><span class="kw">as.POSIXct</span>(bdd<span class="op">$</span>date, <span class="dt">format =</span> <span class="st">&quot;%m/%d/%y %H:%M:%S&quot;</span>)</a>
+<a class="sourceLine" id="cb1191-2" title="2"><span class="kw">head</span>(bddPosix)</a></code></pre></div>
 <pre><code>## [1] &quot;2015-11-12 23:00:00 CET&quot; &quot;2015-11-12 23:30:00 CET&quot;
 ## [3] &quot;2015-11-13 00:00:00 CET&quot; &quot;2015-11-13 00:30:00 CET&quot;
 ## [5] &quot;2015-11-13 01:00:00 CET&quot; &quot;2015-11-13 01:30:00 CET&quot;</code></pre>
-<pre class="sourceCode r"><code class="sourceCode r">bdd<span class="op">$</span>posix &lt;-<span class="st"> </span>bddPosix
-<span class="kw">str</span>(bdd)</code></pre>
+<div class="sourceCode" id="cb1193"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1193-1" title="1">bdd<span class="op">$</span>posix &lt;-<span class="st"> </span>bddPosix</a>
+<a class="sourceLine" id="cb1193-2" title="2"><span class="kw">str</span>(bdd)</a></code></pre></div>
 <pre><code>## &#39;data.frame&#39;:    32786 obs. of  5 variables:
 ##  $ id   : int  1 2 3 4 5 6 7 8 9 10 ...
 ##  $ date : chr  &quot;11/12/15 23:00:00&quot; &quot;11/12/15 23:30:00&quot; &quot;11/13/15 00:00:00&quot; &quot;11/13/15 00:30:00&quot; ...
@@ -483,215 +485,215 @@ bdd &lt;-<span class="st"> </span><span class="kw">read.table</span>(<span class
 </tbody>
 </table>
 <p>Nous pouvons visualiser les données avec la fonction <code>plot()</code>.</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(<span class="dt">x =</span> bdd<span class="op">$</span>day, <span class="dt">y =</span> bdd<span class="op">$</span>temp, 
-    <span class="dt">type =</span> <span class="st">&#39;l&#39;</span>, <span class="dt">ylim =</span> <span class="kw">c</span>(<span class="op">-</span><span class="dv">15</span>, <span class="dv">40</span>), 
-    <span class="dt">xlab =</span> <span class="st">&quot;Temps&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;Température (°C)&quot;</span>)</code></pre>
+<div class="sourceCode" id="cb1195"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1195-1" title="1"><span class="kw">plot</span>(<span class="dt">x =</span> bdd<span class="op">$</span>day, <span class="dt">y =</span> bdd<span class="op">$</span>temp, </a>
+<a class="sourceLine" id="cb1195-2" title="2">    <span class="dt">type =</span> <span class="st">&#39;l&#39;</span>, <span class="dt">ylim =</span> <span class="kw">c</span>(<span class="op">-</span><span class="dv">15</span>, <span class="dv">40</span>), </a>
+<a class="sourceLine" id="cb1195-3" title="3">    <span class="dt">xlab =</span> <span class="st">&quot;Temps&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;Température (°C)&quot;</span>)</a></code></pre></div>
 <p><img src="myRBook_FR_files/figure-html/041-studyCase-8-1.png" width="672" /></p>
 <p>Nous pouvons simplifier les informations en ne calculant que les températures minimales, moyennes et maximales avec la fonction <code>tapply()</code>.</p>
-<pre class="sourceCode r"><code class="sourceCode r">tempDayMean &lt;-<span class="st"> </span><span class="kw">tapply</span>(bdd<span class="op">$</span>temp, <span class="dt">INDEX =</span> bdd<span class="op">$</span>day, <span class="dt">FUN =</span> mean)
-tempDayMin &lt;-<span class="st"> </span><span class="kw">tapply</span>(bdd<span class="op">$</span>temp, <span class="dt">INDEX =</span> bdd<span class="op">$</span>day, <span class="dt">FUN =</span> min)
-tempDayMax &lt;-<span class="st"> </span><span class="kw">tapply</span>(bdd<span class="op">$</span>temp, <span class="dt">INDEX =</span> bdd<span class="op">$</span>day, <span class="dt">FUN =</span> max)
-<span class="kw">plot</span>(<span class="dt">x =</span> <span class="kw">as.Date</span>(<span class="kw">names</span>(tempDayMean), <span class="dt">format =</span> <span class="st">&quot;%Y-%m-%d&quot;</span>), 
-    <span class="dt">y =</span> tempDayMean, <span class="dt">type =</span> <span class="st">&#39;l&#39;</span>, <span class="dt">ylim =</span> <span class="kw">c</span>(<span class="op">-</span><span class="dv">15</span>, <span class="dv">40</span>), 
-    <span class="dt">xlab =</span> <span class="st">&quot;Temps&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;Température (°C)&quot;</span>)
-<span class="kw">points</span>(<span class="kw">as.Date</span>(<span class="kw">names</span>(tempDayMin), <span class="dt">format =</span> <span class="st">&quot;%Y-%m-%d&quot;</span>), 
-    <span class="dt">y =</span> tempDayMin, <span class="dt">type =</span> <span class="st">&#39;l&#39;</span>, <span class="dt">col =</span> <span class="dv">4</span>)
-<span class="kw">points</span>(<span class="kw">as.Date</span>(<span class="kw">names</span>(tempDayMax), <span class="dt">format =</span> <span class="st">&quot;%Y-%m-%d&quot;</span>), 
-    <span class="dt">y =</span> tempDayMax, <span class="dt">type =</span> <span class="st">&#39;l&#39;</span>, <span class="dt">col =</span> <span class="dv">2</span>)
-<span class="kw">legend</span>(<span class="st">&quot;topright&quot;</span>, <span class="dt">legend =</span> <span class="kw">c</span>(<span class="st">&quot;min&quot;</span>, <span class="st">&quot;max&quot;</span>, <span class="st">&quot;mean&quot;</span>), 
-  <span class="dt">lty =</span> <span class="dv">1</span>, <span class="dt">lwd =</span> <span class="dv">2</span>, <span class="dt">col =</span> <span class="kw">c</span>(<span class="dv">4</span>, <span class="dv">2</span>, <span class="dv">1</span>))</code></pre>
+<div class="sourceCode" id="cb1196"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1196-1" title="1">tempDayMean &lt;-<span class="st"> </span><span class="kw">tapply</span>(bdd<span class="op">$</span>temp, <span class="dt">INDEX =</span> bdd<span class="op">$</span>day, <span class="dt">FUN =</span> mean)</a>
+<a class="sourceLine" id="cb1196-2" title="2">tempDayMin &lt;-<span class="st"> </span><span class="kw">tapply</span>(bdd<span class="op">$</span>temp, <span class="dt">INDEX =</span> bdd<span class="op">$</span>day, <span class="dt">FUN =</span> min)</a>
+<a class="sourceLine" id="cb1196-3" title="3">tempDayMax &lt;-<span class="st"> </span><span class="kw">tapply</span>(bdd<span class="op">$</span>temp, <span class="dt">INDEX =</span> bdd<span class="op">$</span>day, <span class="dt">FUN =</span> max)</a>
+<a class="sourceLine" id="cb1196-4" title="4"><span class="kw">plot</span>(<span class="dt">x =</span> <span class="kw">as.Date</span>(<span class="kw">names</span>(tempDayMean), <span class="dt">format =</span> <span class="st">&quot;%Y-%m-%d&quot;</span>), </a>
+<a class="sourceLine" id="cb1196-5" title="5">    <span class="dt">y =</span> tempDayMean, <span class="dt">type =</span> <span class="st">&#39;l&#39;</span>, <span class="dt">ylim =</span> <span class="kw">c</span>(<span class="op">-</span><span class="dv">15</span>, <span class="dv">40</span>), </a>
+<a class="sourceLine" id="cb1196-6" title="6">    <span class="dt">xlab =</span> <span class="st">&quot;Temps&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;Température (°C)&quot;</span>)</a>
+<a class="sourceLine" id="cb1196-7" title="7"><span class="kw">points</span>(<span class="kw">as.Date</span>(<span class="kw">names</span>(tempDayMin), <span class="dt">format =</span> <span class="st">&quot;%Y-%m-%d&quot;</span>), </a>
+<a class="sourceLine" id="cb1196-8" title="8">    <span class="dt">y =</span> tempDayMin, <span class="dt">type =</span> <span class="st">&#39;l&#39;</span>, <span class="dt">col =</span> <span class="dv">4</span>)</a>
+<a class="sourceLine" id="cb1196-9" title="9"><span class="kw">points</span>(<span class="kw">as.Date</span>(<span class="kw">names</span>(tempDayMax), <span class="dt">format =</span> <span class="st">&quot;%Y-%m-%d&quot;</span>), </a>
+<a class="sourceLine" id="cb1196-10" title="10">    <span class="dt">y =</span> tempDayMax, <span class="dt">type =</span> <span class="st">&#39;l&#39;</span>, <span class="dt">col =</span> <span class="dv">2</span>)</a>
+<a class="sourceLine" id="cb1196-11" title="11"><span class="kw">legend</span>(<span class="st">&quot;topright&quot;</span>, <span class="dt">legend =</span> <span class="kw">c</span>(<span class="st">&quot;min&quot;</span>, <span class="st">&quot;max&quot;</span>, <span class="st">&quot;mean&quot;</span>), </a>
+<a class="sourceLine" id="cb1196-12" title="12">  <span class="dt">lty =</span> <span class="dv">1</span>, <span class="dt">lwd =</span> <span class="dv">2</span>, <span class="dt">col =</span> <span class="kw">c</span>(<span class="dv">4</span>, <span class="dv">2</span>, <span class="dv">1</span>))</a></code></pre></div>
 <p><img src="myRBook_FR_files/figure-html/041-studyCase-9-1.png" width="672" /></p>
 <p>Nous pouvons très facilement représenter le même information par semaine. Il suffit de changer l’argument <code>INDEX</code> pour une date en semaine. Voici un exemple de format par semaine :</p>
-<pre class="sourceCode r"><code class="sourceCode r">anoSem &lt;-<span class="st"> </span><span class="kw">format</span>(bdd<span class="op">$</span>posix, <span class="dt">format =</span> <span class="st">&quot;%Y-%W&quot;</span>)
-<span class="kw">head</span>(anoSem)</code></pre>
+<div class="sourceCode" id="cb1197"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1197-1" title="1">anoSem &lt;-<span class="st"> </span><span class="kw">format</span>(bdd<span class="op">$</span>posix, <span class="dt">format =</span> <span class="st">&quot;%Y-%W&quot;</span>)</a>
+<a class="sourceLine" id="cb1197-2" title="2"><span class="kw">head</span>(anoSem)</a></code></pre></div>
 <pre><code>## [1] &quot;2015-45&quot; &quot;2015-45&quot; &quot;2015-45&quot; &quot;2015-45&quot; &quot;2015-45&quot; &quot;2015-45&quot;</code></pre>
 <p>Et voici le graphique par semaine :</p>
-<pre class="sourceCode r"><code class="sourceCode r">tempWeekMean &lt;-<span class="st"> </span><span class="kw">tapply</span>(bdd<span class="op">$</span>temp, 
-  <span class="dt">INDEX =</span> <span class="kw">format</span>(bdd<span class="op">$</span>posix, <span class="dt">format =</span> <span class="st">&quot;%Y-%W-1&quot;</span>), <span class="dt">FUN =</span> mean)
-tempWeekMin &lt;-<span class="st"> </span><span class="kw">tapply</span>(bdd<span class="op">$</span>temp, 
-  <span class="dt">INDEX =</span> <span class="kw">format</span>(bdd<span class="op">$</span>posix, <span class="dt">format =</span> <span class="st">&quot;%Y-%W-1&quot;</span>), <span class="dt">FUN =</span> min)
-tempWeekMax &lt;-<span class="st"> </span><span class="kw">tapply</span>(bdd<span class="op">$</span>temp, 
-  <span class="dt">INDEX =</span> <span class="kw">format</span>(bdd<span class="op">$</span>posix, <span class="dt">format =</span> <span class="st">&quot;%Y-%W-1&quot;</span>), <span class="dt">FUN =</span> max)
-<span class="kw">plot</span>(<span class="dt">x =</span> <span class="kw">as.Date</span>(<span class="kw">names</span>(tempWeekMean), <span class="dt">format =</span> <span class="st">&quot;%Y-%W-%u&quot;</span>), 
-    <span class="dt">y =</span> tempWeekMean, <span class="dt">type =</span> <span class="st">&#39;l&#39;</span>, <span class="dt">ylim =</span> <span class="kw">c</span>(<span class="op">-</span><span class="dv">15</span>, <span class="dv">40</span>), 
-    <span class="dt">xlab =</span> <span class="st">&quot;Fecha&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;Temperatura (°C)&quot;</span>)
-<span class="kw">points</span>(<span class="dt">x =</span> <span class="kw">as.Date</span>(<span class="kw">names</span>(tempWeekMin), <span class="dt">format =</span> <span class="st">&quot;%Y-%W-%u&quot;</span>), 
-    <span class="dt">y =</span> tempWeekMin, <span class="dt">type =</span> <span class="st">&#39;l&#39;</span>, <span class="dt">col =</span> <span class="dv">4</span>)
-<span class="kw">points</span>(<span class="dt">x =</span> <span class="kw">as.Date</span>(<span class="kw">names</span>(tempWeekMax), <span class="dt">format =</span> <span class="st">&quot;%Y-%W-%u&quot;</span>), 
-    <span class="dt">y =</span> tempWeekMax, <span class="dt">type =</span> <span class="st">&#39;l&#39;</span>, <span class="dt">col =</span> <span class="dv">2</span>)
-<span class="kw">legend</span>(<span class="st">&quot;topright&quot;</span>, <span class="dt">legend =</span> <span class="kw">c</span>(<span class="st">&quot;min&quot;</span>, <span class="st">&quot;max&quot;</span>, <span class="st">&quot;promedio&quot;</span>), 
-  <span class="dt">lty =</span> <span class="dv">1</span>, <span class="dt">lwd =</span> <span class="dv">2</span>, <span class="dt">col =</span> <span class="kw">c</span>(<span class="dv">4</span>, <span class="dv">2</span>, <span class="dv">1</span>))</code></pre>
+<div class="sourceCode" id="cb1199"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1199-1" title="1">tempWeekMean &lt;-<span class="st"> </span><span class="kw">tapply</span>(bdd<span class="op">$</span>temp, </a>
+<a class="sourceLine" id="cb1199-2" title="2">  <span class="dt">INDEX =</span> <span class="kw">format</span>(bdd<span class="op">$</span>posix, <span class="dt">format =</span> <span class="st">&quot;%Y-%W-1&quot;</span>), <span class="dt">FUN =</span> mean)</a>
+<a class="sourceLine" id="cb1199-3" title="3">tempWeekMin &lt;-<span class="st"> </span><span class="kw">tapply</span>(bdd<span class="op">$</span>temp, </a>
+<a class="sourceLine" id="cb1199-4" title="4">  <span class="dt">INDEX =</span> <span class="kw">format</span>(bdd<span class="op">$</span>posix, <span class="dt">format =</span> <span class="st">&quot;%Y-%W-1&quot;</span>), <span class="dt">FUN =</span> min)</a>
+<a class="sourceLine" id="cb1199-5" title="5">tempWeekMax &lt;-<span class="st"> </span><span class="kw">tapply</span>(bdd<span class="op">$</span>temp, </a>
+<a class="sourceLine" id="cb1199-6" title="6">  <span class="dt">INDEX =</span> <span class="kw">format</span>(bdd<span class="op">$</span>posix, <span class="dt">format =</span> <span class="st">&quot;%Y-%W-1&quot;</span>), <span class="dt">FUN =</span> max)</a>
+<a class="sourceLine" id="cb1199-7" title="7"><span class="kw">plot</span>(<span class="dt">x =</span> <span class="kw">as.Date</span>(<span class="kw">names</span>(tempWeekMean), <span class="dt">format =</span> <span class="st">&quot;%Y-%W-%u&quot;</span>), </a>
+<a class="sourceLine" id="cb1199-8" title="8">    <span class="dt">y =</span> tempWeekMean, <span class="dt">type =</span> <span class="st">&#39;l&#39;</span>, <span class="dt">ylim =</span> <span class="kw">c</span>(<span class="op">-</span><span class="dv">15</span>, <span class="dv">40</span>), </a>
+<a class="sourceLine" id="cb1199-9" title="9">    <span class="dt">xlab =</span> <span class="st">&quot;Fecha&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;Temperatura (°C)&quot;</span>)</a>
+<a class="sourceLine" id="cb1199-10" title="10"><span class="kw">points</span>(<span class="dt">x =</span> <span class="kw">as.Date</span>(<span class="kw">names</span>(tempWeekMin), <span class="dt">format =</span> <span class="st">&quot;%Y-%W-%u&quot;</span>), </a>
+<a class="sourceLine" id="cb1199-11" title="11">    <span class="dt">y =</span> tempWeekMin, <span class="dt">type =</span> <span class="st">&#39;l&#39;</span>, <span class="dt">col =</span> <span class="dv">4</span>)</a>
+<a class="sourceLine" id="cb1199-12" title="12"><span class="kw">points</span>(<span class="dt">x =</span> <span class="kw">as.Date</span>(<span class="kw">names</span>(tempWeekMax), <span class="dt">format =</span> <span class="st">&quot;%Y-%W-%u&quot;</span>), </a>
+<a class="sourceLine" id="cb1199-13" title="13">    <span class="dt">y =</span> tempWeekMax, <span class="dt">type =</span> <span class="st">&#39;l&#39;</span>, <span class="dt">col =</span> <span class="dv">2</span>)</a>
+<a class="sourceLine" id="cb1199-14" title="14"><span class="kw">legend</span>(<span class="st">&quot;topright&quot;</span>, <span class="dt">legend =</span> <span class="kw">c</span>(<span class="st">&quot;min&quot;</span>, <span class="st">&quot;max&quot;</span>, <span class="st">&quot;promedio&quot;</span>), </a>
+<a class="sourceLine" id="cb1199-15" title="15">  <span class="dt">lty =</span> <span class="dv">1</span>, <span class="dt">lwd =</span> <span class="dv">2</span>, <span class="dt">col =</span> <span class="kw">c</span>(<span class="dv">4</span>, <span class="dv">2</span>, <span class="dv">1</span>))</a></code></pre></div>
 <p><img src="myRBook_FR_files/figure-html/041-studyCase-11-1.png" width="672" /></p>
 <p>Dans ce type de représentation nous perdons l’information sur la variabilité des températures par semaine. En focntion des objectifs il pourra être intéressant de préférer une représentation sous forme de <code>boxplot</code> (ici un boxplot par mois en formattant la date avec <code>"%Y-%m"</code>).</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">boxplot</span>(bdd<span class="op">$</span>temp <span class="op">~</span><span class="st"> </span><span class="kw">format</span>(bdd<span class="op">$</span>posix, <span class="dt">format =</span> <span class="st">&quot;%Y-%m&quot;</span>), <span class="dt">las =</span> <span class="dv">3</span>,
-  <span class="dt">xlab =</span> <span class="st">&quot;&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;Température (°C)&quot;</span>)</code></pre>
+<div class="sourceCode" id="cb1200"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1200-1" title="1"><span class="kw">boxplot</span>(bdd<span class="op">$</span>temp <span class="op">~</span><span class="st"> </span><span class="kw">format</span>(bdd<span class="op">$</span>posix, <span class="dt">format =</span> <span class="st">&quot;%Y-%m&quot;</span>), <span class="dt">las =</span> <span class="dv">3</span>,</a>
+<a class="sourceLine" id="cb1200-2" title="2">  <span class="dt">xlab =</span> <span class="st">&quot;&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;Température (°C)&quot;</span>)</a></code></pre></div>
 <p><img src="myRBook_FR_files/figure-html/041-studyCase-12-1.png" width="672" /></p>
 <p>Pour comparer les différentes valeurs de température, il peut être utile d’attribuer une couleur à chaque boxplot. Par exemple, nous pouvons utiliser un gradient de couleur du bleu au rouge en utilisant la valeur de la température moyenne.</p>
-<pre class="sourceCode r"><code class="sourceCode r">tempMonthMean &lt;-<span class="st"> </span><span class="kw">tapply</span>(bdd<span class="op">$</span>temp, 
-  <span class="dt">INDEX =</span> <span class="kw">format</span>(bdd<span class="op">$</span>posix, <span class="dt">format =</span> <span class="st">&quot;%Y-%m&quot;</span>), <span class="dt">FUN =</span> mean)
-myCol &lt;-<span class="st"> </span><span class="kw">colorRampPalette</span>(<span class="kw">c</span>(<span class="st">&quot;blue&quot;</span>, <span class="st">&quot;red&quot;</span>))(<span class="dv">101</span>)
-tempMeanDayPos &lt;-<span class="st"> </span><span class="kw">round</span>(
-  (tempMonthMean <span class="op">-</span><span class="st"> </span><span class="kw">min</span>(tempMonthMean)) <span class="op">/</span><span class="st"> </span>
-<span class="st">    </span>(<span class="kw">max</span>(tempMonthMean) <span class="op">-</span><span class="st"> </span><span class="kw">min</span>(tempMonthMean))<span class="op">*</span><span class="dv">100</span>) <span class="op">+</span><span class="st"> </span><span class="dv">1</span>
-<span class="kw">boxplot</span>(bdd<span class="op">$</span>temp <span class="op">~</span><span class="st"> </span><span class="kw">format</span>(bdd<span class="op">$</span>posix, <span class="dt">format =</span> <span class="st">&quot;%Y-%m&quot;</span>), <span class="dt">las =</span> <span class="dv">3</span>, 
-  <span class="dt">col =</span> myCol[tempMeanDayPos],
-  <span class="dt">xlab =</span> <span class="st">&quot;&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;Température (°C)&quot;</span>)</code></pre>
+<div class="sourceCode" id="cb1201"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1201-1" title="1">tempMonthMean &lt;-<span class="st"> </span><span class="kw">tapply</span>(bdd<span class="op">$</span>temp, </a>
+<a class="sourceLine" id="cb1201-2" title="2">  <span class="dt">INDEX =</span> <span class="kw">format</span>(bdd<span class="op">$</span>posix, <span class="dt">format =</span> <span class="st">&quot;%Y-%m&quot;</span>), <span class="dt">FUN =</span> mean)</a>
+<a class="sourceLine" id="cb1201-3" title="3">myCol &lt;-<span class="st"> </span><span class="kw">colorRampPalette</span>(<span class="kw">c</span>(<span class="st">&quot;blue&quot;</span>, <span class="st">&quot;red&quot;</span>))(<span class="dv">101</span>)</a>
+<a class="sourceLine" id="cb1201-4" title="4">tempMeanDayPos &lt;-<span class="st"> </span><span class="kw">round</span>(</a>
+<a class="sourceLine" id="cb1201-5" title="5">  (tempMonthMean <span class="op">-</span><span class="st"> </span><span class="kw">min</span>(tempMonthMean)) <span class="op">/</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb1201-6" title="6"><span class="st">    </span>(<span class="kw">max</span>(tempMonthMean) <span class="op">-</span><span class="st"> </span><span class="kw">min</span>(tempMonthMean))<span class="op">*</span><span class="dv">100</span>) <span class="op">+</span><span class="st"> </span><span class="dv">1</span></a>
+<a class="sourceLine" id="cb1201-7" title="7"><span class="kw">boxplot</span>(bdd<span class="op">$</span>temp <span class="op">~</span><span class="st"> </span><span class="kw">format</span>(bdd<span class="op">$</span>posix, <span class="dt">format =</span> <span class="st">&quot;%Y-%m&quot;</span>), <span class="dt">las =</span> <span class="dv">3</span>, </a>
+<a class="sourceLine" id="cb1201-8" title="8">  <span class="dt">col =</span> myCol[tempMeanDayPos],</a>
+<a class="sourceLine" id="cb1201-9" title="9">  <span class="dt">xlab =</span> <span class="st">&quot;&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;Température (°C)&quot;</span>)</a></code></pre></div>
 <p><img src="myRBook_FR_files/figure-html/041-studyCase-13-1.png" width="672" /></p>
 <p>Et pour celles et ceux qui utilisent <code>ggplot2</code> :</p>
-<pre class="sourceCode r"><code class="sourceCode r">pkgCheck &lt;-<span class="st"> </span><span class="cf">function</span>(x){ 
-    <span class="cf">if</span> (<span class="op">!</span><span class="kw">require</span>(x, <span class="dt">character.only =</span> <span class="ot">TRUE</span>)){
-        <span class="kw">install.packages</span>(x, <span class="dt">dependencies =</span> <span class="ot">TRUE</span>)
-        <span class="cf">if</span>(<span class="op">!</span><span class="kw">require</span>(x, <span class="dt">character.only =</span> <span class="ot">TRUE</span>)) {
-            <span class="kw">stop</span>()
-        }
-    }
-}
-<span class="kw">pkgCheck</span>(<span class="st">&quot;ggplot2&quot;</span>)
-
-tempMonthMean &lt;-<span class="st"> </span><span class="kw">tapply</span>(bdd<span class="op">$</span>temp, 
-  <span class="dt">INDEX =</span> <span class="kw">format</span>(bdd<span class="op">$</span>posix, <span class="dt">format =</span> <span class="st">&quot;%Y-%m&quot;</span>), <span class="dt">FUN =</span> mean)
-myCol &lt;-<span class="st"> </span><span class="kw">colorRampPalette</span>(<span class="kw">c</span>(<span class="st">&quot;blue&quot;</span>, <span class="st">&quot;red&quot;</span>))(<span class="dv">101</span>)
-tempMeanDayPos &lt;-<span class="st"> </span><span class="kw">round</span>(
-  (tempMonthMean <span class="op">-</span><span class="st"> </span><span class="kw">min</span>(tempMonthMean)) <span class="op">/</span><span class="st"> </span>
-<span class="st">    </span>(<span class="kw">max</span>(tempMonthMean) <span class="op">-</span><span class="st"> </span><span class="kw">min</span>(tempMonthMean))<span class="op">*</span><span class="dv">100</span>) <span class="op">+</span><span class="st"> </span><span class="dv">1</span>
-p01 &lt;-<span class="st"> </span><span class="kw">ggplot</span>(<span class="dt">data =</span> bdd, 
-  <span class="kw">aes</span>(
-    <span class="dt">x =</span> posix, 
-    <span class="dt">y =</span> temp, 
-    <span class="dt">group =</span> <span class="kw">format</span>(bdd<span class="op">$</span>posix, <span class="dt">format =</span> <span class="st">&quot;%Y-%m&quot;</span>))) <span class="op">+</span><span class="st"> </span>
-<span class="st">    </span><span class="kw">geom_boxplot</span>(<span class="dt">outlier.colour =</span> <span class="st">&quot;black&quot;</span>, <span class="dt">fill =</span> myCol[tempMeanDayPos])
-p01</code></pre>
+<div class="sourceCode" id="cb1202"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1202-1" title="1">pkgCheck &lt;-<span class="st"> </span><span class="cf">function</span>(x){ </a>
+<a class="sourceLine" id="cb1202-2" title="2">    <span class="cf">if</span> (<span class="op">!</span><span class="kw">require</span>(x, <span class="dt">character.only =</span> <span class="ot">TRUE</span>)){</a>
+<a class="sourceLine" id="cb1202-3" title="3">        <span class="kw">install.packages</span>(x, <span class="dt">dependencies =</span> <span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb1202-4" title="4">        <span class="cf">if</span>(<span class="op">!</span><span class="kw">require</span>(x, <span class="dt">character.only =</span> <span class="ot">TRUE</span>)) {</a>
+<a class="sourceLine" id="cb1202-5" title="5">            <span class="kw">stop</span>()</a>
+<a class="sourceLine" id="cb1202-6" title="6">        }</a>
+<a class="sourceLine" id="cb1202-7" title="7">    }</a>
+<a class="sourceLine" id="cb1202-8" title="8">}</a>
+<a class="sourceLine" id="cb1202-9" title="9"><span class="kw">pkgCheck</span>(<span class="st">&quot;ggplot2&quot;</span>)</a>
+<a class="sourceLine" id="cb1202-10" title="10"></a>
+<a class="sourceLine" id="cb1202-11" title="11">tempMonthMean &lt;-<span class="st"> </span><span class="kw">tapply</span>(bdd<span class="op">$</span>temp, </a>
+<a class="sourceLine" id="cb1202-12" title="12">  <span class="dt">INDEX =</span> <span class="kw">format</span>(bdd<span class="op">$</span>posix, <span class="dt">format =</span> <span class="st">&quot;%Y-%m&quot;</span>), <span class="dt">FUN =</span> mean)</a>
+<a class="sourceLine" id="cb1202-13" title="13">myCol &lt;-<span class="st"> </span><span class="kw">colorRampPalette</span>(<span class="kw">c</span>(<span class="st">&quot;blue&quot;</span>, <span class="st">&quot;red&quot;</span>))(<span class="dv">101</span>)</a>
+<a class="sourceLine" id="cb1202-14" title="14">tempMeanDayPos &lt;-<span class="st"> </span><span class="kw">round</span>(</a>
+<a class="sourceLine" id="cb1202-15" title="15">  (tempMonthMean <span class="op">-</span><span class="st"> </span><span class="kw">min</span>(tempMonthMean)) <span class="op">/</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb1202-16" title="16"><span class="st">    </span>(<span class="kw">max</span>(tempMonthMean) <span class="op">-</span><span class="st"> </span><span class="kw">min</span>(tempMonthMean))<span class="op">*</span><span class="dv">100</span>) <span class="op">+</span><span class="st"> </span><span class="dv">1</span></a>
+<a class="sourceLine" id="cb1202-17" title="17">p01 &lt;-<span class="st"> </span><span class="kw">ggplot</span>(<span class="dt">data =</span> bdd, </a>
+<a class="sourceLine" id="cb1202-18" title="18">  <span class="kw">aes</span>(</a>
+<a class="sourceLine" id="cb1202-19" title="19">    <span class="dt">x =</span> posix, </a>
+<a class="sourceLine" id="cb1202-20" title="20">    <span class="dt">y =</span> temp, </a>
+<a class="sourceLine" id="cb1202-21" title="21">    <span class="dt">group =</span> <span class="kw">format</span>(bdd<span class="op">$</span>posix, <span class="dt">format =</span> <span class="st">&quot;%Y-%m&quot;</span>))) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb1202-22" title="22"><span class="st">    </span><span class="kw">geom_boxplot</span>(<span class="dt">outlier.colour =</span> <span class="st">&quot;black&quot;</span>, <span class="dt">fill =</span> myCol[tempMeanDayPos])</a>
+<a class="sourceLine" id="cb1202-23" title="23">p01</a></code></pre></div>
 <pre><code>## Warning: Removed 4 rows containing missing values (stat_boxplot).</code></pre>
 <p><img src="myRBook_FR_files/figure-html/041-studyCase-14-1.png" width="672" /></p>
 <p>Nous pouvons également calculer la différence entre la température maximale et la température minimale (variation de la température diurne).</p>
-<pre class="sourceCode r"><code class="sourceCode r">tempDayTR &lt;-<span class="st"> </span>tempDayMax <span class="op">-</span><span class="st"> </span>tempDayMin
-<span class="kw">plot</span>(<span class="dt">x =</span> <span class="kw">as.Date</span>(<span class="kw">names</span>(tempDayMean), <span class="dt">format =</span> <span class="st">&quot;%Y-%m-%d&quot;</span>), 
-    <span class="dt">y =</span> tempDayTR, <span class="dt">type =</span> <span class="st">&#39;l&#39;</span>, <span class="dt">ylim =</span> <span class="kw">c</span>(<span class="dv">5</span>, <span class="dv">45</span>), 
-    <span class="dt">xlab =</span> <span class="st">&quot;Fecha&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;Variation de température diurne (°C)&quot;</span>)</code></pre>
+<div class="sourceCode" id="cb1204"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1204-1" title="1">tempDayTR &lt;-<span class="st"> </span>tempDayMax <span class="op">-</span><span class="st"> </span>tempDayMin</a>
+<a class="sourceLine" id="cb1204-2" title="2"><span class="kw">plot</span>(<span class="dt">x =</span> <span class="kw">as.Date</span>(<span class="kw">names</span>(tempDayMean), <span class="dt">format =</span> <span class="st">&quot;%Y-%m-%d&quot;</span>), </a>
+<a class="sourceLine" id="cb1204-3" title="3">    <span class="dt">y =</span> tempDayTR, <span class="dt">type =</span> <span class="st">&#39;l&#39;</span>, <span class="dt">ylim =</span> <span class="kw">c</span>(<span class="dv">5</span>, <span class="dv">45</span>), </a>
+<a class="sourceLine" id="cb1204-4" title="4">    <span class="dt">xlab =</span> <span class="st">&quot;Fecha&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;Variation de température diurne (°C)&quot;</span>)</a></code></pre></div>
 <p><img src="myRBook_FR_files/figure-html/041-studyCase-15-1.png" width="672" /></p>
 <p>Une autre possibilité est de regrouper les données pour avoir la température moyenne des heures de la journée avec la fonction <code>aggregate()</code>.</p>
-<pre class="sourceCode r"><code class="sourceCode r">tempHourMean &lt;-<span class="st"> </span><span class="kw">aggregate</span>(<span class="dt">x =</span> bdd<span class="op">$</span>temp, 
-  <span class="dt">by =</span> <span class="kw">list</span>(<span class="kw">format</span>(bdd<span class="op">$</span>posix, <span class="dt">format =</span> <span class="st">&quot;%H:%M&quot;</span>)), <span class="dt">FUN =</span> mean)
-tempHourMin &lt;-<span class="st"> </span><span class="kw">aggregate</span>(<span class="dt">x =</span> bdd<span class="op">$</span>temp, 
-  <span class="dt">by =</span> <span class="kw">list</span>(<span class="kw">format</span>(bdd<span class="op">$</span>posix, <span class="dt">format =</span> <span class="st">&quot;%H:%M&quot;</span>)), <span class="dt">FUN =</span> min)
-tempHourMax &lt;-<span class="st"> </span><span class="kw">aggregate</span>(<span class="dt">x =</span> bdd<span class="op">$</span>temp, 
-  <span class="dt">by =</span> <span class="kw">list</span>(<span class="kw">format</span>(bdd<span class="op">$</span>posix, <span class="dt">format =</span> <span class="st">&quot;%H:%M&quot;</span>)), <span class="dt">FUN =</span> max)
-hours &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="dt">from =</span> <span class="dv">0</span>, <span class="dt">to =</span> <span class="fl">23.5</span>, <span class="dt">by =</span> <span class="fl">0.5</span>)
-<span class="kw">plot</span>(<span class="dt">x =</span> hours, 
-    <span class="dt">y =</span> tempHourMean[, <span class="dv">2</span>], <span class="dt">type =</span> <span class="st">&#39;l&#39;</span>, <span class="dt">ylim =</span> <span class="kw">c</span>(<span class="op">-</span><span class="dv">15</span>, <span class="dv">40</span>), 
-    <span class="dt">xlab =</span> <span class="st">&quot;&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;Température (°C)&quot;</span>, <span class="dt">lwd =</span> <span class="dv">2</span>, 
-    <span class="dt">xaxt =</span> <span class="st">&quot;n&quot;</span>, <span class="dt">panel.first =</span> {
-        <span class="kw">abline</span>(<span class="dt">v =</span> hours, <span class="dt">col =</span> <span class="st">&quot;gray&quot;</span>, <span class="dt">lty =</span> <span class="dv">2</span>)
-        <span class="kw">abline</span>(<span class="dt">h =</span> <span class="dv">0</span>, <span class="dt">lty =</span> <span class="dv">2</span>)  
-    })
-<span class="kw">axis</span>(<span class="dt">side =</span> <span class="dv">1</span>, <span class="dt">at =</span> hours, <span class="dt">labels =</span> tempHourMean[, <span class="dv">1</span>], <span class="dt">las =</span> <span class="dv">2</span>)
-<span class="kw">points</span>(<span class="dt">x =</span> hours, <span class="dt">y =</span> tempHourMin[, <span class="dv">2</span>], <span class="dt">type =</span> <span class="st">&#39;l&#39;</span>, <span class="dt">col =</span> <span class="dv">4</span>, <span class="dt">lwd =</span> <span class="dv">2</span>)
-<span class="kw">points</span>(<span class="dt">x =</span> hours, <span class="dt">y =</span> tempHourMax[, <span class="dv">2</span>], <span class="dt">type =</span> <span class="st">&#39;l&#39;</span>, <span class="dt">col =</span> <span class="dv">2</span>, <span class="dt">lwd =</span> <span class="dv">2</span>)</code></pre>
+<div class="sourceCode" id="cb1205"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1205-1" title="1">tempHourMean &lt;-<span class="st"> </span><span class="kw">aggregate</span>(<span class="dt">x =</span> bdd<span class="op">$</span>temp, </a>
+<a class="sourceLine" id="cb1205-2" title="2">  <span class="dt">by =</span> <span class="kw">list</span>(<span class="kw">format</span>(bdd<span class="op">$</span>posix, <span class="dt">format =</span> <span class="st">&quot;%H:%M&quot;</span>)), <span class="dt">FUN =</span> mean)</a>
+<a class="sourceLine" id="cb1205-3" title="3">tempHourMin &lt;-<span class="st"> </span><span class="kw">aggregate</span>(<span class="dt">x =</span> bdd<span class="op">$</span>temp, </a>
+<a class="sourceLine" id="cb1205-4" title="4">  <span class="dt">by =</span> <span class="kw">list</span>(<span class="kw">format</span>(bdd<span class="op">$</span>posix, <span class="dt">format =</span> <span class="st">&quot;%H:%M&quot;</span>)), <span class="dt">FUN =</span> min)</a>
+<a class="sourceLine" id="cb1205-5" title="5">tempHourMax &lt;-<span class="st"> </span><span class="kw">aggregate</span>(<span class="dt">x =</span> bdd<span class="op">$</span>temp, </a>
+<a class="sourceLine" id="cb1205-6" title="6">  <span class="dt">by =</span> <span class="kw">list</span>(<span class="kw">format</span>(bdd<span class="op">$</span>posix, <span class="dt">format =</span> <span class="st">&quot;%H:%M&quot;</span>)), <span class="dt">FUN =</span> max)</a>
+<a class="sourceLine" id="cb1205-7" title="7">hours &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="dt">from =</span> <span class="dv">0</span>, <span class="dt">to =</span> <span class="fl">23.5</span>, <span class="dt">by =</span> <span class="fl">0.5</span>)</a>
+<a class="sourceLine" id="cb1205-8" title="8"><span class="kw">plot</span>(<span class="dt">x =</span> hours, </a>
+<a class="sourceLine" id="cb1205-9" title="9">    <span class="dt">y =</span> tempHourMean[, <span class="dv">2</span>], <span class="dt">type =</span> <span class="st">&#39;l&#39;</span>, <span class="dt">ylim =</span> <span class="kw">c</span>(<span class="op">-</span><span class="dv">15</span>, <span class="dv">40</span>), </a>
+<a class="sourceLine" id="cb1205-10" title="10">    <span class="dt">xlab =</span> <span class="st">&quot;&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;Température (°C)&quot;</span>, <span class="dt">lwd =</span> <span class="dv">2</span>, </a>
+<a class="sourceLine" id="cb1205-11" title="11">    <span class="dt">xaxt =</span> <span class="st">&quot;n&quot;</span>, <span class="dt">panel.first =</span> {</a>
+<a class="sourceLine" id="cb1205-12" title="12">        <span class="kw">abline</span>(<span class="dt">v =</span> hours, <span class="dt">col =</span> <span class="st">&quot;gray&quot;</span>, <span class="dt">lty =</span> <span class="dv">2</span>)</a>
+<a class="sourceLine" id="cb1205-13" title="13">        <span class="kw">abline</span>(<span class="dt">h =</span> <span class="dv">0</span>, <span class="dt">lty =</span> <span class="dv">2</span>)  </a>
+<a class="sourceLine" id="cb1205-14" title="14">    })</a>
+<a class="sourceLine" id="cb1205-15" title="15"><span class="kw">axis</span>(<span class="dt">side =</span> <span class="dv">1</span>, <span class="dt">at =</span> hours, <span class="dt">labels =</span> tempHourMean[, <span class="dv">1</span>], <span class="dt">las =</span> <span class="dv">2</span>)</a>
+<a class="sourceLine" id="cb1205-16" title="16"><span class="kw">points</span>(<span class="dt">x =</span> hours, <span class="dt">y =</span> tempHourMin[, <span class="dv">2</span>], <span class="dt">type =</span> <span class="st">&#39;l&#39;</span>, <span class="dt">col =</span> <span class="dv">4</span>, <span class="dt">lwd =</span> <span class="dv">2</span>)</a>
+<a class="sourceLine" id="cb1205-17" title="17"><span class="kw">points</span>(<span class="dt">x =</span> hours, <span class="dt">y =</span> tempHourMax[, <span class="dv">2</span>], <span class="dt">type =</span> <span class="st">&#39;l&#39;</span>, <span class="dt">col =</span> <span class="dv">2</span>, <span class="dt">lwd =</span> <span class="dv">2</span>)</a></code></pre></div>
 <p><img src="myRBook_FR_files/figure-html/041-studyCase-16-1.png" width="672" /></p>
 <p>Nous pouvons également calculer les températures des heures de la journée pour chaque mois.</p>
-<pre class="sourceCode r"><code class="sourceCode r">meses &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Janvier&quot;</span>, <span class="st">&quot;Février&quot;</span>, <span class="st">&quot;Mars&quot;</span>, <span class="st">&quot;Avril&quot;</span>, <span class="st">&quot;Mai&quot;</span>, <span class="st">&quot;Juin&quot;</span>, 
-    <span class="st">&quot;Juillet&quot;</span>, <span class="st">&quot;Août&quot;</span>, <span class="st">&quot;Septembre&quot;</span>, <span class="st">&quot;Octobre&quot;</span>, <span class="st">&quot;Novembre&quot;</span>, <span class="st">&quot;Décembre&quot;</span>)
-hours &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="dt">from =</span> <span class="dv">0</span>, <span class="dt">to =</span> <span class="fl">23.5</span>, <span class="dt">by =</span> <span class="fl">0.5</span>)
-bddMonth &lt;-<span class="st"> </span><span class="kw">format</span>(bdd<span class="op">$</span>day, <span class="dt">format =</span> <span class="st">&quot;%m&quot;</span>)
-tempDayEachMonth &lt;-<span class="st"> </span><span class="kw">lapply</span>(<span class="kw">sort</span>(<span class="kw">unique</span>(bddMonth)), <span class="cf">function</span>(myMonth){
-    bddX &lt;-<span class="st"> </span>bdd[bddMonth <span class="op">==</span><span class="st"> </span>myMonth, ]
-    tempHourMean &lt;-<span class="st"> </span><span class="kw">aggregate</span>(<span class="dt">x =</span> bddX<span class="op">$</span>temp, <span class="dt">by =</span> <span class="kw">list</span>(<span class="kw">format</span>(bddX<span class="op">$</span>posix, <span class="dt">format =</span> <span class="st">&quot;%H:%M&quot;</span>)), <span class="dt">FUN =</span> mean)
-    tempHourMin &lt;-<span class="st"> </span><span class="kw">aggregate</span>(<span class="dt">x =</span> bddX<span class="op">$</span>temp, <span class="dt">by =</span> <span class="kw">list</span>(<span class="kw">format</span>(bddX<span class="op">$</span>posix, <span class="dt">format =</span> <span class="st">&quot;%H:%M&quot;</span>)), <span class="dt">FUN =</span> min)
-    tempHourMax &lt;-<span class="st"> </span><span class="kw">aggregate</span>(<span class="dt">x =</span> bddX<span class="op">$</span>temp, <span class="dt">by =</span> <span class="kw">list</span>(<span class="kw">format</span>(bddX<span class="op">$</span>posix, <span class="dt">format =</span> <span class="st">&quot;%H:%M&quot;</span>)), <span class="dt">FUN =</span> max)
-    <span class="kw">return</span>(<span class="kw">data.frame</span>(tempHourMean, tempHourMin, tempHourMax))
-})
-
-<span class="co"># for (i in seq_along(tempDayEachMonth)){ # para todos los meses</span>
-<span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="dv">2</span>){ <span class="co"># solo para Enero y Febrero </span>
-    <span class="kw">plot</span>(<span class="dt">x =</span> hours, <span class="dt">y =</span> tempDayEachMonth[[i]][, <span class="dv">2</span>], 
-        <span class="dt">type =</span> <span class="st">&#39;l&#39;</span>, <span class="dt">ylim =</span> <span class="kw">c</span>(<span class="op">-</span><span class="dv">15</span>, <span class="dv">40</span>), 
-        <span class="dt">xlab =</span> <span class="st">&quot;&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;Température (°C)&quot;</span>, <span class="dt">lwd =</span> <span class="dv">2</span>, 
-        <span class="dt">main =</span> meses[i],
-        <span class="dt">xaxt =</span> <span class="st">&quot;n&quot;</span>, <span class="dt">panel.first =</span> {
-            <span class="kw">abline</span>(<span class="dt">v =</span> hours, <span class="dt">col =</span> <span class="st">&quot;gray&quot;</span>, <span class="dt">lty =</span> <span class="dv">2</span>)
-            <span class="kw">abline</span>(<span class="dt">h =</span> <span class="dv">0</span>, <span class="dt">lty =</span> <span class="dv">2</span>)  
-        })
-    <span class="kw">axis</span>(<span class="dt">side =</span> <span class="dv">1</span>, <span class="dt">at =</span> hours, <span class="dt">labels =</span> tempHourMean[, <span class="dv">1</span>], <span class="dt">las =</span> <span class="dv">2</span>)
-    <span class="kw">points</span>(<span class="dt">x =</span> hours, <span class="dt">y =</span> tempDayEachMonth[[i]][, <span class="dv">4</span>], 
-        <span class="dt">type =</span> <span class="st">&#39;l&#39;</span>, <span class="dt">col =</span> <span class="dv">4</span>, <span class="dt">lwd =</span> <span class="dv">2</span>)
-    <span class="kw">points</span>(<span class="dt">x =</span> hours, <span class="dt">y =</span> tempDayEachMonth[[i]][, <span class="dv">6</span>], 
-        <span class="dt">type =</span> <span class="st">&#39;l&#39;</span>, <span class="dt">col =</span> <span class="dv">2</span>, <span class="dt">lwd =</span> <span class="dv">2</span>)
-}</code></pre>
+<div class="sourceCode" id="cb1206"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1206-1" title="1">meses &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Janvier&quot;</span>, <span class="st">&quot;Février&quot;</span>, <span class="st">&quot;Mars&quot;</span>, <span class="st">&quot;Avril&quot;</span>, <span class="st">&quot;Mai&quot;</span>, <span class="st">&quot;Juin&quot;</span>, </a>
+<a class="sourceLine" id="cb1206-2" title="2">    <span class="st">&quot;Juillet&quot;</span>, <span class="st">&quot;Août&quot;</span>, <span class="st">&quot;Septembre&quot;</span>, <span class="st">&quot;Octobre&quot;</span>, <span class="st">&quot;Novembre&quot;</span>, <span class="st">&quot;Décembre&quot;</span>)</a>
+<a class="sourceLine" id="cb1206-3" title="3">hours &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="dt">from =</span> <span class="dv">0</span>, <span class="dt">to =</span> <span class="fl">23.5</span>, <span class="dt">by =</span> <span class="fl">0.5</span>)</a>
+<a class="sourceLine" id="cb1206-4" title="4">bddMonth &lt;-<span class="st"> </span><span class="kw">format</span>(bdd<span class="op">$</span>day, <span class="dt">format =</span> <span class="st">&quot;%m&quot;</span>)</a>
+<a class="sourceLine" id="cb1206-5" title="5">tempDayEachMonth &lt;-<span class="st"> </span><span class="kw">lapply</span>(<span class="kw">sort</span>(<span class="kw">unique</span>(bddMonth)), <span class="cf">function</span>(myMonth){</a>
+<a class="sourceLine" id="cb1206-6" title="6">    bddX &lt;-<span class="st"> </span>bdd[bddMonth <span class="op">==</span><span class="st"> </span>myMonth, ]</a>
+<a class="sourceLine" id="cb1206-7" title="7">    tempHourMean &lt;-<span class="st"> </span><span class="kw">aggregate</span>(<span class="dt">x =</span> bddX<span class="op">$</span>temp, <span class="dt">by =</span> <span class="kw">list</span>(<span class="kw">format</span>(bddX<span class="op">$</span>posix, <span class="dt">format =</span> <span class="st">&quot;%H:%M&quot;</span>)), <span class="dt">FUN =</span> mean)</a>
+<a class="sourceLine" id="cb1206-8" title="8">    tempHourMin &lt;-<span class="st"> </span><span class="kw">aggregate</span>(<span class="dt">x =</span> bddX<span class="op">$</span>temp, <span class="dt">by =</span> <span class="kw">list</span>(<span class="kw">format</span>(bddX<span class="op">$</span>posix, <span class="dt">format =</span> <span class="st">&quot;%H:%M&quot;</span>)), <span class="dt">FUN =</span> min)</a>
+<a class="sourceLine" id="cb1206-9" title="9">    tempHourMax &lt;-<span class="st"> </span><span class="kw">aggregate</span>(<span class="dt">x =</span> bddX<span class="op">$</span>temp, <span class="dt">by =</span> <span class="kw">list</span>(<span class="kw">format</span>(bddX<span class="op">$</span>posix, <span class="dt">format =</span> <span class="st">&quot;%H:%M&quot;</span>)), <span class="dt">FUN =</span> max)</a>
+<a class="sourceLine" id="cb1206-10" title="10">    <span class="kw">return</span>(<span class="kw">data.frame</span>(tempHourMean, tempHourMin, tempHourMax))</a>
+<a class="sourceLine" id="cb1206-11" title="11">})</a>
+<a class="sourceLine" id="cb1206-12" title="12"></a>
+<a class="sourceLine" id="cb1206-13" title="13"><span class="co"># for (i in seq_along(tempDayEachMonth)){ # para todos los meses</span></a>
+<a class="sourceLine" id="cb1206-14" title="14"><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="dv">2</span>){ <span class="co"># solo para Enero y Febrero </span></a>
+<a class="sourceLine" id="cb1206-15" title="15">    <span class="kw">plot</span>(<span class="dt">x =</span> hours, <span class="dt">y =</span> tempDayEachMonth[[i]][, <span class="dv">2</span>], </a>
+<a class="sourceLine" id="cb1206-16" title="16">        <span class="dt">type =</span> <span class="st">&#39;l&#39;</span>, <span class="dt">ylim =</span> <span class="kw">c</span>(<span class="op">-</span><span class="dv">15</span>, <span class="dv">40</span>), </a>
+<a class="sourceLine" id="cb1206-17" title="17">        <span class="dt">xlab =</span> <span class="st">&quot;&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;Température (°C)&quot;</span>, <span class="dt">lwd =</span> <span class="dv">2</span>, </a>
+<a class="sourceLine" id="cb1206-18" title="18">        <span class="dt">main =</span> meses[i],</a>
+<a class="sourceLine" id="cb1206-19" title="19">        <span class="dt">xaxt =</span> <span class="st">&quot;n&quot;</span>, <span class="dt">panel.first =</span> {</a>
+<a class="sourceLine" id="cb1206-20" title="20">            <span class="kw">abline</span>(<span class="dt">v =</span> hours, <span class="dt">col =</span> <span class="st">&quot;gray&quot;</span>, <span class="dt">lty =</span> <span class="dv">2</span>)</a>
+<a class="sourceLine" id="cb1206-21" title="21">            <span class="kw">abline</span>(<span class="dt">h =</span> <span class="dv">0</span>, <span class="dt">lty =</span> <span class="dv">2</span>)  </a>
+<a class="sourceLine" id="cb1206-22" title="22">        })</a>
+<a class="sourceLine" id="cb1206-23" title="23">    <span class="kw">axis</span>(<span class="dt">side =</span> <span class="dv">1</span>, <span class="dt">at =</span> hours, <span class="dt">labels =</span> tempHourMean[, <span class="dv">1</span>], <span class="dt">las =</span> <span class="dv">2</span>)</a>
+<a class="sourceLine" id="cb1206-24" title="24">    <span class="kw">points</span>(<span class="dt">x =</span> hours, <span class="dt">y =</span> tempDayEachMonth[[i]][, <span class="dv">4</span>], </a>
+<a class="sourceLine" id="cb1206-25" title="25">        <span class="dt">type =</span> <span class="st">&#39;l&#39;</span>, <span class="dt">col =</span> <span class="dv">4</span>, <span class="dt">lwd =</span> <span class="dv">2</span>)</a>
+<a class="sourceLine" id="cb1206-26" title="26">    <span class="kw">points</span>(<span class="dt">x =</span> hours, <span class="dt">y =</span> tempDayEachMonth[[i]][, <span class="dv">6</span>], </a>
+<a class="sourceLine" id="cb1206-27" title="27">        <span class="dt">type =</span> <span class="st">&#39;l&#39;</span>, <span class="dt">col =</span> <span class="dv">2</span>, <span class="dt">lwd =</span> <span class="dv">2</span>)</a>
+<a class="sourceLine" id="cb1206-28" title="28">}</a></code></pre></div>
 <p><img src="myRBook_FR_files/figure-html/041-studyCase-17-1.png" width="672" /><img src="myRBook_FR_files/figure-html/041-studyCase-17-2.png" width="672" /></p>
 <p>Ou les regrouper dans un même graphique, ainsi que la variation diurne des températures pour chaque mois.</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(<span class="dt">x =</span> hours, <span class="dt">y =</span> tempDayEachMonth[[<span class="dv">1</span>]][, <span class="dv">2</span>], <span class="dt">type =</span> <span class="st">&#39;n&#39;</span>, <span class="dt">ylim =</span> <span class="kw">c</span>(<span class="op">-</span><span class="dv">10</span>, <span class="dv">35</span>),
-    <span class="dt">xlab =</span> <span class="st">&quot;&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;Température moyenne (°C)&quot;</span>,
-    <span class="dt">xaxt =</span> <span class="st">&quot;n&quot;</span>, 
-    <span class="dt">panel.first =</span> {
-        <span class="kw">abline</span>(<span class="dt">v =</span> hours, <span class="dt">col =</span> <span class="st">&quot;gray&quot;</span>, <span class="dt">lty =</span> <span class="dv">2</span>)
-        <span class="kw">abline</span>(<span class="dt">h =</span> <span class="dv">0</span>, <span class="dt">lty =</span> <span class="dv">2</span>)  
-    })
-<span class="kw">axis</span>(<span class="dt">side =</span> <span class="dv">1</span>, <span class="dt">at =</span> hours, <span class="dt">labels =</span> tempHourMean[, <span class="dv">1</span>], <span class="dt">las =</span> <span class="dv">2</span>)
-myColors &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;#A6CEE3&quot;</span>, <span class="st">&quot;#1F78B4&quot;</span>, <span class="st">&quot;#B2DF8A&quot;</span>, <span class="st">&quot;#33A02C&quot;</span>, <span class="st">&quot;#FB9A99&quot;</span>, 
-    <span class="st">&quot;#E31A1C&quot;</span>, <span class="st">&quot;#FDBF6F&quot;</span>, <span class="st">&quot;#FF7F00&quot;</span>, <span class="st">&quot;#CAB2D6&quot;</span>, <span class="st">&quot;#6A3D9A&quot;</span>, <span class="st">&quot;#FFFF99&quot;</span>, 
-    <span class="st">&quot;#B15928&quot;</span>)
-<span class="cf">for</span> (i <span class="cf">in</span> <span class="kw">seq_along</span>(tempDayEachMonth)){
-    <span class="kw">points</span>(<span class="dt">x =</span> hours, 
-        <span class="dt">y =</span> tempDayEachMonth[[i]][, <span class="dv">2</span>], 
-        <span class="dt">type =</span> <span class="st">&#39;l&#39;</span>, <span class="dt">col =</span> myColors[i], <span class="dt">lwd =</span> <span class="dv">2</span>)
-}
-<span class="kw">legend</span>(<span class="st">&quot;topright&quot;</span>, <span class="dt">ncol =</span> <span class="dv">4</span>, <span class="dt">legend =</span> meses, <span class="dt">col =</span> myColors, 
-    <span class="dt">lty =</span> <span class="dv">1</span>, <span class="dt">lwd =</span> <span class="dv">2</span>, <span class="dt">cex =</span> <span class="fl">0.8</span>)</code></pre>
+<div class="sourceCode" id="cb1207"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1207-1" title="1"><span class="kw">plot</span>(<span class="dt">x =</span> hours, <span class="dt">y =</span> tempDayEachMonth[[<span class="dv">1</span>]][, <span class="dv">2</span>], <span class="dt">type =</span> <span class="st">&#39;n&#39;</span>, <span class="dt">ylim =</span> <span class="kw">c</span>(<span class="op">-</span><span class="dv">10</span>, <span class="dv">35</span>),</a>
+<a class="sourceLine" id="cb1207-2" title="2">    <span class="dt">xlab =</span> <span class="st">&quot;&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;Température moyenne (°C)&quot;</span>,</a>
+<a class="sourceLine" id="cb1207-3" title="3">    <span class="dt">xaxt =</span> <span class="st">&quot;n&quot;</span>, </a>
+<a class="sourceLine" id="cb1207-4" title="4">    <span class="dt">panel.first =</span> {</a>
+<a class="sourceLine" id="cb1207-5" title="5">        <span class="kw">abline</span>(<span class="dt">v =</span> hours, <span class="dt">col =</span> <span class="st">&quot;gray&quot;</span>, <span class="dt">lty =</span> <span class="dv">2</span>)</a>
+<a class="sourceLine" id="cb1207-6" title="6">        <span class="kw">abline</span>(<span class="dt">h =</span> <span class="dv">0</span>, <span class="dt">lty =</span> <span class="dv">2</span>)  </a>
+<a class="sourceLine" id="cb1207-7" title="7">    })</a>
+<a class="sourceLine" id="cb1207-8" title="8"><span class="kw">axis</span>(<span class="dt">side =</span> <span class="dv">1</span>, <span class="dt">at =</span> hours, <span class="dt">labels =</span> tempHourMean[, <span class="dv">1</span>], <span class="dt">las =</span> <span class="dv">2</span>)</a>
+<a class="sourceLine" id="cb1207-9" title="9">myColors &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;#A6CEE3&quot;</span>, <span class="st">&quot;#1F78B4&quot;</span>, <span class="st">&quot;#B2DF8A&quot;</span>, <span class="st">&quot;#33A02C&quot;</span>, <span class="st">&quot;#FB9A99&quot;</span>, </a>
+<a class="sourceLine" id="cb1207-10" title="10">    <span class="st">&quot;#E31A1C&quot;</span>, <span class="st">&quot;#FDBF6F&quot;</span>, <span class="st">&quot;#FF7F00&quot;</span>, <span class="st">&quot;#CAB2D6&quot;</span>, <span class="st">&quot;#6A3D9A&quot;</span>, <span class="st">&quot;#FFFF99&quot;</span>, </a>
+<a class="sourceLine" id="cb1207-11" title="11">    <span class="st">&quot;#B15928&quot;</span>)</a>
+<a class="sourceLine" id="cb1207-12" title="12"><span class="cf">for</span> (i <span class="cf">in</span> <span class="kw">seq_along</span>(tempDayEachMonth)){</a>
+<a class="sourceLine" id="cb1207-13" title="13">    <span class="kw">points</span>(<span class="dt">x =</span> hours, </a>
+<a class="sourceLine" id="cb1207-14" title="14">        <span class="dt">y =</span> tempDayEachMonth[[i]][, <span class="dv">2</span>], </a>
+<a class="sourceLine" id="cb1207-15" title="15">        <span class="dt">type =</span> <span class="st">&#39;l&#39;</span>, <span class="dt">col =</span> myColors[i], <span class="dt">lwd =</span> <span class="dv">2</span>)</a>
+<a class="sourceLine" id="cb1207-16" title="16">}</a>
+<a class="sourceLine" id="cb1207-17" title="17"><span class="kw">legend</span>(<span class="st">&quot;topright&quot;</span>, <span class="dt">ncol =</span> <span class="dv">4</span>, <span class="dt">legend =</span> meses, <span class="dt">col =</span> myColors, </a>
+<a class="sourceLine" id="cb1207-18" title="18">    <span class="dt">lty =</span> <span class="dv">1</span>, <span class="dt">lwd =</span> <span class="dv">2</span>, <span class="dt">cex =</span> <span class="fl">0.8</span>)</a></code></pre></div>
 <p><img src="myRBook_FR_files/figure-html/041-studyCase-18-1.png" width="672" /></p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(<span class="dt">x =</span> hours, <span class="dt">y =</span> tempDayEachMonth[[<span class="dv">1</span>]][, <span class="dv">2</span>], <span class="dt">type =</span> <span class="st">&#39;n&#39;</span>, <span class="dt">ylim =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">30</span>),
-    <span class="dt">xlab =</span> <span class="st">&quot;&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;Variation de température diurne (°C)&quot;</span>,
-    <span class="dt">xaxt =</span> <span class="st">&quot;n&quot;</span>, 
-    <span class="dt">panel.first =</span> {
-        <span class="kw">abline</span>(<span class="dt">v =</span> hours, <span class="dt">col =</span> <span class="st">&quot;gray&quot;</span>, <span class="dt">lty =</span> <span class="dv">2</span>)
-        <span class="kw">abline</span>(<span class="dt">h =</span> <span class="dv">0</span>, <span class="dt">lty =</span> <span class="dv">2</span>)  
-    })
-<span class="kw">axis</span>(<span class="dt">side =</span> <span class="dv">1</span>, <span class="dt">at =</span> hours, <span class="dt">labels =</span> tempHourMean[, <span class="dv">1</span>], <span class="dt">las =</span> <span class="dv">2</span>)
-myColors &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;#A6CEE3&quot;</span>, <span class="st">&quot;#1F78B4&quot;</span>, <span class="st">&quot;#B2DF8A&quot;</span>, <span class="st">&quot;#33A02C&quot;</span>, <span class="st">&quot;#FB9A99&quot;</span>, 
-    <span class="st">&quot;#E31A1C&quot;</span>, <span class="st">&quot;#FDBF6F&quot;</span>, <span class="st">&quot;#FF7F00&quot;</span>, <span class="st">&quot;#CAB2D6&quot;</span>, <span class="st">&quot;#6A3D9A&quot;</span>, <span class="st">&quot;#FFFF99&quot;</span>, 
-    <span class="st">&quot;#B15928&quot;</span>)
-<span class="cf">for</span> (i <span class="cf">in</span> <span class="kw">seq_along</span>(tempDayEachMonth)){
-    <span class="kw">points</span>(<span class="dt">x =</span> hours, 
-        <span class="dt">y =</span> tempDayEachMonth[[i]][, <span class="dv">6</span>] <span class="op">-</span><span class="st"> </span>tempDayEachMonth[[i]][, <span class="dv">4</span>], 
-        <span class="dt">type =</span> <span class="st">&#39;l&#39;</span>, <span class="dt">col =</span> myColors[i], <span class="dt">lwd =</span> <span class="dv">2</span>)
-}
-<span class="kw">legend</span>(<span class="st">&quot;topright&quot;</span>, <span class="dt">ncol =</span> <span class="dv">4</span>, <span class="dt">legend =</span> meses, <span class="dt">col =</span> myColors, 
-    <span class="dt">lty =</span> <span class="dv">1</span>, <span class="dt">lwd =</span> <span class="dv">2</span>, <span class="dt">cex =</span> <span class="fl">0.8</span>)</code></pre>
+<div class="sourceCode" id="cb1208"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1208-1" title="1"><span class="kw">plot</span>(<span class="dt">x =</span> hours, <span class="dt">y =</span> tempDayEachMonth[[<span class="dv">1</span>]][, <span class="dv">2</span>], <span class="dt">type =</span> <span class="st">&#39;n&#39;</span>, <span class="dt">ylim =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">30</span>),</a>
+<a class="sourceLine" id="cb1208-2" title="2">    <span class="dt">xlab =</span> <span class="st">&quot;&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;Variation de température diurne (°C)&quot;</span>,</a>
+<a class="sourceLine" id="cb1208-3" title="3">    <span class="dt">xaxt =</span> <span class="st">&quot;n&quot;</span>, </a>
+<a class="sourceLine" id="cb1208-4" title="4">    <span class="dt">panel.first =</span> {</a>
+<a class="sourceLine" id="cb1208-5" title="5">        <span class="kw">abline</span>(<span class="dt">v =</span> hours, <span class="dt">col =</span> <span class="st">&quot;gray&quot;</span>, <span class="dt">lty =</span> <span class="dv">2</span>)</a>
+<a class="sourceLine" id="cb1208-6" title="6">        <span class="kw">abline</span>(<span class="dt">h =</span> <span class="dv">0</span>, <span class="dt">lty =</span> <span class="dv">2</span>)  </a>
+<a class="sourceLine" id="cb1208-7" title="7">    })</a>
+<a class="sourceLine" id="cb1208-8" title="8"><span class="kw">axis</span>(<span class="dt">side =</span> <span class="dv">1</span>, <span class="dt">at =</span> hours, <span class="dt">labels =</span> tempHourMean[, <span class="dv">1</span>], <span class="dt">las =</span> <span class="dv">2</span>)</a>
+<a class="sourceLine" id="cb1208-9" title="9">myColors &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;#A6CEE3&quot;</span>, <span class="st">&quot;#1F78B4&quot;</span>, <span class="st">&quot;#B2DF8A&quot;</span>, <span class="st">&quot;#33A02C&quot;</span>, <span class="st">&quot;#FB9A99&quot;</span>, </a>
+<a class="sourceLine" id="cb1208-10" title="10">    <span class="st">&quot;#E31A1C&quot;</span>, <span class="st">&quot;#FDBF6F&quot;</span>, <span class="st">&quot;#FF7F00&quot;</span>, <span class="st">&quot;#CAB2D6&quot;</span>, <span class="st">&quot;#6A3D9A&quot;</span>, <span class="st">&quot;#FFFF99&quot;</span>, </a>
+<a class="sourceLine" id="cb1208-11" title="11">    <span class="st">&quot;#B15928&quot;</span>)</a>
+<a class="sourceLine" id="cb1208-12" title="12"><span class="cf">for</span> (i <span class="cf">in</span> <span class="kw">seq_along</span>(tempDayEachMonth)){</a>
+<a class="sourceLine" id="cb1208-13" title="13">    <span class="kw">points</span>(<span class="dt">x =</span> hours, </a>
+<a class="sourceLine" id="cb1208-14" title="14">        <span class="dt">y =</span> tempDayEachMonth[[i]][, <span class="dv">6</span>] <span class="op">-</span><span class="st"> </span>tempDayEachMonth[[i]][, <span class="dv">4</span>], </a>
+<a class="sourceLine" id="cb1208-15" title="15">        <span class="dt">type =</span> <span class="st">&#39;l&#39;</span>, <span class="dt">col =</span> myColors[i], <span class="dt">lwd =</span> <span class="dv">2</span>)</a>
+<a class="sourceLine" id="cb1208-16" title="16">}</a>
+<a class="sourceLine" id="cb1208-17" title="17"><span class="kw">legend</span>(<span class="st">&quot;topright&quot;</span>, <span class="dt">ncol =</span> <span class="dv">4</span>, <span class="dt">legend =</span> meses, <span class="dt">col =</span> myColors, </a>
+<a class="sourceLine" id="cb1208-18" title="18">    <span class="dt">lty =</span> <span class="dv">1</span>, <span class="dt">lwd =</span> <span class="dv">2</span>, <span class="dt">cex =</span> <span class="fl">0.8</span>)</a></code></pre></div>
 <p><img src="myRBook_FR_files/figure-html/041-studyCase-18-2.png" width="672" /></p>
 <p>Nous pouvons aussi représenter les températures journalières avec des graphiques de type “ridgeline” et le package <code>ggplot2</code> (<a href="https://www.data-to-viz.com/graph/ridgeline.html" class="uri">https://www.data-to-viz.com/graph/ridgeline.html</a>).</p>
-<pre class="sourceCode r"><code class="sourceCode r">pkgCheck &lt;-<span class="st"> </span><span class="cf">function</span>(x){ 
-    <span class="cf">if</span> (<span class="op">!</span><span class="kw">require</span>(x, <span class="dt">character.only =</span> <span class="ot">TRUE</span>)){
-        <span class="kw">install.packages</span>(x, <span class="dt">dependencies =</span> <span class="ot">TRUE</span>)
-        <span class="cf">if</span>(<span class="op">!</span><span class="kw">require</span>(x, <span class="dt">character.only =</span> <span class="ot">TRUE</span>)) {
-            <span class="kw">stop</span>()
-        }
-    }
-}
-<span class="kw">pkgCheck</span>(<span class="st">&quot;ggplot2&quot;</span>)
-<span class="kw">pkgCheck</span>(<span class="st">&quot;ggridges&quot;</span>)</code></pre>
+<div class="sourceCode" id="cb1209"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1209-1" title="1">pkgCheck &lt;-<span class="st"> </span><span class="cf">function</span>(x){ </a>
+<a class="sourceLine" id="cb1209-2" title="2">    <span class="cf">if</span> (<span class="op">!</span><span class="kw">require</span>(x, <span class="dt">character.only =</span> <span class="ot">TRUE</span>)){</a>
+<a class="sourceLine" id="cb1209-3" title="3">        <span class="kw">install.packages</span>(x, <span class="dt">dependencies =</span> <span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb1209-4" title="4">        <span class="cf">if</span>(<span class="op">!</span><span class="kw">require</span>(x, <span class="dt">character.only =</span> <span class="ot">TRUE</span>)) {</a>
+<a class="sourceLine" id="cb1209-5" title="5">            <span class="kw">stop</span>()</a>
+<a class="sourceLine" id="cb1209-6" title="6">        }</a>
+<a class="sourceLine" id="cb1209-7" title="7">    }</a>
+<a class="sourceLine" id="cb1209-8" title="8">}</a>
+<a class="sourceLine" id="cb1209-9" title="9"><span class="kw">pkgCheck</span>(<span class="st">&quot;ggplot2&quot;</span>)</a>
+<a class="sourceLine" id="cb1209-10" title="10"><span class="kw">pkgCheck</span>(<span class="st">&quot;ggridges&quot;</span>)</a></code></pre></div>
 <pre><code>## Loading required package: ggridges</code></pre>
 <pre><code>## 
 ## Attaching package: &#39;ggridges&#39;</code></pre>
 <pre><code>## The following object is masked from &#39;package:ggplot2&#39;:
 ## 
 ##     scale_discrete_manual</code></pre>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">pkgCheck</span>(<span class="st">&quot;viridis&quot;</span>)</code></pre>
+<div class="sourceCode" id="cb1213"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1213-1" title="1"><span class="kw">pkgCheck</span>(<span class="st">&quot;viridis&quot;</span>)</a></code></pre></div>
 <pre><code>## Loading required package: viridis</code></pre>
 <pre><code>## Loading required package: viridisLite</code></pre>
-<pre class="sourceCode r"><code class="sourceCode r">meanTemps &lt;-<span class="st"> </span><span class="kw">unlist</span>(<span class="kw">lapply</span>(tempDayEachMonth, <span class="st">&quot;[[&quot;</span>, <span class="dv">2</span>))
-labelMonth &lt;-<span class="st"> </span><span class="kw">rep</span>(meses, <span class="dt">each =</span> <span class="dv">48</span>)
-dfTemps &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">month =</span> labelMonth, <span class="dt">value =</span> meanTemps, 
-  <span class="dt">stringsAsFactors =</span> <span class="ot">FALSE</span>)
-dfTemps<span class="op">$</span>month &lt;-<span class="st"> </span><span class="kw">factor</span>(dfTemps<span class="op">$</span>month, <span class="dt">levels =</span> <span class="kw">rev</span>(meses))
-p &lt;-<span class="st"> </span><span class="kw">ggplot</span>(<span class="dt">data =</span> dfTemps, <span class="kw">aes</span>(<span class="dt">y =</span> month, <span class="dt">x =</span> value,  <span class="dt">fill =</span> ..x..))
-p &lt;-<span class="st"> </span>p <span class="op">+</span><span class="st"> </span><span class="kw">geom_density_ridges_gradient</span>(<span class="dt">stat=</span><span class="st">&quot;binline&quot;</span>)
-p &lt;-<span class="st"> </span>p <span class="op">+</span><span class="st"> </span><span class="kw">scale_fill_viridis</span>(<span class="dt">name =</span> <span class="st">&quot;Temp. [°C]&quot;</span>, <span class="dt">option =</span> <span class="st">&quot;C&quot;</span>)
-p &lt;-<span class="st"> </span>p <span class="op">+</span><span class="st"> </span><span class="kw">xlab</span>(<span class="st">&quot;Temperature&quot;</span>) <span class="op">+</span><span class="st"> </span><span class="kw">ylab</span>(<span class="st">&quot;&quot;</span>) <span class="op">+</span>
-<span class="st">    </span><span class="kw">theme</span>(
-      <span class="dt">legend.position=</span><span class="st">&quot;none&quot;</span>,
-      <span class="dt">panel.spacing =</span> <span class="kw">unit</span>(<span class="fl">0.1</span>, <span class="st">&quot;lines&quot;</span>),
-      <span class="dt">strip.text.x =</span> <span class="kw">element_text</span>(<span class="dt">size =</span> <span class="dv">8</span>)
-    ) 
-p</code></pre>
+<div class="sourceCode" id="cb1216"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1216-1" title="1">meanTemps &lt;-<span class="st"> </span><span class="kw">unlist</span>(<span class="kw">lapply</span>(tempDayEachMonth, <span class="st">&quot;[[&quot;</span>, <span class="dv">2</span>))</a>
+<a class="sourceLine" id="cb1216-2" title="2">labelMonth &lt;-<span class="st"> </span><span class="kw">rep</span>(meses, <span class="dt">each =</span> <span class="dv">48</span>)</a>
+<a class="sourceLine" id="cb1216-3" title="3">dfTemps &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">month =</span> labelMonth, <span class="dt">value =</span> meanTemps, </a>
+<a class="sourceLine" id="cb1216-4" title="4">  <span class="dt">stringsAsFactors =</span> <span class="ot">FALSE</span>)</a>
+<a class="sourceLine" id="cb1216-5" title="5">dfTemps<span class="op">$</span>month &lt;-<span class="st"> </span><span class="kw">factor</span>(dfTemps<span class="op">$</span>month, <span class="dt">levels =</span> <span class="kw">rev</span>(meses))</a>
+<a class="sourceLine" id="cb1216-6" title="6">p &lt;-<span class="st"> </span><span class="kw">ggplot</span>(<span class="dt">data =</span> dfTemps, <span class="kw">aes</span>(<span class="dt">y =</span> month, <span class="dt">x =</span> value,  <span class="dt">fill =</span> ..x..))</a>
+<a class="sourceLine" id="cb1216-7" title="7">p &lt;-<span class="st"> </span>p <span class="op">+</span><span class="st"> </span><span class="kw">geom_density_ridges_gradient</span>(<span class="dt">stat=</span><span class="st">&quot;binline&quot;</span>)</a>
+<a class="sourceLine" id="cb1216-8" title="8">p &lt;-<span class="st"> </span>p <span class="op">+</span><span class="st"> </span><span class="kw">scale_fill_viridis</span>(<span class="dt">name =</span> <span class="st">&quot;Temp. [°C]&quot;</span>, <span class="dt">option =</span> <span class="st">&quot;C&quot;</span>)</a>
+<a class="sourceLine" id="cb1216-9" title="9">p &lt;-<span class="st"> </span>p <span class="op">+</span><span class="st"> </span><span class="kw">xlab</span>(<span class="st">&quot;Temperature&quot;</span>) <span class="op">+</span><span class="st"> </span><span class="kw">ylab</span>(<span class="st">&quot;&quot;</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb1216-10" title="10"><span class="st">    </span><span class="kw">theme</span>(</a>
+<a class="sourceLine" id="cb1216-11" title="11">      <span class="dt">legend.position=</span><span class="st">&quot;none&quot;</span>,</a>
+<a class="sourceLine" id="cb1216-12" title="12">      <span class="dt">panel.spacing =</span> <span class="kw">unit</span>(<span class="fl">0.1</span>, <span class="st">&quot;lines&quot;</span>),</a>
+<a class="sourceLine" id="cb1216-13" title="13">      <span class="dt">strip.text.x =</span> <span class="kw">element_text</span>(<span class="dt">size =</span> <span class="dv">8</span>)</a>
+<a class="sourceLine" id="cb1216-14" title="14">    ) </a>
+<a class="sourceLine" id="cb1216-15" title="15">p</a></code></pre></div>
 <pre><code>## `stat_binline()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
 <p><img src="myRBook_FR_files/figure-html/041-studyCase-19-1.png" width="672" /></p>
 
@@ -707,11 +709,13 @@ p</code></pre>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
 <script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
 <script>
 gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({
@@ -719,12 +723,11 @@ gitbook.start({
 "github": false,
 "facebook": true,
 "twitter": true,
-"google": false,
 "linkedin": false,
 "weibo": false,
 "instapaper": false,
 "vk": false,
-"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {
 "theme": "white",
@@ -739,7 +742,11 @@ gitbook.start({
 "link": null,
 "text": null
 },
-"download": ["myRBook_FR.pdf", "myRBook_FR.epub"],
+"view": {
+"link": null,
+"text": null
+},
+"download": [["myRBook_FR.pdf", "PDF"], ["myRBook_FR.epub", "EPUB"], ["myRBook_FR.docx", "DOCX"]],
 "toc": {
 "collapse": "section"
 }
