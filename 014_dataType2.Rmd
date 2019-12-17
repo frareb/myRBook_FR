@@ -1,14 +1,14 @@
 # Les conteneurs de données {#dataType2}
 
-Jusqu'à présent nous avons fait des objets simples ne contenant qu'une seule valeur. Nous avons néanmoins pu voir qu'un objet avait différents attributs, comme sa valeur, mais aussi le type de donnée contenue. maintenant nous allons voir qu'il existe différents types de conteneurs permettant de stocker plusieurs données.
+Jusqu'à présent nous avons fait des objets simples ne contenant qu'une seule valeur. Nous avons néanmoins pu voir qu'un objet avait différents attributs, comme sa valeur, mais aussi le type de donnée contenue. Maintenant nous allons voir qu'il existe différents types de conteneurs permettant de stocker plusieurs données.
 
 ## Le conteneur `vector` {#l014vector}
 
-Dans R, un `vector` est une combinaison de données avec la particularité que toutes les données contenues dans un `vector` sont du même type. Nous pouvons donc stocker plusieurs `numeric` ou `character` dans un `vector`, mais pas les deux. Le conteneur `vector` est important car c'est l'élément de base de R. 
+Dans R, un `vector` est une combinaison de données avec la particularité que toutes les données contenues dans un `vector` sont du même type. Nous pouvons donc stocker plusieurs `numeric` ou `character` dans un `vector`, mais pas les deux. Le conteneur `vector` est important car c'est l'élément de base de R (R tire toute sa puissance des opérations sur les `vector`). 
 
 ### Créer un `vector`
 
-Pour créer un `vector` nous allons utiliser la fonction `c()` qui permet de combiner des éléments en un `vector`. Les éléments à combiner doivent être séparés par des virgules.
+Pour créer un `vector` nous allons utiliser la fonction `c()` qui permet de combiner des éléments en un `vector`. Les éléments à combiner doivent être séparés par des virgules (avec un espace après chaque virgule afin de rester lisible).
 
 ```{r 014-dataType2-1}
 miVec01 <- c(1, 2, 3, 4) # un vecteur de 4 éléments de type numeric ; double
@@ -47,16 +47,37 @@ Si l'on combine différents types de données, par défaut R va chercher à tran
 miVec05 <- c(factor("abc"), "def")
 print(miVec05)
 typeof(miVec05)
+```
+
+Ici nous combinons un élément de type `factor` et un élément de type `character`. Comme R n’accepte que des éléments de même type dans un `vector`, R transforme tous les éléments en type le plus simple (ici en `character`). Lors de la conversion de l’élément `factor` en `character`, R prend par défaut la valeur numérique associé à ce `factor`, c'est-à-dire 1. C’est pour cela que `print(miVec05)` renvoie un `vector` de deux éléments au format `character`, que sont `"1"` et `"def"`. Pour transformer `factor("abc")` en type `character`, nous utiliserons `as.character(factor("abc"))` qui lui renvoie bien `"abc"`.
+
+```{r 014-dataType2-3b}
+miVec05b <- c(factor("abc"), factor("ghi"), "def")
+print(miVec05b)
+miVec05c <- c(factor(c("abc", "ghi")), "def")
+print(miVec05c)
+```
+
+Nous pouvons voir ici la différence entre deux appels à `factor` pour un élément qui renvoie "1" et un appel à `factor` pour deux éléments qui renvoie "1" et "2" lors de la transformation en `character` par R.
+
+```{r 014-dataType2-3c}
 miVec06 <- c(TRUE, "def")
 print(miVec06)
 typeof(miVec06)
 miVec07 <- c(factor("abc"), 55)
 print(miVec07)
 typeof(miVec07)
+```
+
+Ici `miVec07` est simplifié au format numérique.
+
+```{r 014-dataType2-3d}
 miVec08 <- c(TRUE, 55)
 print(miVec08)
 typeof(miVec08)
 ```
+
+Dans ce dernier cas c'est le `logical` `TRUE` qui est transformé au format numérique.
 
 Nous pouvons aussi combiner des objets existants au sein d'un `vector`.
 
