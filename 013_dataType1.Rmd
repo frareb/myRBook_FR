@@ -45,15 +45,15 @@ sumIntInt <- as.integer(5) + as.integer(5)
 typeof(sumIntInt)
 ```
 
-Pour résumer, le type `numeric` contient deux sous-types, les types `integer` pour les nombres entiers et le type `double` pour les nombres à virgule. Par défaut R attribue le type `double` aux nombres.
+Pour résumer, le type `numeric` contient deux sous-types, le type `integer` pour les nombres entiers et le type `double` pour les nombres à virgule. Par défaut R attribue le type `double` aux nombres.
 
 Deux nombres particuliers doivent être considérés. `Inf` est un nombre de type `double`. Il désigne un nombre infini. Par exemple, `1/0` retourne `Inf` et aucun nombre ne peut être plus grand que `Inf`. `NaN` est une valeur qui signifie `Not a Number` : par exemple `0/0` retourne `NaN`. Cela peut être testé par `is.nan(0/0)`. Attention à ne pas confondre avec NA qui désigne une donnée absente (voir plus loin).
 
-Attention, il y a un piège à l'utilisation de la fonction `is.integer()`. Elle ne nous dit pas si le nombre est un entier mais si il est du type `integer`. En effet, on peut très bien stocker un nombre entier dans une variable de type `double`.
+Attention, il y a un piège à l'utilisation de la fonction `is.integer()`. Elle ne nous dit pas si le nombre est un entier mais s'il est du type `integer`. En effet, nous pouvons très bien stocker un nombre entier dans une variable de type `double`.
 
-Les nombres stockés dans une variable `integer` sont codés sur 32 bits et donc peuvent prendre des valeurs comprises entre 0 et 2^32-1=4294967295. Il existe une autre façon d'indiquer à R qu'un nombre est un entier, en utilisant le suffixe L. Par exemple, `5L` est la même chose que `as.integer(5)`. L'origine de ce suffixe `L` date d'une époque où les ordinateurs utilisaient des mots de 16 bits et 32 bits étaient bien un type `Long`. Maintenant les ordinateurs utilisent des mots de 64 bits et 32 bits est plutôt court !
+Les nombres stockés dans une variable `integer` sont codés sur 32 bits et peuvent prendre des valeurs comprises entre 0 et 2^32-1 = 4294967295. Il existe une autre façon d'indiquer à R qu'un nombre est un entier, en utilisant le suffixe L. Par exemple, écrire `5L` revient à la même chose qu'écrire `as.integer(5)`. L'origine de ce suffixe `L` date d'une époque où les ordinateurs utilisaient des mots de 16 bits, et 32 bits étaient bien un type `Long`. Maintenant les ordinateurs utilisent des mots de 64 bits et 32 bits est plutôt court !
 
-On ne peut pas quitter cette section sans mentionner les fonctions [`ceiling()`](#l015round), [`floor()`](#l015round), [`trunc()`](#l015round) ou [`round()`](#l015round) qui retournent la partie entière d'un nombre mais le laisse au type `double`. Pour en savoir plus, nous pouvons utiliser [l'aide de R](#l015help) avec `?round`. 
+Nous ne pouvons pas quitter cette section sans mentionner les fonctions [`ceiling()`](#l015round), [`floor()`](#l015round), [`trunc()`](#l015round) ou [`round()`](#l015round) qui retournent la partie entière d'un nombre mais le laisse au type `double`. Pour en savoir plus, nous pouvons utiliser [l'aide de R](#l015help) avec `?round`. Nous reviendrons sur ces fonctions plus tard.
 
 ```{r 013-dataType1-5}
 roundDou <- round(5.2)
@@ -62,7 +62,7 @@ typeof(roundDou)
 
 ## Le type `character`
 
-Le type `character` correspond au texte. En effet, R permet de travailler avec du texte. pour spécifier à R que l'information contenue dans un objet est au format texte (ou de manière générale pour tous les textes), il faut utiliser les guillemets doubles (`"`), ou simples (`'`).
+Le type `character` correspond au texte. Pour spécifier à R que l'information contenue dans un objet est au format texte, il faut utiliser les guillemets doubles (`"`), ou simples (`'`). Nous noterons que les guillemets doubles ou simples sont droits, par opposition au signe apostrophe (`‘`) ou encore aux signes correspondant aux ouvertures et fermetures de guillemets (`«  »`, `ˮ` et `˝  ̏`).
 
 ```{r 013-dataType1-6}
 myText <- "azerty"
@@ -88,21 +88,25 @@ myText <- "a 'ze' 'rt' y"
 myText
 ```
 
-Dans ce livre nous n'utiliserons jamais cette façon de faire et préfèrerons l'utilisation de la fonction `print()`, qui permet d'afficher dans la console le contenu d'un objet. Le résultat est le même mais le code est alors plus facile à lire et plus explicite sur ce qui est fait.
+Dans ce livre nous n'utiliserons pas cette façon de faire et préfèrerons l'utilisation de la fonction `print()`, qui permet d'afficher dans la console le contenu d'un objet. Le résultat est le même mais le code est alors plus facile à lire et plus explicite sur ce qui est fait. D'autre part, nous verrons plus tard des cas où l'usage de `print()` sera indispensable au bon fonctionnement de nos scripts.
 
 ```{r 013-dataType1-9}
 myText <- "a 'ze' 'rt' y"
 print(myText)
 nbrRep <- 5
 print(nbrRep)
+print(myText2)
+print(myText3)
+print(myText4)
+print(myText5)
 ```
 
-Nous pouvons également mettre des chiffres au format texte, mais il ne faut pas oublier de mettre des guillemets pour spécifier le type `character` ou utiliser la fonction `as.character()`. Une opération entre du texte et un nombre renvoie une erreur. Par exemple si l'on ajoute `10` à `"5"`, R nous signale qu'un **argument** de la **fonction** `+` n'est pas de type `numeric` et que donc l'opération n'est pas possible. Nous ne pouvons pas non plus ajouter du texte à du texte, mais verrons plus tard comment *concaténer* deux *chaines de texte*.
+Nous pouvons également mettre des chiffres au format texte, mais il ne faut pas oublier de mettre des guillemets pour spécifier le type `character` ou utiliser la fonction `as.character()`. Une opération entre du texte et un nombre renvoie une erreur. Par exemple si l'on ajoute `10` à `"5"`, R nous signale qu'un **argument** de la **fonction** `+` n'est pas de type `numeric` et que donc l'opération n'est pas possible. Nous ne pouvons pas non plus ajouter du texte à du texte, mais verrons plus tard comment *concaténer* deux *chaines de caractères*.
 
 ```{r 013-dataType1-10}
 myText <- "qwerty"
 typeof(myText)
-myText2 <- 5
+myText2 <- 5 # ceci n'est pas du texte
 typeof(myText2)
 myText3 <- "5"
 typeof(myText3)
@@ -165,9 +169,9 @@ NA + 1
 
 ## Conclusion
 
-Felicitations, nous sommes arrivés au bout de ce chapitre sur les type de données. Nous savons désormais :
+Félicitations, nous sommes arrivés au bout de ce chapitre sur les types de données. Nous savons désormais :
 
-* Reconnaîte et faire des objets dans les principaux types de données
+* Reconnaître et faire des objets dans les principaux types de données
 * Transformer les types de données d'un type à un autre
 
 Ce chapitre un peu fastidieux est la base pour aborder le prochain chapitre sur les conteneurs des données.
