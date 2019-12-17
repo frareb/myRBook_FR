@@ -2,7 +2,7 @@
 
 ## Editeurs de texte et environnement de développement
 
-Il existe de très nombreux éditeurs de texte, le chapitre précédent a permis d'en introduire quelques uns parmi les plus simples comme le bloc note de Windows. Rapidement les limites de ces éditeurs ont rendu la tâche d'écrire un script fastidieuse. En effet, même en structurant son script avec des commentaires, il reste difficile de se répérer dans celui-ci. C'est là qu'interviennent les éditeurs de texte spécialisés qui vont permettre une écriture et une lecture agréable et simplifiée. 
+Il existe de très nombreux éditeurs de texte, le chapitre précédent a permis d'en introduire quelques uns parmi les plus simples comme le *bloc note* de Windows. Rapidement les limites de ces éditeurs ont rendu la tâche d'écrire un script fastidieuse. En effet, même en structurant son script avec des commentaires, il reste difficile de se répérer dans celui-ci. C'est là qu'interviennent les éditeurs de texte spécialisés qui vont permettre une écriture et une lecture agréable et simplifiée. 
 L'éditeur de texte pour R certainement le plus répandu est Rstudio, mais il en existe bien d'autres. Faire une liste exhaustive de toutes les solutions disponibles sort du cadre de ce livre, ainsi nous nous focaliserons sur les trois solutions que j'utilise au quotidien que sont **Notepad++**, **Rstudio**, et **Geany**.
 
 
@@ -27,11 +27,11 @@ knitr::include_graphics("myFigures/screencap_RStudio_01.png")
 
 Nous pouvons alors commencer l'écriture de notre script avec les commentaires décrivant ce que nous allons y trouver, et y ajouter un calcul simple. Une fois que nous avons recopié le code suivant, nous pouvons sauver notre script avec la commande `CTRL + S` ou en se rendant dans *File*, puis *Save*.
 
-```{r}
+```{r scriptTest, eval=FALSE}
 # ------------------------------------------------------------
 # Un script pour choisir son IDE
 # créé le 27/06/2018
-# modifié le 06/11/2018
+# modifié le 17/12/2019
 # François Rebaudo
 # ------------------------------------------------------------
 
@@ -41,7 +41,7 @@ nbrRep <- 5
 pi * nbrRep^2
 ```
 
-Pour exécuter notre script, il suffit de sélectionner les lignes que nous souhaitons exécuter et d'utiliser la combinaison de touches `CTRL + ENTER`. Le résultat apparaît dans la console (Figure \@ref(fig:screenCapRStudio02)).
+Pour exécuter notre script, il suffit de sélectionner les lignes que nous souhaitons exécuter et d'utiliser la combinaison de touches `CTRL + ENTER`. R va transformer notre code en langage compréhensible pour la machine (interprétation), puis l’exécuter. Le résultat de l’exécution est renvoyé sous forme lisible dans la console (Figure \@ref(fig:screenCapRStudio02)).
 
 ```{r screenCapRStudio02, fig.cap = "Capture d'écran de RStudio sous Windows : exécuter un script avec CTRL + ENTER.\\label{fig:screenCapRStudio02}", echo = FALSE}
 knitr::include_graphics("myFigures/screencap_RStudio_02.png")
@@ -54,7 +54,7 @@ Nous pouvons également noter que dans la partie du code chaque ligne comporte u
 knitr::include_graphics("myFigures/screencap_RStudio_03.png")
 ```
 
-Nous savons comment créer un nouveau script, le sauvegarder, exécuter son contenu, et changer l'apparence de RStudio. Nous verrons les nombreux autres avantages de RStudio tout au long de ce livre car c'est l'environnement de développement qui sera utilisé. Nous serons néanmois particulièrement vigilents à ce que tous les scripts développés tout au long de ce livre s'exécute de la même façon quel que soit l'environnement de développement utilisé. 
+Nous savons comment créer un nouveau script, le sauvegarder, exécuter son contenu, et changer l'apparence de RStudio. Nous verrons les nombreux autres avantages de RStudio tout au long de ce livre car c'est l'environnement de développement qui sera utilisé. Nous serons néanmoins particulièrement vigilants à ce que tous les scripts développés dans ce livre s'exécutent de la même façon quel que soit l'environnement de développement utilisé. 
 
 ## Notepad++ avec Npp2R
 
@@ -64,41 +64,41 @@ knitr::include_graphics("myLogos/Notepadpp.png")
 
 ### Installer Notepad++ (pour Windows uniquement)
 
-Le programme pour installer Notepad++ se trouve dans l'onglet *Downloads* (https://notepad-plus-plus.org/download/). Vous pouvez choisir entre la version 32-bit et 64-bit (64-bit si vous ne savez pas quelle version choisir). Notepad++ seul est suffisant pour écrire un script, mais il est encore plus puissant avec *Notepad to R* (*Npp2R*) qui permet d'exécuter automatiquement nos script dans une console en local sur notre ordinateur ou à distance sur un serveur.
+Le programme pour installer *Notepad++* se trouve dans l'onglet *Downloads* (https://notepad-plus-plus.org/download/). Vous pouvez choisir entre la version 32-bit et 64-bit (64-bit si vous ne savez pas quelle version choisir). *Notepad++* seul est suffisant pour écrire un script, mais il est encore plus puissant avec *Notepad to R* (*Npp2R*) qui permet d'exécuter automatiquement nos script dans une console en local sur notre ordinateur ou à distance sur un serveur.
 
 ### Installer Npp2R
 
-Le programme pour installer Npp2R est hébergé sur le site de Sourceforge (https://sourceforge.net/projects/npptor/). Npp2R doit être installé après Notepad++.
+Le programme pour installer *Npp2R* est hébergé sur le site de Sourceforge (https://sourceforge.net/projects/npptor/). *Npp2R* doit être installé après *R* et après *Notepad++*.
 
 ### Un script avec Notepad++
 
-Lors de la première ouverture Notepad++ affiche un fichier vide *new 1* (Figura \@ref(fig:screenCapNpp01)). 
+Lors de la première ouverture *Notepad++* affiche un fichier vide *new 1* (Figure \@ref(fig:screenCapNpp01)). 
 
 ```{r screenCapNpp01, fig.cap = "Capture d'écran de Notepad++ sous Windows : fenêtre par défaut.\\label{fig:screenCapNpp01}", echo = FALSE}
 knitr::include_graphics("myFigures/screencap_Npp_01.png")
 ```
 
-Puisque nous avons déjà créer un script pour le tester avec RStudio, nous allons l'ouvrir à nouveau avec Notepad++. Dans *Fichier*, selectionnons *Ouvrir...* puis choisir le script *selecEnvDev.R* créé précédemment. Une fois le script ouvert, allons dans *Langage*, puis *R*, et encore une fois *R*. La coloration syntaxique apparaît (Figura \@ref(fig:screenCapNpp02)).
+Puisque nous avons déjà créé un script pour le tester avec RStudio, nous allons l'ouvrir à présent avec *Notepad++*. Dans *Fichier*, sélectionnons *Ouvrir...* puis choisir le script *selecEnvDev.R* créé précédemment. Une fois le script ouvert, allons dans *Langage*, puis *R*, et encore une fois *R*. La coloration syntaxique apparaît (Figure \@ref(fig:screenCapNpp02)).
 
 ```{r screenCapNpp02, fig.cap = "Capture d'écran de Notepad++ sous Windows : exécuter un script avec F8.\\label{fig:screenCapNpp02}", echo = FALSE}
 knitr::include_graphics("myFigures/screencap_Npp_02.png")
 ```
 
-L'execution du script ne peut se faire que si Npp2R est en cours d'exécution. Pour se faire il est nécessaire de lancer le programme Npp2R depuis l'invite de Windows. Un icône devrait apparaître en bas de votre écran. L'exécution automatique du code depuis Notepad++ se fait en sélectionnant le code à exécuter puis en utilisant la commande `F8`. Si la commande ne fonctionne pas et que vous venez d'installer Notepad++, il est peut être nécessaire de redémarrer votre ordinateur. Si la commande fonctionne, une nouvelle fenêtre va s'ouvrir avec une consol exécutant les lignes souhaitées (Figura \@ref(fig:screenCapNpp03).
+L'exécution du script ne peut se faire que si *Npp2R* est en cours d'exécution. Pour se faire il est nécessaire de lancer le programme *Npp2R* depuis l'invite de Windows. Un icône devrait apparaître en bas de votre écran. L'exécution automatique du code depuis Notepad++ se fait en sélectionnant le code à exécuter puis en utilisant la commande `F8`. Si la commande ne fonctionne pas et que vous venez d'installer Notepad++, il est peut être nécessaire de redémarrer votre ordinateur. Si la commande fonctionne, une nouvelle fenêtre va s'ouvrir aavec une console renvoyant le résultat de l’exécution des lignes souhaitées (Figure \@ref(fig:screenCapNpp03).
 
 ```{r screenCapNpp03, fig.cap = "Capture d'écran de Notepad++ sous Windows : la console avec F8.\\label{fig:screenCapNpp03}", echo = FALSE}
 knitr::include_graphics("myFigures/screencap_Npp_03.png")
 ```
 
-Comme pour RStudio, la coloration syntaxique peut être modifiée depuis le menu *Paramètres*, et un nouveau thème peut être sélectionné (par exemple *Solarized* dans la Figura \@ref(fig:screenCapNpp04))
+Comme pour *RStudio*, la coloration syntaxique peut être modifiée depuis le menu *Paramètres*, et un nouveau thème peut être sélectionné (par exemple *Solarized* dans la Figure \@ref(fig:screenCapNpp04))
 
 ```{r screenCapNpp04, fig.cap = "Capture d'écran de Notepad++ sous Windows : coloration syntaxique avec le thème Solarized.\\label{fig:screenCapNpp04}", echo = FALSE}
 knitr::include_graphics("myFigures/screencap_Npp_04.png")
 ```
 
-Par rapport aux autres éditeurs de texte, Notepad++ a l'avantage d'être très léger et offre une vaste gamme d'options pour personnaliser l'écriture du code.
+Par rapport aux autres éditeurs de texte, *Notepad++* a l'avantage d'être très léger et offre une vaste gamme d'options pour personnaliser l'écriture du code.
 
-## Geany (pour Linux, Mac OSX et Windows)
+## Geany
 
 ```{r logoGeany, fig.cap = "Logo Geany\\label{fig:logoGeany}", echo = FALSE}
 knitr::include_graphics("myLogos/Geany.png")
@@ -106,11 +106,11 @@ knitr::include_graphics("myLogos/Geany.png")
 
 ### Installer Geany
 
-Le programme pour l'installation de Geany se trouve sous l'onglet *Downloads* dans le menu de gauche *Releases* de la page web (https://www.geany.org/). Ensuite il suffit de télécharger l'exécutable pour Windows ou le dmg pour Mac OSX. Les utilisateurs de Linux préfèrerons un `sudo apt-get install geany`. 
+Le programme pour l'installation de *Geany* se trouve sous l'onglet *Downloads* dans le menu de gauche *Releases* de la page web (https://www.geany.org/). Ensuite il suffit de télécharger l'exécutable pour Windows ou le dmg pour Mac OSX. Les utilisateurs de Linux préfèreront un `sudo apt-get install geany` (*Geany* est installé par défault sur la plupart des distributions de Linux). 
 
 ### Un script avec Geany
 
-Lors de la première ouverture, comme pour RStudio et Notepad++, un fichier vide est créé (Figure \@ref(fig:screenCapGeany01)). 
+Lors de la première ouverture, comme pour *RStudio* et *Notepad++*, un fichier vide est créé (Figure \@ref(fig:screenCapGeany01)). 
 
 ```{r screenCapGeany01, fig.cap = "Capture d'écran de Geany sous Windows : fenêtre par défaut.\\label{fig:screenCapGeany01}", echo = FALSE}
 knitr::include_graphics("myFigures/screencap_Geany_01.png")
@@ -122,8 +122,8 @@ Nous pouvons ouvrir notre script avec *Fichier*, *Ouvrir* (Figure \@ref(fig:scre
 knitr::include_graphics("myFigures/screencap_Geany_02.png")
 ```
 
-Pour exécuter notre script, la version de Geany pour Windows ne dispose pas d'un terminal intégré, ce qui rend son utilisation limitée sous ce système d'exploitation. L'exécution d'un script peut se faire en ouvrant R dans une fenêtre à part et en copiant et collant les lignes à exécuter. Sous Linux et Mac OSX, il suffit d'ouvrir R dans le terminal situé dans la partie basse de la fenêtre de Geany avec la commande `R`. Nous pouvons ensuite paramétré Geany pour qu'une combinaison de touches permette d'exécuter le code selectionné (par exemple `CTRL + R`). Pour cela il faut tout d'abord autoriser l'envoi de sélection vers le terminal (`send_selection_unsafe=true`) dans le fichier `geany.conf` puis choisir la commande d'envoi vers le terminal (dans *Editar*, *Preferencias*, *Combinaciones*).
-Pour changer le thème de Geany, il existe une collection de thèmes accessibles sur GitHub (https://github.com/geany/geany-themes/). Le thème peut ensuite être changé via le menu *Ver*, *Cambiar esquema de color...* (un exemple avec le thème *Solarized*, Figure \@ref(fig:screenCapGeany03)). 
+Pour exécuter notre script, la version de *Geany* pour Windows ne dispose pas d'un terminal intégré, ce qui rend son utilisation limitée sous ce système d'exploitation. L'exécution d'un script peut se faire en ouvrant R dans une fenêtre à part et en copiant et collant les lignes à exécuter. Sous Linux et Mac OSX, il suffit d'ouvrir R dans le terminal situé dans la partie basse de la fenêtre de *Geany* avec la commande `R`. Nous pouvons ensuite paramétrer *Geany* pour qu'une combinaison de touches permette d'exécuter le code sélectionné (par exemple `CTRL + R`). Pour cela il faut tout d'abord autoriser l'envoi de sélection vers le terminal (`send_selection_unsafe=true`) dans le fichier `geany.conf` puis choisir la commande d'envoi vers le terminal (dans *Edit*, *Preferences*, *Combinations*).
+Pour changer le thème de *Geany*, il existe une collection de thèmes accessibles sur GitHub (https://github.com/geany/geany-themes/). Le thème peut ensuite être changé via le menu *View*, *Change color theme...* (un exemple avec le thème *Solarized*, Figure \@ref(fig:screenCapGeany03)). 
 
 ```{r screenCapGeany03, fig.cap = "Capture d'écran de Geany sous Windows : changer les paramètres de coloration syntaxique.\\label{fig:screenCapGeany03}", echo = FALSE}
 knitr::include_graphics("myFigures/screencap_Geany_03.png")
@@ -135,9 +135,9 @@ Il existe beaucoup d'autres solutions, certaines spécialisées pour R comme **T
 
 ## Conclusion
 
-Felicitations, nous sommes arrivés au bout de ce chapitre sur environnements de développement pour utiliser R. Nous savons désormais :
+Félicitations, nous sommes arrivés au bout de ce chapitre sur environnements de développement pour utiliser R. Nous savons désormais :
 
-* Installer RStudio, Geany ou Notepad++
+* Installer *RStudio*, *Geany* ou *Notepad++*
 * Reconnaître et choisir notre environnement préféré
 
-A partir d'ici nous allons pouvoir nous concentrer sur le language de programmation R dans un environnement facilitant le travail de lecture et d'écriture du code. C'est un grand pas en avant pour maîtriser R.
+A partir de maintenant nous allons pouvoir nous concentrer sur le langage de programmation R dans un environnement facilitant le travail de lecture et d'écriture du code. C'est un grand pas en avant pour maîtriser R.
