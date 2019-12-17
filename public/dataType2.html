@@ -346,13 +346,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="dataType2" class="section level1">
 <h1><span class="header-section-number"> 6</span> Les conteneurs de données</h1>
-<p>Jusqu’à présent nous avons fait des objets simples ne contenant qu’une seule valeur. Nous avons néanmoins pu voir qu’un objet avait différents attributs, comme sa valeur, mais aussi le type de donnée contenue. maintenant nous allons voir qu’il existe différents types de conteneurs permettant de stocker plusieurs données.</p>
+<p>Jusqu’à présent nous avons fait des objets simples ne contenant qu’une seule valeur. Nous avons néanmoins pu voir qu’un objet avait différents attributs, comme sa valeur, mais aussi le type de donnée contenue. Maintenant nous allons voir qu’il existe différents types de conteneurs permettant de stocker plusieurs données.</p>
 <div id="l014vector" class="section level2">
 <h2><span class="header-section-number">6.1</span> Le conteneur <code>vector</code></h2>
-<p>Dans R, un <code>vector</code> est une combinaison de données avec la particularité que toutes les données contenues dans un <code>vector</code> sont du même type. Nous pouvons donc stocker plusieurs <code>numeric</code> ou <code>character</code> dans un <code>vector</code>, mais pas les deux. Le conteneur <code>vector</code> est important car c’est l’élément de base de R.</p>
+<p>Dans R, un <code>vector</code> est une combinaison de données avec la particularité que toutes les données contenues dans un <code>vector</code> sont du même type. Nous pouvons donc stocker plusieurs <code>numeric</code> ou <code>character</code> dans un <code>vector</code>, mais pas les deux. Le conteneur <code>vector</code> est important car c’est l’élément de base de R (R tire toute sa puissance des opérations sur les <code>vector</code>).</p>
 <div id="créer-un-vector" class="section level3">
 <h3><span class="header-section-number">6.1.1</span> Créer un <code>vector</code></h3>
-<p>Pour créer un <code>vector</code> nous allons utiliser la fonction <code>c()</code> qui permet de combiner des éléments en un <code>vector</code>. Les éléments à combiner doivent être séparés par des virgules.</p>
+<p>Pour créer un <code>vector</code> nous allons utiliser la fonction <code>c()</code> qui permet de combiner des éléments en un <code>vector</code>. Les éléments à combiner doivent être séparés par des virgules (avec un espace après chaque virgule afin de rester lisible).</p>
 <div class="sourceCode" id="cb215"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb215-1" title="1">miVec01 &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>) <span class="co"># un vecteur de 4 éléments de type numeric ; double</span></a>
 <a class="sourceLine" id="cb215-2" title="2"><span class="kw">print</span>(miVec01)</a></code></pre></div>
 <pre><code>## [1] 1 2 3 4</code></pre>
@@ -395,63 +395,73 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <pre><code>## [1] &quot;1&quot;   &quot;def&quot;</code></pre>
 <div class="sourceCode" id="cb247"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb247-1" title="1"><span class="kw">typeof</span>(miVec05)</a></code></pre></div>
 <pre><code>## [1] &quot;character&quot;</code></pre>
-<div class="sourceCode" id="cb249"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb249-1" title="1">miVec06 &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="ot">TRUE</span>, <span class="st">&quot;def&quot;</span>)</a>
-<a class="sourceLine" id="cb249-2" title="2"><span class="kw">print</span>(miVec06)</a></code></pre></div>
+<p>Ici nous combinons un élément de type <code>factor</code> et un élément de type <code>character</code>. Comme R n’accepte que des éléments de même type dans un <code>vector</code>, R transforme tous les éléments en type le plus simple (ici en <code>character</code>). Lors de la conversion de l’élément <code>factor</code> en <code>character</code>, R prend par défaut la valeur numérique associé à ce <code>factor</code>, c’est-à-dire 1. C’est pour cela que <code>print(miVec05)</code> renvoie un <code>vector</code> de deux éléments au format <code>character</code>, que sont <code>"1"</code> et <code>"def"</code>. Pour transformer <code>factor("abc")</code> en type <code>character</code>, nous utiliserons <code>as.character(factor("abc"))</code> qui lui renvoie bien <code>"abc"</code>.</p>
+<div class="sourceCode" id="cb249"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb249-1" title="1">miVec05b &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="kw">factor</span>(<span class="st">&quot;abc&quot;</span>), <span class="kw">factor</span>(<span class="st">&quot;ghi&quot;</span>), <span class="st">&quot;def&quot;</span>)</a>
+<a class="sourceLine" id="cb249-2" title="2"><span class="kw">print</span>(miVec05b)</a></code></pre></div>
+<pre><code>## [1] &quot;1&quot;   &quot;1&quot;   &quot;def&quot;</code></pre>
+<div class="sourceCode" id="cb251"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb251-1" title="1">miVec05c &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="kw">factor</span>(<span class="kw">c</span>(<span class="st">&quot;abc&quot;</span>, <span class="st">&quot;ghi&quot;</span>)), <span class="st">&quot;def&quot;</span>)</a>
+<a class="sourceLine" id="cb251-2" title="2"><span class="kw">print</span>(miVec05c)</a></code></pre></div>
+<pre><code>## [1] &quot;1&quot;   &quot;2&quot;   &quot;def&quot;</code></pre>
+<p>Nous pouvons voir ici la différence entre deux appels à <code>factor</code> pour un élément qui renvoie “1” et un appel à <code>factor</code> pour deux éléments qui renvoie “1” et “2” lors de la transformation en <code>character</code> par R.</p>
+<div class="sourceCode" id="cb253"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb253-1" title="1">miVec06 &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="ot">TRUE</span>, <span class="st">&quot;def&quot;</span>)</a>
+<a class="sourceLine" id="cb253-2" title="2"><span class="kw">print</span>(miVec06)</a></code></pre></div>
 <pre><code>## [1] &quot;TRUE&quot; &quot;def&quot;</code></pre>
-<div class="sourceCode" id="cb251"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb251-1" title="1"><span class="kw">typeof</span>(miVec06)</a></code></pre></div>
+<div class="sourceCode" id="cb255"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb255-1" title="1"><span class="kw">typeof</span>(miVec06)</a></code></pre></div>
 <pre><code>## [1] &quot;character&quot;</code></pre>
-<div class="sourceCode" id="cb253"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb253-1" title="1">miVec07 &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="kw">factor</span>(<span class="st">&quot;abc&quot;</span>), <span class="dv">55</span>)</a>
-<a class="sourceLine" id="cb253-2" title="2"><span class="kw">print</span>(miVec07)</a></code></pre></div>
+<div class="sourceCode" id="cb257"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb257-1" title="1">miVec07 &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="kw">factor</span>(<span class="st">&quot;abc&quot;</span>), <span class="dv">55</span>)</a>
+<a class="sourceLine" id="cb257-2" title="2"><span class="kw">print</span>(miVec07)</a></code></pre></div>
 <pre><code>## [1]  1 55</code></pre>
-<div class="sourceCode" id="cb255"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb255-1" title="1"><span class="kw">typeof</span>(miVec07)</a></code></pre></div>
+<div class="sourceCode" id="cb259"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb259-1" title="1"><span class="kw">typeof</span>(miVec07)</a></code></pre></div>
 <pre><code>## [1] &quot;double&quot;</code></pre>
-<div class="sourceCode" id="cb257"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb257-1" title="1">miVec08 &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="ot">TRUE</span>, <span class="dv">55</span>)</a>
-<a class="sourceLine" id="cb257-2" title="2"><span class="kw">print</span>(miVec08)</a></code></pre></div>
+<p>Ici <code>miVec07</code> est simplifié au format numérique.</p>
+<div class="sourceCode" id="cb261"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb261-1" title="1">miVec08 &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="ot">TRUE</span>, <span class="dv">55</span>)</a>
+<a class="sourceLine" id="cb261-2" title="2"><span class="kw">print</span>(miVec08)</a></code></pre></div>
 <pre><code>## [1]  1 55</code></pre>
-<div class="sourceCode" id="cb259"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb259-1" title="1"><span class="kw">typeof</span>(miVec08)</a></code></pre></div>
+<div class="sourceCode" id="cb263"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb263-1" title="1"><span class="kw">typeof</span>(miVec08)</a></code></pre></div>
 <pre><code>## [1] &quot;double&quot;</code></pre>
+<p>Dans ce dernier cas c’est le <code>logical</code> <code>TRUE</code> qui est transformé au format numérique.</p>
 <p>Nous pouvons aussi combiner des objets existants au sein d’un <code>vector</code>.</p>
-<div class="sourceCode" id="cb261"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb261-1" title="1">miVec09 &lt;-<span class="st"> </span><span class="kw">c</span>(miVec02, <span class="st">&quot;d&quot;</span>, <span class="st">&quot;e&quot;</span>, <span class="st">&quot;f&quot;</span>)</a>
-<a class="sourceLine" id="cb261-2" title="2"><span class="kw">print</span>(miVec09)</a></code></pre></div>
+<div class="sourceCode" id="cb265"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb265-1" title="1">miVec09 &lt;-<span class="st"> </span><span class="kw">c</span>(miVec02, <span class="st">&quot;d&quot;</span>, <span class="st">&quot;e&quot;</span>, <span class="st">&quot;f&quot;</span>)</a>
+<a class="sourceLine" id="cb265-2" title="2"><span class="kw">print</span>(miVec09)</a></code></pre></div>
 <pre><code>## [1] &quot;a&quot; &quot;b&quot; &quot;c&quot; &quot;d&quot; &quot;e&quot; &quot;f&quot;</code></pre>
-<div class="sourceCode" id="cb263"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb263-1" title="1">miVec10 &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;aaa&quot;</span>, <span class="st">&quot;aa&quot;</span>, miVec09, <span class="st">&quot;d&quot;</span>, <span class="st">&quot;e&quot;</span>, <span class="st">&quot;f&quot;</span>)</a>
-<a class="sourceLine" id="cb263-2" title="2"><span class="kw">print</span>(miVec10)</a></code></pre></div>
+<div class="sourceCode" id="cb267"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb267-1" title="1">miVec10 &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;aaa&quot;</span>, <span class="st">&quot;aa&quot;</span>, miVec09, <span class="st">&quot;d&quot;</span>, <span class="st">&quot;e&quot;</span>, <span class="st">&quot;f&quot;</span>)</a>
+<a class="sourceLine" id="cb267-2" title="2"><span class="kw">print</span>(miVec10)</a></code></pre></div>
 <pre><code>##  [1] &quot;aaa&quot; &quot;aa&quot;  &quot;a&quot;   &quot;b&quot;   &quot;c&quot;   &quot;d&quot;   &quot;e&quot;   &quot;f&quot;   &quot;d&quot;   &quot;e&quot;   &quot;f&quot;</code></pre>
-<div class="sourceCode" id="cb265"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb265-1" title="1">miVec11 &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">789</span>, miVec01 , <span class="dv">564</span>)</a>
-<a class="sourceLine" id="cb265-2" title="2"><span class="kw">print</span>(miVec11)</a></code></pre></div>
+<div class="sourceCode" id="cb269"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb269-1" title="1">miVec11 &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">789</span>, miVec01 , <span class="dv">564</span>)</a>
+<a class="sourceLine" id="cb269-2" title="2"><span class="kw">print</span>(miVec11)</a></code></pre></div>
 <pre><code>## [1] 789   1   2   3   4 564</code></pre>
 </div>
 <div id="opérations-sur-un-vector" class="section level3">
 <h3><span class="header-section-number">6.1.2</span> Opérations sur un <code>vector</code></h3>
 <p>Nous pouvons également effectuer des opération sur un <code>vector</code>.</p>
-<div class="sourceCode" id="cb267"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb267-1" title="1"><span class="kw">print</span>(miVec01)</a></code></pre></div>
+<div class="sourceCode" id="cb271"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb271-1" title="1"><span class="kw">print</span>(miVec01)</a></code></pre></div>
 <pre><code>## [1] 1 2 3 4</code></pre>
-<div class="sourceCode" id="cb269"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb269-1" title="1">miVec01 <span class="op">+</span><span class="st"> </span><span class="dv">1</span></a></code></pre></div>
+<div class="sourceCode" id="cb273"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb273-1" title="1">miVec01 <span class="op">+</span><span class="st"> </span><span class="dv">1</span></a></code></pre></div>
 <pre><code>## [1] 2 3 4 5</code></pre>
-<div class="sourceCode" id="cb271"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb271-1" title="1">miVec01 <span class="op">-</span><span class="st"> </span><span class="dv">1</span></a></code></pre></div>
+<div class="sourceCode" id="cb275"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb275-1" title="1">miVec01 <span class="op">-</span><span class="st"> </span><span class="dv">1</span></a></code></pre></div>
 <pre><code>## [1] 0 1 2 3</code></pre>
-<div class="sourceCode" id="cb273"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb273-1" title="1">miVec01 <span class="op">*</span><span class="st"> </span><span class="dv">2</span></a></code></pre></div>
+<div class="sourceCode" id="cb277"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb277-1" title="1">miVec01 <span class="op">*</span><span class="st"> </span><span class="dv">2</span></a></code></pre></div>
 <pre><code>## [1] 2 4 6 8</code></pre>
-<div class="sourceCode" id="cb275"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb275-1" title="1">miVec01 <span class="op">/</span><span class="dv">10</span></a></code></pre></div>
+<div class="sourceCode" id="cb279"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb279-1" title="1">miVec01 <span class="op">/</span><span class="dv">10</span></a></code></pre></div>
 <pre><code>## [1] 0.1 0.2 0.3 0.4</code></pre>
 <p>Les opérations d’un <code>vector</code> sur un autre sont aussi possibles, mais il faut veiller à ce que le nombre d’éléments d’un <code>vector</code> soit le même que l’autre, sinon R va effectuer le calcul en repartant du début. Voici un exemple pour illustrer ce que R fait:</p>
-<div class="sourceCode" id="cb277"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb277-1" title="1">miVec12 &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>)</a>
-<a class="sourceLine" id="cb277-2" title="2"><span class="kw">print</span>(miVec12)</a></code></pre></div>
+<div class="sourceCode" id="cb281"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb281-1" title="1">miVec12 &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>)</a>
+<a class="sourceLine" id="cb281-2" title="2"><span class="kw">print</span>(miVec12)</a></code></pre></div>
 <pre><code>## [1] 1 1 1 1 1 1 1 1 1</code></pre>
-<div class="sourceCode" id="cb279"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb279-1" title="1">miVec13 &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">10</span>, <span class="dv">20</span>, <span class="dv">30</span>)</a>
-<a class="sourceLine" id="cb279-2" title="2"><span class="kw">print</span>(miVec13)</a></code></pre></div>
+<div class="sourceCode" id="cb283"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb283-1" title="1">miVec13 &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">10</span>, <span class="dv">20</span>, <span class="dv">30</span>)</a>
+<a class="sourceLine" id="cb283-2" title="2"><span class="kw">print</span>(miVec13)</a></code></pre></div>
 <pre><code>## [1] 10 20 30</code></pre>
-<div class="sourceCode" id="cb281"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb281-1" title="1">miVec12 <span class="op">+</span><span class="st"> </span>miVec13 <span class="co"># vecteurs de tailles différentes : attention au résultat</span></a></code></pre></div>
+<div class="sourceCode" id="cb285"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb285-1" title="1">miVec12 <span class="op">+</span><span class="st"> </span>miVec13 <span class="co"># vecteurs de tailles différentes : attention au résultat</span></a></code></pre></div>
 <pre><code>## [1] 11 21 31 11 21 31 11 21 31</code></pre>
-<div class="sourceCode" id="cb283"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb283-1" title="1">miVec14 &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">10</span>, <span class="dv">20</span>, <span class="dv">30</span>, <span class="dv">40</span>, <span class="dv">50</span>, <span class="dv">60</span>, <span class="dv">70</span>, <span class="dv">80</span>, <span class="dv">90</span>)</a>
-<a class="sourceLine" id="cb283-2" title="2"><span class="kw">print</span>(miVec14)</a></code></pre></div>
+<div class="sourceCode" id="cb287"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb287-1" title="1">miVec14 &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">10</span>, <span class="dv">20</span>, <span class="dv">30</span>, <span class="dv">40</span>, <span class="dv">50</span>, <span class="dv">60</span>, <span class="dv">70</span>, <span class="dv">80</span>, <span class="dv">90</span>)</a>
+<a class="sourceLine" id="cb287-2" title="2"><span class="kw">print</span>(miVec14)</a></code></pre></div>
 <pre><code>## [1] 10 20 30 40 50 60 70 80 90</code></pre>
-<div class="sourceCode" id="cb285"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb285-1" title="1">miVec12 <span class="op">+</span><span class="st"> </span>miVec14 <span class="co"># les vecteurs sont de la même longueur</span></a></code></pre></div>
+<div class="sourceCode" id="cb289"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb289-1" title="1">miVec12 <span class="op">+</span><span class="st"> </span>miVec14 <span class="co"># les vecteurs sont de la même longueur</span></a></code></pre></div>
 <pre><code>## [1] 11 21 31 41 51 61 71 81 91</code></pre>
-<div class="sourceCode" id="cb287"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb287-1" title="1">miVec15 &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>)</a>
-<a class="sourceLine" id="cb287-2" title="2"><span class="kw">print</span>(miVec15)</a></code></pre></div>
+<div class="sourceCode" id="cb291"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb291-1" title="1">miVec15 &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>)</a>
+<a class="sourceLine" id="cb291-2" title="2"><span class="kw">print</span>(miVec15)</a></code></pre></div>
 <pre><code>## [1] 1 1 1 1</code></pre>
-<div class="sourceCode" id="cb289"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb289-1" title="1">miVec15 <span class="op">+</span><span class="st"> </span>miVec13 <span class="co"># vecteurs de tailles différentes et non multiples</span></a></code></pre></div>
+<div class="sourceCode" id="cb293"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb293-1" title="1">miVec15 <span class="op">+</span><span class="st"> </span>miVec13 <span class="co"># vecteurs de tailles différentes et non multiples</span></a></code></pre></div>
 <pre><code>## Warning in miVec15 + miVec13: la taille d&#39;un objet plus long n&#39;est pas multiple
 ## de la taille d&#39;un objet plus court</code></pre>
 <pre><code>## [1] 11 21 31 11</code></pre>
@@ -459,104 +469,104 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="accèder-aux-valeurs-dun-vector" class="section level3">
 <h3><span class="header-section-number">6.1.3</span> Accèder aux valeurs d’un <code>vector</code></h3>
 <p>Il souvent nécessaire de pouvoir accèder aux valeurs d’un <code>vector</code>, c’est à dire de récupérer une valeur ou un groupe de valeurs au sein d’un <code>vector</code>. Pour à un élément dans un <code>vector</code> nous utilisons les crochets <code>[]</code>. Entre les crochets, nous pouvons utiliser un numéro correspondant au numéro de l’élément dans le <code>vector</code>.</p>
-<div class="sourceCode" id="cb292"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb292-1" title="1">miVec20 &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">10</span>, <span class="dv">20</span>, <span class="dv">30</span>, <span class="dv">40</span>, <span class="dv">50</span>, <span class="dv">60</span>, <span class="dv">70</span>, <span class="dv">80</span>, <span class="dv">90</span>)</a>
-<a class="sourceLine" id="cb292-2" title="2">miVec21 &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;a&quot;</span>, <span class="st">&quot;b&quot;</span>, <span class="st">&quot;c&quot;</span>, <span class="st">&quot;d&quot;</span>, <span class="st">&quot;e&quot;</span>, <span class="st">&quot;f&quot;</span>, <span class="st">&quot;g&quot;</span>, <span class="st">&quot;h&quot;</span>, <span class="st">&quot;i&quot;</span>)</a>
-<a class="sourceLine" id="cb292-3" title="3"><span class="kw">print</span>(miVec20)</a></code></pre></div>
+<div class="sourceCode" id="cb296"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb296-1" title="1">miVec20 &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">10</span>, <span class="dv">20</span>, <span class="dv">30</span>, <span class="dv">40</span>, <span class="dv">50</span>, <span class="dv">60</span>, <span class="dv">70</span>, <span class="dv">80</span>, <span class="dv">90</span>)</a>
+<a class="sourceLine" id="cb296-2" title="2">miVec21 &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;a&quot;</span>, <span class="st">&quot;b&quot;</span>, <span class="st">&quot;c&quot;</span>, <span class="st">&quot;d&quot;</span>, <span class="st">&quot;e&quot;</span>, <span class="st">&quot;f&quot;</span>, <span class="st">&quot;g&quot;</span>, <span class="st">&quot;h&quot;</span>, <span class="st">&quot;i&quot;</span>)</a>
+<a class="sourceLine" id="cb296-3" title="3"><span class="kw">print</span>(miVec20)</a></code></pre></div>
 <pre><code>## [1] 10 20 30 40 50 60 70 80 90</code></pre>
-<div class="sourceCode" id="cb294"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb294-1" title="1"><span class="kw">print</span>(miVec21)</a></code></pre></div>
+<div class="sourceCode" id="cb298"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb298-1" title="1"><span class="kw">print</span>(miVec21)</a></code></pre></div>
 <pre><code>## [1] &quot;a&quot; &quot;b&quot; &quot;c&quot; &quot;d&quot; &quot;e&quot; &quot;f&quot; &quot;g&quot; &quot;h&quot; &quot;i&quot;</code></pre>
-<div class="sourceCode" id="cb296"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb296-1" title="1"><span class="kw">print</span>(miVec20[<span class="dv">1</span>])</a></code></pre></div>
+<div class="sourceCode" id="cb300"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb300-1" title="1"><span class="kw">print</span>(miVec20[<span class="dv">1</span>])</a></code></pre></div>
 <pre><code>## [1] 10</code></pre>
-<div class="sourceCode" id="cb298"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb298-1" title="1"><span class="kw">print</span>(miVec21[<span class="dv">3</span>])</a></code></pre></div>
+<div class="sourceCode" id="cb302"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb302-1" title="1"><span class="kw">print</span>(miVec21[<span class="dv">3</span>])</a></code></pre></div>
 <pre><code>## [1] &quot;c&quot;</code></pre>
 <p>Nous pouvons aussi utiliser la combinaison de différents éléments (un autre <code>vector</code>).</p>
-<div class="sourceCode" id="cb300"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb300-1" title="1"><span class="kw">print</span>(miVec20[<span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">5</span>, <span class="dv">9</span>)])</a></code></pre></div>
+<div class="sourceCode" id="cb304"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb304-1" title="1"><span class="kw">print</span>(miVec20[<span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">5</span>, <span class="dv">9</span>)])</a></code></pre></div>
 <pre><code>## [1] 10 50 90</code></pre>
-<div class="sourceCode" id="cb302"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb302-1" title="1"><span class="kw">print</span>(miVec21[<span class="kw">c</span>(<span class="dv">4</span>, <span class="dv">3</span>, <span class="dv">1</span>)])</a></code></pre></div>
+<div class="sourceCode" id="cb306"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb306-1" title="1"><span class="kw">print</span>(miVec21[<span class="kw">c</span>(<span class="dv">4</span>, <span class="dv">3</span>, <span class="dv">1</span>)])</a></code></pre></div>
 <pre><code>## [1] &quot;d&quot; &quot;c&quot; &quot;a&quot;</code></pre>
-<div class="sourceCode" id="cb304"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb304-1" title="1"><span class="kw">print</span>(miVec21[<span class="kw">c</span>(<span class="dv">4</span>, <span class="dv">4</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">3</span>, <span class="dv">2</span>, <span class="dv">5</span>)])</a></code></pre></div>
+<div class="sourceCode" id="cb308"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb308-1" title="1"><span class="kw">print</span>(miVec21[<span class="kw">c</span>(<span class="dv">4</span>, <span class="dv">4</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">3</span>, <span class="dv">2</span>, <span class="dv">5</span>)])</a></code></pre></div>
 <pre><code>## [1] &quot;d&quot; &quot;d&quot; &quot;c&quot; &quot;d&quot; &quot;c&quot; &quot;b&quot; &quot;e&quot;</code></pre>
 <p>Nous pouvons aussi selectionner des éléments en utilisant un opérateur de comparaison ou un opérateur logique.</p>
-<div class="sourceCode" id="cb306"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb306-1" title="1"><span class="kw">print</span>(miVec20[miVec20 <span class="op">&gt;=</span><span class="st"> </span><span class="dv">50</span>])</a></code></pre></div>
+<div class="sourceCode" id="cb310"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb310-1" title="1"><span class="kw">print</span>(miVec20[miVec20 <span class="op">&gt;=</span><span class="st"> </span><span class="dv">50</span>])</a></code></pre></div>
 <pre><code>## [1] 50 60 70 80 90</code></pre>
-<div class="sourceCode" id="cb308"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb308-1" title="1"><span class="kw">print</span>(miVec20[(miVec20 <span class="op">&gt;=</span><span class="st"> </span><span class="dv">50</span>) <span class="op">&amp;</span><span class="st"> </span>((miVec20 <span class="op">&lt;</span><span class="st"> </span><span class="dv">80</span>))])</a></code></pre></div>
+<div class="sourceCode" id="cb312"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb312-1" title="1"><span class="kw">print</span>(miVec20[(miVec20 <span class="op">&gt;=</span><span class="st"> </span><span class="dv">50</span>) <span class="op">&amp;</span><span class="st"> </span>((miVec20 <span class="op">&lt;</span><span class="st"> </span><span class="dv">80</span>))])</a></code></pre></div>
 <pre><code>## [1] 50 60 70</code></pre>
-<div class="sourceCode" id="cb310"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb310-1" title="1"><span class="kw">print</span>(miVec20[miVec20 <span class="op">!=</span><span class="st"> </span><span class="dv">50</span>])</a></code></pre></div>
+<div class="sourceCode" id="cb314"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb314-1" title="1"><span class="kw">print</span>(miVec20[miVec20 <span class="op">!=</span><span class="st"> </span><span class="dv">50</span>])</a></code></pre></div>
 <pre><code>## [1] 10 20 30 40 60 70 80 90</code></pre>
-<div class="sourceCode" id="cb312"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb312-1" title="1"><span class="kw">print</span>(miVec20[miVec20 <span class="op">==</span><span class="st"> </span><span class="dv">30</span>])</a></code></pre></div>
+<div class="sourceCode" id="cb316"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb316-1" title="1"><span class="kw">print</span>(miVec20[miVec20 <span class="op">==</span><span class="st"> </span><span class="dv">30</span>])</a></code></pre></div>
 <pre><code>## [1] 30</code></pre>
-<div class="sourceCode" id="cb314"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb314-1" title="1"><span class="kw">print</span>(miVec20[(miVec20 <span class="op">==</span><span class="st"> </span><span class="dv">30</span>) <span class="op">|</span><span class="st"> </span>(miVec20 <span class="op">==</span><span class="st"> </span><span class="dv">50</span>)])</a></code></pre></div>
+<div class="sourceCode" id="cb318"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb318-1" title="1"><span class="kw">print</span>(miVec20[(miVec20 <span class="op">==</span><span class="st"> </span><span class="dv">30</span>) <span class="op">|</span><span class="st"> </span>(miVec20 <span class="op">==</span><span class="st"> </span><span class="dv">50</span>)])</a></code></pre></div>
 <pre><code>## [1] 30 50</code></pre>
-<div class="sourceCode" id="cb316"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb316-1" title="1"><span class="kw">print</span>(miVec21[miVec21 <span class="op">==</span><span class="st"> &quot;a&quot;</span>])</a></code></pre></div>
+<div class="sourceCode" id="cb320"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb320-1" title="1"><span class="kw">print</span>(miVec21[miVec21 <span class="op">==</span><span class="st"> &quot;a&quot;</span>])</a></code></pre></div>
 <pre><code>## [1] &quot;a&quot;</code></pre>
 <p>Une autre fonctionnalité intéressante est de conditionner les éléments à sélectionner dans un <code>vector</code> en fonction d’un autre <code>vector</code>.</p>
-<div class="sourceCode" id="cb318"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb318-1" title="1"><span class="kw">print</span>(miVec21[miVec20 <span class="op">&gt;=</span><span class="st"> </span><span class="dv">50</span>])</a></code></pre></div>
+<div class="sourceCode" id="cb322"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb322-1" title="1"><span class="kw">print</span>(miVec21[miVec20 <span class="op">&gt;=</span><span class="st"> </span><span class="dv">50</span>])</a></code></pre></div>
 <pre><code>## [1] &quot;e&quot; &quot;f&quot; &quot;g&quot; &quot;h&quot; &quot;i&quot;</code></pre>
-<div class="sourceCode" id="cb320"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb320-1" title="1"><span class="kw">print</span>(miVec21[(miVec20 <span class="op">&gt;=</span><span class="st"> </span><span class="dv">50</span>) <span class="op">&amp;</span><span class="st"> </span>((miVec20 <span class="op">&lt;</span><span class="st"> </span><span class="dv">80</span>))])</a></code></pre></div>
+<div class="sourceCode" id="cb324"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb324-1" title="1"><span class="kw">print</span>(miVec21[(miVec20 <span class="op">&gt;=</span><span class="st"> </span><span class="dv">50</span>) <span class="op">&amp;</span><span class="st"> </span>((miVec20 <span class="op">&lt;</span><span class="st"> </span><span class="dv">80</span>))])</a></code></pre></div>
 <pre><code>## [1] &quot;e&quot; &quot;f&quot; &quot;g&quot;</code></pre>
-<div class="sourceCode" id="cb322"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb322-1" title="1"><span class="kw">print</span>(miVec21[miVec20 <span class="op">!=</span><span class="st"> </span><span class="dv">50</span>])</a></code></pre></div>
+<div class="sourceCode" id="cb326"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb326-1" title="1"><span class="kw">print</span>(miVec21[miVec20 <span class="op">!=</span><span class="st"> </span><span class="dv">50</span>])</a></code></pre></div>
 <pre><code>## [1] &quot;a&quot; &quot;b&quot; &quot;c&quot; &quot;d&quot; &quot;f&quot; &quot;g&quot; &quot;h&quot; &quot;i&quot;</code></pre>
-<div class="sourceCode" id="cb324"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb324-1" title="1"><span class="kw">print</span>(miVec21[miVec20 <span class="op">==</span><span class="st"> </span><span class="dv">30</span>])</a></code></pre></div>
+<div class="sourceCode" id="cb328"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb328-1" title="1"><span class="kw">print</span>(miVec21[miVec20 <span class="op">==</span><span class="st"> </span><span class="dv">30</span>])</a></code></pre></div>
 <pre><code>## [1] &quot;c&quot;</code></pre>
-<div class="sourceCode" id="cb326"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb326-1" title="1"><span class="kw">print</span>(miVec21[(miVec20 <span class="op">==</span><span class="st"> </span><span class="dv">30</span>) <span class="op">|</span><span class="st"> </span>(miVec20 <span class="op">==</span><span class="st"> </span><span class="dv">50</span>)])</a></code></pre></div>
+<div class="sourceCode" id="cb330"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb330-1" title="1"><span class="kw">print</span>(miVec21[(miVec20 <span class="op">==</span><span class="st"> </span><span class="dv">30</span>) <span class="op">|</span><span class="st"> </span>(miVec20 <span class="op">==</span><span class="st"> </span><span class="dv">50</span>)])</a></code></pre></div>
 <pre><code>## [1] &quot;c&quot; &quot;e&quot;</code></pre>
-<div class="sourceCode" id="cb328"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb328-1" title="1"><span class="kw">print</span>(miVec21[(miVec20 <span class="op">==</span><span class="st"> </span><span class="dv">30</span>) <span class="op">|</span><span class="st"> </span>(miVec21 <span class="op">==</span><span class="st"> &quot;h&quot;</span>)])</a></code></pre></div>
+<div class="sourceCode" id="cb332"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb332-1" title="1"><span class="kw">print</span>(miVec21[(miVec20 <span class="op">==</span><span class="st"> </span><span class="dv">30</span>) <span class="op">|</span><span class="st"> </span>(miVec21 <span class="op">==</span><span class="st"> &quot;h&quot;</span>)])</a></code></pre></div>
 <pre><code>## [1] &quot;c&quot; &quot;h&quot;</code></pre>
 <p>Il est aussi possible d’exclure certains éléments plutôt que de les sélectionner.</p>
-<div class="sourceCode" id="cb330"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb330-1" title="1"><span class="kw">print</span>(miVec20[<span class="op">-</span><span class="dv">1</span>])</a></code></pre></div>
+<div class="sourceCode" id="cb334"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb334-1" title="1"><span class="kw">print</span>(miVec20[<span class="op">-</span><span class="dv">1</span>])</a></code></pre></div>
 <pre><code>## [1] 20 30 40 50 60 70 80 90</code></pre>
-<div class="sourceCode" id="cb332"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb332-1" title="1"><span class="kw">print</span>(miVec21[<span class="op">-</span><span class="dv">5</span>])</a></code></pre></div>
+<div class="sourceCode" id="cb336"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb336-1" title="1"><span class="kw">print</span>(miVec21[<span class="op">-</span><span class="dv">5</span>])</a></code></pre></div>
 <pre><code>## [1] &quot;a&quot; &quot;b&quot; &quot;c&quot; &quot;d&quot; &quot;f&quot; &quot;g&quot; &quot;h&quot; &quot;i&quot;</code></pre>
-<div class="sourceCode" id="cb334"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb334-1" title="1"><span class="kw">print</span>(miVec20[<span class="op">-</span><span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">5</span>)])</a></code></pre></div>
+<div class="sourceCode" id="cb338"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb338-1" title="1"><span class="kw">print</span>(miVec20[<span class="op">-</span><span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">5</span>)])</a></code></pre></div>
 <pre><code>## [1] 30 40 60 70 80 90</code></pre>
-<div class="sourceCode" id="cb336"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb336-1" title="1"><span class="kw">print</span>(miVec21[<span class="op">-</span><span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">5</span>)])</a></code></pre></div>
+<div class="sourceCode" id="cb340"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb340-1" title="1"><span class="kw">print</span>(miVec21[<span class="op">-</span><span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">5</span>)])</a></code></pre></div>
 <pre><code>## [1] &quot;c&quot; &quot;d&quot; &quot;f&quot; &quot;g&quot; &quot;h&quot; &quot;i&quot;</code></pre>
 <p>Les éléments d’un <code>vector</code> peuvent aussi être sélectionné sur la base d’un <code>vector</code> de type <code>logical</code>. Dans ce cas seuls les éléments avec une valeur <code>TRUE</code> seront sélectionnés.</p>
-<div class="sourceCode" id="cb338"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb338-1" title="1">miVec22 &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="ot">TRUE</span>, <span class="ot">TRUE</span>, <span class="ot">FALSE</span>, <span class="ot">TRUE</span>, <span class="ot">FALSE</span>, <span class="ot">TRUE</span>, <span class="ot">FALSE</span>, <span class="ot">TRUE</span>, <span class="ot">TRUE</span>)</a>
-<a class="sourceLine" id="cb338-2" title="2"><span class="kw">print</span>(miVec21[miVec22])</a></code></pre></div>
+<div class="sourceCode" id="cb342"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb342-1" title="1">miVec22 &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="ot">TRUE</span>, <span class="ot">TRUE</span>, <span class="ot">FALSE</span>, <span class="ot">TRUE</span>, <span class="ot">FALSE</span>, <span class="ot">TRUE</span>, <span class="ot">FALSE</span>, <span class="ot">TRUE</span>, <span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb342-2" title="2"><span class="kw">print</span>(miVec21[miVec22])</a></code></pre></div>
 <pre><code>## [1] &quot;a&quot; &quot;b&quot; &quot;d&quot; &quot;f&quot; &quot;h&quot; &quot;i&quot;</code></pre>
 </div>
 <div id="nommer-les-éléments-dun-vector" class="section level3">
 <h3><span class="header-section-number">6.1.4</span> Nommer les éléments d’un <code>vector</code></h3>
 <p>Les éléments d’un <code>vector</code> peuvent être nommé pour pouvoir s’y référer par la suite et opérer une sélection. La fonction <code>names()</code> permet de récupérer les noms des éléments d’un vecteur.</p>
-<div class="sourceCode" id="cb340"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb340-1" title="1">miVec23 &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dt">aaa =</span> <span class="dv">10</span>, <span class="dt">bbb =</span> <span class="dv">20</span>, <span class="dt">ccc =</span> <span class="dv">30</span>, <span class="dt">ddd =</span> <span class="dv">40</span>, <span class="dt">eee =</span> <span class="dv">50</span>)</a>
-<a class="sourceLine" id="cb340-2" title="2"><span class="kw">print</span>(miVec23)</a></code></pre></div>
+<div class="sourceCode" id="cb344"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb344-1" title="1">miVec23 &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dt">aaa =</span> <span class="dv">10</span>, <span class="dt">bbb =</span> <span class="dv">20</span>, <span class="dt">ccc =</span> <span class="dv">30</span>, <span class="dt">ddd =</span> <span class="dv">40</span>, <span class="dt">eee =</span> <span class="dv">50</span>)</a>
+<a class="sourceLine" id="cb344-2" title="2"><span class="kw">print</span>(miVec23)</a></code></pre></div>
 <pre><code>## aaa bbb ccc ddd eee 
 ##  10  20  30  40  50</code></pre>
-<div class="sourceCode" id="cb342"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb342-1" title="1"><span class="kw">print</span>(miVec23[<span class="st">&quot;bbb&quot;</span>])</a></code></pre></div>
+<div class="sourceCode" id="cb346"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb346-1" title="1"><span class="kw">print</span>(miVec23[<span class="st">&quot;bbb&quot;</span>])</a></code></pre></div>
 <pre><code>## bbb 
 ##  20</code></pre>
-<div class="sourceCode" id="cb344"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb344-1" title="1"><span class="kw">print</span>(miVec23[<span class="kw">c</span>(<span class="st">&quot;bbb&quot;</span>, <span class="st">&quot;ccc&quot;</span>, <span class="st">&quot;bbb&quot;</span>)])</a></code></pre></div>
+<div class="sourceCode" id="cb348"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb348-1" title="1"><span class="kw">print</span>(miVec23[<span class="kw">c</span>(<span class="st">&quot;bbb&quot;</span>, <span class="st">&quot;ccc&quot;</span>, <span class="st">&quot;bbb&quot;</span>)])</a></code></pre></div>
 <pre><code>## bbb ccc bbb 
 ##  20  30  20</code></pre>
-<div class="sourceCode" id="cb346"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb346-1" title="1"><span class="kw">names</span>(miVec23)</a></code></pre></div>
+<div class="sourceCode" id="cb350"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb350-1" title="1"><span class="kw">names</span>(miVec23)</a></code></pre></div>
 <pre><code>## [1] &quot;aaa&quot; &quot;bbb&quot; &quot;ccc&quot; &quot;ddd&quot; &quot;eee&quot;</code></pre>
 </div>
 <div id="modifier-les-éléments-dun-vector" class="section level3">
 <h3><span class="header-section-number">6.1.5</span> Modifier les éléments d’un <code>vector</code></h3>
 <p>Pour modifier un vecteur, nous opérons de la même façon que pour modifier un objet simple, avec le signe <code>&lt;-</code> et l’élément ou les éléments à modifier entre crochets.</p>
-<div class="sourceCode" id="cb348"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb348-1" title="1"><span class="kw">print</span>(miVec21)</a></code></pre></div>
+<div class="sourceCode" id="cb352"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb352-1" title="1"><span class="kw">print</span>(miVec21)</a></code></pre></div>
 <pre><code>## [1] &quot;a&quot; &quot;b&quot; &quot;c&quot; &quot;d&quot; &quot;e&quot; &quot;f&quot; &quot;g&quot; &quot;h&quot; &quot;i&quot;</code></pre>
-<div class="sourceCode" id="cb350"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb350-1" title="1">miVec21[<span class="dv">3</span>] &lt;-<span class="st"> &quot;zzz&quot;</span></a>
-<a class="sourceLine" id="cb350-2" title="2"><span class="kw">print</span>(miVec21)</a></code></pre></div>
+<div class="sourceCode" id="cb354"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb354-1" title="1">miVec21[<span class="dv">3</span>] &lt;-<span class="st"> &quot;zzz&quot;</span></a>
+<a class="sourceLine" id="cb354-2" title="2"><span class="kw">print</span>(miVec21)</a></code></pre></div>
 <pre><code>## [1] &quot;a&quot;   &quot;b&quot;   &quot;zzz&quot; &quot;d&quot;   &quot;e&quot;   &quot;f&quot;   &quot;g&quot;   &quot;h&quot;   &quot;i&quot;</code></pre>
-<div class="sourceCode" id="cb352"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb352-1" title="1">miVec21[(miVec20 <span class="op">&gt;=</span><span class="st"> </span><span class="dv">50</span>) <span class="op">&amp;</span><span class="st"> </span>((miVec20 <span class="op">&lt;</span><span class="st"> </span><span class="dv">80</span>))] &lt;-<span class="st"> &quot;qwerty&quot;</span></a>
-<a class="sourceLine" id="cb352-2" title="2"><span class="kw">print</span>(miVec21)</a></code></pre></div>
+<div class="sourceCode" id="cb356"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb356-1" title="1">miVec21[(miVec20 <span class="op">&gt;=</span><span class="st"> </span><span class="dv">50</span>) <span class="op">&amp;</span><span class="st"> </span>((miVec20 <span class="op">&lt;</span><span class="st"> </span><span class="dv">80</span>))] &lt;-<span class="st"> &quot;qwerty&quot;</span></a>
+<a class="sourceLine" id="cb356-2" title="2"><span class="kw">print</span>(miVec21)</a></code></pre></div>
 <pre><code>## [1] &quot;a&quot;      &quot;b&quot;      &quot;zzz&quot;    &quot;d&quot;      &quot;qwerty&quot; &quot;qwerty&quot; &quot;qwerty&quot; &quot;h&quot;     
 ## [9] &quot;i&quot;</code></pre>
-<div class="sourceCode" id="cb354"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb354-1" title="1"><span class="kw">print</span>(miVec23)</a></code></pre></div>
+<div class="sourceCode" id="cb358"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb358-1" title="1"><span class="kw">print</span>(miVec23)</a></code></pre></div>
 <pre><code>## aaa bbb ccc ddd eee 
 ##  10  20  30  40  50</code></pre>
-<div class="sourceCode" id="cb356"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb356-1" title="1">miVec23[<span class="st">&quot;ccc&quot;</span>] &lt;-<span class="st"> </span>miVec23[<span class="st">&quot;ccc&quot;</span>] <span class="op">+</span><span class="st"> </span><span class="dv">100</span></a>
-<a class="sourceLine" id="cb356-2" title="2"><span class="kw">print</span>(miVec23)</a></code></pre></div>
+<div class="sourceCode" id="cb360"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb360-1" title="1">miVec23[<span class="st">&quot;ccc&quot;</span>] &lt;-<span class="st"> </span>miVec23[<span class="st">&quot;ccc&quot;</span>] <span class="op">+</span><span class="st"> </span><span class="dv">100</span></a>
+<a class="sourceLine" id="cb360-2" title="2"><span class="kw">print</span>(miVec23)</a></code></pre></div>
 <pre><code>## aaa bbb ccc ddd eee 
 ##  10  20 130  40  50</code></pre>
 <p>Nous pouvons aussi changer les noms associés aux éléments d’un <code>vector</code>.</p>
-<div class="sourceCode" id="cb358"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb358-1" title="1"><span class="kw">print</span>(miVec23)</a></code></pre></div>
+<div class="sourceCode" id="cb362"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb362-1" title="1"><span class="kw">print</span>(miVec23)</a></code></pre></div>
 <pre><code>## aaa bbb ccc ddd eee 
 ##  10  20 130  40  50</code></pre>
-<div class="sourceCode" id="cb360"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb360-1" title="1"><span class="kw">names</span>(miVec23)[<span class="dv">2</span>] &lt;-<span class="st"> &quot;bb_bb&quot;</span></a>
-<a class="sourceLine" id="cb360-2" title="2"><span class="kw">print</span>(miVec23)</a></code></pre></div>
+<div class="sourceCode" id="cb364"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb364-1" title="1"><span class="kw">names</span>(miVec23)[<span class="dv">2</span>] &lt;-<span class="st"> &quot;bb_bb&quot;</span></a>
+<a class="sourceLine" id="cb364-2" title="2"><span class="kw">print</span>(miVec23)</a></code></pre></div>
 <pre><code>##   aaa bb_bb   ccc   ddd   eee 
 ##    10    20   130    40    50</code></pre>
 <p>Nous pouvons faire bien plus avec un <code>vector</code> et reviendrons sur leur manipulations et les opérations lors du chapitre sur les fonctions.</p>
@@ -568,11 +578,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="créer-une-list" class="section level3">
 <h3><span class="header-section-number">6.2.1</span> Créer une <code>list</code></h3>
 <p>Pour créer une <code>list</code> nous allons utiliser la fonction <code>list()</code> qui prend comme argument des éléments (objets).</p>
-<div class="sourceCode" id="cb362"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb362-1" title="1">miList01 &lt;-<span class="st"> </span><span class="kw">list</span>()</a>
-<a class="sourceLine" id="cb362-2" title="2"><span class="kw">print</span>(miList01)</a></code></pre></div>
+<div class="sourceCode" id="cb366"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb366-1" title="1">miList01 &lt;-<span class="st"> </span><span class="kw">list</span>()</a>
+<a class="sourceLine" id="cb366-2" title="2"><span class="kw">print</span>(miList01)</a></code></pre></div>
 <pre><code>## list()</code></pre>
-<div class="sourceCode" id="cb364"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb364-1" title="1">miList02 &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="dv">5</span>, <span class="st">&quot;qwerty&quot;</span>, <span class="kw">c</span>(<span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>), <span class="kw">c</span>(<span class="st">&quot;a&quot;</span>, <span class="st">&quot;b&quot;</span>, <span class="st">&quot;c&quot;</span>))</a>
-<a class="sourceLine" id="cb364-2" title="2"><span class="kw">print</span>(miList02)</a></code></pre></div>
+<div class="sourceCode" id="cb368"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb368-1" title="1">miList02 &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="dv">5</span>, <span class="st">&quot;qwerty&quot;</span>, <span class="kw">c</span>(<span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>), <span class="kw">c</span>(<span class="st">&quot;a&quot;</span>, <span class="st">&quot;b&quot;</span>, <span class="st">&quot;c&quot;</span>))</a>
+<a class="sourceLine" id="cb368-2" title="2"><span class="kw">print</span>(miList02)</a></code></pre></div>
 <pre><code>## [[1]]
 ## [1] 5
 ## 
@@ -584,8 +594,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 
 ## [[4]]
 ## [1] &quot;a&quot; &quot;b&quot; &quot;c&quot;</code></pre>
-<div class="sourceCode" id="cb366"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb366-1" title="1">miList03 &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="dv">5</span>, <span class="st">&quot;qwerty&quot;</span>, <span class="kw">list</span>(<span class="kw">c</span>(<span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>), <span class="kw">c</span>(<span class="st">&quot;a&quot;</span>, <span class="st">&quot;b&quot;</span>, <span class="st">&quot;c&quot;</span>)))</a>
-<a class="sourceLine" id="cb366-2" title="2"><span class="kw">print</span>(miList03)</a></code></pre></div>
+<div class="sourceCode" id="cb370"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb370-1" title="1">miList03 &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="dv">5</span>, <span class="st">&quot;qwerty&quot;</span>, <span class="kw">list</span>(<span class="kw">c</span>(<span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>), <span class="kw">c</span>(<span class="st">&quot;a&quot;</span>, <span class="st">&quot;b&quot;</span>, <span class="st">&quot;c&quot;</span>)))</a>
+<a class="sourceLine" id="cb370-2" title="2"><span class="kw">print</span>(miList03)</a></code></pre></div>
 <pre><code>## [[1]]
 ## [1] 5
 ## 
@@ -599,15 +609,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## [[3]][[2]]
 ## [1] &quot;a&quot; &quot;b&quot; &quot;c&quot;</code></pre>
 <p>La fonction <code>is.list()</code> permet de tester si nous avons bien créer un objet de type <code>list</code>.</p>
-<div class="sourceCode" id="cb368"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb368-1" title="1"><span class="kw">is.list</span>(miList02)</a></code></pre></div>
+<div class="sourceCode" id="cb372"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb372-1" title="1"><span class="kw">is.list</span>(miList02)</a></code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
-<div class="sourceCode" id="cb370"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb370-1" title="1"><span class="kw">typeof</span>(miList02)</a></code></pre></div>
+<div class="sourceCode" id="cb374"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb374-1" title="1"><span class="kw">typeof</span>(miList02)</a></code></pre></div>
 <pre><code>## [1] &quot;list&quot;</code></pre>
 </div>
 <div id="accéder-aux-valeurs-dune-list" class="section level3">
 <h3><span class="header-section-number">6.2.2</span> Accéder aux valeurs d’une <code>list</code></h3>
 <p>Les éléments du conteneur <code>list</code> sont identifiables grâce aux double crochets <code>[[ ]]</code>.</p>
-<div class="sourceCode" id="cb372"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb372-1" title="1"><span class="kw">print</span>(miList02)</a></code></pre></div>
+<div class="sourceCode" id="cb376"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb376-1" title="1"><span class="kw">print</span>(miList02)</a></code></pre></div>
 <pre><code>## [[1]]
 ## [1] 5
 ## 
@@ -620,30 +630,30 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## [[4]]
 ## [1] &quot;a&quot; &quot;b&quot; &quot;c&quot;</code></pre>
 <p>Dans l’objet <code>miList02</code> de type <code>list</code>, il y a quatre éléments identifiables avec <code>[[1]]</code>, <code>[[2]]</code>, <code>[[3]]</code>, et <code>[[4]]</code>. Chacun des éléments est de type <code>vector</code> de taille 1 et de type <code>double</code> pour le premier élément, de taille 1 et de type <code>character</code> pour le deuxième élément, de taille 3 et de type <code>double</code> pour le troisième élément, et de taille 3 et de type <code>character</code> pour le quatrième élément.</p>
-<div class="sourceCode" id="cb374"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb374-1" title="1"><span class="kw">typeof</span>(miList02)</a></code></pre></div>
+<div class="sourceCode" id="cb378"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb378-1" title="1"><span class="kw">typeof</span>(miList02)</a></code></pre></div>
 <pre><code>## [1] &quot;list&quot;</code></pre>
-<div class="sourceCode" id="cb376"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb376-1" title="1"><span class="kw">print</span>(miList02[[<span class="dv">1</span>]])</a></code></pre></div>
+<div class="sourceCode" id="cb380"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb380-1" title="1"><span class="kw">print</span>(miList02[[<span class="dv">1</span>]])</a></code></pre></div>
 <pre><code>## [1] 5</code></pre>
-<div class="sourceCode" id="cb378"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb378-1" title="1"><span class="kw">typeof</span>(miList02[[<span class="dv">1</span>]])</a></code></pre></div>
+<div class="sourceCode" id="cb382"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb382-1" title="1"><span class="kw">typeof</span>(miList02[[<span class="dv">1</span>]])</a></code></pre></div>
 <pre><code>## [1] &quot;double&quot;</code></pre>
-<div class="sourceCode" id="cb380"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb380-1" title="1"><span class="kw">print</span>(miList02[[<span class="dv">2</span>]])</a></code></pre></div>
+<div class="sourceCode" id="cb384"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb384-1" title="1"><span class="kw">print</span>(miList02[[<span class="dv">2</span>]])</a></code></pre></div>
 <pre><code>## [1] &quot;qwerty&quot;</code></pre>
-<div class="sourceCode" id="cb382"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb382-1" title="1"><span class="kw">typeof</span>(miList02[[<span class="dv">2</span>]])</a></code></pre></div>
+<div class="sourceCode" id="cb386"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb386-1" title="1"><span class="kw">typeof</span>(miList02[[<span class="dv">2</span>]])</a></code></pre></div>
 <pre><code>## [1] &quot;character&quot;</code></pre>
-<div class="sourceCode" id="cb384"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb384-1" title="1"><span class="kw">print</span>(miList02[[<span class="dv">3</span>]])</a></code></pre></div>
+<div class="sourceCode" id="cb388"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb388-1" title="1"><span class="kw">print</span>(miList02[[<span class="dv">3</span>]])</a></code></pre></div>
 <pre><code>## [1] 4 5 6</code></pre>
-<div class="sourceCode" id="cb386"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb386-1" title="1"><span class="kw">typeof</span>(miList02[[<span class="dv">3</span>]])</a></code></pre></div>
+<div class="sourceCode" id="cb390"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb390-1" title="1"><span class="kw">typeof</span>(miList02[[<span class="dv">3</span>]])</a></code></pre></div>
 <pre><code>## [1] &quot;double&quot;</code></pre>
-<div class="sourceCode" id="cb388"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb388-1" title="1"><span class="kw">print</span>(miList02[[<span class="dv">4</span>]])</a></code></pre></div>
+<div class="sourceCode" id="cb392"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb392-1" title="1"><span class="kw">print</span>(miList02[[<span class="dv">4</span>]])</a></code></pre></div>
 <pre><code>## [1] &quot;a&quot; &quot;b&quot; &quot;c&quot;</code></pre>
-<div class="sourceCode" id="cb390"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb390-1" title="1"><span class="kw">typeof</span>(miList02[[<span class="dv">4</span>]])</a></code></pre></div>
+<div class="sourceCode" id="cb394"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb394-1" title="1"><span class="kw">typeof</span>(miList02[[<span class="dv">4</span>]])</a></code></pre></div>
 <pre><code>## [1] &quot;character&quot;</code></pre>
 <p>L’accès au deuxième élément du <code>vector</code> situé en quatrième position de la liste se fait donc avec <code>miList02[[4]][2]</code>. Nous utilisons un double crochet pour le quatrième élément de la <code>list</code>, puis un simple crochet pour le deuxième élément du <code>vector</code>.</p>
-<div class="sourceCode" id="cb392"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb392-1" title="1"><span class="kw">print</span>(miList02[[<span class="dv">4</span>]][<span class="dv">2</span>])</a></code></pre></div>
+<div class="sourceCode" id="cb396"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb396-1" title="1"><span class="kw">print</span>(miList02[[<span class="dv">4</span>]][<span class="dv">2</span>])</a></code></pre></div>
 <pre><code>## [1] &quot;b&quot;</code></pre>
 <p>Comme une <code>list</code> peut contenir elle même une ou plusieurs <code>list</code>, nous pouvons accéder à l’information recherchée en combinant les doubles crochets. l’objet <code>miList04</code> est une <code>list</code> de deux éléments, les <code>list</code> <code>miList02</code> et <code>miList03</code>. L’objet <code>miList03</code> contient lui même une <code>list</code> comme élément en troisième position. Pour accéder au premier élément du <code>vector</code> en première position de l’élément en troisième position du deuxième élément de la <code>list</code> <code>miList04</code>, nous pouvons utiliser <code>miList04[[2]][[3]][[1]][1]</code>. Il n’y a pas de limite quant à la profondeur des <code>list</code> mais dans la pratique il n’y que rarement besoin de faire des <code>list</code> de <code>list</code> de <code>list</code>.</p>
-<div class="sourceCode" id="cb394"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb394-1" title="1">miList04 &lt;-<span class="st"> </span><span class="kw">list</span>(miList02, miList03)</a>
-<a class="sourceLine" id="cb394-2" title="2"><span class="kw">print</span>(miList04)</a></code></pre></div>
+<div class="sourceCode" id="cb398"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb398-1" title="1">miList04 &lt;-<span class="st"> </span><span class="kw">list</span>(miList02, miList03)</a>
+<a class="sourceLine" id="cb398-2" title="2"><span class="kw">print</span>(miList04)</a></code></pre></div>
 <pre><code>## [[1]]
 ## [[1]][[1]]
 ## [1] 5
@@ -671,11 +681,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 
 ## [[2]][[3]][[2]]
 ## [1] &quot;a&quot; &quot;b&quot; &quot;c&quot;</code></pre>
-<div class="sourceCode" id="cb396"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb396-1" title="1"><span class="kw">print</span>(miList04[[<span class="dv">2</span>]][[<span class="dv">3</span>]][[<span class="dv">1</span>]][<span class="dv">1</span>])</a></code></pre></div>
+<div class="sourceCode" id="cb400"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb400-1" title="1"><span class="kw">print</span>(miList04[[<span class="dv">2</span>]][[<span class="dv">3</span>]][[<span class="dv">1</span>]][<span class="dv">1</span>])</a></code></pre></div>
 <pre><code>## [1] 4</code></pre>
 <p>Pour rendre concret l’exemple précédent, nous pouvons imaginer des espèces de foreurs de maïs (<em>Sesamia nonagrioides</em> et <em>Ostrinia nubilalis</em>), échantillonées dans différents sites, avec différentes abondances à quatre dates. Ici nous allons donner des noms aux éléments des listes.</p>
-<div class="sourceCode" id="cb398"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb398-1" title="1">bddInsect &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="dt">Snonagrioides =</span> <span class="kw">list</span>(<span class="dt">site01 =</span> <span class="kw">c</span>(<span class="dv">12</span>, <span class="dv">5</span>, <span class="dv">8</span>, <span class="dv">7</span>), <span class="dt">site02 =</span> <span class="kw">c</span>(<span class="dv">5</span>, <span class="dv">23</span>, <span class="dv">4</span>, <span class="dv">41</span>), <span class="dt">site03 =</span> <span class="kw">c</span>(<span class="dv">12</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>)), <span class="dt">Onubilalis =</span> <span class="kw">list</span>(<span class="dt">site01 =</span> <span class="kw">c</span>(<span class="dv">12</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>), <span class="dt">site02 =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>), <span class="dt">site03 =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>)))</a>
-<a class="sourceLine" id="cb398-2" title="2"><span class="kw">print</span>(bddInsect)</a></code></pre></div>
+<div class="sourceCode" id="cb402"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb402-1" title="1">bddInsect &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="dt">Snonagrioides =</span> <span class="kw">list</span>(<span class="dt">site01 =</span> <span class="kw">c</span>(<span class="dv">12</span>, <span class="dv">5</span>, <span class="dv">8</span>, <span class="dv">7</span>), <span class="dt">site02 =</span> <span class="kw">c</span>(<span class="dv">5</span>, <span class="dv">23</span>, <span class="dv">4</span>, <span class="dv">41</span>), <span class="dt">site03 =</span> <span class="kw">c</span>(<span class="dv">12</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>)), <span class="dt">Onubilalis =</span> <span class="kw">list</span>(<span class="dt">site01 =</span> <span class="kw">c</span>(<span class="dv">12</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>), <span class="dt">site02 =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>), <span class="dt">site03 =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>)))</a>
+<a class="sourceLine" id="cb402-2" title="2"><span class="kw">print</span>(bddInsect)</a></code></pre></div>
 <pre><code>## $Snonagrioides
 ## $Snonagrioides$site01
 ## [1] 12  5  8  7
@@ -697,52 +707,52 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## $Onubilalis$site03
 ## [1] 1 1 2 3</code></pre>
 <p>La lecture d’une ligne de code longue comme celle de la création de l’objet <code>bddInsect</code> est difficile à lire car la profondeur des éléments ne peut se déduire que grâce aux parenthèses. C’est pourquoi nous allons reorganiser le code pour lui donner plus de lisibilité grâce à l’<strong>indentation</strong>. L’indentation consiste à mettre l’information à des niveaux différents de telle manière que nous puissions rapidement identifier les différents niveaux d’un code. L’indentation se fait au moyen de la touche de tabulation du clavier. Nous reviendrons sur l’indentation avec plus de précisions lors du chapitre sur les <strong>boucles</strong>. Nous retiendrons pour le moment que si une ligne de code est trop longue, nous gagnons en lisibilité en passant à la ligne et que R va lire l’ensemble comme une seule ligne de code.</p>
-<div class="sourceCode" id="cb400"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb400-1" title="1">bddInsect &lt;-<span class="st"> </span><span class="kw">list</span>(</a>
-<a class="sourceLine" id="cb400-2" title="2">  <span class="dt">Snonagrioides =</span> <span class="kw">list</span>(</a>
-<a class="sourceLine" id="cb400-3" title="3">    <span class="dt">site01 =</span> <span class="kw">c</span>(<span class="dv">12</span>, <span class="dv">5</span>, <span class="dv">8</span>, <span class="dv">7</span>), </a>
-<a class="sourceLine" id="cb400-4" title="4">    <span class="dt">site02 =</span> <span class="kw">c</span>(<span class="dv">5</span>, <span class="dv">23</span>, <span class="dv">4</span>, <span class="dv">41</span>), </a>
-<a class="sourceLine" id="cb400-5" title="5">    <span class="dt">site03 =</span> <span class="kw">c</span>(<span class="dv">12</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>)</a>
-<a class="sourceLine" id="cb400-6" title="6">  ), </a>
-<a class="sourceLine" id="cb400-7" title="7">  <span class="dt">Onubilalis =</span> <span class="kw">list</span>(</a>
-<a class="sourceLine" id="cb400-8" title="8">    <span class="dt">site01 =</span> <span class="kw">c</span>(<span class="dv">12</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>), </a>
-<a class="sourceLine" id="cb400-9" title="9">    <span class="dt">site02 =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>), </a>
-<a class="sourceLine" id="cb400-10" title="10">    <span class="dt">site03 =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>)</a>
-<a class="sourceLine" id="cb400-11" title="11">  )</a>
-<a class="sourceLine" id="cb400-12" title="12">)</a></code></pre></div>
+<div class="sourceCode" id="cb404"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb404-1" title="1">bddInsect &lt;-<span class="st"> </span><span class="kw">list</span>(</a>
+<a class="sourceLine" id="cb404-2" title="2">  <span class="dt">Snonagrioides =</span> <span class="kw">list</span>(</a>
+<a class="sourceLine" id="cb404-3" title="3">    <span class="dt">site01 =</span> <span class="kw">c</span>(<span class="dv">12</span>, <span class="dv">5</span>, <span class="dv">8</span>, <span class="dv">7</span>), </a>
+<a class="sourceLine" id="cb404-4" title="4">    <span class="dt">site02 =</span> <span class="kw">c</span>(<span class="dv">5</span>, <span class="dv">23</span>, <span class="dv">4</span>, <span class="dv">41</span>), </a>
+<a class="sourceLine" id="cb404-5" title="5">    <span class="dt">site03 =</span> <span class="kw">c</span>(<span class="dv">12</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>)</a>
+<a class="sourceLine" id="cb404-6" title="6">  ), </a>
+<a class="sourceLine" id="cb404-7" title="7">  <span class="dt">Onubilalis =</span> <span class="kw">list</span>(</a>
+<a class="sourceLine" id="cb404-8" title="8">    <span class="dt">site01 =</span> <span class="kw">c</span>(<span class="dv">12</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>), </a>
+<a class="sourceLine" id="cb404-9" title="9">    <span class="dt">site02 =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>), </a>
+<a class="sourceLine" id="cb404-10" title="10">    <span class="dt">site03 =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>)</a>
+<a class="sourceLine" id="cb404-11" title="11">  )</a>
+<a class="sourceLine" id="cb404-12" title="12">)</a></code></pre></div>
 <p>Nous pouvons sélectionner les données d’abondance du deuxième site de la première espèce comme précédemment <code>bddInsect[[1]][[2]]</code>, ou alternativement en utilisant les noms des éléments <code>bddInsect$Snonagrioides$site02</code>. Pour ce faire nous utilisons le signe <code>$</code>, ou alors le nom des éléments avec des guillemets simples ou doubles <code>bddInsect[['Snonagrioides']][['site02']]</code>.</p>
-<div class="sourceCode" id="cb401"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb401-1" title="1"><span class="kw">print</span>(bddInsect[[<span class="dv">1</span>]][[<span class="dv">2</span>]])</a></code></pre></div>
+<div class="sourceCode" id="cb405"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb405-1" title="1"><span class="kw">print</span>(bddInsect[[<span class="dv">1</span>]][[<span class="dv">2</span>]])</a></code></pre></div>
 <pre><code>## [1]  5 23  4 41</code></pre>
-<div class="sourceCode" id="cb403"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb403-1" title="1"><span class="kw">print</span>(bddInsect<span class="op">$</span>Snonagrioides<span class="op">$</span>site02)</a></code></pre></div>
+<div class="sourceCode" id="cb407"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb407-1" title="1"><span class="kw">print</span>(bddInsect<span class="op">$</span>Snonagrioides<span class="op">$</span>site02)</a></code></pre></div>
 <pre><code>## [1]  5 23  4 41</code></pre>
-<div class="sourceCode" id="cb405"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb405-1" title="1"><span class="kw">print</span>(bddInsect[[<span class="st">&#39;Snonagrioides&#39;</span>]][[<span class="st">&#39;site02&#39;</span>]])</a></code></pre></div>
+<div class="sourceCode" id="cb409"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb409-1" title="1"><span class="kw">print</span>(bddInsect[[<span class="st">&#39;Snonagrioides&#39;</span>]][[<span class="st">&#39;site02&#39;</span>]])</a></code></pre></div>
 <pre><code>## [1]  5 23  4 41</code></pre>
 <p>Comme pour les vecteurs nous pouvons récupérer les noms des éléments avec la fonction <code>names()</code>.</p>
-<div class="sourceCode" id="cb407"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb407-1" title="1"><span class="kw">names</span>(bddInsect)</a></code></pre></div>
+<div class="sourceCode" id="cb411"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb411-1" title="1"><span class="kw">names</span>(bddInsect)</a></code></pre></div>
 <pre><code>## [1] &quot;Snonagrioides&quot; &quot;Onubilalis&quot;</code></pre>
-<div class="sourceCode" id="cb409"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb409-1" title="1"><span class="kw">names</span>(bddInsect[[<span class="dv">1</span>]])</a></code></pre></div>
+<div class="sourceCode" id="cb413"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb413-1" title="1"><span class="kw">names</span>(bddInsect[[<span class="dv">1</span>]])</a></code></pre></div>
 <pre><code>## [1] &quot;site01&quot; &quot;site02&quot; &quot;site03&quot;</code></pre>
 <p>Lorsque nous utilisons les doubles crochets <code>[[]]</code> ou le signe <code>$</code>, R renvoie le contenu de l’élément sélectionné. Dans notre exemple les données d’abondance sont contenues sous la forme d’un <code>vector</code>, donc R renvoie un élément de type <code>vector</code>. Si nous souhaitons sélectionner un élément d’une <code>list</code> mais en conservant le format <code>list</code>, alors nous pouvons utiliser les crochets simples <code>[]</code>.</p>
-<div class="sourceCode" id="cb411"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb411-1" title="1"><span class="kw">print</span>(bddInsect[[<span class="dv">1</span>]][[<span class="dv">2</span>]])</a></code></pre></div>
+<div class="sourceCode" id="cb415"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb415-1" title="1"><span class="kw">print</span>(bddInsect[[<span class="dv">1</span>]][[<span class="dv">2</span>]])</a></code></pre></div>
 <pre><code>## [1]  5 23  4 41</code></pre>
-<div class="sourceCode" id="cb413"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb413-1" title="1"><span class="kw">typeof</span>(bddInsect[[<span class="dv">1</span>]][[<span class="dv">2</span>]])</a></code></pre></div>
+<div class="sourceCode" id="cb417"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb417-1" title="1"><span class="kw">typeof</span>(bddInsect[[<span class="dv">1</span>]][[<span class="dv">2</span>]])</a></code></pre></div>
 <pre><code>## [1] &quot;double&quot;</code></pre>
-<div class="sourceCode" id="cb415"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb415-1" title="1"><span class="kw">is.list</span>(bddInsect[[<span class="dv">1</span>]][[<span class="dv">2</span>]])</a></code></pre></div>
+<div class="sourceCode" id="cb419"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb419-1" title="1"><span class="kw">is.list</span>(bddInsect[[<span class="dv">1</span>]][[<span class="dv">2</span>]])</a></code></pre></div>
 <pre><code>## [1] FALSE</code></pre>
-<div class="sourceCode" id="cb417"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb417-1" title="1"><span class="kw">print</span>(bddInsect[[<span class="dv">1</span>]][<span class="dv">2</span>])</a></code></pre></div>
+<div class="sourceCode" id="cb421"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb421-1" title="1"><span class="kw">print</span>(bddInsect[[<span class="dv">1</span>]][<span class="dv">2</span>])</a></code></pre></div>
 <pre><code>## $site02
 ## [1]  5 23  4 41</code></pre>
-<div class="sourceCode" id="cb419"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb419-1" title="1"><span class="kw">typeof</span>(bddInsect[[<span class="dv">1</span>]][<span class="dv">2</span>])</a></code></pre></div>
+<div class="sourceCode" id="cb423"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb423-1" title="1"><span class="kw">typeof</span>(bddInsect[[<span class="dv">1</span>]][<span class="dv">2</span>])</a></code></pre></div>
 <pre><code>## [1] &quot;list&quot;</code></pre>
-<div class="sourceCode" id="cb421"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb421-1" title="1"><span class="kw">is.list</span>(bddInsect[[<span class="dv">1</span>]][<span class="dv">2</span>])</a></code></pre></div>
+<div class="sourceCode" id="cb425"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb425-1" title="1"><span class="kw">is.list</span>(bddInsect[[<span class="dv">1</span>]][<span class="dv">2</span>])</a></code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
 <p>L’utilisation des crochets simples <code>[]</code> est utile lorsque nous souhaitons récupérer plusieurs éléments d’une <code>list</code>. Par exemple pour sélectionner les abondances d’insectes des deux premiers sites de la première espèce, nous utiliserons <code>bddInsect[[1]][c(1, 2)]</code> ou alternativement <code>bddInsect[[1]][c("site01", "site02")]</code>.</p>
-<div class="sourceCode" id="cb423"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb423-1" title="1"><span class="kw">print</span>(bddInsect[[<span class="dv">1</span>]][<span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>)])</a></code></pre></div>
+<div class="sourceCode" id="cb427"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb427-1" title="1"><span class="kw">print</span>(bddInsect[[<span class="dv">1</span>]][<span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>)])</a></code></pre></div>
 <pre><code>## $site01
 ## [1] 12  5  8  7
 ## 
 ## $site02
 ## [1]  5 23  4 41</code></pre>
-<div class="sourceCode" id="cb425"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb425-1" title="1"><span class="kw">print</span>(bddInsect[[<span class="dv">1</span>]][<span class="kw">c</span>(<span class="st">&quot;site01&quot;</span>, <span class="st">&quot;site02&quot;</span>)])</a></code></pre></div>
+<div class="sourceCode" id="cb429"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb429-1" title="1"><span class="kw">print</span>(bddInsect[[<span class="dv">1</span>]][<span class="kw">c</span>(<span class="st">&quot;site01&quot;</span>, <span class="st">&quot;site02&quot;</span>)])</a></code></pre></div>
 <pre><code>## $site01
 ## [1] 12  5  8  7
 ## 
@@ -752,7 +762,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="modification-dune-list" class="section level3">
 <h3><span class="header-section-number">6.2.3</span> Modification d’une <code>list</code></h3>
 <p>Une <code>list</code> peut être modifiée de la même façon que pour le conteneur <code>vector</code>, c’est à dire en se réferrant avec des crochets à l’élément que nous souhaitons modifier.</p>
-<div class="sourceCode" id="cb427"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb427-1" title="1"><span class="kw">print</span>(miList02)</a></code></pre></div>
+<div class="sourceCode" id="cb431"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb431-1" title="1"><span class="kw">print</span>(miList02)</a></code></pre></div>
 <pre><code>## [[1]]
 ## [1] 5
 ## 
@@ -764,33 +774,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 
 ## [[4]]
 ## [1] &quot;a&quot; &quot;b&quot; &quot;c&quot;</code></pre>
-<div class="sourceCode" id="cb429"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb429-1" title="1">miList02[[<span class="dv">1</span>]] &lt;-<span class="st"> </span><span class="dv">12</span></a>
-<a class="sourceLine" id="cb429-2" title="2"><span class="kw">print</span>(miList02)</a></code></pre></div>
-<pre><code>## [[1]]
-## [1] 12
-## 
-## [[2]]
-## [1] &quot;qwerty&quot;
-## 
-## [[3]]
-## [1] 4 5 6
-## 
-## [[4]]
-## [1] &quot;a&quot; &quot;b&quot; &quot;c&quot;</code></pre>
-<div class="sourceCode" id="cb431"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb431-1" title="1">miList02[[<span class="dv">4</span>]] &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;d&quot;</span>, <span class="st">&quot;e&quot;</span>, <span class="st">&quot;f&quot;</span>)</a>
-<a class="sourceLine" id="cb431-2" title="2"><span class="kw">print</span>(miList02)</a></code></pre></div>
-<pre><code>## [[1]]
-## [1] 12
-## 
-## [[2]]
-## [1] &quot;qwerty&quot;
-## 
-## [[3]]
-## [1] 4 5 6
-## 
-## [[4]]
-## [1] &quot;d&quot; &quot;e&quot; &quot;f&quot;</code></pre>
-<div class="sourceCode" id="cb433"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb433-1" title="1">miList02[[<span class="dv">4</span>]] &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;a&quot;</span>, <span class="st">&quot;b&quot;</span>, <span class="st">&quot;c&quot;</span>, miList02[[<span class="dv">4</span>]], <span class="st">&quot;g&quot;</span>, <span class="st">&quot;h&quot;</span>, <span class="st">&quot;i&quot;</span>)</a>
+<div class="sourceCode" id="cb433"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb433-1" title="1">miList02[[<span class="dv">1</span>]] &lt;-<span class="st"> </span><span class="dv">12</span></a>
 <a class="sourceLine" id="cb433-2" title="2"><span class="kw">print</span>(miList02)</a></code></pre></div>
 <pre><code>## [[1]]
 ## [1] 12
@@ -802,8 +786,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## [1] 4 5 6
 ## 
 ## [[4]]
-## [1] &quot;a&quot; &quot;b&quot; &quot;c&quot; &quot;d&quot; &quot;e&quot; &quot;f&quot; &quot;g&quot; &quot;h&quot; &quot;i&quot;</code></pre>
-<div class="sourceCode" id="cb435"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb435-1" title="1">miList02[[<span class="dv">4</span>]][<span class="dv">5</span>] &lt;-<span class="st"> &quot;eee&quot;</span></a>
+## [1] &quot;a&quot; &quot;b&quot; &quot;c&quot;</code></pre>
+<div class="sourceCode" id="cb435"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb435-1" title="1">miList02[[<span class="dv">4</span>]] &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;d&quot;</span>, <span class="st">&quot;e&quot;</span>, <span class="st">&quot;f&quot;</span>)</a>
 <a class="sourceLine" id="cb435-2" title="2"><span class="kw">print</span>(miList02)</a></code></pre></div>
 <pre><code>## [[1]]
 ## [1] 12
@@ -815,9 +799,35 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## [1] 4 5 6
 ## 
 ## [[4]]
-## [1] &quot;a&quot;   &quot;b&quot;   &quot;c&quot;   &quot;d&quot;   &quot;eee&quot; &quot;f&quot;   &quot;g&quot;   &quot;h&quot;   &quot;i&quot;</code></pre>
-<div class="sourceCode" id="cb437"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb437-1" title="1">miList02[[<span class="dv">3</span>]] &lt;-<span class="st"> </span>miList02[[<span class="dv">3</span>]] <span class="op">*</span><span class="st"> </span><span class="dv">10</span> <span class="op">-</span><span class="st"> </span><span class="dv">1</span></a>
+## [1] &quot;d&quot; &quot;e&quot; &quot;f&quot;</code></pre>
+<div class="sourceCode" id="cb437"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb437-1" title="1">miList02[[<span class="dv">4</span>]] &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;a&quot;</span>, <span class="st">&quot;b&quot;</span>, <span class="st">&quot;c&quot;</span>, miList02[[<span class="dv">4</span>]], <span class="st">&quot;g&quot;</span>, <span class="st">&quot;h&quot;</span>, <span class="st">&quot;i&quot;</span>)</a>
 <a class="sourceLine" id="cb437-2" title="2"><span class="kw">print</span>(miList02)</a></code></pre></div>
+<pre><code>## [[1]]
+## [1] 12
+## 
+## [[2]]
+## [1] &quot;qwerty&quot;
+## 
+## [[3]]
+## [1] 4 5 6
+## 
+## [[4]]
+## [1] &quot;a&quot; &quot;b&quot; &quot;c&quot; &quot;d&quot; &quot;e&quot; &quot;f&quot; &quot;g&quot; &quot;h&quot; &quot;i&quot;</code></pre>
+<div class="sourceCode" id="cb439"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb439-1" title="1">miList02[[<span class="dv">4</span>]][<span class="dv">5</span>] &lt;-<span class="st"> &quot;eee&quot;</span></a>
+<a class="sourceLine" id="cb439-2" title="2"><span class="kw">print</span>(miList02)</a></code></pre></div>
+<pre><code>## [[1]]
+## [1] 12
+## 
+## [[2]]
+## [1] &quot;qwerty&quot;
+## 
+## [[3]]
+## [1] 4 5 6
+## 
+## [[4]]
+## [1] &quot;a&quot;   &quot;b&quot;   &quot;c&quot;   &quot;d&quot;   &quot;eee&quot; &quot;f&quot;   &quot;g&quot;   &quot;h&quot;   &quot;i&quot;</code></pre>
+<div class="sourceCode" id="cb441"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb441-1" title="1">miList02[[<span class="dv">3</span>]] &lt;-<span class="st"> </span>miList02[[<span class="dv">3</span>]] <span class="op">*</span><span class="st"> </span><span class="dv">10</span> <span class="op">-</span><span class="st"> </span><span class="dv">1</span></a>
+<a class="sourceLine" id="cb441-2" title="2"><span class="kw">print</span>(miList02)</a></code></pre></div>
 <pre><code>## [[1]]
 ## [1] 12
 ## 
@@ -829,8 +839,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 
 ## [[4]]
 ## [1] &quot;a&quot;   &quot;b&quot;   &quot;c&quot;   &quot;d&quot;   &quot;eee&quot; &quot;f&quot;   &quot;g&quot;   &quot;h&quot;   &quot;i&quot;</code></pre>
-<div class="sourceCode" id="cb439"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb439-1" title="1">miList02[[<span class="dv">3</span>]][<span class="dv">2</span>] &lt;-<span class="st"> </span>miList02[[<span class="dv">1</span>]] <span class="op">*</span><span class="st"> </span><span class="dv">100</span></a>
-<a class="sourceLine" id="cb439-2" title="2"><span class="kw">print</span>(miList02)</a></code></pre></div>
+<div class="sourceCode" id="cb443"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb443-1" title="1">miList02[[<span class="dv">3</span>]][<span class="dv">2</span>] &lt;-<span class="st"> </span>miList02[[<span class="dv">1</span>]] <span class="op">*</span><span class="st"> </span><span class="dv">100</span></a>
+<a class="sourceLine" id="cb443-2" title="2"><span class="kw">print</span>(miList02)</a></code></pre></div>
 <pre><code>## [[1]]
 ## [1] 12
 ## 
@@ -842,7 +852,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 
 ## [[4]]
 ## [1] &quot;a&quot;   &quot;b&quot;   &quot;c&quot;   &quot;d&quot;   &quot;eee&quot; &quot;f&quot;   &quot;g&quot;   &quot;h&quot;   &quot;i&quot;</code></pre>
-<div class="sourceCode" id="cb441"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb441-1" title="1"><span class="kw">print</span>(bddInsect)</a></code></pre></div>
+<div class="sourceCode" id="cb445"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb445-1" title="1"><span class="kw">print</span>(bddInsect)</a></code></pre></div>
 <pre><code>## $Snonagrioides
 ## $Snonagrioides$site01
 ## [1] 12  5  8  7
@@ -863,8 +873,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 
 ## $Onubilalis$site03
 ## [1] 1 1 2 3</code></pre>
-<div class="sourceCode" id="cb443"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb443-1" title="1">bddInsect[[<span class="st">&#39;Snonagrioides&#39;</span>]][[<span class="st">&#39;site02&#39;</span>]] &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">6</span>, <span class="dv">8</span>)</a>
-<a class="sourceLine" id="cb443-2" title="2"><span class="kw">print</span>(bddInsect)</a></code></pre></div>
+<div class="sourceCode" id="cb447"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb447-1" title="1">bddInsect[[<span class="st">&#39;Snonagrioides&#39;</span>]][[<span class="st">&#39;site02&#39;</span>]] &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">6</span>, <span class="dv">8</span>)</a>
+<a class="sourceLine" id="cb447-2" title="2"><span class="kw">print</span>(bddInsect)</a></code></pre></div>
 <pre><code>## $Snonagrioides
 ## $Snonagrioides$site01
 ## [1] 12  5  8  7
@@ -886,8 +896,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## $Onubilalis$site03
 ## [1] 1 1 2 3</code></pre>
 <p>Pour combiner deux <code>list</code>, il suffit d’utiliser la fonction <code>c()</code> que nous avions utilisée pour créer un <code>vector</code>.</p>
-<div class="sourceCode" id="cb445"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb445-1" title="1">miList0203 &lt;-<span class="st"> </span><span class="kw">c</span>(miList02, miList03)</a>
-<a class="sourceLine" id="cb445-2" title="2"><span class="kw">print</span>(miList0203)</a></code></pre></div>
+<div class="sourceCode" id="cb449"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb449-1" title="1">miList0203 &lt;-<span class="st"> </span><span class="kw">c</span>(miList02, miList03)</a>
+<a class="sourceLine" id="cb449-2" title="2"><span class="kw">print</span>(miList0203)</a></code></pre></div>
 <pre><code>## [[1]]
 ## [1] 12
 ## 
@@ -913,8 +923,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## [[7]][[2]]
 ## [1] &quot;a&quot; &quot;b&quot; &quot;c&quot;</code></pre>
 <p>Un objet de type <code>list</code> peut être transformé en <code>vector</code> avec la fonction <code>unlist()</code> si le format des éléments de la <code>list</code> le permet (un <code>vector</code> ne peut contenir que des élément du même type).</p>
-<div class="sourceCode" id="cb447"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb447-1" title="1">miList05 &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="st">&quot;a&quot;</span>, <span class="kw">c</span>(<span class="st">&quot;b&quot;</span>, <span class="st">&quot;c&quot;</span>), <span class="st">&quot;d&quot;</span>)</a>
-<a class="sourceLine" id="cb447-2" title="2"><span class="kw">print</span>(miList05)</a></code></pre></div>
+<div class="sourceCode" id="cb451"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb451-1" title="1">miList05 &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="st">&quot;a&quot;</span>, <span class="kw">c</span>(<span class="st">&quot;b&quot;</span>, <span class="st">&quot;c&quot;</span>), <span class="st">&quot;d&quot;</span>)</a>
+<a class="sourceLine" id="cb451-2" title="2"><span class="kw">print</span>(miList05)</a></code></pre></div>
 <pre><code>## [[1]]
 ## [1] &quot;a&quot;
 ## 
@@ -923,11 +933,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 
 ## [[3]]
 ## [1] &quot;d&quot;</code></pre>
-<div class="sourceCode" id="cb449"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb449-1" title="1">miVec24 &lt;-<span class="st"> </span><span class="kw">unlist</span>(miList05)</a>
-<a class="sourceLine" id="cb449-2" title="2"><span class="kw">print</span>(miVec24)</a></code></pre></div>
+<div class="sourceCode" id="cb453"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb453-1" title="1">miVec24 &lt;-<span class="st"> </span><span class="kw">unlist</span>(miList05)</a>
+<a class="sourceLine" id="cb453-2" title="2"><span class="kw">print</span>(miVec24)</a></code></pre></div>
 <pre><code>## [1] &quot;a&quot; &quot;b&quot; &quot;c&quot; &quot;d&quot;</code></pre>
-<div class="sourceCode" id="cb451"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb451-1" title="1">miList06 &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>), <span class="kw">c</span>(<span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>, <span class="dv">7</span>), <span class="dv">8</span>, <span class="dv">9</span>, <span class="kw">c</span>(<span class="dv">10</span>, <span class="dv">11</span>))</a>
-<a class="sourceLine" id="cb451-2" title="2"><span class="kw">print</span>(miList06)</a></code></pre></div>
+<div class="sourceCode" id="cb455"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb455-1" title="1">miList06 &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>), <span class="kw">c</span>(<span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>, <span class="dv">7</span>), <span class="dv">8</span>, <span class="dv">9</span>, <span class="kw">c</span>(<span class="dv">10</span>, <span class="dv">11</span>))</a>
+<a class="sourceLine" id="cb455-2" title="2"><span class="kw">print</span>(miList06)</a></code></pre></div>
 <pre><code>## [[1]]
 ## [1] 1 2 3
 ## 
@@ -942,11 +952,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 
 ## [[5]]
 ## [1] 10 11</code></pre>
-<div class="sourceCode" id="cb453"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb453-1" title="1">miVec25 &lt;-<span class="st"> </span><span class="kw">unlist</span>(miList06)</a>
-<a class="sourceLine" id="cb453-2" title="2"><span class="kw">print</span>(miVec25)</a></code></pre></div>
+<div class="sourceCode" id="cb457"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb457-1" title="1">miVec25 &lt;-<span class="st"> </span><span class="kw">unlist</span>(miList06)</a>
+<a class="sourceLine" id="cb457-2" title="2"><span class="kw">print</span>(miVec25)</a></code></pre></div>
 <pre><code>##  [1]  1  2  3  4  5  6  7  8  9 10 11</code></pre>
 <p>Pour ajouter un élément à une <code>list</code>, nous pouvons utiliser la fonction <code>c()</code> ou alors les crochets doubles <code>[[]]</code>.</p>
-<div class="sourceCode" id="cb455"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb455-1" title="1"><span class="kw">print</span>(miList05)</a></code></pre></div>
+<div class="sourceCode" id="cb459"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb459-1" title="1"><span class="kw">print</span>(miList05)</a></code></pre></div>
 <pre><code>## [[1]]
 ## [1] &quot;a&quot;
 ## 
@@ -955,8 +965,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 
 ## [[3]]
 ## [1] &quot;d&quot;</code></pre>
-<div class="sourceCode" id="cb457"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb457-1" title="1">miList05 &lt;-<span class="st"> </span><span class="kw">c</span>(miList05, <span class="st">&quot;e&quot;</span>)</a>
-<a class="sourceLine" id="cb457-2" title="2"><span class="kw">print</span>(miList05)</a></code></pre></div>
+<div class="sourceCode" id="cb461"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb461-1" title="1">miList05 &lt;-<span class="st"> </span><span class="kw">c</span>(miList05, <span class="st">&quot;e&quot;</span>)</a>
+<a class="sourceLine" id="cb461-2" title="2"><span class="kw">print</span>(miList05)</a></code></pre></div>
 <pre><code>## [[1]]
 ## [1] &quot;a&quot;
 ## 
@@ -968,8 +978,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 
 ## [[4]]
 ## [1] &quot;e&quot;</code></pre>
-<div class="sourceCode" id="cb459"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb459-1" title="1">miList05[[<span class="dv">5</span>]] &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;fgh&quot;</span>, <span class="st">&quot;ijk&quot;</span>)</a>
-<a class="sourceLine" id="cb459-2" title="2"><span class="kw">print</span>(miList05)</a></code></pre></div>
+<div class="sourceCode" id="cb463"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb463-1" title="1">miList05[[<span class="dv">5</span>]] &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;fgh&quot;</span>, <span class="st">&quot;ijk&quot;</span>)</a>
+<a class="sourceLine" id="cb463-2" title="2"><span class="kw">print</span>(miList05)</a></code></pre></div>
 <pre><code>## [[1]]
 ## [1] &quot;a&quot;
 ## 
@@ -985,7 +995,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## [[5]]
 ## [1] &quot;fgh&quot; &quot;ijk&quot;</code></pre>
 <p>Pour supprimer un élément à une <code>list</code>, la technique la plus rapide consiste à attribuer la valeur <code>NULL</code> à l’élément à supprimer.</p>
-<div class="sourceCode" id="cb461"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb461-1" title="1"><span class="kw">print</span>(miList05)</a></code></pre></div>
+<div class="sourceCode" id="cb465"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb465-1" title="1"><span class="kw">print</span>(miList05)</a></code></pre></div>
 <pre><code>## [[1]]
 ## [1] &quot;a&quot;
 ## 
@@ -1000,8 +1010,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 
 ## [[5]]
 ## [1] &quot;fgh&quot; &quot;ijk&quot;</code></pre>
-<div class="sourceCode" id="cb463"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb463-1" title="1">miList05[[<span class="dv">2</span>]] &lt;-<span class="st"> </span><span class="ot">NULL</span></a>
-<a class="sourceLine" id="cb463-2" title="2"><span class="kw">print</span>(miList05)</a></code></pre></div>
+<div class="sourceCode" id="cb467"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb467-1" title="1">miList05[[<span class="dv">2</span>]] &lt;-<span class="st"> </span><span class="ot">NULL</span></a>
+<a class="sourceLine" id="cb467-2" title="2"><span class="kw">print</span>(miList05)</a></code></pre></div>
 <pre><code>## [[1]]
 ## [1] &quot;a&quot;
 ## 
@@ -1021,24 +1031,24 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="créer-un-data.frame" class="section level3">
 <h3><span class="header-section-number">6.3.1</span> Créer un <code>data.frame</code></h3>
 <p>Pour créer un <code>data.frame</code> nous allons utiliser la fonction <code>data.frame()</code> qui prend comme arguments les éléments du tableau que nous souhaitons créer. Les éléments sont de type <code>vector</code> et font tous la même taille. Nous pouvons donner un nom à chaque <em>colonne</em> (<code>vector</code>) de notre <em>tableau</em> (<code>data.frame</code>).</p>
-<div class="sourceCode" id="cb465"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb465-1" title="1"><span class="co"># création d&#39;un data.frame </span></a>
-<a class="sourceLine" id="cb465-2" title="2">miDf01 &lt;-<span class="st"> </span><span class="kw">data.frame</span>(</a>
-<a class="sourceLine" id="cb465-3" title="3">  <span class="dt">numbers =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>), </a>
-<a class="sourceLine" id="cb465-4" title="4">  <span class="dt">logicals =</span> <span class="kw">c</span>(<span class="ot">TRUE</span>, <span class="ot">TRUE</span>, <span class="ot">FALSE</span>, <span class="ot">TRUE</span>), </a>
-<a class="sourceLine" id="cb465-5" title="5">  <span class="dt">characters =</span> <span class="kw">c</span>(<span class="st">&quot;a&quot;</span>, <span class="st">&quot;b&quot;</span>, <span class="st">&quot;c&quot;</span>, <span class="st">&quot;d&quot;</span>)</a>
-<a class="sourceLine" id="cb465-6" title="6">)</a>
-<a class="sourceLine" id="cb465-7" title="7"><span class="kw">print</span>(miDf01)</a></code></pre></div>
+<div class="sourceCode" id="cb469"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb469-1" title="1"><span class="co"># création d&#39;un data.frame </span></a>
+<a class="sourceLine" id="cb469-2" title="2">miDf01 &lt;-<span class="st"> </span><span class="kw">data.frame</span>(</a>
+<a class="sourceLine" id="cb469-3" title="3">  <span class="dt">numbers =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>), </a>
+<a class="sourceLine" id="cb469-4" title="4">  <span class="dt">logicals =</span> <span class="kw">c</span>(<span class="ot">TRUE</span>, <span class="ot">TRUE</span>, <span class="ot">FALSE</span>, <span class="ot">TRUE</span>), </a>
+<a class="sourceLine" id="cb469-5" title="5">  <span class="dt">characters =</span> <span class="kw">c</span>(<span class="st">&quot;a&quot;</span>, <span class="st">&quot;b&quot;</span>, <span class="st">&quot;c&quot;</span>, <span class="st">&quot;d&quot;</span>)</a>
+<a class="sourceLine" id="cb469-6" title="6">)</a>
+<a class="sourceLine" id="cb469-7" title="7"><span class="kw">print</span>(miDf01)</a></code></pre></div>
 <pre><code>##   numbers logicals characters
 ## 1       1     TRUE          a
 ## 2       2     TRUE          b
 ## 3       3    FALSE          c
 ## 4       4     TRUE          d</code></pre>
-<div class="sourceCode" id="cb467"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb467-1" title="1"><span class="co"># création des vecteurs, puis du data.frame</span></a>
-<a class="sourceLine" id="cb467-2" title="2">numbers &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>)</a>
-<a class="sourceLine" id="cb467-3" title="3">logicals &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="ot">TRUE</span>, <span class="ot">TRUE</span>, <span class="ot">FALSE</span>, <span class="ot">TRUE</span>)</a>
-<a class="sourceLine" id="cb467-4" title="4">characters &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;a&quot;</span>, <span class="st">&quot;b&quot;</span>, <span class="st">&quot;c&quot;</span>, <span class="st">&quot;d&quot;</span>)</a>
-<a class="sourceLine" id="cb467-5" title="5">miDf01 &lt;-<span class="st"> </span><span class="kw">data.frame</span>(numbers, logicals, characters)</a>
-<a class="sourceLine" id="cb467-6" title="6"><span class="kw">print</span>(miDf01)</a></code></pre></div>
+<div class="sourceCode" id="cb471"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb471-1" title="1"><span class="co"># création des vecteurs, puis du data.frame</span></a>
+<a class="sourceLine" id="cb471-2" title="2">numbers &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>)</a>
+<a class="sourceLine" id="cb471-3" title="3">logicals &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="ot">TRUE</span>, <span class="ot">TRUE</span>, <span class="ot">FALSE</span>, <span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb471-4" title="4">characters &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;a&quot;</span>, <span class="st">&quot;b&quot;</span>, <span class="st">&quot;c&quot;</span>, <span class="st">&quot;d&quot;</span>)</a>
+<a class="sourceLine" id="cb471-5" title="5">miDf01 &lt;-<span class="st"> </span><span class="kw">data.frame</span>(numbers, logicals, characters)</a>
+<a class="sourceLine" id="cb471-6" title="6"><span class="kw">print</span>(miDf01)</a></code></pre></div>
 <pre><code>##   numbers logicals characters
 ## 1       1     TRUE          a
 ## 2       2     TRUE          b
@@ -1048,65 +1058,65 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="accèder-aux-valeurs-dun-data.frame" class="section level3">
 <h3><span class="header-section-number">6.3.2</span> Accèder aux valeurs d’un <code>data.frame</code></h3>
 <p>L’accès aux différentes valeurs d’un <code>data.frame</code> peut se faire de la même façon que pour un conteneur de type <code>list</code>.</p>
-<div class="sourceCode" id="cb469"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb469-1" title="1"><span class="kw">print</span>(miDf01<span class="op">$</span>numbers) <span class="co"># vector</span></a></code></pre></div>
+<div class="sourceCode" id="cb473"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb473-1" title="1"><span class="kw">print</span>(miDf01<span class="op">$</span>numbers) <span class="co"># vector</span></a></code></pre></div>
 <pre><code>## [1] 1 2 3 4</code></pre>
-<div class="sourceCode" id="cb471"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb471-1" title="1"><span class="kw">print</span>(miDf01[[<span class="dv">1</span>]]) <span class="co"># vector</span></a></code></pre></div>
+<div class="sourceCode" id="cb475"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb475-1" title="1"><span class="kw">print</span>(miDf01[[<span class="dv">1</span>]]) <span class="co"># vector</span></a></code></pre></div>
 <pre><code>## [1] 1 2 3 4</code></pre>
-<div class="sourceCode" id="cb473"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb473-1" title="1"><span class="kw">print</span>(miDf01[<span class="dv">1</span>]) <span class="co"># list</span></a></code></pre></div>
+<div class="sourceCode" id="cb477"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb477-1" title="1"><span class="kw">print</span>(miDf01[<span class="dv">1</span>]) <span class="co"># list</span></a></code></pre></div>
 <pre><code>##   numbers
 ## 1       1
 ## 2       2
 ## 3       3
 ## 4       4</code></pre>
-<div class="sourceCode" id="cb475"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb475-1" title="1"><span class="kw">print</span>(miDf01[<span class="st">&quot;numbers&quot;</span>]) <span class="co"># list</span></a></code></pre></div>
+<div class="sourceCode" id="cb479"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb479-1" title="1"><span class="kw">print</span>(miDf01[<span class="st">&quot;numbers&quot;</span>]) <span class="co"># list</span></a></code></pre></div>
 <pre><code>##   numbers
 ## 1       1
 ## 2       2
 ## 3       3
 ## 4       4</code></pre>
-<div class="sourceCode" id="cb477"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb477-1" title="1"><span class="kw">print</span>(miDf01[[<span class="st">&quot;numbers&quot;</span>]]) <span class="co"># vector</span></a></code></pre></div>
+<div class="sourceCode" id="cb481"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb481-1" title="1"><span class="kw">print</span>(miDf01[[<span class="st">&quot;numbers&quot;</span>]]) <span class="co"># vector</span></a></code></pre></div>
 <pre><code>## [1] 1 2 3 4</code></pre>
 <p>Nous pouvons aussi utiliser une aute forme qui consiste à spécifier le ou les lignes suivi d’une virgule (et donc d’un espace après la virgule), puis le ou les colonnes entre crochets simples. Si l’information ligne ou colonne est omise, R affichera toutes les lignes ou toutes les colonnes. Là encore nous pouvons utiliser le numéro correspondant à un élément ou alors le nom de l’élément que nous souhaitons sélectionner.</p>
-<div class="sourceCode" id="cb479"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb479-1" title="1">myRow &lt;-<span class="st"> </span><span class="dv">2</span></a>
-<a class="sourceLine" id="cb479-2" title="2">myCol &lt;-<span class="st"> </span><span class="dv">1</span></a>
-<a class="sourceLine" id="cb479-3" title="3"><span class="kw">print</span>(miDf01[myRow, myCol])</a></code></pre></div>
+<div class="sourceCode" id="cb483"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb483-1" title="1">myRow &lt;-<span class="st"> </span><span class="dv">2</span></a>
+<a class="sourceLine" id="cb483-2" title="2">myCol &lt;-<span class="st"> </span><span class="dv">1</span></a>
+<a class="sourceLine" id="cb483-3" title="3"><span class="kw">print</span>(miDf01[myRow, myCol])</a></code></pre></div>
 <pre><code>## [1] 2</code></pre>
-<div class="sourceCode" id="cb481"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb481-1" title="1"><span class="kw">print</span>(miDf01[myRow, ])</a></code></pre></div>
+<div class="sourceCode" id="cb485"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb485-1" title="1"><span class="kw">print</span>(miDf01[myRow, ])</a></code></pre></div>
 <pre><code>##   numbers logicals characters
 ## 2       2     TRUE          b</code></pre>
-<div class="sourceCode" id="cb483"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb483-1" title="1"><span class="kw">print</span>(miDf01[, myCol])</a></code></pre></div>
+<div class="sourceCode" id="cb487"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb487-1" title="1"><span class="kw">print</span>(miDf01[, myCol])</a></code></pre></div>
 <pre><code>## [1] 1 2 3 4</code></pre>
-<div class="sourceCode" id="cb485"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb485-1" title="1">myCol &lt;-<span class="st"> &quot;numbers&quot;</span></a>
-<a class="sourceLine" id="cb485-2" title="2"><span class="kw">print</span>(miDf01[, myCol])</a></code></pre></div>
+<div class="sourceCode" id="cb489"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb489-1" title="1">myCol &lt;-<span class="st"> &quot;numbers&quot;</span></a>
+<a class="sourceLine" id="cb489-2" title="2"><span class="kw">print</span>(miDf01[, myCol])</a></code></pre></div>
 <pre><code>## [1] 1 2 3 4</code></pre>
 <p>Il est possible de sélectionner plusieurs lignes ou plusieurs colonnes.</p>
-<div class="sourceCode" id="cb487"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb487-1" title="1"><span class="kw">print</span>(miDf01[, <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>)])</a></code></pre></div>
+<div class="sourceCode" id="cb491"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb491-1" title="1"><span class="kw">print</span>(miDf01[, <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>)])</a></code></pre></div>
 <pre><code>##   numbers logicals
 ## 1       1     TRUE
 ## 2       2     TRUE
 ## 3       3    FALSE
 ## 4       4     TRUE</code></pre>
-<div class="sourceCode" id="cb489"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb489-1" title="1"><span class="kw">print</span>(miDf01[<span class="kw">c</span>(<span class="dv">2</span>, <span class="dv">1</span>), ])</a></code></pre></div>
+<div class="sourceCode" id="cb493"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb493-1" title="1"><span class="kw">print</span>(miDf01[<span class="kw">c</span>(<span class="dv">2</span>, <span class="dv">1</span>), ])</a></code></pre></div>
 <pre><code>##   numbers logicals characters
 ## 2       2     TRUE          b
 ## 1       1     TRUE          a</code></pre>
 <p>Puisque chaque colonne est au format <code>vector</code>, nous pouvons également faire une sélection qui dépendra du contenu avec les opérateurs de comparaison et les opérateurs logiques.</p>
-<div class="sourceCode" id="cb491"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb491-1" title="1">miDfSub01 &lt;-<span class="st"> </span>miDf01[miDf01<span class="op">$</span>numbers <span class="op">&gt;</span><span class="st"> </span><span class="dv">2</span>, ]</a>
-<a class="sourceLine" id="cb491-2" title="2"><span class="kw">print</span>(miDfSub01)</a></code></pre></div>
+<div class="sourceCode" id="cb495"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb495-1" title="1">miDfSub01 &lt;-<span class="st"> </span>miDf01[miDf01<span class="op">$</span>numbers <span class="op">&gt;</span><span class="st"> </span><span class="dv">2</span>, ]</a>
+<a class="sourceLine" id="cb495-2" title="2"><span class="kw">print</span>(miDfSub01)</a></code></pre></div>
 <pre><code>##   numbers logicals characters
 ## 3       3    FALSE          c
 ## 4       4     TRUE          d</code></pre>
-<div class="sourceCode" id="cb493"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb493-1" title="1">miDfSub02 &lt;-<span class="st"> </span>miDf01[(miDf01<span class="op">$</span>logicals <span class="op">==</span><span class="st"> </span><span class="ot">TRUE</span>) <span class="op">&amp;</span><span class="st"> </span>(miDf01<span class="op">$</span>numbers <span class="op">&lt;</span><span class="st"> </span><span class="dv">2</span>), ]</a>
-<a class="sourceLine" id="cb493-2" title="2"><span class="kw">print</span>(miDfSub02)</a></code></pre></div>
+<div class="sourceCode" id="cb497"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb497-1" title="1">miDfSub02 &lt;-<span class="st"> </span>miDf01[(miDf01<span class="op">$</span>logicals <span class="op">==</span><span class="st"> </span><span class="ot">TRUE</span>) <span class="op">&amp;</span><span class="st"> </span>(miDf01<span class="op">$</span>numbers <span class="op">&lt;</span><span class="st"> </span><span class="dv">2</span>), ]</a>
+<a class="sourceLine" id="cb497-2" title="2"><span class="kw">print</span>(miDfSub02)</a></code></pre></div>
 <pre><code>##   numbers logicals characters
 ## 1       1     TRUE          a</code></pre>
-<div class="sourceCode" id="cb495"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb495-1" title="1">miDfSub03 &lt;-<span class="st"> </span>miDf01[(miDf01<span class="op">$</span>numbers <span class="op">%%</span><span class="st"> </span><span class="dv">2</span>) <span class="op">==</span><span class="st"> </span><span class="dv">0</span>, ]</a>
-<a class="sourceLine" id="cb495-2" title="2"><span class="kw">print</span>(miDfSub03)</a></code></pre></div>
+<div class="sourceCode" id="cb499"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb499-1" title="1">miDfSub03 &lt;-<span class="st"> </span>miDf01[(miDf01<span class="op">$</span>numbers <span class="op">%%</span><span class="st"> </span><span class="dv">2</span>) <span class="op">==</span><span class="st"> </span><span class="dv">0</span>, ]</a>
+<a class="sourceLine" id="cb499-2" title="2"><span class="kw">print</span>(miDfSub03)</a></code></pre></div>
 <pre><code>##   numbers logicals characters
 ## 2       2     TRUE          b
 ## 4       4     TRUE          d</code></pre>
-<div class="sourceCode" id="cb497"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb497-1" title="1">miDfSub04 &lt;-<span class="st"> </span>miDf01[((miDf01<span class="op">$</span>numbers <span class="op">%%</span><span class="st"> </span><span class="dv">2</span>) <span class="op">==</span><span class="st"> </span><span class="dv">0</span>) <span class="op">|</span><span class="st"> </span>(miDf01<span class="op">$</span>logicals <span class="op">==</span><span class="st"> </span><span class="ot">TRUE</span>), ]</a>
-<a class="sourceLine" id="cb497-2" title="2"><span class="kw">print</span>(miDfSub04)</a></code></pre></div>
+<div class="sourceCode" id="cb501"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb501-1" title="1">miDfSub04 &lt;-<span class="st"> </span>miDf01[((miDf01<span class="op">$</span>numbers <span class="op">%%</span><span class="st"> </span><span class="dv">2</span>) <span class="op">==</span><span class="st"> </span><span class="dv">0</span>) <span class="op">|</span><span class="st"> </span>(miDf01<span class="op">$</span>logicals <span class="op">==</span><span class="st"> </span><span class="ot">TRUE</span>), ]</a>
+<a class="sourceLine" id="cb501-2" title="2"><span class="kw">print</span>(miDfSub04)</a></code></pre></div>
 <pre><code>##   numbers logicals characters
 ## 1       1     TRUE          a
 ## 2       2     TRUE          b
@@ -1115,69 +1125,69 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="modifier-un-data.frame" class="section level3">
 <h3><span class="header-section-number">6.3.3</span> Modifier un <code>data.frame</code></h3>
 <p>Pour ajouter un élément à un <code>data.frame</code>, nous allons procéder comme pour un conteneur de type <code>list</code>. Il faudra veiller à ce que le nouvel éléménet soit de la même taille que les autres éléments de notre <code>data.frame</code>. Par défaut un nouvel élément dans un <code>data.frame</code> prend comme nom la lettre <em>V</em> suivie du numéro de la colonne. Nous pouvons changer les noms de colonne avec la fonction <code>colnames()</code>. Nous avons la possibilité de donner un nom aux lignes avec la fonction <code>rownames()</code></p>
-<div class="sourceCode" id="cb499"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb499-1" title="1">newVec &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>, <span class="dv">7</span>)</a>
-<a class="sourceLine" id="cb499-2" title="2">miDf01[[<span class="dv">4</span>]] &lt;-<span class="st"> </span>newVec</a>
-<a class="sourceLine" id="cb499-3" title="3"><span class="kw">print</span>(miDf01)</a></code></pre></div>
+<div class="sourceCode" id="cb503"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb503-1" title="1">newVec &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>, <span class="dv">7</span>)</a>
+<a class="sourceLine" id="cb503-2" title="2">miDf01[[<span class="dv">4</span>]] &lt;-<span class="st"> </span>newVec</a>
+<a class="sourceLine" id="cb503-3" title="3"><span class="kw">print</span>(miDf01)</a></code></pre></div>
 <pre><code>##   numbers logicals characters V4
 ## 1       1     TRUE          a  4
 ## 2       2     TRUE          b  5
 ## 3       3    FALSE          c  6
 ## 4       4     TRUE          d  7</code></pre>
-<div class="sourceCode" id="cb501"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb501-1" title="1"><span class="kw">print</span>(<span class="kw">colnames</span>(miDf01))</a></code></pre></div>
+<div class="sourceCode" id="cb505"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb505-1" title="1"><span class="kw">print</span>(<span class="kw">colnames</span>(miDf01))</a></code></pre></div>
 <pre><code>## [1] &quot;numbers&quot;    &quot;logicals&quot;   &quot;characters&quot; &quot;V4&quot;</code></pre>
-<div class="sourceCode" id="cb503"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb503-1" title="1"><span class="kw">colnames</span>(miDf01)[<span class="dv">4</span>] &lt;-<span class="st"> &quot;newVec&quot;</span></a>
-<a class="sourceLine" id="cb503-2" title="2"><span class="kw">print</span>(miDf01)</a></code></pre></div>
+<div class="sourceCode" id="cb507"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb507-1" title="1"><span class="kw">colnames</span>(miDf01)[<span class="dv">4</span>] &lt;-<span class="st"> &quot;newVec&quot;</span></a>
+<a class="sourceLine" id="cb507-2" title="2"><span class="kw">print</span>(miDf01)</a></code></pre></div>
 <pre><code>##   numbers logicals characters newVec
 ## 1       1     TRUE          a      4
 ## 2       2     TRUE          b      5
 ## 3       3    FALSE          c      6
 ## 4       4     TRUE          d      7</code></pre>
-<div class="sourceCode" id="cb505"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb505-1" title="1"><span class="kw">print</span>(<span class="kw">rownames</span>(miDf01))</a></code></pre></div>
+<div class="sourceCode" id="cb509"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb509-1" title="1"><span class="kw">print</span>(<span class="kw">rownames</span>(miDf01))</a></code></pre></div>
 <pre><code>## [1] &quot;1&quot; &quot;2&quot; &quot;3&quot; &quot;4&quot;</code></pre>
-<div class="sourceCode" id="cb507"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb507-1" title="1"><span class="kw">rownames</span>(miDf01) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;row1&quot;</span>, <span class="st">&quot;row2&quot;</span>, <span class="st">&quot;row3&quot;</span>, <span class="st">&quot;row4&quot;</span>)</a>
-<a class="sourceLine" id="cb507-2" title="2"><span class="kw">print</span>(miDf01)</a></code></pre></div>
+<div class="sourceCode" id="cb511"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb511-1" title="1"><span class="kw">rownames</span>(miDf01) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;row1&quot;</span>, <span class="st">&quot;row2&quot;</span>, <span class="st">&quot;row3&quot;</span>, <span class="st">&quot;row4&quot;</span>)</a>
+<a class="sourceLine" id="cb511-2" title="2"><span class="kw">print</span>(miDf01)</a></code></pre></div>
 <pre><code>##      numbers logicals characters newVec
 ## row1       1     TRUE          a      4
 ## row2       2     TRUE          b      5
 ## row3       3    FALSE          c      6
 ## row4       4     TRUE          d      7</code></pre>
-<div class="sourceCode" id="cb509"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb509-1" title="1">newVec2 &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">40</span>, <span class="dv">50</span>, <span class="dv">60</span>, <span class="dv">70</span>)</a>
-<a class="sourceLine" id="cb509-2" title="2">miDf01<span class="op">$</span>newVec2 &lt;-<span class="st"> </span>newVec2</a>
-<a class="sourceLine" id="cb509-3" title="3"><span class="kw">print</span>(miDf01)</a></code></pre></div>
+<div class="sourceCode" id="cb513"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb513-1" title="1">newVec2 &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">40</span>, <span class="dv">50</span>, <span class="dv">60</span>, <span class="dv">70</span>)</a>
+<a class="sourceLine" id="cb513-2" title="2">miDf01<span class="op">$</span>newVec2 &lt;-<span class="st"> </span>newVec2</a>
+<a class="sourceLine" id="cb513-3" title="3"><span class="kw">print</span>(miDf01)</a></code></pre></div>
 <pre><code>##      numbers logicals characters newVec newVec2
 ## row1       1     TRUE          a      4      40
 ## row2       2     TRUE          b      5      50
 ## row3       3    FALSE          c      6      60
 ## row4       4     TRUE          d      7      70</code></pre>
 <p>Comme le type de conteneur <code>data.frame</code> est un cas particulier de <code>list</code>, la sélection et la modification se fait comme pour un conteneur de type <code>list</code>. Comme les éléments d’un <code>data.frame</code> sont de type <code>vector</code>, la sélection et la modification des éléments d’un <code>data.frame</code> se fait comme pour un conteneur de type <code>vector</code>.</p>
-<div class="sourceCode" id="cb511"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb511-1" title="1">miDf01<span class="op">$</span>newVec2 &lt;-<span class="st"> </span>miDf01<span class="op">$</span>newVec2 <span class="op">*</span><span class="st"> </span><span class="dv">2</span></a>
-<a class="sourceLine" id="cb511-2" title="2"><span class="kw">print</span>(miDf01)</a></code></pre></div>
+<div class="sourceCode" id="cb515"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb515-1" title="1">miDf01<span class="op">$</span>newVec2 &lt;-<span class="st"> </span>miDf01<span class="op">$</span>newVec2 <span class="op">*</span><span class="st"> </span><span class="dv">2</span></a>
+<a class="sourceLine" id="cb515-2" title="2"><span class="kw">print</span>(miDf01)</a></code></pre></div>
 <pre><code>##      numbers logicals characters newVec newVec2
 ## row1       1     TRUE          a      4      80
 ## row2       2     TRUE          b      5     100
 ## row3       3    FALSE          c      6     120
 ## row4       4     TRUE          d      7     140</code></pre>
-<div class="sourceCode" id="cb513"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb513-1" title="1">miDf01<span class="op">$</span>newVec2 <span class="op">+</span><span class="st"> </span>miDf01<span class="op">$</span>newVec</a></code></pre></div>
+<div class="sourceCode" id="cb517"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb517-1" title="1">miDf01<span class="op">$</span>newVec2 <span class="op">+</span><span class="st"> </span>miDf01<span class="op">$</span>newVec</a></code></pre></div>
 <pre><code>## [1]  84 105 126 147</code></pre>
-<div class="sourceCode" id="cb515"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb515-1" title="1">miDf01<span class="op">$</span>newVec2[<span class="dv">2</span>] &lt;-<span class="st"> </span><span class="dv">0</span></a>
-<a class="sourceLine" id="cb515-2" title="2"><span class="kw">print</span>(miDf01)</a></code></pre></div>
+<div class="sourceCode" id="cb519"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb519-1" title="1">miDf01<span class="op">$</span>newVec2[<span class="dv">2</span>] &lt;-<span class="st"> </span><span class="dv">0</span></a>
+<a class="sourceLine" id="cb519-2" title="2"><span class="kw">print</span>(miDf01)</a></code></pre></div>
 <pre><code>##      numbers logicals characters newVec newVec2
 ## row1       1     TRUE          a      4      80
 ## row2       2     TRUE          b      5       0
 ## row3       3    FALSE          c      6     120
 ## row4       4     TRUE          d      7     140</code></pre>
 <p>Un <code>vector</code> peut être transformé en <code>data.frame</code> avec la fonction <code>as.data.frame()</code>.</p>
-<div class="sourceCode" id="cb517"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb517-1" title="1"><span class="kw">print</span>(newVec2)</a></code></pre></div>
+<div class="sourceCode" id="cb521"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb521-1" title="1"><span class="kw">print</span>(newVec2)</a></code></pre></div>
 <pre><code>## [1] 40 50 60 70</code></pre>
-<div class="sourceCode" id="cb519"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb519-1" title="1"><span class="kw">print</span>(<span class="kw">as.data.frame</span>(newVec2))</a></code></pre></div>
+<div class="sourceCode" id="cb523"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb523-1" title="1"><span class="kw">print</span>(<span class="kw">as.data.frame</span>(newVec2))</a></code></pre></div>
 <pre><code>##   newVec2
 ## 1      40
 ## 2      50
 ## 3      60
 ## 4      70</code></pre>
-<div class="sourceCode" id="cb521"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb521-1" title="1"><span class="kw">is.data.frame</span>(newVec2)</a></code></pre></div>
+<div class="sourceCode" id="cb525"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb525-1" title="1"><span class="kw">is.data.frame</span>(newVec2)</a></code></pre></div>
 <pre><code>## [1] FALSE</code></pre>
-<div class="sourceCode" id="cb523"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb523-1" title="1"><span class="kw">is.data.frame</span>(<span class="kw">as.data.frame</span>(newVec2))</a></code></pre></div>
+<div class="sourceCode" id="cb527"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb527-1" title="1"><span class="kw">is.data.frame</span>(<span class="kw">as.data.frame</span>(newVec2))</a></code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
 </div>
 </div>
@@ -1187,58 +1197,58 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="créer-une-matrix" class="section level3">
 <h3><span class="header-section-number">6.4.1</span> Créer une <code>matrix</code></h3>
 <p>Pour créer une <code>matrix</code> nous allons tout d’abord créer un <code>vector</code>, puis spécifier le nombre souhaité de lignes et de colonnes dans la fonction <code>matrix()</code>.</p>
-<div class="sourceCode" id="cb525"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb525-1" title="1">vecForMatrix &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>, <span class="dv">7</span>, <span class="dv">8</span>, <span class="dv">9</span>, <span class="dv">10</span>, <span class="dv">11</span>, <span class="dv">12</span>)</a>
-<a class="sourceLine" id="cb525-2" title="2">miMat &lt;-<span class="st"> </span><span class="kw">matrix</span>(vecForMatrix, <span class="dt">nrow =</span> <span class="dv">3</span>, <span class="dt">ncol =</span> <span class="dv">4</span>)</a>
-<a class="sourceLine" id="cb525-3" title="3"><span class="kw">print</span>(miMat)</a></code></pre></div>
+<div class="sourceCode" id="cb529"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb529-1" title="1">vecForMatrix &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>, <span class="dv">7</span>, <span class="dv">8</span>, <span class="dv">9</span>, <span class="dv">10</span>, <span class="dv">11</span>, <span class="dv">12</span>)</a>
+<a class="sourceLine" id="cb529-2" title="2">miMat &lt;-<span class="st"> </span><span class="kw">matrix</span>(vecForMatrix, <span class="dt">nrow =</span> <span class="dv">3</span>, <span class="dt">ncol =</span> <span class="dv">4</span>)</a>
+<a class="sourceLine" id="cb529-3" title="3"><span class="kw">print</span>(miMat)</a></code></pre></div>
 <pre><code>##      [,1] [,2] [,3] [,4]
 ## [1,]    1    4    7   10
 ## [2,]    2    5    8   11
 ## [3,]    3    6    9   12</code></pre>
 <p>Il n’est pas nécessaire de spécifier le nombre de lignes <code>nrow</code> et le nombre de colonnes <code>ncol</code>. Si nous utilisons l’un ou l’autre de ces arguments, R va automatiquement calculer le nombre correspondant.</p>
-<div class="sourceCode" id="cb527"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb527-1" title="1">miMat &lt;-<span class="st"> </span><span class="kw">matrix</span>(vecForMatrix, <span class="dt">nrow =</span> <span class="dv">3</span>)</a>
-<a class="sourceLine" id="cb527-2" title="2"><span class="kw">print</span>(miMat)</a></code></pre></div>
+<div class="sourceCode" id="cb531"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb531-1" title="1">miMat &lt;-<span class="st"> </span><span class="kw">matrix</span>(vecForMatrix, <span class="dt">nrow =</span> <span class="dv">3</span>)</a>
+<a class="sourceLine" id="cb531-2" title="2"><span class="kw">print</span>(miMat)</a></code></pre></div>
 <pre><code>##      [,1] [,2] [,3] [,4]
 ## [1,]    1    4    7   10
 ## [2,]    2    5    8   11
 ## [3,]    3    6    9   12</code></pre>
-<div class="sourceCode" id="cb529"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb529-1" title="1">miMat &lt;-<span class="st"> </span><span class="kw">matrix</span>(vecForMatrix, <span class="dt">ncol =</span> <span class="dv">4</span>)</a>
-<a class="sourceLine" id="cb529-2" title="2"><span class="kw">print</span>(miMat)</a></code></pre></div>
+<div class="sourceCode" id="cb533"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb533-1" title="1">miMat &lt;-<span class="st"> </span><span class="kw">matrix</span>(vecForMatrix, <span class="dt">ncol =</span> <span class="dv">4</span>)</a>
+<a class="sourceLine" id="cb533-2" title="2"><span class="kw">print</span>(miMat)</a></code></pre></div>
 <pre><code>##      [,1] [,2] [,3] [,4]
 ## [1,]    1    4    7   10
 ## [2,]    2    5    8   11
 ## [3,]    3    6    9   12</code></pre>
 <p>Nous observons que les différents éléments du <code>vector</code> initial sont renseignés par colonne. Si nous souhaitons renseigner la <code>matrix</code> par lignes alors il faut donner la valeur <code>TRUE</code> à l’argument <code>byrow</code>.</p>
-<div class="sourceCode" id="cb531"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb531-1" title="1">miMat &lt;-<span class="st"> </span><span class="kw">matrix</span>(vecForMatrix, <span class="dt">nrow =</span> <span class="dv">3</span>, <span class="dt">byrow =</span> <span class="ot">TRUE</span>)</a>
-<a class="sourceLine" id="cb531-2" title="2"><span class="kw">print</span>(miMat)</a></code></pre></div>
+<div class="sourceCode" id="cb535"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb535-1" title="1">miMat &lt;-<span class="st"> </span><span class="kw">matrix</span>(vecForMatrix, <span class="dt">nrow =</span> <span class="dv">3</span>, <span class="dt">byrow =</span> <span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb535-2" title="2"><span class="kw">print</span>(miMat)</a></code></pre></div>
 <pre><code>##      [,1] [,2] [,3] [,4]
 ## [1,]    1    2    3    4
 ## [2,]    5    6    7    8
 ## [3,]    9   10   11   12</code></pre>
 <p>Nous pouvons également donner un nom aux lignes et aux colonnes de notre <code>matrix</code> lors de sa création avec l’argument <code>dimnames</code> qui prend comme valeur une <code>list</code> de deux éléments : le nom des lignes puis le nom des colonnes. Nous pouvons aussi changer le nom des lignes et des colonnes a posteriori avec les fonctions <code>rownames()</code> et <code>colnames()</code>.</p>
-<div class="sourceCode" id="cb533"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb533-1" title="1">miMat &lt;-<span class="st"> </span><span class="kw">matrix</span>(</a>
-<a class="sourceLine" id="cb533-2" title="2">  vecForMatrix, </a>
-<a class="sourceLine" id="cb533-3" title="3">  <span class="dt">nrow =</span> <span class="dv">3</span>, </a>
-<a class="sourceLine" id="cb533-4" title="4">  <span class="dt">byrow =</span> <span class="ot">TRUE</span>, </a>
-<a class="sourceLine" id="cb533-5" title="5">  <span class="dt">dimnames =</span> <span class="kw">list</span>(<span class="kw">c</span>(<span class="st">&quot;r1&quot;</span>, <span class="st">&quot;r2&quot;</span>, <span class="st">&quot;r3&quot;</span>), <span class="kw">c</span>(<span class="st">&quot;c1&quot;</span>, <span class="st">&quot;c2&quot;</span>, <span class="st">&quot;c3&quot;</span>, <span class="st">&quot;c4&quot;</span>))</a>
-<a class="sourceLine" id="cb533-6" title="6">)</a>
-<a class="sourceLine" id="cb533-7" title="7"><span class="kw">print</span>(miMat)</a></code></pre></div>
+<div class="sourceCode" id="cb537"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb537-1" title="1">miMat &lt;-<span class="st"> </span><span class="kw">matrix</span>(</a>
+<a class="sourceLine" id="cb537-2" title="2">  vecForMatrix, </a>
+<a class="sourceLine" id="cb537-3" title="3">  <span class="dt">nrow =</span> <span class="dv">3</span>, </a>
+<a class="sourceLine" id="cb537-4" title="4">  <span class="dt">byrow =</span> <span class="ot">TRUE</span>, </a>
+<a class="sourceLine" id="cb537-5" title="5">  <span class="dt">dimnames =</span> <span class="kw">list</span>(<span class="kw">c</span>(<span class="st">&quot;r1&quot;</span>, <span class="st">&quot;r2&quot;</span>, <span class="st">&quot;r3&quot;</span>), <span class="kw">c</span>(<span class="st">&quot;c1&quot;</span>, <span class="st">&quot;c2&quot;</span>, <span class="st">&quot;c3&quot;</span>, <span class="st">&quot;c4&quot;</span>))</a>
+<a class="sourceLine" id="cb537-6" title="6">)</a>
+<a class="sourceLine" id="cb537-7" title="7"><span class="kw">print</span>(miMat)</a></code></pre></div>
 <pre><code>##    c1 c2 c3 c4
 ## r1  1  2  3  4
 ## r2  5  6  7  8
 ## r3  9 10 11 12</code></pre>
-<div class="sourceCode" id="cb535"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb535-1" title="1"><span class="kw">colnames</span>(miMat) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;col1&quot;</span>, <span class="st">&quot;col2&quot;</span>, <span class="st">&quot;col3&quot;</span>, <span class="st">&quot;col4&quot;</span>)</a>
-<a class="sourceLine" id="cb535-2" title="2"><span class="kw">rownames</span>(miMat) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;row1&quot;</span>, <span class="st">&quot;row2&quot;</span>, <span class="st">&quot;row3&quot;</span>)</a>
-<a class="sourceLine" id="cb535-3" title="3"><span class="kw">print</span>(miMat)</a></code></pre></div>
+<div class="sourceCode" id="cb539"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb539-1" title="1"><span class="kw">colnames</span>(miMat) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;col1&quot;</span>, <span class="st">&quot;col2&quot;</span>, <span class="st">&quot;col3&quot;</span>, <span class="st">&quot;col4&quot;</span>)</a>
+<a class="sourceLine" id="cb539-2" title="2"><span class="kw">rownames</span>(miMat) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;row1&quot;</span>, <span class="st">&quot;row2&quot;</span>, <span class="st">&quot;row3&quot;</span>)</a>
+<a class="sourceLine" id="cb539-3" title="3"><span class="kw">print</span>(miMat)</a></code></pre></div>
 <pre><code>##      col1 col2 col3 col4
 ## row1    1    2    3    4
 ## row2    5    6    7    8
 ## row3    9   10   11   12</code></pre>
 <p>Il est possible de créer une <code>matrix</code> à partir d’un <code>data.frame</code> avec la fonction <code>as.matrix()</code> sous réserve que le <code>data.frame</code> ne contienne que des élément de même type (par exemple que des éléments de type <code>numeric</code>).</p>
-<div class="sourceCode" id="cb537"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb537-1" title="1">vecForMat01 &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>, <span class="dv">7</span>, <span class="dv">8</span>, <span class="dv">9</span>, <span class="dv">10</span>, <span class="dv">11</span>, <span class="dv">12</span>)</a>
-<a class="sourceLine" id="cb537-2" title="2">vecForMat02 &lt;-<span class="st"> </span>vecForMat01 <span class="op">*</span><span class="st"> </span><span class="dv">10</span></a>
-<a class="sourceLine" id="cb537-3" title="3">vecForMat03 &lt;-<span class="st"> </span>vecForMat01 <span class="op">/</span><span class="st"> </span><span class="dv">10</span></a>
-<a class="sourceLine" id="cb537-4" title="4">dfForMat &lt;-<span class="st"> </span><span class="kw">data.frame</span>(vecForMat01, vecForMat02, vecForMat03)</a>
-<a class="sourceLine" id="cb537-5" title="5"><span class="kw">print</span>(dfForMat)</a></code></pre></div>
+<div class="sourceCode" id="cb541"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb541-1" title="1">vecForMat01 &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>, <span class="dv">7</span>, <span class="dv">8</span>, <span class="dv">9</span>, <span class="dv">10</span>, <span class="dv">11</span>, <span class="dv">12</span>)</a>
+<a class="sourceLine" id="cb541-2" title="2">vecForMat02 &lt;-<span class="st"> </span>vecForMat01 <span class="op">*</span><span class="st"> </span><span class="dv">10</span></a>
+<a class="sourceLine" id="cb541-3" title="3">vecForMat03 &lt;-<span class="st"> </span>vecForMat01 <span class="op">/</span><span class="st"> </span><span class="dv">10</span></a>
+<a class="sourceLine" id="cb541-4" title="4">dfForMat &lt;-<span class="st"> </span><span class="kw">data.frame</span>(vecForMat01, vecForMat02, vecForMat03)</a>
+<a class="sourceLine" id="cb541-5" title="5"><span class="kw">print</span>(dfForMat)</a></code></pre></div>
 <pre><code>##    vecForMat01 vecForMat02 vecForMat03
 ## 1            1          10         0.1
 ## 2            2          20         0.2
@@ -1252,9 +1262,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 10          10         100         1.0
 ## 11          11         110         1.1
 ## 12          12         120         1.2</code></pre>
-<div class="sourceCode" id="cb539"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb539-1" title="1"><span class="kw">is.matrix</span>(dfForMat)</a></code></pre></div>
+<div class="sourceCode" id="cb543"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb543-1" title="1"><span class="kw">is.matrix</span>(dfForMat)</a></code></pre></div>
 <pre><code>## [1] FALSE</code></pre>
-<div class="sourceCode" id="cb541"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb541-1" title="1"><span class="kw">as.matrix</span>(dfForMat)</a></code></pre></div>
+<div class="sourceCode" id="cb545"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb545-1" title="1"><span class="kw">as.matrix</span>(dfForMat)</a></code></pre></div>
 <pre><code>##       vecForMat01 vecForMat02 vecForMat03
 ##  [1,]           1          10         0.1
 ##  [2,]           2          20         0.2
@@ -1268,10 +1278,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## [10,]          10         100         1.0
 ## [11,]          11         110         1.1
 ## [12,]          12         120         1.2</code></pre>
-<div class="sourceCode" id="cb543"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb543-1" title="1"><span class="kw">is.matrix</span>(<span class="kw">as.matrix</span>(dfForMat))</a></code></pre></div>
+<div class="sourceCode" id="cb547"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb547-1" title="1"><span class="kw">is.matrix</span>(<span class="kw">as.matrix</span>(dfForMat))</a></code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
 <p>Nous pouvons aussi créer une <code>matrix</code> à partir d’un <code>vector</code> avec la fonction <code>as.matrix()</code> (matrice de une seule colonne).</p>
-<div class="sourceCode" id="cb545"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb545-1" title="1"><span class="kw">as.matrix</span>(vecForMat01)</a></code></pre></div>
+<div class="sourceCode" id="cb549"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb549-1" title="1"><span class="kw">as.matrix</span>(vecForMat01)</a></code></pre></div>
 <pre><code>##       [,1]
 ##  [1,]    1
 ##  [2,]    2
@@ -1289,70 +1299,70 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="manipuler-et-faire-des-opérations-sur-une-matrix" class="section level3">
 <h3><span class="header-section-number">6.4.2</span> Manipuler et faire des opérations sur une <code>matrix</code></h3>
 <p>Toutes les opérations terme à terme sont possibles sur les <code>matrix</code>.</p>
-<div class="sourceCode" id="cb547"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb547-1" title="1"><span class="co"># opérations terme à terme</span></a>
-<a class="sourceLine" id="cb547-2" title="2">miMat01 &lt;-<span class="st"> </span><span class="kw">matrix</span>(vecForMat01, <span class="dt">ncol =</span> <span class="dv">3</span>)</a>
-<a class="sourceLine" id="cb547-3" title="3">miVecOp &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">10</span>, <span class="dv">100</span>, <span class="dv">1000</span>)</a>
-<a class="sourceLine" id="cb547-4" title="4">miMat01 <span class="op">*</span><span class="st"> </span>miVecOp</a></code></pre></div>
+<div class="sourceCode" id="cb551"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb551-1" title="1"><span class="co"># opérations terme à terme</span></a>
+<a class="sourceLine" id="cb551-2" title="2">miMat01 &lt;-<span class="st"> </span><span class="kw">matrix</span>(vecForMat01, <span class="dt">ncol =</span> <span class="dv">3</span>)</a>
+<a class="sourceLine" id="cb551-3" title="3">miVecOp &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">10</span>, <span class="dv">100</span>, <span class="dv">1000</span>)</a>
+<a class="sourceLine" id="cb551-4" title="4">miMat01 <span class="op">*</span><span class="st"> </span>miVecOp</a></code></pre></div>
 <pre><code>##      [,1] [,2]  [,3]
 ## [1,]    1    5     9
 ## [2,]   20   60   100
 ## [3,]  300  700  1100
 ## [4,] 4000 8000 12000</code></pre>
-<div class="sourceCode" id="cb549"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb549-1" title="1">miMat01 <span class="op">+</span><span class="st"> </span>miVecOp</a></code></pre></div>
+<div class="sourceCode" id="cb553"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb553-1" title="1">miMat01 <span class="op">+</span><span class="st"> </span>miVecOp</a></code></pre></div>
 <pre><code>##      [,1] [,2] [,3]
 ## [1,]    2    6   10
 ## [2,]   12   16   20
 ## [3,]  103  107  111
 ## [4,] 1004 1008 1012</code></pre>
-<div class="sourceCode" id="cb551"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb551-1" title="1">miMat01 <span class="op">/</span><span class="st"> </span>miMat01</a></code></pre></div>
+<div class="sourceCode" id="cb555"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb555-1" title="1">miMat01 <span class="op">/</span><span class="st"> </span>miMat01</a></code></pre></div>
 <pre><code>##      [,1] [,2] [,3]
 ## [1,]    1    1    1
 ## [2,]    1    1    1
 ## [3,]    1    1    1
 ## [4,]    1    1    1</code></pre>
-<div class="sourceCode" id="cb553"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb553-1" title="1">miMat01 <span class="op">-</span><span class="st"> </span><span class="dv">10</span></a></code></pre></div>
+<div class="sourceCode" id="cb557"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb557-1" title="1">miMat01 <span class="op">-</span><span class="st"> </span><span class="dv">10</span></a></code></pre></div>
 <pre><code>##      [,1] [,2] [,3]
 ## [1,]   -9   -5   -1
 ## [2,]   -8   -4    0
 ## [3,]   -7   -3    1
 ## [4,]   -6   -2    2</code></pre>
 <p>Pour effectuer des opérations algébriques nous pouvons utiliser la fonction <code>%*%</code>.</p>
-<div class="sourceCode" id="cb555"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb555-1" title="1"><span class="co"># opérations algébriques</span></a>
-<a class="sourceLine" id="cb555-2" title="2">miVecConf &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">10</span>, <span class="dv">100</span>)</a>
-<a class="sourceLine" id="cb555-3" title="3">miMat01 <span class="op">%*%</span><span class="st"> </span>miVecConf</a></code></pre></div>
+<div class="sourceCode" id="cb559"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb559-1" title="1"><span class="co"># opérations algébriques</span></a>
+<a class="sourceLine" id="cb559-2" title="2">miVecConf &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">10</span>, <span class="dv">100</span>)</a>
+<a class="sourceLine" id="cb559-3" title="3">miMat01 <span class="op">%*%</span><span class="st"> </span>miVecConf</a></code></pre></div>
 <pre><code>##      [,1]
 ## [1,]  951
 ## [2,] 1062
 ## [3,] 1173
 ## [4,] 1284</code></pre>
-<div class="sourceCode" id="cb557"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb557-1" title="1">miMat02 &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>, <span class="dv">7</span>, <span class="dv">8</span>, <span class="dv">9</span>), <span class="dt">ncol =</span> <span class="dv">3</span>)</a>
-<a class="sourceLine" id="cb557-2" title="2"><span class="kw">print</span>(miMat02)</a></code></pre></div>
+<div class="sourceCode" id="cb561"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb561-1" title="1">miMat02 &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>, <span class="dv">7</span>, <span class="dv">8</span>, <span class="dv">9</span>), <span class="dt">ncol =</span> <span class="dv">3</span>)</a>
+<a class="sourceLine" id="cb561-2" title="2"><span class="kw">print</span>(miMat02)</a></code></pre></div>
 <pre><code>##      [,1] [,2] [,3]
 ## [1,]    1    4    7
 ## [2,]    2    5    8
 ## [3,]    3    6    9</code></pre>
-<div class="sourceCode" id="cb559"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb559-1" title="1">miMat02 <span class="op">%*%</span><span class="st"> </span>miMat02</a></code></pre></div>
+<div class="sourceCode" id="cb563"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb563-1" title="1">miMat02 <span class="op">%*%</span><span class="st"> </span>miMat02</a></code></pre></div>
 <pre><code>##      [,1] [,2] [,3]
 ## [1,]   30   66  102
 ## [2,]   36   81  126
 ## [3,]   42   96  150</code></pre>
 <p>La diagonale d’une <code>matrix</code> peut être obtenue avec la fonction <code>diag()</code>, et le déterminant d’une <code>matrix</code> avec la fonction <code>det()</code>.</p>
-<div class="sourceCode" id="cb561"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb561-1" title="1"><span class="kw">print</span>(miMat02)</a></code></pre></div>
+<div class="sourceCode" id="cb565"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb565-1" title="1"><span class="kw">print</span>(miMat02)</a></code></pre></div>
 <pre><code>##      [,1] [,2] [,3]
 ## [1,]    1    4    7
 ## [2,]    2    5    8
 ## [3,]    3    6    9</code></pre>
-<div class="sourceCode" id="cb563"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb563-1" title="1"><span class="kw">diag</span>(miMat02)</a></code></pre></div>
+<div class="sourceCode" id="cb567"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb567-1" title="1"><span class="kw">diag</span>(miMat02)</a></code></pre></div>
 <pre><code>## [1] 1 5 9</code></pre>
-<div class="sourceCode" id="cb565"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb565-1" title="1"><span class="kw">det</span>(miMat02)</a></code></pre></div>
+<div class="sourceCode" id="cb569"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb569-1" title="1"><span class="kw">det</span>(miMat02)</a></code></pre></div>
 <pre><code>## [1] 0</code></pre>
 <p>Il est souvent utile de pouvoir tansposer une <code>matrix</code> (colonnes en lignes ou lignes en colonnes). Pour cela il existe les fonctions <code>aperm()</code> ou <code>t()</code>. la fonction <code>t()</code> est plus générique et fonctionne aussi sur les <code>data.frame</code>.</p>
-<div class="sourceCode" id="cb567"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb567-1" title="1"><span class="kw">aperm</span>(miMat01)</a></code></pre></div>
+<div class="sourceCode" id="cb571"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb571-1" title="1"><span class="kw">aperm</span>(miMat01)</a></code></pre></div>
 <pre><code>##      [,1] [,2] [,3] [,4]
 ## [1,]    1    2    3    4
 ## [2,]    5    6    7    8
 ## [3,]    9   10   11   12</code></pre>
-<div class="sourceCode" id="cb569"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb569-1" title="1"><span class="kw">t</span>(miMat01)</a></code></pre></div>
+<div class="sourceCode" id="cb573"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb573-1" title="1"><span class="kw">t</span>(miMat01)</a></code></pre></div>
 <pre><code>##      [,1] [,2] [,3] [,4]
 ## [1,]    1    2    3    4
 ## [2,]    5    6    7    8
@@ -1361,33 +1371,33 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="accèder-aux-éléments-dune-matrix" class="section level3">
 <h3><span class="header-section-number">6.4.3</span> Accèder aux éléments d’une <code>matrix</code></h3>
 <p>Comme pour un <code>data.frame</code>, nous pouvons accèder aux éléments d’une matrice en spécifiant un numéro de ligne et un numéro de colonne entre crochets simples <code>[ ]</code>, et séparés par une virgule. Si <code>i</code> est le numéro de ligne et <code>j</code> le numéro de colonne, alors <code>miMat01[i, j]</code> renvoie l’élément situé à la ligne <code>i</code> et à la colonne <code>j</code>. <code>miMat01[i, ]</code> renvoie tous les éléments de la ligne <code>i</code>, et <code>miMat01[, j]</code> tous les éléments de la colonne <code>j</code>. Les sélections multiples sont possibles. Nous pouvons également accèder à un élément en fonction de sa position dans la matrice entre crochets simples <code>[ ]</code> en comptant par colonne puis par ligne. Dans notre exemple la valeur du dixième élément est 10.</p>
-<div class="sourceCode" id="cb571"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb571-1" title="1">i &lt;-<span class="st"> </span><span class="dv">2</span></a>
-<a class="sourceLine" id="cb571-2" title="2">j &lt;-<span class="st"> </span><span class="dv">1</span></a>
-<a class="sourceLine" id="cb571-3" title="3"><span class="kw">print</span>(miMat01[i, j])</a></code></pre></div>
+<div class="sourceCode" id="cb575"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb575-1" title="1">i &lt;-<span class="st"> </span><span class="dv">2</span></a>
+<a class="sourceLine" id="cb575-2" title="2">j &lt;-<span class="st"> </span><span class="dv">1</span></a>
+<a class="sourceLine" id="cb575-3" title="3"><span class="kw">print</span>(miMat01[i, j])</a></code></pre></div>
 <pre><code>## [1] 2</code></pre>
-<div class="sourceCode" id="cb573"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb573-1" title="1"><span class="kw">print</span>(miMat01[i, ])</a></code></pre></div>
+<div class="sourceCode" id="cb577"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb577-1" title="1"><span class="kw">print</span>(miMat01[i, ])</a></code></pre></div>
 <pre><code>## [1]  2  6 10</code></pre>
-<div class="sourceCode" id="cb575"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb575-1" title="1"><span class="kw">print</span>(miMat01[, j])</a></code></pre></div>
+<div class="sourceCode" id="cb579"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb579-1" title="1"><span class="kw">print</span>(miMat01[, j])</a></code></pre></div>
 <pre><code>## [1] 1 2 3 4</code></pre>
-<div class="sourceCode" id="cb577"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb577-1" title="1"><span class="kw">print</span>(miMat01[<span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>), <span class="kw">c</span>(<span class="dv">2</span>, <span class="dv">3</span>)])</a></code></pre></div>
+<div class="sourceCode" id="cb581"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb581-1" title="1"><span class="kw">print</span>(miMat01[<span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>), <span class="kw">c</span>(<span class="dv">2</span>, <span class="dv">3</span>)])</a></code></pre></div>
 <pre><code>##      [,1] [,2]
 ## [1,]    5    9
 ## [2,]    6   10</code></pre>
-<div class="sourceCode" id="cb579"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb579-1" title="1"><span class="kw">print</span>(miMat01[<span class="dv">10</span>])</a></code></pre></div>
+<div class="sourceCode" id="cb583"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb583-1" title="1"><span class="kw">print</span>(miMat01[<span class="dv">10</span>])</a></code></pre></div>
 <pre><code>## [1] 10</code></pre>
 </div>
 </div>
 <div id="l014array" class="section level2">
 <h2><span class="header-section-number">6.5</span> Le conteneur <code>array</code></h2>
 <p>Le conteneur de type <code>array</code> est une généralisation du conteneur de type <code>matrix</code>. Là où le type <code>matrix</code> a deux dimensions (les lignes et les colonnes), le type <code>array</code> a un nombre indéfini de dimensions. Nous pouvons connaître le nombre de dimensions d’un <code>array</code> (et donc d’une <code>matrix</code>) avec la fonction <code>dim()</code>.</p>
-<div class="sourceCode" id="cb581"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb581-1" title="1"><span class="kw">dim</span>(miMat01)</a></code></pre></div>
+<div class="sourceCode" id="cb585"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb585-1" title="1"><span class="kw">dim</span>(miMat01)</a></code></pre></div>
 <pre><code>## [1] 4 3</code></pre>
 <div id="créer-un-array" class="section level3">
 <h3><span class="header-section-number">6.5.1</span> Créer un <code>array</code></h3>
 <p>La création d’un <code>array</code> est similaire à celle d’une <code>matrix</code> avec une dimension supplémentaire.</p>
-<div class="sourceCode" id="cb583"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb583-1" title="1">miVecArr &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>, <span class="dv">7</span>, <span class="dv">8</span>, <span class="dv">9</span>)</a>
-<a class="sourceLine" id="cb583-2" title="2">miArray &lt;-<span class="st"> </span><span class="kw">array</span>(miVecArr, <span class="dt">dim =</span> <span class="kw">c</span>(<span class="dv">3</span>, <span class="dv">3</span>, <span class="dv">2</span>))</a>
-<a class="sourceLine" id="cb583-3" title="3"><span class="kw">print</span>(miArray)</a></code></pre></div>
+<div class="sourceCode" id="cb587"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb587-1" title="1">miVecArr &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>, <span class="dv">7</span>, <span class="dv">8</span>, <span class="dv">9</span>)</a>
+<a class="sourceLine" id="cb587-2" title="2">miArray &lt;-<span class="st"> </span><span class="kw">array</span>(miVecArr, <span class="dt">dim =</span> <span class="kw">c</span>(<span class="dv">3</span>, <span class="dv">3</span>, <span class="dv">2</span>))</a>
+<a class="sourceLine" id="cb587-3" title="3"><span class="kw">print</span>(miArray)</a></code></pre></div>
 <pre><code>## , , 1
 ## 
 ##      [,1] [,2] [,3]
@@ -1401,13 +1411,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## [1,]    1    4    7
 ## [2,]    2    5    8
 ## [3,]    3    6    9</code></pre>
-<div class="sourceCode" id="cb585"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb585-1" title="1"><span class="kw">dim</span>(miArray)</a></code></pre></div>
+<div class="sourceCode" id="cb589"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb589-1" title="1"><span class="kw">dim</span>(miArray)</a></code></pre></div>
 <pre><code>## [1] 3 3 2</code></pre>
-<div class="sourceCode" id="cb587"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb587-1" title="1"><span class="kw">is.array</span>(miArray)</a></code></pre></div>
+<div class="sourceCode" id="cb591"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb591-1" title="1"><span class="kw">is.array</span>(miArray)</a></code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
-<div class="sourceCode" id="cb589"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb589-1" title="1">miVecArr02 &lt;-<span class="st"> </span><span class="dv">10</span> <span class="op">*</span><span class="st"> </span>miVecArr</a>
-<a class="sourceLine" id="cb589-2" title="2">miArray02 &lt;-<span class="st"> </span><span class="kw">array</span>(<span class="kw">c</span>(miVecArr, miVecArr02), <span class="dt">dim =</span> <span class="kw">c</span>(<span class="dv">3</span>, <span class="dv">3</span>, <span class="dv">2</span>))</a>
-<a class="sourceLine" id="cb589-3" title="3"><span class="kw">print</span>(miArray02)</a></code></pre></div>
+<div class="sourceCode" id="cb593"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb593-1" title="1">miVecArr02 &lt;-<span class="st"> </span><span class="dv">10</span> <span class="op">*</span><span class="st"> </span>miVecArr</a>
+<a class="sourceLine" id="cb593-2" title="2">miArray02 &lt;-<span class="st"> </span><span class="kw">array</span>(<span class="kw">c</span>(miVecArr, miVecArr02), <span class="dt">dim =</span> <span class="kw">c</span>(<span class="dv">3</span>, <span class="dv">3</span>, <span class="dv">2</span>))</a>
+<a class="sourceLine" id="cb593-3" title="3"><span class="kw">print</span>(miArray02)</a></code></pre></div>
 <pre><code>## , , 1
 ## 
 ##      [,1] [,2] [,3]
@@ -1421,21 +1431,21 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## [1,]   10   40   70
 ## [2,]   20   50   80
 ## [3,]   30   60   90</code></pre>
-<div class="sourceCode" id="cb591"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb591-1" title="1"><span class="kw">dim</span>(miArray02)</a></code></pre></div>
+<div class="sourceCode" id="cb595"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb595-1" title="1"><span class="kw">dim</span>(miArray02)</a></code></pre></div>
 <pre><code>## [1] 3 3 2</code></pre>
-<div class="sourceCode" id="cb593"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb593-1" title="1"><span class="kw">is.array</span>(miArray02)</a></code></pre></div>
+<div class="sourceCode" id="cb597"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb597-1" title="1"><span class="kw">is.array</span>(miArray02)</a></code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
 <p>Nous pouvons donner des noms aux lignes et aux colonnes, mais aussi aux éléments.</p>
-<div class="sourceCode" id="cb595"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb595-1" title="1">miArray02 &lt;-<span class="st"> </span><span class="kw">array</span>(</a>
-<a class="sourceLine" id="cb595-2" title="2">  <span class="kw">c</span>(miVecArr, miVecArr02), </a>
-<a class="sourceLine" id="cb595-3" title="3">  <span class="dt">dim =</span> <span class="kw">c</span>(<span class="dv">3</span>, <span class="dv">3</span>, <span class="dv">2</span>), </a>
-<a class="sourceLine" id="cb595-4" title="4">  <span class="dt">dimnames =</span> <span class="kw">list</span>(</a>
-<a class="sourceLine" id="cb595-5" title="5">    <span class="kw">c</span>(<span class="st">&quot;r1&quot;</span>, <span class="st">&quot;r2&quot;</span>, <span class="st">&quot;r3&quot;</span>), </a>
-<a class="sourceLine" id="cb595-6" title="6">    <span class="kw">c</span>(<span class="st">&quot;c1&quot;</span>, <span class="st">&quot;c2&quot;</span>, <span class="st">&quot;c3&quot;</span>), </a>
-<a class="sourceLine" id="cb595-7" title="7">    <span class="kw">c</span>(<span class="st">&quot;matrix1&quot;</span>, <span class="st">&quot;matrix2&quot;</span>)</a>
-<a class="sourceLine" id="cb595-8" title="8">  )</a>
-<a class="sourceLine" id="cb595-9" title="9">)</a>
-<a class="sourceLine" id="cb595-10" title="10"><span class="kw">print</span>(miArray02)</a></code></pre></div>
+<div class="sourceCode" id="cb599"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb599-1" title="1">miArray02 &lt;-<span class="st"> </span><span class="kw">array</span>(</a>
+<a class="sourceLine" id="cb599-2" title="2">  <span class="kw">c</span>(miVecArr, miVecArr02), </a>
+<a class="sourceLine" id="cb599-3" title="3">  <span class="dt">dim =</span> <span class="kw">c</span>(<span class="dv">3</span>, <span class="dv">3</span>, <span class="dv">2</span>), </a>
+<a class="sourceLine" id="cb599-4" title="4">  <span class="dt">dimnames =</span> <span class="kw">list</span>(</a>
+<a class="sourceLine" id="cb599-5" title="5">    <span class="kw">c</span>(<span class="st">&quot;r1&quot;</span>, <span class="st">&quot;r2&quot;</span>, <span class="st">&quot;r3&quot;</span>), </a>
+<a class="sourceLine" id="cb599-6" title="6">    <span class="kw">c</span>(<span class="st">&quot;c1&quot;</span>, <span class="st">&quot;c2&quot;</span>, <span class="st">&quot;c3&quot;</span>), </a>
+<a class="sourceLine" id="cb599-7" title="7">    <span class="kw">c</span>(<span class="st">&quot;matrix1&quot;</span>, <span class="st">&quot;matrix2&quot;</span>)</a>
+<a class="sourceLine" id="cb599-8" title="8">  )</a>
+<a class="sourceLine" id="cb599-9" title="9">)</a>
+<a class="sourceLine" id="cb599-10" title="10"><span class="kw">print</span>(miArray02)</a></code></pre></div>
 <pre><code>## , , matrix1
 ## 
 ##    c1 c2 c3
@@ -1453,18 +1463,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="manipuler-un-array" class="section level3">
 <h3><span class="header-section-number">6.5.2</span> Manipuler un <code>array</code></h3>
 <p>La manipulation d’un <code>array</code> se fait de la même façon que pour une <code>matrix</code>. pour accèder aux différents éléments d’un <code>array</code>, il suffit de spécifier la ligne <code>i</code>, la colonne <code>j</code>, et la <code>matrix</code> <code>k</code>.</p>
-<div class="sourceCode" id="cb597"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb597-1" title="1">i &lt;-<span class="st"> </span><span class="dv">2</span></a>
-<a class="sourceLine" id="cb597-2" title="2">j &lt;-<span class="st"> </span><span class="dv">1</span></a>
-<a class="sourceLine" id="cb597-3" title="3">k &lt;-<span class="st"> </span><span class="dv">1</span></a>
-<a class="sourceLine" id="cb597-4" title="4"><span class="kw">print</span>(miArray02[i, j, k])</a></code></pre></div>
+<div class="sourceCode" id="cb601"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb601-1" title="1">i &lt;-<span class="st"> </span><span class="dv">2</span></a>
+<a class="sourceLine" id="cb601-2" title="2">j &lt;-<span class="st"> </span><span class="dv">1</span></a>
+<a class="sourceLine" id="cb601-3" title="3">k &lt;-<span class="st"> </span><span class="dv">1</span></a>
+<a class="sourceLine" id="cb601-4" title="4"><span class="kw">print</span>(miArray02[i, j, k])</a></code></pre></div>
 <pre><code>## [1] 2</code></pre>
-<div class="sourceCode" id="cb599"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb599-1" title="1"><span class="kw">print</span>(miArray02[, j, k])</a></code></pre></div>
+<div class="sourceCode" id="cb603"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb603-1" title="1"><span class="kw">print</span>(miArray02[, j, k])</a></code></pre></div>
 <pre><code>## r1 r2 r3 
 ##  1  2  3</code></pre>
-<div class="sourceCode" id="cb601"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb601-1" title="1"><span class="kw">print</span>(miArray02[i, , k])</a></code></pre></div>
+<div class="sourceCode" id="cb605"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb605-1" title="1"><span class="kw">print</span>(miArray02[i, , k])</a></code></pre></div>
 <pre><code>## c1 c2 c3 
 ##  2  5  8</code></pre>
-<div class="sourceCode" id="cb603"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb603-1" title="1"><span class="kw">print</span>(miArray02[i, j, ])</a></code></pre></div>
+<div class="sourceCode" id="cb607"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb607-1" title="1"><span class="kw">print</span>(miArray02[i, j, ])</a></code></pre></div>
 <pre><code>## matrix1 matrix2 
 ##       2      20</code></pre>
 </div>
