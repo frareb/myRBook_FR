@@ -1153,7 +1153,7 @@ Félicitations, nous avons atteint la fin de ce premier chapitre sur les éléme
 \hypertarget{editeurs-de-texte-et-environnement-de-duxe9veloppement}{%
 \section{Editeurs de texte et environnement de développement}\label{editeurs-de-texte-et-environnement-de-duxe9veloppement}}
 
-Il existe de très nombreux éditeurs de texte, le chapitre précédent a permis d'en introduire quelques uns parmi les plus simples comme le bloc note de Windows. Rapidement les limites de ces éditeurs ont rendu la tâche d'écrire un script fastidieuse. En effet, même en structurant son script avec des commentaires, il reste difficile de se répérer dans celui-ci. C'est là qu'interviennent les éditeurs de texte spécialisés qui vont permettre une écriture et une lecture agréable et simplifiée.
+Il existe de très nombreux éditeurs de texte, le chapitre précédent a permis d'en introduire quelques uns parmi les plus simples comme le \emph{bloc note} de Windows. Rapidement les limites de ces éditeurs ont rendu la tâche d'écrire un script fastidieuse. En effet, même en structurant son script avec des commentaires, il reste difficile de se répérer dans celui-ci. C'est là qu'interviennent les éditeurs de texte spécialisés qui vont permettre une écriture et une lecture agréable et simplifiée.
 L'éditeur de texte pour R certainement le plus répandu est Rstudio, mais il en existe bien d'autres. Faire une liste exhaustive de toutes les solutions disponibles sort du cadre de ce livre, ainsi nous nous focaliserons sur les trois solutions que j'utilise au quotidien que sont \textbf{Notepad++}, \textbf{Rstudio}, et \textbf{Geany}.
 
 \hypertarget{rstudio}{%
@@ -1185,7 +1185,7 @@ Nous pouvons alors commencer l'écriture de notre script avec les commentaires d
 \CommentTok{# ------------------------------------------------------------}
 \CommentTok{# Un script pour choisir son IDE}
 \CommentTok{# créé le 27/06/2018}
-\CommentTok{# modifié le 06/11/2018}
+\CommentTok{# modifié le 17/12/2019}
 \CommentTok{# François Rebaudo}
 \CommentTok{# ------------------------------------------------------------}
 
@@ -1196,11 +1196,7 @@ Nous pouvons alors commencer l'écriture de notre script avec les commentaires d
 \end{Highlighting}
 \end{Shaded}
 
-\begin{verbatim}
-## [1] 78.53982
-\end{verbatim}
-
-Pour exécuter notre script, il suffit de sélectionner les lignes que nous souhaitons exécuter et d'utiliser la combinaison de touches \texttt{CTRL\ +\ ENTER}. Le résultat apparaît dans la console (Figure \ref{fig:screenCapRStudio02}).
+Pour exécuter notre script, il suffit de sélectionner les lignes que nous souhaitons exécuter et d'utiliser la combinaison de touches \texttt{CTRL\ +\ ENTER}. R va transformer notre code en langage compréhensible pour la machine (interprétation), puis l'exécuter. Le résultat de l'exécution est renvoyé sous forme lisible dans la console (Figure \ref{fig:screenCapRStudio02}).
 
 \begin{figure}
 \includegraphics[width=10in]{myFigures/screencap_RStudio_02} \caption{Capture d'écran de RStudio sous Windows : exécuter un script avec CTRL + ENTER.\label{fig:screenCapRStudio02}}\label{fig:screenCapRStudio02}
@@ -1213,7 +1209,7 @@ Nous pouvons également noter que dans la partie du code chaque ligne comporte u
 \includegraphics[width=10in]{myFigures/screencap_RStudio_03} \caption{Capture d'écran de RStudio sous Windows : changer les paramètres de coloration syntaxique.\label{fig:screenCapRStudio03}}\label{fig:screenCapRStudio03}
 \end{figure}
 
-Nous savons comment créer un nouveau script, le sauvegarder, exécuter son contenu, et changer l'apparence de RStudio. Nous verrons les nombreux autres avantages de RStudio tout au long de ce livre car c'est l'environnement de développement qui sera utilisé. Nous serons néanmois particulièrement vigilents à ce que tous les scripts développés tout au long de ce livre s'exécute de la même façon quel que soit l'environnement de développement utilisé.
+Nous savons comment créer un nouveau script, le sauvegarder, exécuter son contenu, et changer l'apparence de RStudio. Nous verrons les nombreux autres avantages de RStudio tout au long de ce livre car c'est l'environnement de développement qui sera utilisé. Nous serons néanmoins particulièrement vigilants à ce que tous les scripts développés dans ce livre s'exécutent de la même façon quel que soit l'environnement de développement utilisé.
 
 \hypertarget{notepad-avec-npp2r}{%
 \section{Notepad++ avec Npp2R}\label{notepad-avec-npp2r}}
@@ -1225,44 +1221,44 @@ Nous savons comment créer un nouveau script, le sauvegarder, exécuter son cont
 \hypertarget{installer-notepad-pour-windows-uniquement}{%
 \subsection{Installer Notepad++ (pour Windows uniquement)}\label{installer-notepad-pour-windows-uniquement}}
 
-Le programme pour installer Notepad++ se trouve dans l'onglet \emph{Downloads} (\url{https://notepad-plus-plus.org/download/}). Vous pouvez choisir entre la version 32-bit et 64-bit (64-bit si vous ne savez pas quelle version choisir). Notepad++ seul est suffisant pour écrire un script, mais il est encore plus puissant avec \emph{Notepad to R} (\emph{Npp2R}) qui permet d'exécuter automatiquement nos script dans une console en local sur notre ordinateur ou à distance sur un serveur.
+Le programme pour installer \emph{Notepad++} se trouve dans l'onglet \emph{Downloads} (\url{https://notepad-plus-plus.org/download/}). Vous pouvez choisir entre la version 32-bit et 64-bit (64-bit si vous ne savez pas quelle version choisir). \emph{Notepad++} seul est suffisant pour écrire un script, mais il est encore plus puissant avec \emph{Notepad to R} (\emph{Npp2R}) qui permet d'exécuter automatiquement nos script dans une console en local sur notre ordinateur ou à distance sur un serveur.
 
 \hypertarget{installer-npp2r}{%
 \subsection{Installer Npp2R}\label{installer-npp2r}}
 
-Le programme pour installer Npp2R est hébergé sur le site de Sourceforge (\url{https://sourceforge.net/projects/npptor/}). Npp2R doit être installé après Notepad++.
+Le programme pour installer \emph{Npp2R} est hébergé sur le site de Sourceforge (\url{https://sourceforge.net/projects/npptor/}). \emph{Npp2R} doit être installé après \emph{R} et après \emph{Notepad++}.
 
 \hypertarget{un-script-avec-notepad}{%
 \subsection{Un script avec Notepad++}\label{un-script-avec-notepad}}
 
-Lors de la première ouverture Notepad++ affiche un fichier vide \emph{new 1} (Figura \ref{fig:screenCapNpp01}).
+Lors de la première ouverture \emph{Notepad++} affiche un fichier vide \emph{new 1} (Figure \ref{fig:screenCapNpp01}).
 
 \begin{figure}
 \includegraphics[width=10in]{myFigures/screencap_Npp_01} \caption{Capture d'écran de Notepad++ sous Windows : fenêtre par défaut.\label{fig:screenCapNpp01}}\label{fig:screenCapNpp01}
 \end{figure}
 
-Puisque nous avons déjà créer un script pour le tester avec RStudio, nous allons l'ouvrir à nouveau avec Notepad++. Dans \emph{Fichier}, selectionnons \emph{Ouvrir\ldots{}} puis choisir le script \emph{selecEnvDev.R} créé précédemment. Une fois le script ouvert, allons dans \emph{Langage}, puis \emph{R}, et encore une fois \emph{R}. La coloration syntaxique apparaît (Figura \ref{fig:screenCapNpp02}).
+Puisque nous avons déjà créé un script pour le tester avec RStudio, nous allons l'ouvrir à présent avec \emph{Notepad++}. Dans \emph{Fichier}, sélectionnons \emph{Ouvrir\ldots{}} puis choisir le script \emph{selecEnvDev.R} créé précédemment. Une fois le script ouvert, allons dans \emph{Langage}, puis \emph{R}, et encore une fois \emph{R}. La coloration syntaxique apparaît (Figure \ref{fig:screenCapNpp02}).
 
 \begin{figure}
-\includegraphics[width=10in]{myFigures/screencap_Npp_02} \caption{Capture d'écran de Notepad++ sous Windows : exécuter un script avec F8.\label{fig:screenCapNpp02}}\label{fig:screenCapNpp02}
+\includegraphics[width=9.21in]{myFigures/screencap_Npp_02} \caption{Capture d'écran de Notepad++ sous Windows : exécuter un script avec F8.\label{fig:screenCapNpp02}}\label{fig:screenCapNpp02}
 \end{figure}
 
-L'execution du script ne peut se faire que si Npp2R est en cours d'exécution. Pour se faire il est nécessaire de lancer le programme Npp2R depuis l'invite de Windows. Un icône devrait apparaître en bas de votre écran. L'exécution automatique du code depuis Notepad++ se fait en sélectionnant le code à exécuter puis en utilisant la commande \texttt{F8}. Si la commande ne fonctionne pas et que vous venez d'installer Notepad++, il est peut être nécessaire de redémarrer votre ordinateur. Si la commande fonctionne, une nouvelle fenêtre va s'ouvrir avec une consol exécutant les lignes souhaitées (Figura \ref{fig:screenCapNpp03}.
+L'exécution du script ne peut se faire que si \emph{Npp2R} est en cours d'exécution. Pour se faire il est nécessaire de lancer le programme \emph{Npp2R} depuis l'invite de Windows. Un icône devrait apparaître en bas de votre écran. L'exécution automatique du code depuis Notepad++ se fait en sélectionnant le code à exécuter puis en utilisant la commande \texttt{F8}. Si la commande ne fonctionne pas et que vous venez d'installer Notepad++, il est peut être nécessaire de redémarrer votre ordinateur. Si la commande fonctionne, une nouvelle fenêtre va s'ouvrir aavec une console renvoyant le résultat de l'exécution des lignes souhaitées (Figure \ref{fig:screenCapNpp03}.
 
 \begin{figure}
-\includegraphics[width=14.83in]{myFigures/screencap_Npp_03} \caption{Capture d'écran de Notepad++ sous Windows : la console avec F8.\label{fig:screenCapNpp03}}\label{fig:screenCapNpp03}
+\includegraphics[width=13.65in]{myFigures/screencap_Npp_03} \caption{Capture d'écran de Notepad++ sous Windows : la console avec F8.\label{fig:screenCapNpp03}}\label{fig:screenCapNpp03}
 \end{figure}
 
-Comme pour RStudio, la coloration syntaxique peut être modifiée depuis le menu \emph{Paramètres}, et un nouveau thème peut être sélectionné (par exemple \emph{Solarized} dans la Figura \ref{fig:screenCapNpp04})
+Comme pour \emph{RStudio}, la coloration syntaxique peut être modifiée depuis le menu \emph{Paramètres}, et un nouveau thème peut être sélectionné (par exemple \emph{Solarized} dans la Figure \ref{fig:screenCapNpp04})
 
 \begin{figure}
-\includegraphics[width=10in]{myFigures/screencap_Npp_04} \caption{Capture d'écran de Notepad++ sous Windows : coloration syntaxique avec le thème Solarized.\label{fig:screenCapNpp04}}\label{fig:screenCapNpp04}
+\includegraphics[width=9.19in]{myFigures/screencap_Npp_04} \caption{Capture d'écran de Notepad++ sous Windows : coloration syntaxique avec le thème Solarized.\label{fig:screenCapNpp04}}\label{fig:screenCapNpp04}
 \end{figure}
 
-Par rapport aux autres éditeurs de texte, Notepad++ a l'avantage d'être très léger et offre une vaste gamme d'options pour personnaliser l'écriture du code.
+Par rapport aux autres éditeurs de texte, \emph{Notepad++} a l'avantage d'être très léger et offre une vaste gamme d'options pour personnaliser l'écriture du code.
 
-\hypertarget{geany-pour-linux-mac-osx-et-windows}{%
-\section{Geany (pour Linux, Mac OSX et Windows)}\label{geany-pour-linux-mac-osx-et-windows}}
+\hypertarget{geany}{%
+\section{Geany}\label{geany}}
 
 \begin{figure}
 \includegraphics[width=7.78in]{myLogos/Geany} \caption{Logo Geany\label{fig:logoGeany}}\label{fig:logoGeany}
@@ -1271,28 +1267,28 @@ Par rapport aux autres éditeurs de texte, Notepad++ a l'avantage d'être très 
 \hypertarget{installer-geany}{%
 \subsection{Installer Geany}\label{installer-geany}}
 
-Le programme pour l'installation de Geany se trouve sous l'onglet \emph{Downloads} dans le menu de gauche \emph{Releases} de la page web (\url{https://www.geany.org/}). Ensuite il suffit de télécharger l'exécutable pour Windows ou le dmg pour Mac OSX. Les utilisateurs de Linux préfèrerons un \texttt{sudo\ apt-get\ install\ geany}.
+Le programme pour l'installation de \emph{Geany} se trouve sous l'onglet \emph{Downloads} dans le menu de gauche \emph{Releases} de la page web (\url{https://www.geany.org/}). Ensuite il suffit de télécharger l'exécutable pour Windows ou le dmg pour Mac OSX. Les utilisateurs de Linux préfèreront un \texttt{sudo\ apt-get\ install\ geany} (\emph{Geany} est installé par défault sur la plupart des distributions de Linux).
 
 \hypertarget{un-script-avec-geany}{%
 \subsection{Un script avec Geany}\label{un-script-avec-geany}}
 
-Lors de la première ouverture, comme pour RStudio et Notepad++, un fichier vide est créé (Figure \ref{fig:screenCapGeany01}).
+Lors de la première ouverture, comme pour \emph{RStudio} et \emph{Notepad++}, un fichier vide est créé (Figure \ref{fig:screenCapGeany01}).
 
 \begin{figure}
-\includegraphics[width=10in]{myFigures/screencap_Geany_01} \caption{Capture d'écran de Geany sous Windows : fenêtre par défaut.\label{fig:screenCapGeany01}}\label{fig:screenCapGeany01}
+\includegraphics[width=8.14in]{myFigures/screencap_Geany_01} \caption{Capture d'écran de Geany sous Windows : fenêtre par défaut.\label{fig:screenCapGeany01}}\label{fig:screenCapGeany01}
 \end{figure}
 
 Nous pouvons ouvrir notre script avec \emph{Fichier}, \emph{Ouvrir} (Figure \ref{fig:screenCapGeany02}).
 
 \begin{figure}
-\includegraphics[width=10in]{myFigures/screencap_Geany_02} \caption{Capture d'écran de Geany sous Windows : ouvrir un script.\label{fig:screenCapGeany02}}\label{fig:screenCapGeany02}
+\includegraphics[width=8.14in]{myFigures/screencap_Geany_02} \caption{Capture d'écran de Geany sous Windows : ouvrir un script.\label{fig:screenCapGeany02}}\label{fig:screenCapGeany02}
 \end{figure}
 
-Pour exécuter notre script, la version de Geany pour Windows ne dispose pas d'un terminal intégré, ce qui rend son utilisation limitée sous ce système d'exploitation. L'exécution d'un script peut se faire en ouvrant R dans une fenêtre à part et en copiant et collant les lignes à exécuter. Sous Linux et Mac OSX, il suffit d'ouvrir R dans le terminal situé dans la partie basse de la fenêtre de Geany avec la commande \texttt{R}. Nous pouvons ensuite paramétré Geany pour qu'une combinaison de touches permette d'exécuter le code selectionné (par exemple \texttt{CTRL\ +\ R}). Pour cela il faut tout d'abord autoriser l'envoi de sélection vers le terminal (\texttt{send\_selection\_unsafe=true}) dans le fichier \texttt{geany.conf} puis choisir la commande d'envoi vers le terminal (dans \emph{Editar}, \emph{Preferencias}, \emph{Combinaciones}).
-Pour changer le thème de Geany, il existe une collection de thèmes accessibles sur GitHub (\url{https://github.com/geany/geany-themes/}). Le thème peut ensuite être changé via le menu \emph{Ver}, \emph{Cambiar esquema de color\ldots{}} (un exemple avec le thème \emph{Solarized}, Figure \ref{fig:screenCapGeany03}).
+Pour exécuter notre script, la version de \emph{Geany} pour Windows ne dispose pas d'un terminal intégré, ce qui rend son utilisation limitée sous ce système d'exploitation. L'exécution d'un script peut se faire en ouvrant R dans une fenêtre à part et en copiant et collant les lignes à exécuter. Sous Linux et Mac OSX, il suffit d'ouvrir R dans le terminal situé dans la partie basse de la fenêtre de \emph{Geany} avec la commande \texttt{R}. Nous pouvons ensuite paramétrer \emph{Geany} pour qu'une combinaison de touches permette d'exécuter le code sélectionné (par exemple \texttt{CTRL\ +\ R}). Pour cela il faut tout d'abord autoriser l'envoi de sélection vers le terminal (\texttt{send\_selection\_unsafe=true}) dans le fichier \texttt{geany.conf} puis choisir la commande d'envoi vers le terminal (dans \emph{Edit}, \emph{Preferences}, \emph{Combinations}).
+Pour changer le thème de \emph{Geany}, il existe une collection de thèmes accessibles sur GitHub (\url{https://github.com/geany/geany-themes/}). Le thème peut ensuite être changé via le menu \emph{View}, \emph{Change color theme\ldots{}} (un exemple avec le thème \emph{Solarized}, Figure \ref{fig:screenCapGeany03}).
 
 \begin{figure}
-\includegraphics[width=10in]{myFigures/screencap_Geany_03} \caption{Capture d'écran de Geany sous Windows : changer les paramètres de coloration syntaxique.\label{fig:screenCapGeany03}}\label{fig:screenCapGeany03}
+\includegraphics[width=8.14in]{myFigures/screencap_Geany_03} \caption{Capture d'écran de Geany sous Windows : changer les paramètres de coloration syntaxique.\label{fig:screenCapGeany03}}\label{fig:screenCapGeany03}
 \end{figure}
 
 \hypertarget{autres-solutions}{%
@@ -1303,22 +1299,22 @@ Il existe beaucoup d'autres solutions, certaines spécialisées pour R comme \te
 \hypertarget{conclusion-1}{%
 \section{Conclusion}\label{conclusion-1}}
 
-Felicitations, nous sommes arrivés au bout de ce chapitre sur environnements de développement pour utiliser R. Nous savons désormais :
+Félicitations, nous sommes arrivés au bout de ce chapitre sur environnements de développement pour utiliser R. Nous savons désormais :
 
 \begin{itemize}
 \tightlist
 \item
-  Installer RStudio, Geany ou Notepad++
+  Installer \emph{RStudio}, \emph{Geany} ou \emph{Notepad++}
 \item
   Reconnaître et choisir notre environnement préféré
 \end{itemize}
 
-A partir d'ici nous allons pouvoir nous concentrer sur le language de programmation R dans un environnement facilitant le travail de lecture et d'écriture du code. C'est un grand pas en avant pour maîtriser R.
+A partir de maintenant nous allons pouvoir nous concentrer sur le langage de programmation R dans un environnement facilitant le travail de lecture et d'écriture du code. C'est un grand pas en avant pour maîtriser R.
 
 \hypertarget{dataType1}{%
 \chapter{Les types de données}\label{dataType1}}
 
-Nous avons vu précédement comment créer un objet. Un objet est comme une boîte dans laquelle nous allons \emph{stocker} de l'information. Jusqu'à présent nous n'avons stocké que des nombres mais dans ce chapitre nous allons voir qu'il est possible de stocker d'autres informations et nous allons nous attarder sur les types les plus courants. Dans ce chapitre nous allons utiliser des \textbf{fonctions} sur lesquelles nous reviendrons plus tard.
+Nous avons vu précédemment comment créer un objet. Un objet est comme une boîte dans laquelle nous allons \emph{stocker} de l'information. Jusqu'à présent nous n'avons stocké que des nombres mais dans ce chapitre nous allons voir qu'il est possible de stocker d'autres informations et nous allons nous attarder sur les types les plus courants. Dans ce chapitre nous allons utiliser des \textbf{fonctions} sur lesquelles nous reviendrons plus tard.
 
 \hypertarget{le-type-numeric}{%
 \section{\texorpdfstring{Le type \texttt{numeric}}{Le type numeric}}\label{le-type-numeric}}
@@ -6972,7 +6968,7 @@ Il n'y a pas de solution optimale dans l'absolu, tout dépend des objectifs rech
 
 \begin{verbatim}
 ##    user  system elapsed 
-##    0.27    0.00    0.27
+##    0.24    0.00    0.24
 \end{verbatim}
 
 \begin{Shaded}
@@ -6983,7 +6979,7 @@ Il n'y a pas de solution optimale dans l'absolu, tout dépend des objectifs rech
 
 \begin{verbatim}
 ##    user  system elapsed 
-##    0.22    0.00    0.22
+##    0.24    0.00    0.24
 \end{verbatim}
 
 Une fonction peut avoir des valeurs par défaut pour ses arguments. C'est le cas de la plupart des fonctions existantes. Par défaut, notre fonction va désormais compter le nombre de voyelles et de consonnes dans le mot \texttt{qwerty} (les parenthèses restent nécessaires même en l'absence d'arguments).
@@ -7757,12 +7753,12 @@ En programmation, lorsque nous sommes amenés à répéter plusieurs fois la mê
 
 \begin{verbatim}
 ##      date01    date02
-## 1  9.606242 10.010480
-## 2  9.002659 10.258683
-## 3  9.856251  9.645468
-## 4 10.060638 10.005563
-## 5 10.234645 10.666248
-## 6 10.955225 11.220939
+## 1  9.223461 11.203458
+## 2 11.895810 10.418086
+## 3  8.092765  9.632512
+## 4 10.697976  9.097868
+## 5  9.126839  9.170309
+## 6 10.563067 11.303174
 \end{verbatim}
 
 Nous voudrions quantifier la différence entre la première et la deuxième date, puis mettre un indicateur pour savoir si cette différence est petite ou grande, par exemple avec un seuil arbitraire de 3. Donc pour chaque ligne nous pourrions faire :
@@ -7884,26 +7880,26 @@ Revenons à notre cas. Nous allons itérer sur le nombre de lignes de notre \tex
 
 \begin{verbatim}
 ##       date01    date02        dif isDifBig
-## 1   9.606242 10.010480 0.40423822    small
-## 2   9.002659 10.258683 1.25602329    small
-## 3   9.856251  9.645468 0.21078224    small
-## 4  10.060638 10.005563 0.05507473    small
-## 5  10.234645 10.666248 0.43160297    small
-## 6  10.955225 11.220939 0.26571389    small
-## 7   9.466846 10.045118 0.57827175    small
-## 8  10.195179  9.671312 0.52386744    small
-## 9   9.909513  9.848512 0.06100067    small
-## 10  8.018681 10.181673 2.16299153    small
-## 11 10.431389  8.220698 2.21069181    small
-## 12  8.851107  9.332239 0.48113179    small
-## 13  9.940957  8.809511 1.13144567    small
-## 14  8.626049  8.883539 0.25749051    small
-## 15  9.390464 10.231969 0.84150496    small
-## 16  9.119394 10.864468 1.74507383    small
-## 17  9.062662 10.437765 1.37510257    small
-## 18  8.613076 10.149462 1.53638593    small
-## 19  9.451601 10.682243 1.23064185    small
-## 20 10.431773  8.648765 1.78300826    small
+## 1   9.223461 11.203458 1.97999660    small
+## 2  11.895810 10.418086 1.47772389    small
+## 3   8.092765  9.632512 1.53974728    small
+## 4  10.697976  9.097868 1.60010806    small
+## 5   9.126839  9.170309 0.04346987    small
+## 6  10.563067 11.303174 0.74010729    small
+## 7   8.510305  9.959362 1.44905652    small
+## 8   9.908407 10.484518 0.57611168    small
+## 9  10.422877 10.557509 0.13463184    small
+## 10  9.730248 11.411875 1.68162761    small
+## 11  9.595257  9.740378 0.14512146    small
+## 12 11.885045  8.066840 3.81820480      big
+## 13 10.321228  9.617597 0.70363135    small
+## 14 11.461716 10.346207 1.11550880    small
+## 15 10.389861 10.233702 0.15615908    small
+## 16 10.096965 10.488186 0.39122112    small
+## 17 11.457296 10.366886 1.09040942    small
+## 18 11.392391 10.353264 1.03912664    small
+## 19  9.784057 12.033865 2.24980735    small
+## 20 10.193672 11.352192 1.15851967    small
 \end{verbatim}
 
 En pratique ce n'est pas la meilleure façon de réaliser cet exercice car il s'agit ici de simples calculs sur des vecteurs contenus dans une \texttt{data.frame}. R est particulièrement puissant pour effectuer des opérations sur des vecteurs. Lorsque cela est possible il faut donc toujours privilégier les opérations sur les vecteurs. Ici notre code devient :
@@ -7919,26 +7915,26 @@ En pratique ce n'est pas la meilleure façon de réaliser cet exercice car il s'
 
 \begin{verbatim}
 ##       date01    date02        dif isDifBig
-## 1   9.606242 10.010480 0.40423822    small
-## 2   9.002659 10.258683 1.25602329    small
-## 3   9.856251  9.645468 0.21078224    small
-## 4  10.060638 10.005563 0.05507473    small
-## 5  10.234645 10.666248 0.43160297    small
-## 6  10.955225 11.220939 0.26571389    small
-## 7   9.466846 10.045118 0.57827175    small
-## 8  10.195179  9.671312 0.52386744    small
-## 9   9.909513  9.848512 0.06100067    small
-## 10  8.018681 10.181673 2.16299153    small
-## 11 10.431389  8.220698 2.21069181    small
-## 12  8.851107  9.332239 0.48113179    small
-## 13  9.940957  8.809511 1.13144567    small
-## 14  8.626049  8.883539 0.25749051    small
-## 15  9.390464 10.231969 0.84150496    small
-## 16  9.119394 10.864468 1.74507383    small
-## 17  9.062662 10.437765 1.37510257    small
-## 18  8.613076 10.149462 1.53638593    small
-## 19  9.451601 10.682243 1.23064185    small
-## 20 10.431773  8.648765 1.78300826    small
+## 1   9.223461 11.203458 1.97999660    small
+## 2  11.895810 10.418086 1.47772389    small
+## 3   8.092765  9.632512 1.53974728    small
+## 4  10.697976  9.097868 1.60010806    small
+## 5   9.126839  9.170309 0.04346987    small
+## 6  10.563067 11.303174 0.74010729    small
+## 7   8.510305  9.959362 1.44905652    small
+## 8   9.908407 10.484518 0.57611168    small
+## 9  10.422877 10.557509 0.13463184    small
+## 10  9.730248 11.411875 1.68162761    small
+## 11  9.595257  9.740378 0.14512146    small
+## 12 11.885045  8.066840 3.81820480      big
+## 13 10.321228  9.617597 0.70363135    small
+## 14 11.461716 10.346207 1.11550880    small
+## 15 10.389861 10.233702 0.15615908    small
+## 16 10.096965 10.488186 0.39122112    small
+## 17 11.457296 10.366886 1.09040942    small
+## 18 11.392391 10.353264 1.03912664    small
+## 19  9.784057 12.033865 2.24980735    small
+## 20 10.193672 11.352192 1.15851967    small
 \end{verbatim}
 
 La plupart des exemples que l'on peut trouver sur Internet à propos de la boucle \texttt{for()} peuvent être remplacés par des opérations sur les vecteurs. Voici quelques exemples adaptés de plusieurs sources :
@@ -7959,7 +7955,7 @@ La plupart des exemples que l'on peut trouver sur Internet à propos de la boucl
 \end{Shaded}
 
 \begin{verbatim}
-## [1] 12
+## [1] 9
 \end{verbatim}
 
 \begin{Shaded}
@@ -7970,7 +7966,7 @@ La plupart des exemples que l'on peut trouver sur Internet à propos de la boucl
 \end{Shaded}
 
 \begin{verbatim}
-## [1] 12
+## [1] 9
 \end{verbatim}
 
 \begin{Shaded}
@@ -8016,7 +8012,7 @@ La plupart des exemples que l'on peut trouver sur Internet à propos de la boucl
 \end{Shaded}
 
 \begin{verbatim}
-## [1] 3.489
+## [1] 3.473
 \end{verbatim}
 
 \begin{Shaded}
@@ -8027,7 +8023,7 @@ La plupart des exemples que l'on peut trouver sur Internet à propos de la boucl
 \end{Shaded}
 
 \begin{verbatim}
-## [1] 3.555
+## [1] 3.494
 \end{verbatim}
 
 C'est un bon exercice de parcourir les nombreux exemples disponibles sur Internet sur la boucle \texttt{for()} et de tenter de les transformer en opérations vectorielles. Cela nous permet d'acquérir les bons réflexes de programmation avec R. La boucle \texttt{for()} reste très utile pour par exemple lire plusieurs fichiers et traiter l'information qu'ils contiennent de la même façon, faire des graphiques, ou encore lorsque les opérations vectorielles deveinnent fastidieuses. Imaginons une matrice de 10 colonnes et 100 lignes. Nous voulons la somme de chaque ligne (nous verrons plus loin comment faire avec la fonction \texttt{apply()}).
@@ -8044,12 +8040,12 @@ C'est un bon exercice de parcourir les nombreux exemples disponibles sur Interne
 \end{Shaded}
 
 \begin{verbatim}
-##   [1] 432 312 317 525 448 427 483 646 443 428 410 430 470 456 536 427 476 557
-##  [19] 342 559 536 598 521 534 538 590 433 684 606 587 504 394 507 520 508 535
-##  [37] 664 545 538 345 592 557 627 428 476 388 556 604 578 409 429 620 558 714
-##  [55] 622 428 430 522 451 499 493 494 650 470 537 718 505 549 618 407 515 505
-##  [73] 657 479 436 678 342 477 452 416 536 533 411 567 512 417 446 538 511 550
-##  [91] 550 468 509 601 619 466 578 535 602 587
+##   [1] 700 610 516 517 571 515 334 466 482 441 465 619 544 466 496 315 532 380
+##  [19] 559 436 714 407 457 477 588 673 562 538 780 649 519 492 639 486 346 421
+##  [37] 504 645 450 409 543 586 358 505 523 505 500 828 496 444 673 495 584 438
+##  [55] 629 422 439 509 476 646 547 562 582 551 605 510 467 499 686 412 438 597
+##  [73] 668 499 478 468 461 412 532 575 553 481 461 603 532 265 483 492 424 412
+##  [91] 467 603 586 578 449 527 636 521 563 482
 \end{verbatim}
 
 \begin{Shaded}
@@ -8064,12 +8060,12 @@ C'est un bon exercice de parcourir les nombreux exemples disponibles sur Interne
 \end{Shaded}
 
 \begin{verbatim}
-##   [1] 432 312 317 525 448 427 483 646 443 428 410 430 470 456 536 427 476 557
-##  [19] 342 559 536 598 521 534 538 590 433 684 606 587 504 394 507 520 508 535
-##  [37] 664 545 538 345 592 557 627 428 476 388 556 604 578 409 429 620 558 714
-##  [55] 622 428 430 522 451 499 493 494 650 470 537 718 505 549 618 407 515 505
-##  [73] 657 479 436 678 342 477 452 416 536 533 411 567 512 417 446 538 511 550
-##  [91] 550 468 509 601 619 466 578 535 602 587
+##   [1] 700 610 516 517 571 515 334 466 482 441 465 619 544 466 496 315 532 380
+##  [19] 559 436 714 407 457 477 588 673 562 538 780 649 519 492 639 486 346 421
+##  [37] 504 645 450 409 543 586 358 505 523 505 500 828 496 444 673 495 584 438
+##  [55] 629 422 439 509 476 646 547 562 582 551 605 510 467 499 686 412 438 597
+##  [73] 668 499 478 468 461 412 532 575 553 481 461 603 532 265 483 492 424 412
+##  [91] 467 603 586 578 449 527 636 521 563 482
 \end{verbatim}
 
 En conclusion, il est recommandé de ne pas utiliser la boucle \texttt{for()} avec R chaque fois que cela est possible, et nous verrons dans ce chapitre des alternatives commes les boucles de la famille \texttt{apply()}.
@@ -8130,7 +8126,7 @@ La boucle \texttt{while()} est très utile pour créer des scripts qui vont effe
 
 \begin{verbatim}
 ## [1] "Number found !"
-## [1] "And I have plenty of time left: 0.17 sec"
+## [1] "And I have plenty of time left: 1.29 sec"
 \end{verbatim}
 
 Dans ce script nous générons un nombre aléatoire à deviner avec la fonction \texttt{sample()}, et chaque essai avec la même fonction \texttt{sample()}. Ensuite nous utilisons la fonction \texttt{Sys.time()} (avec un S majuscule à \texttt{Sys}), pour connaître l'heure de début de la boucle. Tant que la différence entre chaque itération de la boucle et l'heure de démarrage est inférieur à 2 secondes, la boucle \texttt{while()} va vérifier si le bon nombre a été deviner dans le test logique avec \texttt{if()} puis si c'est le cas nous informer que le nombre a été trouvé, nous dire le temps restant avant les deux secondes, puis terminer la boucle avec le mot clef \texttt{break} sur lequel nous reviendrons. En bref, \texttt{break} permet de sortir d'une boucle. Si le nombre n'a pas été deviné, la boucle fait un autre essai avec la fonction \texttt{sample()}.
@@ -8189,11 +8185,10 @@ Si nous reprenons l'exemple précédent, nous pouvons utiliser une boucle \textt
 \end{Shaded}
 
 \begin{verbatim}
-## [1] 0.528
-## [1] 1.932
-## [1] 1.123
-## [1] 0.064
-## [1] 0.241
+## [1] 0.094
+## [1] 0.004
+## [1] 0.378
+## [1] 0.689
 \end{verbatim}
 
 Comme la boucle \texttt{while()}, la boucle \texttt{repeat()} reste peu utilisée avec R.
@@ -8298,12 +8293,12 @@ La fonction \texttt{apply()} permet d'appliquer une fonction à tous les éléme
 \end{Shaded}
 
 \begin{verbatim}
-##   [1] 591 582 612 384 601 580 581 624 523 577 506 512 463 427 652 540 528 660
-##  [19] 648 290 609 565 543 500 472 555 654 434 559 585 572 582 638 420 415 561
-##  [37] 433 459 581 452 455 404 637 569 590 395 406 440 649 506 504 600 463 455
-##  [55] 382 529 444 451 569 530 471 536 558 267 493 481 437 480 492 437 473 549
-##  [73] 601 524 459 531 511 575 486 329 711 447 578 547 734 407 435 556 662 496
-##  [91] 511 636 543 471 535 550 569 375 590 687
+##   [1] 524 491 435 486 332 312 451 399 465 484 592 611 557 524 513 547 603 418
+##  [19] 474 445 642 415 635 567 386 354 482 434 518 496 479 473 578 390 507 539
+##  [37] 581 543 506 524 360 407 469 453 571 632 539 474 615 419 549 450 442 458
+##  [55] 479 510 486 414 669 452 509 468 527 523 525 562 429 534 513 404 355 546
+##  [73] 385 541 607 596 605 542 491 432 373 489 476 356 588 441 448 408 475 608
+##  [91] 619 497 641 452 489 592 473 418 590 606
 \end{verbatim}
 
 Si nous souhaitons connaître la médiane de chaque colonne, l'expression devient :
@@ -8315,7 +8310,7 @@ Si nous souhaitons connaître la médiane de chaque colonne, l'expression devien
 \end{Shaded}
 
 \begin{verbatim}
-##  [1] 58.0 50.5 48.0 49.5 49.5 55.0 59.5 55.5 51.0 47.5
+##  [1] 52.0 48.0 47.0 46.0 45.5 51.5 57.5 47.5 49.0 44.5
 \end{verbatim}
 
 L'argument \texttt{X} correspond à l'objet sur lequel la boucle \texttt{apply} va itérer. L'argument \texttt{MARGIN} correspond à la dimension à prendre en compte (1 pour les lignes, et 2 pour les colonnes). L'argument \texttt{FUN} correspond à la fonction à appliquer. Sur un objet de type \texttt{array}, l'argument \texttt{MARGIN} peut prendre autant de valeurs que de dimensions. Dans cet exemple \texttt{MARGIN\ =\ 1} correspond à la moyenne de chaque ligne - dimension 1 - (toutes dimensions confondues), \texttt{MARGIN\ =\ 2} correspond à la moyenne de chaque colonne - dimension 2 - (toutes dimensions confondues), et \texttt{MARGIN\ =\ 3} correspond à la moyenne de chaque dimension 3. Ci-dessous chaque calcul est réalisé de deux manières différentes pour en expliciter le fonctionnement.
@@ -8328,7 +8323,7 @@ L'argument \texttt{X} correspond à l'objet sur lequel la boucle \texttt{apply} 
 \end{Shaded}
 
 \begin{verbatim}
-##  [1] 53.27 48.81 50.44 50.13 50.86 52.86 57.11 51.03 55.30 52.08
+##  [1] 52.49 53.08 51.24 50.31 48.48 50.63 51.98 46.56 51.61 46.46
 \end{verbatim}
 
 \begin{Shaded}
@@ -8340,7 +8335,7 @@ L'argument \texttt{X} correspond à l'objet sur lequel la boucle \texttt{apply} 
 \end{Shaded}
 
 \begin{verbatim}
-##  [1] 53.27 48.81 50.44 50.13 50.86 52.86 57.11 51.03 55.30 52.08
+##  [1] 52.49 53.08 51.24 50.31 48.48 50.63 51.98 46.56 51.61 46.46
 \end{verbatim}
 
 \begin{Shaded}
@@ -8350,8 +8345,8 @@ L'argument \texttt{X} correspond à l'objet sur lequel la boucle \texttt{apply} 
 \end{Shaded}
 
 \begin{verbatim}
-##  [1] 57.48 51.98 61.52 54.06 53.32 49.26 56.40 50.64 57.02 55.20 52.40 45.28
-## [13] 48.36 47.72 45.96 56.08 54.94 50.34 48.42 47.40
+##  [1] 49.88 50.62 48.20 57.46 47.00 50.46 55.20 55.20 48.36 54.60 46.60 48.64
+## [13] 46.50 43.46 45.36 55.58 52.08 55.40 47.98 47.10
 \end{verbatim}
 
 \begin{Shaded}
@@ -8363,8 +8358,8 @@ L'argument \texttt{X} correspond à l'objet sur lequel la boucle \texttt{apply} 
 \end{Shaded}
 
 \begin{verbatim}
-##  [1] 57.48 51.98 61.52 54.06 53.32 49.26 56.40 50.64 57.02 55.20 52.40 45.28
-## [13] 48.36 47.72 45.96 56.08 54.94 50.34 48.42 47.40
+##  [1] 49.88 50.62 48.20 57.46 47.00 50.46 55.20 55.20 48.36 54.60 46.60 48.64
+## [13] 46.50 43.46 45.36 55.58 52.08 55.40 47.98 47.10
 \end{verbatim}
 
 \begin{Shaded}
@@ -8374,7 +8369,7 @@ L'argument \texttt{X} correspond à l'objet sur lequel la boucle \texttt{apply} 
 \end{Shaded}
 
 \begin{verbatim}
-## [1] 51.725 53.750 49.800 52.560 53.110
+## [1] 49.520 49.860 53.845 49.460 48.735
 \end{verbatim}
 
 \begin{Shaded}
@@ -8385,7 +8380,7 @@ L'argument \texttt{X} correspond à l'objet sur lequel la boucle \texttt{apply} 
 \end{Shaded}
 
 \begin{verbatim}
-## [1] 51.725 53.750 49.800 52.560 53.110
+## [1] 49.520 49.860 53.845 49.460 48.735
 \end{verbatim}
 
 Nous pouvons aussi calculer la moyenne pour chaque valeur de ligne et de colonne (la fonction itère alors sur la dimension 3) :
@@ -8398,27 +8393,27 @@ Nous pouvons aussi calculer la moyenne pour chaque valeur de ligne et de colonne
 
 \begin{verbatim}
 ##       [,1] [,2] [,3] [,4] [,5] [,6] [,7] [,8] [,9] [,10] [,11] [,12] [,13]
-##  [1,] 66.2 28.6 68.6 66.0 45.8 48.0 54.0 46.8 65.8  43.4  43.6  73.8  56.0
-##  [2,] 64.8 62.4 43.0 68.8 43.2 31.4 57.2 35.2 44.2  47.2  68.2  30.6  54.8
-##  [3,] 58.4 55.8 49.0 49.0 49.2 44.8 58.6 42.4 57.2  59.0  51.2  47.4  40.8
-##  [4,] 73.8 48.4 64.2 40.8 65.0 53.4 44.4 39.4 61.0  42.4  35.6  42.0  42.8
-##  [5,] 44.4 50.6 75.8 52.6 52.4 53.6 69.4 44.8 59.0  72.6  54.2  59.0  33.8
-##  [6,] 52.6 68.4 44.8 57.8 50.2 43.8 59.4 67.6 52.0  46.4  50.8  49.4  31.0
-##  [7,] 49.8 54.8 71.2 40.6 61.6 69.0 45.2 63.0 42.0  61.8  78.8  31.4  75.0
-##  [8,] 41.4 58.6 58.0 61.6 53.4 36.6 60.4 56.8 51.4  53.4  38.2  38.0  63.0
-##  [9,] 66.2 34.4 78.8 68.2 76.4 44.8 55.2 61.8 53.2  68.0  53.6  29.8  51.0
-## [10,] 57.2 57.8 61.8 35.2 36.0 67.2 60.2 48.6 84.4  57.8  49.8  51.4  35.4
+##  [1,] 56.8 67.2 40.6 57.4 67.6 24.4 50.8 59.8 54.6  55.8  50.2  73.8  54.8
+##  [2,] 39.2 51.4 38.0 57.0 45.0 56.6 60.2 77.0 54.2  58.2  54.8  49.0  34.4
+##  [3,] 51.8 58.2 66.4 30.6 61.8 39.4 54.0 66.4 33.8  56.2  47.6  41.2  42.2
+##  [4,] 46.6 47.0 58.8 63.0 48.6 42.4 60.8 49.6 48.4  45.2  40.6  39.0  58.8
+##  [5,] 47.8 41.0 49.4 73.4 13.4 55.6 36.2 76.6 49.2  53.8  81.0  41.8  39.2
+##  [6,] 59.0 66.0 43.0 62.4 45.8 80.4 59.6 36.2 49.4  40.6  47.2  27.8  41.4
+##  [7,] 68.2 35.0 51.4 50.2 43.8 57.0 67.2 49.6 70.2  63.8  69.6  58.8  51.8
+##  [8,] 32.0 32.6 52.8 51.2 47.2 59.2 58.4 43.4 29.6  40.6  40.6  64.8  42.2
+##  [9,] 58.6 65.8 42.4 67.0 51.2 43.0 59.8 50.6 65.8  70.0  17.6  45.2  49.0
+## [10,] 38.8 42.0 39.2 62.4 45.6 46.6 45.0 42.8 28.4  61.8  16.8  45.0  51.2
 ##       [,14] [,15] [,16] [,17] [,18] [,19] [,20]
-##  [1,]  46.8  35.0  63.0  50.2  61.2  46.0  56.6
-##  [2,]  48.2  42.8  60.4  54.2  26.4  54.2  39.0
-##  [3,]  31.6  43.0  70.0  32.0  50.0  62.4  57.0
-##  [4,]  52.8  32.0  44.6  61.8  65.0  58.2  35.0
-##  [5,]  26.6  37.0  46.8  51.8  36.8  43.4  52.6
-##  [6,]  54.0  70.2  67.8  49.8  44.4  48.2  48.6
-##  [7,]  75.2  39.8  49.4  65.2  62.0  41.2  65.2
-##  [8,]  42.2  57.8  71.8  64.8  55.6  25.6  32.0
-##  [9,]  62.4  41.0  43.2  55.8  60.8  52.6  48.8
-## [10,]  37.4  61.0  43.8  63.8  41.2  52.4  39.2
+##  [1,]  32.4  50.6  53.4  59.2  36.2  56.6  47.6
+##  [2,]  51.2  65.0  89.6  30.8  71.6  51.0  27.4
+##  [3,]  60.0  31.8  56.0  54.2  46.6  64.4  62.2
+##  [4,]  46.0  56.0  40.6  53.8  54.2  48.8  58.0
+##  [5,]  29.4  42.0  50.6  54.6  67.6  28.4  38.6
+##  [6,]  42.0  49.4  62.4  53.2  48.4  46.2  52.2
+##  [7,]  24.2  29.8  47.6  58.2  44.0  57.2  42.0
+##  [8,]  45.8  49.0  46.6  57.4  48.6  48.2  41.0
+##  [9,]  47.2  50.0  46.4  44.4  66.0  44.0  48.2
+## [10,]  56.4  30.0  62.6  55.0  70.8  35.0  53.8
 \end{verbatim}
 
 \hypertarget{l17sapply}{%
@@ -8441,19 +8436,19 @@ Comme indiqué dans la documentation, \texttt{lapply()} renvoie une liste de mê
 
 \begin{verbatim}
 ## $a
-##  [1]  13  75  16  52  47 100  51  57  88  38
+##  [1] 28 52 27 23 22 37 57 48 46 93
 ## 
 ## $b
-##  [1]  1 47 35 74 12  4 14 67 48 25
+##  [1] 91 21 42 52 10 11 54 28 25 98
 ## 
 ## $c
-##  [1] 32 55  6 88 97 45 15 75 18  1
+##  [1]  1 77 45 97  4 23 87 66 82 35
 ## 
 ## $d
-##  [1] 34 27 66 78 46 97 76 13 71 57
+##  [1] 66  2 13 27 69 86 91 15  4 87
 ## 
 ## $e
-##  [1] 76 34 65 90 56  7 77 72 21 64
+##  [1] 30 65  2 82 19 61 21 97 89 33
 \end{verbatim}
 
 \begin{Shaded}
@@ -8464,19 +8459,19 @@ Comme indiqué dans la documentation, \texttt{lapply()} renvoie une liste de mê
 
 \begin{verbatim}
 ## $a
-## [1] 53.7
+## [1] 43.3
 ## 
 ## $b
-## [1] 32.7
-## 
-## $c
 ## [1] 43.2
 ## 
+## $c
+## [1] 51.7
+## 
 ## $d
-## [1] 56.5
+## [1] 46
 ## 
 ## $e
-## [1] 56.2
+## [1] 49.9
 \end{verbatim}
 
 Comme pour la fonction \texttt{apply()}, nous pouvons passer des arguments supplémentaires à la fonction \texttt{lapply()} en les ajoutant à la suite de la fonction. C'est par exemple utile si notre \texttt{list} contient ces valeurs manquantes \texttt{NA} et que nous voulons les ignorer pour le calcul des moyennes (avec l'arguement \texttt{na.rm\ =\ TRUE}).
@@ -8496,19 +8491,19 @@ Comme pour la fonction \texttt{apply()}, nous pouvons passer des arguments suppl
 
 \begin{verbatim}
 ## $a
-##  [1] 3 4 4 2 4 5 3 4 4 3
+##  [1] NA  2  2  5  3 NA  4  3  2  2
 ## 
 ## $b
-##  [1]  5  1 NA NA  1  1  5 NA  4 NA
+##  [1]  3  3 NA  2  5  2  1 NA  1 NA
 ## 
 ## $c
-##  [1]  1  1  5  4  3  5 NA  4 NA  1
+##  [1] NA NA  4  5  2 NA  3  2  2  2
 ## 
 ## $d
-##  [1] 5 5 1 3 5 2 1 3 2 4
+##  [1] 5 5 1 4 5 3 3 3 5 3
 ## 
 ## $e
-##  [1]  5  5  3  1 NA  3  5  1  2  2
+##  [1]  5  5  3  1  5  4 NA  5  4  5
 \end{verbatim}
 
 \begin{Shaded}
@@ -8519,7 +8514,7 @@ Comme pour la fonction \texttt{apply()}, nous pouvons passer des arguments suppl
 
 \begin{verbatim}
 ## $a
-## [1] 3.6
+## [1] NA
 ## 
 ## $b
 ## [1] NA
@@ -8528,7 +8523,7 @@ Comme pour la fonction \texttt{apply()}, nous pouvons passer des arguments suppl
 ## [1] NA
 ## 
 ## $d
-## [1] 3.1
+## [1] 3.7
 ## 
 ## $e
 ## [1] NA
@@ -8542,19 +8537,19 @@ Comme pour la fonction \texttt{apply()}, nous pouvons passer des arguments suppl
 
 \begin{verbatim}
 ## $a
-## [1] 3.6
+## [1] 2.875
 ## 
 ## $b
-## [1] 2.833333
+## [1] 2.428571
 ## 
 ## $c
-## [1] 3
+## [1] 2.857143
 ## 
 ## $d
-## [1] 3.1
+## [1] 3.7
 ## 
 ## $e
-## [1] 3
+## [1] 4.111111
 \end{verbatim}
 
 Pour plus de lisibilité ou si plusieurs opérations sont à réaliser au sein de l'argument \texttt{FUN}, nous pouvons utiliser l'écriture suivante :
@@ -8569,19 +8564,19 @@ Pour plus de lisibilité ou si plusieurs opérations sont à réaliser au sein d
 
 \begin{verbatim}
 ## $a
-## [1] 3.6
+## [1] 2.875
 ## 
 ## $b
-## [1] 2.833333
+## [1] 2.428571
 ## 
 ## $c
-## [1] 3
+## [1] 2.857143
 ## 
 ## $d
-## [1] 3.1
+## [1] 3.7
 ## 
 ## $e
-## [1] 3
+## [1] 4.111111
 \end{verbatim}
 
 Par exemple si nous souhaitons obtenir \texttt{i\^{}2} si la moyenne est supérieure à 3, et \texttt{i\^{}3} sinon :
@@ -8601,19 +8596,19 @@ Par exemple si nous souhaitons obtenir \texttt{i\^{}2} si la moyenne est supéri
 
 \begin{verbatim}
 ## $a
-##  [1]  9 16 16  4 16 25  9 16 16  9
+##  [1]  NA   8   8 125  27  NA  64  27   8   8
 ## 
 ## $b
-##  [1] 125   1  NA  NA   1   1 125  NA  64  NA
+##  [1]  27  27  NA   8 125   8   1  NA   1  NA
 ## 
 ## $c
-##  [1]   1   1 125  64  27 125  NA  64  NA   1
+##  [1]  NA  NA  64 125   8  NA  27   8   8   8
 ## 
 ## $d
-##  [1] 25 25  1  9 25  4  1  9  4 16
+##  [1] 25 25  1 16 25  9  9  9 25  9
 ## 
 ## $e
-##  [1] 125 125  27   1  NA  27 125   1   8   8
+##  [1] 25 25  9  1 25 16 NA 25 16 25
 \end{verbatim}
 
 \hypertarget{l17lapply}{%
@@ -8631,19 +8626,19 @@ La fonction \texttt{sapply()} est une version modifiée de la fonction \texttt{l
 
 \begin{verbatim}
 ## $a
-## [1] 3.6
+## [1] 2.875
 ## 
 ## $b
-## [1] 2.833333
+## [1] 2.428571
 ## 
 ## $c
-## [1] 3
+## [1] 2.857143
 ## 
 ## $d
-## [1] 3.1
+## [1] 3.7
 ## 
 ## $e
-## [1] 3
+## [1] 4.111111
 \end{verbatim}
 
 \begin{Shaded}
@@ -8656,7 +8651,7 @@ La fonction \texttt{sapply()} est une version modifiée de la fonction \texttt{l
 
 \begin{verbatim}
 ##        a        b        c        d        e 
-## 3.600000 2.833333 3.000000 3.100000 3.000000
+## 2.875000 2.428571 2.857143 3.700000 4.111111
 \end{verbatim}
 
 La fonction \texttt{sapply()} est intéressante pour récupérer par exemple le nième élément de chacun des éléments d'une \texttt{list}. La fonction qui est appelée pour faire cela est \texttt{\textquotesingle{}{[}{[}\textquotesingle{}}.
@@ -8668,8 +8663,8 @@ La fonction \texttt{sapply()} est intéressante pour récupérer par exemple le 
 \end{Shaded}
 
 \begin{verbatim}
-## a b c d e 
-## 4 1 1 5 5
+##  a  b  c  d  e 
+##  2  3 NA  5  5
 \end{verbatim}
 
 \hypertarget{l17tapply}{%
@@ -8689,17 +8684,17 @@ La fonction\texttt{tapply()} permet d'appliquer une fonction en prenant comme é
 \end{Shaded}
 
 \begin{verbatim}
-##    species     perf1    perf2    perf3
-## 1        B  9.494091 24240.06 13.41398
-## 2        G  9.100742 24653.81 22.15845
-## 3        E  9.762173 22563.29 19.92500
-## 4        I 10.401364 16318.57 13.26776
-## 5        H 10.611314 25582.10 21.41904
-## 6        A  9.591794 12731.41 22.21542
-## 7        B  9.821139 24007.01 23.68091
-## 8        E 10.861647 12049.27 41.62498
-## 9        J  9.697731 19551.39 27.90268
-## 10       J  9.794245 44445.48 36.19825
+##    species     perf1     perf2    perf3
+## 1        A  9.605987 35828.464 14.64838
+## 2        G  9.716584 26170.862 22.45416
+## 3        H 10.387520 28460.610 12.61429
+## 4        F 10.668708 20636.967 26.65057
+## 5        F  9.842368 18288.648 16.25965
+## 6        A  9.660911 20980.518 13.82613
+## 7        C 10.418150 22169.990 23.29356
+## 8        F 10.235774 51386.364 16.95338
+## 9        J  9.785649  8685.344 17.49283
+## 10       H  9.979326 34315.515 29.68556
 \end{verbatim}
 
 Nous pouvons facilement obtenir un résumé des performances pour chaque espèce avec la fonction \texttt{tapply()} et la fonction \texttt{summary()}.
@@ -8713,43 +8708,43 @@ Nous pouvons facilement obtenir un résumé des performances pour chaque espèce
 \begin{verbatim}
 ## $A
 ##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-##   9.202   9.685   9.908   9.960  10.218  10.863 
+##   8.812   9.606   9.923   9.977  10.362  11.292 
 ## 
 ## $B
 ##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-##   8.584   9.723   9.998  10.019  10.327  11.269 
+##   8.933   9.631   9.997  10.039  10.381  11.862 
 ## 
 ## $C
 ##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-##   8.953   9.630  10.006   9.960  10.256  11.021 
+##   8.770   9.634  10.075  10.032  10.331  11.081 
 ## 
 ## $D
 ##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-##   8.744   9.669  10.058  10.040  10.354  10.978 
+##   8.759   9.658   9.939   9.994  10.261  11.426 
 ## 
 ## $E
 ##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-##   8.688   9.501   9.907   9.917  10.370  11.347 
+##   8.867   9.649  10.026  10.019  10.359  11.233 
 ## 
 ## $F
 ##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-##   8.812   9.804  10.131  10.118  10.435  11.459 
+##   8.783   9.572   9.909   9.920  10.278  11.200 
 ## 
 ## $G
 ##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-##   8.790   9.805  10.050  10.030  10.301  11.164 
+##   8.990   9.709  10.035  10.050  10.426  11.381 
 ## 
 ## $H
 ##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-##   8.603   9.693  10.019  10.019  10.387  11.294 
+##   8.585   9.685   9.982   9.993  10.378  11.147 
 ## 
 ## $I
 ##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-##   9.027   9.715  10.020  10.025  10.357  11.383 
+##   8.987   9.743  10.037  10.001  10.249  10.849 
 ## 
 ## $J
 ##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-##   8.632   9.678   9.921   9.972  10.310  11.227
+##   8.928   9.758  10.051  10.068  10.333  11.562
 \end{verbatim}
 
 Nous pouvons aussi obtenir la valeur moyenne de chacune des performances en combinant une fonction \texttt{sapply()} avec la fonction \texttt{tapply()}et en utilisant la fonction \texttt{mean()}.
@@ -8764,16 +8759,16 @@ Nous pouvons aussi obtenir la valeur moyenne de chacune des performances en comb
 
 \begin{verbatim}
 ##        [,1]     [,2]     [,3]
-## A  9.960472 23991.68 19.84286
-## B 10.018755 26957.81 20.17054
-## C  9.960117 25041.96 21.23727
-## D 10.039705 25231.54 20.57564
-## E  9.916506 26503.77 20.52784
-## F 10.117857 25671.09 20.18584
-## G 10.030026 25333.91 20.59457
-## H 10.019441 27078.82 19.40618
-## I 10.025049 24844.49 21.29553
-## J  9.972054 25316.22 19.58144
+## A  9.977467 25500.42 19.39347
+## B 10.038542 26140.50 19.61575
+## C 10.031780 26101.04 18.87128
+## D  9.993595 23699.68 20.19609
+## E 10.019141 24990.88 19.86423
+## F  9.920053 25221.64 20.82296
+## G 10.050409 23921.69 19.75654
+## H  9.992584 24196.65 19.94095
+## I 10.000697 26236.54 19.61793
+## J 10.067663 23384.02 19.86490
 \end{verbatim}
 
 \hypertarget{l17mapply}{%

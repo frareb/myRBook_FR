@@ -183,7 +183,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="4.3.2" data-path="IDE.html"><a href="IDE.html#installer-npp2r"><i class="fa fa-check"></i><b>4.3.2</b> Installer Npp2R</a></li>
 <li class="chapter" data-level="4.3.3" data-path="IDE.html"><a href="IDE.html#un-script-avec-notepad"><i class="fa fa-check"></i><b>4.3.3</b> Un script avec Notepad++</a></li>
 </ul></li>
-<li class="chapter" data-level="4.4" data-path="IDE.html"><a href="IDE.html#geany-pour-linux-mac-osx-et-windows"><i class="fa fa-check"></i><b>4.4</b> Geany (pour Linux, Mac OSX et Windows)</a><ul>
+<li class="chapter" data-level="4.4" data-path="IDE.html"><a href="IDE.html#geany"><i class="fa fa-check"></i><b>4.4</b> Geany</a><ul>
 <li class="chapter" data-level="4.4.1" data-path="IDE.html"><a href="IDE.html#installer-geany"><i class="fa fa-check"></i><b>4.4.1</b> Installer Geany</a></li>
 <li class="chapter" data-level="4.4.2" data-path="IDE.html"><a href="IDE.html#un-script-avec-geany"><i class="fa fa-check"></i><b>4.4.2</b> Un script avec Geany</a></li>
 </ul></li>
@@ -346,157 +346,157 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="dataType1" class="section level1">
 <h1><span class="header-section-number"> 5</span> Les types de données</h1>
-<p>Nous avons vu précédement comment créer un objet. Un objet est comme une boîte dans laquelle nous allons <em>stocker</em> de l’information. Jusqu’à présent nous n’avons stocké que des nombres mais dans ce chapitre nous allons voir qu’il est possible de stocker d’autres informations et nous allons nous attarder sur les types les plus courants. Dans ce chapitre nous allons utiliser des <strong>fonctions</strong> sur lesquelles nous reviendrons plus tard.</p>
+<p>Nous avons vu précédemment comment créer un objet. Un objet est comme une boîte dans laquelle nous allons <em>stocker</em> de l’information. Jusqu’à présent nous n’avons stocké que des nombres mais dans ce chapitre nous allons voir qu’il est possible de stocker d’autres informations et nous allons nous attarder sur les types les plus courants. Dans ce chapitre nous allons utiliser des <strong>fonctions</strong> sur lesquelles nous reviendrons plus tard.</p>
 <div id="le-type-numeric" class="section level2">
 <h2><span class="header-section-number">5.1</span> Le type <code>numeric</code></h2>
 <p>Le type <code>numeric</code> correspond à ce que nous avons fait jusqu’à présent, stocker des nombres. Il existe deux principaux types de nombres avec R: les nombres entiers (<em>integers</em>), et les nombres à virgule (<em>double</em>). Par défaut R considère tous les nombres comme des nombres à virgule et attribue le type <code>double</code>.
 Pour vérifier le type de données nous allons utiliser la fonction <code>typeof()</code> qui prend comme argument un objet (ou directement l’information que nous souhaitons tester). Nous pouvons également utiliser la fonction <code>is.double()</code> qui va renvoyer <code>TRUE</code> si le nombre est au format <code>double</code> et <code>FALSE</code> dans le cas contraire. La fonction générique <code>is.numeric()</code> va quant à elle renvoyer <code>TRUE</code> si l’objet est au format <code>numeric</code> et <code>FALSE</code> dans le cas contraire.</p>
-<div class="sourceCode" id="cb114"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb114-1" title="1">nbrRep &lt;-<span class="st"> </span><span class="dv">5</span></a>
-<a class="sourceLine" id="cb114-2" title="2"><span class="kw">typeof</span>(nbrRep)</a></code></pre></div>
+<div class="sourceCode" id="cb113"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb113-1" title="1">nbrRep &lt;-<span class="st"> </span><span class="dv">5</span></a>
+<a class="sourceLine" id="cb113-2" title="2"><span class="kw">typeof</span>(nbrRep)</a></code></pre></div>
 <pre><code>## [1] &quot;double&quot;</code></pre>
-<div class="sourceCode" id="cb116"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb116-1" title="1"><span class="kw">typeof</span>(<span class="fl">5.32</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb115"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb115-1" title="1"><span class="kw">typeof</span>(<span class="fl">5.32</span>)</a></code></pre></div>
 <pre><code>## [1] &quot;double&quot;</code></pre>
-<div class="sourceCode" id="cb118"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb118-1" title="1"><span class="kw">is.numeric</span>(<span class="dv">5</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb117"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb117-1" title="1"><span class="kw">is.numeric</span>(<span class="dv">5</span>)</a></code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
-<div class="sourceCode" id="cb120"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb120-1" title="1"><span class="kw">is.double</span>(<span class="dv">5</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb119"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb119-1" title="1"><span class="kw">is.double</span>(<span class="dv">5</span>)</a></code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
 <p>Si nous voulons spécifier à R que nous allons travailler avec un nombre entier, alors il nous faut transformer notre nombre à virgule en nombre entier avec la fonction <code>as.integer()</code>. Nous pouvons également utiliser la fonction <code>is.integer()</code> qui va renvoyer <code>TRUE</code> si le nombre est au format <code>integer</code> et <code>FALSE</code> dans le cas contraire.</p>
-<div class="sourceCode" id="cb122"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb122-1" title="1">nbrRep &lt;-<span class="st"> </span><span class="kw">as.integer</span>(<span class="dv">5</span>)</a>
-<a class="sourceLine" id="cb122-2" title="2"><span class="kw">typeof</span>(nbrRep)</a></code></pre></div>
+<div class="sourceCode" id="cb121"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb121-1" title="1">nbrRep &lt;-<span class="st"> </span><span class="kw">as.integer</span>(<span class="dv">5</span>)</a>
+<a class="sourceLine" id="cb121-2" title="2"><span class="kw">typeof</span>(nbrRep)</a></code></pre></div>
 <pre><code>## [1] &quot;integer&quot;</code></pre>
-<div class="sourceCode" id="cb124"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb124-1" title="1"><span class="kw">typeof</span>(<span class="fl">5.32</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb123"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb123-1" title="1"><span class="kw">typeof</span>(<span class="fl">5.32</span>)</a></code></pre></div>
 <pre><code>## [1] &quot;double&quot;</code></pre>
-<div class="sourceCode" id="cb126"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb126-1" title="1"><span class="kw">typeof</span>(<span class="kw">as.integer</span>(<span class="fl">5.32</span>))</a></code></pre></div>
+<div class="sourceCode" id="cb125"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb125-1" title="1"><span class="kw">typeof</span>(<span class="kw">as.integer</span>(<span class="fl">5.32</span>))</a></code></pre></div>
 <pre><code>## [1] &quot;integer&quot;</code></pre>
-<div class="sourceCode" id="cb128"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb128-1" title="1"><span class="kw">as.integer</span>(<span class="fl">5.32</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb127"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb127-1" title="1"><span class="kw">as.integer</span>(<span class="fl">5.32</span>)</a></code></pre></div>
 <pre><code>## [1] 5</code></pre>
-<div class="sourceCode" id="cb130"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb130-1" title="1"><span class="kw">as.integer</span>(<span class="fl">5.99</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb129"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb129-1" title="1"><span class="kw">as.integer</span>(<span class="fl">5.99</span>)</a></code></pre></div>
 <pre><code>## [1] 5</code></pre>
-<div class="sourceCode" id="cb132"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb132-1" title="1"><span class="kw">is.numeric</span>(nbrRep)</a></code></pre></div>
+<div class="sourceCode" id="cb131"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb131-1" title="1"><span class="kw">is.numeric</span>(nbrRep)</a></code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
 <p>Nous voyons ici que transformer un nombre comme <code>5.99</code> au format <code>integer</code> va renvoyer uniquement la partie entière, soit <code>5</code>.</p>
-<div class="sourceCode" id="cb134"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb134-1" title="1"><span class="kw">is.integer</span>(<span class="dv">5</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb133"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb133-1" title="1"><span class="kw">is.integer</span>(<span class="dv">5</span>)</a></code></pre></div>
 <pre><code>## [1] FALSE</code></pre>
-<div class="sourceCode" id="cb136"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb136-1" title="1"><span class="kw">is.numeric</span>(<span class="dv">5</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb135"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb135-1" title="1"><span class="kw">is.numeric</span>(<span class="dv">5</span>)</a></code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
-<div class="sourceCode" id="cb138"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb138-1" title="1"><span class="kw">is.integer</span>(<span class="kw">as.integer</span>(<span class="dv">5</span>))</a></code></pre></div>
+<div class="sourceCode" id="cb137"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb137-1" title="1"><span class="kw">is.integer</span>(<span class="kw">as.integer</span>(<span class="dv">5</span>))</a></code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
-<div class="sourceCode" id="cb140"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb140-1" title="1"><span class="kw">is.numeric</span>(<span class="kw">as.integer</span>(<span class="dv">5</span>))</a></code></pre></div>
+<div class="sourceCode" id="cb139"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb139-1" title="1"><span class="kw">is.numeric</span>(<span class="kw">as.integer</span>(<span class="dv">5</span>))</a></code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
 <p>La somme d’un nombre entier et d’un nombre à virgule renvoie un nombre à virgule.</p>
-<div class="sourceCode" id="cb142"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb142-1" title="1">sumIntDou &lt;-<span class="st"> </span><span class="kw">as.integer</span>(<span class="dv">5</span>) <span class="op">+</span><span class="st"> </span><span class="fl">5.2</span></a>
-<a class="sourceLine" id="cb142-2" title="2"><span class="kw">typeof</span>(sumIntDou)</a></code></pre></div>
+<div class="sourceCode" id="cb141"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb141-1" title="1">sumIntDou &lt;-<span class="st"> </span><span class="kw">as.integer</span>(<span class="dv">5</span>) <span class="op">+</span><span class="st"> </span><span class="fl">5.2</span></a>
+<a class="sourceLine" id="cb141-2" title="2"><span class="kw">typeof</span>(sumIntDou)</a></code></pre></div>
 <pre><code>## [1] &quot;double&quot;</code></pre>
-<div class="sourceCode" id="cb144"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb144-1" title="1">sumIntInt &lt;-<span class="st"> </span><span class="kw">as.integer</span>(<span class="dv">5</span>) <span class="op">+</span><span class="st"> </span><span class="kw">as.integer</span>(<span class="dv">5</span>)</a>
-<a class="sourceLine" id="cb144-2" title="2"><span class="kw">typeof</span>(sumIntInt)</a></code></pre></div>
+<div class="sourceCode" id="cb143"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb143-1" title="1">sumIntInt &lt;-<span class="st"> </span><span class="kw">as.integer</span>(<span class="dv">5</span>) <span class="op">+</span><span class="st"> </span><span class="kw">as.integer</span>(<span class="dv">5</span>)</a>
+<a class="sourceLine" id="cb143-2" title="2"><span class="kw">typeof</span>(sumIntInt)</a></code></pre></div>
 <pre><code>## [1] &quot;integer&quot;</code></pre>
 <p>Pour résumer, le type <code>numeric</code> contient deux sous-types, les types <code>integer</code> pour les nombres entiers et le type <code>double</code> pour les nombres à virgule. Par défaut R attribue le type <code>double</code> aux nombres.</p>
 <p>Deux nombres particuliers doivent être considérés. <code>Inf</code> est un nombre de type <code>double</code>. Il désigne un nombre infini. Par exemple, <code>1/0</code> retourne <code>Inf</code> et aucun nombre ne peut être plus grand que <code>Inf</code>. <code>NaN</code> est une valeur qui signifie <code>Not a Number</code> : par exemple <code>0/0</code> retourne <code>NaN</code>. Cela peut être testé par <code>is.nan(0/0)</code>. Attention à ne pas confondre avec NA qui désigne une donnée absente (voir plus loin).</p>
 <p>Attention, il y a un piège à l’utilisation de la fonction <code>is.integer()</code>. Elle ne nous dit pas si le nombre est un entier mais si il est du type <code>integer</code>. En effet, on peut très bien stocker un nombre entier dans une variable de type <code>double</code>.</p>
 <p>Les nombres stockés dans une variable <code>integer</code> sont codés sur 32 bits et donc peuvent prendre des valeurs comprises entre 0 et 2^32-1=4294967295. Il existe une autre façon d’indiquer à R qu’un nombre est un entier, en utilisant le suffixe L. Par exemple, <code>5L</code> est la même chose que <code>as.integer(5)</code>. L’origine de ce suffixe <code>L</code> date d’une époque où les ordinateurs utilisaient des mots de 16 bits et 32 bits étaient bien un type <code>Long</code>. Maintenant les ordinateurs utilisent des mots de 64 bits et 32 bits est plutôt court !</p>
 <p>On ne peut pas quitter cette section sans mentionner les fonctions <a href="fonctions.html#l015round"><code>ceiling()</code></a>, <a href="fonctions.html#l015round"><code>floor()</code></a>, <a href="fonctions.html#l015round"><code>trunc()</code></a> ou <a href="fonctions.html#l015round"><code>round()</code></a> qui retournent la partie entière d’un nombre mais le laisse au type <code>double</code>. Pour en savoir plus, nous pouvons utiliser <a href="fonctions.html#l015help">l’aide de R</a> avec <code>?round</code>.</p>
-<div class="sourceCode" id="cb146"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb146-1" title="1">roundDou &lt;-<span class="st"> </span><span class="kw">round</span>(<span class="fl">5.2</span>)</a>
-<a class="sourceLine" id="cb146-2" title="2"><span class="kw">typeof</span>(roundDou)</a></code></pre></div>
+<div class="sourceCode" id="cb145"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb145-1" title="1">roundDou &lt;-<span class="st"> </span><span class="kw">round</span>(<span class="fl">5.2</span>)</a>
+<a class="sourceLine" id="cb145-2" title="2"><span class="kw">typeof</span>(roundDou)</a></code></pre></div>
 <pre><code>## [1] &quot;double&quot;</code></pre>
 </div>
 <div id="le-type-character" class="section level2">
 <h2><span class="header-section-number">5.2</span> Le type <code>character</code></h2>
 <p>Le type <code>character</code> correspond au texte. En effet, R permet de travailler avec du texte. pour spécifier à R que l’information contenue dans un objet est au format texte (ou de manière générale pour tous les textes), il faut utiliser les guillemets doubles (<code>"</code>), ou simples (<code>'</code>).</p>
-<div class="sourceCode" id="cb148"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb148-1" title="1">myText &lt;-<span class="st"> &quot;azerty&quot;</span></a>
-<a class="sourceLine" id="cb148-2" title="2">myText2 &lt;-<span class="st"> &#39;azerty&#39;</span></a>
-<a class="sourceLine" id="cb148-3" title="3">myText3 &lt;-<span class="st"> &#39;azerty uiop qsdfg hjklm&#39;</span></a>
-<a class="sourceLine" id="cb148-4" title="4"><span class="kw">typeof</span>(myText3)</a></code></pre></div>
+<div class="sourceCode" id="cb147"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb147-1" title="1">myText &lt;-<span class="st"> &quot;azerty&quot;</span></a>
+<a class="sourceLine" id="cb147-2" title="2">myText2 &lt;-<span class="st"> &#39;azerty&#39;</span></a>
+<a class="sourceLine" id="cb147-3" title="3">myText3 &lt;-<span class="st"> &#39;azerty uiop qsdfg hjklm&#39;</span></a>
+<a class="sourceLine" id="cb147-4" title="4"><span class="kw">typeof</span>(myText3)</a></code></pre></div>
 <pre><code>## [1] &quot;character&quot;</code></pre>
 <p>Les guillemets doubles ou simples sont utiles si l’on souhaite mettre des guillemets dans notre texte. Nous pouvons également <em>échapper</em> un caractère spécial comme un guillemet grâce au signe backslash <code>\</code>.</p>
-<div class="sourceCode" id="cb150"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb150-1" title="1">myText &lt;-<span class="st"> &quot;a &#39;ze&#39; &#39;rt&#39; y&quot;</span></a>
-<a class="sourceLine" id="cb150-2" title="2">myText2 &lt;-<span class="st"> &#39;a &quot;zert&quot; y&#39;</span></a>
-<a class="sourceLine" id="cb150-3" title="3">myText3 &lt;-<span class="st"> &#39;azerty uiop qsdfg hjklm&#39;</span></a>
-<a class="sourceLine" id="cb150-4" title="4">myText4 &lt;-<span class="st"> &quot;qwerty </span><span class="ch">\&quot;</span><span class="st"> azerty &quot;</span></a>
-<a class="sourceLine" id="cb150-5" title="5">myText5 &lt;-<span class="st"> &quot;qwerty </span><span class="ch">\\</span><span class="st"> azerty &quot;</span></a></code></pre></div>
+<div class="sourceCode" id="cb149"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb149-1" title="1">myText &lt;-<span class="st"> &quot;a &#39;ze&#39; &#39;rt&#39; y&quot;</span></a>
+<a class="sourceLine" id="cb149-2" title="2">myText2 &lt;-<span class="st"> &#39;a &quot;zert&quot; y&#39;</span></a>
+<a class="sourceLine" id="cb149-3" title="3">myText3 &lt;-<span class="st"> &#39;azerty uiop qsdfg hjklm&#39;</span></a>
+<a class="sourceLine" id="cb149-4" title="4">myText4 &lt;-<span class="st"> &quot;qwerty </span><span class="ch">\&quot;</span><span class="st"> azerty &quot;</span></a>
+<a class="sourceLine" id="cb149-5" title="5">myText5 &lt;-<span class="st"> &quot;qwerty </span><span class="ch">\\</span><span class="st"> azerty &quot;</span></a></code></pre></div>
 <p>Par défaut lorsque nous créons un objet, son contenu n’est pas renvoyé par la console. Sur Internet ou dans de nombreux ouvrages nous pouvons retrouver le nom de l’objet sur une ligne pour renvoyer son contenu:</p>
-<div class="sourceCode" id="cb151"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb151-1" title="1">myText &lt;-<span class="st"> &quot;a &#39;ze&#39; &#39;rt&#39; y&quot;</span></a>
-<a class="sourceLine" id="cb151-2" title="2">myText</a></code></pre></div>
+<div class="sourceCode" id="cb150"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb150-1" title="1">myText &lt;-<span class="st"> &quot;a &#39;ze&#39; &#39;rt&#39; y&quot;</span></a>
+<a class="sourceLine" id="cb150-2" title="2">myText</a></code></pre></div>
 <pre><code>## [1] &quot;a &#39;ze&#39; &#39;rt&#39; y&quot;</code></pre>
 <p>Dans ce livre nous n’utiliserons jamais cette façon de faire et préfèrerons l’utilisation de la fonction <code>print()</code>, qui permet d’afficher dans la console le contenu d’un objet. Le résultat est le même mais le code est alors plus facile à lire et plus explicite sur ce qui est fait.</p>
-<div class="sourceCode" id="cb153"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb153-1" title="1">myText &lt;-<span class="st"> &quot;a &#39;ze&#39; &#39;rt&#39; y&quot;</span></a>
-<a class="sourceLine" id="cb153-2" title="2"><span class="kw">print</span>(myText)</a></code></pre></div>
+<div class="sourceCode" id="cb152"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb152-1" title="1">myText &lt;-<span class="st"> &quot;a &#39;ze&#39; &#39;rt&#39; y&quot;</span></a>
+<a class="sourceLine" id="cb152-2" title="2"><span class="kw">print</span>(myText)</a></code></pre></div>
 <pre><code>## [1] &quot;a &#39;ze&#39; &#39;rt&#39; y&quot;</code></pre>
-<div class="sourceCode" id="cb155"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb155-1" title="1">nbrRep &lt;-<span class="st"> </span><span class="dv">5</span></a>
-<a class="sourceLine" id="cb155-2" title="2"><span class="kw">print</span>(nbrRep)</a></code></pre></div>
+<div class="sourceCode" id="cb154"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb154-1" title="1">nbrRep &lt;-<span class="st"> </span><span class="dv">5</span></a>
+<a class="sourceLine" id="cb154-2" title="2"><span class="kw">print</span>(nbrRep)</a></code></pre></div>
 <pre><code>## [1] 5</code></pre>
 <p>Nous pouvons également mettre des chiffres au format texte, mais il ne faut pas oublier de mettre des guillemets pour spécifier le type <code>character</code> ou utiliser la fonction <code>as.character()</code>. Une opération entre du texte et un nombre renvoie une erreur. Par exemple si l’on ajoute <code>10</code> à <code>"5"</code>, R nous signale qu’un <strong>argument</strong> de la <strong>fonction</strong> <code>+</code> n’est pas de type <code>numeric</code> et que donc l’opération n’est pas possible. Nous ne pouvons pas non plus ajouter du texte à du texte, mais verrons plus tard comment <em>concaténer</em> deux <em>chaines de texte</em>.</p>
-<div class="sourceCode" id="cb157"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb157-1" title="1">myText &lt;-<span class="st"> &quot;qwerty&quot;</span></a>
-<a class="sourceLine" id="cb157-2" title="2"><span class="kw">typeof</span>(myText)</a></code></pre></div>
+<div class="sourceCode" id="cb156"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb156-1" title="1">myText &lt;-<span class="st"> &quot;qwerty&quot;</span></a>
+<a class="sourceLine" id="cb156-2" title="2"><span class="kw">typeof</span>(myText)</a></code></pre></div>
 <pre><code>## [1] &quot;character&quot;</code></pre>
-<div class="sourceCode" id="cb159"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb159-1" title="1">myText2 &lt;-<span class="st"> </span><span class="dv">5</span></a>
-<a class="sourceLine" id="cb159-2" title="2"><span class="kw">typeof</span>(myText2)</a></code></pre></div>
+<div class="sourceCode" id="cb158"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb158-1" title="1">myText2 &lt;-<span class="st"> </span><span class="dv">5</span></a>
+<a class="sourceLine" id="cb158-2" title="2"><span class="kw">typeof</span>(myText2)</a></code></pre></div>
 <pre><code>## [1] &quot;double&quot;</code></pre>
-<div class="sourceCode" id="cb161"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb161-1" title="1">myText3 &lt;-<span class="st"> &quot;5&quot;</span></a>
-<a class="sourceLine" id="cb161-2" title="2"><span class="kw">typeof</span>(myText3)</a></code></pre></div>
+<div class="sourceCode" id="cb160"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb160-1" title="1">myText3 &lt;-<span class="st"> &quot;5&quot;</span></a>
+<a class="sourceLine" id="cb160-2" title="2"><span class="kw">typeof</span>(myText3)</a></code></pre></div>
 <pre><code>## [1] &quot;character&quot;</code></pre>
-<div class="sourceCode" id="cb163"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb163-1" title="1">myText2 <span class="op">+</span><span class="st"> </span><span class="dv">10</span></a></code></pre></div>
+<div class="sourceCode" id="cb162"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb162-1" title="1">myText2 <span class="op">+</span><span class="st"> </span><span class="dv">10</span></a></code></pre></div>
 <pre><code>## [1] 15</code></pre>
-<div class="sourceCode" id="cb165"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb165-1" title="1"><span class="kw">as.character</span>(<span class="dv">5</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb164"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb164-1" title="1"><span class="kw">as.character</span>(<span class="dv">5</span>)</a></code></pre></div>
 <pre><code>## [1] &quot;5&quot;</code></pre>
-<div class="sourceCode" id="cb167"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb167-1" title="1"><span class="co"># myText3 + 10 # Error in myText3 + 10 : non-numeric argument to binary operator</span></a>
-<a class="sourceLine" id="cb167-2" title="2"><span class="co"># &quot;a&quot; + &quot;b&quot; # Error in &quot;a&quot; + &quot;b&quot; : non-numeric argument to binary operator</span></a></code></pre></div>
+<div class="sourceCode" id="cb166"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb166-1" title="1"><span class="co"># myText3 + 10 # Error in myText3 + 10 : non-numeric argument to binary operator</span></a>
+<a class="sourceLine" id="cb166-2" title="2"><span class="co"># &quot;a&quot; + &quot;b&quot; # Error in &quot;a&quot; + &quot;b&quot; : non-numeric argument to binary operator</span></a></code></pre></div>
 <p>Pour résumer, le type <code>character</code> permet la saisie de texte, nous pouvons le reconnaître grâce aux guillemets simples ou doubles.</p>
 </div>
 <div id="le-type-factor" class="section level2">
 <h2><span class="header-section-number">5.3</span> Le type <code>factor</code></h2>
 <p>Le type <code>factor</code> correspond aux facteurs. Les facteurs sont un choix parmi une liste finie de possibilités. Par exemple les pays sont des facteurs car il y a une liste finie de pays dans le monde à un temps donné. Un facteur peut être défini avec la fonction <code>factor()</code> ou transformé en utilisant la fonction <code>as.factor()</code>. Comme pour les autres types de donnée nous pouvons utiliser la fonction <code>is.factor()</code> pour vérifier le type de donnée. Pour avoir la liste de toutes les possibilités, il existe la fonction <code>levels()</code> (cette fonction prendra plus de sens quand nous aurons abordé les types de conteneur de l’information).</p>
-<div class="sourceCode" id="cb168"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb168-1" title="1">factor01 &lt;-<span class="st"> </span><span class="kw">factor</span>(<span class="st">&quot;aaa&quot;</span>)</a>
-<a class="sourceLine" id="cb168-2" title="2"><span class="kw">print</span>(factor01)</a></code></pre></div>
+<div class="sourceCode" id="cb167"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb167-1" title="1">factor01 &lt;-<span class="st"> </span><span class="kw">factor</span>(<span class="st">&quot;aaa&quot;</span>)</a>
+<a class="sourceLine" id="cb167-2" title="2"><span class="kw">print</span>(factor01)</a></code></pre></div>
 <pre><code>## [1] aaa
 ## Levels: aaa</code></pre>
-<div class="sourceCode" id="cb170"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb170-1" title="1"><span class="kw">typeof</span>(factor01)</a></code></pre></div>
+<div class="sourceCode" id="cb169"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb169-1" title="1"><span class="kw">typeof</span>(factor01)</a></code></pre></div>
 <pre><code>## [1] &quot;integer&quot;</code></pre>
-<div class="sourceCode" id="cb172"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb172-1" title="1"><span class="kw">is.factor</span>(factor01)</a></code></pre></div>
+<div class="sourceCode" id="cb171"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb171-1" title="1"><span class="kw">is.factor</span>(factor01)</a></code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
-<div class="sourceCode" id="cb174"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb174-1" title="1"><span class="kw">levels</span>(factor01)</a></code></pre></div>
+<div class="sourceCode" id="cb173"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb173-1" title="1"><span class="kw">levels</span>(factor01)</a></code></pre></div>
 <pre><code>## [1] &quot;aaa&quot;</code></pre>
 <p>Un facteur peut être transformé en texte avec la fonction <code>as.character()</code> mais également en nombre avec <code>as.numeric()</code>. Lors de la transformation en nombre chaque facteur prend la valeur de sa position dans la liste des possibilités. Dans notre cas il n’y a qu’une seule possibilité donc la fonction <code>as.numeric()</code> va renvoyer <code>1</code>:</p>
-<div class="sourceCode" id="cb176"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb176-1" title="1">factor01 &lt;-<span class="st"> </span><span class="kw">factor</span>(<span class="st">&quot;aaa&quot;</span>)</a>
-<a class="sourceLine" id="cb176-2" title="2"><span class="kw">as.character</span>(factor01)</a></code></pre></div>
+<div class="sourceCode" id="cb175"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb175-1" title="1">factor01 &lt;-<span class="st"> </span><span class="kw">factor</span>(<span class="st">&quot;aaa&quot;</span>)</a>
+<a class="sourceLine" id="cb175-2" title="2"><span class="kw">as.character</span>(factor01)</a></code></pre></div>
 <pre><code>## [1] &quot;aaa&quot;</code></pre>
-<div class="sourceCode" id="cb178"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb178-1" title="1"><span class="kw">as.numeric</span>(factor01)</a></code></pre></div>
+<div class="sourceCode" id="cb177"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb177-1" title="1"><span class="kw">as.numeric</span>(factor01)</a></code></pre></div>
 <pre><code>## [1] 1</code></pre>
 </div>
 <div id="l013logi" class="section level2">
 <h2><span class="header-section-number">5.4</span> Le type <code>logical</code></h2>
 <p>Le type <code>logical</code> correspond aux valeurs <code>TRUE</code> et <code>FALSE</code> (et <code>NA</code>) que nous avons déjà vu avec les opérateurs de comparaison.</p>
-<div class="sourceCode" id="cb180"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb180-1" title="1">aLogic &lt;-<span class="st"> </span><span class="ot">TRUE</span></a>
-<a class="sourceLine" id="cb180-2" title="2"><span class="kw">print</span>(aLogic)</a></code></pre></div>
+<div class="sourceCode" id="cb179"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb179-1" title="1">aLogic &lt;-<span class="st"> </span><span class="ot">TRUE</span></a>
+<a class="sourceLine" id="cb179-2" title="2"><span class="kw">print</span>(aLogic)</a></code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
-<div class="sourceCode" id="cb182"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb182-1" title="1"><span class="kw">typeof</span>(aLogic)</a></code></pre></div>
+<div class="sourceCode" id="cb181"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb181-1" title="1"><span class="kw">typeof</span>(aLogic)</a></code></pre></div>
 <pre><code>## [1] &quot;logical&quot;</code></pre>
-<div class="sourceCode" id="cb184"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb184-1" title="1"><span class="kw">is.logical</span>(aLogic)</a></code></pre></div>
+<div class="sourceCode" id="cb183"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb183-1" title="1"><span class="kw">is.logical</span>(aLogic)</a></code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
-<div class="sourceCode" id="cb186"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb186-1" title="1">aLogic <span class="op">+</span><span class="st"> </span><span class="dv">1</span></a></code></pre></div>
+<div class="sourceCode" id="cb185"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb185-1" title="1">aLogic <span class="op">+</span><span class="st"> </span><span class="dv">1</span></a></code></pre></div>
 <pre><code>## [1] 2</code></pre>
-<div class="sourceCode" id="cb188"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb188-1" title="1"><span class="kw">as.numeric</span>(aLogic)</a></code></pre></div>
+<div class="sourceCode" id="cb187"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb187-1" title="1"><span class="kw">as.numeric</span>(aLogic)</a></code></pre></div>
 <pre><code>## [1] 1</code></pre>
-<div class="sourceCode" id="cb190"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb190-1" title="1"><span class="kw">as.character</span>(aLogic)</a></code></pre></div>
+<div class="sourceCode" id="cb189"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb189-1" title="1"><span class="kw">as.character</span>(aLogic)</a></code></pre></div>
 <pre><code>## [1] &quot;TRUE&quot;</code></pre>
 </div>
 <div id="a-propos-de-na" class="section level2">
 <h2><span class="header-section-number">5.5</span> A propos de <code>NA</code></h2>
 <p>La valeur <code>NA</code> peut être utilisée pour spécifier l’absence de données ou les données manquantes. Par défaut <code>NA</code> est de type <code>logical</code> mais il peut être utilisé pour du texte, ou des nombres.</p>
-<div class="sourceCode" id="cb192"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb192-1" title="1"><span class="kw">print</span>(<span class="ot">NA</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb191"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb191-1" title="1"><span class="kw">print</span>(<span class="ot">NA</span>)</a></code></pre></div>
 <pre><code>## [1] NA</code></pre>
-<div class="sourceCode" id="cb194"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb194-1" title="1"><span class="kw">typeof</span>(<span class="ot">NA</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb193"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb193-1" title="1"><span class="kw">typeof</span>(<span class="ot">NA</span>)</a></code></pre></div>
 <pre><code>## [1] &quot;logical&quot;</code></pre>
-<div class="sourceCode" id="cb196"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb196-1" title="1"><span class="kw">typeof</span>(<span class="kw">as.integer</span>(<span class="ot">NA</span>))</a></code></pre></div>
+<div class="sourceCode" id="cb195"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb195-1" title="1"><span class="kw">typeof</span>(<span class="kw">as.integer</span>(<span class="ot">NA</span>))</a></code></pre></div>
 <pre><code>## [1] &quot;integer&quot;</code></pre>
-<div class="sourceCode" id="cb198"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb198-1" title="1"><span class="kw">typeof</span>(<span class="kw">as.character</span>(<span class="ot">NA</span>))</a></code></pre></div>
+<div class="sourceCode" id="cb197"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb197-1" title="1"><span class="kw">typeof</span>(<span class="kw">as.character</span>(<span class="ot">NA</span>))</a></code></pre></div>
 <pre><code>## [1] &quot;character&quot;</code></pre>
-<div class="sourceCode" id="cb200"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb200-1" title="1"><span class="ot">NA</span> <span class="op">==</span><span class="st"> </span><span class="ot">TRUE</span></a></code></pre></div>
+<div class="sourceCode" id="cb199"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb199-1" title="1"><span class="ot">NA</span> <span class="op">==</span><span class="st"> </span><span class="ot">TRUE</span></a></code></pre></div>
 <pre><code>## [1] NA</code></pre>
-<div class="sourceCode" id="cb202"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb202-1" title="1"><span class="ot">NA</span> <span class="op">==</span><span class="st"> </span><span class="ot">FALSE</span></a></code></pre></div>
+<div class="sourceCode" id="cb201"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb201-1" title="1"><span class="ot">NA</span> <span class="op">==</span><span class="st"> </span><span class="ot">FALSE</span></a></code></pre></div>
 <pre><code>## [1] NA</code></pre>
-<div class="sourceCode" id="cb204"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb204-1" title="1"><span class="ot">NA</span> <span class="op">&gt;</span><span class="st"> </span><span class="dv">1</span></a></code></pre></div>
+<div class="sourceCode" id="cb203"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb203-1" title="1"><span class="ot">NA</span> <span class="op">&gt;</span><span class="st"> </span><span class="dv">1</span></a></code></pre></div>
 <pre><code>## [1] NA</code></pre>
-<div class="sourceCode" id="cb206"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb206-1" title="1"><span class="ot">NA</span> <span class="op">+</span><span class="st"> </span><span class="dv">1</span></a></code></pre></div>
+<div class="sourceCode" id="cb205"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb205-1" title="1"><span class="ot">NA</span> <span class="op">+</span><span class="st"> </span><span class="dv">1</span></a></code></pre></div>
 <pre><code>## [1] NA</code></pre>
 </div>
 <div id="conclusion-2" class="section level2">

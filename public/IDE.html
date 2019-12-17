@@ -183,7 +183,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="4.3.2" data-path="IDE.html"><a href="IDE.html#installer-npp2r"><i class="fa fa-check"></i><b>4.3.2</b> Installer Npp2R</a></li>
 <li class="chapter" data-level="4.3.3" data-path="IDE.html"><a href="IDE.html#un-script-avec-notepad"><i class="fa fa-check"></i><b>4.3.3</b> Un script avec Notepad++</a></li>
 </ul></li>
-<li class="chapter" data-level="4.4" data-path="IDE.html"><a href="IDE.html#geany-pour-linux-mac-osx-et-windows"><i class="fa fa-check"></i><b>4.4</b> Geany (pour Linux, Mac OSX et Windows)</a><ul>
+<li class="chapter" data-level="4.4" data-path="IDE.html"><a href="IDE.html#geany"><i class="fa fa-check"></i><b>4.4</b> Geany</a><ul>
 <li class="chapter" data-level="4.4.1" data-path="IDE.html"><a href="IDE.html#installer-geany"><i class="fa fa-check"></i><b>4.4.1</b> Installer Geany</a></li>
 <li class="chapter" data-level="4.4.2" data-path="IDE.html"><a href="IDE.html#un-script-avec-geany"><i class="fa fa-check"></i><b>4.4.2</b> Un script avec Geany</a></li>
 </ul></li>
@@ -348,7 +348,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h1><span class="header-section-number"> 4</span> Choisir un environnement de développement</h1>
 <div id="editeurs-de-texte-et-environnement-de-développement" class="section level2">
 <h2><span class="header-section-number">4.1</span> Editeurs de texte et environnement de développement</h2>
-<p>Il existe de très nombreux éditeurs de texte, le chapitre précédent a permis d’en introduire quelques uns parmi les plus simples comme le bloc note de Windows. Rapidement les limites de ces éditeurs ont rendu la tâche d’écrire un script fastidieuse. En effet, même en structurant son script avec des commentaires, il reste difficile de se répérer dans celui-ci. C’est là qu’interviennent les éditeurs de texte spécialisés qui vont permettre une écriture et une lecture agréable et simplifiée.
+<p>Il existe de très nombreux éditeurs de texte, le chapitre précédent a permis d’en introduire quelques uns parmi les plus simples comme le <em>bloc note</em> de Windows. Rapidement les limites de ces éditeurs ont rendu la tâche d’écrire un script fastidieuse. En effet, même en structurant son script avec des commentaires, il reste difficile de se répérer dans celui-ci. C’est là qu’interviennent les éditeurs de texte spécialisés qui vont permettre une écriture et une lecture agréable et simplifiée.
 L’éditeur de texte pour R certainement le plus répandu est Rstudio, mais il en existe bien d’autres. Faire une liste exhaustive de toutes les solutions disponibles sort du cadre de ce livre, ainsi nous nous focaliserons sur les trois solutions que j’utilise au quotidien que sont <strong>Notepad++</strong>, <strong>Rstudio</strong>, et <strong>Geany</strong>.</p>
 </div>
 <div id="rstudio" class="section level2">
@@ -377,7 +377,7 @@ Figure 4.2: Capture d’écran de RStudio sous Windows : fenêtre par défaut.
 <div class="sourceCode" id="cb112"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb112-1" title="1"><span class="co"># ------------------------------------------------------------</span></a>
 <a class="sourceLine" id="cb112-2" title="2"><span class="co"># Un script pour choisir son IDE</span></a>
 <a class="sourceLine" id="cb112-3" title="3"><span class="co"># créé le 27/06/2018</span></a>
-<a class="sourceLine" id="cb112-4" title="4"><span class="co"># modifié le 06/11/2018</span></a>
+<a class="sourceLine" id="cb112-4" title="4"><span class="co"># modifié le 17/12/2019</span></a>
 <a class="sourceLine" id="cb112-5" title="5"><span class="co"># François Rebaudo</span></a>
 <a class="sourceLine" id="cb112-6" title="6"><span class="co"># ------------------------------------------------------------</span></a>
 <a class="sourceLine" id="cb112-7" title="7"></a>
@@ -385,8 +385,7 @@ Figure 4.2: Capture d’écran de RStudio sous Windows : fenêtre par défaut.
 <a class="sourceLine" id="cb112-9" title="9"><span class="co"># ------------------------------------------------------------</span></a>
 <a class="sourceLine" id="cb112-10" title="10">nbrRep &lt;-<span class="st"> </span><span class="dv">5</span></a>
 <a class="sourceLine" id="cb112-11" title="11">pi <span class="op">*</span><span class="st"> </span>nbrRep<span class="op">^</span><span class="dv">2</span></a></code></pre></div>
-<pre><code>## [1] 78.53982</code></pre>
-<p>Pour exécuter notre script, il suffit de sélectionner les lignes que nous souhaitons exécuter et d’utiliser la combinaison de touches <code>CTRL + ENTER</code>. Le résultat apparaît dans la console (Figure <a href="IDE.html#fig:screenCapRStudio02">4.3</a>).</p>
+<p>Pour exécuter notre script, il suffit de sélectionner les lignes que nous souhaitons exécuter et d’utiliser la combinaison de touches <code>CTRL + ENTER</code>. R va transformer notre code en langage compréhensible pour la machine (interprétation), puis l’exécuter. Le résultat de l’exécution est renvoyé sous forme lisible dans la console (Figure <a href="IDE.html#fig:screenCapRStudio02">4.3</a>).</p>
 <div class="figure"><span id="fig:screenCapRStudio02"></span>
 <img src="myFigures/screencap_RStudio_02.png" alt="Capture d'écran de RStudio sous Windows : exécuter un script avec CTRL + ENTER.\label{fig:screenCapRStudio02}" width="360" />
 <p class="caption">
@@ -401,7 +400,7 @@ Nous pouvons également noter que dans la partie du code chaque ligne comporte u
 Figure 4.4: Capture d’écran de RStudio sous Windows : changer les paramètres de coloration syntaxique.
 </p>
 </div>
-<p>Nous savons comment créer un nouveau script, le sauvegarder, exécuter son contenu, et changer l’apparence de RStudio. Nous verrons les nombreux autres avantages de RStudio tout au long de ce livre car c’est l’environnement de développement qui sera utilisé. Nous serons néanmois particulièrement vigilents à ce que tous les scripts développés tout au long de ce livre s’exécute de la même façon quel que soit l’environnement de développement utilisé.</p>
+<p>Nous savons comment créer un nouveau script, le sauvegarder, exécuter son contenu, et changer l’apparence de RStudio. Nous verrons les nombreux autres avantages de RStudio tout au long de ce livre car c’est l’environnement de développement qui sera utilisé. Nous serons néanmoins particulièrement vigilants à ce que tous les scripts développés dans ce livre s’exécutent de la même façon quel que soit l’environnement de développement utilisé.</p>
 </div>
 </div>
 <div id="notepad-avec-npp2r" class="section level2">
@@ -414,47 +413,47 @@ Figure 4.5: Logo Notepad++
 </div>
 <div id="installer-notepad-pour-windows-uniquement" class="section level3">
 <h3><span class="header-section-number">4.3.1</span> Installer Notepad++ (pour Windows uniquement)</h3>
-<p>Le programme pour installer Notepad++ se trouve dans l’onglet <em>Downloads</em> (<a href="https://notepad-plus-plus.org/download/" class="uri">https://notepad-plus-plus.org/download/</a>). Vous pouvez choisir entre la version 32-bit et 64-bit (64-bit si vous ne savez pas quelle version choisir). Notepad++ seul est suffisant pour écrire un script, mais il est encore plus puissant avec <em>Notepad to R</em> (<em>Npp2R</em>) qui permet d’exécuter automatiquement nos script dans une console en local sur notre ordinateur ou à distance sur un serveur.</p>
+<p>Le programme pour installer <em>Notepad++</em> se trouve dans l’onglet <em>Downloads</em> (<a href="https://notepad-plus-plus.org/download/" class="uri">https://notepad-plus-plus.org/download/</a>). Vous pouvez choisir entre la version 32-bit et 64-bit (64-bit si vous ne savez pas quelle version choisir). <em>Notepad++</em> seul est suffisant pour écrire un script, mais il est encore plus puissant avec <em>Notepad to R</em> (<em>Npp2R</em>) qui permet d’exécuter automatiquement nos script dans une console en local sur notre ordinateur ou à distance sur un serveur.</p>
 </div>
 <div id="installer-npp2r" class="section level3">
 <h3><span class="header-section-number">4.3.2</span> Installer Npp2R</h3>
-<p>Le programme pour installer Npp2R est hébergé sur le site de Sourceforge (<a href="https://sourceforge.net/projects/npptor/" class="uri">https://sourceforge.net/projects/npptor/</a>). Npp2R doit être installé après Notepad++.</p>
+<p>Le programme pour installer <em>Npp2R</em> est hébergé sur le site de Sourceforge (<a href="https://sourceforge.net/projects/npptor/" class="uri">https://sourceforge.net/projects/npptor/</a>). <em>Npp2R</em> doit être installé après <em>R</em> et après <em>Notepad++</em>.</p>
 </div>
 <div id="un-script-avec-notepad" class="section level3">
 <h3><span class="header-section-number">4.3.3</span> Un script avec Notepad++</h3>
-<p>Lors de la première ouverture Notepad++ affiche un fichier vide <em>new 1</em> (Figura <a href="IDE.html#fig:screenCapNpp01">4.6</a>).</p>
+<p>Lors de la première ouverture <em>Notepad++</em> affiche un fichier vide <em>new 1</em> (Figure <a href="IDE.html#fig:screenCapNpp01">4.6</a>).</p>
 <div class="figure"><span id="fig:screenCapNpp01"></span>
 <img src="myFigures/screencap_Npp_01.png" alt="Capture d'écran de Notepad++ sous Windows : fenêtre par défaut.\label{fig:screenCapNpp01}" width="360" />
 <p class="caption">
 Figure 4.6: Capture d’écran de Notepad++ sous Windows : fenêtre par défaut.
 </p>
 </div>
-<p>Puisque nous avons déjà créer un script pour le tester avec RStudio, nous allons l’ouvrir à nouveau avec Notepad++. Dans <em>Fichier</em>, selectionnons <em>Ouvrir…</em> puis choisir le script <em>selecEnvDev.R</em> créé précédemment. Une fois le script ouvert, allons dans <em>Langage</em>, puis <em>R</em>, et encore une fois <em>R</em>. La coloration syntaxique apparaît (Figura <a href="IDE.html#fig:screenCapNpp02">4.7</a>).</p>
+<p>Puisque nous avons déjà créé un script pour le tester avec RStudio, nous allons l’ouvrir à présent avec <em>Notepad++</em>. Dans <em>Fichier</em>, sélectionnons <em>Ouvrir…</em> puis choisir le script <em>selecEnvDev.R</em> créé précédemment. Une fois le script ouvert, allons dans <em>Langage</em>, puis <em>R</em>, et encore une fois <em>R</em>. La coloration syntaxique apparaît (Figure <a href="IDE.html#fig:screenCapNpp02">4.7</a>).</p>
 <div class="figure"><span id="fig:screenCapNpp02"></span>
-<img src="myFigures/screencap_Npp_02.png" alt="Capture d'écran de Notepad++ sous Windows : exécuter un script avec F8.\label{fig:screenCapNpp02}" width="360" />
+<img src="myFigures/screencap_Npp_02.png" alt="Capture d'écran de Notepad++ sous Windows : exécuter un script avec F8.\label{fig:screenCapNpp02}" width="332" />
 <p class="caption">
 Figure 4.7: Capture d’écran de Notepad++ sous Windows : exécuter un script avec F8.
 </p>
 </div>
-<p>L’execution du script ne peut se faire que si Npp2R est en cours d’exécution. Pour se faire il est nécessaire de lancer le programme Npp2R depuis l’invite de Windows. Un icône devrait apparaître en bas de votre écran. L’exécution automatique du code depuis Notepad++ se fait en sélectionnant le code à exécuter puis en utilisant la commande <code>F8</code>. Si la commande ne fonctionne pas et que vous venez d’installer Notepad++, il est peut être nécessaire de redémarrer votre ordinateur. Si la commande fonctionne, une nouvelle fenêtre va s’ouvrir avec une consol exécutant les lignes souhaitées (Figura <a href="IDE.html#fig:screenCapNpp03">4.8</a>.</p>
+<p>L’exécution du script ne peut se faire que si <em>Npp2R</em> est en cours d’exécution. Pour se faire il est nécessaire de lancer le programme <em>Npp2R</em> depuis l’invite de Windows. Un icône devrait apparaître en bas de votre écran. L’exécution automatique du code depuis Notepad++ se fait en sélectionnant le code à exécuter puis en utilisant la commande <code>F8</code>. Si la commande ne fonctionne pas et que vous venez d’installer Notepad++, il est peut être nécessaire de redémarrer votre ordinateur. Si la commande fonctionne, une nouvelle fenêtre va s’ouvrir aavec une console renvoyant le résultat de l’exécution des lignes souhaitées (Figure <a href="IDE.html#fig:screenCapNpp03">4.8</a>.</p>
 <div class="figure"><span id="fig:screenCapNpp03"></span>
-<img src="myFigures/screencap_Npp_03.png" alt="Capture d'écran de Notepad++ sous Windows : la console avec F8.\label{fig:screenCapNpp03}" width="534" />
+<img src="myFigures/screencap_Npp_03.png" alt="Capture d'écran de Notepad++ sous Windows : la console avec F8.\label{fig:screenCapNpp03}" width="492" />
 <p class="caption">
 Figure 4.8: Capture d’écran de Notepad++ sous Windows : la console avec F8.
 </p>
 </div>
-<p>Comme pour RStudio, la coloration syntaxique peut être modifiée depuis le menu <em>Paramètres</em>, et un nouveau thème peut être sélectionné (par exemple <em>Solarized</em> dans la Figura <a href="IDE.html#fig:screenCapNpp04">4.9</a>)</p>
+<p>Comme pour <em>RStudio</em>, la coloration syntaxique peut être modifiée depuis le menu <em>Paramètres</em>, et un nouveau thème peut être sélectionné (par exemple <em>Solarized</em> dans la Figure <a href="IDE.html#fig:screenCapNpp04">4.9</a>)</p>
 <div class="figure"><span id="fig:screenCapNpp04"></span>
-<img src="myFigures/screencap_Npp_04.png" alt="Capture d'écran de Notepad++ sous Windows : coloration syntaxique avec le thème Solarized.\label{fig:screenCapNpp04}" width="360" />
+<img src="myFigures/screencap_Npp_04.png" alt="Capture d'écran de Notepad++ sous Windows : coloration syntaxique avec le thème Solarized.\label{fig:screenCapNpp04}" width="331" />
 <p class="caption">
 Figure 4.9: Capture d’écran de Notepad++ sous Windows : coloration syntaxique avec le thème Solarized.
 </p>
 </div>
-<p>Par rapport aux autres éditeurs de texte, Notepad++ a l’avantage d’être très léger et offre une vaste gamme d’options pour personnaliser l’écriture du code.</p>
+<p>Par rapport aux autres éditeurs de texte, <em>Notepad++</em> a l’avantage d’être très léger et offre une vaste gamme d’options pour personnaliser l’écriture du code.</p>
 </div>
 </div>
-<div id="geany-pour-linux-mac-osx-et-windows" class="section level2">
-<h2><span class="header-section-number">4.4</span> Geany (pour Linux, Mac OSX et Windows)</h2>
+<div id="geany" class="section level2">
+<h2><span class="header-section-number">4.4</span> Geany</h2>
 <div class="figure"><span id="fig:logoGeany"></span>
 <img src="myLogos/Geany.png" alt="Logo Geany\label{fig:logoGeany}" width="280" />
 <p class="caption">
@@ -463,28 +462,28 @@ Figure 4.10: Logo Geany
 </div>
 <div id="installer-geany" class="section level3">
 <h3><span class="header-section-number">4.4.1</span> Installer Geany</h3>
-<p>Le programme pour l’installation de Geany se trouve sous l’onglet <em>Downloads</em> dans le menu de gauche <em>Releases</em> de la page web (<a href="https://www.geany.org/" class="uri">https://www.geany.org/</a>). Ensuite il suffit de télécharger l’exécutable pour Windows ou le dmg pour Mac OSX. Les utilisateurs de Linux préfèrerons un <code>sudo apt-get install geany</code>.</p>
+<p>Le programme pour l’installation de <em>Geany</em> se trouve sous l’onglet <em>Downloads</em> dans le menu de gauche <em>Releases</em> de la page web (<a href="https://www.geany.org/" class="uri">https://www.geany.org/</a>). Ensuite il suffit de télécharger l’exécutable pour Windows ou le dmg pour Mac OSX. Les utilisateurs de Linux préfèreront un <code>sudo apt-get install geany</code> (<em>Geany</em> est installé par défault sur la plupart des distributions de Linux).</p>
 </div>
 <div id="un-script-avec-geany" class="section level3">
 <h3><span class="header-section-number">4.4.2</span> Un script avec Geany</h3>
-<p>Lors de la première ouverture, comme pour RStudio et Notepad++, un fichier vide est créé (Figure <a href="IDE.html#fig:screenCapGeany01">4.11</a>).</p>
+<p>Lors de la première ouverture, comme pour <em>RStudio</em> et <em>Notepad++</em>, un fichier vide est créé (Figure <a href="IDE.html#fig:screenCapGeany01">4.11</a>).</p>
 <div class="figure"><span id="fig:screenCapGeany01"></span>
-<img src="myFigures/screencap_Geany_01.png" alt="Capture d'écran de Geany sous Windows : fenêtre par défaut.\label{fig:screenCapGeany01}" width="360" />
+<img src="myFigures/screencap_Geany_01.png" alt="Capture d'écran de Geany sous Windows : fenêtre par défaut.\label{fig:screenCapGeany01}" width="293" />
 <p class="caption">
 Figure 4.11: Capture d’écran de Geany sous Windows : fenêtre par défaut.
 </p>
 </div>
 <p>Nous pouvons ouvrir notre script avec <em>Fichier</em>, <em>Ouvrir</em> (Figure <a href="IDE.html#fig:screenCapGeany02">4.12</a>).</p>
 <div class="figure"><span id="fig:screenCapGeany02"></span>
-<img src="myFigures/screencap_Geany_02.png" alt="Capture d'écran de Geany sous Windows : ouvrir un script.\label{fig:screenCapGeany02}" width="360" />
+<img src="myFigures/screencap_Geany_02.png" alt="Capture d'écran de Geany sous Windows : ouvrir un script.\label{fig:screenCapGeany02}" width="293" />
 <p class="caption">
 Figure 4.12: Capture d’écran de Geany sous Windows : ouvrir un script.
 </p>
 </div>
-<p>Pour exécuter notre script, la version de Geany pour Windows ne dispose pas d’un terminal intégré, ce qui rend son utilisation limitée sous ce système d’exploitation. L’exécution d’un script peut se faire en ouvrant R dans une fenêtre à part et en copiant et collant les lignes à exécuter. Sous Linux et Mac OSX, il suffit d’ouvrir R dans le terminal situé dans la partie basse de la fenêtre de Geany avec la commande <code>R</code>. Nous pouvons ensuite paramétré Geany pour qu’une combinaison de touches permette d’exécuter le code selectionné (par exemple <code>CTRL + R</code>). Pour cela il faut tout d’abord autoriser l’envoi de sélection vers le terminal (<code>send_selection_unsafe=true</code>) dans le fichier <code>geany.conf</code> puis choisir la commande d’envoi vers le terminal (dans <em>Editar</em>, <em>Preferencias</em>, <em>Combinaciones</em>).
-Pour changer le thème de Geany, il existe une collection de thèmes accessibles sur GitHub (<a href="https://github.com/geany/geany-themes/" class="uri">https://github.com/geany/geany-themes/</a>). Le thème peut ensuite être changé via le menu <em>Ver</em>, <em>Cambiar esquema de color…</em> (un exemple avec le thème <em>Solarized</em>, Figure <a href="IDE.html#fig:screenCapGeany03">4.13</a>).</p>
+<p>Pour exécuter notre script, la version de <em>Geany</em> pour Windows ne dispose pas d’un terminal intégré, ce qui rend son utilisation limitée sous ce système d’exploitation. L’exécution d’un script peut se faire en ouvrant R dans une fenêtre à part et en copiant et collant les lignes à exécuter. Sous Linux et Mac OSX, il suffit d’ouvrir R dans le terminal situé dans la partie basse de la fenêtre de <em>Geany</em> avec la commande <code>R</code>. Nous pouvons ensuite paramétrer <em>Geany</em> pour qu’une combinaison de touches permette d’exécuter le code sélectionné (par exemple <code>CTRL + R</code>). Pour cela il faut tout d’abord autoriser l’envoi de sélection vers le terminal (<code>send_selection_unsafe=true</code>) dans le fichier <code>geany.conf</code> puis choisir la commande d’envoi vers le terminal (dans <em>Edit</em>, <em>Preferences</em>, <em>Combinations</em>).
+Pour changer le thème de <em>Geany</em>, il existe une collection de thèmes accessibles sur GitHub (<a href="https://github.com/geany/geany-themes/" class="uri">https://github.com/geany/geany-themes/</a>). Le thème peut ensuite être changé via le menu <em>View</em>, <em>Change color theme…</em> (un exemple avec le thème <em>Solarized</em>, Figure <a href="IDE.html#fig:screenCapGeany03">4.13</a>).</p>
 <div class="figure"><span id="fig:screenCapGeany03"></span>
-<img src="myFigures/screencap_Geany_03.png" alt="Capture d'écran de Geany sous Windows : changer les paramètres de coloration syntaxique.\label{fig:screenCapGeany03}" width="360" />
+<img src="myFigures/screencap_Geany_03.png" alt="Capture d'écran de Geany sous Windows : changer les paramètres de coloration syntaxique.\label{fig:screenCapGeany03}" width="293" />
 <p class="caption">
 Figure 4.13: Capture d’écran de Geany sous Windows : changer les paramètres de coloration syntaxique.
 </p>
@@ -497,12 +496,12 @@ Figure 4.13: Capture d’écran de Geany sous Windows : changer les paramètres 
 </div>
 <div id="conclusion-1" class="section level2">
 <h2><span class="header-section-number">4.6</span> Conclusion</h2>
-<p>Felicitations, nous sommes arrivés au bout de ce chapitre sur environnements de développement pour utiliser R. Nous savons désormais :</p>
+<p>Félicitations, nous sommes arrivés au bout de ce chapitre sur environnements de développement pour utiliser R. Nous savons désormais :</p>
 <ul>
-<li>Installer RStudio, Geany ou Notepad++</li>
+<li>Installer <em>RStudio</em>, <em>Geany</em> ou <em>Notepad++</em></li>
 <li>Reconnaître et choisir notre environnement préféré</li>
 </ul>
-<p>A partir d’ici nous allons pouvoir nous concentrer sur le language de programmation R dans un environnement facilitant le travail de lecture et d’écriture du code. C’est un grand pas en avant pour maîtriser R.</p>
+<p>A partir de maintenant nous allons pouvoir nous concentrer sur le langage de programmation R dans un environnement facilitant le travail de lecture et d’écriture du code. C’est un grand pas en avant pour maîtriser R.</p>
 
 </div>
 </div>
