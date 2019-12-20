@@ -24,7 +24,7 @@
 <meta name="author" content="François Rebaudo" />
 
 
-<meta name="date" content="2019-12-17" />
+<meta name="date" content="2019-12-20" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -202,7 +202,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="6.1" data-path="dataType2.html"><a href="dataType2.html#l014vector"><i class="fa fa-check"></i><b>6.1</b> Le conteneur <code>vector</code></a><ul>
 <li class="chapter" data-level="6.1.1" data-path="dataType2.html"><a href="dataType2.html#créer-un-vector"><i class="fa fa-check"></i><b>6.1.1</b> Créer un <code>vector</code></a></li>
 <li class="chapter" data-level="6.1.2" data-path="dataType2.html"><a href="dataType2.html#opérations-sur-un-vector"><i class="fa fa-check"></i><b>6.1.2</b> Opérations sur un <code>vector</code></a></li>
-<li class="chapter" data-level="6.1.3" data-path="dataType2.html"><a href="dataType2.html#accèder-aux-valeurs-dun-vector"><i class="fa fa-check"></i><b>6.1.3</b> Accèder aux valeurs d’un <code>vector</code></a></li>
+<li class="chapter" data-level="6.1.3" data-path="dataType2.html"><a href="dataType2.html#accéder-aux-valeurs-dun-vector"><i class="fa fa-check"></i><b>6.1.3</b> Accéder aux valeurs d’un <code>vector</code></a></li>
 <li class="chapter" data-level="6.1.4" data-path="dataType2.html"><a href="dataType2.html#nommer-les-éléments-dun-vector"><i class="fa fa-check"></i><b>6.1.4</b> Nommer les éléments d’un <code>vector</code></a></li>
 <li class="chapter" data-level="6.1.5" data-path="dataType2.html"><a href="dataType2.html#modifier-les-éléments-dun-vector"><i class="fa fa-check"></i><b>6.1.5</b> Modifier les éléments d’un <code>vector</code></a></li>
 </ul></li>
@@ -213,13 +213,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="6.3" data-path="dataType2.html"><a href="dataType2.html#l014dataframe"><i class="fa fa-check"></i><b>6.3</b> Le conteneur <code>data.frame</code></a><ul>
 <li class="chapter" data-level="6.3.1" data-path="dataType2.html"><a href="dataType2.html#créer-un-data.frame"><i class="fa fa-check"></i><b>6.3.1</b> Créer un <code>data.frame</code></a></li>
-<li class="chapter" data-level="6.3.2" data-path="dataType2.html"><a href="dataType2.html#accèder-aux-valeurs-dun-data.frame"><i class="fa fa-check"></i><b>6.3.2</b> Accèder aux valeurs d’un <code>data.frame</code></a></li>
+<li class="chapter" data-level="6.3.2" data-path="dataType2.html"><a href="dataType2.html#accéder-aux-valeurs-dun-data.frame"><i class="fa fa-check"></i><b>6.3.2</b> Accéder aux valeurs d’un <code>data.frame</code></a></li>
 <li class="chapter" data-level="6.3.3" data-path="dataType2.html"><a href="dataType2.html#modifier-un-data.frame"><i class="fa fa-check"></i><b>6.3.3</b> Modifier un <code>data.frame</code></a></li>
 </ul></li>
 <li class="chapter" data-level="6.4" data-path="dataType2.html"><a href="dataType2.html#l014matrix"><i class="fa fa-check"></i><b>6.4</b> Le conteneur <code>matrix</code></a><ul>
 <li class="chapter" data-level="6.4.1" data-path="dataType2.html"><a href="dataType2.html#créer-une-matrix"><i class="fa fa-check"></i><b>6.4.1</b> Créer une <code>matrix</code></a></li>
 <li class="chapter" data-level="6.4.2" data-path="dataType2.html"><a href="dataType2.html#manipuler-et-faire-des-opérations-sur-une-matrix"><i class="fa fa-check"></i><b>6.4.2</b> Manipuler et faire des opérations sur une <code>matrix</code></a></li>
-<li class="chapter" data-level="6.4.3" data-path="dataType2.html"><a href="dataType2.html#accèder-aux-éléments-dune-matrix"><i class="fa fa-check"></i><b>6.4.3</b> Accèder aux éléments d’une <code>matrix</code></a></li>
+<li class="chapter" data-level="6.4.3" data-path="dataType2.html"><a href="dataType2.html#accéder-aux-éléments-dune-matrix"><i class="fa fa-check"></i><b>6.4.3</b> Accéder aux éléments d’une <code>matrix</code></a></li>
 </ul></li>
 <li class="chapter" data-level="6.5" data-path="dataType2.html"><a href="dataType2.html#l014array"><i class="fa fa-check"></i><b>6.5</b> Le conteneur <code>array</code></a><ul>
 <li class="chapter" data-level="6.5.1" data-path="dataType2.html"><a href="dataType2.html#créer-un-array"><i class="fa fa-check"></i><b>6.5.1</b> Créer un <code>array</code></a></li>
@@ -389,7 +389,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <pre><code>## [1] &quot;character&quot;</code></pre>
 <div class="sourceCode" id="cb243"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb243-1" title="1"><span class="kw">is.vector</span>(miVec04)</a></code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
-<p>Si l’on combine différents types de données, par défaut R va chercher à transformer les éléments en un seul type. Si comme ici dans l’objet <code>miVec03</code> nous avons des <code>character</code> et des <code>numeric</code>, R va transformer tous les éléments en <code>character</code>.</p>
+<p>Si l’on combine différents types de données, par défaut R va chercher à transformer les éléments en un seul type. Si comme ici dans l’objet <code>miVec04</code> nous avons des <code>character</code> et des <code>numeric</code>, R va transformer tous les éléments en <code>character</code>.</p>
 <div class="sourceCode" id="cb245"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb245-1" title="1">miVec05 &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="kw">factor</span>(<span class="st">&quot;abc&quot;</span>), <span class="st">&quot;def&quot;</span>)</a>
 <a class="sourceLine" id="cb245-2" title="2"><span class="kw">print</span>(miVec05)</a></code></pre></div>
 <pre><code>## [1] &quot;1&quot;   &quot;def&quot;</code></pre>
@@ -433,7 +433,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div id="opérations-sur-un-vector" class="section level3">
 <h3><span class="header-section-number">6.1.2</span> Opérations sur un <code>vector</code></h3>
-<p>Nous pouvons également effectuer des opération sur un <code>vector</code>.</p>
+<p>Nous pouvons également effectuer des opérations sur un <code>vector</code>.</p>
 <div class="sourceCode" id="cb271"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb271-1" title="1"><span class="kw">print</span>(miVec01)</a></code></pre></div>
 <pre><code>## [1] 1 2 3 4</code></pre>
 <div class="sourceCode" id="cb273"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb273-1" title="1">miVec01 <span class="op">+</span><span class="st"> </span><span class="dv">1</span></a></code></pre></div>
@@ -444,7 +444,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <pre><code>## [1] 2 4 6 8</code></pre>
 <div class="sourceCode" id="cb279"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb279-1" title="1">miVec01 <span class="op">/</span><span class="dv">10</span></a></code></pre></div>
 <pre><code>## [1] 0.1 0.2 0.3 0.4</code></pre>
-<p>Les opérations d’un <code>vector</code> sur un autre sont aussi possibles, mais il faut veiller à ce que le nombre d’éléments d’un <code>vector</code> soit le même que l’autre, sinon R va effectuer le calcul en repartant du début. Voici un exemple pour illustrer ce que R fait:</p>
+<p>Les opérations d’un <code>vector</code> sur un autre sont possibles, mais il faut veiller à ce que le nombre d’éléments d’un <code>vector</code> soit le même que l’autre, sinon R va effectuer le calcul en repartant du début du <code>vector</code> le plus court. Voici un exemple pour illustrer ce que R fait:</p>
 <div class="sourceCode" id="cb281"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb281-1" title="1">miVec12 &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>)</a>
 <a class="sourceLine" id="cb281-2" title="2"><span class="kw">print</span>(miVec12)</a></code></pre></div>
 <pre><code>## [1] 1 1 1 1 1 1 1 1 1</code></pre>
@@ -466,9 +466,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## de la taille d&#39;un objet plus court</code></pre>
 <pre><code>## [1] 11 21 31 11</code></pre>
 </div>
-<div id="accèder-aux-valeurs-dun-vector" class="section level3">
-<h3><span class="header-section-number">6.1.3</span> Accèder aux valeurs d’un <code>vector</code></h3>
-<p>Il souvent nécessaire de pouvoir accèder aux valeurs d’un <code>vector</code>, c’est à dire de récupérer une valeur ou un groupe de valeurs au sein d’un <code>vector</code>. Pour à un élément dans un <code>vector</code> nous utilisons les crochets <code>[]</code>. Entre les crochets, nous pouvons utiliser un numéro correspondant au numéro de l’élément dans le <code>vector</code>.</p>
+<div id="accéder-aux-valeurs-dun-vector" class="section level3">
+<h3><span class="header-section-number">6.1.3</span> Accéder aux valeurs d’un <code>vector</code></h3>
+<p>Il souvent nécessaire de pouvoir accéder aux valeurs d’un <code>vector</code>, c’est à dire de récupérer une valeur ou un groupe de valeurs au sein d’un <code>vector</code>. Pour récupérer une valeur ou un groupe de valeurs dans un <code>vector</code> nous utilisons les crochets <code>[]</code>. Entre les crochets, nous pouvons utiliser un numéro correspondant au numéro de l’élément dans le <code>vector</code>.</p>
 <div class="sourceCode" id="cb296"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb296-1" title="1">miVec20 &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">10</span>, <span class="dv">20</span>, <span class="dv">30</span>, <span class="dv">40</span>, <span class="dv">50</span>, <span class="dv">60</span>, <span class="dv">70</span>, <span class="dv">80</span>, <span class="dv">90</span>)</a>
 <a class="sourceLine" id="cb296-2" title="2">miVec21 &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;a&quot;</span>, <span class="st">&quot;b&quot;</span>, <span class="st">&quot;c&quot;</span>, <span class="st">&quot;d&quot;</span>, <span class="st">&quot;e&quot;</span>, <span class="st">&quot;f&quot;</span>, <span class="st">&quot;g&quot;</span>, <span class="st">&quot;h&quot;</span>, <span class="st">&quot;i&quot;</span>)</a>
 <a class="sourceLine" id="cb296-3" title="3"><span class="kw">print</span>(miVec20)</a></code></pre></div>
@@ -486,7 +486,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <pre><code>## [1] &quot;d&quot; &quot;c&quot; &quot;a&quot;</code></pre>
 <div class="sourceCode" id="cb308"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb308-1" title="1"><span class="kw">print</span>(miVec21[<span class="kw">c</span>(<span class="dv">4</span>, <span class="dv">4</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">3</span>, <span class="dv">2</span>, <span class="dv">5</span>)])</a></code></pre></div>
 <pre><code>## [1] &quot;d&quot; &quot;d&quot; &quot;c&quot; &quot;d&quot; &quot;c&quot; &quot;b&quot; &quot;e&quot;</code></pre>
-<p>Nous pouvons aussi selectionner des éléments en utilisant un opérateur de comparaison ou un opérateur logique.</p>
+<p>Nous pouvons aussi sélectionner des éléments en utilisant un opérateur de comparaison ou un opérateur logique.</p>
 <div class="sourceCode" id="cb310"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb310-1" title="1"><span class="kw">print</span>(miVec20[miVec20 <span class="op">&gt;=</span><span class="st"> </span><span class="dv">50</span>])</a></code></pre></div>
 <pre><code>## [1] 50 60 70 80 90</code></pre>
 <div class="sourceCode" id="cb312"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb312-1" title="1"><span class="kw">print</span>(miVec20[(miVec20 <span class="op">&gt;=</span><span class="st"> </span><span class="dv">50</span>) <span class="op">&amp;</span><span class="st"> </span>((miVec20 <span class="op">&lt;</span><span class="st"> </span><span class="dv">80</span>))])</a></code></pre></div>
@@ -521,14 +521,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <pre><code>## [1] 30 40 60 70 80 90</code></pre>
 <div class="sourceCode" id="cb340"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb340-1" title="1"><span class="kw">print</span>(miVec21[<span class="op">-</span><span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">5</span>)])</a></code></pre></div>
 <pre><code>## [1] &quot;c&quot; &quot;d&quot; &quot;f&quot; &quot;g&quot; &quot;h&quot; &quot;i&quot;</code></pre>
-<p>Les éléments d’un <code>vector</code> peuvent aussi être sélectionné sur la base d’un <code>vector</code> de type <code>logical</code>. Dans ce cas seuls les éléments avec une valeur <code>TRUE</code> seront sélectionnés.</p>
+<p>Les éléments d’un <code>vector</code> peuvent aussi être sélectionnés sur la base d’un <code>vector</code> de type <code>logical</code>. Dans ce cas seuls les éléments avec une valeur <code>TRUE</code> seront sélectionnés.</p>
 <div class="sourceCode" id="cb342"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb342-1" title="1">miVec22 &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="ot">TRUE</span>, <span class="ot">TRUE</span>, <span class="ot">FALSE</span>, <span class="ot">TRUE</span>, <span class="ot">FALSE</span>, <span class="ot">TRUE</span>, <span class="ot">FALSE</span>, <span class="ot">TRUE</span>, <span class="ot">TRUE</span>)</a>
 <a class="sourceLine" id="cb342-2" title="2"><span class="kw">print</span>(miVec21[miVec22])</a></code></pre></div>
 <pre><code>## [1] &quot;a&quot; &quot;b&quot; &quot;d&quot; &quot;f&quot; &quot;h&quot; &quot;i&quot;</code></pre>
 </div>
 <div id="nommer-les-éléments-dun-vector" class="section level3">
 <h3><span class="header-section-number">6.1.4</span> Nommer les éléments d’un <code>vector</code></h3>
-<p>Les éléments d’un <code>vector</code> peuvent être nommé pour pouvoir s’y référer par la suite et opérer une sélection. La fonction <code>names()</code> permet de récupérer les noms des éléments d’un vecteur.</p>
+<p>Les éléments d’un <code>vector</code> peuvent être nommés pour pouvoir s’y référer par la suite et opérer une sélection. La fonction <code>names()</code> permet de récupérer les noms des éléments d’un vecteur.</p>
 <div class="sourceCode" id="cb344"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb344-1" title="1">miVec23 &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dt">aaa =</span> <span class="dv">10</span>, <span class="dt">bbb =</span> <span class="dv">20</span>, <span class="dt">ccc =</span> <span class="dv">30</span>, <span class="dt">ddd =</span> <span class="dv">40</span>, <span class="dt">eee =</span> <span class="dv">50</span>)</a>
 <a class="sourceLine" id="cb344-2" title="2"><span class="kw">print</span>(miVec23)</a></code></pre></div>
 <pre><code>## aaa bbb ccc ddd eee 
@@ -574,7 +574,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div id="l014list" class="section level2">
 <h2><span class="header-section-number">6.2</span> Le conteneur <code>list</code></h2>
-<p>Le deuxième type de conteneur que nous allons introduire est le conteneur <code>list</code>, qui est également le deuxième conteneur après le type <code>vector</code> de part son importance dans la programmation avec R. Le conteneur de type <code>list</code> permet de stocker une <strong>liste</strong> d’éléments. Contrairement à ce que nous avons vu précédement avec le type <code>vector</code>, les éléments du type <code>list</code> peuvent être différents (par exemple un <code>vector</code> de type <code>numeric</code>, puis un vecteur de type <code>character</code>). Les éléments du type <code>list</code> peuvent aussi être des conteneurs différents (par exemple un <code>vector</code>, puis une <code>list</code>). Le type de conteneur <code>list</code> prendra tout son sens lorsque nous aurons étudié les <strong>boucles</strong> et les <strong>fonctions</strong> de la famille <code>apply</code>.</p>
+<p>Le deuxième type de conteneur que nous allons introduire est le conteneur <code>list</code>, qui est également le deuxième conteneur après le type <code>vector</code> de par son importance dans la programmation avec R. Le conteneur de type <code>list</code> permet de stocker une <strong>liste</strong> d’éléments. Contrairement à ce que nous avons vu précédemment avec le type <code>vector</code>, les éléments du type <code>list</code> peuvent être différents (par exemple un <code>vector</code> de type <code>numeric</code>, puis un <code>vector</code> de type <code>character</code>). Les éléments du type <code>list</code> peuvent aussi être des conteneurs différents (par exemple un <code>vector</code>, puis une <code>list</code>). Le type de conteneur <code>list</code> prendra tout son sens lorsque nous aurons étudié les <strong>boucles</strong> et les <strong>fonctions</strong> de la famille <code>apply</code>.</p>
 <div id="créer-une-list" class="section level3">
 <h3><span class="header-section-number">6.2.1</span> Créer une <code>list</code></h3>
 <p>Pour créer une <code>list</code> nous allons utiliser la fonction <code>list()</code> qui prend comme argument des éléments (objets).</p>
@@ -651,7 +651,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>L’accès au deuxième élément du <code>vector</code> situé en quatrième position de la liste se fait donc avec <code>miList02[[4]][2]</code>. Nous utilisons un double crochet pour le quatrième élément de la <code>list</code>, puis un simple crochet pour le deuxième élément du <code>vector</code>.</p>
 <div class="sourceCode" id="cb396"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb396-1" title="1"><span class="kw">print</span>(miList02[[<span class="dv">4</span>]][<span class="dv">2</span>])</a></code></pre></div>
 <pre><code>## [1] &quot;b&quot;</code></pre>
-<p>Comme une <code>list</code> peut contenir elle même une ou plusieurs <code>list</code>, nous pouvons accéder à l’information recherchée en combinant les doubles crochets. l’objet <code>miList04</code> est une <code>list</code> de deux éléments, les <code>list</code> <code>miList02</code> et <code>miList03</code>. L’objet <code>miList03</code> contient lui même une <code>list</code> comme élément en troisième position. Pour accéder au premier élément du <code>vector</code> en première position de l’élément en troisième position du deuxième élément de la <code>list</code> <code>miList04</code>, nous pouvons utiliser <code>miList04[[2]][[3]][[1]][1]</code>. Il n’y a pas de limite quant à la profondeur des <code>list</code> mais dans la pratique il n’y que rarement besoin de faire des <code>list</code> de <code>list</code> de <code>list</code>.</p>
+<p>Comme une <code>list</code> peut contenir elle-même une ou plusieurs <code>list</code>, nous pouvons accéder à l’information recherchée en combinant les doubles crochets. L’objet <code>miList04</code> est une <code>list</code> de deux éléments, les <code>list</code> <code>miList02</code> et <code>miList03</code>. L’objet <code>miList03</code> contient lui-même une <code>list</code> comme élément en troisième position. Pour accéder au premier élément du <code>vector</code> en première position de l’élément en troisième position du deuxième élément de la <code>list</code> <code>miList04</code>, nous pouvons utiliser <code>miList04[[2]][[3]][[1]][1]</code>. Il n’y a pas de limite quant à la profondeur des <code>list</code> mais dans la pratique il n’y que rarement besoin de faire des <code>list</code> de <code>list</code> de <code>list</code>.</p>
 <div class="sourceCode" id="cb398"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb398-1" title="1">miList04 &lt;-<span class="st"> </span><span class="kw">list</span>(miList02, miList03)</a>
 <a class="sourceLine" id="cb398-2" title="2"><span class="kw">print</span>(miList04)</a></code></pre></div>
 <pre><code>## [[1]]
@@ -683,7 +683,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## [1] &quot;a&quot; &quot;b&quot; &quot;c&quot;</code></pre>
 <div class="sourceCode" id="cb400"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb400-1" title="1"><span class="kw">print</span>(miList04[[<span class="dv">2</span>]][[<span class="dv">3</span>]][[<span class="dv">1</span>]][<span class="dv">1</span>])</a></code></pre></div>
 <pre><code>## [1] 4</code></pre>
-<p>Pour rendre concret l’exemple précédent, nous pouvons imaginer des espèces de foreurs de maïs (<em>Sesamia nonagrioides</em> et <em>Ostrinia nubilalis</em>), échantillonées dans différents sites, avec différentes abondances à quatre dates. Ici nous allons donner des noms aux éléments des listes.</p>
+<p>Pour rendre concret l’exemple précédent, nous pouvons imaginer des espèces de foreurs de maïs (<em>Sesamia nonagrioides</em> et <em>Ostrinia nubilalis</em>), échantillonnées dans différents sites, avec différentes abondances à quatre dates. Ici nous allons donner des noms aux éléments des listes.</p>
 <div class="sourceCode" id="cb402"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb402-1" title="1">bddInsect &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="dt">Snonagrioides =</span> <span class="kw">list</span>(<span class="dt">site01 =</span> <span class="kw">c</span>(<span class="dv">12</span>, <span class="dv">5</span>, <span class="dv">8</span>, <span class="dv">7</span>), <span class="dt">site02 =</span> <span class="kw">c</span>(<span class="dv">5</span>, <span class="dv">23</span>, <span class="dv">4</span>, <span class="dv">41</span>), <span class="dt">site03 =</span> <span class="kw">c</span>(<span class="dv">12</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>)), <span class="dt">Onubilalis =</span> <span class="kw">list</span>(<span class="dt">site01 =</span> <span class="kw">c</span>(<span class="dv">12</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>), <span class="dt">site02 =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>), <span class="dt">site03 =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>)))</a>
 <a class="sourceLine" id="cb402-2" title="2"><span class="kw">print</span>(bddInsect)</a></code></pre></div>
 <pre><code>## $Snonagrioides
@@ -706,7 +706,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 
 ## $Onubilalis$site03
 ## [1] 1 1 2 3</code></pre>
-<p>La lecture d’une ligne de code longue comme celle de la création de l’objet <code>bddInsect</code> est difficile à lire car la profondeur des éléments ne peut se déduire que grâce aux parenthèses. C’est pourquoi nous allons reorganiser le code pour lui donner plus de lisibilité grâce à l’<strong>indentation</strong>. L’indentation consiste à mettre l’information à des niveaux différents de telle manière que nous puissions rapidement identifier les différents niveaux d’un code. L’indentation se fait au moyen de la touche de tabulation du clavier. Nous reviendrons sur l’indentation avec plus de précisions lors du chapitre sur les <strong>boucles</strong>. Nous retiendrons pour le moment que si une ligne de code est trop longue, nous gagnons en lisibilité en passant à la ligne et que R va lire l’ensemble comme une seule ligne de code.</p>
+<p>La lecture d’une ligne de code longue comme celle de la création de l’objet <code>bddInsect</code> est difficile à lire car la profondeur des éléments ne peut se déduire que grâce aux parenthèses. C’est pourquoi nous allons réorganiser le code pour lui donner plus de lisibilité grâce à l’<strong>indentation</strong>. L’indentation consiste à mettre l’information à des niveaux différents de telle manière que nous puissions rapidement identifier les différents niveaux d’un code. L’indentation se fait au moyen de la touche de tabulation du clavier. Nous reviendrons sur l’indentation avec plus de précisions lors du chapitre sur les <strong>boucles</strong>. Nous retiendrons pour le moment que si une ligne de code est trop longue, nous gagnons en lisibilité en passant à la ligne et que R va lire l’ensemble comme une seule ligne de code.</p>
 <div class="sourceCode" id="cb404"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb404-1" title="1">bddInsect &lt;-<span class="st"> </span><span class="kw">list</span>(</a>
 <a class="sourceLine" id="cb404-2" title="2">  <span class="dt">Snonagrioides =</span> <span class="kw">list</span>(</a>
 <a class="sourceLine" id="cb404-3" title="3">    <span class="dt">site01 =</span> <span class="kw">c</span>(<span class="dv">12</span>, <span class="dv">5</span>, <span class="dv">8</span>, <span class="dv">7</span>), </a>
@@ -761,7 +761,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div id="modification-dune-list" class="section level3">
 <h3><span class="header-section-number">6.2.3</span> Modification d’une <code>list</code></h3>
-<p>Une <code>list</code> peut être modifiée de la même façon que pour le conteneur <code>vector</code>, c’est à dire en se réferrant avec des crochets à l’élément que nous souhaitons modifier.</p>
+<p>Une <code>list</code> peut être modifiée de la même façon que pour le conteneur <code>vector</code>, c’est à dire en se référant avec des crochets à l’élément que nous souhaitons modifier.</p>
 <div class="sourceCode" id="cb431"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb431-1" title="1"><span class="kw">print</span>(miList02)</a></code></pre></div>
 <pre><code>## [[1]]
 ## [1] 5
@@ -1027,7 +1027,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div id="l014dataframe" class="section level2">
 <h2><span class="header-section-number">6.3</span> Le conteneur <code>data.frame</code></h2>
-<p>Le conteneur <code>data.frame</code> peut être assimilé à un <em>tableau</em>. Il s’agit en fait d’un cas particulier de <code>list</code> où tous les éléments de la <code>list</code> ont la même longueur.</p>
+<p>Le conteneur <code>data.frame</code> peut être assimilé à un <em>tableau</em>. Il s’agit en réalité d’un cas particulier de <code>list</code> où tous les éléments de la <code>list</code> ont la même longueur.</p>
 <div id="créer-un-data.frame" class="section level3">
 <h3><span class="header-section-number">6.3.1</span> Créer un <code>data.frame</code></h3>
 <p>Pour créer un <code>data.frame</code> nous allons utiliser la fonction <code>data.frame()</code> qui prend comme arguments les éléments du tableau que nous souhaitons créer. Les éléments sont de type <code>vector</code> et font tous la même taille. Nous pouvons donner un nom à chaque <em>colonne</em> (<code>vector</code>) de notre <em>tableau</em> (<code>data.frame</code>).</p>
@@ -1055,8 +1055,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 3       3    FALSE          c
 ## 4       4     TRUE          d</code></pre>
 </div>
-<div id="accèder-aux-valeurs-dun-data.frame" class="section level3">
-<h3><span class="header-section-number">6.3.2</span> Accèder aux valeurs d’un <code>data.frame</code></h3>
+<div id="accéder-aux-valeurs-dun-data.frame" class="section level3">
+<h3><span class="header-section-number">6.3.2</span> Accéder aux valeurs d’un <code>data.frame</code></h3>
 <p>L’accès aux différentes valeurs d’un <code>data.frame</code> peut se faire de la même façon que pour un conteneur de type <code>list</code>.</p>
 <div class="sourceCode" id="cb473"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb473-1" title="1"><span class="kw">print</span>(miDf01<span class="op">$</span>numbers) <span class="co"># vector</span></a></code></pre></div>
 <pre><code>## [1] 1 2 3 4</code></pre>
@@ -1076,7 +1076,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 4       4</code></pre>
 <div class="sourceCode" id="cb481"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb481-1" title="1"><span class="kw">print</span>(miDf01[[<span class="st">&quot;numbers&quot;</span>]]) <span class="co"># vector</span></a></code></pre></div>
 <pre><code>## [1] 1 2 3 4</code></pre>
-<p>Nous pouvons aussi utiliser une aute forme qui consiste à spécifier le ou les lignes suivi d’une virgule (et donc d’un espace après la virgule), puis le ou les colonnes entre crochets simples. Si l’information ligne ou colonne est omise, R affichera toutes les lignes ou toutes les colonnes. Là encore nous pouvons utiliser le numéro correspondant à un élément ou alors le nom de l’élément que nous souhaitons sélectionner.</p>
+<p>Nous pouvons aussi utiliser une autre forme qui consiste à spécifier la ou les lignes suivi d’une virgule (et donc d’un espace après la virgule), puis la ou les colonnes entre crochets simples. Si l’information ligne ou colonne est omise, R affichera toutes les lignes ou toutes les colonnes. Là encore nous pouvons utiliser le numéro correspondant à un élément ou alors le nom de l’élément que nous souhaitons sélectionner.</p>
 <div class="sourceCode" id="cb483"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb483-1" title="1">myRow &lt;-<span class="st"> </span><span class="dv">2</span></a>
 <a class="sourceLine" id="cb483-2" title="2">myCol &lt;-<span class="st"> </span><span class="dv">1</span></a>
 <a class="sourceLine" id="cb483-3" title="3"><span class="kw">print</span>(miDf01[myRow, myCol])</a></code></pre></div>
@@ -1124,7 +1124,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div id="modifier-un-data.frame" class="section level3">
 <h3><span class="header-section-number">6.3.3</span> Modifier un <code>data.frame</code></h3>
-<p>Pour ajouter un élément à un <code>data.frame</code>, nous allons procéder comme pour un conteneur de type <code>list</code>. Il faudra veiller à ce que le nouvel éléménet soit de la même taille que les autres éléments de notre <code>data.frame</code>. Par défaut un nouvel élément dans un <code>data.frame</code> prend comme nom la lettre <em>V</em> suivie du numéro de la colonne. Nous pouvons changer les noms de colonne avec la fonction <code>colnames()</code>. Nous avons la possibilité de donner un nom aux lignes avec la fonction <code>rownames()</code></p>
+<p>Pour ajouter un élément à un <code>data.frame</code>, nous allons procéder comme pour un conteneur de type <code>list</code>. Il faudra veiller à ce que le nouvel élément soit de la même taille que les autres éléments de notre <code>data.frame</code>. Par défaut un nouvel élément dans un <code>data.frame</code> prend comme nom la lettre <em>V</em> suivie du numéro de la colonne. Nous pouvons changer les noms de colonne avec la fonction <code>colnames()</code>. Nous avons la possibilité de donner un nom aux lignes avec la fonction <code>rownames()</code></p>
 <div class="sourceCode" id="cb503"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb503-1" title="1">newVec &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>, <span class="dv">7</span>)</a>
 <a class="sourceLine" id="cb503-2" title="2">miDf01[[<span class="dv">4</span>]] &lt;-<span class="st"> </span>newVec</a>
 <a class="sourceLine" id="cb503-3" title="3"><span class="kw">print</span>(miDf01)</a></code></pre></div>
@@ -1243,7 +1243,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## row1    1    2    3    4
 ## row2    5    6    7    8
 ## row3    9   10   11   12</code></pre>
-<p>Il est possible de créer une <code>matrix</code> à partir d’un <code>data.frame</code> avec la fonction <code>as.matrix()</code> sous réserve que le <code>data.frame</code> ne contienne que des élément de même type (par exemple que des éléments de type <code>numeric</code>).</p>
+<p>Il est possible de créer une <code>matrix</code> à partir d’un <code>data.frame</code> avec la fonction <code>as.matrix()</code> sous réserve que le <code>data.frame</code> ne contienne que des éléments de même type (par exemple des éléments de type <code>numeric</code>).</p>
 <div class="sourceCode" id="cb541"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb541-1" title="1">vecForMat01 &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>, <span class="dv">7</span>, <span class="dv">8</span>, <span class="dv">9</span>, <span class="dv">10</span>, <span class="dv">11</span>, <span class="dv">12</span>)</a>
 <a class="sourceLine" id="cb541-2" title="2">vecForMat02 &lt;-<span class="st"> </span>vecForMat01 <span class="op">*</span><span class="st"> </span><span class="dv">10</span></a>
 <a class="sourceLine" id="cb541-3" title="3">vecForMat03 &lt;-<span class="st"> </span>vecForMat01 <span class="op">/</span><span class="st"> </span><span class="dv">10</span></a>
@@ -1280,7 +1280,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## [12,]          12         120         1.2</code></pre>
 <div class="sourceCode" id="cb547"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb547-1" title="1"><span class="kw">is.matrix</span>(<span class="kw">as.matrix</span>(dfForMat))</a></code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
-<p>Nous pouvons aussi créer une <code>matrix</code> à partir d’un <code>vector</code> avec la fonction <code>as.matrix()</code> (matrice de une seule colonne).</p>
+<p>Nous pouvons aussi créer une <code>matrix</code> à partir d’un <code>vector</code> avec la fonction <code>as.matrix()</code> (matrice d’une seule colonne).</p>
 <div class="sourceCode" id="cb549"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb549-1" title="1"><span class="kw">as.matrix</span>(vecForMat01)</a></code></pre></div>
 <pre><code>##       [,1]
 ##  [1,]    1
@@ -1356,7 +1356,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <pre><code>## [1] 1 5 9</code></pre>
 <div class="sourceCode" id="cb569"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb569-1" title="1"><span class="kw">det</span>(miMat02)</a></code></pre></div>
 <pre><code>## [1] 0</code></pre>
-<p>Il est souvent utile de pouvoir tansposer une <code>matrix</code> (colonnes en lignes ou lignes en colonnes). Pour cela il existe les fonctions <code>aperm()</code> ou <code>t()</code>. la fonction <code>t()</code> est plus générique et fonctionne aussi sur les <code>data.frame</code>.</p>
+<p>Il est souvent utile de pouvoir transposer une <code>matrix</code> (colonnes en lignes ou lignes en colonnes). Pour cela il existe les fonctions <code>aperm()</code> ou <code>t()</code>. la fonction <code>t()</code> est plus générique et fonctionne aussi sur les <code>data.frame</code>.</p>
 <div class="sourceCode" id="cb571"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb571-1" title="1"><span class="kw">aperm</span>(miMat01)</a></code></pre></div>
 <pre><code>##      [,1] [,2] [,3] [,4]
 ## [1,]    1    2    3    4
@@ -1368,9 +1368,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## [2,]    5    6    7    8
 ## [3,]    9   10   11   12</code></pre>
 </div>
-<div id="accèder-aux-éléments-dune-matrix" class="section level3">
-<h3><span class="header-section-number">6.4.3</span> Accèder aux éléments d’une <code>matrix</code></h3>
-<p>Comme pour un <code>data.frame</code>, nous pouvons accèder aux éléments d’une matrice en spécifiant un numéro de ligne et un numéro de colonne entre crochets simples <code>[ ]</code>, et séparés par une virgule. Si <code>i</code> est le numéro de ligne et <code>j</code> le numéro de colonne, alors <code>miMat01[i, j]</code> renvoie l’élément situé à la ligne <code>i</code> et à la colonne <code>j</code>. <code>miMat01[i, ]</code> renvoie tous les éléments de la ligne <code>i</code>, et <code>miMat01[, j]</code> tous les éléments de la colonne <code>j</code>. Les sélections multiples sont possibles. Nous pouvons également accèder à un élément en fonction de sa position dans la matrice entre crochets simples <code>[ ]</code> en comptant par colonne puis par ligne. Dans notre exemple la valeur du dixième élément est 10.</p>
+<div id="accéder-aux-éléments-dune-matrix" class="section level3">
+<h3><span class="header-section-number">6.4.3</span> Accéder aux éléments d’une <code>matrix</code></h3>
+<p>Comme pour un <code>data.frame</code>, nous pouvons accéder aux éléments d’une matrice en spécifiant un numéro de ligne et un numéro de colonne entre crochets simples <code>[ ]</code>, et séparés par une virgule. Si <code>i</code> est le numéro de ligne et <code>j</code> le numéro de colonne, alors <code>miMat01[i, j]</code> renvoie l’élément situé à la ligne <code>i</code> et à la colonne <code>j</code>. <code>miMat01[i, ]</code> renvoie tous les éléments de la ligne <code>i</code>, et <code>miMat01[, j]</code> tous les éléments de la colonne <code>j</code>. Les sélections multiples sont possibles. Nous pouvons également accéder à un élément en fonction de sa position dans la matrice entre crochets simples <code>[ ]</code> en comptant par colonne puis par ligne. Dans notre exemple la valeur du dixième élément est 10.</p>
 <div class="sourceCode" id="cb575"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb575-1" title="1">i &lt;-<span class="st"> </span><span class="dv">2</span></a>
 <a class="sourceLine" id="cb575-2" title="2">j &lt;-<span class="st"> </span><span class="dv">1</span></a>
 <a class="sourceLine" id="cb575-3" title="3"><span class="kw">print</span>(miMat01[i, j])</a></code></pre></div>
