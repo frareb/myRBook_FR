@@ -4,11 +4,11 @@
 
 ### Transformer ses données au format TXT ou CSV {#l016transfo}
 
-Il existe de nombreuses façons de lire le contenu d'un fichier avec R. Cependant nous nous focaliserons sur la lecture des fichiers TXT et CSV qui sont les plus communs et les plus fiables. A de rares exceptions près tous les fichiers de données peuvent très facilement être transformés aux formats TXT et CSV. C'est la pratique à préférer pour une analyse des données avec R.
+Il existe de nombreuses façons de lire le contenu d'un fichier avec R. Cependant nous nous focaliserons sur la lecture des fichiers TXT et CSV qui sont les plus communs et les plus fiables. A de rares exceptions près tous les fichiers de données peuvent très facilement être transformés aux formats TXT et CSV. C'est la pratique à préférer pour une analyse des données avec R. Dans tous les autres cas et pour couvrir l’ensemble des possibilités avec R, nous pourrons nous référer au manuel de référence sur l’import et l’export de données sur le site web de R (en anglais ; https://cran.r-project.org/manuals.html).
 
-Concrètement, depuis Microsoft Excel, il suffit d'aller dans *Fichier*, puis *Enregistrer sous*, de sélectionner l'endroit où nous souhaitons sauvegarder notre fichier (cf. chapitre suivant sur la gestion d'un projet R) puis dans la fenêtre de sauvegarde changer le *Type* depuis XLSX vers CSV. Depuis LibreOffice Calc, il suffit d'aller dans *Fichier*, puis *Enregistrer sous*, puis de sélectionner le *Type* CSV. Il est important de savoir que le fichier CSV ne supporte pas la mise en forme des fichiers tableurs avec par exemple des couleurs, et que le fichier CSV ne contient qu'un seul onglet. Si nous avons un fichier tableur avec plusieurs onglets, il faudra sauvegarder autant de fichiers CSV que d'onglets.
+Concrètement, depuis Microsoft Excel, il suffit d'aller dans *Fichier*, puis *Enregistrer sous*, de sélectionner l'endroit où nous souhaitons sauvegarder notre fichier (cf. chapitre suivant sur la gestion d'un projet R) puis dans la fenêtre de sauvegarde changer le *Type* depuis XLSX vers CSV. Depuis LibreOffice Calc, il suffit d'aller dans *Fichier*, puis *Enregistrer sous*, puis de sélectionner le *Type* CSV. Il est important de savoir que le format CSV ne supporte pas la mise en forme des fichiers tableurs avec par exemple des couleurs, et que le fichier CSV ne contient qu'un seul onglet. Si nous avons un fichier tableur avec plusieurs onglets, il faudra sauvegarder autant de fichiers CSV que d'onglets.
 
-CSV vient de l'anglais *Comma-separated values* (https://fr.wikipedia.org/wiki/Comma-separated_values), et représente des données de tableur au format texte séparées par des virgules (ou des points virgules suivant les pays). Un fichier CSV pourra toujours s'ouvrir avec notre logiciel de tableur, mais aussi avec un simple éditeur de texte comme le bloc notes de Windows ou encore avec Notepad++. Il est d'ailleurs préférables d'ouvrir les fichiers CSV avec un éditeur de texte car les tableurs ont la facheuse tendance à vouloir modifier automatiquement les fichiers CSV et cela a pour conséquence de les rendre difficiles à lire. 
+CSV vient de l'anglais *Comma-separated values* (https://fr.wikipedia.org/wiki/Comma-separated_values), et représente des données de tableur au format texte séparées par des virgules (ou des points virgules suivant les pays). Un fichier CSV pourra toujours s'ouvrir avec notre logiciel de tableur, mais aussi avec un simple éditeur de texte comme le bloc-notes de Windows ou encore avec Notepad++. Il est d'ailleurs préférable d'ouvrir les fichiers CSV avec un éditeur de texte car les tableurs ont la fâcheuse tendance à vouloir modifier automatiquement les fichiers CSV et cela a pour conséquence de les rendre difficiles à lire. 
 
 Une fois le fichier TXT ou CSV obtenu, la lecture du contenu depuis R est facile, même si elle demande un peu de rigueur.
 
@@ -16,9 +16,9 @@ Une fois le fichier TXT ou CSV obtenu, la lecture du contenu depuis R est facile
 
 C'est la source d'erreur la plus commune chez les débutants en R. C'est pourquoi il est important de lire et de relire ce chapitre et celui sur la gestion d'un projet R avec beaucoup d'attention.
 
-Commençons par préciser que R travaille dans un répertoire défini par défaut. Les utilisateurs de Rstudio ou autre [environnement de développement](#IDE) spécialisés pour R seront tenter d'utiliser les options disponibles via les menus pour définir leur répertoire de travail ou pour charger le contenu d'un fichier. Dans ce livre ces techniques ne seront jamais utilisées car elles ne permettent pas la reproductibilité des résultats. Un script doit toujours pouvoir fonctionner pour tous les systèmes d'exploitation et quel que soit [l'environnement de développement](#IDE) de l'utilisateur. 
+Commençons par préciser que R travaille dans un répertoire défini par défaut. Les utilisateurs de Rstudio ou autre [environnement de développement](#IDE) spécialisés pour R seront tentés d'utiliser les options disponibles via les menus pour définir leur répertoire de travail ou pour charger le contenu d'un fichier. Dans ce livre ces techniques ne seront jamais utilisées car elles ne permettent pas la reproductibilité des résultats. Un script doit toujours pouvoir fonctionner pour tous les systèmes d'exploitation et quel que soit [l'environnement de développement](#IDE) de l'utilisateur. 
 
-Le répertoire de travail par défaut peut être obtenu avec la fonction [`getwd()`](#l015getwd) et spécifier avec la fonction [`setwd()`](#l015setwd).
+Le répertoire de travail par défaut peut être obtenu avec la fonction [`getwd()`](#l015getwd) et spécifié avec la fonction [`setwd()`](#l015setwd).
 
 ```{r 016-importExport-1}
 oldWd <- getwd()
@@ -31,21 +31,21 @@ getwd()
 
 Nous avons donc quatre options : 
 
-* nous pouvons lire le contenu d'un fichier en indiquant à R son chemin complet (à proscrire pour la reproductibilité des résultats)
+* nous pouvons lire le contenu d'un fichier en indiquant à R son chemin complet (à proscrire pour la reproductibilité des résultats, en effet le chemin complet varie d'un ordinateur à un autre)
 * nous pouvons lire le contenu d'un fichier en indiquant à R son chemin relatif
-* nous pouvons déplacer le fichier dans le répertoire de travail de R
+* nous pouvons déplacer le fichier dans le répertoire de travail de R par défaut
 * nous pouvons modifier le répertoire de travail de R pour qu'il corresponde à l'emplacement de notre fichier (avec son chemin relatif)
 
 Un exemple de chemin complet serait :
 
-* `/home/myName/myFile.csv` sous un environnement UNIX
-* `C:/users/myName/myFile.csv` sous un environnement Windows (attention, sous R nous utilisons `/` et non pas `\` comme c'est le cas par défaut sous Windows)
+* "`/home/myName/myFile.csv`" sous un environnement UNIX
+* "`C:/users/myName/myFile.csv`" sous un environnement Windows (attention, sous R nous utilisons `/` et non pas `\` comme c'est le cas par défaut sous Windows)
 
 Un chemin relatif serait :
 
 * `myName/myFiles.csv`
 
-Pour naviguer dans les chemins relatifs nous pouvons utiliser `..` qui permet de remonter dans le répertoire source. Par exemple si le répertoire de travail est `myScripts` et que l'arborescence de mes fichiers est ainsi : 
+Pour naviguer dans les chemins relatifs nous pouvons utiliser "`..`" qui permet de remonter dans le répertoire source. Par exemple si le répertoire de travail est `myScripts` et que l'arborescence de mes fichiers est ainsi : 
 
 ```{r 016-importExport-2, echo = FALSE}
 cat("-myProject
@@ -56,15 +56,15 @@ cat("-myProject
 |-|-myFirstScript.R")
 ```
 
-Le chemin relatif vers le fichier `data01.csv` serait `../myFiles/data01.csv`
+Le chemin relatif vers le fichier "`data01.csv`" serait "`../myFiles/data01.csv`".
 
 Donc pour lire le contenu du fichier `data01.csv`, nous allons privilégier l'option 2 (lire le contenu d'un fichier en indiquant à R son chemin relatif) ou l'option 4 (modifier le répertoire de travail de R pour qu'il corresponde à l'emplacement de notre fichier). Dans ce dernier cas :
 
 ```{r 016-importExport-3, eval = FALSE}
 myWD <- "../myFiles/"
 setwd(myWd)
-getwd() # pour verifier que nous sommes dans le bon repertoire
-list.files() # pour verifier que le fichier se trouve bien ici
+getwd() # pour vérifier que nous sommes dans le bon répertoire
+list.files() # pour vérifier que le fichier se trouve bien ici
 ```
 
 L'erreur la plus commune :
@@ -99,15 +99,15 @@ In file(file, \"rt\") :
   impossible d'ouvrir le fichier '../myFiles/data01.csv' : No such file or directory")
 ```
 
-Si tout va bien, R affiche le contenu du fichier `data01.csv`. Attention aux utilisateurs de Windows car par défaut le nom des fichier apparaît sans leur extension... Ainsi lorsque nous navigons dans les répertoires avec l'explorateur de fichiers, il n'y a pas de fichier `data01.csv` mais uniquement un fichier `data01`. Il est indispensable de remedier à ce problème pour éviter les erreurs. Pour ce faire il suffit d'ouvrir les 'Options de l'Explorateur de fichiers' via la touche 'Windows', puis dans l'onglet 'Affichage', de vérifier que l'option 'Masquer les extensions des fichiers dont le type est connu' est bien décochée. 
+Si tout va bien, R affiche le contenu du fichier "`data01.csv`". Attention aux utilisateurs de Windows car par défaut le nom des fichiers apparaît sans leur extension... Ainsi lorsque nous naviguons dans les répertoires avec l'explorateur de fichiers, il n'y a pas de fichier "`data01.csv`" mais uniquement un fichier "`data01`". Il est indispensable de remédier à ce problème pour éviter les erreurs. Pour ce faire il suffit d'ouvrir les 'Options de l'Explorateur de fichiers' via la touche 'Windows', puis dans l'onglet 'Affichage', de vérifier que l'option 'Masquer les extensions des fichiers dont le type est connu' est bien décochée. 
 
-En consultant l'aide sur la fonction `read.table()`, nous puvons voir qu'elle possède de nombreux arguments. Les principaux sont les suivants :
+En consultant l'aide sur la fonction `read.table()`, nous pouvons voir qu'elle possède de nombreux arguments. Les principaux sont les suivants :
 
 * `header = FALSE` : est-ce que le fichier contient des noms de colonnes ? Si oui alors il faut changer la valeur pour `header = TRUE`
-* `sep = ""` : comment sont séparées les données de la table ? Dans un fichier CSV il s'agit de la virgule ou du point virgule, donc à changer pour `sep = ","` ou `sep = ";"`
+* `sep = ""` : comment sont séparées les données de la table ? Dans un fichier CSV il s'agit de la virgule ou du point-virgule, donc à changer pour `sep = ","` ou `sep = ";"`
 * `dec = "."` : quel est le séparateur des nombres décimaux ? Si c'est la virgule alors il faut changer pour `dec = ","`
 
-Avec ces trois arguments la plupart des fichiers pourront être lus sans aucun problème. En cas de besoin l'aide est faite pour être consultée, et elle est très complète.
+Avec ces trois arguments la plupart des fichiers pourront être lus sans problème. En cas de besoin l'aide est faite pour être consultée, et elle est très complète.
 
 La fonction `read.table()` renvoie le contenu du fichier sous forme d'une `data.frame`. Pour pouvoir utiliser le contenu du fichier nous allons donc stocker la `data.frame` dans un objet.
 
@@ -115,13 +115,16 @@ La fonction `read.table()` renvoie le contenu du fichier sous forme d'une `data.
 myWD <- "../myFiles/"
 setwd(myWd)
 data01 <- read.table(file = "data01.csv")
-str(data01) # verifier format des donnees
-head(data01) # verifier les premieres donnees
+str(data01) # vérifier le format des données
+head(data01) # vérifier les premières données
 ```
 
-[L'étude de cas sur l'analyse de données de dataloggers](#studyCase001) se base sur un fichier CSV. En voici un extrait :
+Voici un exemple où la première ligne est ignorée avec l'argument `skip = 1`.
 
 ```{r 016-importExport-9}
+# Affcihage du fichier brut (10 premières lignes)
+readLines("myFiles/E05C13.csv", n = 10)
+# lecture du fichier avec R
 bdd <- read.table("myFiles/E05C13.csv", skip = 1, header = TRUE, 
   sep = ",", dec = ".", stringsAsFactors = FALSE)
 colnames(bdd) <- c("id", "date", "temp")
@@ -132,7 +135,7 @@ str(bdd)
 
 ### Lire un fichier texte  {#l016readTXT}
 
-La fonction la plus simple pour lire un fichier contenant du texte est `readlines()`. Voici un exemple avec le fichier _bookdown.yml de ce livre, que l'on retrouve sur GitHub.
+La fonction la plus simple pour lire un fichier contenant du texte est `readLines()`. Voici un exemple avec le fichier _bookdown.yml de ce livre, que l'on retrouve sur GitHub.
 
 ```{r 016-importExport-10}
 readmeGitHub <- "https://raw.githubusercontent.com/frareb/myRBook_FR/master/_bookdown.yml"
@@ -147,19 +150,24 @@ scan(readmeGitHub, what = "character")
 
 ## Exporter ou charger des données pour R {#l016save}
 
-Il est parfois utile de pouvoir sauvegarder un objet R pour pouvoir le réutiliser plus tard. C'est le cas par exemple lorsque le temps de calcul pour arriver à un résultat est très long, ou alors lorsque l'on souhaite libérer de l'espace dans la RAM. Pour ce faire il existe la fonction `save()` qui prend comme argument principal le nom de ou des objets que nous voulons sauvegarder.
+Il est parfois utile de pouvoir sauvegarder un objet R pour pouvoir le réutiliser plus tard. C'est le cas par exemple lorsque le temps de calcul pour arriver à un résultat est très long, ou alors lorsque l'on souhaite libérer de l'espace dans la RAM. Pour ce faire il existe la fonction `save()` qui prend comme argument principal le nom du ou des objets que nous voulons sauvegarder.
 
 L'objet sauvé va être stocké dans un fichier. Par convention, il est bon de donner le nom d'extension `.RData` aux fichiers contenant des objets R, de préférer un seul objet par fichier, et de donner le nom de l'objet comme nom de fichier. 
 
 ```{r 016-importExport-12}
+# Création de l'objet myObject
 myObject <- 5
+# Vérification de l'existence de l'objet
 ls(pattern = "myObject")
+# Sauvegarde de l'objet dans un fichier RData
 save(myObject, file = "myFiles/myObject.RData")
+# Suppression de l'objet dans R
 rm(myObject)
+# Vérification de la suppression
 ls(pattern = "myObject")
 ```
 
-Lors de la session de R suivante ou si nous avons à nouveau besoin de l'objet sauvegardé dans un fichier, nous pouvons le recharger avec la fonction `load()`.
+Lors de la session suivante de R ou si nous avons à nouveau besoin de l'objet sauvegardé dans le fichier "`myObject.RData`", nous pouvons le recharger avec la fonction `load()`.
 
 ```{r 016-importExport-13}
 ls(pattern = "myObject")
@@ -175,9 +183,14 @@ Le meilleur moyen de communiquer vos résultats ou vos données est de transmett
 Par exemple nous allons créer une `data.frame` avec les numéros de 1 à 26 et les lettres correspondantes, puis les sauver dans un fichier CSV, puis lire les données contenues dans ce fichier.
 
 ```{r 016-importExport-14}
+# Création de l'objet dfLetters
 dfLetters <- data.frame(num = 1:26, letters = letters)
+# Ecriture du contenu dans un fichier CSV
 write.table(dfLetters, file = "myFiles/dfLetters.csv", 
   sep = ",", col.names = TRUE, row.names = FALSE)
+# Suppression de l'objet dfLetters
+rm(dfLetters)
+# Lecture du fichier CSV
 read.table(file = "myFiles/dfLetters.csv", header = TRUE, sep = ",")
 ```
 
