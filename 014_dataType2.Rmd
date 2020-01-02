@@ -366,7 +366,7 @@ miList0203 <- c(miList02, miList03)
 print(miList0203)
 ```
 
-Un objet de type `list` peut être transformé en `vector` avec la fonction `unlist()` si le format des éléments de la `list` le permet (un `vector` ne peut contenir que des élément du même type).
+Un objet de type `list` peut être transformé en `vector` avec la fonction `unlist()` si le format des éléments de la `list` le permet (un `vector` ne peut contenir que des éléments du même type).
 
 ```{r 014-dataType2-30}
 miList05 <- list("a", c("b", "c"), "d")
@@ -389,7 +389,7 @@ miList05[[5]] <- c("fgh", "ijk")
 print(miList05)
 ```
 
-Pour supprimer un élément à une `list`, la technique la plus rapide consiste à attribuer la valeur `NULL` à l'élément à supprimer.
+Pour supprimer un élément à une `list`, lune possibilité est d'attribuer la valeur `NULL` à l'élément à supprimer.
 
 ```{r 014-dataType2-32}
 print(miList05)
@@ -434,7 +434,7 @@ print(miDf01["numbers"]) # list
 print(miDf01[["numbers"]]) # vector
 ```
 
-Nous pouvons aussi utiliser une autre forme qui consiste à spécifier la ou les lignes suivi d'une virgule (et donc d'un espace après la virgule), puis la ou les colonnes entre crochets simples. Si l'information ligne ou colonne est omise, R affichera toutes les lignes ou toutes les colonnes. Là encore nous pouvons utiliser le numéro correspondant à un élément ou alors le nom de l'élément que nous souhaitons sélectionner.
+Nous pouvons aussi utiliser une autre forme qui consiste à spécifier la (ou les) ligne suivie d'une virgule (et comme nous en avons pris l'habitude, d'un espace après la virgule), puis la (ou les) colonne entre crochets simples. Si l'information ligne ou colonne est omise, R affichera toutes les lignes ou toutes les colonnes. Là encore nous pouvons utiliser le numéro correspondant à un élément ou alors le nom de l'élément que nous souhaitons sélectionner.
 
 ```{r 014-dataType2-35}
 myRow <- 2
@@ -480,8 +480,18 @@ print(miDf01)
 print(rownames(miDf01))
 rownames(miDf01) <- c("row1", "row2", "row3", "row4")
 print(miDf01)
+```
+
+Une autre façon de d'ajouter une *colonne* à un `data.frame` est d'utiliser le symbole `$` suivi du nom de la *colonne* à ajouter.
+
+```{r 014-dataType2-38b}
+# création d'un vecor
 newVec2 <- c(40, 50, 60, 70)
+# ajout du vetor dans le data.frame
 miDf01$newVec2 <- newVec2
+# ou alors directement :
+miDf01$newVec2 <- c(40, 50, 60, 70)
+# affichage du data.frame
 print(miDf01)
 ```
 
@@ -506,7 +516,7 @@ is.data.frame(as.data.frame(newVec2))
 
 ## Le conteneur `matrix` {#l014matrix}
 
-Le conteneur `matrix` peut être vu comme un `vector` à deux dimensions, les lignes et les colonnes. Il correspond à une matrice en mathématique, et ne peut contenir qu'un seul type de données (`logical`, `numeric`, `character`, ...).
+Le conteneur `matrix` peut être vu comme un `vector` à deux dimensions (lignes et colonnes). Il correspond à une matrice en mathématiques, et ne peut contenir qu'un seul type de données (`logical`, `numeric`, `character`, ...).
 
 ### Créer une `matrix`
 
@@ -527,7 +537,7 @@ miMat <- matrix(vecForMatrix, ncol = 4)
 print(miMat)
 ```
 
-Nous observons que les différents éléments du `vector` initial sont renseignés par colonne. Si nous souhaitons renseigner la `matrix` par lignes alors il faut donner la valeur `TRUE` à l'argument `byrow`.
+Nous observons que les différents éléments du `vector` initial sont renseignés par colonne. Si nous souhaitons renseigner la `matrix` par lignes alors il faut donner la valeur `TRUE` à l'argument `byrow`. Comme toujours nous pourrons consulter l'aide avec la fonction `?` (`?matrix`) pour voir les différents arguments.
 
 ```{r 014-dataType2-43}
 miMat <- matrix(vecForMatrix, nrow = 3, byrow = TRUE)
@@ -647,7 +657,7 @@ dim(miArray02)
 is.array(miArray02)
 ```
 
-Nous pouvons donner des noms aux lignes et aux colonnes, mais aussi aux éléments.
+Nous pouvons donner des noms aux lignes et aux colonnes, mais aussi aux autres dimensions.
 
 ```{r 014-dataType2-54}
 miArray02 <- array(
@@ -664,7 +674,7 @@ print(miArray02)
 
 ### Manipuler un `array`
 
-La manipulation d'un `array` se fait de la même façon que pour une `matrix`. pour accèder aux différents éléments d'un `array`, il suffit de spécifier la ligne `i`, la colonne `j`, et la `matrix` `k`.
+La manipulation d'un `array` se fait de la même façon que pour une `matrix`. Pour accéder aux différents éléments d'un `array`, il suffit de spécifier la ligne `i`, la colonne `j`, et dans notre exemple, la `matrix` `k`.
 
 ```{r 014-dataType2-55}
 i <- 2

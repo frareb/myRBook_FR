@@ -2,36 +2,44 @@
 
 ## Qu'est-ce qu'une fonction
 
-Avec ce chapitre nous allons avoir un premier apperçu de la puissance de R grâce aux fonctions. Une fonction est un ensemble de lignes de code permettant d'exécuter une tâche particulière. Nous avons vu de nombreuses fonctions lors des précédents chapitres, la plus simple étant la fonction `+` permettant d'ajouter deux nombres entre eux, ou d'autres plus complexes comme `c()` ou `data.frame()` permettant de créer un `vector` ou un `data.frame`. Dans tous les cas une fonction se reconnait grâce aux parenthèses qui la suive dans laquelle nous allons renseigner des **arguments**. Les arguments correspondent aux informations que nous souhaitons transmettre à notre fonction pour qu'elle exécute la tâche que nous souhaitons réaliser. 
+Avec ce chapitre nous allons avoir un premier aperçu de la puissance de R grâce aux fonctions. Une fonction est un ensemble de lignes de code permettant d'exécuter une tâche particulière. Nous avons vu de nombreuses fonctions lors des précédents chapitres, la plus simple étant la fonction `+` permettant d'ajouter deux nombres entre eux, ou d'autres plus complexes comme `c()` ou `data.frame()` permettant de créer un `vector` ou un `data.frame`. Dans tous les cas une fonction se reconnait grâce aux parenthèses qui la suive dans laquelle nous allons renseigner des **arguments**. Les arguments correspondent aux informations que nous souhaitons transmettre à notre fonction pour qu'elle exécute la tâche que nous souhaitons réaliser. 
 
-Pour les fonctions les plus simples comme `+`, les parenthèses ont été supprimés pour que le code soit plus facile à lire, mais il s'agit bien d'une fonction qui peut s'utiliser avec des parenthèses si nous utilisons le signe `+` entre guillemets. Les arguments sont les chiffres que nous souhaitons ajouter.
+Pour les fonctions les plus simples comme `+`, les parenthèses ont été supprimées pour que le code soit plus facile à lire, mais il s'agit bien d'une fonction qui peut s'utiliser avec des parenthèses si nous utilisons le signe `+` entre guillemets. Les arguments sont les nombres que nous souhaitons ajouter.
 
 ```{r 015-fonctions-1}
 5 + 2
 '+'(5, 2)
 ```
 
-Dans ce chapitre nous allons nous focaliser sur les fonctions les plus courantes de façon à ce que ce chapitre soit consultable comme un dictionnaire. Il ne s'agit donc pas de tout apprendre par coeur mais bien de savoir que ces fonctions existent et de pouvoir consulter ce chapitre plus tard comme référence. Avec le temps et la pratique nous finirons par les connaître par coeur ! Il y a plus de 1000 fonctions à ce jour dans la version de base de R, et plus de 10000 packages complémentaires pouvant être installés, chacun contenant plusieurs dizaines de fonctions. Avant de nous lancer dans l'écriture d'une nouvelle fonction, il faudra toujours vérifier qu'elle n'existe pas déjà.
+Dans ce chapitre nous allons nous focaliser sur les fonctions les plus courantes de façon à ce que ce chapitre soit consultable comme un dictionnaire. Il ne s'agit donc pas de tout apprendre par cœur mais bien de savoir que ces fonctions existent et de pouvoir consulter ce chapitre plus tard comme référence. Avec le temps et la pratique nous finirons par les connaître par cœur ! Il y a plus de 1000 fonctions à ce jour dans la version de base de R, et plus de 10000 packages complémentaires pouvant être installés, chacun contenant plusieurs dizaines de fonctions. Avant de nous lancer dans l'écriture d'une nouvelle fonction, il faudra toujours vérifier qu'elle n'existe pas déjà. Une bonne pratique pour un code durable est de privilégier les fonctions fournies de base avec R. R vient en effet avec une série de packages (Table \@ref(tab:tabPkg)). La liste à jour des packages fournis systématiquement avec R peut être consultée sur le site web de R dans la partie FAQ (https://cran.r-project.org/doc/FAQ/R-FAQ.html#Add_002don-packages-in-R). 
+
+```{r tabPkg, echo = FALSE}
+tabPkgDf <- data.frame(
+  package = c("base", "compiler", "datasets", "grDevices", "graphics", "grid", "methods", "parallel", "splines", "stats", "stats4", "tcltk", "tools", "utils"), 
+  description = c("Base R functions (and datasets before R 2.0.0).", "R byte code compiler (added in R 2.13.0).", "Base R datasets (added in R 2.0.0).", "Graphics devices for base and grid graphics (added in R 2.0.0).", "R functions for base graphics.", "A rewrite of the graphics layout capabilities, plus some support for interaction.", "Formally defined methods and classes for R objects, plus other programming tools, as described in the Green Book.", "Support for parallel computation, including by forking and by sockets, and random-number generation (added in R 2.14.0).", "Regression spline functions and classes.", "R statistical functions.", "Statistical functions using S4 classes.", "Interface and language bindings to Tcl/Tk GUI elements.", "Tools for package development and administration.", "R utility functions.")
+)
+knitr::kable(tabPkgDf, caption = "R et ses packages de base.\\label{tab:tabPkg}")
+```
 
 ## Les fonctions les plus courantes {#l015mainfun}
 
-Pour travailler avec les fonctions nous allons utiliser le jeu de données `iris` qui est inclu avec la version de base de R et qui correspond à la longeur et à la largeur des sépales et des pétales de différentes espèces d'iris. Le jeu de données est sous la forme d'un `data.frame` de 5 colonnes et de 150 lignes. Pour plus d'information sur le jeu de données `iris` nous pouvons consulter la documentation de R avec la fonction `help(iris)`. L'accès à la documentation est l'objet de la section ci-dessous.
+Pour travailler avec les fonctions nous allons utiliser le jeu de données `iris` qui est inclus avec la version de base de R et qui correspond à la longueur et à la largeur des sépales et des pétales de différentes espèces d'iris. Le jeu de données est sous la forme d'un `data.frame` de 5 colonnes et de 150 lignes. Pour plus d'information sur le jeu de données `iris` nous pouvons consulter la documentation de R avec la fonction `help(iris)` (ou `?iris`). L'accès à la documentation est l'objet de la section ci-dessous.
 
 ### L'accès à la documentation
 
 #### `help()` {#l015help}
 
-La fonction indispensable de R est celle permettant d'accèder à la documentation. Toutes les fonctions et tous les jeux de données de R possèdent une documentation. Nous pouvons accéder à la documentation avec la fonction `help()` ou en utilisant le raccourci `?`. 
+La fonction indispensable de R est celle permettant d'accéder à la documentation. Toutes les fonctions et tous les jeux de données de R possèdent une documentation. Nous pouvons accéder à la documentation avec la fonction `help()` ou en utilisant le raccourci `?`. 
 
 ```{r 015-fonctions-2, eval = FALSE}
 help(matrix) # équivalent à ?matrix
 ```
 
-La documentation est toujours structurée de la même manière. Tout d'abord nous avons le nom de la fonction recherchée `matrix`, suivie entre accolades par le nom du package R dont la fonction dépend. Nous verrons comment installer des packages additionnels plus tard. Pour l'instant nous disposons de ceux fournis avec la version de base de R. Ici nous pouvons voir que la fonction `matrix()` dépend du package `base`.
+La documentation est toujours structurée de la même manière. Tout d'abord nous avons le nom de la fonction recherchée (`matrix`), suivie entre accolades par le nom du package R dont la fonction dépend. Nous verrons comment installer des packages additionnels plus tard. Pour l'instant nous disposons de ceux fournis avec la version de base de R. Ici nous pouvons voir que la fonction `matrix()` dépend du package `base` (Table \@ref(tab:tabPkg)).
 
 Ensuite nous pouvons voir le libellé de la fonction (`Matrices`), suivi des paragraphes `Description`, `Usage`, et `Arguments`. Parfois vient s'ajouter les paragraphes `Details`, `Note`, `References`, et `See also`. Le dernier paragraphe est `Examples`. La dernière ligne de la documentation permet de revenir à l'index du package dont dépend la fonction consultée. 
 
-En copiant collant `help(matrix)` dans notre console R, nous pouvons voir que le paragraphe `Description` indique ce que fait la fonction. Dans le cas de `help(matrix)`, il y a trois fonctions qui sont présentées : `matrix()`, `as.matrix()`, et `is.matrix()`.
+Nous pouvons voir que le paragraphe `Description` indique ce que fait la fonction. Dans le cas de `help(matrix)`, il y a trois fonctions qui sont présentées : `matrix()`, `as.matrix()`, et `is.matrix()`.
 
 ```{r 015-fonctions-3}
 # Description
@@ -48,9 +56,9 @@ Le paragraphe `Usage` explique comment utiliser la fonction et quels sont les va
 #        dimnames = NULL)
 ```
 
-La fonction `matrix()` peut prendre 5 arguments : `data`, `nrow`, `ncol`, `byrow`, et `dimnames`. Nous pouvons voir que par défaut une `matrix` sera composée d'une seule ligne et d'une seule colonne, et que les informations serons renseignées par colonne.
+La fonction `matrix()` peut prendre 5 arguments : `data`, `nrow`, `ncol`, `byrow`, et `dimnames`. Nous pouvons voir que par défaut une `matrix` sera composée d'une seule ligne et d'une seule colonne, et que les informations seront renseignées par colonne.
 
-Le paragraphe `Arguments` détaille les valeurs et le type de conteneur de chacun des arguments de notre fonction. Par exemple nous pouvons voir que l'argument `dimnames` doit être de type `list`. C'est pouquoi nous avons utilisé ce format lors de la section sur les  [`matrix`](#l014matrix). 
+Le paragraphe `Arguments` détaille les valeurs et le type de conteneur de chacun des arguments de notre fonction. Par exemple nous pouvons voir que l'argument `dimnames` doit être de type `list`. C'est pourquoi nous avons utilisé ce format lors de la section sur les  [`matrix`](#l014matrix). 
 
 ```{r 015-fonctions-5}
 # Arguments
@@ -78,14 +86,24 @@ mdat <- matrix(c(1,2,3, 11,12,13), nrow = 2, ncol = 3, byrow = TRUE,
 mdat
 ```
 
-Le nom des arguments n'est pas nécessaire pour qu'une fonction soit correctement interprété par R. Néanmoins par soucis de clarté il est préférable d'utiliser le nom des arguments suivi du signe `=` pour que le code soit plus lisible. 
+Le nom des arguments n'est pas nécessaire pour qu'une fonction soit correctement interprétée par R. Néanmoins par soucis de clarté il est préférable d'utiliser le nom complet des arguments suivi du signe `=` pour que le code soit plus lisible. 
 
 ```{r 015-fonctions-7}
 # bon exemple
-mdat <- matrix(c(1,2,3, 11,12,13), nrow = 2, ncol = 3, byrow = TRUE)
+mdat <- matrix(
+  c(1, 2, 3, 11, 12, 13), 
+  nrow = 2, ncol = 3, 
+  byrow = TRUE)
 # mauvais exemple
-mdat <- matrix(c(1,2,3, 11,12,13), 2, 3, TRUE)
+mdat <- matrix(
+  c(1, 2, 3, 11, 12, 13), 
+  nr = 2, nc = 3, 
+  byr = T)
+# très mauvais exemple
+mdat <- matrix(c(1,2,3,11,12,13),2,3,T)
 ```
+
+Le résultat de ces trois exemples est identique pour R. Dans le premier cas le code est facile à lire et à comprendre. Nous avons utilisé le nom complet des arguments, des espaces après les virgules, et des sauts de lignes pour séparer les arguments et faire en sorte que chaque ligne ne soit pas trop longue. Il sera facilement compréhensible par d'autres personnes appelées à lire notre code. Le deuxième exemple fait appel à des noms d'arguments incomplets. Il reste fonctionnel, mais porte à confusion. R est un langage permissif. Dans ce cas il va lire le nom des arguments, et utiliser le nom qui s'en rapproche le plus. Dans le troisième exemple le code est là aussi fonctionnel. Néanmoins il est difficile à lire car il n'y a ni espace, ni nom des arguments, et la valeur `TRUE` est remplacée par `T`. C'est bien sûr le premier exemple qui doit être utilisé pour améliorer la lisibilité et la transparence des analyses.
 
 #### `help.search()` {#l015helpsearch}
 
@@ -107,11 +125,11 @@ La fonction `str()` permet de visualiser la structure interne d'un objet, comme 
 str(iris)
 ```
 
-La fonction `str()` renvoie le type d'objet (`data.frame`), le nombre d'observations (150), le nombre de variables (5), le nom de chacune des variables (`Sepal.Length`, `Sepal.Width`, `Petal.Length`, `Petal.Width`, et `Species`), le type de chacune des variables (`num`, `Factor`), et les premières valeurs de chacunes des variables. C'est une fonction utile pour avoir un apperçu d'un jeu de données, mais aussi pour contrôler que les données sont du type voulu avant de procéder à des analyses statistiques.
+La fonction `str()` renvoie le type d'objet (`data.frame`), le nombre d'observations (150), le nombre de variables (5), le nom de chacune des variables (`Sepal.Length`, `Sepal.Width`, `Petal.Length`, `Petal.Width`, et `Species`), le type de chacune des variables (`num`, `Factor`), et les premières valeurs de chacune des variables. C'est une fonction utile pour avoir un aperçu d'un jeu de données, mais aussi pour contrôler que les données sont du type voulu avant de procéder à des analyses statistiques.
 
 #### `head()` et `tail()` {#l015head}
 
-La fonction `head()` renvoie les premières valeurs d'un objet, et la fonction `tail()` les dernières valeurs d'un objet. Par défaut six valeurs sont retournées, l'argument `n` contrôle le nombre de valeurs à retourner. 
+La fonction `head()` renvoie les premières valeurs d'un objet, et la fonction `tail()` les dernières valeurs d'un objet. Par défaut six valeurs sont retournées (l'argument `n` contrôle le nombre de valeurs à retourner). 
 
 ```{r 015-fonctions-10}
 head(iris)
@@ -132,7 +150,7 @@ names(irisCopy)
 
 #### `cat()` et `print()` {#l015print}
 
-La fonction `cat()` permet d'afficher le contenu d'un objet alors que la fonction `print()` retourne la valeur d'un objet avec la possibilité d'effectuer des conversions.
+La fonction `cat()` permet d'afficher le contenu d'un objet alors que la fonction `print()` retourne la valeur d'un objet (avec la possibilité d'effectuer des opérations comme avec l'argument `digits` qui va permettre de fixer le nombre de chiffres significatifs).
 
 ```{r 015-fonctions-12}
 cat(names(iris))
@@ -146,7 +164,7 @@ print(iris[1, 1], digits = 0)
 
 #### `rank()` {#l015rank}
 
-La fonction `rank()` renvoie pour un ensemble d'éléments le numéro de la position de chacun des éléments. En cas d'éléments de même valeur, l'argument `ties.method` permet de faire un choix sur le classement. Comme pour toutes les fonctions, les détails sont présents dans la documentation.
+La fonction `rank()` renvoie pour un ensemble d'éléments le numéro de la position de chacun des éléments. En cas d'éléments de même valeur, l'argument `ties.method` permet de faire un choix sur le classement. Comme pour toutes les fonctions, les détails sont présents dans la documentation. Le recours à la documentation doit devenir un réflexe pour chaque nouvelle fonction utilisée.
 
 ```{r 015-fonctions-13}
 vecManip <- c(10, 20, 30, 70, 60, 50, 40)
@@ -167,15 +185,23 @@ rank(iris[, 1], ties.method = "average")
 
 #### `order()` {#l015order}
 
-La fonction `order()` retourne le numéro du réarrangement des éléments en focntion de leur position. Elle est très utile par exemple pour trier un `data.frame` en focntion d'une colonne.
+La fonction `order()` retourne le numéro du réarrangement des éléments en fonction de leur position. Elle est très utile par exemple pour trier un `data.frame` en fonction d'une colonne.
 
 ```{r 015-fonctions-14}
 print(vecManip2)
 rank(vecManip2)
+# il y a 3 éléments en première position : 1, 4 et 6 (10)
+# qui vont prendre avec rank la valeur 2. Puis vient
+# l'élément 2 (20) qui prend avec rank la valeur 4, ...
 order(vecManip2)
+# le premier élément est en position 1, le deuxième
+# élément en position 4, le troisième en position 6, 
+# le quatrième en position 2, ...
 print(iris[, 1])
 rank(iris[, 1])
 order(iris[, 1])
+head(iris, n = 10)
+# tri du data.frame iris en fonction de la colonne 1 :
 head(iris[order(iris[, 1]),], n = 10)
 ```
 
@@ -192,7 +218,7 @@ sort(iris[, 1])
 
 #### `append()` {#l015append}
 
-Cette fonction permet d'ajouter un élément à un `vector` à une position déterminée par l'argument `after`. Cette fonction est aussi plus rapide que son alternative consistant à utiliser la fonction [`c()`](#l014vector).
+Cette fonction permet d'ajouter un élément à un `vector` à une position déterminée par l'argument `after`. Cette fonction est aussi plus rapide que son alternative consistant à utiliser la fonction [`c()`](#l014vector). Cette différence sera importante pour les gros jeux de données.
 
 ```{r 015-fonctions-16}
 print(vecManip2)
@@ -243,7 +269,7 @@ vecManip2 %in% vecManip
 
 ### Fonctions mathématiques
 
-Nous avons déjà vu les fonctions `+`, `-`, `*`, `/`, `^`, `%%` et autres [opérateurs arithmétiques](#l011opari). R possède également les fonctions mathématiques de base comme exponetielle `exp()`, racine carrée `sqrt()`, valeur absolue `abs()`, sinus `sin()`, cosinus `cos()`, tangente `tan()`, logarithme népérien `log()`, logarithme décimal `log10()`, arc cosinus `acos()`, arc sinus `asin()`, et arc tangente `atan()`.
+Nous avons déjà vu les fonctions `+`, `-`, `*`, `/`, `^`, `%%` et autres [opérateurs arithmétiques](#l011opari). R possède également les fonctions mathématiques de base comme exponentielle `exp()`, racine carrée `sqrt()`, valeur absolue `abs()`, sinus `sin()`, cosinus `cos()`, tangente `tan()`, logarithme népérien `log()`, logarithme décimal `log10()`, arc cosinus `acos()`, arc sinus `asin()`, et arc tangente `atan()`.
 
 ```{r 015-fonctions-21}
 print(vecManip2)
@@ -358,21 +384,21 @@ round(5.56874258564)
 round(5.56874258564, digits = 2)
 ```
 
-La fonction `ceiling()` renvoie le plus petit nombre entier qui ne soit pas inférieure à la valeur rensignée.
+La fonction `ceiling()` renvoie le plus petit nombre entier qui ne soit pas inférieur à la valeur renseignée.
 
 ```{r 015-fonctions-31}
 ceiling(5.9999)
 ceiling(5.0001)
 ```
 
-La fonction `floor()` renvoie le plus grand nombre entier qui ne soit pas supérieure à la valeur renseignée.
+La fonction `floor()` renvoie le plus grand nombre entier qui ne soit pas supérieur à la valeur renseignée.
 
 ```{r 015-fonctions-32}
 floor(5.9999)
 floor(5.0001)
 ```
 
-La fonction `trunc()` renvoie la partie entière de la valeur rensignée.
+La fonction `trunc()` renvoie la partie entière de la valeur renseignée.
 
 ```{r 015-fonctions-33}
 trunc(5.9999)
@@ -442,7 +468,7 @@ seq_along(vecManip3)
 
 ### `:` {#l0152points}
 
-La fonction `:` permet de créer une séquence de `a` à `b` par pas de 1, avec `a` et `b` le début et la fin de la séquence souhaitée. Il a été difficile d'écrire les chapitres précédents sans y avoir recours tant cette fonction est utile. Voici quelques exemples.
+La fonction `:` permet de créer une séquence de `a` à `b` par pas de 1, avec `a` et `b` le début et la fin de la séquence souhaitée. Il a été difficile d'écrire les chapitres précédents sans y avoir recours tant cette fonction est utile. 
 
 ```{r 015-fonctions-40}
 5:10
@@ -591,7 +617,7 @@ qnorm(
 
 ## Ecrire une fonction {#l015function}
 
-Lorsque nous reproduisons plusieurs fois les mêmes opérations, le code devient fastidieux à écrire, et plus difficile à maintenir car si nous devons effectuer une modification, il faudra la répéter chaque fois que nous l'avons utilisée. C'est un signe indiquant la nécesité de recourir à une **fonction**. Dans l'exemple qui suit, il est fastidieux de modifier le code si nous souhaitons ajouter +45 au lieu de +20 à chaque ligne.
+Lorsque nous reproduisons plusieurs fois les mêmes opérations, le code devient fastidieux à écrire, et plus difficile à maintenir car si nous devons effectuer une modification, il faudra la répéter chaque fois que nous l'avons utilisée. C'est un signe indiquant la nécessité de recourir à une **fonction**. Dans l'exemple qui suit, il est fastidieux de modifier le code si nous souhaitons ajouter +45 au lieu de +20 à chaque ligne.
 
 ```{r 015-fonctions-50}
 35 + 20
@@ -600,7 +626,7 @@ Lorsque nous reproduisons plusieurs fois les mêmes opérations, le code devient
 782 + 20
 ```
 
-Comme pour les fonctions de base de R, nos fonction vont avoir un **nom**, et des **arguments**. Comme pour les noms des objets et les noms des fichiers, il est important de bien choisir le nom de notre fonction (cf. [section sur les objets](#l011object)). Pour créer une fonction nous allons utiliser la fonction `function()` qui prend comme arguments les arguments de notre fonction. La fonction va retourner le résultat souhaité. Par défaut le résultat renvoyé est le dernier utilisé, mais il est préférable de l'expliciter avec la fonction `return()`. La fonction suivante `addX` prend comme argument `x` et renvoie `x + 20`.
+Comme pour les fonctions de base de R, nos fonctions vont avoir un **nom**, et des **arguments**. Comme pour les noms des objets et les noms des fichiers, il est important de bien choisir le nom de notre fonction (cf. [section sur les objets](#l011object)). Pour créer une fonction nous allons utiliser la fonction `function()` qui prend comme arguments les arguments de notre fonction. La fonction va retourner le résultat souhaité. Par défaut le résultat renvoyé est le dernier utilisé, mais il est préférable de l'expliciter avec la fonction `return()`. La fonction suivante `addX` prend comme argument `x` et renvoie `x + 20`.
 
 ```{r 015-fonctions-51}
 addX <- function(x){
@@ -670,7 +696,7 @@ countVowelConso <- function(word){
 countVowelConso(word = "qwertyuiop azertyuiop")
 ```
 
-Par contre si nous utilisons `countVowelConso(word = 5)`, une erreur va être renvoyée car notre fonction attend un objet de type `character`. De manière générale il est recommandée de gérer les erreurs renvoyées par nos fonctions afin que notre code soit plus facile à débogger. Ici nous allons simplement vérifier que l'argument est de type `character`, dans un `vector` de taille 1. Nous allons aussi commenter notre fonction pour rapidement retrouver ce qu'elle réalise (commentaire inséré sur la première ligne, que l'on retrouve aussi parfois sur la dernière ligne des fonctions).
+Par contre si nous utilisons `countVowelConso(word = 5)`, une erreur va être renvoyée car notre fonction attend un objet de type `character`. De manière générale il est recommandé de gérer les erreurs renvoyées par nos fonctions afin que notre code soit plus facile à débugger. Ici nous allons simplement vérifier que l'argument est de type `character`, dans un `vector` de taille 1. Nous allons aussi commenter notre fonction pour rapidement retrouver ce qu'elle réalise (commentaire inséré sur la première ligne, que l'on retrouve aussi parfois sur la dernière ligne des fonctions).
 
 ```{r 015-fonctions-58}
 countVowelConso <- function(word){ # compte les voyelles et les consonnes
@@ -709,11 +735,11 @@ countVowelConsoAlt <- function(word){ # compte les voyelles et les consonnes
 countVowelConsoAlt(word = "qwertyuiop azertyuiop")
 ```
 
-Il n'y a pas de solution optimale dans l'absolu, tout dépend des objectifs recherchés. La première solution est peut être plus facile à comprendre, et la seconde peut être plus rapide en terme de vitesse d'exécution (même en répétant l'utilisation de la fonction 10000 fois, le gain de temps est presque nul dans notre cas).
+Il n'y a pas de solution optimale dans l'absolu, tout dépend des objectifs recherchés. La première solution est peut être plus facile à comprendre, et la seconde peut-être plus rapide en terme de vitesse d'exécution (même en répétant l'utilisation de la fonction 100000 fois, le gain de temps est presque nul dans notre cas).
 
 ```{r 015-fonctions-60}
-system.time(replicate(n = 10000, countVowelConso(word = "qwertyuiop azertyuiop")))
-system.time(replicate(n = 10000, countVowelConsoAlt(word = "qwertyuiop azertyuiop")))
+system.time(replicate(n = 100000, countVowelConso(word = "qwertyuiop azertyuiop")))
+system.time(replicate(n = 100000, countVowelConsoAlt(word = "qwertyuiop azertyuiop")))
 ```
 
 Une fonction peut avoir des valeurs par défaut pour ses arguments. C'est le cas de la plupart des fonctions existantes. Par défaut, notre fonction va désormais compter le nombre de voyelles et de consonnes dans le mot `qwerty` (les parenthèses restent nécessaires même en l'absence d'arguments).
@@ -739,13 +765,13 @@ R compte de nombreuses fonctions, donc avant de vous lancer dans l'écriture d'u
 
 ## Autres fonctions développées par la communauté des utilisateurs : les packages
 
-Un package est un ensemble de fichiers que l'on va ajouter à R pour pouvoir utiliser des fonctions (ou des jeux de données) que d'autres personnes ont développés. Il ya à ce jour plus de 10000 packages sur les serveurs de R (CRAN ; https://cran.r-project.org/web/packages/), plus de 1000 sur les serveurs de BioConductor (pour l'analyse génomique), et plusieurs centaines sur GitHub. Chaque package permet de mettre à disposition des fonctions pour à peu près tout faire... Il peut donc être difficile de trouver le package adapté à ce que nous souhaitons réaliser, et il est important de consacrer du temps sa recherche, et de tester plusieurs solutions.
+Un package est un ensemble de fichiers que l'on va ajouter à R pour pouvoir utiliser des fonctions (ou des jeux de données) que d'autres personnes ont développés. Il y a à ce jour plus de 10000 packages sur les serveurs de R (CRAN ; https://cran.r-project.org/web/packages/), plus de 1000 sur les serveurs de BioConductor (pour l'analyse génomique), et plusieurs centaines sur GitHub (il existe d’autres serveurs populaires comme R-forge ou encore Omegahat). Chaque package permet de mettre à disposition des fonctions pour à peu près tout faire... Il peut donc être difficile de trouver le package adapté à ce que nous souhaitons réaliser, et il est important de consacrer du temps sa recherche, et de tester plusieurs solutions.
 
 Pour utiliser un package il nous faut tout d'abord l'**installer**, puis le **charger** dans notre session de R.
 
 ### Installer un package
 
-Une fois notre package sélectionné, nous pouvons le télécharger et l'installer avec la fonction `install.packages()` qui prend comme argument le nom du package entre guillemets (la fonction tolère l'absence de guillemets mais il est préférable de les utiliser pour que le code soit plus lisible). Certains packages sont installés par défault avec R, c'est le cas par exemple de `stats` (qui est aussi chargé par défaut).
+Une fois notre package sélectionné, nous pouvons le télécharger et l'installer avec la fonction `install.packages()` qui prend comme argument le nom du package entre guillemets (la fonction tolère l'absence de guillemets mais il est préférable de les utiliser pour que le code soit plus lisible). Certains packages sont installés par défaut avec R, c'est le cas par exemple de `stats` (qui est aussi chargé par défaut).
 
 ```{r 015-fonctions-62, eval = FALSE}
 install.packages("stats") # R statistical functions
@@ -755,7 +781,7 @@ L'installation d'un package est à réaliser une seule fois, ensuite le package 
 
 ### Charger un package
 
-Pour pouvoir utiliser les fonctions d'un package, nous devons le charger dans notre session de R. Il y a tellement de packages disponibles que R ne va pas charger par défault tous ceux que nous avons installé, mais seulement ceux dont nous allons avoir besoin pour notre étude en cours. Pour charger un package nous utilisons la fonction `library()`. 
+Pour pouvoir utiliser les fonctions d'un package, nous devons le charger dans notre session de R. Il y a tellement de packages disponibles que R ne va pas charger par défaut tous ceux que nous avons installé, mais seulement ceux dont nous allons avoir besoin pour notre étude en cours. Pour charger un package nous utilisons la fonction `library()`. 
 
 ```{r 015-fonctions-63, eval = FALSE}
 library("stats")
@@ -787,7 +813,7 @@ Alternativement nous pouvons utiliser la fonction `.packages()` pour lister les 
 head(.packages(all.available = TRUE), n = 30)
 ```
 
-La fonction `pkgCheck()` assure la **portabilité** de nos scripts : ils fonctionneront sur tous les ordinateurs sans avoir à effectuer de modification. Ainsi nos scipts pourront par exemple être joints à nos articles scientifiques et assurer ainsi la **reproductibilité** de nos résultats.
+La fonction `pkgCheck()` assure la **portabilité** de nos scripts : ils fonctionneront sur tous les ordinateurs sans avoir à effectuer de modification. Ainsi nos scripts pourront par exemple être joints à nos articles scientifiques et assurer ainsi la **reproductibilité** de nos résultats.
 
 ## Conclusion
 
