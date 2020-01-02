@@ -7121,7 +7121,7 @@ Il n'y a pas de solution optimale dans l'absolu, tout dépend des objectifs rech
 
 \begin{verbatim}
 ##    user  system elapsed 
-##    2.43    0.06    2.52
+##    2.47    0.00    2.49
 \end{verbatim}
 
 \begin{Shaded}
@@ -7132,7 +7132,7 @@ Il n'y a pas de solution optimale dans l'absolu, tout dépend des objectifs rech
 
 \begin{verbatim}
 ##    user  system elapsed 
-##    2.25    0.00    2.27
+##    2.33    0.00    2.33
 \end{verbatim}
 
 Une fonction peut avoir des valeurs par défaut pour ses arguments. C'est le cas de la plupart des fonctions existantes. Par défaut, notre fonction va désormais compter le nombre de voyelles et de consonnes dans le mot \texttt{qwerty} (les parenthèses restent nécessaires même en l'absence d'arguments).
@@ -7249,11 +7249,11 @@ Félicitations ! Nous savons à présent ce qu'est une fonction, comment cherche
 \hypertarget{l016transfo}{%
 \subsection{Transformer ses données au format TXT ou CSV}\label{l016transfo}}
 
-Il existe de nombreuses façons de lire le contenu d'un fichier avec R. Cependant nous nous focaliserons sur la lecture des fichiers TXT et CSV qui sont les plus communs et les plus fiables. A de rares exceptions près tous les fichiers de données peuvent très facilement être transformés aux formats TXT et CSV. C'est la pratique à préférer pour une analyse des données avec R.
+Il existe de nombreuses façons de lire le contenu d'un fichier avec R. Cependant nous nous focaliserons sur la lecture des fichiers TXT et CSV qui sont les plus communs et les plus fiables. A de rares exceptions près tous les fichiers de données peuvent très facilement être transformés aux formats TXT et CSV. C'est la pratique à préférer pour une analyse des données avec R. Dans tous les autres cas et pour couvrir l'ensemble des possibilités avec R, nous pourrons nous référer au manuel de référence sur l'import et l'export de données sur le site web de R (en anglais ; \url{https://cran.r-project.org/manuals.html}).
 
-Concrètement, depuis Microsoft Excel, il suffit d'aller dans \emph{Fichier}, puis \emph{Enregistrer sous}, de sélectionner l'endroit où nous souhaitons sauvegarder notre fichier (cf.~chapitre suivant sur la gestion d'un projet R) puis dans la fenêtre de sauvegarde changer le \emph{Type} depuis XLSX vers CSV. Depuis LibreOffice Calc, il suffit d'aller dans \emph{Fichier}, puis \emph{Enregistrer sous}, puis de sélectionner le \emph{Type} CSV. Il est important de savoir que le fichier CSV ne supporte pas la mise en forme des fichiers tableurs avec par exemple des couleurs, et que le fichier CSV ne contient qu'un seul onglet. Si nous avons un fichier tableur avec plusieurs onglets, il faudra sauvegarder autant de fichiers CSV que d'onglets.
+Concrètement, depuis Microsoft Excel, il suffit d'aller dans \emph{Fichier}, puis \emph{Enregistrer sous}, de sélectionner l'endroit où nous souhaitons sauvegarder notre fichier (cf.~chapitre suivant sur la gestion d'un projet R) puis dans la fenêtre de sauvegarde changer le \emph{Type} depuis XLSX vers CSV. Depuis LibreOffice Calc, il suffit d'aller dans \emph{Fichier}, puis \emph{Enregistrer sous}, puis de sélectionner le \emph{Type} CSV. Il est important de savoir que le format CSV ne supporte pas la mise en forme des fichiers tableurs avec par exemple des couleurs, et que le fichier CSV ne contient qu'un seul onglet. Si nous avons un fichier tableur avec plusieurs onglets, il faudra sauvegarder autant de fichiers CSV que d'onglets.
 
-CSV vient de l'anglais \emph{Comma-separated values} (\url{https://fr.wikipedia.org/wiki/Comma-separated_values}), et représente des données de tableur au format texte séparées par des virgules (ou des points virgules suivant les pays). Un fichier CSV pourra toujours s'ouvrir avec notre logiciel de tableur, mais aussi avec un simple éditeur de texte comme le bloc notes de Windows ou encore avec Notepad++. Il est d'ailleurs préférables d'ouvrir les fichiers CSV avec un éditeur de texte car les tableurs ont la facheuse tendance à vouloir modifier automatiquement les fichiers CSV et cela a pour conséquence de les rendre difficiles à lire.
+CSV vient de l'anglais \emph{Comma-separated values} (\url{https://fr.wikipedia.org/wiki/Comma-separated_values}), et représente des données de tableur au format texte séparées par des virgules (ou des points virgules suivant les pays). Un fichier CSV pourra toujours s'ouvrir avec notre logiciel de tableur, mais aussi avec un simple éditeur de texte comme le bloc-notes de Windows ou encore avec Notepad++. Il est d'ailleurs préférable d'ouvrir les fichiers CSV avec un éditeur de texte car les tableurs ont la fâcheuse tendance à vouloir modifier automatiquement les fichiers CSV et cela a pour conséquence de les rendre difficiles à lire.
 
 Une fois le fichier TXT ou CSV obtenu, la lecture du contenu depuis R est facile, même si elle demande un peu de rigueur.
 
@@ -7262,9 +7262,9 @@ Une fois le fichier TXT ou CSV obtenu, la lecture du contenu depuis R est facile
 
 C'est la source d'erreur la plus commune chez les débutants en R. C'est pourquoi il est important de lire et de relire ce chapitre et celui sur la gestion d'un projet R avec beaucoup d'attention.
 
-Commençons par préciser que R travaille dans un répertoire défini par défaut. Les utilisateurs de Rstudio ou autre \protect\hyperlink{IDE}{environnement de développement} spécialisés pour R seront tenter d'utiliser les options disponibles via les menus pour définir leur répertoire de travail ou pour charger le contenu d'un fichier. Dans ce livre ces techniques ne seront jamais utilisées car elles ne permettent pas la reproductibilité des résultats. Un script doit toujours pouvoir fonctionner pour tous les systèmes d'exploitation et quel que soit \protect\hyperlink{IDE}{l'environnement de développement} de l'utilisateur.
+Commençons par préciser que R travaille dans un répertoire défini par défaut. Les utilisateurs de Rstudio ou autre \protect\hyperlink{IDE}{environnement de développement} spécialisés pour R seront tentés d'utiliser les options disponibles via les menus pour définir leur répertoire de travail ou pour charger le contenu d'un fichier. Dans ce livre ces techniques ne seront jamais utilisées car elles ne permettent pas la reproductibilité des résultats. Un script doit toujours pouvoir fonctionner pour tous les systèmes d'exploitation et quel que soit \protect\hyperlink{IDE}{l'environnement de développement} de l'utilisateur.
 
-Le répertoire de travail par défaut peut être obtenu avec la fonction \protect\hyperlink{l015getwd}{\texttt{getwd()}} et spécifier avec la fonction \protect\hyperlink{l015setwd}{\texttt{setwd()}}.
+Le répertoire de travail par défaut peut être obtenu avec la fonction \protect\hyperlink{l015getwd}{\texttt{getwd()}} et spécifié avec la fonction \protect\hyperlink{l015setwd}{\texttt{setwd()}}.
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -7304,11 +7304,11 @@ Nous avons donc quatre options :
 \begin{itemize}
 \tightlist
 \item
-  nous pouvons lire le contenu d'un fichier en indiquant à R son chemin complet (à proscrire pour la reproductibilité des résultats)
+  nous pouvons lire le contenu d'un fichier en indiquant à R son chemin complet (à proscrire pour la reproductibilité des résultats, en effet le chemin complet varie d'un ordinateur à un autre)
 \item
   nous pouvons lire le contenu d'un fichier en indiquant à R son chemin relatif
 \item
-  nous pouvons déplacer le fichier dans le répertoire de travail de R
+  nous pouvons déplacer le fichier dans le répertoire de travail de R par défaut
 \item
   nous pouvons modifier le répertoire de travail de R pour qu'il corresponde à l'emplacement de notre fichier (avec son chemin relatif)
 \end{itemize}
@@ -7318,9 +7318,9 @@ Un exemple de chemin complet serait :
 \begin{itemize}
 \tightlist
 \item
-  \texttt{/home/myName/myFile.csv} sous un environnement UNIX
+  ``\texttt{/home/myName/myFile.csv}'' sous un environnement UNIX
 \item
-  \texttt{C:/users/myName/myFile.csv} sous un environnement Windows (attention, sous R nous utilisons \texttt{/} et non pas \texttt{\textbackslash{}} comme c'est le cas par défaut sous Windows)
+  ``\texttt{C:/users/myName/myFile.csv}'' sous un environnement Windows (attention, sous R nous utilisons \texttt{/} et non pas \texttt{\textbackslash{}} comme c'est le cas par défaut sous Windows)
 \end{itemize}
 
 Un chemin relatif serait :
@@ -7331,7 +7331,7 @@ Un chemin relatif serait :
   \texttt{myName/myFiles.csv}
 \end{itemize}
 
-Pour naviguer dans les chemins relatifs nous pouvons utiliser \texttt{..} qui permet de remonter dans le répertoire source. Par exemple si le répertoire de travail est \texttt{myScripts} et que l'arborescence de mes fichiers est ainsi :
+Pour naviguer dans les chemins relatifs nous pouvons utiliser ``\texttt{..}'' qui permet de remonter dans le répertoire source. Par exemple si le répertoire de travail est \texttt{myScripts} et que l'arborescence de mes fichiers est ainsi :
 
 \begin{verbatim}
 ## -myProject
@@ -7342,7 +7342,7 @@ Pour naviguer dans les chemins relatifs nous pouvons utiliser \texttt{..} qui pe
 ## |-|-myFirstScript.R
 \end{verbatim}
 
-Le chemin relatif vers le fichier \texttt{data01.csv} serait \texttt{../myFiles/data01.csv}
+Le chemin relatif vers le fichier ``\texttt{data01.csv}'' serait ``\texttt{../myFiles/data01.csv}''.
 
 Donc pour lire le contenu du fichier \texttt{data01.csv}, nous allons privilégier l'option 2 (lire le contenu d'un fichier en indiquant à R son chemin relatif) ou l'option 4 (modifier le répertoire de travail de R pour qu'il corresponde à l'emplacement de notre fichier). Dans ce dernier cas :
 
@@ -7350,8 +7350,8 @@ Donc pour lire le contenu du fichier \texttt{data01.csv}, nous allons privilégi
 \begin{Highlighting}[]
 \NormalTok{myWD <-}\StringTok{ "../myFiles/"}
 \KeywordTok{setwd}\NormalTok{(myWd)}
-\KeywordTok{getwd}\NormalTok{() }\CommentTok{# pour verifier que nous sommes dans le bon repertoire}
-\KeywordTok{list.files}\NormalTok{() }\CommentTok{# pour verifier que le fichier se trouve bien ici}
+\KeywordTok{getwd}\NormalTok{() }\CommentTok{# pour vérifier que nous sommes dans le bon répertoire}
+\KeywordTok{list.files}\NormalTok{() }\CommentTok{# pour vérifier que le fichier se trouve bien ici}
 \end{Highlighting}
 \end{Shaded}
 
@@ -7391,21 +7391,21 @@ Si le chemin n'est pas correctement renseigné ou si le fichier de données n'ex
 ##   impossible d'ouvrir le fichier '../myFiles/data01.csv' : No such file or directory
 \end{verbatim}
 
-Si tout va bien, R affiche le contenu du fichier \texttt{data01.csv}. Attention aux utilisateurs de Windows car par défaut le nom des fichier apparaît sans leur extension\ldots{} Ainsi lorsque nous navigons dans les répertoires avec l'explorateur de fichiers, il n'y a pas de fichier \texttt{data01.csv} mais uniquement un fichier \texttt{data01}. Il est indispensable de remedier à ce problème pour éviter les erreurs. Pour ce faire il suffit d'ouvrir les `Options de l'Explorateur de fichiers' via la touche `Windows', puis dans l'onglet `Affichage', de vérifier que l'option `Masquer les extensions des fichiers dont le type est connu' est bien décochée.
+Si tout va bien, R affiche le contenu du fichier ``\texttt{data01.csv}''. Attention aux utilisateurs de Windows car par défaut le nom des fichiers apparaît sans leur extension\ldots{} Ainsi lorsque nous naviguons dans les répertoires avec l'explorateur de fichiers, il n'y a pas de fichier ``\texttt{data01.csv}'' mais uniquement un fichier ``\texttt{data01}''. Il est indispensable de remédier à ce problème pour éviter les erreurs. Pour ce faire il suffit d'ouvrir les `Options de l'Explorateur de fichiers' via la touche `Windows', puis dans l'onglet `Affichage', de vérifier que l'option `Masquer les extensions des fichiers dont le type est connu' est bien décochée.
 
-En consultant l'aide sur la fonction \texttt{read.table()}, nous puvons voir qu'elle possède de nombreux arguments. Les principaux sont les suivants :
+En consultant l'aide sur la fonction \texttt{read.table()}, nous pouvons voir qu'elle possède de nombreux arguments. Les principaux sont les suivants :
 
 \begin{itemize}
 \tightlist
 \item
   \texttt{header\ =\ FALSE} : est-ce que le fichier contient des noms de colonnes ? Si oui alors il faut changer la valeur pour \texttt{header\ =\ TRUE}
 \item
-  \texttt{sep\ =\ ""} : comment sont séparées les données de la table ? Dans un fichier CSV il s'agit de la virgule ou du point virgule, donc à changer pour \texttt{sep\ =\ ","} ou \texttt{sep\ =\ ";"}
+  \texttt{sep\ =\ ""} : comment sont séparées les données de la table ? Dans un fichier CSV il s'agit de la virgule ou du point-virgule, donc à changer pour \texttt{sep\ =\ ","} ou \texttt{sep\ =\ ";"}
 \item
   \texttt{dec\ =\ "."} : quel est le séparateur des nombres décimaux ? Si c'est la virgule alors il faut changer pour \texttt{dec\ =\ ","}
 \end{itemize}
 
-Avec ces trois arguments la plupart des fichiers pourront être lus sans aucun problème. En cas de besoin l'aide est faite pour être consultée, et elle est très complète.
+Avec ces trois arguments la plupart des fichiers pourront être lus sans problème. En cas de besoin l'aide est faite pour être consultée, et elle est très complète.
 
 La fonction \texttt{read.table()} renvoie le contenu du fichier sous forme d'une \texttt{data.frame}. Pour pouvoir utiliser le contenu du fichier nous allons donc stocker la \texttt{data.frame} dans un objet.
 
@@ -7414,15 +7414,36 @@ La fonction \texttt{read.table()} renvoie le contenu du fichier sous forme d'une
 \NormalTok{myWD <-}\StringTok{ "../myFiles/"}
 \KeywordTok{setwd}\NormalTok{(myWd)}
 \NormalTok{data01 <-}\StringTok{ }\KeywordTok{read.table}\NormalTok{(}\DataTypeTok{file =} \StringTok{"data01.csv"}\NormalTok{)}
-\KeywordTok{str}\NormalTok{(data01) }\CommentTok{# verifier format des donnees}
-\KeywordTok{head}\NormalTok{(data01) }\CommentTok{# verifier les premieres donnees}
+\KeywordTok{str}\NormalTok{(data01) }\CommentTok{# vérifier le format des données}
+\KeywordTok{head}\NormalTok{(data01) }\CommentTok{# vérifier les premières données}
 \end{Highlighting}
 \end{Shaded}
 
-\protect\hyperlink{studyCase001}{L'étude de cas sur l'analyse de données de dataloggers} se base sur un fichier CSV. En voici un extrait :
+Voici un exemple où la première ligne est ignorée avec l'argument \texttt{skip\ =\ 1}.
 
 \begin{Shaded}
 \begin{Highlighting}[]
+\CommentTok{# Affcihage du fichier brut (10 premières lignes)}
+\KeywordTok{readLines}\NormalTok{(}\StringTok{"myFiles/E05C13.csv"}\NormalTok{, }\DataTypeTok{n =} \DecValTok{10}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##  [1] "ï»¿\"Titre de tracÃ© : E05C13\""                                                      
+##  [2] "\"#\",\"Date Heure, GMT-04:00\",\"Temp., Â°C (LGR S/N: 10362176, SEN S/N: 10362176)\""
+##  [3] "1,11/12/15 23:00:00,4.973"                                                            
+##  [4] "2,11/12/15 23:30:00,4.766"                                                            
+##  [5] "3,11/13/15 00:00:00,4.844"                                                            
+##  [6] "4,11/13/15 00:30:00,4.844"                                                            
+##  [7] "5,11/13/15 01:00:00,5.076"                                                            
+##  [8] "6,11/13/15 01:30:00,5.282"                                                            
+##  [9] "7,11/13/15 02:00:00,5.308"                                                            
+## [10] "8,11/13/15 02:30:00,5.385"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# lecture du fichier avec R}
 \NormalTok{bdd <-}\StringTok{ }\KeywordTok{read.table}\NormalTok{(}\StringTok{"myFiles/E05C13.csv"}\NormalTok{, }\DataTypeTok{skip =} \DecValTok{1}\NormalTok{, }\DataTypeTok{header =} \OtherTok{TRUE}\NormalTok{, }
   \DataTypeTok{sep =} \StringTok{","}\NormalTok{, }\DataTypeTok{dec =} \StringTok{"."}\NormalTok{, }\DataTypeTok{stringsAsFactors =} \OtherTok{FALSE}\NormalTok{)}
 \KeywordTok{colnames}\NormalTok{(bdd) <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\StringTok{"id"}\NormalTok{, }\StringTok{"date"}\NormalTok{, }\StringTok{"temp"}\NormalTok{)}
@@ -7472,7 +7493,7 @@ La fonction \texttt{read.table()} renvoie le contenu du fichier sous forme d'une
 \hypertarget{l016readTXT}{%
 \subsection{Lire un fichier texte}\label{l016readTXT}}
 
-La fonction la plus simple pour lire un fichier contenant du texte est \texttt{readlines()}. Voici un exemple avec le fichier \_bookdown.yml de ce livre, que l'on retrouve sur GitHub.
+La fonction la plus simple pour lire un fichier contenant du texte est \texttt{readLines()}. Voici un exemple avec le fichier \_bookdown.yml de ce livre, que l'on retrouve sur GitHub.
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -7506,13 +7527,15 @@ Il existe aussi la fonction \texttt{scan()} qui va renvoyer l'ensemble des mots 
 \hypertarget{l016save}{%
 \section{Exporter ou charger des données pour R}\label{l016save}}
 
-Il est parfois utile de pouvoir sauvegarder un objet R pour pouvoir le réutiliser plus tard. C'est le cas par exemple lorsque le temps de calcul pour arriver à un résultat est très long, ou alors lorsque l'on souhaite libérer de l'espace dans la RAM. Pour ce faire il existe la fonction \texttt{save()} qui prend comme argument principal le nom de ou des objets que nous voulons sauvegarder.
+Il est parfois utile de pouvoir sauvegarder un objet R pour pouvoir le réutiliser plus tard. C'est le cas par exemple lorsque le temps de calcul pour arriver à un résultat est très long, ou alors lorsque l'on souhaite libérer de l'espace dans la RAM. Pour ce faire il existe la fonction \texttt{save()} qui prend comme argument principal le nom du ou des objets que nous voulons sauvegarder.
 
 L'objet sauvé va être stocké dans un fichier. Par convention, il est bon de donner le nom d'extension \texttt{.RData} aux fichiers contenant des objets R, de préférer un seul objet par fichier, et de donner le nom de l'objet comme nom de fichier.
 
 \begin{Shaded}
 \begin{Highlighting}[]
+\CommentTok{# Création de l'objet myObject}
 \NormalTok{myObject <-}\StringTok{ }\DecValTok{5}
+\CommentTok{# Vérification de l'existence de l'objet}
 \KeywordTok{ls}\NormalTok{(}\DataTypeTok{pattern =} \StringTok{"myObject"}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
@@ -7523,8 +7546,11 @@ L'objet sauvé va être stocké dans un fichier. Par convention, il est bon de d
 
 \begin{Shaded}
 \begin{Highlighting}[]
+\CommentTok{# Sauvegarde de l'objet dans un fichier RData}
 \KeywordTok{save}\NormalTok{(myObject, }\DataTypeTok{file =} \StringTok{"myFiles/myObject.RData"}\NormalTok{)}
+\CommentTok{# Suppression de l'objet dans R}
 \KeywordTok{rm}\NormalTok{(myObject)}
+\CommentTok{# Vérification de la suppression}
 \KeywordTok{ls}\NormalTok{(}\DataTypeTok{pattern =} \StringTok{"myObject"}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
@@ -7533,7 +7559,7 @@ L'objet sauvé va être stocké dans un fichier. Par convention, il est bon de d
 ## character(0)
 \end{verbatim}
 
-Lors de la session de R suivante ou si nous avons à nouveau besoin de l'objet sauvegardé dans un fichier, nous pouvons le recharger avec la fonction \texttt{load()}.
+Lors de la session suivante de R ou si nous avons à nouveau besoin de l'objet sauvegardé dans le fichier ``\texttt{myObject.RData}'', nous pouvons le recharger avec la fonction \texttt{load()}.
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -7575,9 +7601,14 @@ Par exemple nous allons créer une \texttt{data.frame} avec les numéros de 1 à
 
 \begin{Shaded}
 \begin{Highlighting}[]
+\CommentTok{# Création de l'objet dfLetters}
 \NormalTok{dfLetters <-}\StringTok{ }\KeywordTok{data.frame}\NormalTok{(}\DataTypeTok{num =} \DecValTok{1}\OperatorTok{:}\DecValTok{26}\NormalTok{, }\DataTypeTok{letters =}\NormalTok{ letters)}
+\CommentTok{# Ecriture du contenu dans un fichier CSV}
 \KeywordTok{write.table}\NormalTok{(dfLetters, }\DataTypeTok{file =} \StringTok{"myFiles/dfLetters.csv"}\NormalTok{, }
   \DataTypeTok{sep =} \StringTok{","}\NormalTok{, }\DataTypeTok{col.names =} \OtherTok{TRUE}\NormalTok{, }\DataTypeTok{row.names =} \OtherTok{FALSE}\NormalTok{)}
+\CommentTok{# Suppression de l'objet dfLetters}
+\KeywordTok{rm}\NormalTok{(dfLetters)}
+\CommentTok{# Lecture du fichier CSV}
 \KeywordTok{read.table}\NormalTok{(}\DataTypeTok{file =} \StringTok{"myFiles/dfLetters.csv"}\NormalTok{, }\DataTypeTok{header =} \OtherTok{TRUE}\NormalTok{, }\DataTypeTok{sep =} \StringTok{","}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
@@ -7905,13 +7936,13 @@ En programmation, lorsque nous sommes amenés à répéter plusieurs fois la mê
 \end{Shaded}
 
 \begin{verbatim}
-##      date01    date02
-## 1 10.573215 11.018124
-## 2  8.477228  8.976210
-## 3 11.390225  9.066317
-## 4 10.142657  9.834096
-## 5 10.390885 11.190225
-## 6  9.934872 10.479959
+##     date01    date02
+## 1 10.22423 10.547450
+## 2 10.24597 10.195531
+## 3 11.51473  8.291796
+## 4 10.62471  7.889325
+## 5 10.19120  9.449141
+## 6 11.78441 10.823714
 \end{verbatim}
 
 Nous voudrions quantifier la différence entre la première et la deuxième date, puis mettre un indicateur pour savoir si cette différence est petite ou grande, par exemple avec un seuil arbitraire de 3. Donc pour chaque ligne nous pourrions faire :
@@ -8033,26 +8064,26 @@ Revenons à notre cas. Nous allons itérer sur le nombre de lignes de notre \tex
 
 \begin{verbatim}
 ##       date01    date02        dif isDifBig
-## 1  10.573215 11.018124 0.44490915    small
-## 2   8.477228  8.976210 0.49898174    small
-## 3  11.390225  9.066317 2.32390787    small
-## 4  10.142657  9.834096 0.30856097    small
-## 5  10.390885 11.190225 0.79933966    small
-## 6   9.934872 10.479959 0.54508691    small
-## 7  12.465708  9.514139 2.95156869    small
-## 8  10.159863  9.858208 0.30165456    small
-## 9  10.081333 10.028481 0.05285248    small
-## 10 10.597012 10.908894 0.31188155    small
-## 11  9.683374 10.152748 0.46937339    small
-## 12 10.573084 10.305116 0.26796768    small
-## 13  8.627035 10.234107 1.60707290    small
-## 14 10.347632 10.162983 0.18464911    small
-## 15  9.549102  9.281360 0.26774239    small
-## 16 10.006752  9.604743 0.40200902    small
-## 17 11.746977  9.353427 2.39355024    small
-## 18 11.089882  9.286850 1.80303278    small
-## 19  9.625580 11.840814 2.21523445    small
-## 20 10.744090  9.583883 1.16020702    small
+## 1  10.224234 10.547450 0.32321600    small
+## 2  10.245974 10.195531 0.05044221    small
+## 3  11.514728  8.291796 3.22293172      big
+## 4  10.624710  7.889325 2.73538474    small
+## 5  10.191196  9.449141 0.74205490    small
+## 6  11.784410 10.823714 0.96069573    small
+## 7   9.206967  7.548885 1.65808197    small
+## 8   8.864199 10.186465 1.32226566    small
+## 9   8.842703  8.640742 0.20196129    small
+## 10  9.249997 10.933548 1.68355112    small
+## 11  8.292897 11.278007 2.98511017    small
+## 12  9.767947  9.629549 0.13839761    small
+## 13 11.395402  8.250220 3.14518221      big
+## 14 10.222486  9.144517 1.07796939    small
+## 15 10.789371 11.621537 0.83216597    small
+## 16  9.421895 11.001259 1.57936402    small
+## 17  9.272035  9.722477 0.45044143    small
+## 18 11.062941 10.158078 0.90486254    small
+## 19  9.155296 10.848544 1.69324842    small
+## 20 10.622935  9.785768 0.83716622    small
 \end{verbatim}
 
 En pratique ce n'est pas la meilleure façon de réaliser cet exercice car il s'agit ici de simples calculs sur des vecteurs contenus dans une \texttt{data.frame}. R est particulièrement puissant pour effectuer des opérations sur des vecteurs. Lorsque cela est possible il faut donc toujours privilégier les opérations sur les vecteurs. Ici notre code devient :
@@ -8068,26 +8099,26 @@ En pratique ce n'est pas la meilleure façon de réaliser cet exercice car il s'
 
 \begin{verbatim}
 ##       date01    date02        dif isDifBig
-## 1  10.573215 11.018124 0.44490915    small
-## 2   8.477228  8.976210 0.49898174    small
-## 3  11.390225  9.066317 2.32390787    small
-## 4  10.142657  9.834096 0.30856097    small
-## 5  10.390885 11.190225 0.79933966    small
-## 6   9.934872 10.479959 0.54508691    small
-## 7  12.465708  9.514139 2.95156869    small
-## 8  10.159863  9.858208 0.30165456    small
-## 9  10.081333 10.028481 0.05285248    small
-## 10 10.597012 10.908894 0.31188155    small
-## 11  9.683374 10.152748 0.46937339    small
-## 12 10.573084 10.305116 0.26796768    small
-## 13  8.627035 10.234107 1.60707290    small
-## 14 10.347632 10.162983 0.18464911    small
-## 15  9.549102  9.281360 0.26774239    small
-## 16 10.006752  9.604743 0.40200902    small
-## 17 11.746977  9.353427 2.39355024    small
-## 18 11.089882  9.286850 1.80303278    small
-## 19  9.625580 11.840814 2.21523445    small
-## 20 10.744090  9.583883 1.16020702    small
+## 1  10.224234 10.547450 0.32321600    small
+## 2  10.245974 10.195531 0.05044221    small
+## 3  11.514728  8.291796 3.22293172      big
+## 4  10.624710  7.889325 2.73538474    small
+## 5  10.191196  9.449141 0.74205490    small
+## 6  11.784410 10.823714 0.96069573    small
+## 7   9.206967  7.548885 1.65808197    small
+## 8   8.864199 10.186465 1.32226566    small
+## 9   8.842703  8.640742 0.20196129    small
+## 10  9.249997 10.933548 1.68355112    small
+## 11  8.292897 11.278007 2.98511017    small
+## 12  9.767947  9.629549 0.13839761    small
+## 13 11.395402  8.250220 3.14518221      big
+## 14 10.222486  9.144517 1.07796939    small
+## 15 10.789371 11.621537 0.83216597    small
+## 16  9.421895 11.001259 1.57936402    small
+## 17  9.272035  9.722477 0.45044143    small
+## 18 11.062941 10.158078 0.90486254    small
+## 19  9.155296 10.848544 1.69324842    small
+## 20 10.622935  9.785768 0.83716622    small
 \end{verbatim}
 
 La plupart des exemples que l'on peut trouver sur Internet à propos de la boucle \texttt{for()} peuvent être remplacés par des opérations sur les vecteurs. Voici quelques exemples adaptés de plusieurs sources :
@@ -8108,7 +8139,7 @@ La plupart des exemples que l'on peut trouver sur Internet à propos de la boucl
 \end{Shaded}
 
 \begin{verbatim}
-## [1] 10
+## [1] 13
 \end{verbatim}
 
 \begin{Shaded}
@@ -8119,7 +8150,7 @@ La plupart des exemples que l'on peut trouver sur Internet à propos de la boucl
 \end{Shaded}
 
 \begin{verbatim}
-## [1] 10
+## [1] 13
 \end{verbatim}
 
 \begin{Shaded}
@@ -8165,7 +8196,7 @@ La plupart des exemples que l'on peut trouver sur Internet à propos de la boucl
 \end{Shaded}
 
 \begin{verbatim}
-## [1] 3.551
+## [1] 3.52
 \end{verbatim}
 
 \begin{Shaded}
@@ -8176,7 +8207,7 @@ La plupart des exemples que l'on peut trouver sur Internet à propos de la boucl
 \end{Shaded}
 
 \begin{verbatim}
-## [1] 3.51
+## [1] 3.438
 \end{verbatim}
 
 C'est un bon exercice de parcourir les nombreux exemples disponibles sur Internet sur la boucle \texttt{for()} et de tenter de les transformer en opérations vectorielles. Cela nous permet d'acquérir les bons réflexes de programmation avec R. La boucle \texttt{for()} reste très utile pour par exemple lire plusieurs fichiers et traiter l'information qu'ils contiennent de la même façon, faire des graphiques, ou encore lorsque les opérations vectorielles deveinnent fastidieuses. Imaginons une matrice de 10 colonnes et 100 lignes. Nous voulons la somme de chaque ligne (nous verrons plus loin comment faire avec la fonction \texttt{apply()}).
@@ -8193,12 +8224,12 @@ C'est un bon exercice de parcourir les nombreux exemples disponibles sur Interne
 \end{Shaded}
 
 \begin{verbatim}
-##   [1] 543 419 504 616 400 436 520 436 545 472 536 535 479 489 632 550 454 346
-##  [19] 419 762 622 499 605 596 313 422 467 530 615 472 677 570 394 500 378 307
-##  [37] 411 474 505 602 670 470 427 473 668 513 461 464 529 518 587 565 599 485
-##  [55] 413 393 399 547 481 463 595 466 532 436 470 604 377 522 342 542 478 355
-##  [73] 416 656 597 486 604 501 512 188 534 597 554 329 551 670 402 454 494 525
-##  [91] 587 509 575 397 643 343 729 439 376 403
+##   [1] 611 404 623 494 388 544 475 508 567 451 568 462 484 357 506 572 597 545
+##  [19] 405 329 446 399 545 536 571 585 573 432 511 542 443 638 356 349 435 456
+##  [37] 621 652 604 496 471 457 476 550 419 721 553 420 613 458 523 517 495 478
+##  [55] 447 525 561 565 472 612 651 558 417 526 563 522 667 420 461 515 492 529
+##  [73] 492 447 486 348 608 516 444 561 466 450 808 473 485 603 559 653 671 502
+##  [91] 484 647 516 847 506 596 480 644 547 312
 \end{verbatim}
 
 \begin{Shaded}
@@ -8213,12 +8244,12 @@ C'est un bon exercice de parcourir les nombreux exemples disponibles sur Interne
 \end{Shaded}
 
 \begin{verbatim}
-##   [1] 543 419 504 616 400 436 520 436 545 472 536 535 479 489 632 550 454 346
-##  [19] 419 762 622 499 605 596 313 422 467 530 615 472 677 570 394 500 378 307
-##  [37] 411 474 505 602 670 470 427 473 668 513 461 464 529 518 587 565 599 485
-##  [55] 413 393 399 547 481 463 595 466 532 436 470 604 377 522 342 542 478 355
-##  [73] 416 656 597 486 604 501 512 188 534 597 554 329 551 670 402 454 494 525
-##  [91] 587 509 575 397 643 343 729 439 376 403
+##   [1] 611 404 623 494 388 544 475 508 567 451 568 462 484 357 506 572 597 545
+##  [19] 405 329 446 399 545 536 571 585 573 432 511 542 443 638 356 349 435 456
+##  [37] 621 652 604 496 471 457 476 550 419 721 553 420 613 458 523 517 495 478
+##  [55] 447 525 561 565 472 612 651 558 417 526 563 522 667 420 461 515 492 529
+##  [73] 492 447 486 348 608 516 444 561 466 450 808 473 485 603 559 653 671 502
+##  [91] 484 647 516 847 506 596 480 644 547 312
 \end{verbatim}
 
 En conclusion, il est recommandé de ne pas utiliser la boucle \texttt{for()} avec R chaque fois que cela est possible, et nous verrons dans ce chapitre des alternatives commes les boucles de la famille \texttt{apply()}.
@@ -8279,7 +8310,7 @@ La boucle \texttt{while()} est très utile pour créer des scripts qui vont effe
 
 \begin{verbatim}
 ## [1] "Number found !"
-## [1] "And I have plenty of time left: 1.56 sec"
+## [1] "And I have plenty of time left: 1.98 sec"
 \end{verbatim}
 
 Dans ce script nous générons un nombre aléatoire à deviner avec la fonction \texttt{sample()}, et chaque essai avec la même fonction \texttt{sample()}. Ensuite nous utilisons la fonction \texttt{Sys.time()} (avec un S majuscule à \texttt{Sys}), pour connaître l'heure de début de la boucle. Tant que la différence entre chaque itération de la boucle et l'heure de démarrage est inférieur à 2 secondes, la boucle \texttt{while()} va vérifier si le bon nombre a été deviner dans le test logique avec \texttt{if()} puis si c'est le cas nous informer que le nombre a été trouvé, nous dire le temps restant avant les deux secondes, puis terminer la boucle avec le mot clef \texttt{break} sur lequel nous reviendrons. En bref, \texttt{break} permet de sortir d'une boucle. Si le nombre n'a pas été deviné, la boucle fait un autre essai avec la fonction \texttt{sample()}.
@@ -8338,11 +8369,11 @@ Si nous reprenons l'exemple précédent, nous pouvons utiliser une boucle \textt
 \end{Shaded}
 
 \begin{verbatim}
-## [1] 0.575
-## [1] 0.237
-## [1] 1.928
-## [1] 0.172
-## [1] 0.311
+## [1] 0.662
+## [1] 0.085
+## [1] 1.506
+## [1] 1.037
+## [1] 0.16
 \end{verbatim}
 
 Comme la boucle \texttt{while()}, la boucle \texttt{repeat()} reste peu utilisée avec R.
@@ -8447,12 +8478,12 @@ La fonction \texttt{apply()} permet d'appliquer une fonction à tous les éléme
 \end{Shaded}
 
 \begin{verbatim}
-##   [1] 457 514 469 522 484 355 521 671 406 425 407 526 403 544 502 675 488 452
-##  [19] 584 223 635 467 512 474 433 639 334 524 486 423 468 457 524 596 549 398
-##  [37] 485 355 433 471 578 457 449 501 414 552 654 324 482 332 498 346 439 617
-##  [55] 699 510 587 535 529 501 576 420 446 661 530 527 377 534 365 447 646 639
-##  [73] 532 485 504 455 609 555 424 496 414 549 431 713 617 604 461 655 442 564
-##  [91] 429 609 490 527 502 534 507 472 490 473
+##   [1] 457 568 524 440 543 482 504 432 520 548 443 405 525 429 268 478 532 364
+##  [19] 626 459 527 525 545 680 595 458 340 452 453 447 327 499 484 425 385 463
+##  [37] 616 567 651 526 377 391 606 543 453 559 643 550 552 506 468 543 632 459
+##  [55] 606 584 418 422 590 547 560 475 355 380 480 617 579 607 420 361 358 450
+##  [73] 603 546 585 417 636 410 578 572 519 395 608 288 505 490 570 572 648 447
+##  [91] 540 514 513 743 548 537 535 402 374 493
 \end{verbatim}
 
 Si nous souhaitons connaître la médiane de chaque colonne, l'expression devient :
@@ -8464,7 +8495,7 @@ Si nous souhaitons connaître la médiane de chaque colonne, l'expression devien
 \end{Shaded}
 
 \begin{verbatim}
-##  [1] 55.0 51.5 50.5 46.0 41.5 52.0 52.0 48.0 45.0 55.0
+##  [1] 54.0 42.0 50.0 58.5 53.0 50.0 51.5 45.0 48.0 53.0
 \end{verbatim}
 
 L'argument \texttt{X} correspond à l'objet sur lequel la boucle \texttt{apply} va itérer. L'argument \texttt{MARGIN} correspond à la dimension à prendre en compte (1 pour les lignes, et 2 pour les colonnes). L'argument \texttt{FUN} correspond à la fonction à appliquer. Sur un objet de type \texttt{array}, l'argument \texttt{MARGIN} peut prendre autant de valeurs que de dimensions. Dans cet exemple \texttt{MARGIN\ =\ 1} correspond à la moyenne de chaque ligne - dimension 1 - (toutes dimensions confondues), \texttt{MARGIN\ =\ 2} correspond à la moyenne de chaque colonne - dimension 2 - (toutes dimensions confondues), et \texttt{MARGIN\ =\ 3} correspond à la moyenne de chaque dimension 3. Ci-dessous chaque calcul est réalisé de deux manières différentes pour en expliciter le fonctionnement.
@@ -8477,7 +8508,7 @@ L'argument \texttt{X} correspond à l'objet sur lequel la boucle \texttt{apply} 
 \end{Shaded}
 
 \begin{verbatim}
-##  [1] 47.79 51.84 48.22 49.40 51.69 49.73 51.42 47.10 52.40 54.07
+##  [1] 47.29 48.90 44.36 51.44 46.96 50.88 55.61 49.08 49.52 50.28
 \end{verbatim}
 
 \begin{Shaded}
@@ -8489,7 +8520,7 @@ L'argument \texttt{X} correspond à l'objet sur lequel la boucle \texttt{apply} 
 \end{Shaded}
 
 \begin{verbatim}
-##  [1] 47.79 51.84 48.22 49.40 51.69 49.73 51.42 47.10 52.40 54.07
+##  [1] 47.29 48.90 44.36 51.44 46.96 50.88 55.61 49.08 49.52 50.28
 \end{verbatim}
 
 \begin{Shaded}
@@ -8499,8 +8530,8 @@ L'argument \texttt{X} correspond à l'objet sur lequel la boucle \texttt{apply} 
 \end{Shaded}
 
 \begin{verbatim}
-##  [1] 46.62 51.30 55.64 54.56 47.26 48.52 51.90 51.84 49.38 56.62 51.88 55.78
-## [13] 46.54 44.96 49.70 48.64 55.04 47.44 46.32 47.38
+##  [1] 49.82 51.44 52.96 51.10 47.64 54.54 47.82 43.98 48.98 51.88 44.38 47.98
+## [13] 49.62 51.74 51.84 51.06 44.38 49.04 51.64 46.80
 \end{verbatim}
 
 \begin{Shaded}
@@ -8512,8 +8543,8 @@ L'argument \texttt{X} correspond à l'objet sur lequel la boucle \texttt{apply} 
 \end{Shaded}
 
 \begin{verbatim}
-##  [1] 46.62 51.30 55.64 54.56 47.26 48.52 51.90 51.84 49.38 56.62 51.88 55.78
-## [13] 46.54 44.96 49.70 48.64 55.04 47.44 46.32 47.38
+##  [1] 49.82 51.44 52.96 51.10 47.64 54.54 47.82 43.98 48.98 51.88 44.38 47.98
+## [13] 49.62 51.74 51.84 51.06 44.38 49.04 51.64 46.80
 \end{verbatim}
 
 \begin{Shaded}
@@ -8523,7 +8554,7 @@ L'argument \texttt{X} correspond à l'objet sur lequel la boucle \texttt{apply} 
 \end{Shaded}
 
 \begin{verbatim}
-## [1] 52.855 51.100 50.200 47.445 50.230
+## [1] 49.70 49.23 49.25 49.45 49.53
 \end{verbatim}
 
 \begin{Shaded}
@@ -8534,7 +8565,7 @@ L'argument \texttt{X} correspond à l'objet sur lequel la boucle \texttt{apply} 
 \end{Shaded}
 
 \begin{verbatim}
-## [1] 52.855 51.100 50.200 47.445 50.230
+## [1] 49.70 49.23 49.25 49.45 49.53
 \end{verbatim}
 
 Nous pouvons aussi calculer la moyenne pour chaque valeur de ligne et de colonne (la fonction itère alors sur la dimension 3) :
@@ -8547,27 +8578,27 @@ Nous pouvons aussi calculer la moyenne pour chaque valeur de ligne et de colonne
 
 \begin{verbatim}
 ##       [,1] [,2] [,3] [,4] [,5] [,6] [,7] [,8] [,9] [,10] [,11] [,12] [,13]
-##  [1,] 57.8 58.4 64.6 51.8 41.0 27.4 35.4 38.2 60.6  57.8  54.4  37.8  53.4
-##  [2,] 41.2 47.2 60.2 59.8 40.2 62.0 51.6 70.8 39.2  80.8  43.6  49.8  41.0
-##  [3,] 33.6 49.4 38.2 42.4 62.8 39.4 57.4 44.0 27.4  38.8  49.4  65.6  49.4
-##  [4,] 45.0 61.8 51.4 55.4 30.6 45.6 39.2 64.6 56.6  36.6  51.0  41.0  57.8
-##  [5,] 24.8 42.4 43.4 66.0 78.6 76.0 51.6 38.6 53.0  55.8  56.8  72.0  37.6
-##  [6,] 29.6 39.4 29.4 61.6 38.2 51.8 55.6 66.6 53.2  50.0  68.6  51.4  60.2
-##  [7,] 62.4 57.6 64.0 59.6 54.8 46.0 74.0 34.0 31.6  43.0  48.6  54.4  42.4
-##  [8,] 63.0 47.0 56.0 48.0 37.0 44.6 20.6 61.2 60.6  46.8  38.4  61.4  37.8
-##  [9,] 61.4 47.8 62.8 43.2 39.4 47.8 52.8 46.4 47.0  87.4  62.0  67.2  47.0
-## [10,] 47.4 62.0 86.4 57.8 50.0 44.6 80.8 54.0 64.6  69.2  46.0  57.2  38.8
+##  [1,] 56.6 63.6 46.2 39.6 34.0 66.6 57.8 65.2 55.2  39.0  27.4  52.2  32.8
+##  [2,] 39.6 49.8 47.8 60.6 55.4 52.4 41.2 61.4 61.6  54.0  43.0  19.8  43.8
+##  [3,] 46.4 50.0 51.6 33.4 19.4 61.4 42.4 22.2 42.6  71.2  45.2  38.6  47.4
+##  [4,] 41.8 28.2 67.2 30.6 60.0 67.4 43.8 39.6 41.4  56.4  69.6  59.6  49.4
+##  [5,] 46.0 41.2 53.8 30.0 47.4 53.6 75.2 33.4 53.4  32.4  46.4  34.6  62.0
+##  [6,] 53.0 56.8 47.0 82.6 37.4 45.0 39.6 46.0 51.6  52.8  44.4  67.0  68.4
+##  [7,] 66.6 37.8 52.0 81.6 64.6 55.2 35.4 31.0 74.2  59.2  49.4  54.4  88.0
+##  [8,] 52.4 71.0 46.6 64.6 49.8 46.8 34.4 73.2 32.6  43.0  36.6  40.8  40.6
+##  [9,] 55.4 58.2 59.8 41.4 61.4 48.6 52.6 27.6 30.8  50.8  44.6  65.6  26.4
+## [10,] 40.4 57.8 57.6 46.6 47.0 48.4 55.8 40.2 46.4  60.0  37.2  47.2  37.4
 ##       [,14] [,15] [,16] [,17] [,18] [,19] [,20]
-##  [1,]  48.8  55.2  32.2  33.6  56.4  34.2  56.8
-##  [2,]  62.0  49.0  45.6  52.8  47.4  62.8  29.8
-##  [3,]  40.2  82.2  51.2  67.0  15.6  79.6  30.8
-##  [4,]  27.6  45.4  48.6  69.4  55.4  51.2  53.8
-##  [5,]  40.6  55.4  32.0  42.6  51.8  55.6  59.2
-##  [6,]  40.6  45.0  44.4  73.6  44.2  44.8  46.4
-##  [7,]  75.2  38.0  52.8  47.8  59.8  30.0  52.4
-##  [8,]  38.6  51.6  57.2  48.0  55.8  38.0  30.4
-##  [9,]  47.4  38.4  63.0  56.4  45.2  34.4  51.0
-## [10,]  28.6  36.8  59.4  59.2  42.8  32.6  63.2
+##  [1,]  52.4  42.4  40.0  27.4  27.0  74.6  45.8
+##  [2,]  54.0  53.4  57.2  35.8  59.4  36.4  51.4
+##  [3,]  59.0  32.6  58.4  31.0  46.8  27.2  60.4
+##  [4,]  71.2  47.6  51.0  71.4  59.2  17.4  56.0
+##  [5,]  28.6  51.8  40.0  35.6  71.2  62.6  40.0
+##  [6,]  41.2  60.8  67.2  42.4  35.6  47.4  31.4
+##  [7,]  57.4  50.0  48.8  60.6  40.6  67.0  38.4
+##  [8,]  44.8  63.0  44.2  35.0  55.6  62.8  43.8
+##  [9,]  47.4  65.0  51.4  60.6  44.4  53.8  44.6
+## [10,]  61.4  51.8  52.4  44.0  50.6  67.2  56.2
 \end{verbatim}
 
 \hypertarget{l17sapply}{%
@@ -8590,19 +8621,19 @@ Comme indiqué dans la documentation, \texttt{lapply()} renvoie une liste de mê
 
 \begin{verbatim}
 ## $a
-##  [1] 22 40 36 91 82 63 81 69 28 21
+##  [1]  87  51  92 100  93  10  15  50  18  99
 ## 
 ## $b
-##  [1]  92  62  95  12  85  81  63 100  75  73
+##  [1] 94 76 53 82 52 39 80 71 21  1
 ## 
 ## $c
-##  [1]  5 87 29 35 85 23 78 37  8 26
+##  [1]  2 46  8 14 25  3 42 16 63 45
 ## 
 ## $d
-##  [1] 30 17 19 93 24 67 40 60 82 14
+##  [1] 13 67 42 37 11 26  2 64 47 83
 ## 
 ## $e
-##  [1] 69 61  9 67 15 74 81 41 24 36
+##  [1] 14 19 52 70 11 38 80 63 21 50
 \end{verbatim}
 
 \begin{Shaded}
@@ -8613,19 +8644,19 @@ Comme indiqué dans la documentation, \texttt{lapply()} renvoie une liste de mê
 
 \begin{verbatim}
 ## $a
-## [1] 53.3
+## [1] 61.5
 ## 
 ## $b
-## [1] 73.8
+## [1] 56.9
 ## 
 ## $c
-## [1] 41.3
+## [1] 26.4
 ## 
 ## $d
-## [1] 44.6
+## [1] 39.2
 ## 
 ## $e
-## [1] 47.7
+## [1] 41.8
 \end{verbatim}
 
 Comme pour la fonction \texttt{apply()}, nous pouvons passer des arguments supplémentaires à la fonction \texttt{lapply()} en les ajoutant à la suite de la fonction. C'est par exemple utile si notre \texttt{list} contient ces valeurs manquantes \texttt{NA} et que nous voulons les ignorer pour le calcul des moyennes (avec l'arguement \texttt{na.rm\ =\ TRUE}).
@@ -8645,19 +8676,19 @@ Comme pour la fonction \texttt{apply()}, nous pouvons passer des arguments suppl
 
 \begin{verbatim}
 ## $a
-##  [1]  4 NA NA  1  1  1  5 NA  1  3
+##  [1]  4  5  2 NA  2  5  4  3  2  2
 ## 
 ## $b
-##  [1] 4 2 1 4 3 5 5 2 2 1
+##  [1]  4  4 NA NA  1  3  3  2  1  1
 ## 
 ## $c
-##  [1] NA  3 NA  2  4  1 NA  1 NA  1
+##  [1] 2 4 2 4 2 4 5 3 5 5
 ## 
 ## $d
-##  [1]  2  3  1 NA  1  3  1 NA  1  2
+##  [1]  4  3 NA  2  4  2  1  3 NA  5
 ## 
 ## $e
-##  [1]  5  4 NA  2  4 NA  2 NA NA  4
+##  [1]  1  1 NA  5  4  1  5  3  3  2
 \end{verbatim}
 
 \begin{Shaded}
@@ -8671,10 +8702,10 @@ Comme pour la fonction \texttt{apply()}, nous pouvons passer des arguments suppl
 ## [1] NA
 ## 
 ## $b
-## [1] 2.9
+## [1] NA
 ## 
 ## $c
-## [1] NA
+## [1] 3.6
 ## 
 ## $d
 ## [1] NA
@@ -8691,19 +8722,19 @@ Comme pour la fonction \texttt{apply()}, nous pouvons passer des arguments suppl
 
 \begin{verbatim}
 ## $a
-## [1] 2.285714
+## [1] 3.222222
 ## 
 ## $b
-## [1] 2.9
+## [1] 2.375
 ## 
 ## $c
-## [1] 2
+## [1] 3.6
 ## 
 ## $d
-## [1] 1.75
+## [1] 3
 ## 
 ## $e
-## [1] 3.5
+## [1] 2.777778
 \end{verbatim}
 
 Pour plus de lisibilité ou si plusieurs opérations sont à réaliser au sein de l'argument \texttt{FUN}, nous pouvons utiliser l'écriture suivante :
@@ -8718,19 +8749,19 @@ Pour plus de lisibilité ou si plusieurs opérations sont à réaliser au sein d
 
 \begin{verbatim}
 ## $a
-## [1] 2.285714
+## [1] 3.222222
 ## 
 ## $b
-## [1] 2.9
+## [1] 2.375
 ## 
 ## $c
-## [1] 2
+## [1] 3.6
 ## 
 ## $d
-## [1] 1.75
+## [1] 3
 ## 
 ## $e
-## [1] 3.5
+## [1] 2.777778
 \end{verbatim}
 
 Par exemple si nous souhaitons obtenir \texttt{i\^{}2} si la moyenne est supérieure à 3, et \texttt{i\^{}3} sinon :
@@ -8750,19 +8781,19 @@ Par exemple si nous souhaitons obtenir \texttt{i\^{}2} si la moyenne est supéri
 
 \begin{verbatim}
 ## $a
-##  [1]  64  NA  NA   1   1   1 125  NA   1  27
+##  [1] 16 25  4 NA  4 25 16  9  4  4
 ## 
 ## $b
-##  [1]  64   8   1  64  27 125 125   8   8   1
+##  [1] 64 64 NA NA  1 27 27  8  1  1
 ## 
 ## $c
-##  [1] NA 27 NA  8 64  1 NA  1 NA  1
+##  [1]  4 16  4 16  4 16 25  9 25 25
 ## 
 ## $d
-##  [1]  8 27  1 NA  1 27  1 NA  1  8
+##  [1]  64  27  NA   8  64   8   1  27  NA 125
 ## 
 ## $e
-##  [1] 25 16 NA  4 16 NA  4 NA NA 16
+##  [1]   1   1  NA 125  64   1 125  27  27   8
 \end{verbatim}
 
 \hypertarget{l17lapply}{%
@@ -8780,19 +8811,19 @@ La fonction \texttt{sapply()} est une version modifiée de la fonction \texttt{l
 
 \begin{verbatim}
 ## $a
-## [1] 2.285714
+## [1] 3.222222
 ## 
 ## $b
-## [1] 2.9
+## [1] 2.375
 ## 
 ## $c
-## [1] 2
+## [1] 3.6
 ## 
 ## $d
-## [1] 1.75
+## [1] 3
 ## 
 ## $e
-## [1] 3.5
+## [1] 2.777778
 \end{verbatim}
 
 \begin{Shaded}
@@ -8805,7 +8836,7 @@ La fonction \texttt{sapply()} est une version modifiée de la fonction \texttt{l
 
 \begin{verbatim}
 ##        a        b        c        d        e 
-## 2.285714 2.900000 2.000000 1.750000 3.500000
+## 3.222222 2.375000 3.600000 3.000000 2.777778
 \end{verbatim}
 
 La fonction \texttt{sapply()} est intéressante pour récupérer par exemple le nième élément de chacun des éléments d'une \texttt{list}. La fonction qui est appelée pour faire cela est \texttt{\textquotesingle{}{[}{[}\textquotesingle{}}.
@@ -8817,8 +8848,8 @@ La fonction \texttt{sapply()} est intéressante pour récupérer par exemple le 
 \end{Shaded}
 
 \begin{verbatim}
-##  a  b  c  d  e 
-## NA  2  3  3  4
+## a b c d e 
+## 5 4 4 3 1
 \end{verbatim}
 
 \hypertarget{l17tapply}{%
@@ -8838,17 +8869,17 @@ La fonction\texttt{tapply()} permet d'appliquer une fonction en prenant comme é
 \end{Shaded}
 
 \begin{verbatim}
-##    species     perf1    perf2    perf3
-## 1        G  9.698572 20535.88 28.53155
-## 2        C 10.591779 12722.50 13.42081
-## 3        B 10.350820 52751.06 21.16402
-## 4        E  9.899137 20773.01 19.17221
-## 5        J  9.699784 27489.12 22.01725
-## 6        G 10.604765 39038.68 18.66347
-## 7        C  9.240567 14474.15 18.55632
-## 8        C  9.427654 15685.39 16.62438
-## 9        G 10.128959 14685.64 21.05107
-## 10       G  9.705848 24728.04 18.42540
+##    species     perf1    perf2     perf3
+## 1        J  9.778752 18781.19 30.545155
+## 2        I 10.113865 26540.45 11.822954
+## 3        A  9.956652 42531.62 16.574769
+## 4        H 10.140470 36212.98 26.448708
+## 5        I 10.666800 26416.26 16.218956
+## 6        H  9.653466 15764.97 10.041859
+## 7        B 10.114949 14449.93 12.589233
+## 8        D  8.920598  9200.68 29.207419
+## 9        H  9.656281 10240.87 10.713398
+## 10       F  9.976065 37206.50  8.846026
 \end{verbatim}
 
 Nous pouvons facilement obtenir un résumé des performances pour chaque espèce avec la fonction \texttt{tapply()} et la fonction \texttt{summary()}.
@@ -8862,43 +8893,43 @@ Nous pouvons facilement obtenir un résumé des performances pour chaque espèce
 \begin{verbatim}
 ## $A
 ##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-##   8.498   9.809   9.998  10.061  10.360  11.732 
+##   8.778   9.774  10.025  10.022  10.361  11.043 
 ## 
 ## $B
 ##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-##   8.458   9.664   9.965   9.976  10.328  11.098 
+##   8.659   9.738  10.079  10.093  10.444  11.301 
 ## 
 ## $C
 ##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-##   8.855   9.564   9.885   9.893  10.258  11.102 
+##   9.042   9.722   9.989   9.994  10.244  10.789 
 ## 
 ## $D
 ##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-##   8.433   9.653   9.986  10.013  10.378  11.149 
+##   8.828   9.687  10.054  10.052  10.446  11.070 
 ## 
 ## $E
 ##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-##   8.781   9.729  10.040  10.023  10.396  11.028 
+##   8.753   9.685   9.912   9.955  10.295  11.122 
 ## 
 ## $F
 ##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-##   9.079   9.614   9.993   9.981  10.289  11.114 
+##   8.884   9.589   9.948   9.946  10.292  11.572 
 ## 
 ## $G
 ##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-##   8.933   9.609   9.976   9.953  10.246  11.715 
+##   8.429   9.536   9.864   9.888  10.184  11.159 
 ## 
 ## $H
 ##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-##   9.110   9.708  10.076  10.059  10.366  11.330 
+##   8.803   9.629   9.878   9.891  10.176  11.057 
 ## 
 ## $I
 ##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-##   8.713   9.636   9.990   9.993  10.337  11.309 
+##   8.773   9.752  10.034  10.066  10.347  11.519 
 ## 
 ## $J
 ##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-##   8.733   9.609   9.984   9.984  10.396  11.600
+##   8.666   9.716   9.921   9.948  10.276  11.094
 \end{verbatim}
 
 Nous pouvons aussi obtenir la valeur moyenne de chacune des performances en combinant une fonction \texttt{sapply()} avec la fonction \texttt{tapply()}et en utilisant la fonction \texttt{mean()}.
@@ -8913,16 +8944,16 @@ Nous pouvons aussi obtenir la valeur moyenne de chacune des performances en comb
 
 \begin{verbatim}
 ##        [,1]     [,2]     [,3]
-## A 10.060619 22162.50 19.28883
-## B  9.975861 24238.33 21.52091
-## C  9.892971 24592.16 20.43285
-## D 10.012611 25409.67 20.02994
-## E 10.022781 23481.56 19.92276
-## F  9.981299 24738.62 20.73286
-## G  9.952935 24006.91 20.62132
-## H 10.058927 23989.12 18.91813
-## I  9.992797 23744.84 20.12841
-## J  9.983923 25048.66 21.03158
+## A 10.022327 26590.73 19.57389
+## B 10.093395 23831.47 20.25984
+## C  9.993588 23556.25 19.69485
+## D 10.051560 25859.65 20.57605
+## E  9.954632 26898.83 21.03832
+## F  9.945714 26335.32 20.30447
+## G  9.888285 25684.31 19.40742
+## H  9.891077 25054.67 20.12188
+## I 10.065875 25032.25 19.79904
+## J  9.948107 25249.41 20.62075
 \end{verbatim}
 
 \hypertarget{l17mapply}{%
