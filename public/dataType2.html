@@ -24,7 +24,7 @@
 <meta name="author" content="François Rebaudo" />
 
 
-<meta name="date" content="2019-12-20" />
+<meta name="date" content="2020-01-02" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -922,7 +922,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 
 ## [[7]][[2]]
 ## [1] &quot;a&quot; &quot;b&quot; &quot;c&quot;</code></pre>
-<p>Un objet de type <code>list</code> peut être transformé en <code>vector</code> avec la fonction <code>unlist()</code> si le format des éléments de la <code>list</code> le permet (un <code>vector</code> ne peut contenir que des élément du même type).</p>
+<p>Un objet de type <code>list</code> peut être transformé en <code>vector</code> avec la fonction <code>unlist()</code> si le format des éléments de la <code>list</code> le permet (un <code>vector</code> ne peut contenir que des éléments du même type).</p>
 <div class="sourceCode" id="cb451"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb451-1" title="1">miList05 &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="st">&quot;a&quot;</span>, <span class="kw">c</span>(<span class="st">&quot;b&quot;</span>, <span class="st">&quot;c&quot;</span>), <span class="st">&quot;d&quot;</span>)</a>
 <a class="sourceLine" id="cb451-2" title="2"><span class="kw">print</span>(miList05)</a></code></pre></div>
 <pre><code>## [[1]]
@@ -994,7 +994,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 
 ## [[5]]
 ## [1] &quot;fgh&quot; &quot;ijk&quot;</code></pre>
-<p>Pour supprimer un élément à une <code>list</code>, la technique la plus rapide consiste à attribuer la valeur <code>NULL</code> à l’élément à supprimer.</p>
+<p>Pour supprimer un élément à une <code>list</code>, lune possibilité est d’attribuer la valeur <code>NULL</code> à l’élément à supprimer.</p>
 <div class="sourceCode" id="cb465"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb465-1" title="1"><span class="kw">print</span>(miList05)</a></code></pre></div>
 <pre><code>## [[1]]
 ## [1] &quot;a&quot;
@@ -1076,7 +1076,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 4       4</code></pre>
 <div class="sourceCode" id="cb481"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb481-1" title="1"><span class="kw">print</span>(miDf01[[<span class="st">&quot;numbers&quot;</span>]]) <span class="co"># vector</span></a></code></pre></div>
 <pre><code>## [1] 1 2 3 4</code></pre>
-<p>Nous pouvons aussi utiliser une autre forme qui consiste à spécifier la ou les lignes suivi d’une virgule (et donc d’un espace après la virgule), puis la ou les colonnes entre crochets simples. Si l’information ligne ou colonne est omise, R affichera toutes les lignes ou toutes les colonnes. Là encore nous pouvons utiliser le numéro correspondant à un élément ou alors le nom de l’élément que nous souhaitons sélectionner.</p>
+<p>Nous pouvons aussi utiliser une autre forme qui consiste à spécifier la (ou les) ligne suivie d’une virgule (et comme nous en avons pris l’habitude, d’un espace après la virgule), puis la (ou les) colonne entre crochets simples. Si l’information ligne ou colonne est omise, R affichera toutes les lignes ou toutes les colonnes. Là encore nous pouvons utiliser le numéro correspondant à un élément ou alors le nom de l’élément que nous souhaitons sélectionner.</p>
 <div class="sourceCode" id="cb483"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb483-1" title="1">myRow &lt;-<span class="st"> </span><span class="dv">2</span></a>
 <a class="sourceLine" id="cb483-2" title="2">myCol &lt;-<span class="st"> </span><span class="dv">1</span></a>
 <a class="sourceLine" id="cb483-3" title="3"><span class="kw">print</span>(miDf01[myRow, myCol])</a></code></pre></div>
@@ -1151,9 +1151,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## row2       2     TRUE          b      5
 ## row3       3    FALSE          c      6
 ## row4       4     TRUE          d      7</code></pre>
-<div class="sourceCode" id="cb513"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb513-1" title="1">newVec2 &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">40</span>, <span class="dv">50</span>, <span class="dv">60</span>, <span class="dv">70</span>)</a>
-<a class="sourceLine" id="cb513-2" title="2">miDf01<span class="op">$</span>newVec2 &lt;-<span class="st"> </span>newVec2</a>
-<a class="sourceLine" id="cb513-3" title="3"><span class="kw">print</span>(miDf01)</a></code></pre></div>
+<p>Une autre façon de d’ajouter une <em>colonne</em> à un <code>data.frame</code> est d’utiliser le symbole <code>$</code> suivi du nom de la <em>colonne</em> à ajouter.</p>
+<div class="sourceCode" id="cb513"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb513-1" title="1"><span class="co"># création d&#39;un vecor</span></a>
+<a class="sourceLine" id="cb513-2" title="2">newVec2 &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">40</span>, <span class="dv">50</span>, <span class="dv">60</span>, <span class="dv">70</span>)</a>
+<a class="sourceLine" id="cb513-3" title="3"><span class="co"># ajout du vetor dans le data.frame</span></a>
+<a class="sourceLine" id="cb513-4" title="4">miDf01<span class="op">$</span>newVec2 &lt;-<span class="st"> </span>newVec2</a>
+<a class="sourceLine" id="cb513-5" title="5"><span class="co"># ou alors directement :</span></a>
+<a class="sourceLine" id="cb513-6" title="6">miDf01<span class="op">$</span>newVec2 &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">40</span>, <span class="dv">50</span>, <span class="dv">60</span>, <span class="dv">70</span>)</a>
+<a class="sourceLine" id="cb513-7" title="7"><span class="co"># affichage du data.frame</span></a>
+<a class="sourceLine" id="cb513-8" title="8"><span class="kw">print</span>(miDf01)</a></code></pre></div>
 <pre><code>##      numbers logicals characters newVec newVec2
 ## row1       1     TRUE          a      4      40
 ## row2       2     TRUE          b      5      50
@@ -1193,7 +1199,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div id="l014matrix" class="section level2">
 <h2><span class="header-section-number">6.4</span> Le conteneur <code>matrix</code></h2>
-<p>Le conteneur <code>matrix</code> peut être vu comme un <code>vector</code> à deux dimensions, les lignes et les colonnes. Il correspond à une matrice en mathématique, et ne peut contenir qu’un seul type de données (<code>logical</code>, <code>numeric</code>, <code>character</code>, …).</p>
+<p>Le conteneur <code>matrix</code> peut être vu comme un <code>vector</code> à deux dimensions (lignes et colonnes). Il correspond à une matrice en mathématiques, et ne peut contenir qu’un seul type de données (<code>logical</code>, <code>numeric</code>, <code>character</code>, …).</p>
 <div id="créer-une-matrix" class="section level3">
 <h3><span class="header-section-number">6.4.1</span> Créer une <code>matrix</code></h3>
 <p>Pour créer une <code>matrix</code> nous allons tout d’abord créer un <code>vector</code>, puis spécifier le nombre souhaité de lignes et de colonnes dans la fonction <code>matrix()</code>.</p>
@@ -1217,7 +1223,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## [1,]    1    4    7   10
 ## [2,]    2    5    8   11
 ## [3,]    3    6    9   12</code></pre>
-<p>Nous observons que les différents éléments du <code>vector</code> initial sont renseignés par colonne. Si nous souhaitons renseigner la <code>matrix</code> par lignes alors il faut donner la valeur <code>TRUE</code> à l’argument <code>byrow</code>.</p>
+<p>Nous observons que les différents éléments du <code>vector</code> initial sont renseignés par colonne. Si nous souhaitons renseigner la <code>matrix</code> par lignes alors il faut donner la valeur <code>TRUE</code> à l’argument <code>byrow</code>. Comme toujours nous pourrons consulter l’aide avec la fonction <code>?</code> (<code>?matrix</code>) pour voir les différents arguments.</p>
 <div class="sourceCode" id="cb535"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb535-1" title="1">miMat &lt;-<span class="st"> </span><span class="kw">matrix</span>(vecForMatrix, <span class="dt">nrow =</span> <span class="dv">3</span>, <span class="dt">byrow =</span> <span class="ot">TRUE</span>)</a>
 <a class="sourceLine" id="cb535-2" title="2"><span class="kw">print</span>(miMat)</a></code></pre></div>
 <pre><code>##      [,1] [,2] [,3] [,4]
@@ -1435,7 +1441,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <pre><code>## [1] 3 3 2</code></pre>
 <div class="sourceCode" id="cb597"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb597-1" title="1"><span class="kw">is.array</span>(miArray02)</a></code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
-<p>Nous pouvons donner des noms aux lignes et aux colonnes, mais aussi aux éléments.</p>
+<p>Nous pouvons donner des noms aux lignes et aux colonnes, mais aussi aux autres dimensions.</p>
 <div class="sourceCode" id="cb599"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb599-1" title="1">miArray02 &lt;-<span class="st"> </span><span class="kw">array</span>(</a>
 <a class="sourceLine" id="cb599-2" title="2">  <span class="kw">c</span>(miVecArr, miVecArr02), </a>
 <a class="sourceLine" id="cb599-3" title="3">  <span class="dt">dim =</span> <span class="kw">c</span>(<span class="dv">3</span>, <span class="dv">3</span>, <span class="dv">2</span>), </a>
@@ -1462,7 +1468,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div id="manipuler-un-array" class="section level3">
 <h3><span class="header-section-number">6.5.2</span> Manipuler un <code>array</code></h3>
-<p>La manipulation d’un <code>array</code> se fait de la même façon que pour une <code>matrix</code>. pour accèder aux différents éléments d’un <code>array</code>, il suffit de spécifier la ligne <code>i</code>, la colonne <code>j</code>, et la <code>matrix</code> <code>k</code>.</p>
+<p>La manipulation d’un <code>array</code> se fait de la même façon que pour une <code>matrix</code>. Pour accéder aux différents éléments d’un <code>array</code>, il suffit de spécifier la ligne <code>i</code>, la colonne <code>j</code>, et dans notre exemple, la <code>matrix</code> <code>k</code>.</p>
 <div class="sourceCode" id="cb601"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb601-1" title="1">i &lt;-<span class="st"> </span><span class="dv">2</span></a>
 <a class="sourceLine" id="cb601-2" title="2">j &lt;-<span class="st"> </span><span class="dv">1</span></a>
 <a class="sourceLine" id="cb601-3" title="3">k &lt;-<span class="st"> </span><span class="dv">1</span></a>
