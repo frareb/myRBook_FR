@@ -1,10 +1,10 @@
 # Gestion d'un projet avec R {#project}
 
-Maintenant Que nous avons vu les concepts de base de R, il nous reste à aborder un élément déterminant pour le bon déroulement de nos activités scientifiques avec R : la gestion de projet. Cela consiste à intégrer ses développements dans un environnement et avec une logique visant à faciliter son travail et donc augmenter son efficacité. Il s'agit ici que d'une façon de faire parmis les inombrables possibilités, à adapter pour chacun et chacune. 
+Maintenant que nous avons vu les concepts de base de R, il nous reste à aborder un élément déterminant pour le bon déroulement de nos activités scientifiques avec R : la gestion de projet. Cela consiste à intégrer ses développements dans un environnement et avec une logique visant à faciliter son travail et donc augmenter son efficacité. Il ne s'agit ici que d'une façon de faire parmi les innombrables possibilités, à adapter pour chacune et chacun. 
 
 ## Gestion des fichiers et des répertoires de travail
 
-Entre les fichiers d'entrée (i.e., les fichiers qui contiennent nos données brutes), les fichiers de sortie (e.g., avec la fonction `write()`), les graphiques (prochain chapitre), et les nombreux scripts associés à un projet de recherche, un minimum d'organisation s'impose pour pouvoir être efficace et reprendre rapidement son projet en cours. La solution la plus simple consiste à structurer son environnement de travail en dossiers en fonction de chaque catégorie de fichiers. Par exemple avec un dossier "myProject" pour le projet en cours, contenant lui-même les dossiers "myFiles" pour les fichiers d'entrée, un dossier "myScripts" pour les fichiers script R, et un dossier "myOutputs" pour les fichiers de sortie (e.g., les graphiques et les analyses).
+Entre les fichiers d'entrée (i.e., les fichiers qui contiennent nos données brutes), les fichiers de sortie (e.g., avec la fonction `write()`), les graphiques (prochain chapitre), et les nombreux scripts associés à un projet de recherche, un minimum d'organisation s'impose pour pouvoir être efficace et reprendre rapidement son projet en cours. La solution la plus simple consiste à structurer son environnement de travail en dossiers en fonction de chaque catégorie de fichiers. Par exemple avec un dossier "myProject" pour le projet en cours, contenant lui-même les dossiers "myFiles" pour les fichiers d'entrée, un dossier "myScripts" pour les fichiers script R, et un dossier "myOutputs" pour les fichiers de sortie (e.g., les graphiques et les analyses). Si les fichiers sont organisés d’une façon définie, les chemins relatifs pour charger les données ou pour sauvegarder des résultats seront toujours les mêmes d’un ordinateur à un autre.
 
 ```{r 018-gestproj-1, echo = FALSE}
 cat("-myProject
@@ -22,7 +22,7 @@ cat("-myProject
 
 Le travail sur un script est itératif : même si les objectifs sont définis dès le départ, nous allons retravailler certaines parties pour obtenir par exemples des informations supplémentaires, ou encore pour optimiser telle ou telle fonction, ou encore rendre généralisable un script pour le communiquer à la communauté scientifique ou tout simplement à un collègue. Parfois ce que nous allons voir comme une amélioration va au final se révéler être une erreur, et le retour au script initial peut être difficile. Il faut donc gérer des versions. 
 
-Dans la plupart des laboratoire il y a des services de gestion des versions, les plus connus étant GIT (https://git-scm.com/) et Subversion (https://subversion.apache.org/). Lorsque GIT ou Subversion sont disponibles il est recommandé de les utiliser. Si nous n'avons pas accès à ces services il existe des services gratuits en ligne comme GitHub (https://github.com/ ; ce livre utilise GitHub). Il existe de nombreuses autres solutions comme GitLab (https://about.gitlab.com/), Bitbucket (https://bitbucket.org/), SourceForge (https://sourceforge.net/), GitKraken (https://www.gitkraken.com/), ou encore Launchpad (https://launchpad.net/). 
+Dans la plupart des laboratoires il y a des services de gestion des versions sur serveur, les plus connus étant GIT (https://git-scm.com/) et Subversion (https://subversion.apache.org/). Lorsque GIT ou Subversion sont disponibles directement sur des serveurs institutionnels, il est recommandé de les utiliser. Si nous n'avons pas accès à ces services il existe des services gratuits en ligne comme GitHub (https://github.com/ ; ce livre utilise GitHub). Il existe de nombreuses autres solutions comme GitLab (https://about.gitlab.com/), Bitbucket (https://bitbucket.org/), SourceForge (https://sourceforge.net/), GitKraken (https://www.gitkraken.com/), ou encore Launchpad (https://launchpad.net/). Les adhérents aux services de RENATER pourront utiliser GIT avec SourceSup (https://services.renater.fr/sourcesup/git/index).
 
 L'utilisation de ces différents services de gestion des versions sort du cadre de ce livre. Pour le débutant ou pour les projets ne nécessitant pas un travail collaboratif sur les scripts, une alternative consiste à gérer ses versions manuellement. Par exemple une solution consiste à ajouter un numéro à la fin de son nom de fichier de script (e.g., "myFirstScript_01.R"). Dès qu'une modification importante est apportée à ce script, il suffira alors de le sauver avec un nouveau nom (e.g., "myFirstScript_02.R") et de placer l'ancien script dans un dossier d'archive pour ne pas encombrer l'espace de travail et risquer des erreurs. En cas de problème, nous pourrons ainsi facilement retourner au script antérieur et reprendre notre travail.
 
@@ -44,19 +44,20 @@ cat("-myProject
 
 ## Gestion de la documentation
 
-La documentation de son code est essentielle pour pouvoir facilement reprendre un travail ou communiquer son travail avec ses collègues et la communauté scientifique. Un code bien documenté sera compréhensible par un plus grand nombre et donc utilisé d'avantage. Il est donc important d'adopter de bonnes techniques.
+La documentation de son code est essentielle pour pouvoir facilement reprendre un travail ou communiquer son travail avec ses collègues et la communauté scientifique. Un code bien documenté sera compréhensible par un plus grand nombre et donc utilisé d'avantage. Il est donc important d'adopter de bonnes pratiques.
 
-Nous avons déjà vu qu'il y avait plusieurs façons d'écrire son code avec R car c'est un langage assez permissif. Le premier pas vers un code lisible et reproductible est donc d'adopter un style de code clair, cohérent, et... fait pour les humains ! Car même si notre code a vocation à être exécuter par les machines, il doit rester compréhensible pour soit et toutes les personnes qui seront amenées à le consulter. Il s'agit par exemple de mettre des espaces après les virgules, ou encore d'utiliser l'indentation. Bien sûr la lisibilité du code doit être à balancer avec l'optimisation du code pour les  grands jeux de données, mais dans la plupart des cas nous pouvons associer un code clair et optimisé. Donc la première étape de la documentation et de sa gestion est tout d'abord de rédiger son code en pensant aux personnes qui vont le lire et le reproduire.
+Nous avons déjà vu qu'il y avait plusieurs façons d'écrire son code avec R car c'est un langage assez permissif. Le premier pas vers un code lisible et reproductible est donc d'adopter un style de code clair, cohérent, et... fait pour les humains ! Car même si notre code a vocation à être exécuter par les machines, il doit rester compréhensible pour soi et toutes les personnes qui seront amenées à le consulter. Il s'agit par exemple de mettre des espaces après les virgules, ou encore d'utiliser l'indentation. Bien sûr la lisibilité du code doit être à balancer avec l'optimisation du code pour les  grands jeux de données, mais dans la plupart des cas nous pouvons associer un code clair et optimisé. Donc la première étape de la documentation et de sa gestion est tout d'abord de rédiger son code en pensant aux personnes qui vont le lire et le reproduire.
 
 La deuxième étape est de commenter son code. Les commentaires sont indispensables lorsque nous privilégions du code optimisé pour la performance mais qui perd en lisibilité. Les commentaires sont souvent superflus si le code est bien rédigé et les objets et les fonctions bien nommés. Cela veut dire qu'il ne faut pas utiliser les commentaires pour expliquer un code mal rédigé, mais dès le début bien rédiger son code. Les commentaires sont utiles pour apporter des éléments de contexte (e.g., choix d'une méthode plutôt qu'une autre au regard de la littérature). La place des commentaires peut être en fin de ligne ou sur des lignes à part. 
 
-Pour un petit projet R il est indispensable que chaque script commence par une description de son contenu pour que nous puissions rapidement savoir de quoi il traite. C'est ce que nous avions fait au début de ce livre : 
+Pour un projet R il est indispensable que chaque script commence par une description de son contenu pour que nous puissions rapidement savoir de quoi il traite. C'est ce que nous avions fait au début de ce livre : 
 
 ```{r 018-gestproj-3, eval = FALSE}
 # ------------------------------------------------------------
 # Voici un script pour acquérir les concepts de base 
 # avec R
 # date de création : 25/06/2018
+# date de modification : 03/01/2020
 # auteur : François Rebaudo
 # ------------------------------------------------------------
 
@@ -71,13 +72,14 @@ nbrRep <- 5
 pi * nbrRep^2
 ```
 
-Ici les commentaires qui suivent l'en-tête ne sont pas nécessaires car le nom de l'objet se comprend de lui même. Notre fichier devient :
+Ici les commentaires qui suivent l'en-tête ne sont pas nécessaires car le nom de l'objet se comprend de lui-même. Notre fichier devient :
 
 ```{r 018-gestproj-4, eval = FALSE}
 # ------------------------------------------------------------
 # Voici un script pour acquérir les concepts de base 
 # avec R
 # date de création : 25/06/2018
+# date de modification : 03/01/2020
 # auteur : François Rebaudo
 # ------------------------------------------------------------
 
@@ -85,7 +87,7 @@ nbrRep <- 5
 pi * nbrRep^2
 ```
 
-Pour un gros projet avec de nombreuses fonctions destinées à être utilisées par d'autres usagers, il est préférable que la documentation du code soit à part, dans un fichier d'aide spécifique. C'est le cas de tous les packages R ! Pour gérer la documentation d'un package (et donc de toutes les fonctions), là encore il existe de nombreuses possibilités. La plus répandue consiste à utiliser la package R roxigen2. Sans entrer dans les détails, voici quelques examples issus de la documentation du package. 
+Pour un gros projet avec de nombreuses fonctions destinées à être utilisées par d'autres usagers, il est préférable que la documentation du code soit à part, dans un fichier d'aide spécifique. C'est le cas de tous les packages R ! Pour gérer la documentation d'un package (et donc de toutes les fonctions), là encore il existe de nombreuses possibilités. La plus répandue consiste à utiliser le package R roxigen2. Sans entrer dans les détails, voici quelques exemples de documentations de package. 
 
 ```{r 018-gestproj-5, eval = FALSE}
 #' Add together two numbers
@@ -113,7 +115,7 @@ add <- function(x, y) {
 sum <- function(..., na.rm = TRUE) {}
 ```
 
-Cela permet d'écrire la documentation de chaque fonction à côté de la focntion. Le package roxigen2 va ensuite générer à partir de ces commentaires un document d'aide accessible avec la fonction `'?'`. A moins que nous écrivions un nouveau package, les commentaires simples suffiront, et le développement d'un package sort du cadre de ce livre. 
+Cela permet d'écrire la documentation de chaque fonction à côté de la fonction. Le package roxigen2 va ensuite générer à partir de ces commentaires un document d'aide accessible avec la fonction `'?'`. A moins que nous écrivions un nouveau package, les commentaires simples suffiront, et le développement d'un package sort du cadre de ce livre. 
 
 ## Conclusion
 
