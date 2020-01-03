@@ -6,7 +6,7 @@
 
 Le package `RColorBrewer` est un package populaire qui contient des palettes complémentaires à celle disponibles dans la version de base de R. Une fois le package installé, il suffit d'appeler les palettes pour les utiliser. Voici les palettes disponibles et un exemple d'utilisation.
 
-```{r 021-03-graphiques-1}
+```{r 021-03-graphiques-1, fig.width=11, fig.height=6}
 pkgCheck <- function(x){ 
 	if (!require(x, character.only = TRUE)){
 		install.packages(x, dependencies = TRUE)
@@ -16,8 +16,9 @@ pkgCheck <- function(x){
 	}
 }
 pkgCheck("RColorBrewer")
-par(mar = c(2, 2, 1, 1)) # réduction des marges
+par(mar = c(1, 4, 1, 1)) # réduction des marges
 display.brewer.all()
+par(mar = c(1, 1, 1, 1)) # réduction des marges
 boxplot(matrix(rnorm(1000), ncol = 10), 
   col = brewer.pal(10, "Paired"), axes = FALSE)
 ```
@@ -254,4 +255,4 @@ p
 
 ## Conclusion
 
-Ce chapitre nous a permis de survoler d'autres options graphiques et en particulier les packages `ggplot2` et `plotly`. Des livres spécifiques (en anglais) couvrent tous les aspects de ces packages, ici l'objectif est de savoir que ces options existent pour y avoir recours si besoin. Les sites web "Data to Viz" et "r-graph gallery" (https://www.data-to-viz.com ; https://www.r-graph-gallery.com/) permettront de se faire une idée des possibilités offertes par R quant aux représentations graphiques. Le chapitre suivant traite des processus nécessaires pour transformer un graphique R en une figure publiable dans un article scientifique. A très bientôt !
+Ce chapitre nous a permis de survoler d'autres options graphiques et en particulier les packages `ggplot2` et `plotly`. Des livres spécifiques (en anglais) couvrent tous les aspects de ces packages, ici l'objectif est de savoir que ces options existent pour y avoir recours si besoin. Les sites web "Data to Viz" et "r-graph gallery" (https://www.data-to-viz.com ; https://www.r-graph-gallery.com/) permettront de se faire une idée des possibilités offertes par R quant aux représentations graphiques. Le chapitre suivant traite des processus nécessaires pour transformer un graphique R en une figure publiable dans un article scientifique. 
