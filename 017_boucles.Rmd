@@ -316,7 +316,7 @@ mean(trials)
 mean(sample(1:6, ntrials, replace = TRUE))
 ```
 
-C'est un bon exercice de parcourir les nombreux exemples disponibles sur Internet sur la boucle `for()` et de tenter de les transformer en opérations vectorielles. Cela nous permet d'acquérir les bons réflexes de programmation avec R. La boucle `for()` reste très utile pour par exemple lire plusieurs fichiers et traiter l'information qu'ils contiennent de la même façon, faire des graphiques, ou encore lorsque les opérations vectorielles deveinnent fastidieuses. Imaginons une matrice de 10 colonnes et 100 lignes. Nous voulons la somme de chaque ligne (nous verrons plus loin comment faire avec la fonction `apply()`).
+C'est un bon exercice de parcourir les nombreux exemples disponibles sur Internet sur la boucle `for()` et de tenter de les transformer en opérations vectorielles. Cela nous permet d'acquérir les bons réflexes de programmation avec R. La boucle `for()` reste très utile pour par exemple lire plusieurs fichiers et traiter l'information qu'ils contiennent de la même façon, faire des graphiques, ou encore lorsque les opérations vectorielles deviennent fastidieuses. Imaginons une matrice de 10 colonnes et 100 lignes. Nous voulons la somme de chaque ligne (nous verrons plus loin comment faire avec la fonction `apply()`).
 
 ```{r 017-boucles-21}
 myMat <- matrix(sample(1:100, size = 1000, replace = TRUE), ncol = 10)
@@ -333,11 +333,11 @@ for(j in 1:nrow(myMat)){
 print(sumRow)
 ```
 
-En conclusion, il est recommandé de ne pas utiliser la boucle `for()` avec R chaque fois que cela est possible, et nous verrons dans ce chapitre des alternatives commes les boucles de la famille `apply()`.
+En conclusion, il est recommandé de ne pas utiliser la boucle `for()` avec R chaque fois que cela est possible, et nous verrons dans ce chapitre des alternatives comme les boucles de la famille `apply()`.
 
 ## La boucle `while` {#l17while}
 
-La boucle `while()`, contrairement à la boucle `for()`, signifie *TANT QUE*. Tant qu'une condition n'est pas remplie, la boucle va continuer à s'exécuter. Attention car en cas d'erreur, nous pouvons facilement programmer des boucles qui ne terminent jamais ! Cette boucle est moins courante que la boucle `for()`. prenons un exemple :
+La boucle `while()`, contrairement à la boucle `for()`, signifie *TANT QUE*. Tant qu'une condition n'est pas remplie, la boucle va continuer à s'exécuter. Attention car en cas d'erreur, nous pouvons facilement programmer des boucles qui ne terminent jamais ! Cette boucle est moins courante que la boucle `for()`. Prenons un exemple :
 
 ```{r 017-boucles-22}
 i <- 0
@@ -371,9 +371,9 @@ while(Sys.time() - startTime < 2){
 }
 ```
 
-Dans ce script nous générons un nombre aléatoire à deviner avec la fonction `sample()`, et chaque essai avec la même fonction `sample()`. Ensuite nous utilisons la fonction `Sys.time()` (avec un S majuscule à `Sys`), pour connaître l'heure de début de la boucle. Tant que la différence entre chaque itération de la boucle et l'heure de démarrage est inférieur à 2 secondes, la boucle `while()` va vérifier si le bon nombre a été deviner dans le test logique avec `if()` puis si c'est le cas nous informer que le nombre a été trouvé, nous dire le temps restant avant les deux secondes, puis terminer la boucle avec le mot clef `break` sur lequel nous reviendrons. En bref, `break` permet de sortir d'une boucle. Si le nombre n'a pas été deviné, la boucle fait un autre essai avec la fonction `sample()`.
+Dans ce script nous générons un nombre aléatoire à deviner avec la fonction `sample()`, et chaque essai avec la même fonction `sample()`. Ensuite nous utilisons la fonction `Sys.time()` (avec un S majuscule à `Sys`), pour connaître l'heure de début de la boucle. Tant que la différence entre chaque itération de la boucle et l'heure de démarrage est inférieur à 2 secondes, la boucle `while()` va vérifier si le bon nombre a été deviné dans le test logique avec `if()` puis si c'est le cas nous informer que le nombre a été trouvé, nous dire le temps restant avant les deux secondes, puis terminer la boucle avec le mot clef `break` sur lequel nous reviendrons. En bref, `break` permet de sortir d'une boucle. Si le nombre n'a pas été deviné, la boucle fait un autre essai avec la fonction `sample()`.
 
-Plus concrètement nous pourrions imaginer des algorithmes pour explorer un espace de solutions face à un problème avec un temps limité pour y parvenir. La boucle `while()` peut aussi être pratique pour qu'un script ne s'exécute que lorsque un fichier issu d'un autre programme devient disponible... En pratique la boucle `while()` reste peu utilisée avec R.
+Plus concrètement nous pourrions imaginer des algorithmes pour explorer un espace de solutions face à un problème avec un temps limité pour y parvenir. La boucle `while()` peut aussi être pratique pour qu'un script ne s'exécute que lorsque un fichier issu d'un autre programme devient disponible... En pratique la boucle `while()` reste peu utilisée avec R, car ce genre de script qui manipule des informations système (temps, fichiers, …) est plus communément réalisé avec d’autres langages comme Python.
 
 ## La boucle `repeat` {#l17repeat}
 
@@ -418,7 +418,7 @@ Comme la boucle `while()`, la boucle `repeat()` reste peu utilisée avec R.
 
 ## `next` et `break` {#l17spe}
 
-Nous avons déjà vu le mot clef `break` qui permet de sortir de la boucle en cours. Par exemple si nous cherchons le premier chiffre après 111 qui soit divisible par 32 :
+Nous avons déjà vu le mot clef `break` qui permet de sortir de la boucle en cours. Par exemple si nous cherchons le premier nombre après 111 qui soit divisible par 32 :
 
 ```{r 017-boucles-26}
 myVars <- 111:1000
@@ -430,13 +430,19 @@ for(myVar in myVars){
 }
 ```
 
-Même si nous avons vu que dans la pratique nous pouvons éviter la boucle `for()` avec une opération sur les vecteurs :
+Même si nous avons vu que dans la pratique nous pouvons éviter la boucle `for()` avec une opération sur les vecteurs. Avec une opération sur les vecteurs nous pourrions facilement calculer tous les nombres entre 111 et 1000 qui sont divisibles par 32.
 
 ```{r 017-boucles-27}
+(111:1000)[111:1000 %% 32 == 0]
+```
+
+Le premier est 128, que nous pouvons récupérer avec `[1]`.
+
+```{r 017-boucles-27b}
 (111:1000)[111:1000 %% 32 == 0][1]
 ```
 
-Le mot clef `next` permet quant à lui de passer à l'itération suivante d'une boucle si une certaine condition est remplie. Par exemple si nous voulons imprimer les lettre de l'alphabet sans les voyelles :
+Le mot clef `next` permet quant à lui de passer à l'itération suivante d'une boucle si une certaine condition est remplie. Par exemple si nous voulons imprimer les lettres de l'alphabet sans les voyelles :
 
 ```{r 017-boucles-28}
 for(myLetter in letters){
@@ -475,16 +481,23 @@ apply(X = myMat, MARGIN = 2, FUN = median)
 L'argument `X` correspond à l'objet sur lequel la boucle `apply` va itérer. L'argument `MARGIN` correspond à la dimension à prendre en compte (1 pour les lignes, et 2 pour les colonnes). L'argument `FUN` correspond à la fonction à appliquer. Sur un objet de type `array`, l'argument `MARGIN` peut prendre autant de valeurs que de dimensions. Dans cet exemple `MARGIN = 1` correspond à la moyenne de chaque ligne - dimension 1 - (toutes dimensions confondues), `MARGIN = 2` correspond à la moyenne de chaque colonne - dimension 2 - (toutes dimensions confondues), et `MARGIN = 3` correspond à la moyenne de chaque dimension 3. Ci-dessous chaque calcul est réalisé de deux manières différentes pour en expliciter le fonctionnement.
 
 ```{r 017-boucles-32}
+# création de la matrix
 myArr <- array(sample(1:100, size = 1000, replace = TRUE), dim = c(10, 20, 5))
+# Calcul avec APPLY
 apply(X = myArr, MARGIN = 1, FUN = mean)
+# Calcul "à la main"
 (apply(myArr[,,1], 1, mean) + apply(myArr[,,2], 1, mean) + 
   apply(myArr[,,3], 1, mean) + apply(myArr[,,4], 1, mean) + 
   apply(myArr[,,5], 1, mean))/5
+# Calcul avec APPLY
 apply(X = myArr, MARGIN = 2, FUN = mean)
+# Calcul "à la main"
 (apply(myArr[,,1], 2, mean) + apply(myArr[,,2], 2, mean) + 
   apply(myArr[,,3], 2, mean) + apply(myArr[,,4], 2, mean) + 
   apply(myArr[,,5], 2, mean))/5
+# Calcul avec APPLY
 apply(X = myArr, MARGIN = 3, FUN = mean)
+# Calcul "à la main"
 c(mean(myArr[,,1]), mean(myArr[,,2]), mean(myArr[,,3]), 
   mean(myArr[,,4]), mean(myArr[,,5]))
 ```
@@ -500,6 +513,7 @@ apply(X = myArr, MARGIN = c(1, 2), FUN = mean)
 Comme indiqué dans la documentation, `lapply()` renvoie une liste de même longueur que `X`, chaque élément résultant de l'application de `FUN` à l'élément correspondant de `X`. Si `X` est une `list` contenant des `vector` et que nous cherchons à obtenir la moyenne de chacun des éléments de la `list`, nous pouvons utiliser la fonction `lapply()` :
 
 ```{r 017-boucles-34}
+# Création de l'objet myList
 myList <- list(
   a = sample(1:100, size = 10), 
   b = sample(1:100, size = 10), 
@@ -508,12 +522,36 @@ myList <- list(
   e = sample(1:100, size = 10)
 )
 print(myList)
+# Fonction moyenne appliquée à chacun des
+# éléments de la list
 lapply(myList, FUN = mean)
 ```
 
-Comme pour la fonction `apply()`, nous pouvons passer des arguments supplémentaires à la fonction `lapply()` en les ajoutant à la suite de la fonction. C'est par exemple utile si notre `list` contient ces valeurs manquantes `NA` et que nous voulons les ignorer pour le calcul des moyennes (avec l'arguement `na.rm = TRUE`).
+Cela revient à une boucle `for()` itérant sur les élément de l'objet de type `list`.
+
+```{r 017-boucles-34b}
+for(i in 1:length(myList)){
+  mean(myList[[i]])
+}
+```
+
+Cependant, la boucle `for()` ne renvoie pas de résultat. Pour l’obtenir, nous devons au préalable créer un objet qui va contenir notre résultat. A chaque itération de la boucle `for()`, le résultat sera affecté à l’élément correspondant de notre objet.
+
+```{r 017-boucles-34c}
+myResult <- list(a = NULL, b = NULL, c = NULL, 
+  d = NULL, e = NULL)
+for(i in 1:length(myList)){
+  myResult[[i]] <- mean(myList[[i]])
+}
+print(myResult)
+```
+
+Nous comprenons alors que la fonction `lapply()` est bien plus performante car elle va à la fois permettre de procéder à notre tâche tout en fournissant un résultat qui peut être stocké directement dans un objet (ou pas comme c’est le cas ici).
+
+Comme pour la fonction `apply()`, nous pouvons passer des arguments supplémentaires à la fonction `lapply()` en les ajoutant à la suite de la fonction. C'est par exemple utile si notre `list` contient ces valeurs manquantes `NA` et que nous voulons les ignorer pour le calcul des moyennes (avec l'argument `na.rm = TRUE`).
 
 ```{r 017-boucles-35}
+# Création de l'objet myList
 myList <- list(
   a = sample(c(1:5, NA), size = 10, replace = TRUE), 
   b = sample(c(1:5, NA), size = 10, replace = TRUE), 
@@ -568,7 +606,7 @@ sapply(myList, FUN = '[[', 2)
 
 ### `tapply` {#l17tapply}
 
-La fonction`tapply()` permet d'appliquer une fonction en prenant comme élément à itérer une variable existante. Imaginons des informations sur des espèces représentées par des lettres majuscules (e.g., A, B, C) et des valeurs de performances à différentes localisations.
+La fonction `tapply()` permet d'appliquer une fonction en prenant comme élément à itérer une variable existante. Imaginons des informations sur des espèces représentées par des lettres majuscules (e.g., A, B, C) et des valeurs de performances à différentes localisations.
 
 ```{r 017-boucles-40}
 species <- sample(LETTERS[1:10], size = 1000, replace = TRUE)
@@ -593,12 +631,41 @@ sapply(2:4, FUN = function(i){
 })
 ```
 
+La fonction `sapply()` est utilisée pour spécifier la colonne (la colonne 2 correspond à perf1, la colonne 3 correspond à perf2, et la colonne 4 correspond à perf3). La colonne prend alors le nom de variable `i`. Ensuite, pour chaque colonne `dfSpecies[,i]`, nous pouvons utiliser la fonction `tapply()` pour calculer la moyenne par espèce. Voici l’équivalent avec des boucles `for()`.
+
+```{r 017-boucles-42b}
+for(i in 2:4){
+  for(spp in levels(dfSpecies$species)){
+    mean(dfSpecies[,i][dfSpecies$species == spp])
+  }
+}
+```
+
+Et si nous voulons le résultat sous forme d'une `data.frame`, le code devient beaucoup plus long et fastidieux (le code suivant correspond à une solution parmi d'autres). Là encore nous voyons toute la puissance des boucles de la famille `apply`.
+
+```{r 017-boucles-42c}
+for(i in 2:4){
+  myPerf <- rep(NA, length(levels(dfSpecies$species)))
+  for(spp in seq_along(levels(dfSpecies$species))){
+    myPerf[spp] <- mean(
+      dfSpecies[,i][dfSpecies$species == levels(dfSpecies$species)[spp]])
+  }
+  assign(x = paste0("perf", i - 1), value = myPerf)
+}
+myDF <- data.frame(perf1, perf2, perf3)
+rownames(myDF) <- levels(dfSpecies$species)
+print(myDF)
+```
+
 ### `mapply` {#l17mapply}
 
 La fonction `mapply()` est une version de la fonction `sapply()`qui utilise de multiples arguments. Par exemple si nous avons une liste de deux éléments `1:5` et `5:1` et que nous souhaitons ajouter `10` au premier élément et `100` au deuxième élément :
 
 ```{r 017-boucles-43}
-mapply(FUN = function(i, j){i+j}, i = list(1:5, 5:1), j = c(10, 100))
+mapply(
+  FUN = function(i, j){i+j}, 
+  i = list(1:5, 5:1), 
+  j = c(10, 100))
 ```
 
 ## Conclusion
