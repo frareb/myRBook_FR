@@ -117,6 +117,24 @@ sum <- function(..., na.rm = TRUE) {}
 
 Cela permet d'écrire la documentation de chaque fonction à côté de la fonction. Le package roxigen2 va ensuite générer à partir de ces commentaires un document d'aide accessible avec la fonction `'?'`. A moins que nous écrivions un nouveau package, les commentaires simples suffiront, et le développement d'un package sort du cadre de ce livre. 
 
+## Communiquer avec rmarkdown
+
+Les gestionnaires de version sur serveur sont très utiles car ils permettent à de multiples utilisateurs de contribuer à un même script. Ils constituent des outils collaboratifs très puissants. Cependant dans certains cas nous devons communiquer avec des collaborateurs non-initiés à R et ce en amont du processus de publication scientifique. Dans les cas où le code et les fichiers associés ne suffisent pas (même quand le code est lisible et reproductible), il peut être intéressant de passer par un document qui montrera le code et le résultat de son exécution dans un seul et même fichier. C’est ce que permet le package *rmarkdown* en permettant la génération de documents (eg HTML, PDF, Word) de manière dynamique (https://rmarkdown.rstudio.com/). 
+
+```{r 041-studyCase-19, fig.width=10, fig.height=6}
+pkgCheck <- function(x){ 
+	if (!require(x, character.only = TRUE)){
+		install.packages(x, dependencies = TRUE)
+		if(!require(x, character.only = TRUE)) {
+			stop()
+		}
+	}
+}
+pkgCheck("rmarkdown")
+```
+
+Les possibilités de *rmarkdown* sont immenses et sortent du cadre de ce livre. Deux ressources de référence couvrent tous les aspects de *rmarkdown* : le site web officiel (https://rmarkdown.rstudio.com) et le livre numérique de Yihui Xie, J. J. Allaire, Garrett Grolemund (R Markdown: The Definitive Guide ; https://bookdown.org/yihui/rmarkdown/). Pour aller plus loin, nous pourrons consulter le livre numérique de Yihui Xie (bookdown: Authoring Books and Technical Documents with R Markdown ; https://bookdown.org/yihui/bookdown/).
+
 ## Conclusion
 
 Félicitations ! Ce chapitre marque la fin de la première partie de ce livre. Nous avons désormais les bases pour mener à bien nos projets avec R. Dans la prochaine partie nous allons voir les graphiques et comment faire des figures dans le cadre d'articles scientifiques. 
