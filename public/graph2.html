@@ -348,11 +348,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h1><span class="header-section-number"> 12</span> La gestion des couleurs</h1>
 <p>Nous avons vu différentes manières d’utiliser les couleurs : avec leur nom (e.g., <code>"salmon"</code>), avec un numéro de 1 à 8, avec la fonction <code>rgb()</code> (pour “red”, “green”, “blue”), et avec la fonction <code>colors()</code>. Il en existe d’autres mais celles-ci sont les principales.</p>
 <p>L’utilisation des numéros de 1 à 8 correspond au noir, rouge, vert, bleu, cyan, magenta, jaune et gris. Cette utilisation est pratique pour visualiser rapidement nos résultats mais donne globalement des graphiques visuellement moyens. Ces couleurs sont plutôt à éviter pour communiquer nos graphiques.</p>
-<div class="sourceCode" id="cb1156"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1156-1" title="1"><span class="kw">barplot</span>(<span class="kw">sample</span>(<span class="dv">10</span><span class="op">:</span><span class="dv">15</span>, <span class="dv">8</span>, <span class="dt">replace =</span> <span class="ot">TRUE</span>), <span class="dt">col =</span> <span class="dv">1</span><span class="op">:</span><span class="dv">8</span>, <span class="dt">names.arg =</span> <span class="dv">1</span><span class="op">:</span><span class="dv">8</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb1156"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1156-1" title="1"><span class="kw">par</span>(<span class="dt">mar =</span> <span class="kw">c</span>(<span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">1</span>)) <span class="co"># réduction des marges</span></a>
+<a class="sourceLine" id="cb1156-2" title="2"><span class="kw">barplot</span>(<span class="kw">sample</span>(<span class="dv">10</span><span class="op">:</span><span class="dv">15</span>, <span class="dv">8</span>, <span class="dt">replace =</span> <span class="ot">TRUE</span>), <span class="dt">col =</span> <span class="dv">1</span><span class="op">:</span><span class="dv">8</span>, <span class="dt">names.arg =</span> <span class="dv">1</span><span class="op">:</span><span class="dv">8</span>)</a></code></pre></div>
 <p><img src="myRBook_FR_files/figure-html/021-02-graphiques-1-1.png" width="672" /></p>
 <div id="colors" class="section level2">
 <h2><span class="header-section-number">12.1</span> <code>colors()</code></h2>
-<p>Pour choisir des couleurs plus agréables et mettant plus en avant nos résultats, une option consiste à les choisir dans la liste des couleurs pré-enregistrées dans R. Nous pouvons accéder à la liste des couleurs avec la fonction <code>colors()</code></p>
+<p>Pour choisir des couleurs plus agréables et mettant plus en avant nos résultats, une option consiste à les choisir dans la liste des couleurs préenregistrées dans R. Nous pouvons accéder à la liste des couleurs avec la fonction <code>colors()</code></p>
 <div class="sourceCode" id="cb1157"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1157-1" title="1"><span class="kw">head</span>(<span class="kw">colors</span>(), <span class="dt">n =</span> <span class="dv">20</span>)</a></code></pre></div>
 <pre><code>##  [1] &quot;white&quot;         &quot;aliceblue&quot;     &quot;antiquewhite&quot;  &quot;antiquewhite1&quot;
 ##  [5] &quot;antiquewhite2&quot; &quot;antiquewhite3&quot; &quot;antiquewhite4&quot; &quot;aquamarine&quot;   
@@ -380,7 +381,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <a class="sourceLine" id="cb1159-18" title="18">  <span class="dt">y =</span> <span class="kw">sort</span>(<span class="kw">rep</span>((<span class="dv">0</span><span class="op">:</span>(numRow <span class="op">-</span><span class="st"> </span><span class="dv">1</span>)<span class="op">/</span>numRow), numCol), <span class="dt">decreasing =</span> <span class="ot">TRUE</span>) <span class="op">+</span><span class="st"> </span><span class="fl">0.02</span>,</a>
 <a class="sourceLine" id="cb1159-19" title="19">  <span class="dt">labels =</span> myLabels, </a>
 <a class="sourceLine" id="cb1159-20" title="20">  <span class="dt">cex =</span> <span class="fl">0.6</span>)</a></code></pre></div>
-<p><img src="myRBook_FR_files/figure-html/021-02-graphiques-3-1.png" width="672" /></p>
+<p><img src="myRBook_FR_files/figure-html/021-02-graphiques-3-1.png" width="960" /></p>
 <div class="sourceCode" id="cb1160"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1160-1" title="1"><span class="kw">par</span>(op)</a></code></pre></div>
 </div>
 <div id="rgb" class="section level2">

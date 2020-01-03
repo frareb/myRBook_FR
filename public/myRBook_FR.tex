@@ -7121,7 +7121,7 @@ Il n'y a pas de solution optimale dans l'absolu, tout dépend des objectifs rech
 
 \begin{verbatim}
 ##    user  system elapsed 
-##    2.37    0.00    2.37
+##    2.23    0.00    2.24
 \end{verbatim}
 
 \begin{Shaded}
@@ -7132,7 +7132,7 @@ Il n'y a pas de solution optimale dans l'absolu, tout dépend des objectifs rech
 
 \begin{verbatim}
 ##    user  system elapsed 
-##    2.39    0.00    2.39
+##    2.31    0.00    2.31
 \end{verbatim}
 
 Une fonction peut avoir des valeurs par défaut pour ses arguments. C'est le cas de la plupart des fonctions existantes. Par défaut, notre fonction va désormais compter le nombre de voyelles et de consonnes dans le mot \texttt{qwerty} (les parenthèses restent nécessaires même en l'absence d'arguments).
@@ -7936,13 +7936,13 @@ En programmation, lorsque nous sommes amenés à répéter plusieurs fois la mê
 \end{Shaded}
 
 \begin{verbatim}
-##      date01    date02
-## 1  9.045598  9.106356
-## 2 10.575600 11.089321
-## 3  8.504733 11.875584
-## 4  9.887226 12.756475
-## 5  8.732338  9.298287
-## 6 10.336619  9.956768
+##      date01   date02
+## 1 12.052055 9.622458
+## 2  9.782194 9.463362
+## 3 10.112541 9.824939
+## 4 11.826732 9.886460
+## 5 10.494577 9.064765
+## 6  8.293542 9.862837
 \end{verbatim}
 
 Nous voudrions quantifier la différence entre la première et la deuxième date, puis mettre un indicateur pour savoir si cette différence est petite ou grande, par exemple avec un seuil arbitraire de 3. Donc pour chaque ligne nous pourrions faire :
@@ -8064,26 +8064,26 @@ Revenons à notre cas. Nous allons itérer sur le nombre de lignes de notre \tex
 
 \begin{verbatim}
 ##       date01    date02        dif isDifBig
-## 1   9.045598  9.106356 0.06075819    small
-## 2  10.575600 11.089321 0.51372084    small
-## 3   8.504733 11.875584 3.37085157      big
-## 4   9.887226 12.756475 2.86924834    small
-## 5   8.732338  9.298287 0.56594980    small
-## 6  10.336619  9.956768 0.37985124    small
-## 7  11.063700 11.759800 0.69609973    small
-## 8   9.247079 11.055266 1.80818715    small
-## 9   9.286507 10.498193 1.21168607    small
-## 10 10.172371  9.778769 0.39360201    small
-## 11 10.677627  9.122734 1.55489271    small
-## 12  9.756850  9.298798 0.45805177    small
-## 13  9.516687  9.481976 0.03471122    small
-## 14  8.587439 10.307208 1.71976934    small
-## 15  8.823668  9.307989 0.48432122    small
-## 16  7.644891 10.562882 2.91799083    small
-## 17  8.683578  9.720172 1.03659412    small
-## 18  8.664848  7.476680 1.18816782    small
-## 19  9.830042 10.534386 0.70434433    small
-## 20  9.162387 11.602784 2.44039687    small
+## 1  12.052055  9.622458 2.42959674    small
+## 2   9.782194  9.463362 0.31883209    small
+## 3  10.112541  9.824939 0.28760150    small
+## 4  11.826732  9.886460 1.94027125    small
+## 5  10.494577  9.064765 1.42981203    small
+## 6   8.293542  9.862837 1.56929427    small
+## 7   8.254263 10.523666 2.26940252    small
+## 8   9.701591  8.842911 0.85868020    small
+## 9  10.676905 10.094493 0.58241166    small
+## 10  9.188466  9.865580 0.67711421    small
+## 11 10.423667  8.712973 1.71069378    small
+## 12  9.873206 12.943249 3.07004339      big
+## 13  9.372099 10.661139 1.28904063    small
+## 14 10.228066  9.503512 0.72455369    small
+## 15  9.869868  9.774149 0.09571918    small
+## 16  9.465658  9.750102 0.28444421    small
+## 17 10.130446  8.933381 1.19706529    small
+## 18  9.945915 12.449075 2.50315971    small
+## 19  8.983277 10.607478 1.62420146    small
+## 20 10.963837  9.694350 1.26948724    small
 \end{verbatim}
 
 En pratique ce n'est pas la meilleure façon de réaliser cet exercice car il s'agit ici de simples calculs sur des vecteurs contenus dans une \texttt{data.frame}. R est particulièrement puissant pour effectuer des opérations sur des vecteurs. Lorsque cela est possible il faut donc toujours privilégier les opérations sur les vecteurs. Ici notre code devient :
@@ -8099,26 +8099,26 @@ En pratique ce n'est pas la meilleure façon de réaliser cet exercice car il s'
 
 \begin{verbatim}
 ##       date01    date02        dif isDifBig
-## 1   9.045598  9.106356 0.06075819    small
-## 2  10.575600 11.089321 0.51372084    small
-## 3   8.504733 11.875584 3.37085157      big
-## 4   9.887226 12.756475 2.86924834    small
-## 5   8.732338  9.298287 0.56594980    small
-## 6  10.336619  9.956768 0.37985124    small
-## 7  11.063700 11.759800 0.69609973    small
-## 8   9.247079 11.055266 1.80818715    small
-## 9   9.286507 10.498193 1.21168607    small
-## 10 10.172371  9.778769 0.39360201    small
-## 11 10.677627  9.122734 1.55489271    small
-## 12  9.756850  9.298798 0.45805177    small
-## 13  9.516687  9.481976 0.03471122    small
-## 14  8.587439 10.307208 1.71976934    small
-## 15  8.823668  9.307989 0.48432122    small
-## 16  7.644891 10.562882 2.91799083    small
-## 17  8.683578  9.720172 1.03659412    small
-## 18  8.664848  7.476680 1.18816782    small
-## 19  9.830042 10.534386 0.70434433    small
-## 20  9.162387 11.602784 2.44039687    small
+## 1  12.052055  9.622458 2.42959674    small
+## 2   9.782194  9.463362 0.31883209    small
+## 3  10.112541  9.824939 0.28760150    small
+## 4  11.826732  9.886460 1.94027125    small
+## 5  10.494577  9.064765 1.42981203    small
+## 6   8.293542  9.862837 1.56929427    small
+## 7   8.254263 10.523666 2.26940252    small
+## 8   9.701591  8.842911 0.85868020    small
+## 9  10.676905 10.094493 0.58241166    small
+## 10  9.188466  9.865580 0.67711421    small
+## 11 10.423667  8.712973 1.71069378    small
+## 12  9.873206 12.943249 3.07004339      big
+## 13  9.372099 10.661139 1.28904063    small
+## 14 10.228066  9.503512 0.72455369    small
+## 15  9.869868  9.774149 0.09571918    small
+## 16  9.465658  9.750102 0.28444421    small
+## 17 10.130446  8.933381 1.19706529    small
+## 18  9.945915 12.449075 2.50315971    small
+## 19  8.983277 10.607478 1.62420146    small
+## 20 10.963837  9.694350 1.26948724    small
 \end{verbatim}
 
 La plupart des exemples que l'on peut trouver sur Internet à propos de la boucle \texttt{for()} peuvent être remplacés par des opérations sur les vecteurs. Voici quelques exemples adaptés de plusieurs sources :
@@ -8139,7 +8139,7 @@ La plupart des exemples que l'on peut trouver sur Internet à propos de la boucl
 \end{Shaded}
 
 \begin{verbatim}
-## [1] 12
+## [1] 14
 \end{verbatim}
 
 \begin{Shaded}
@@ -8150,7 +8150,7 @@ La plupart des exemples que l'on peut trouver sur Internet à propos de la boucl
 \end{Shaded}
 
 \begin{verbatim}
-## [1] 12
+## [1] 14
 \end{verbatim}
 
 \begin{Shaded}
@@ -8196,7 +8196,7 @@ La plupart des exemples que l'on peut trouver sur Internet à propos de la boucl
 \end{Shaded}
 
 \begin{verbatim}
-## [1] 3.521
+## [1] 3.448
 \end{verbatim}
 
 \begin{Shaded}
@@ -8207,7 +8207,7 @@ La plupart des exemples que l'on peut trouver sur Internet à propos de la boucl
 \end{Shaded}
 
 \begin{verbatim}
-## [1] 3.499
+## [1] 3.479
 \end{verbatim}
 
 C'est un bon exercice de parcourir les nombreux exemples disponibles sur Internet sur la boucle \texttt{for()} et de tenter de les transformer en opérations vectorielles. Cela nous permet d'acquérir les bons réflexes de programmation avec R. La boucle \texttt{for()} reste très utile pour par exemple lire plusieurs fichiers et traiter l'information qu'ils contiennent de la même façon, faire des graphiques, ou encore lorsque les opérations vectorielles deviennent fastidieuses. Imaginons une matrice de 10 colonnes et 100 lignes. Nous voulons la somme de chaque ligne (nous verrons plus loin comment faire avec la fonction \texttt{apply()}).
@@ -8224,12 +8224,12 @@ C'est un bon exercice de parcourir les nombreux exemples disponibles sur Interne
 \end{Shaded}
 
 \begin{verbatim}
-##   [1] 386 608 677 532 488 731 409 465 661 632 493 551 494 445 446 694 524 498
-##  [19] 358 502 540 477 438 540 591 450 591 537 362 611 523 444 469 448 643 519
-##  [37] 548 378 518 514 533 421 417 553 442 498 356 582 390 371 522 756 544 496
-##  [55] 495 311 551 616 539 611 446 456 440 435 648 519 393 377 650 438 611 385
-##  [73] 530 387 517 591 442 493 524 615 533 430 556 648 575 521 333 485 590 670
-##  [91] 544 582 516 570 549 444 398 469 750 585
+##   [1] 332 580 666 470 424 562 584 519 472 408 520 577 522 669 550 568 451 641
+##  [19] 558 349 509 490 559 452 565 594 540 521 503 524 475 370 384 442 433 529
+##  [37] 437 499 698 578 495 348 701 472 527 620 590 518 508 210 505 498 551 544
+##  [55] 541 377 526 541 523 597 523 589 679 436 590 395 497 594 654 677 509 611
+##  [73] 534 438 425 505 604 507 460 493 422 351 533 518 512 529 383 405 629 332
+##  [91] 538 669 441 502 301 682 554 509 535 483
 \end{verbatim}
 
 \begin{Shaded}
@@ -8244,12 +8244,12 @@ C'est un bon exercice de parcourir les nombreux exemples disponibles sur Interne
 \end{Shaded}
 
 \begin{verbatim}
-##   [1] 386 608 677 532 488 731 409 465 661 632 493 551 494 445 446 694 524 498
-##  [19] 358 502 540 477 438 540 591 450 591 537 362 611 523 444 469 448 643 519
-##  [37] 548 378 518 514 533 421 417 553 442 498 356 582 390 371 522 756 544 496
-##  [55] 495 311 551 616 539 611 446 456 440 435 648 519 393 377 650 438 611 385
-##  [73] 530 387 517 591 442 493 524 615 533 430 556 648 575 521 333 485 590 670
-##  [91] 544 582 516 570 549 444 398 469 750 585
+##   [1] 332 580 666 470 424 562 584 519 472 408 520 577 522 669 550 568 451 641
+##  [19] 558 349 509 490 559 452 565 594 540 521 503 524 475 370 384 442 433 529
+##  [37] 437 499 698 578 495 348 701 472 527 620 590 518 508 210 505 498 551 544
+##  [55] 541 377 526 541 523 597 523 589 679 436 590 395 497 594 654 677 509 611
+##  [73] 534 438 425 505 604 507 460 493 422 351 533 518 512 529 383 405 629 332
+##  [91] 538 669 441 502 301 682 554 509 535 483
 \end{verbatim}
 
 En conclusion, il est recommandé de ne pas utiliser la boucle \texttt{for()} avec R chaque fois que cela est possible, et nous verrons dans ce chapitre des alternatives comme les boucles de la famille \texttt{apply()}.
@@ -8310,7 +8310,7 @@ La boucle \texttt{while()} est très utile pour créer des scripts qui vont effe
 
 \begin{verbatim}
 ## [1] "Number found !"
-## [1] "And I have plenty of time left: 1.84 sec"
+## [1] "And I have plenty of time left: 1.52 sec"
 \end{verbatim}
 
 Dans ce script nous générons un nombre aléatoire à deviner avec la fonction \texttt{sample()}, et chaque essai avec la même fonction \texttt{sample()}. Ensuite nous utilisons la fonction \texttt{Sys.time()} (avec un S majuscule à \texttt{Sys}), pour connaître l'heure de début de la boucle. Tant que la différence entre chaque itération de la boucle et l'heure de démarrage est inférieur à 2 secondes, la boucle \texttt{while()} va vérifier si le bon nombre a été deviné dans le test logique avec \texttt{if()} puis si c'est le cas nous informer que le nombre a été trouvé, nous dire le temps restant avant les deux secondes, puis terminer la boucle avec le mot clef \texttt{break} sur lequel nous reviendrons. En bref, \texttt{break} permet de sortir d'une boucle. Si le nombre n'a pas été deviné, la boucle fait un autre essai avec la fonction \texttt{sample()}.
@@ -8369,11 +8369,11 @@ Si nous reprenons l'exemple précédent, nous pouvons utiliser une boucle \textt
 \end{Shaded}
 
 \begin{verbatim}
-## [1] 0.767
-## [1] 0.294
-## [1] 0.015
-## [1] 1.006
-## [1] 0.266
+## [1] 0.282
+## [1] 0.323
+## [1] 0.161
+## [1] 0.053
+## [1] 0.815
 \end{verbatim}
 
 Comme la boucle \texttt{while()}, la boucle \texttt{repeat()} reste peu utilisée avec R.
@@ -8491,12 +8491,12 @@ La fonction \texttt{apply()} permet d'appliquer une fonction à tous les éléme
 \end{Shaded}
 
 \begin{verbatim}
-##   [1] 527 558 445 353 471 483 581 353 479 594 459 510 592 441 589 311 570 406
-##  [19] 451 585 523 547 493 569 569 513 478 524 624 555 603 482 531 470 534 716
-##  [37] 468 622 459 542 417 605 542 530 622 486 586 601 535 404 469 543 447 399
-##  [55] 532 374 463 554 682 336 403 468 418 587 426 500 460 464 485 619 496 457
-##  [73] 462 501 315 517 312 365 687 573 355 531 509 674 543 367 629 685 549 375
-##  [91] 441 387 529 646 496 501 505 600 732 486
+##   [1] 544 526 458 428 677 509 343 474 596 511 467 268 541 555 595 392 362 506
+##  [19] 466 419 307 459 522 454 583 599 683 467 526 522 547 523 608 424 440 489
+##  [37] 416 510 629 619 441 517 408 684 463 463 514 531 681 402 512 557 730 454
+##  [55] 296 526 552 731 425 573 381 513 383 345 537 422 552 536 641 517 551 562
+##  [73] 394 630 521 415 593 578 559 617 447 596 447 406 581 562 491 514 518 581
+##  [91] 506 585 471 530 613 527 527 549 485 430
 \end{verbatim}
 
 Si nous souhaitons connaître la médiane de chaque colonne, l'expression devient :
@@ -8508,7 +8508,7 @@ Si nous souhaitons connaître la médiane de chaque colonne, l'expression devien
 \end{Shaded}
 
 \begin{verbatim}
-##  [1] 48.5 49.0 52.5 57.5 50.5 54.0 47.5 53.5 48.0 59.0
+##  [1] 49.0 52.5 48.5 48.0 40.0 54.0 57.0 52.0 59.5 46.0
 \end{verbatim}
 
 L'argument \texttt{X} correspond à l'objet sur lequel la boucle \texttt{apply} va itérer. L'argument \texttt{MARGIN} correspond à la dimension à prendre en compte (1 pour les lignes, et 2 pour les colonnes). L'argument \texttt{FUN} correspond à la fonction à appliquer. Sur un objet de type \texttt{array}, l'argument \texttt{MARGIN} peut prendre autant de valeurs que de dimensions. Dans cet exemple \texttt{MARGIN\ =\ 1} correspond à la moyenne de chaque ligne - dimension 1 - (toutes dimensions confondues), \texttt{MARGIN\ =\ 2} correspond à la moyenne de chaque colonne - dimension 2 - (toutes dimensions confondues), et \texttt{MARGIN\ =\ 3} correspond à la moyenne de chaque dimension 3. Ci-dessous chaque calcul est réalisé de deux manières différentes pour en expliciter le fonctionnement.
@@ -8523,7 +8523,7 @@ L'argument \texttt{X} correspond à l'objet sur lequel la boucle \texttt{apply} 
 \end{Shaded}
 
 \begin{verbatim}
-##  [1] 50.29 52.57 48.95 51.53 55.11 51.69 52.18 48.51 50.32 51.17
+##  [1] 50.41 49.19 52.35 50.22 53.50 53.48 51.52 53.32 52.93 51.05
 \end{verbatim}
 
 \begin{Shaded}
@@ -8536,7 +8536,7 @@ L'argument \texttt{X} correspond à l'objet sur lequel la boucle \texttt{apply} 
 \end{Shaded}
 
 \begin{verbatim}
-##  [1] 50.29 52.57 48.95 51.53 55.11 51.69 52.18 48.51 50.32 51.17
+##  [1] 50.41 49.19 52.35 50.22 53.50 53.48 51.52 53.32 52.93 51.05
 \end{verbatim}
 
 \begin{Shaded}
@@ -8547,8 +8547,8 @@ L'argument \texttt{X} correspond à l'objet sur lequel la boucle \texttt{apply} 
 \end{Shaded}
 
 \begin{verbatim}
-##  [1] 43.06 55.22 54.98 49.36 46.28 50.14 55.10 56.72 49.04 53.50 53.30 52.34
-## [13] 50.84 43.04 50.34 54.10 52.40 53.92 48.82 52.14
+##  [1] 53.40 46.34 54.16 55.26 57.04 47.24 56.10 49.38 54.12 49.10 49.70 49.02
+## [13] 53.78 49.40 51.08 46.14 58.16 51.76 55.50 49.26
 \end{verbatim}
 
 \begin{Shaded}
@@ -8561,8 +8561,8 @@ L'argument \texttt{X} correspond à l'objet sur lequel la boucle \texttt{apply} 
 \end{Shaded}
 
 \begin{verbatim}
-##  [1] 43.06 55.22 54.98 49.36 46.28 50.14 55.10 56.72 49.04 53.50 53.30 52.34
-## [13] 50.84 43.04 50.34 54.10 52.40 53.92 48.82 52.14
+##  [1] 53.40 46.34 54.16 55.26 57.04 47.24 56.10 49.38 54.12 49.10 49.70 49.02
+## [13] 53.78 49.40 51.08 46.14 58.16 51.76 55.50 49.26
 \end{verbatim}
 
 \begin{Shaded}
@@ -8573,7 +8573,7 @@ L'argument \texttt{X} correspond à l'objet sur lequel la boucle \texttt{apply} 
 \end{Shaded}
 
 \begin{verbatim}
-## [1] 53.350 50.580 50.985 48.695 52.550
+## [1] 48.990 55.435 53.600 51.490 49.470
 \end{verbatim}
 
 \begin{Shaded}
@@ -8585,7 +8585,7 @@ L'argument \texttt{X} correspond à l'objet sur lequel la boucle \texttt{apply} 
 \end{Shaded}
 
 \begin{verbatim}
-## [1] 53.350 50.580 50.985 48.695 52.550
+## [1] 48.990 55.435 53.600 51.490 49.470
 \end{verbatim}
 
 Nous pouvons aussi calculer la moyenne pour chaque valeur de ligne et de colonne (la fonction itère alors sur la dimension 3) :
@@ -8598,27 +8598,27 @@ Nous pouvons aussi calculer la moyenne pour chaque valeur de ligne et de colonne
 
 \begin{verbatim}
 ##       [,1] [,2] [,3] [,4] [,5] [,6] [,7] [,8] [,9] [,10] [,11] [,12] [,13]
-##  [1,] 51.8 56.2 44.0 80.4 42.4 54.4 32.4 47.4 60.0  30.2  66.0  51.0  63.4
-##  [2,] 32.8 54.2 36.8 67.2 56.0 74.8 57.8 62.0 29.2  48.0  43.2  77.6  46.6
-##  [3,] 32.6 58.2 56.8 40.2 44.0 33.2 62.8 53.8 51.4  69.8  55.8  31.2  43.2
-##  [4,] 62.6 51.0 60.0 40.0 31.0 51.8 67.4 55.4 43.0  56.2  68.6  25.0  57.0
-##  [5,] 48.6 59.0 52.0 65.0 52.8 58.6 58.0 66.8 66.4  66.4  21.4  69.2  46.8
-##  [6,] 47.4 57.0 38.2 42.0 53.8 64.8 40.2 66.0 50.8  64.4  54.8  43.6  82.8
-##  [7,] 32.8 45.8 61.8 48.2 59.8 47.2 63.8 42.0 33.0  60.8  41.4  59.2  47.4
-##  [8,] 45.2 60.2 81.8 34.2 35.8 24.8 59.2 30.0 49.4  30.8  66.2  47.2  50.0
-##  [9,] 37.8 56.0 52.8 32.2 34.6 47.0 56.0 64.0 44.4  62.2  53.6  75.0  27.4
-## [10,] 39.0 54.6 65.6 44.2 52.6 44.8 53.4 79.8 62.8  46.2  62.0  44.4  43.8
+##  [1,] 65.8 34.8 53.8 56.2 65.4 66.6 53.8 34.6 40.2  38.8  54.8  43.6  73.2
+##  [2,] 39.6 55.8 28.6 56.2 56.0 40.2 48.6 62.8 41.4  38.4  60.0  62.6  50.6
+##  [3,] 50.2 38.0 73.6 65.0 53.2 27.4 74.0 42.6 61.0  49.0  58.6  47.2  63.2
+##  [4,] 57.8 47.8 59.2 64.4 61.4 26.8 64.8 44.4 49.8  63.2  37.4  72.0  39.4
+##  [5,] 64.6 47.8 41.8 27.4 69.2 32.0 52.0 68.8 58.6  56.8  58.0  40.0  51.6
+##  [6,] 53.8 50.6 65.4 69.6 43.0 75.0 67.4 37.0 51.0  46.6  46.4  26.2  40.0
+##  [7,] 55.2 50.0 53.4 44.8 57.6 58.4 63.0 38.8 50.8  44.8  41.0  40.6  68.0
+##  [8,] 53.0 44.0 52.6 45.8 63.8 62.4 40.8 51.2 76.0  61.4  49.2  61.0  56.4
+##  [9,] 64.0 56.8 60.2 66.2 62.6 41.4 41.0 50.2 62.6  51.8  48.4  44.8  29.6
+## [10,] 30.0 37.8 53.0 57.0 38.2 42.2 55.6 63.4 49.8  40.2  43.2  52.2  65.8
 ##       [,14] [,15] [,16] [,17] [,18] [,19] [,20]
-##  [1,]  69.2  25.8  54.2  47.0  51.2  24.2  54.6
-##  [2,]  38.6  74.8  58.2  45.4  43.6  53.4  51.2
-##  [3,]  26.8  61.0  55.8  70.8  61.6  36.4  33.6
-##  [4,]  36.4  52.2  73.6  57.0  52.0  46.2  44.2
-##  [5,]  53.4  56.6  41.2  40.4  78.2  48.6  52.8
-##  [6,]  43.6  38.6  35.0  64.2  58.8  33.2  54.6
-##  [7,]  17.8  55.2  85.0  63.0  28.8  84.4  66.2
-##  [8,]  57.6  53.6  50.4  42.8  58.0  56.4  36.6
-##  [9,]  58.6  46.2  37.8  47.2  55.8  51.4  66.4
-## [10,]  28.4  39.4  49.8  46.2  51.2  54.0  61.2
+##  [1,]  53.6  64.6  23.2  57.8  53.8  32.2  41.4
+##  [2,]  52.4  54.2  32.6  51.2  51.0  47.6  54.0
+##  [3,]  34.6  54.8  48.8  39.0  49.8  50.2  66.8
+##  [4,]  27.8  30.4  52.0  63.0  66.4  38.0  38.4
+##  [5,]  73.6  53.6  39.2  82.0  55.8  59.6  37.6
+##  [6,]  54.2  56.0  56.4  70.2  64.6  51.4  44.8
+##  [7,]  34.2  47.4  36.4  66.2  52.2  77.6  50.0
+##  [8,]  70.8  42.8  45.0  32.4  21.0  71.0  65.8
+##  [9,]  38.0  41.2  61.8  65.0  65.0  63.8  44.2
+## [10,]  54.8  65.8  66.0  54.8  38.0  63.6  49.6
 \end{verbatim}
 
 \hypertarget{l17sapply}{%
@@ -8642,19 +8642,19 @@ Comme indiqué dans la documentation, \texttt{lapply()} renvoie une liste de mê
 
 \begin{verbatim}
 ## $a
-##  [1] 25  4 45  5 72 19 89 71 83 31
+##  [1] 21 62 28 87  2 95 40 17 65 25
 ## 
 ## $b
-##  [1] 52 40 81 85 51 45 39 44 87 27
+##  [1] 91 73 21 26 17  2 86 41 40 37
 ## 
 ## $c
-##  [1] 35 47 50 15 30 91 95 23 85 31
+##  [1] 46 13 49  4 69 24 67 58 94 40
 ## 
 ## $d
-##  [1] 52 14 23 85 34  7 73 68 66  4
+##  [1] 20 64 42 76 31  5 25 82 17 29
 ## 
 ## $e
-##  [1] 23 82 18 87 64 15 13 34 21 33
+##  [1] 21 68 28 95 98 66 43 27 85 60
 \end{verbatim}
 
 \begin{Shaded}
@@ -8667,19 +8667,19 @@ Comme indiqué dans la documentation, \texttt{lapply()} renvoie une liste de mê
 
 \begin{verbatim}
 ## $a
-## [1] 44.4
+## [1] 44.2
 ## 
 ## $b
-## [1] 55.1
+## [1] 43.4
 ## 
 ## $c
-## [1] 50.2
+## [1] 46.4
 ## 
 ## $d
-## [1] 42.6
+## [1] 39.1
 ## 
 ## $e
-## [1] 39
+## [1] 59.1
 \end{verbatim}
 
 Cela revient à une boucle \texttt{for()} itérant sur les élément de l'objet de type \texttt{list}.
@@ -8707,19 +8707,19 @@ Cependant, la boucle \texttt{for()} ne renvoie pas de résultat. Pour l'obtenir,
 
 \begin{verbatim}
 ## $a
-## [1] 44.4
+## [1] 44.2
 ## 
 ## $b
-## [1] 55.1
+## [1] 43.4
 ## 
 ## $c
-## [1] 50.2
+## [1] 46.4
 ## 
 ## $d
-## [1] 42.6
+## [1] 39.1
 ## 
 ## $e
-## [1] 39
+## [1] 59.1
 \end{verbatim}
 
 Nous comprenons alors que la fonction \texttt{lapply()} est bien plus performante car elle va à la fois permettre de procéder à notre tâche tout en fournissant un résultat qui peut être stocké directement dans un objet (ou pas comme c'est le cas ici).
@@ -8742,19 +8742,19 @@ Comme pour la fonction \texttt{apply()}, nous pouvons passer des arguments suppl
 
 \begin{verbatim}
 ## $a
-##  [1] NA  1  3  5  2 NA  4  2  2  5
+##  [1]  2  5  2 NA  5 NA  3  3  5 NA
 ## 
 ## $b
-##  [1] 3 4 2 2 1 5 2 3 1 3
+##  [1] 4 5 5 4 1 3 3 5 5 3
 ## 
 ## $c
-##  [1]  4  3  1  3  2 NA  2  4  5  3
+##  [1]  2  2 NA  3  3  2  1  5  3  5
 ## 
 ## $d
-##  [1] 4 2 5 5 2 1 2 1 4 5
+##  [1]  1 NA  3  3 NA  5  3 NA  1  2
 ## 
 ## $e
-##  [1]  2  1  5  4  4  2  2 NA  2  4
+##  [1] 1 4 5 5 4 1 3 3 3 1
 \end{verbatim}
 
 \begin{Shaded}
@@ -8768,16 +8768,16 @@ Comme pour la fonction \texttt{apply()}, nous pouvons passer des arguments suppl
 ## [1] NA
 ## 
 ## $b
-## [1] 2.6
+## [1] 3.8
 ## 
 ## $c
 ## [1] NA
 ## 
 ## $d
-## [1] 3.1
+## [1] NA
 ## 
 ## $e
-## [1] NA
+## [1] 3
 \end{verbatim}
 
 \begin{Shaded}
@@ -8788,19 +8788,19 @@ Comme pour la fonction \texttt{apply()}, nous pouvons passer des arguments suppl
 
 \begin{verbatim}
 ## $a
-## [1] 3
+## [1] 3.571429
 ## 
 ## $b
-## [1] 2.6
+## [1] 3.8
 ## 
 ## $c
-## [1] 3
+## [1] 2.888889
 ## 
 ## $d
-## [1] 3.1
+## [1] 2.571429
 ## 
 ## $e
-## [1] 2.888889
+## [1] 3
 \end{verbatim}
 
 Pour plus de lisibilité ou si plusieurs opérations sont à réaliser au sein de l'argument \texttt{FUN}, nous pouvons utiliser l'écriture suivante :
@@ -8815,19 +8815,19 @@ Pour plus de lisibilité ou si plusieurs opérations sont à réaliser au sein d
 
 \begin{verbatim}
 ## $a
-## [1] 3
+## [1] 3.571429
 ## 
 ## $b
-## [1] 2.6
+## [1] 3.8
 ## 
 ## $c
-## [1] 3
+## [1] 2.888889
 ## 
 ## $d
-## [1] 3.1
+## [1] 2.571429
 ## 
 ## $e
-## [1] 2.888889
+## [1] 3
 \end{verbatim}
 
 Par exemple si nous souhaitons obtenir \texttt{i\^{}2} si la moyenne est supérieure à 3, et \texttt{i\^{}3} sinon :
@@ -8847,19 +8847,19 @@ Par exemple si nous souhaitons obtenir \texttt{i\^{}2} si la moyenne est supéri
 
 \begin{verbatim}
 ## $a
-##  [1]  NA   1  27 125   8  NA  64   8   8 125
+##  [1]  4 25  4 NA 25 NA  9  9 25 NA
 ## 
 ## $b
-##  [1]  27  64   8   8   1 125   8  27   1  27
+##  [1] 16 25 25 16  1  9  9 25 25  9
 ## 
 ## $c
-##  [1]  64  27   1  27   8  NA   8  64 125  27
+##  [1]   8   8  NA  27  27   8   1 125  27 125
 ## 
 ## $d
-##  [1] 16  4 25 25  4  1  4  1 16 25
+##  [1]   1  NA  27  27  NA 125  27  NA   1   8
 ## 
 ## $e
-##  [1]   8   1 125  64  64   8   8  NA   8  64
+##  [1]   1  64 125 125  64   1  27  27  27   1
 \end{verbatim}
 
 \hypertarget{l17lapply}{%
@@ -8877,19 +8877,19 @@ La fonction \texttt{sapply()} est une version modifiée de la fonction \texttt{l
 
 \begin{verbatim}
 ## $a
-## [1] 3
+## [1] 3.571429
 ## 
 ## $b
-## [1] 2.6
+## [1] 3.8
 ## 
 ## $c
-## [1] 3
+## [1] 2.888889
 ## 
 ## $d
-## [1] 3.1
+## [1] 2.571429
 ## 
 ## $e
-## [1] 2.888889
+## [1] 3
 \end{verbatim}
 
 \begin{Shaded}
@@ -8902,7 +8902,7 @@ La fonction \texttt{sapply()} est une version modifiée de la fonction \texttt{l
 
 \begin{verbatim}
 ##        a        b        c        d        e 
-## 3.000000 2.600000 3.000000 3.100000 2.888889
+## 3.571429 3.800000 2.888889 2.571429 3.000000
 \end{verbatim}
 
 La fonction \texttt{sapply()} est intéressante pour récupérer par exemple le nième élément de chacun des éléments d'une \texttt{list}. La fonction qui est appelée pour faire cela est \texttt{\textquotesingle{}{[}{[}\textquotesingle{}}.
@@ -8914,8 +8914,8 @@ La fonction \texttt{sapply()} est intéressante pour récupérer par exemple le 
 \end{Shaded}
 
 \begin{verbatim}
-## a b c d e 
-## 1 4 3 2 1
+##  a  b  c  d  e 
+##  5  5  2 NA  4
 \end{verbatim}
 
 \hypertarget{l17tapply}{%
@@ -8935,17 +8935,17 @@ La fonction \texttt{tapply()} permet d'appliquer une fonction en prenant comme �
 \end{Shaded}
 
 \begin{verbatim}
-##    species     perf1    perf2     perf3
-## 1        H 10.585032 36341.77 12.993156
-## 2        F  9.954620 13128.07  9.670212
-## 3        H  9.485972 15665.12 31.775002
-## 4        H 10.087863 60085.44 18.526610
-## 5        I  9.682251 18145.29 22.817769
-## 6        E 10.012851 14862.09 18.354593
-## 7        B  9.619591 64319.56 12.017638
-## 8        I 10.526797 13954.67 16.991152
-## 9        G  9.896188 28481.54 10.305690
-## 10       D  9.886340 26403.37 25.131746
+##    species     perf1    perf2    perf3
+## 1        J 10.069826 14637.91 20.38172
+## 2        I 10.330476 19595.51 13.67188
+## 3        H  9.833387 10433.73 17.26647
+## 4        C 10.184329 21868.18 23.62127
+## 5        G  9.147395 17264.54 23.88249
+## 6        A 10.012933 30045.17 22.71658
+## 7        I  9.792673 21771.40 25.45193
+## 8        D  9.167221 22926.03 35.75713
+## 9        I 10.475887 64909.87 24.15885
+## 10       D 10.999614 19394.27  8.03269
 \end{verbatim}
 
 Nous pouvons facilement obtenir un résumé des performances pour chaque espèce avec la fonction \texttt{tapply()} et la fonction \texttt{summary()}.
@@ -8959,43 +8959,43 @@ Nous pouvons facilement obtenir un résumé des performances pour chaque espèce
 \begin{verbatim}
 ## $A
 ##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-##   8.900   9.753  10.049  10.065  10.361  11.901 
+##   8.785   9.553   9.978   9.979  10.331  11.692 
 ## 
 ## $B
 ##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-##   8.885   9.650  10.038  10.025  10.303  11.424 
+##   8.554   9.633  10.018  10.061  10.384  11.595 
 ## 
 ## $C
 ##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-##   8.611   9.699   9.966   9.978  10.339  11.131 
+##   8.660   9.631   9.944   9.982  10.333  11.437 
 ## 
 ## $D
 ##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-##   9.166   9.717  10.030  10.042  10.313  11.058 
+##   8.875   9.626  10.011   9.960  10.274  11.109 
 ## 
 ## $E
 ##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-##   8.920   9.602  10.044   9.986  10.321  10.991 
+##   8.594   9.549   9.895   9.929  10.315  11.325 
 ## 
 ## $F
 ##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-##   8.605   9.605   9.918   9.916  10.283  11.107 
+##   9.018   9.726  10.105  10.021  10.340  10.956 
 ## 
 ## $G
 ##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-##   8.837   9.661   9.974  10.036  10.373  11.228 
+##   8.921   9.529   9.871   9.943  10.360  11.310 
 ## 
 ## $H
 ##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-##   8.883   9.491   9.970   9.962  10.379  11.223 
+##   8.543   9.697   9.965   9.966  10.330  10.930 
 ## 
 ## $I
 ##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-##   8.737   9.663   9.996  10.039  10.340  11.822 
+##   8.924   9.661  10.016   9.994  10.326  10.997 
 ## 
 ## $J
 ##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-##   8.921   9.650  10.002  10.035  10.351  11.361
+##   8.793   9.750   9.994   9.999  10.273  10.890
 \end{verbatim}
 
 Nous pouvons aussi obtenir la valeur moyenne de chacune des performances en combinant une fonction \texttt{sapply()} avec la fonction \texttt{tapply()}et en utilisant la fonction \texttt{mean()}.
@@ -9010,16 +9010,16 @@ Nous pouvons aussi obtenir la valeur moyenne de chacune des performances en comb
 
 \begin{verbatim}
 ##        [,1]     [,2]     [,3]
-## A 10.065029 23664.43 20.48197
-## B 10.025153 26896.66 19.72669
-## C  9.977787 24744.02 20.05457
-## D 10.042499 25203.84 18.48531
-## E  9.985930 25999.21 19.43059
-## F  9.916021 25330.43 19.67895
-## G 10.036224 26366.85 19.83354
-## H  9.962080 26596.56 21.68686
-## I 10.038757 22650.78 19.27362
-## J 10.035277 24458.16 19.90894
+## A  9.979148 24974.03 20.08232
+## B 10.061045 25946.06 20.58453
+## C  9.981740 25537.63 20.13469
+## D  9.959886 24282.24 20.53083
+## E  9.928546 27016.87 19.95594
+## F 10.021498 24806.68 19.67419
+## G  9.942825 28593.11 20.56907
+## H  9.966145 26071.10 20.49733
+## I  9.994441 28031.12 19.64545
+## J  9.998681 25850.54 20.72173
 \end{verbatim}
 
 La fonction \texttt{sapply()} est utilisée pour spécifier la colonne (la colonne 2 correspond à perf1, la colonne 3 correspond à perf2, et la colonne 4 correspond à perf3). La colonne prend alors le nom de variable \texttt{i}. Ensuite, pour chaque colonne \texttt{dfSpecies{[},i{]}}, nous pouvons utiliser la fonction \texttt{tapply()} pour calculer la moyenne par espèce. Voici l'équivalent avec des boucles \texttt{for()}.
@@ -9054,16 +9054,16 @@ Et si nous voulons le résultat sous forme d'une \texttt{data.frame}, le code de
 
 \begin{verbatim}
 ##       perf1    perf2    perf3
-## A 10.065029 23664.43 20.48197
-## B 10.025153 26896.66 19.72669
-## C  9.977787 24744.02 20.05457
-## D 10.042499 25203.84 18.48531
-## E  9.985930 25999.21 19.43059
-## F  9.916021 25330.43 19.67895
-## G 10.036224 26366.85 19.83354
-## H  9.962080 26596.56 21.68686
-## I 10.038757 22650.78 19.27362
-## J 10.035277 24458.16 19.90894
+## A  9.979148 24974.03 20.08232
+## B 10.061045 25946.06 20.58453
+## C  9.981740 25537.63 20.13469
+## D  9.959886 24282.24 20.53083
+## E  9.928546 27016.87 19.95594
+## F 10.021498 24806.68 19.67419
+## G  9.942825 28593.11 20.56907
+## H  9.966145 26071.10 20.49733
+## I  9.994441 28031.12 19.64545
+## J  9.998681 25850.54 20.72173
 \end{verbatim}
 
 \hypertarget{l17mapply}{%
@@ -9097,12 +9097,12 @@ Félicitations, nous sommes arrivés au bout de ce chapitre sur l'algorithmique.
 \hypertarget{project}{%
 \chapter{Gestion d'un projet avec R}\label{project}}
 
-Maintenant Que nous avons vu les concepts de base de R, il nous reste à aborder un élément déterminant pour le bon déroulement de nos activités scientifiques avec R : la gestion de projet. Cela consiste à intégrer ses développements dans un environnement et avec une logique visant à faciliter son travail et donc augmenter son efficacité. Il s'agit ici que d'une façon de faire parmis les inombrables possibilités, à adapter pour chacun et chacune.
+Maintenant que nous avons vu les concepts de base de R, il nous reste à aborder un élément déterminant pour le bon déroulement de nos activités scientifiques avec R : la gestion de projet. Cela consiste à intégrer ses développements dans un environnement et avec une logique visant à faciliter son travail et donc augmenter son efficacité. Il ne s'agit ici que d'une façon de faire parmi les innombrables possibilités, à adapter pour chacune et chacun.
 
 \hypertarget{gestion-des-fichiers-et-des-ruxe9pertoires-de-travail}{%
 \section{Gestion des fichiers et des répertoires de travail}\label{gestion-des-fichiers-et-des-ruxe9pertoires-de-travail}}
 
-Entre les fichiers d'entrée (i.e., les fichiers qui contiennent nos données brutes), les fichiers de sortie (e.g., avec la fonction \texttt{write()}), les graphiques (prochain chapitre), et les nombreux scripts associés à un projet de recherche, un minimum d'organisation s'impose pour pouvoir être efficace et reprendre rapidement son projet en cours. La solution la plus simple consiste à structurer son environnement de travail en dossiers en fonction de chaque catégorie de fichiers. Par exemple avec un dossier ``myProject'' pour le projet en cours, contenant lui-même les dossiers ``myFiles'' pour les fichiers d'entrée, un dossier ``myScripts'' pour les fichiers script R, et un dossier ``myOutputs'' pour les fichiers de sortie (e.g., les graphiques et les analyses).
+Entre les fichiers d'entrée (i.e., les fichiers qui contiennent nos données brutes), les fichiers de sortie (e.g., avec la fonction \texttt{write()}), les graphiques (prochain chapitre), et les nombreux scripts associés à un projet de recherche, un minimum d'organisation s'impose pour pouvoir être efficace et reprendre rapidement son projet en cours. La solution la plus simple consiste à structurer son environnement de travail en dossiers en fonction de chaque catégorie de fichiers. Par exemple avec un dossier ``myProject'' pour le projet en cours, contenant lui-même les dossiers ``myFiles'' pour les fichiers d'entrée, un dossier ``myScripts'' pour les fichiers script R, et un dossier ``myOutputs'' pour les fichiers de sortie (e.g., les graphiques et les analyses). Si les fichiers sont organisés d'une façon définie, les chemins relatifs pour charger les données ou pour sauvegarder des résultats seront toujours les mêmes d'un ordinateur à un autre.
 
 \begin{verbatim}
 ## -myProject
@@ -9121,7 +9121,7 @@ Entre les fichiers d'entrée (i.e., les fichiers qui contiennent nos données br
 
 Le travail sur un script est itératif : même si les objectifs sont définis dès le départ, nous allons retravailler certaines parties pour obtenir par exemples des informations supplémentaires, ou encore pour optimiser telle ou telle fonction, ou encore rendre généralisable un script pour le communiquer à la communauté scientifique ou tout simplement à un collègue. Parfois ce que nous allons voir comme une amélioration va au final se révéler être une erreur, et le retour au script initial peut être difficile. Il faut donc gérer des versions.
 
-Dans la plupart des laboratoire il y a des services de gestion des versions, les plus connus étant GIT (\url{https://git-scm.com/}) et Subversion (\url{https://subversion.apache.org/}). Lorsque GIT ou Subversion sont disponibles il est recommandé de les utiliser. Si nous n'avons pas accès à ces services il existe des services gratuits en ligne comme GitHub (\url{https://github.com/} ; ce livre utilise GitHub). Il existe de nombreuses autres solutions comme GitLab (\url{https://about.gitlab.com/}), Bitbucket (\url{https://bitbucket.org/}), SourceForge (\url{https://sourceforge.net/}), GitKraken (\url{https://www.gitkraken.com/}), ou encore Launchpad (\url{https://launchpad.net/}).
+Dans la plupart des laboratoires il y a des services de gestion des versions sur serveur, les plus connus étant GIT (\url{https://git-scm.com/}) et Subversion (\url{https://subversion.apache.org/}). Lorsque GIT ou Subversion sont disponibles directement sur des serveurs institutionnels, il est recommandé de les utiliser. Si nous n'avons pas accès à ces services il existe des services gratuits en ligne comme GitHub (\url{https://github.com/} ; ce livre utilise GitHub). Il existe de nombreuses autres solutions comme GitLab (\url{https://about.gitlab.com/}), Bitbucket (\url{https://bitbucket.org/}), SourceForge (\url{https://sourceforge.net/}), GitKraken (\url{https://www.gitkraken.com/}), ou encore Launchpad (\url{https://launchpad.net/}). Les adhérents aux services de RENATER pourront utiliser GIT avec SourceSup (\url{https://services.renater.fr/sourcesup/git/index}).
 
 L'utilisation de ces différents services de gestion des versions sort du cadre de ce livre. Pour le débutant ou pour les projets ne nécessitant pas un travail collaboratif sur les scripts, une alternative consiste à gérer ses versions manuellement. Par exemple une solution consiste à ajouter un numéro à la fin de son nom de fichier de script (e.g., ``myFirstScript\_01.R''). Dès qu'une modification importante est apportée à ce script, il suffira alors de le sauver avec un nouveau nom (e.g., ``myFirstScript\_02.R'') et de placer l'ancien script dans un dossier d'archive pour ne pas encombrer l'espace de travail et risquer des erreurs. En cas de problème, nous pourrons ainsi facilement retourner au script antérieur et reprendre notre travail.
 
@@ -9144,13 +9144,13 @@ L'utilisation de ces différents services de gestion des versions sort du cadre 
 \hypertarget{gestion-de-la-documentation}{%
 \section{Gestion de la documentation}\label{gestion-de-la-documentation}}
 
-La documentation de son code est essentielle pour pouvoir facilement reprendre un travail ou communiquer son travail avec ses collègues et la communauté scientifique. Un code bien documenté sera compréhensible par un plus grand nombre et donc utilisé d'avantage. Il est donc important d'adopter de bonnes techniques.
+La documentation de son code est essentielle pour pouvoir facilement reprendre un travail ou communiquer son travail avec ses collègues et la communauté scientifique. Un code bien documenté sera compréhensible par un plus grand nombre et donc utilisé d'avantage. Il est donc important d'adopter de bonnes pratiques.
 
-Nous avons déjà vu qu'il y avait plusieurs façons d'écrire son code avec R car c'est un langage assez permissif. Le premier pas vers un code lisible et reproductible est donc d'adopter un style de code clair, cohérent, et\ldots{} fait pour les humains ! Car même si notre code a vocation à être exécuter par les machines, il doit rester compréhensible pour soit et toutes les personnes qui seront amenées à le consulter. Il s'agit par exemple de mettre des espaces après les virgules, ou encore d'utiliser l'indentation. Bien sûr la lisibilité du code doit être à balancer avec l'optimisation du code pour les grands jeux de données, mais dans la plupart des cas nous pouvons associer un code clair et optimisé. Donc la première étape de la documentation et de sa gestion est tout d'abord de rédiger son code en pensant aux personnes qui vont le lire et le reproduire.
+Nous avons déjà vu qu'il y avait plusieurs façons d'écrire son code avec R car c'est un langage assez permissif. Le premier pas vers un code lisible et reproductible est donc d'adopter un style de code clair, cohérent, et\ldots{} fait pour les humains ! Car même si notre code a vocation à être exécuter par les machines, il doit rester compréhensible pour soi et toutes les personnes qui seront amenées à le consulter. Il s'agit par exemple de mettre des espaces après les virgules, ou encore d'utiliser l'indentation. Bien sûr la lisibilité du code doit être à balancer avec l'optimisation du code pour les grands jeux de données, mais dans la plupart des cas nous pouvons associer un code clair et optimisé. Donc la première étape de la documentation et de sa gestion est tout d'abord de rédiger son code en pensant aux personnes qui vont le lire et le reproduire.
 
 La deuxième étape est de commenter son code. Les commentaires sont indispensables lorsque nous privilégions du code optimisé pour la performance mais qui perd en lisibilité. Les commentaires sont souvent superflus si le code est bien rédigé et les objets et les fonctions bien nommés. Cela veut dire qu'il ne faut pas utiliser les commentaires pour expliquer un code mal rédigé, mais dès le début bien rédiger son code. Les commentaires sont utiles pour apporter des éléments de contexte (e.g., choix d'une méthode plutôt qu'une autre au regard de la littérature). La place des commentaires peut être en fin de ligne ou sur des lignes à part.
 
-Pour un petit projet R il est indispensable que chaque script commence par une description de son contenu pour que nous puissions rapidement savoir de quoi il traite. C'est ce que nous avions fait au début de ce livre :
+Pour un projet R il est indispensable que chaque script commence par une description de son contenu pour que nous puissions rapidement savoir de quoi il traite. C'est ce que nous avions fait au début de ce livre :
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -9158,6 +9158,7 @@ Pour un petit projet R il est indispensable que chaque script commence par une d
 \CommentTok{# Voici un script pour acquérir les concepts de base }
 \CommentTok{# avec R}
 \CommentTok{# date de création : 25/06/2018}
+\CommentTok{# date de modification : 03/01/2020}
 \CommentTok{# auteur : François Rebaudo}
 \CommentTok{# ------------------------------------------------------------}
 
@@ -9173,7 +9174,7 @@ Pour un petit projet R il est indispensable que chaque script commence par une d
 \end{Highlighting}
 \end{Shaded}
 
-Ici les commentaires qui suivent l'en-tête ne sont pas nécessaires car le nom de l'objet se comprend de lui même. Notre fichier devient :
+Ici les commentaires qui suivent l'en-tête ne sont pas nécessaires car le nom de l'objet se comprend de lui-même. Notre fichier devient :
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -9181,6 +9182,7 @@ Ici les commentaires qui suivent l'en-tête ne sont pas nécessaires car le nom 
 \CommentTok{# Voici un script pour acquérir les concepts de base }
 \CommentTok{# avec R}
 \CommentTok{# date de création : 25/06/2018}
+\CommentTok{# date de modification : 03/01/2020}
 \CommentTok{# auteur : François Rebaudo}
 \CommentTok{# ------------------------------------------------------------}
 
@@ -9189,7 +9191,7 @@ Ici les commentaires qui suivent l'en-tête ne sont pas nécessaires car le nom 
 \end{Highlighting}
 \end{Shaded}
 
-Pour un gros projet avec de nombreuses fonctions destinées à être utilisées par d'autres usagers, il est préférable que la documentation du code soit à part, dans un fichier d'aide spécifique. C'est le cas de tous les packages R ! Pour gérer la documentation d'un package (et donc de toutes les fonctions), là encore il existe de nombreuses possibilités. La plus répandue consiste à utiliser la package R roxigen2. Sans entrer dans les détails, voici quelques examples issus de la documentation du package.
+Pour un gros projet avec de nombreuses fonctions destinées à être utilisées par d'autres usagers, il est préférable que la documentation du code soit à part, dans un fichier d'aide spécifique. C'est le cas de tous les packages R ! Pour gérer la documentation d'un package (et donc de toutes les fonctions), là encore il existe de nombreuses possibilités. La plus répandue consiste à utiliser le package R roxigen2. Sans entrer dans les détails, voici quelques exemples de documentations de package.
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -9221,7 +9223,7 @@ Pour un gros projet avec de nombreuses fonctions destinées à être utilisées 
 \end{Highlighting}
 \end{Shaded}
 
-Cela permet d'écrire la documentation de chaque fonction à côté de la focntion. Le package roxigen2 va ensuite générer à partir de ces commentaires un document d'aide accessible avec la fonction \texttt{\textquotesingle{}?\textquotesingle{}}. A moins que nous écrivions un nouveau package, les commentaires simples suffiront, et le développement d'un package sort du cadre de ce livre.
+Cela permet d'écrire la documentation de chaque fonction à côté de la fonction. Le package roxigen2 va ensuite générer à partir de ces commentaires un document d'aide accessible avec la fonction \texttt{\textquotesingle{}?\textquotesingle{}}. A moins que nous écrivions un nouveau package, les commentaires simples suffiront, et le développement d'un package sort du cadre de ce livre.
 
 \hypertarget{conclusion-7}{%
 \section{Conclusion}\label{conclusion-7}}
@@ -9237,12 +9239,12 @@ Félicitations ! Ce chapitre marque la fin de la première partie de ce livre. N
 \hypertarget{graph1plot}{%
 \section{\texorpdfstring{\texttt{plot}}{plot}}\label{graph1plot}}
 
-Le premier type de graphique que nous allons voir est le nuage de points. Dans un nuage de points, chaque point est représenté par sa valeur en x et en y. La fonction permettant de faire un nuage de points est \texttt{plot()}.
+Le premier type de graphique que nous allons voir est le nuage de points. Dans un nuage de points, chaque point est représenté par sa valeur en x et en y. La fonction permettant de faire un nuage de points est \texttt{plot()}. Il est recommandé de spécifier les arguments \texttt{x} et \texttt{y} même si ceux-ci ne sont pas nécessaires. Cela permet de gagner en lisibilité et d'éviter les erreurs.
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{myX <-}\StringTok{ }\KeywordTok{rnorm}\NormalTok{(}\DecValTok{50}\NormalTok{, }\DataTypeTok{mean =} \DecValTok{0}\NormalTok{, }\DataTypeTok{sd =} \DecValTok{1}\NormalTok{)}
-\NormalTok{myY <-}\StringTok{ }\KeywordTok{rnorm}\NormalTok{(}\DecValTok{50}\NormalTok{, }\DataTypeTok{mean =} \DecValTok{10}\NormalTok{, }\DataTypeTok{sd =} \DecValTok{1}\NormalTok{)}
+\NormalTok{myX <-}\StringTok{ }\KeywordTok{rnorm}\NormalTok{(}\DecValTok{50}\NormalTok{, }\DataTypeTok{mean =} \DecValTok{0}\NormalTok{, }\DataTypeTok{sd =} \DecValTok{1}\NormalTok{) }\CommentTok{# tirage aléatoire dans un loi Normale}
+\NormalTok{myY <-}\StringTok{ }\KeywordTok{rnorm}\NormalTok{(}\DecValTok{50}\NormalTok{, }\DataTypeTok{mean =} \DecValTok{10}\NormalTok{, }\DataTypeTok{sd =} \DecValTok{1}\NormalTok{) }\CommentTok{# tirage aléatoire dans un loi Normale}
 \KeywordTok{plot}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ myX, }\DataTypeTok{y =}\NormalTok{ myY)}
 \end{Highlighting}
 \end{Shaded}
@@ -9260,7 +9262,7 @@ Comme pour tous les types de graphiques, nous pouvons ajouter une légende sur l
 
 \includegraphics{myRBook_FR_files/figure-latex/021-01-graphiques-2-1.pdf}
 
-Nous pouvons aussi définir les limites des axes en X et en Y.
+Nous pouvons aussi définir les limites des axes en X et en Y. Ici nous représentons l'axe des X entre -3 et 3, et l'axe des Y entre 7 et 13.
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -9272,7 +9274,7 @@ Nous pouvons aussi définir les limites des axes en X et en Y.
 
 \includegraphics{myRBook_FR_files/figure-latex/021-01-graphiques-3-1.pdf}
 
-Le type de point peut être défini avec l'argument \texttt{pch} qui peut prendre un caractère ou un chiffre de 1 à 25.
+Le type de point peut être défini avec l'argument \texttt{pch} qui peut prendre un caractère ou un nombre de 1 à 25.
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -9318,7 +9320,7 @@ La couleur des points peut se définir avec l'argument \texttt{col}. Nous revien
 
 \includegraphics{myRBook_FR_files/figure-latex/021-01-graphiques-6-1.pdf}
 
-Pour représenter nos points la couleur et la taille des points peuvent représenter des informations complémentaires. Ici nous allons représenter par un gradient de taille la variable \texttt{myY} et par un gradient de couleur la variable \texttt{myX}.
+Dans la représentation de nos points, la couleur et la taille des points peuvent représenter des informations complémentaires. Ici nous allons représenter par un gradient de taille la variable \texttt{myY} et par un gradient de couleur la variable \texttt{myX}.
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -9336,6 +9338,8 @@ Pour représenter nos points la couleur et la taille des points peuvent représe
 \end{Shaded}
 
 \includegraphics{myRBook_FR_files/figure-latex/021-01-graphiques-7-1.pdf}
+
+\texttt{myX} et \texttt{myY} correspondent à des tirages aléatoires dans une loi Normale centrée sur zéro et d'écart type 1. Ensuite nous créons l'objet \texttt{dfGraph} qui est une \texttt{data.frame} avec une colonne pour \texttt{myX} et une colonne pour \texttt{myY}. La \texttt{data.frame} \texttt{dfGraph} est alors ordonnée selon les valeurs de la colonne \texttt{myX} avec la fonction \texttt{order()}, comme nous l'avons vu précédemment. Une fois la \texttt{data.frame} ordonnée, nous ajoutons un nouvelle colonne \texttt{myCol} avec \texttt{dfGraph\$myCol}. Cette nouvelle colonne contient un gradient de couleur du bleu au rouge avec 100 valeurs de couleur (même taille que \texttt{myX} et \texttt{myY}), avec la fonction \texttt{colorRampPalette()}. A présent nous allons ordonner la \texttt{data.frame} en fonction de la colonne \texttt{myY} avec la fonction \texttt{order()}. Nous créons une nouvelle colonne \texttt{myCex} avec \texttt{dfGraph\$myCex} qui va contenir une séquence de taille 100 (\texttt{length.out\ =\ 100}) entre 0.5 et 3. Enfin nous pouvons faire notre graphique qui va prendre comme taille des points notre colonne \texttt{myCex}, et comme couleur des points notre colonne \texttt{myCol}. Ici l'intérêt est faible car les informations X et Y sont déjà présentes, mais l'objectif est pédagogique et nous verrons comment améliorer cet exemple dans la suite de ce livre.
 
 R offre la possibilité de relier les points des nuages de points de différentes façons. Les différentes options sont disponibles dans l'aide de la fonction \texttt{plot()} et \texttt{plot.default()}.
 
@@ -9372,7 +9376,7 @@ Une dernière option très utile est l'argument \texttt{panel.first} qui permet 
 \end{Highlighting}
 \end{Shaded}
 
-La fonction \texttt{par()} permet d'accéder aux paramètres graphiques. Parmi ces paramètres il y a \texttt{mfrow} qui permet de diviser l'espace graphique comme une matrice. \texttt{mfrow} prend comme arguments un vecteur numérique de taille 2 : le premier élément correspond au nombre de lignes et le deuxième élément au nombre de colonnes. Le paramètre \texttt{mar} permet de contrôler les marges en bas, à gauche, en haut et à droite, respectivement, au moyen d'un vecteur numérique de taille 4. Après avoir modifié les paramètres graphiques par défaut il est recommandé de les réinitialiser pour que cela n'affecte pas les graphiques à venir. Les valeurs par défaut de \texttt{mfrow} sont \texttt{c(1,\ 1)} et \texttt{mar\ =\ c(4,\ 4,\ 4,\ 4)}. Nous pouvons remettre ces valeurs par défaut comme ci-dessus en redéfinissant chacun des paramètres. Nous pouvons également enregistrer au préalable les valeurs courantes (dans un objet \texttt{op}), puis les modifier pour les besoins de nos graphiques, puis ensuite rappeler les valeurs contenues dans l'objet \texttt{op}. Ici nous utilisons \texttt{lapply} pour réaliser rapidement quatre graphiques.
+La fonction \texttt{par()} permet d'accéder aux paramètres graphiques. Parmi ces paramètres il y a \texttt{mfrow} qui permet de diviser l'espace graphique comme une matrice. \texttt{mfrow} prend comme arguments un vecteur numérique de taille 2 : le premier élément correspond au nombre de lignes et le deuxième élément au nombre de colonnes. Le paramètre \texttt{mar} permet de contrôler les marges en bas, à gauche, en haut et à droite, respectivement, au moyen d'un vecteur numérique de taille 4. Après avoir modifié les paramètres graphiques par défaut il est recommandé de les réinitialiser pour que cela n'affecte pas les graphiques à venir. Les valeurs par défaut de \texttt{mfrow} sont \texttt{c(1,\ 1)} et \texttt{mar\ =\ c(5.1\ 4.1\ 4.1\ 2.1)}. Nous pouvons remettre ces valeurs par défaut comme ci-dessus en redéfinissant chacun des paramètres. Nous pouvons également enregistrer au préalable les valeurs courantes (dans un objet \texttt{op}), puis les modifier pour les besoins de nos graphiques, puis ensuite rappeler les valeurs contenues dans l'objet \texttt{op}. Ici nous utilisons \texttt{lapply} pour réaliser rapidement quatre graphiques.
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -9488,7 +9492,7 @@ La fonction \texttt{barplot()} peut aussi être utilisée pour représenter l'é
 
 Pour faire l'histogramme nous allons découper les données avec la fonction \texttt{cut()} en spécifiant que nous souhaitons des séparations faites entre -4 et 4 par pas de 1 (\texttt{myYCut\ \textless{}-\ cut(myY,\ breaks\ =\ -4:4)}). Pour avoir le compte du nombre de points dans chacune des catégories et pour chaque couleur il nous suffit d'utiliser la fonction \texttt{table()} (\texttt{myYCutCol\ \textless{}-\ table(myCol,\ myYCut)}). Dans cette table la première ligne correspond à la première couleur rencontrée dans le jeu de données et la deuxième ligne à l'autre couleur. C'est pourquoi il nous faut modifier le tirage aléatoire des couleurs pour que la première ligne corresponde toujours au bleu et la deuxième ligne au rouge : \texttt{myCol\ \textless{}-\ c(2,\ sample(c(4,\ 2),\ size\ =\ (n\ -\ 1),\ replace\ =\ TRUE))}.
 
-Ensuite nous pouvons calculer la proportion de rouge en divisant la première ligne par la somme des deux lignes que nous allons représenter en pourcentage en multipliant par 100 : \texttt{myXCutCol{[}1,{]}\ /\ (myXCutCol{[}1,{]}\ +\ myXCutCol{[}2,{]})\ *\ 100}. Pour que ce chiffre corresponde à une couleur nous n'allons conserver que sa partie entière avec la fonction \texttt{round()}. Si le pourcentage est de zéro ou si le résultat n'est pas possible du fait d'une division par zéro alors il nous faut le remplacer par 1 afin que cela corresponde à une couleur dans notre gradient qui va de 1 à 100 (\texttt{xCol{[}is.na(xCol)\ \textbar{}\ xCol\ ==\ 0{]}\ \textless{}-\ 1}).
+Ensuite nous pouvons calculer la proportion de rouge en divisant la première ligne par la somme des deux lignes que nous allons représenter en pourcentage en multipliant par 100 : \texttt{myXCutCol{[}1,{]}\ /\ (myXCutCol{[}1,{]}\ +\ myXCutCol{[}2,{]})\ *\ 100}. Pour que ce nombre corresponde à une couleur nous allons arrondir le pourcentage avec la fonction \texttt{round()}. Si le pourcentage est de zéro ou si le résultat n'est pas possible du fait d'une division par zéro alors il nous faut le remplacer par 1 afin que cela corresponde à une couleur dans notre gradient qui va de 1 à 100 (\texttt{xCol{[}is.na(xCol)\ \textbar{}\ xCol\ ==\ 0{]}\ \textless{}-\ 1}). L'autre option plus exacte serait de faire un gradient de 1 à 101.
 
 Il ne nous reste plus qu'à organiser l'espace graphique avec la fonction \texttt{layout()} qui prend comme argument une matrice dont les valeurs et leur position vont correspondre à l'agencement des différents graphiques que nous souhaitons réaliser. Le graphique 1 correspond au barplot du haut, le graphique 2 au nuage de points et le graphique 3 au barplot de droite.
 
@@ -9609,7 +9613,7 @@ Le \texttt{barplot} peut aussi être utilisé pour faire une pyramide des âges 
 \hypertarget{graph1boxplot}{%
 \section{\texorpdfstring{\texttt{boxplot}}{boxplot}}\label{graph1boxplot}}
 
-Les \texttt{boxplot} ou boîtes à moustache sont des graphiques très courant avec R car ils donnent un bon apperçu d'un jeu de données en représentant les valeurs extrèmes (``outliers''), la médiane, les quartiles, les minimums et les maximums.
+Les \texttt{boxplot} ou boîtes à moustache sont des graphiques très courant avec R car ils donnent un bon aperçu d'un jeu de données en représentant les valeurs extrêmes (``outliers''), la médiane, les quartiles, les minimums et les maximums.
 
 La fonction \texttt{boxplot()} s'applique à un ou plusieurs \texttt{vector}.
 
@@ -9621,6 +9625,7 @@ La fonction \texttt{boxplot()} s'applique à un ou plusieurs \texttt{vector}.
   \DataTypeTok{box3 =} \KeywordTok{sample}\NormalTok{(}\OperatorTok{-}\DecValTok{3}\OperatorTok{:}\DecValTok{3}\NormalTok{, }\DataTypeTok{size =} \DecValTok{1000}\NormalTok{, }\DataTypeTok{replace =} \OtherTok{TRUE}\NormalTok{),}
   \DataTypeTok{box4 =} \KeywordTok{rbeta}\NormalTok{(}\DecValTok{1000}\NormalTok{, }\DataTypeTok{shape1 =} \DecValTok{1}\NormalTok{, }\DataTypeTok{shape2 =} \DecValTok{2}\NormalTok{)}
 \NormalTok{)}
+\KeywordTok{par}\NormalTok{(}\DataTypeTok{mar =} \KeywordTok{c}\NormalTok{(}\DecValTok{4}\NormalTok{, }\DecValTok{4}\NormalTok{, }\DecValTok{1}\NormalTok{, }\DecValTok{1}\NormalTok{)) }\CommentTok{# réduction des marges}
 \KeywordTok{boxplot}\NormalTok{(df, }\DataTypeTok{col =} \KeywordTok{c}\NormalTok{(}\KeywordTok{rgb}\NormalTok{(}\DecValTok{0}\NormalTok{, }\DecValTok{94}\NormalTok{, }\DecValTok{255}\NormalTok{, }\DataTypeTok{maxColorValue =} \DecValTok{255}\NormalTok{),  }
   \KeywordTok{rgb}\NormalTok{(}\DecValTok{255}\NormalTok{, }\DecValTok{0}\NormalTok{, }\DecValTok{174}\NormalTok{, }\DataTypeTok{maxColorValue =} \DecValTok{255}\NormalTok{),  }
   \KeywordTok{rgb}\NormalTok{(}\DecValTok{255}\NormalTok{, }\DecValTok{136}\NormalTok{, }\DecValTok{0}\NormalTok{, }\DataTypeTok{maxColorValue =} \DecValTok{255}\NormalTok{),  }
@@ -9635,6 +9640,7 @@ Si une variable est de type \texttt{factor}, la fonction \texttt{boxplot()} perm
 \begin{Shaded}
 \begin{Highlighting}[]
 \NormalTok{df}\OperatorTok{$}\NormalTok{cat <-}\StringTok{ }\KeywordTok{sample}\NormalTok{(}\KeywordTok{c}\NormalTok{(}\StringTok{"w"}\NormalTok{, }\StringTok{"x"}\NormalTok{, }\StringTok{"y"}\NormalTok{, }\StringTok{"z"}\NormalTok{), }\DataTypeTok{size =} \DecValTok{1000}\NormalTok{, }\DataTypeTok{replace =} \OtherTok{TRUE}\NormalTok{)}
+\KeywordTok{par}\NormalTok{(}\DataTypeTok{mar =} \KeywordTok{c}\NormalTok{(}\DecValTok{4}\NormalTok{, }\DecValTok{4}\NormalTok{, }\DecValTok{1}\NormalTok{, }\DecValTok{1}\NormalTok{)) }\CommentTok{# réduction des marges}
 \KeywordTok{boxplot}\NormalTok{(df}\OperatorTok{$}\NormalTok{box3 }\OperatorTok{~}\StringTok{ }\NormalTok{df}\OperatorTok{$}\NormalTok{cat, }\DataTypeTok{col =} \KeywordTok{c}\NormalTok{(}\KeywordTok{rgb}\NormalTok{(}\DecValTok{0}\NormalTok{, }\DecValTok{94}\NormalTok{, }\DecValTok{255}\NormalTok{, }\DataTypeTok{maxColorValue =} \DecValTok{255}\NormalTok{),  }
   \KeywordTok{rgb}\NormalTok{(}\DecValTok{255}\NormalTok{, }\DecValTok{0}\NormalTok{, }\DecValTok{174}\NormalTok{, }\DataTypeTok{maxColorValue =} \DecValTok{255}\NormalTok{),  }
   \KeywordTok{rgb}\NormalTok{(}\DecValTok{255}\NormalTok{, }\DecValTok{136}\NormalTok{, }\DecValTok{0}\NormalTok{, }\DataTypeTok{maxColorValue =} \DecValTok{255}\NormalTok{),  }
@@ -9647,6 +9653,7 @@ Si une variable est de type \texttt{factor}, la fonction \texttt{boxplot()} perm
 \begin{Shaded}
 \begin{Highlighting}[]
 \NormalTok{df}\OperatorTok{$}\NormalTok{cat2 <-}\StringTok{ }\KeywordTok{sample}\NormalTok{(}\DecValTok{1}\OperatorTok{:}\DecValTok{3}\NormalTok{, }\DataTypeTok{size =} \DecValTok{1000}\NormalTok{, }\DataTypeTok{replace =} \OtherTok{TRUE}\NormalTok{)}
+\KeywordTok{par}\NormalTok{(}\DataTypeTok{mar =} \KeywordTok{c}\NormalTok{(}\DecValTok{4}\NormalTok{, }\DecValTok{4}\NormalTok{, }\DecValTok{1}\NormalTok{, }\DecValTok{1}\NormalTok{)) }\CommentTok{# réduction des marges}
 \KeywordTok{boxplot}\NormalTok{(df}\OperatorTok{$}\NormalTok{box4 }\OperatorTok{~}\StringTok{ }\NormalTok{df}\OperatorTok{$}\NormalTok{cat}\OperatorTok{*}\NormalTok{df}\OperatorTok{$}\NormalTok{cat2, }\DataTypeTok{col =} \KeywordTok{c}\NormalTok{(}
   \KeywordTok{rgb}\NormalTok{(}\DecValTok{0}\NormalTok{, }\DecValTok{94}\NormalTok{, }\DecValTok{255}\NormalTok{, }\DataTypeTok{maxColorValue =} \DecValTok{255}\NormalTok{),  }
   \KeywordTok{rgb}\NormalTok{(}\DecValTok{255}\NormalTok{, }\DecValTok{0}\NormalTok{, }\DecValTok{174}\NormalTok{, }\DataTypeTok{maxColorValue =} \DecValTok{255}\NormalTok{),  }
@@ -9662,6 +9669,7 @@ Le \texttt{boxplot} peut être représenté horizontalement ou verticalement.
 \begin{Shaded}
 \begin{Highlighting}[]
 \NormalTok{df}\OperatorTok{$}\NormalTok{cat <-}\StringTok{ }\KeywordTok{sample}\NormalTok{(}\KeywordTok{c}\NormalTok{(}\StringTok{"w"}\NormalTok{, }\StringTok{"x"}\NormalTok{, }\StringTok{"y"}\NormalTok{, }\StringTok{"z"}\NormalTok{), }\DataTypeTok{size =} \DecValTok{1000}\NormalTok{, }\DataTypeTok{replace =} \OtherTok{TRUE}\NormalTok{)}
+\KeywordTok{par}\NormalTok{(}\DataTypeTok{mar =} \KeywordTok{c}\NormalTok{(}\DecValTok{4}\NormalTok{, }\DecValTok{4}\NormalTok{, }\DecValTok{1}\NormalTok{, }\DecValTok{1}\NormalTok{)) }\CommentTok{# réduction des marges}
 \KeywordTok{boxplot}\NormalTok{(df}\OperatorTok{$}\NormalTok{box2 }\OperatorTok{~}\StringTok{ }\NormalTok{df}\OperatorTok{$}\NormalTok{cat, }\DataTypeTok{horizontal =} \OtherTok{TRUE}\NormalTok{, }
   \DataTypeTok{col =} \KeywordTok{c}\NormalTok{(}\KeywordTok{rgb}\NormalTok{(}\DecValTok{255}\NormalTok{, }\DecValTok{110}\NormalTok{, }\DecValTok{0}\NormalTok{, }\DataTypeTok{maxColorValue =} \DecValTok{255}\NormalTok{),  }
   \KeywordTok{rgb}\NormalTok{(}\DecValTok{230}\NormalTok{, }\DecValTok{255}\NormalTok{, }\DecValTok{0}\NormalTok{, }\DataTypeTok{maxColorValue =} \DecValTok{255}\NormalTok{),  }
@@ -9675,7 +9683,7 @@ Le \texttt{boxplot} peut être représenté horizontalement ou verticalement.
 \hypertarget{autres-graphiques}{%
 \section{Autres graphiques}\label{autres-graphiques}}
 
-Il existe de nombreux autres graphiques mais ceux que nous venons de voir constituent la base. Pour plus d'information et d'idées pour représenter vos données nous pouvons consulter le très beau site \url{https://www.data-to-viz.com/} ou encore la gallerie de graphiques R \url{https://www.r-graph-gallery.com/} (en anglais ; la plupart des graphiques sont réalisés avec le package ggplot2 que nous verrons plus tard). Pour plus d'idées vous pouvez aussi utiliser la demonstration du package \texttt{graphics} en utilisant la commande \texttt{demo("graphics")} (la touche ``Entrée'' permet d'afficher les graphiques).
+Il existe de nombreux autres graphiques mais ceux que nous venons de voir constituent la base. Pour plus d'information et d'idées pour représenter vos données nous pouvons consulter le très beau site \url{https://www.data-to-viz.com/} ou encore la galerie de graphiques R \url{https://www.r-graph-gallery.com/} (en anglais ; la plupart des graphiques sont réalisés avec le package ggplot2 que nous verrons plus tard). Pour plus d'idées vous pouvez aussi utiliser la démonstration du package \texttt{graphics} en utilisant la commande \texttt{demo("graphics")} (la touche ``Entrée'' permet d'afficher les graphiques).
 
 \hypertarget{conclusion-8}{%
 \section{Conclusion}\label{conclusion-8}}
@@ -9691,6 +9699,7 @@ L'utilisation des numéros de 1 à 8 correspond au noir, rouge, vert, bleu, cyan
 
 \begin{Shaded}
 \begin{Highlighting}[]
+\KeywordTok{par}\NormalTok{(}\DataTypeTok{mar =} \KeywordTok{c}\NormalTok{(}\DecValTok{2}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{1}\NormalTok{, }\DecValTok{1}\NormalTok{)) }\CommentTok{# réduction des marges}
 \KeywordTok{barplot}\NormalTok{(}\KeywordTok{sample}\NormalTok{(}\DecValTok{10}\OperatorTok{:}\DecValTok{15}\NormalTok{, }\DecValTok{8}\NormalTok{, }\DataTypeTok{replace =} \OtherTok{TRUE}\NormalTok{), }\DataTypeTok{col =} \DecValTok{1}\OperatorTok{:}\DecValTok{8}\NormalTok{, }\DataTypeTok{names.arg =} \DecValTok{1}\OperatorTok{:}\DecValTok{8}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
@@ -9700,7 +9709,7 @@ L'utilisation des numéros de 1 à 8 correspond au noir, rouge, vert, bleu, cyan
 \hypertarget{colors}{%
 \section{\texorpdfstring{\texttt{colors()}}{colors()}}\label{colors}}
 
-Pour choisir des couleurs plus agréables et mettant plus en avant nos résultats, une option consiste à les choisir dans la liste des couleurs pré-enregistrées dans R. Nous pouvons accéder à la liste des couleurs avec la fonction \texttt{colors()}
+Pour choisir des couleurs plus agréables et mettant plus en avant nos résultats, une option consiste à les choisir dans la liste des couleurs préenregistrées dans R. Nous pouvons accéder à la liste des couleurs avec la fonction \texttt{colors()}
 
 \begin{Shaded}
 \begin{Highlighting}[]
