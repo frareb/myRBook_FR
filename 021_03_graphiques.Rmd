@@ -16,6 +16,7 @@ pkgCheck <- function(x){
 	}
 }
 pkgCheck("RColorBrewer")
+par(mar = c(2, 2, 1, 1)) # réduction des marges
 display.brewer.all()
 boxplot(matrix(rnorm(1000), ncol = 10), 
   col = brewer.pal(10, "Paired"), axes = FALSE)
@@ -39,11 +40,13 @@ showPalette(Echo_gpl)
 groupTest <- sample(1:3, size = 100, replace = TRUE) 
 valueTest <- sample(1:7, size = 100, replace = TRUE)
 tableTest <- table(groupTest, valueTest)
+par(mar = c(2, 2, 1, 1)) # réduction des marges
 barplot(tableTest, 
   col = Echo_gpl, axes = FALSE, beside = TRUE)
 groupTest <- sample(1:3, size = 100, replace = TRUE) 
 valueTest <- sample(1:7, size = 100, replace = TRUE)
 tableTest <- table(groupTest, valueTest)
+par(mar = c(2, 2, 1, 1)) # réduction des marges
 barplot(tableTest, 
   col = Tango_gpl, axes = FALSE, beside = TRUE)
 ```
@@ -63,7 +66,7 @@ Le package `ggplot2` est une alternative aux fonctions de base de R pour réalis
 
 Pour revenir à `ggplot2`, commençons par un exemple avec les données `iris`. 
 
-```{r 021-03-graphiques-3}
+```{r 021-03-graphiques-3, fig.width=11, fig.height=6}
 pkgCheck <- function(x){ 
 	if (!require(x, character.only = TRUE)){
 		install.packages(x, dependencies = TRUE)
@@ -75,27 +78,34 @@ pkgCheck <- function(x){
 pkgCheck("ggplot2")
 data(iris)
 # ggplot2
-p <- ggplot(data = iris, aes(x = Sepal.Length, y = Sepal.Width))
+p <- ggplot(data = iris, aes(
+  x = Sepal.Length, 
+  y = Sepal.Width))
 p + geom_point() + ggtitle("ggplot2")
 # base
+par(mar = c(4, 4, 1.5, 1)) # réduction des marges
 plot(x = iris$Sepal.Length, y = iris$Sepal.Width, 
   main = "base", pch = 16)
 ```
 
 Maintenant séparons l'information en fonction de l'espèce de fleur.
 
-```{r 021-03-graphiques-4}
+```{r 021-03-graphiques-4, fig.width=11, fig.height=6}
 # ggplot2
-p <- ggplot(data = iris, aes(x = Sepal.Length, y = Sepal.Width, colour = Species))
+p <- ggplot(data = iris, aes(
+  x = Sepal.Length, 
+  y = Sepal.Width, 
+  colour = Species))
 p + geom_point() + ggtitle("ggplot2")
 # base
+par(mar = c(4, 4, 1.5, 1)) # réduction des marges
 plot(x = iris$Sepal.Length, y = iris$Sepal.Width, 
   main = "base", pch = 16, col = iris$Species)
 ```
 
 Il semble y avoir une relation entre largeur et longueur des sépales par espèces. 
 
-```{r 021-03-graphiques-5}
+```{r 021-03-graphiques-5, fig.width=11, fig.height=6}
 # linear regressions
 lmFits <- lapply(1:3, function(i){
   fitSp1 <- lm(iris$Sepal.Width[as.numeric(iris$Species) == i] ~ 
@@ -104,18 +114,27 @@ lmFits <- lapply(1:3, function(i){
   rSq1 <- summary(fitSp1)$r.squared
   pVal1 <- summary(fitSp1)$coefficients[2, 4]
   stat1 <- paste0("F=", round(fStat1[1], digits = 2), 
-    "; DF=", fStat1[2], "/", fStat1[3], "; r-sq=", round(rSq1, digits = 2), 
+    "; DF=", fStat1[2], "/", fStat1[3], 
+    "; r2=", round(rSq1, digits = 2), 
     "; p-val=", round(pVal1, digits = 6))
   return(list(fitSp1, stat1))
 })
 # ggplot2
-p <- ggplot(data = iris, aes(x = Sepal.Length, y = Sepal.Width, colour = Species))
-p <- p + geom_point() + ggtitle("ggplot2") + stat_smooth(method = "lm", se = FALSE)
-p <- p + annotate(geom = "text", x = 6, y = 2.250, label = lmFits[[1]][[2]], colour = 2)
-p <- p + annotate(geom = "text", x = 6, y = 2.125, label = lmFits[[2]][[2]], colour = 3)
-p <- p + annotate(geom = "text", x = 6, y = 2.000, label = lmFits[[3]][[2]], colour = 4)
+p <- ggplot(data = iris, aes(
+  x = Sepal.Length, 
+  y = Sepal.Width, 
+  colour = Species))
+p <- p + geom_point() + ggtitle("ggplot2") + 
+  stat_smooth(method = "lm", se = FALSE)
+p <- p + annotate(geom = "text", x = 6, y = 2.250, 
+  label = lmFits[[1]][[2]], colour = 2)
+p <- p + annotate(geom = "text", x = 6, y = 2.125, 
+  label = lmFits[[2]][[2]], colour = 3)
+p <- p + annotate(geom = "text", x = 6, y = 2.000, 
+  label = lmFits[[3]][[2]], colour = 4)
 p
 # base
+par(mar = c(4, 4, 1.5, 1)) # réduction des marges
 plot(x = iris$Sepal.Length, y = iris$Sepal.Width, 
   main = "base", pch = 16, col = iris$Species)
 abline(lmFits[[1]][[1]], col = 1)
@@ -130,13 +149,77 @@ Nous pouvons voir sur ces exemples que les graphiques avec `ggplot2` commencent 
 
 Dans les couches nous pouvons ajouter des aspects géométriques (le type de graphique, par exemple `geom_point()`), des statistiques (par exemple `stat_smooth()`), des annotations (par exemple `annotate()`), et bien d'autres choses liées aux axes, aux couleurs, ... La documentation complète (en anglais) peut être consultée à l'adresse https://ggplot2.tidyverse.org/ (fiche de résumé : https://github.com/rstudio/cheatsheets/blob/master/data-visualization-2.1.pdf). De nombreuses extensions à `ggplot2` sont disponibles à l'adresse http://www.ggplot2-exts.org/gallery/.
 
+Si nous souhaitons réaliser des graphiques avec le rendu de ggplot2, mais en conservant la méthode inclue avec R, il nous suffit de changer les paramètres graphiques. En voici un exemple qui pourrait servir de base à la construction d'une fonction. 
+
+```{r 021-03-graphiques-5b, fig.width=11, fig.height=6}
+par(mar = c(4, 4, 2, 8))
+plot(x = iris$Sepal.Length, y = iris$Sepal.Width, 
+  xlab = "Sepal.Length", ylab = "Sepal.Width",
+  axes = FALSE, pch = 16, col = iris$Species, 
+  panel.first = {
+    rect(par("usr")[1], 
+      par("usr")[3], 
+      par("usr")[2], 
+      par("usr")[4], 
+      col = "lightgray",  border = NA)
+    abline(v = 4:8, col = "white", lwd = 2, lty = 1)
+    abline(h = 2:5, col = "white", lwd = 2, lty = 1)
+    grid(col = "white", lwd = 1, lty = 1)
+  })
+title("base", adj = 0, line = 0.5)
+axis(1, col = NA, col.ticks = 1, cex.axis = 0.9)
+axis(2, col = NA, col.ticks = 1, las = 1, cex.axis = 0.9)
+par(xpd = TRUE)
+legend(8.2, 3.5, legend = levels(iris$Species), bty = "n", 
+  pch = 16, col = as.numeric(unique(iris$Species)), 
+  title = "Species")
+spp <- unique(iris$Species)
+tr <- lapply(spp, function(mySpp){
+  lmX <- lm(iris$Sepal.Width[iris$Species == mySpp] ~ 
+    iris$Sepal.Length[iris$Species == mySpp])
+  points(x = iris$Sepal.Length[iris$Species == mySpp], 
+    y = predict(lmX), type = 'l', lwd = 2, col = mySpp)
+})
+```
+
+Le package graphics de R permet tout comme le package ggplot2 de réaliser des graphiques de qualité mettant en valeur les résultats scientifiques. A nous de choisir le package qui correspond le mieux aux objectifs poursuivis. 
+
+```{r 021-03-graphiques-5c, fig.width=11, fig.height=6}
+plot(x = iris$Sepal.Length, y = iris$Sepal.Width, 
+  type = 'n', axes = FALSE, panel.first = {
+    grid()
+    axis(1)
+    axis(2)
+  })
+my3col <- c("#3b86ff", "#e653c8", "#ffd82b")
+spp <- unique(iris$Species)
+trash <- lapply(spp, function(mySpp){
+  lmX <- lm(iris$Sepal.Width[iris$Species == mySpp] ~ 
+    iris$Sepal.Length[iris$Species == mySpp])
+  points(x = iris$Sepal.Length[iris$Species == mySpp], 
+    y = predict(lmX), type = 'l', lwd = 2, col = my3col[mySpp])
+  myCol <- colorRampPalette(c(my3col[mySpp], "darkred"))(101)
+  colRank <- (iris$Sepal.Width[iris$Species == mySpp] - 
+    predict(lmX))^2
+  colRank <- round((colRank - min(colRank)) / 
+    (max(colRank) - min(colRank)) * 100) + 1
+  points(
+    x = iris$Sepal.Length[iris$Species == mySpp],
+    y = iris$Sepal.Width[iris$Species == mySpp], 
+    bg = my3col[mySpp], col = myCol[colRank], pch = 21, 
+    cex = 1 + colRank/100)
+})
+legend("topright", fill = my3col, 
+  legend = levels(iris$Species), bty = "n")
+```
+
 ## Les graphiques interactifs et dynamiques avec `Plotly`
 
-`Plotly` est un package permettant de réaliser des graphiques interactifs et dynamiques. Cela peut être particulièrement utile pour les résultats ayant vocation à être diffusées sur Internet. Le package s'installe comme tous les autres avec `install.packages("plotly")`. Le package est gratuit et open source. 
+`Plotly` est un package permettant de réaliser des graphiques interactifs et dynamiques. Cela peut être particulièrement utile pour les résultats ayant vocation à être diffusées sur Internet. Le package s'installe comme tous les autres avec `install.packages("plotly")`. Le package est gratuit et open source (sous license MIT -https://github.com/ropensci/plotly/blob/master/LICENSE.md-). 
 
-Cet exemple a été copié depuis le livre de Carson Sievert (https://plotly-book.cpsievert.me). Le code qui a permis de faire ce graphique est sous licence Creative Commons Attribution-NonCommercial-NoDerivs 3.0 United States License (Carson Sievert ; https://creativecommons.org/licenses/by-nc-nd/3.0/us/).
+Cet exemple a été copié depuis le site web de plotly (https://plot.ly/r/animations/). Nous pouvons visualiser l’animation dans son format HTML depuis le site web de plotly. Lors du passage de la souris au-dessus des points, le nom du pays apparaît. En cliquant sur PLAY, une animation parcours l’ensemble des années ente 1952 et 2007. 
 
-```{r 021-03-graphiques-6, echo = FALSE, message = FALSE, warning = FALSE}
+```{r 021-03-graphiques-6, echo = FALSE, message = FALSE, warning = FALSE, fig.width=11, fig.height=6}
 pkgCheck <- function(packages){
 	for(x in packages){
 		try(if (!require(x, character.only = TRUE)){

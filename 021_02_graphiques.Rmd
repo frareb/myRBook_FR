@@ -105,6 +105,7 @@ myPal <- c(
   rgb(255, 136, 0, maxColorValue = 255),  
   rgb(119, 255, 0, maxColorValue = 255))
 print(myPal)
+par(mar = c(2, 2, 1, 1)) # réduction des marges
 boxplot(matrix(rnorm(100), ncol = 5), col = myPal, axes = FALSE)
 axis(1)
 axis(2)
