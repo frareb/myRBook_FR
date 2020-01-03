@@ -121,7 +121,7 @@ Cela permet d'écrire la documentation de chaque fonction à côté de la foncti
 
 Les gestionnaires de version sur serveur sont très utiles car ils permettent à de multiples utilisateurs de contribuer à un même script. Ils constituent des outils collaboratifs très puissants. Cependant dans certains cas nous devons communiquer avec des collaborateurs non-initiés à R et ce en amont du processus de publication scientifique. Dans les cas où le code et les fichiers associés ne suffisent pas (même quand le code est lisible et reproductible), il peut être intéressant de passer par un document qui montrera le code et le résultat de son exécution dans un seul et même fichier. C’est ce que permet le package *rmarkdown* en permettant la génération de documents (eg HTML, PDF, Word) de manière dynamique (https://rmarkdown.rstudio.com/). 
 
-```{r 041-studyCase-19, fig.width=10, fig.height=6}
+```{r install-rmarkdown}
 pkgCheck <- function(x){ 
 	if (!require(x, character.only = TRUE)){
 		install.packages(x, dependencies = TRUE)
