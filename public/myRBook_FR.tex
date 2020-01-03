@@ -7121,7 +7121,7 @@ Il n'y a pas de solution optimale dans l'absolu, tout dépend des objectifs rech
 
 \begin{verbatim}
 ##    user  system elapsed 
-##    2.23    0.00    2.24
+##    2.36    0.00    2.36
 \end{verbatim}
 
 \begin{Shaded}
@@ -7132,7 +7132,7 @@ Il n'y a pas de solution optimale dans l'absolu, tout dépend des objectifs rech
 
 \begin{verbatim}
 ##    user  system elapsed 
-##    2.31    0.00    2.31
+##    2.49    0.00    2.48
 \end{verbatim}
 
 Une fonction peut avoir des valeurs par défaut pour ses arguments. C'est le cas de la plupart des fonctions existantes. Par défaut, notre fonction va désormais compter le nombre de voyelles et de consonnes dans le mot \texttt{qwerty} (les parenthèses restent nécessaires même en l'absence d'arguments).
@@ -7936,13 +7936,13 @@ En programmation, lorsque nous sommes amenés à répéter plusieurs fois la mê
 \end{Shaded}
 
 \begin{verbatim}
-##      date01   date02
-## 1 12.052055 9.622458
-## 2  9.782194 9.463362
-## 3 10.112541 9.824939
-## 4 11.826732 9.886460
-## 5 10.494577 9.064765
-## 6  8.293542 9.862837
+##      date01    date02
+## 1  9.827576  9.460126
+## 2 11.352260  9.100827
+## 3  8.847736  9.395622
+## 4  9.657811 11.074578
+## 5  9.929985  8.229914
+## 6  9.223578 10.386594
 \end{verbatim}
 
 Nous voudrions quantifier la différence entre la première et la deuxième date, puis mettre un indicateur pour savoir si cette différence est petite ou grande, par exemple avec un seuil arbitraire de 3. Donc pour chaque ligne nous pourrions faire :
@@ -8064,26 +8064,26 @@ Revenons à notre cas. Nous allons itérer sur le nombre de lignes de notre \tex
 
 \begin{verbatim}
 ##       date01    date02        dif isDifBig
-## 1  12.052055  9.622458 2.42959674    small
-## 2   9.782194  9.463362 0.31883209    small
-## 3  10.112541  9.824939 0.28760150    small
-## 4  11.826732  9.886460 1.94027125    small
-## 5  10.494577  9.064765 1.42981203    small
-## 6   8.293542  9.862837 1.56929427    small
-## 7   8.254263 10.523666 2.26940252    small
-## 8   9.701591  8.842911 0.85868020    small
-## 9  10.676905 10.094493 0.58241166    small
-## 10  9.188466  9.865580 0.67711421    small
-## 11 10.423667  8.712973 1.71069378    small
-## 12  9.873206 12.943249 3.07004339      big
-## 13  9.372099 10.661139 1.28904063    small
-## 14 10.228066  9.503512 0.72455369    small
-## 15  9.869868  9.774149 0.09571918    small
-## 16  9.465658  9.750102 0.28444421    small
-## 17 10.130446  8.933381 1.19706529    small
-## 18  9.945915 12.449075 2.50315971    small
-## 19  8.983277 10.607478 1.62420146    small
-## 20 10.963837  9.694350 1.26948724    small
+## 1   9.827576  9.460126 0.36745024    small
+## 2  11.352260  9.100827 2.25143268    small
+## 3   8.847736  9.395622 0.54788589    small
+## 4   9.657811 11.074578 1.41676693    small
+## 5   9.929985  8.229914 1.70007042    small
+## 6   9.223578 10.386594 1.16301660    small
+## 7   9.310891 10.248128 0.93723724    small
+## 8   9.427212 12.065146 2.63793428    small
+## 9   9.636473 10.670715 1.03424247    small
+## 10  9.506687 12.016605 2.50991767    small
+## 11 10.194143  9.731272 0.46287108    small
+## 12 10.038586  8.397391 1.64119523    small
+## 13  7.881479  8.897416 1.01593743    small
+## 14 10.034475  9.624918 0.40955731    small
+## 15 10.127943  9.314359 0.81358471    small
+## 16  8.469905  9.844997 1.37509218    small
+## 17  9.729061  9.710755 0.01830611    small
+## 18  8.957207 10.016501 1.05929394    small
+## 19 10.578026  9.872850 0.70517624    small
+## 20  9.491223 11.343859 1.85263584    small
 \end{verbatim}
 
 En pratique ce n'est pas la meilleure façon de réaliser cet exercice car il s'agit ici de simples calculs sur des vecteurs contenus dans une \texttt{data.frame}. R est particulièrement puissant pour effectuer des opérations sur des vecteurs. Lorsque cela est possible il faut donc toujours privilégier les opérations sur les vecteurs. Ici notre code devient :
@@ -8099,26 +8099,26 @@ En pratique ce n'est pas la meilleure façon de réaliser cet exercice car il s'
 
 \begin{verbatim}
 ##       date01    date02        dif isDifBig
-## 1  12.052055  9.622458 2.42959674    small
-## 2   9.782194  9.463362 0.31883209    small
-## 3  10.112541  9.824939 0.28760150    small
-## 4  11.826732  9.886460 1.94027125    small
-## 5  10.494577  9.064765 1.42981203    small
-## 6   8.293542  9.862837 1.56929427    small
-## 7   8.254263 10.523666 2.26940252    small
-## 8   9.701591  8.842911 0.85868020    small
-## 9  10.676905 10.094493 0.58241166    small
-## 10  9.188466  9.865580 0.67711421    small
-## 11 10.423667  8.712973 1.71069378    small
-## 12  9.873206 12.943249 3.07004339      big
-## 13  9.372099 10.661139 1.28904063    small
-## 14 10.228066  9.503512 0.72455369    small
-## 15  9.869868  9.774149 0.09571918    small
-## 16  9.465658  9.750102 0.28444421    small
-## 17 10.130446  8.933381 1.19706529    small
-## 18  9.945915 12.449075 2.50315971    small
-## 19  8.983277 10.607478 1.62420146    small
-## 20 10.963837  9.694350 1.26948724    small
+## 1   9.827576  9.460126 0.36745024    small
+## 2  11.352260  9.100827 2.25143268    small
+## 3   8.847736  9.395622 0.54788589    small
+## 4   9.657811 11.074578 1.41676693    small
+## 5   9.929985  8.229914 1.70007042    small
+## 6   9.223578 10.386594 1.16301660    small
+## 7   9.310891 10.248128 0.93723724    small
+## 8   9.427212 12.065146 2.63793428    small
+## 9   9.636473 10.670715 1.03424247    small
+## 10  9.506687 12.016605 2.50991767    small
+## 11 10.194143  9.731272 0.46287108    small
+## 12 10.038586  8.397391 1.64119523    small
+## 13  7.881479  8.897416 1.01593743    small
+## 14 10.034475  9.624918 0.40955731    small
+## 15 10.127943  9.314359 0.81358471    small
+## 16  8.469905  9.844997 1.37509218    small
+## 17  9.729061  9.710755 0.01830611    small
+## 18  8.957207 10.016501 1.05929394    small
+## 19 10.578026  9.872850 0.70517624    small
+## 20  9.491223 11.343859 1.85263584    small
 \end{verbatim}
 
 La plupart des exemples que l'on peut trouver sur Internet à propos de la boucle \texttt{for()} peuvent être remplacés par des opérations sur les vecteurs. Voici quelques exemples adaptés de plusieurs sources :
@@ -8139,7 +8139,7 @@ La plupart des exemples que l'on peut trouver sur Internet à propos de la boucl
 \end{Shaded}
 
 \begin{verbatim}
-## [1] 14
+## [1] 9
 \end{verbatim}
 
 \begin{Shaded}
@@ -8150,7 +8150,7 @@ La plupart des exemples que l'on peut trouver sur Internet à propos de la boucl
 \end{Shaded}
 
 \begin{verbatim}
-## [1] 14
+## [1] 9
 \end{verbatim}
 
 \begin{Shaded}
@@ -8196,7 +8196,7 @@ La plupart des exemples que l'on peut trouver sur Internet à propos de la boucl
 \end{Shaded}
 
 \begin{verbatim}
-## [1] 3.448
+## [1] 3.46
 \end{verbatim}
 
 \begin{Shaded}
@@ -8207,7 +8207,7 @@ La plupart des exemples que l'on peut trouver sur Internet à propos de la boucl
 \end{Shaded}
 
 \begin{verbatim}
-## [1] 3.479
+## [1] 3.521
 \end{verbatim}
 
 C'est un bon exercice de parcourir les nombreux exemples disponibles sur Internet sur la boucle \texttt{for()} et de tenter de les transformer en opérations vectorielles. Cela nous permet d'acquérir les bons réflexes de programmation avec R. La boucle \texttt{for()} reste très utile pour par exemple lire plusieurs fichiers et traiter l'information qu'ils contiennent de la même façon, faire des graphiques, ou encore lorsque les opérations vectorielles deviennent fastidieuses. Imaginons une matrice de 10 colonnes et 100 lignes. Nous voulons la somme de chaque ligne (nous verrons plus loin comment faire avec la fonction \texttt{apply()}).
@@ -8224,12 +8224,12 @@ C'est un bon exercice de parcourir les nombreux exemples disponibles sur Interne
 \end{Shaded}
 
 \begin{verbatim}
-##   [1] 332 580 666 470 424 562 584 519 472 408 520 577 522 669 550 568 451 641
-##  [19] 558 349 509 490 559 452 565 594 540 521 503 524 475 370 384 442 433 529
-##  [37] 437 499 698 578 495 348 701 472 527 620 590 518 508 210 505 498 551 544
-##  [55] 541 377 526 541 523 597 523 589 679 436 590 395 497 594 654 677 509 611
-##  [73] 534 438 425 505 604 507 460 493 422 351 533 518 512 529 383 405 629 332
-##  [91] 538 669 441 502 301 682 554 509 535 483
+##   [1] 451 448 414 372 544 433 559 492 355 542 552 393 603 481 393 390 496 479
+##  [19] 559 403 348 519 620 668 603 419 478 737 341 627 428 570 486 619 620 601
+##  [37] 583 453 451 452 385 643 568 383 437 554 412 607 576 457 576 487 379 500
+##  [55] 450 450 613 476 362 380 389 501 540 324 528 426 457 617 359 519 477 574
+##  [73] 388 488 608 590 618 389 467 588 408 533 517 524 674 384 523 447 508 372
+##  [91] 594 525 574 534 466 431 409 562 416 558
 \end{verbatim}
 
 \begin{Shaded}
@@ -8244,12 +8244,12 @@ C'est un bon exercice de parcourir les nombreux exemples disponibles sur Interne
 \end{Shaded}
 
 \begin{verbatim}
-##   [1] 332 580 666 470 424 562 584 519 472 408 520 577 522 669 550 568 451 641
-##  [19] 558 349 509 490 559 452 565 594 540 521 503 524 475 370 384 442 433 529
-##  [37] 437 499 698 578 495 348 701 472 527 620 590 518 508 210 505 498 551 544
-##  [55] 541 377 526 541 523 597 523 589 679 436 590 395 497 594 654 677 509 611
-##  [73] 534 438 425 505 604 507 460 493 422 351 533 518 512 529 383 405 629 332
-##  [91] 538 669 441 502 301 682 554 509 535 483
+##   [1] 451 448 414 372 544 433 559 492 355 542 552 393 603 481 393 390 496 479
+##  [19] 559 403 348 519 620 668 603 419 478 737 341 627 428 570 486 619 620 601
+##  [37] 583 453 451 452 385 643 568 383 437 554 412 607 576 457 576 487 379 500
+##  [55] 450 450 613 476 362 380 389 501 540 324 528 426 457 617 359 519 477 574
+##  [73] 388 488 608 590 618 389 467 588 408 533 517 524 674 384 523 447 508 372
+##  [91] 594 525 574 534 466 431 409 562 416 558
 \end{verbatim}
 
 En conclusion, il est recommandé de ne pas utiliser la boucle \texttt{for()} avec R chaque fois que cela est possible, et nous verrons dans ce chapitre des alternatives comme les boucles de la famille \texttt{apply()}.
@@ -8310,7 +8310,7 @@ La boucle \texttt{while()} est très utile pour créer des scripts qui vont effe
 
 \begin{verbatim}
 ## [1] "Number found !"
-## [1] "And I have plenty of time left: 1.52 sec"
+## [1] "And I have plenty of time left: 1.19 sec"
 \end{verbatim}
 
 Dans ce script nous générons un nombre aléatoire à deviner avec la fonction \texttt{sample()}, et chaque essai avec la même fonction \texttt{sample()}. Ensuite nous utilisons la fonction \texttt{Sys.time()} (avec un S majuscule à \texttt{Sys}), pour connaître l'heure de début de la boucle. Tant que la différence entre chaque itération de la boucle et l'heure de démarrage est inférieur à 2 secondes, la boucle \texttt{while()} va vérifier si le bon nombre a été deviné dans le test logique avec \texttt{if()} puis si c'est le cas nous informer que le nombre a été trouvé, nous dire le temps restant avant les deux secondes, puis terminer la boucle avec le mot clef \texttt{break} sur lequel nous reviendrons. En bref, \texttt{break} permet de sortir d'une boucle. Si le nombre n'a pas été deviné, la boucle fait un autre essai avec la fonction \texttt{sample()}.
@@ -8369,11 +8369,11 @@ Si nous reprenons l'exemple précédent, nous pouvons utiliser une boucle \textt
 \end{Shaded}
 
 \begin{verbatim}
-## [1] 0.282
-## [1] 0.323
-## [1] 0.161
-## [1] 0.053
-## [1] 0.815
+## [1] 0.016
+## [1] 0.78
+## [1] 0.809
+## [1] 0.189
+## [1] 0.372
 \end{verbatim}
 
 Comme la boucle \texttt{while()}, la boucle \texttt{repeat()} reste peu utilisée avec R.
@@ -8491,12 +8491,12 @@ La fonction \texttt{apply()} permet d'appliquer une fonction à tous les éléme
 \end{Shaded}
 
 \begin{verbatim}
-##   [1] 544 526 458 428 677 509 343 474 596 511 467 268 541 555 595 392 362 506
-##  [19] 466 419 307 459 522 454 583 599 683 467 526 522 547 523 608 424 440 489
-##  [37] 416 510 629 619 441 517 408 684 463 463 514 531 681 402 512 557 730 454
-##  [55] 296 526 552 731 425 573 381 513 383 345 537 422 552 536 641 517 551 562
-##  [73] 394 630 521 415 593 578 559 617 447 596 447 406 581 562 491 514 518 581
-##  [91] 506 585 471 530 613 527 527 549 485 430
+##   [1] 499 574 555 524 271 610 485 410 649 483 493 665 627 589 526 603 452 336
+##  [19] 547 538 387 580 629 312 439 410 532 441 634 546 350 448 583 435 682 674
+##  [37] 398 363 590 460 535 613 563 397 429 410 619 494 377 372 530 471 571 538
+##  [55] 479 446 522 580 633 334 582 505 589 442 543 555 386 537 582 503 514 538
+##  [73] 453 442 538 476 554 582 573 524 538 450 395 509 602 646 499 457 540 501
+##  [91] 529 568 500 591 458 369 326 516 440 523
 \end{verbatim}
 
 Si nous souhaitons connaître la médiane de chaque colonne, l'expression devient :
@@ -8508,7 +8508,7 @@ Si nous souhaitons connaître la médiane de chaque colonne, l'expression devien
 \end{Shaded}
 
 \begin{verbatim}
-##  [1] 49.0 52.5 48.5 48.0 40.0 54.0 57.0 52.0 59.5 46.0
+##  [1] 52.0 48.0 44.5 51.5 53.0 54.0 53.0 55.5 59.0 47.0
 \end{verbatim}
 
 L'argument \texttt{X} correspond à l'objet sur lequel la boucle \texttt{apply} va itérer. L'argument \texttt{MARGIN} correspond à la dimension à prendre en compte (1 pour les lignes, et 2 pour les colonnes). L'argument \texttt{FUN} correspond à la fonction à appliquer. Sur un objet de type \texttt{array}, l'argument \texttt{MARGIN} peut prendre autant de valeurs que de dimensions. Dans cet exemple \texttt{MARGIN\ =\ 1} correspond à la moyenne de chaque ligne - dimension 1 - (toutes dimensions confondues), \texttt{MARGIN\ =\ 2} correspond à la moyenne de chaque colonne - dimension 2 - (toutes dimensions confondues), et \texttt{MARGIN\ =\ 3} correspond à la moyenne de chaque dimension 3. Ci-dessous chaque calcul est réalisé de deux manières différentes pour en expliciter le fonctionnement.
@@ -8523,7 +8523,7 @@ L'argument \texttt{X} correspond à l'objet sur lequel la boucle \texttt{apply} 
 \end{Shaded}
 
 \begin{verbatim}
-##  [1] 50.41 49.19 52.35 50.22 53.50 53.48 51.52 53.32 52.93 51.05
+##  [1] 58.64 49.23 51.67 49.62 48.32 48.38 51.42 52.27 50.14 49.48
 \end{verbatim}
 
 \begin{Shaded}
@@ -8536,7 +8536,7 @@ L'argument \texttt{X} correspond à l'objet sur lequel la boucle \texttt{apply} 
 \end{Shaded}
 
 \begin{verbatim}
-##  [1] 50.41 49.19 52.35 50.22 53.50 53.48 51.52 53.32 52.93 51.05
+##  [1] 58.64 49.23 51.67 49.62 48.32 48.38 51.42 52.27 50.14 49.48
 \end{verbatim}
 
 \begin{Shaded}
@@ -8547,8 +8547,8 @@ L'argument \texttt{X} correspond à l'objet sur lequel la boucle \texttt{apply} 
 \end{Shaded}
 
 \begin{verbatim}
-##  [1] 53.40 46.34 54.16 55.26 57.04 47.24 56.10 49.38 54.12 49.10 49.70 49.02
-## [13] 53.78 49.40 51.08 46.14 58.16 51.76 55.50 49.26
+##  [1] 49.60 51.10 42.66 54.18 48.48 46.62 48.48 57.20 55.70 38.60 59.58 54.78
+## [13] 47.16 42.40 53.92 53.98 56.06 58.20 52.06 47.58
 \end{verbatim}
 
 \begin{Shaded}
@@ -8561,8 +8561,8 @@ L'argument \texttt{X} correspond à l'objet sur lequel la boucle \texttt{apply} 
 \end{Shaded}
 
 \begin{verbatim}
-##  [1] 53.40 46.34 54.16 55.26 57.04 47.24 56.10 49.38 54.12 49.10 49.70 49.02
-## [13] 53.78 49.40 51.08 46.14 58.16 51.76 55.50 49.26
+##  [1] 49.60 51.10 42.66 54.18 48.48 46.62 48.48 57.20 55.70 38.60 59.58 54.78
+## [13] 47.16 42.40 53.92 53.98 56.06 58.20 52.06 47.58
 \end{verbatim}
 
 \begin{Shaded}
@@ -8573,7 +8573,7 @@ L'argument \texttt{X} correspond à l'objet sur lequel la boucle \texttt{apply} 
 \end{Shaded}
 
 \begin{verbatim}
-## [1] 48.990 55.435 53.600 51.490 49.470
+## [1] 52.220 50.865 53.975 49.405 48.120
 \end{verbatim}
 
 \begin{Shaded}
@@ -8585,7 +8585,7 @@ L'argument \texttt{X} correspond à l'objet sur lequel la boucle \texttt{apply} 
 \end{Shaded}
 
 \begin{verbatim}
-## [1] 48.990 55.435 53.600 51.490 49.470
+## [1] 52.220 50.865 53.975 49.405 48.120
 \end{verbatim}
 
 Nous pouvons aussi calculer la moyenne pour chaque valeur de ligne et de colonne (la fonction itère alors sur la dimension 3) :
@@ -8598,27 +8598,27 @@ Nous pouvons aussi calculer la moyenne pour chaque valeur de ligne et de colonne
 
 \begin{verbatim}
 ##       [,1] [,2] [,3] [,4] [,5] [,6] [,7] [,8] [,9] [,10] [,11] [,12] [,13]
-##  [1,] 65.8 34.8 53.8 56.2 65.4 66.6 53.8 34.6 40.2  38.8  54.8  43.6  73.2
-##  [2,] 39.6 55.8 28.6 56.2 56.0 40.2 48.6 62.8 41.4  38.4  60.0  62.6  50.6
-##  [3,] 50.2 38.0 73.6 65.0 53.2 27.4 74.0 42.6 61.0  49.0  58.6  47.2  63.2
-##  [4,] 57.8 47.8 59.2 64.4 61.4 26.8 64.8 44.4 49.8  63.2  37.4  72.0  39.4
-##  [5,] 64.6 47.8 41.8 27.4 69.2 32.0 52.0 68.8 58.6  56.8  58.0  40.0  51.6
-##  [6,] 53.8 50.6 65.4 69.6 43.0 75.0 67.4 37.0 51.0  46.6  46.4  26.2  40.0
-##  [7,] 55.2 50.0 53.4 44.8 57.6 58.4 63.0 38.8 50.8  44.8  41.0  40.6  68.0
-##  [8,] 53.0 44.0 52.6 45.8 63.8 62.4 40.8 51.2 76.0  61.4  49.2  61.0  56.4
-##  [9,] 64.0 56.8 60.2 66.2 62.6 41.4 41.0 50.2 62.6  51.8  48.4  44.8  29.6
-## [10,] 30.0 37.8 53.0 57.0 38.2 42.2 55.6 63.4 49.8  40.2  43.2  52.2  65.8
+##  [1,] 73.0 59.4 57.6 69.4 67.6 49.8 42.6 76.8 59.0  35.4  70.2  43.8  49.6
+##  [2,] 47.0 45.8 56.6 47.2 18.2 54.0 52.8 71.6 49.8  35.6  50.0  62.0  21.6
+##  [3,] 42.6 51.2 66.4 35.2 47.4 54.2 60.0 49.2 45.8  42.0  43.6  43.0  46.8
+##  [4,] 53.6 56.6 35.4 61.0 66.6 38.6 46.8 53.8 54.6  23.2  70.6  62.2  46.8
+##  [5,] 43.4 49.2 19.0 43.4 53.2 55.8 45.0 53.2 48.4  49.4  50.0  68.8  61.8
+##  [6,] 65.6 52.0 12.4 53.8 36.4 24.4 32.8 48.4 50.6  36.4  60.8  82.4  53.2
+##  [7,] 50.2 50.6 61.8 57.4 67.8 47.6 43.4 77.0 65.8  38.4  65.6  40.6  53.2
+##  [8,] 32.6 60.0 47.6 55.8 64.6 55.0 61.0 42.6 42.2  32.2  66.0  39.2  45.0
+##  [9,] 49.2 32.4 24.4 69.6 36.6 49.8 50.8 42.2 69.6  40.0  48.8  52.2  38.0
+## [10,] 38.8 53.8 45.4 49.0 26.4 37.0 49.6 57.2 71.2  53.4  70.2  53.6  55.6
 ##       [,14] [,15] [,16] [,17] [,18] [,19] [,20]
-##  [1,]  53.6  64.6  23.2  57.8  53.8  32.2  41.4
-##  [2,]  52.4  54.2  32.6  51.2  51.0  47.6  54.0
-##  [3,]  34.6  54.8  48.8  39.0  49.8  50.2  66.8
-##  [4,]  27.8  30.4  52.0  63.0  66.4  38.0  38.4
-##  [5,]  73.6  53.6  39.2  82.0  55.8  59.6  37.6
-##  [6,]  54.2  56.0  56.4  70.2  64.6  51.4  44.8
-##  [7,]  34.2  47.4  36.4  66.2  52.2  77.6  50.0
-##  [8,]  70.8  42.8  45.0  32.4  21.0  71.0  65.8
-##  [9,]  38.0  41.2  61.8  65.0  65.0  63.8  44.2
-## [10,]  54.8  65.8  66.0  54.8  38.0  63.6  49.6
+##  [1,]  48.4  53.2  79.6  63.0  69.4  48.8  56.2
+##  [2,]  43.0  28.2  76.8  43.8  56.6  66.6  57.4
+##  [3,]  51.4  53.2  67.4  58.0  60.0  57.6  58.4
+##  [4,]  40.6  51.8  33.8  53.4  52.2  51.2  39.6
+##  [5,]  31.8  65.0  48.6  65.6  44.8  37.4  32.6
+##  [6,]  25.8  68.8  50.8  59.4  63.2  40.8  49.6
+##  [7,]  55.0  55.4  15.0  51.6  38.8  49.4  43.8
+##  [8,]  41.0  61.0  48.2  53.0  63.6  72.0  62.8
+##  [9,]  28.6  71.2  70.8  57.0  66.2  55.2  50.2
+## [10,]  58.4  31.4  48.8  55.8  67.2  41.6  25.2
 \end{verbatim}
 
 \hypertarget{l17sapply}{%
@@ -8642,19 +8642,19 @@ Comme indiqué dans la documentation, \texttt{lapply()} renvoie une liste de mê
 
 \begin{verbatim}
 ## $a
-##  [1] 21 62 28 87  2 95 40 17 65 25
+##  [1] 98 30 71 32  7 97 44 96 94 22
 ## 
 ## $b
-##  [1] 91 73 21 26 17  2 86 41 40 37
+##  [1]  1 64 23 31 63  7 59 88 76 89
 ## 
 ## $c
-##  [1] 46 13 49  4 69 24 67 58 94 40
+##  [1]  24  14  37  82  93  78 100  45  35   3
 ## 
 ## $d
-##  [1] 20 64 42 76 31  5 25 82 17 29
+##  [1]  7 64 98 99 17 16 93 55 97 34
 ## 
 ## $e
-##  [1] 21 68 28 95 98 66 43 27 85 60
+##  [1] 73 50 67  5  3 26 69 18 15 24
 \end{verbatim}
 
 \begin{Shaded}
@@ -8667,19 +8667,19 @@ Comme indiqué dans la documentation, \texttt{lapply()} renvoie une liste de mê
 
 \begin{verbatim}
 ## $a
-## [1] 44.2
+## [1] 59.1
 ## 
 ## $b
-## [1] 43.4
+## [1] 50.1
 ## 
 ## $c
-## [1] 46.4
+## [1] 51.1
 ## 
 ## $d
-## [1] 39.1
+## [1] 58
 ## 
 ## $e
-## [1] 59.1
+## [1] 35
 \end{verbatim}
 
 Cela revient à une boucle \texttt{for()} itérant sur les élément de l'objet de type \texttt{list}.
@@ -8707,19 +8707,19 @@ Cependant, la boucle \texttt{for()} ne renvoie pas de résultat. Pour l'obtenir,
 
 \begin{verbatim}
 ## $a
-## [1] 44.2
+## [1] 59.1
 ## 
 ## $b
-## [1] 43.4
+## [1] 50.1
 ## 
 ## $c
-## [1] 46.4
+## [1] 51.1
 ## 
 ## $d
-## [1] 39.1
+## [1] 58
 ## 
 ## $e
-## [1] 59.1
+## [1] 35
 \end{verbatim}
 
 Nous comprenons alors que la fonction \texttt{lapply()} est bien plus performante car elle va à la fois permettre de procéder à notre tâche tout en fournissant un résultat qui peut être stocké directement dans un objet (ou pas comme c'est le cas ici).
@@ -8742,19 +8742,19 @@ Comme pour la fonction \texttt{apply()}, nous pouvons passer des arguments suppl
 
 \begin{verbatim}
 ## $a
-##  [1]  2  5  2 NA  5 NA  3  3  5 NA
+##  [1]  2  1  4  5  4 NA  5  5  2  5
 ## 
 ## $b
-##  [1] 4 5 5 4 1 3 3 5 5 3
+##  [1] 1 2 3 2 1 3 3 1 1 4
 ## 
 ## $c
-##  [1]  2  2 NA  3  3  2  1  5  3  5
+##  [1] 1 3 4 1 4 3 4 4 5 3
 ## 
 ## $d
-##  [1]  1 NA  3  3 NA  5  3 NA  1  2
+##  [1] 3 4 1 4 4 4 2 2 2 1
 ## 
 ## $e
-##  [1] 1 4 5 5 4 1 3 3 3 1
+##  [1] 2 1 2 5 4 3 1 4 3 3
 \end{verbatim}
 
 \begin{Shaded}
@@ -8768,16 +8768,16 @@ Comme pour la fonction \texttt{apply()}, nous pouvons passer des arguments suppl
 ## [1] NA
 ## 
 ## $b
-## [1] 3.8
+## [1] 2.1
 ## 
 ## $c
-## [1] NA
+## [1] 3.2
 ## 
 ## $d
-## [1] NA
+## [1] 2.7
 ## 
 ## $e
-## [1] 3
+## [1] 2.8
 \end{verbatim}
 
 \begin{Shaded}
@@ -8788,19 +8788,19 @@ Comme pour la fonction \texttt{apply()}, nous pouvons passer des arguments suppl
 
 \begin{verbatim}
 ## $a
-## [1] 3.571429
+## [1] 3.666667
 ## 
 ## $b
-## [1] 3.8
+## [1] 2.1
 ## 
 ## $c
-## [1] 2.888889
+## [1] 3.2
 ## 
 ## $d
-## [1] 2.571429
+## [1] 2.7
 ## 
 ## $e
-## [1] 3
+## [1] 2.8
 \end{verbatim}
 
 Pour plus de lisibilité ou si plusieurs opérations sont à réaliser au sein de l'argument \texttt{FUN}, nous pouvons utiliser l'écriture suivante :
@@ -8815,19 +8815,19 @@ Pour plus de lisibilité ou si plusieurs opérations sont à réaliser au sein d
 
 \begin{verbatim}
 ## $a
-## [1] 3.571429
+## [1] 3.666667
 ## 
 ## $b
-## [1] 3.8
+## [1] 2.1
 ## 
 ## $c
-## [1] 2.888889
+## [1] 3.2
 ## 
 ## $d
-## [1] 2.571429
+## [1] 2.7
 ## 
 ## $e
-## [1] 3
+## [1] 2.8
 \end{verbatim}
 
 Par exemple si nous souhaitons obtenir \texttt{i\^{}2} si la moyenne est supérieure à 3, et \texttt{i\^{}3} sinon :
@@ -8847,19 +8847,19 @@ Par exemple si nous souhaitons obtenir \texttt{i\^{}2} si la moyenne est supéri
 
 \begin{verbatim}
 ## $a
-##  [1]  4 25  4 NA 25 NA  9  9 25 NA
+##  [1]  4  1 16 25 16 NA 25 25  4 25
 ## 
 ## $b
-##  [1] 16 25 25 16  1  9  9 25 25  9
+##  [1]  1  8 27  8  1 27 27  1  1 64
 ## 
 ## $c
-##  [1]   8   8  NA  27  27   8   1 125  27 125
+##  [1]  1  9 16  1 16  9 16 16 25  9
 ## 
 ## $d
-##  [1]   1  NA  27  27  NA 125  27  NA   1   8
+##  [1] 27 64  1 64 64 64  8  8  8  1
 ## 
 ## $e
-##  [1]   1  64 125 125  64   1  27  27  27   1
+##  [1]   8   1   8 125  64  27   1  64  27  27
 \end{verbatim}
 
 \hypertarget{l17lapply}{%
@@ -8877,19 +8877,19 @@ La fonction \texttt{sapply()} est une version modifiée de la fonction \texttt{l
 
 \begin{verbatim}
 ## $a
-## [1] 3.571429
+## [1] 3.666667
 ## 
 ## $b
-## [1] 3.8
+## [1] 2.1
 ## 
 ## $c
-## [1] 2.888889
+## [1] 3.2
 ## 
 ## $d
-## [1] 2.571429
+## [1] 2.7
 ## 
 ## $e
-## [1] 3
+## [1] 2.8
 \end{verbatim}
 
 \begin{Shaded}
@@ -8902,7 +8902,7 @@ La fonction \texttt{sapply()} est une version modifiée de la fonction \texttt{l
 
 \begin{verbatim}
 ##        a        b        c        d        e 
-## 3.571429 3.800000 2.888889 2.571429 3.000000
+## 3.666667 2.100000 3.200000 2.700000 2.800000
 \end{verbatim}
 
 La fonction \texttt{sapply()} est intéressante pour récupérer par exemple le nième élément de chacun des éléments d'une \texttt{list}. La fonction qui est appelée pour faire cela est \texttt{\textquotesingle{}{[}{[}\textquotesingle{}}.
@@ -8914,8 +8914,8 @@ La fonction \texttt{sapply()} est intéressante pour récupérer par exemple le 
 \end{Shaded}
 
 \begin{verbatim}
-##  a  b  c  d  e 
-##  5  5  2 NA  4
+## a b c d e 
+## 1 2 3 4 1
 \end{verbatim}
 
 \hypertarget{l17tapply}{%
@@ -8935,17 +8935,17 @@ La fonction \texttt{tapply()} permet d'appliquer une fonction en prenant comme �
 \end{Shaded}
 
 \begin{verbatim}
-##    species     perf1    perf2    perf3
-## 1        J 10.069826 14637.91 20.38172
-## 2        I 10.330476 19595.51 13.67188
-## 3        H  9.833387 10433.73 17.26647
-## 4        C 10.184329 21868.18 23.62127
-## 5        G  9.147395 17264.54 23.88249
-## 6        A 10.012933 30045.17 22.71658
-## 7        I  9.792673 21771.40 25.45193
-## 8        D  9.167221 22926.03 35.75713
-## 9        I 10.475887 64909.87 24.15885
-## 10       D 10.999614 19394.27  8.03269
+##    species     perf1     perf2     perf3
+## 1        D 10.447920 17057.901  5.167615
+## 2        H 10.980464 14542.054 25.701800
+## 3        H 10.456067 24808.231 27.405859
+## 4        A  9.706042 25603.906 14.088012
+## 5        F 11.057030 34654.657 11.657903
+## 6        A 10.569535 13166.724 16.328015
+## 7        J  9.720683 36485.015 11.444855
+## 8        C  9.808413  7550.923 20.844263
+## 9        E  9.336336 10970.004 20.816295
+## 10       H 10.350998 14761.485 28.427358
 \end{verbatim}
 
 Nous pouvons facilement obtenir un résumé des performances pour chaque espèce avec la fonction \texttt{tapply()} et la fonction \texttt{summary()}.
@@ -8959,43 +8959,43 @@ Nous pouvons facilement obtenir un résumé des performances pour chaque espèce
 \begin{verbatim}
 ## $A
 ##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-##   8.785   9.553   9.978   9.979  10.331  11.692 
+##   8.551   9.604   9.892   9.930  10.309  11.357 
 ## 
 ## $B
 ##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-##   8.554   9.633  10.018  10.061  10.384  11.595 
+##   8.512   9.681  10.002  10.037  10.369  11.612 
 ## 
 ## $C
 ##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-##   8.660   9.631   9.944   9.982  10.333  11.437 
+##   8.454   9.575   9.949  10.004  10.404  11.306 
 ## 
 ## $D
 ##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-##   8.875   9.626  10.011   9.960  10.274  11.109 
+##   8.991   9.659   9.935   9.979  10.308  11.144 
 ## 
 ## $E
 ##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-##   8.594   9.549   9.895   9.929  10.315  11.325 
+##   8.975   9.773  10.016  10.025  10.408  10.918 
 ## 
 ## $F
 ##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-##   9.018   9.726  10.105  10.021  10.340  10.956 
+##   8.850   9.766  10.052  10.070  10.338  11.618 
 ## 
 ## $G
 ##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-##   8.921   9.529   9.871   9.943  10.360  11.310 
+##   8.463   9.816  10.105  10.068  10.379  11.388 
 ## 
 ## $H
 ##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-##   8.543   9.697   9.965   9.966  10.330  10.930 
+##   8.510   9.616  10.043  10.023  10.409  11.279 
 ## 
 ## $I
 ##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-##   8.924   9.661  10.016   9.994  10.326  10.997 
+##   8.520   9.788  10.067  10.052  10.334  11.398 
 ## 
 ## $J
 ##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-##   8.793   9.750   9.994   9.999  10.273  10.890
+##   8.892   9.601  10.039   9.995  10.370  11.548
 \end{verbatim}
 
 Nous pouvons aussi obtenir la valeur moyenne de chacune des performances en combinant une fonction \texttt{sapply()} avec la fonction \texttt{tapply()}et en utilisant la fonction \texttt{mean()}.
@@ -9010,16 +9010,16 @@ Nous pouvons aussi obtenir la valeur moyenne de chacune des performances en comb
 
 \begin{verbatim}
 ##        [,1]     [,2]     [,3]
-## A  9.979148 24974.03 20.08232
-## B 10.061045 25946.06 20.58453
-## C  9.981740 25537.63 20.13469
-## D  9.959886 24282.24 20.53083
-## E  9.928546 27016.87 19.95594
-## F 10.021498 24806.68 19.67419
-## G  9.942825 28593.11 20.56907
-## H  9.966145 26071.10 20.49733
-## I  9.994441 28031.12 19.64545
-## J  9.998681 25850.54 20.72173
+## A  9.930244 22918.82 19.64792
+## B 10.037098 24040.77 19.90784
+## C 10.003705 22940.25 19.38273
+## D  9.979272 25469.52 21.52779
+## E 10.024706 25752.59 20.10498
+## F 10.069574 24407.51 19.76387
+## G 10.067845 26361.55 19.83951
+## H 10.022503 24084.16 21.31025
+## I 10.052012 23707.95 20.35977
+## J  9.994871 25882.16 20.49543
 \end{verbatim}
 
 La fonction \texttt{sapply()} est utilisée pour spécifier la colonne (la colonne 2 correspond à perf1, la colonne 3 correspond à perf2, et la colonne 4 correspond à perf3). La colonne prend alors le nom de variable \texttt{i}. Ensuite, pour chaque colonne \texttt{dfSpecies{[},i{]}}, nous pouvons utiliser la fonction \texttt{tapply()} pour calculer la moyenne par espèce. Voici l'équivalent avec des boucles \texttt{for()}.
@@ -9054,16 +9054,16 @@ Et si nous voulons le résultat sous forme d'une \texttt{data.frame}, le code de
 
 \begin{verbatim}
 ##       perf1    perf2    perf3
-## A  9.979148 24974.03 20.08232
-## B 10.061045 25946.06 20.58453
-## C  9.981740 25537.63 20.13469
-## D  9.959886 24282.24 20.53083
-## E  9.928546 27016.87 19.95594
-## F 10.021498 24806.68 19.67419
-## G  9.942825 28593.11 20.56907
-## H  9.966145 26071.10 20.49733
-## I  9.994441 28031.12 19.64545
-## J  9.998681 25850.54 20.72173
+## A  9.930244 22918.82 19.64792
+## B 10.037098 24040.77 19.90784
+## C 10.003705 22940.25 19.38273
+## D  9.979272 25469.52 21.52779
+## E 10.024706 25752.59 20.10498
+## F 10.069574 24407.51 19.76387
+## G 10.067845 26361.55 19.83951
+## H 10.022503 24084.16 21.31025
+## I 10.052012 23707.95 20.35977
+## J  9.994871 25882.16 20.49543
 \end{verbatim}
 
 \hypertarget{l17mapply}{%
@@ -9224,6 +9224,27 @@ Pour un gros projet avec de nombreuses fonctions destinées à être utilisées 
 \end{Shaded}
 
 Cela permet d'écrire la documentation de chaque fonction à côté de la fonction. Le package roxigen2 va ensuite générer à partir de ces commentaires un document d'aide accessible avec la fonction \texttt{\textquotesingle{}?\textquotesingle{}}. A moins que nous écrivions un nouveau package, les commentaires simples suffiront, et le développement d'un package sort du cadre de ce livre.
+
+\hypertarget{communiquer-avec-rmarkdown}{%
+\section{Communiquer avec rmarkdown}\label{communiquer-avec-rmarkdown}}
+
+Les gestionnaires de version sur serveur sont très utiles car ils permettent à de multiples utilisateurs de contribuer à un même script. Ils constituent des outils collaboratifs très puissants. Cependant dans certains cas nous devons communiquer avec des collaborateurs non-initiés à R et ce en amont du processus de publication scientifique. Dans les cas où le code et les fichiers associés ne suffisent pas (même quand le code est lisible et reproductible), il peut être intéressant de passer par un document qui montrera le code et le résultat de son exécution dans un seul et même fichier. C'est ce que permet le package \emph{rmarkdown} en permettant la génération de documents (eg HTML, PDF, Word) de manière dynamique (\url{https://rmarkdown.rstudio.com/}).
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{pkgCheck <-}\StringTok{ }\ControlFlowTok{function}\NormalTok{(x)\{ }
+    \ControlFlowTok{if}\NormalTok{ (}\OperatorTok{!}\KeywordTok{require}\NormalTok{(x, }\DataTypeTok{character.only =} \OtherTok{TRUE}\NormalTok{))\{}
+        \KeywordTok{install.packages}\NormalTok{(x, }\DataTypeTok{dependencies =} \OtherTok{TRUE}\NormalTok{)}
+        \ControlFlowTok{if}\NormalTok{(}\OperatorTok{!}\KeywordTok{require}\NormalTok{(x, }\DataTypeTok{character.only =} \OtherTok{TRUE}\NormalTok{)) \{}
+            \KeywordTok{stop}\NormalTok{()}
+\NormalTok{        \}}
+\NormalTok{    \}}
+\NormalTok{\}}
+\KeywordTok{pkgCheck}\NormalTok{(}\StringTok{"rmarkdown"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+Les possibilités de \emph{rmarkdown} sont immenses et sortent du cadre de ce livre. Deux ressources de référence couvrent tous les aspects de \emph{rmarkdown} : le site web officiel (\url{https://rmarkdown.rstudio.com}) et le livre numérique de Yihui Xie, J. J. Allaire, Garrett Grolemund (R Markdown: The Definitive Guide ; \url{https://bookdown.org/yihui/rmarkdown/}). Pour aller plus loin, nous pourrons consulter le livre numérique de Yihui Xie (bookdown: Authoring Books and Technical Documents with R Markdown ; \url{https://bookdown.org/yihui/bookdown/}).
 
 \hypertarget{conclusion-7}{%
 \section{Conclusion}\label{conclusion-7}}
@@ -9404,6 +9425,7 @@ Il est souvent utile de faire figurer des lignes verticales ou horizontales pour
 \begin{Highlighting}[]
 \NormalTok{myX <-}\StringTok{ }\KeywordTok{rnorm}\NormalTok{(}\DecValTok{100}\NormalTok{)}
 \NormalTok{myY <-}\StringTok{ }\KeywordTok{rnorm}\NormalTok{(}\DecValTok{100}\NormalTok{)}
+\KeywordTok{par}\NormalTok{(}\DataTypeTok{mar =} \KeywordTok{c}\NormalTok{(}\DecValTok{4}\NormalTok{, }\DecValTok{4}\NormalTok{, }\DecValTok{1}\NormalTok{, }\DecValTok{1}\NormalTok{)) }\CommentTok{# réduction des marges}
 \KeywordTok{plot}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ myX, }\DataTypeTok{y =}\NormalTok{ myY, }
   \DataTypeTok{xlim =} \KeywordTok{c}\NormalTok{(}\OperatorTok{-}\DecValTok{4}\NormalTok{, }\DecValTok{4}\NormalTok{), }\DataTypeTok{ylim =} \KeywordTok{c}\NormalTok{(}\OperatorTok{-}\DecValTok{4}\NormalTok{, }\DecValTok{4}\NormalTok{),   }
   \DataTypeTok{pch =} \DecValTok{16}\NormalTok{, }\DataTypeTok{cex =} \FloatTok{1.5}\NormalTok{, }
@@ -9461,6 +9483,7 @@ Le graphique en barres se fait au moyen de la fonction \texttt{barplot()}.
 \begin{Shaded}
 \begin{Highlighting}[]
 \NormalTok{myX <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\DecValTok{4}\NormalTok{, }\DecValTok{5}\NormalTok{, }\DecValTok{8}\NormalTok{)}
+\KeywordTok{par}\NormalTok{(}\DataTypeTok{mar =} \KeywordTok{c}\NormalTok{(}\DecValTok{3}\NormalTok{, }\DecValTok{3}\NormalTok{, }\DecValTok{1}\NormalTok{, }\DecValTok{1}\NormalTok{)) }\CommentTok{# réduction des marges}
 \KeywordTok{barplot}\NormalTok{(myX, }\DataTypeTok{names.arg =} \KeywordTok{c}\NormalTok{(}\StringTok{"A"}\NormalTok{, }\StringTok{"B"}\NormalTok{, }\StringTok{"C"}\NormalTok{))}
 \end{Highlighting}
 \end{Shaded}
@@ -9579,6 +9602,7 @@ Un \texttt{barplot} peut bien sûr prendre des valeurs positives ou négatives.
 
 \begin{Shaded}
 \begin{Highlighting}[]
+\KeywordTok{par}\NormalTok{(}\DataTypeTok{mar =} \KeywordTok{c}\NormalTok{(}\DecValTok{3}\NormalTok{, }\DecValTok{1}\NormalTok{, }\DecValTok{1}\NormalTok{, }\DecValTok{1}\NormalTok{)) }\CommentTok{# réduction des marges}
 \KeywordTok{barplot}\NormalTok{(}\KeywordTok{rnorm}\NormalTok{(}\DecValTok{20}\NormalTok{), }\DataTypeTok{horiz =} \OtherTok{TRUE}\NormalTok{, }\DataTypeTok{col =} \KeywordTok{rainbow}\NormalTok{(}\DecValTok{20}\NormalTok{))}
 \end{Highlighting}
 \end{Shaded}
@@ -9838,6 +9862,7 @@ Les palettes sont des jeux de couleurs représentées sous forme d'un \texttt{ve
 
 \begin{Shaded}
 \begin{Highlighting}[]
+\KeywordTok{par}\NormalTok{(}\DataTypeTok{mar =} \KeywordTok{c}\NormalTok{(}\DecValTok{2}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{1}\NormalTok{, }\DecValTok{1}\NormalTok{)) }\CommentTok{# réduction des marges}
 \KeywordTok{boxplot}\NormalTok{(}\KeywordTok{matrix}\NormalTok{(}\KeywordTok{rnorm}\NormalTok{(}\DecValTok{100}\NormalTok{), }\DataTypeTok{ncol =} \DecValTok{5}\NormalTok{), }\DataTypeTok{col =}\NormalTok{ myPal, }\DataTypeTok{axes =} \OtherTok{FALSE}\NormalTok{)}
 \KeywordTok{axis}\NormalTok{(}\DecValTok{1}\NormalTok{)}
 \KeywordTok{axis}\NormalTok{(}\DecValTok{2}\NormalTok{)}
@@ -10046,6 +10071,7 @@ Le package \texttt{RColorBrewer} est un package populaire qui contient des palet
 \NormalTok{    \}}
 \NormalTok{\}}
 \KeywordTok{pkgCheck}\NormalTok{(}\StringTok{"RColorBrewer"}\NormalTok{)}
+\KeywordTok{par}\NormalTok{(}\DataTypeTok{mar =} \KeywordTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{4}\NormalTok{, }\DecValTok{1}\NormalTok{, }\DecValTok{1}\NormalTok{)) }\CommentTok{# réduction des marges}
 \KeywordTok{display.brewer.all}\NormalTok{()}
 \end{Highlighting}
 \end{Shaded}
@@ -10054,6 +10080,7 @@ Le package \texttt{RColorBrewer} est un package populaire qui contient des palet
 
 \begin{Shaded}
 \begin{Highlighting}[]
+\KeywordTok{par}\NormalTok{(}\DataTypeTok{mar =} \KeywordTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{1}\NormalTok{, }\DecValTok{1}\NormalTok{, }\DecValTok{1}\NormalTok{)) }\CommentTok{# réduction des marges}
 \KeywordTok{boxplot}\NormalTok{(}\KeywordTok{matrix}\NormalTok{(}\KeywordTok{rnorm}\NormalTok{(}\DecValTok{1000}\NormalTok{), }\DataTypeTok{ncol =} \DecValTok{10}\NormalTok{), }
   \DataTypeTok{col =} \KeywordTok{brewer.pal}\NormalTok{(}\DecValTok{10}\NormalTok{, }\StringTok{"Paired"}\NormalTok{), }\DataTypeTok{axes =} \OtherTok{FALSE}\NormalTok{)}
 \end{Highlighting}
@@ -10088,6 +10115,7 @@ Le package \texttt{palettesForR} est un autre package contenant des palettes pr�
 \NormalTok{groupTest <-}\StringTok{ }\KeywordTok{sample}\NormalTok{(}\DecValTok{1}\OperatorTok{:}\DecValTok{3}\NormalTok{, }\DataTypeTok{size =} \DecValTok{100}\NormalTok{, }\DataTypeTok{replace =} \OtherTok{TRUE}\NormalTok{) }
 \NormalTok{valueTest <-}\StringTok{ }\KeywordTok{sample}\NormalTok{(}\DecValTok{1}\OperatorTok{:}\DecValTok{7}\NormalTok{, }\DataTypeTok{size =} \DecValTok{100}\NormalTok{, }\DataTypeTok{replace =} \OtherTok{TRUE}\NormalTok{)}
 \NormalTok{tableTest <-}\StringTok{ }\KeywordTok{table}\NormalTok{(groupTest, valueTest)}
+\KeywordTok{par}\NormalTok{(}\DataTypeTok{mar =} \KeywordTok{c}\NormalTok{(}\DecValTok{2}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{1}\NormalTok{, }\DecValTok{1}\NormalTok{)) }\CommentTok{# réduction des marges}
 \KeywordTok{barplot}\NormalTok{(tableTest, }
   \DataTypeTok{col =}\NormalTok{ Echo_gpl, }\DataTypeTok{axes =} \OtherTok{FALSE}\NormalTok{, }\DataTypeTok{beside =} \OtherTok{TRUE}\NormalTok{)}
 \end{Highlighting}
@@ -10100,6 +10128,7 @@ Le package \texttt{palettesForR} est un autre package contenant des palettes pr�
 \NormalTok{groupTest <-}\StringTok{ }\KeywordTok{sample}\NormalTok{(}\DecValTok{1}\OperatorTok{:}\DecValTok{3}\NormalTok{, }\DataTypeTok{size =} \DecValTok{100}\NormalTok{, }\DataTypeTok{replace =} \OtherTok{TRUE}\NormalTok{) }
 \NormalTok{valueTest <-}\StringTok{ }\KeywordTok{sample}\NormalTok{(}\DecValTok{1}\OperatorTok{:}\DecValTok{7}\NormalTok{, }\DataTypeTok{size =} \DecValTok{100}\NormalTok{, }\DataTypeTok{replace =} \OtherTok{TRUE}\NormalTok{)}
 \NormalTok{tableTest <-}\StringTok{ }\KeywordTok{table}\NormalTok{(groupTest, valueTest)}
+\KeywordTok{par}\NormalTok{(}\DataTypeTok{mar =} \KeywordTok{c}\NormalTok{(}\DecValTok{2}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{1}\NormalTok{, }\DecValTok{1}\NormalTok{)) }\CommentTok{# réduction des marges}
 \KeywordTok{barplot}\NormalTok{(tableTest, }
   \DataTypeTok{col =}\NormalTok{ Tango_gpl, }\DataTypeTok{axes =} \OtherTok{FALSE}\NormalTok{, }\DataTypeTok{beside =} \OtherTok{TRUE}\NormalTok{)}
 \end{Highlighting}
@@ -10144,7 +10173,9 @@ Pour revenir à \texttt{ggplot2}, commençons par un exemple avec les données \
 \KeywordTok{pkgCheck}\NormalTok{(}\StringTok{"ggplot2"}\NormalTok{)}
 \KeywordTok{data}\NormalTok{(iris)}
 \CommentTok{# ggplot2}
-\NormalTok{p <-}\StringTok{ }\KeywordTok{ggplot}\NormalTok{(}\DataTypeTok{data =}\NormalTok{ iris, }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ Sepal.Length, }\DataTypeTok{y =}\NormalTok{ Sepal.Width))}
+\NormalTok{p <-}\StringTok{ }\KeywordTok{ggplot}\NormalTok{(}\DataTypeTok{data =}\NormalTok{ iris, }\KeywordTok{aes}\NormalTok{(}
+  \DataTypeTok{x =}\NormalTok{ Sepal.Length, }
+  \DataTypeTok{y =}\NormalTok{ Sepal.Width))}
 \NormalTok{p }\OperatorTok{+}\StringTok{ }\KeywordTok{geom_point}\NormalTok{() }\OperatorTok{+}\StringTok{ }\KeywordTok{ggtitle}\NormalTok{(}\StringTok{"ggplot2"}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
@@ -10154,6 +10185,7 @@ Pour revenir à \texttt{ggplot2}, commençons par un exemple avec les données \
 \begin{Shaded}
 \begin{Highlighting}[]
 \CommentTok{# base}
+\KeywordTok{par}\NormalTok{(}\DataTypeTok{mar =} \KeywordTok{c}\NormalTok{(}\DecValTok{4}\NormalTok{, }\DecValTok{4}\NormalTok{, }\FloatTok{1.5}\NormalTok{, }\DecValTok{1}\NormalTok{)) }\CommentTok{# réduction des marges}
 \KeywordTok{plot}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ iris}\OperatorTok{$}\NormalTok{Sepal.Length, }\DataTypeTok{y =}\NormalTok{ iris}\OperatorTok{$}\NormalTok{Sepal.Width, }
   \DataTypeTok{main =} \StringTok{"base"}\NormalTok{, }\DataTypeTok{pch =} \DecValTok{16}\NormalTok{)}
 \end{Highlighting}
@@ -10166,7 +10198,10 @@ Maintenant séparons l'information en fonction de l'espèce de fleur.
 \begin{Shaded}
 \begin{Highlighting}[]
 \CommentTok{# ggplot2}
-\NormalTok{p <-}\StringTok{ }\KeywordTok{ggplot}\NormalTok{(}\DataTypeTok{data =}\NormalTok{ iris, }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ Sepal.Length, }\DataTypeTok{y =}\NormalTok{ Sepal.Width, }\DataTypeTok{colour =}\NormalTok{ Species))}
+\NormalTok{p <-}\StringTok{ }\KeywordTok{ggplot}\NormalTok{(}\DataTypeTok{data =}\NormalTok{ iris, }\KeywordTok{aes}\NormalTok{(}
+  \DataTypeTok{x =}\NormalTok{ Sepal.Length, }
+  \DataTypeTok{y =}\NormalTok{ Sepal.Width, }
+  \DataTypeTok{colour =}\NormalTok{ Species))}
 \NormalTok{p }\OperatorTok{+}\StringTok{ }\KeywordTok{geom_point}\NormalTok{() }\OperatorTok{+}\StringTok{ }\KeywordTok{ggtitle}\NormalTok{(}\StringTok{"ggplot2"}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
@@ -10176,6 +10211,7 @@ Maintenant séparons l'information en fonction de l'espèce de fleur.
 \begin{Shaded}
 \begin{Highlighting}[]
 \CommentTok{# base}
+\KeywordTok{par}\NormalTok{(}\DataTypeTok{mar =} \KeywordTok{c}\NormalTok{(}\DecValTok{4}\NormalTok{, }\DecValTok{4}\NormalTok{, }\FloatTok{1.5}\NormalTok{, }\DecValTok{1}\NormalTok{)) }\CommentTok{# réduction des marges}
 \KeywordTok{plot}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ iris}\OperatorTok{$}\NormalTok{Sepal.Length, }\DataTypeTok{y =}\NormalTok{ iris}\OperatorTok{$}\NormalTok{Sepal.Width, }
   \DataTypeTok{main =} \StringTok{"base"}\NormalTok{, }\DataTypeTok{pch =} \DecValTok{16}\NormalTok{, }\DataTypeTok{col =}\NormalTok{ iris}\OperatorTok{$}\NormalTok{Species)}
 \end{Highlighting}
@@ -10195,16 +10231,24 @@ Il semble y avoir une relation entre largeur et longueur des sépales par espèc
 \NormalTok{  rSq1 <-}\StringTok{ }\KeywordTok{summary}\NormalTok{(fitSp1)}\OperatorTok{$}\NormalTok{r.squared}
 \NormalTok{  pVal1 <-}\StringTok{ }\KeywordTok{summary}\NormalTok{(fitSp1)}\OperatorTok{$}\NormalTok{coefficients[}\DecValTok{2}\NormalTok{, }\DecValTok{4}\NormalTok{]}
 \NormalTok{  stat1 <-}\StringTok{ }\KeywordTok{paste0}\NormalTok{(}\StringTok{"F="}\NormalTok{, }\KeywordTok{round}\NormalTok{(fStat1[}\DecValTok{1}\NormalTok{], }\DataTypeTok{digits =} \DecValTok{2}\NormalTok{), }
-    \StringTok{"; DF="}\NormalTok{, fStat1[}\DecValTok{2}\NormalTok{], }\StringTok{"/"}\NormalTok{, fStat1[}\DecValTok{3}\NormalTok{], }\StringTok{"; r-sq="}\NormalTok{, }\KeywordTok{round}\NormalTok{(rSq1, }\DataTypeTok{digits =} \DecValTok{2}\NormalTok{), }
+    \StringTok{"; DF="}\NormalTok{, fStat1[}\DecValTok{2}\NormalTok{], }\StringTok{"/"}\NormalTok{, fStat1[}\DecValTok{3}\NormalTok{], }
+    \StringTok{"; r2="}\NormalTok{, }\KeywordTok{round}\NormalTok{(rSq1, }\DataTypeTok{digits =} \DecValTok{2}\NormalTok{), }
     \StringTok{"; p-val="}\NormalTok{, }\KeywordTok{round}\NormalTok{(pVal1, }\DataTypeTok{digits =} \DecValTok{6}\NormalTok{))}
   \KeywordTok{return}\NormalTok{(}\KeywordTok{list}\NormalTok{(fitSp1, stat1))}
 \NormalTok{\})}
 \CommentTok{# ggplot2}
-\NormalTok{p <-}\StringTok{ }\KeywordTok{ggplot}\NormalTok{(}\DataTypeTok{data =}\NormalTok{ iris, }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ Sepal.Length, }\DataTypeTok{y =}\NormalTok{ Sepal.Width, }\DataTypeTok{colour =}\NormalTok{ Species))}
-\NormalTok{p <-}\StringTok{ }\NormalTok{p }\OperatorTok{+}\StringTok{ }\KeywordTok{geom_point}\NormalTok{() }\OperatorTok{+}\StringTok{ }\KeywordTok{ggtitle}\NormalTok{(}\StringTok{"ggplot2"}\NormalTok{) }\OperatorTok{+}\StringTok{ }\KeywordTok{stat_smooth}\NormalTok{(}\DataTypeTok{method =} \StringTok{"lm"}\NormalTok{, }\DataTypeTok{se =} \OtherTok{FALSE}\NormalTok{)}
-\NormalTok{p <-}\StringTok{ }\NormalTok{p }\OperatorTok{+}\StringTok{ }\KeywordTok{annotate}\NormalTok{(}\DataTypeTok{geom =} \StringTok{"text"}\NormalTok{, }\DataTypeTok{x =} \DecValTok{6}\NormalTok{, }\DataTypeTok{y =} \FloatTok{2.250}\NormalTok{, }\DataTypeTok{label =}\NormalTok{ lmFits[[}\DecValTok{1}\NormalTok{]][[}\DecValTok{2}\NormalTok{]], }\DataTypeTok{colour =} \DecValTok{2}\NormalTok{)}
-\NormalTok{p <-}\StringTok{ }\NormalTok{p }\OperatorTok{+}\StringTok{ }\KeywordTok{annotate}\NormalTok{(}\DataTypeTok{geom =} \StringTok{"text"}\NormalTok{, }\DataTypeTok{x =} \DecValTok{6}\NormalTok{, }\DataTypeTok{y =} \FloatTok{2.125}\NormalTok{, }\DataTypeTok{label =}\NormalTok{ lmFits[[}\DecValTok{2}\NormalTok{]][[}\DecValTok{2}\NormalTok{]], }\DataTypeTok{colour =} \DecValTok{3}\NormalTok{)}
-\NormalTok{p <-}\StringTok{ }\NormalTok{p }\OperatorTok{+}\StringTok{ }\KeywordTok{annotate}\NormalTok{(}\DataTypeTok{geom =} \StringTok{"text"}\NormalTok{, }\DataTypeTok{x =} \DecValTok{6}\NormalTok{, }\DataTypeTok{y =} \FloatTok{2.000}\NormalTok{, }\DataTypeTok{label =}\NormalTok{ lmFits[[}\DecValTok{3}\NormalTok{]][[}\DecValTok{2}\NormalTok{]], }\DataTypeTok{colour =} \DecValTok{4}\NormalTok{)}
+\NormalTok{p <-}\StringTok{ }\KeywordTok{ggplot}\NormalTok{(}\DataTypeTok{data =}\NormalTok{ iris, }\KeywordTok{aes}\NormalTok{(}
+  \DataTypeTok{x =}\NormalTok{ Sepal.Length, }
+  \DataTypeTok{y =}\NormalTok{ Sepal.Width, }
+  \DataTypeTok{colour =}\NormalTok{ Species))}
+\NormalTok{p <-}\StringTok{ }\NormalTok{p }\OperatorTok{+}\StringTok{ }\KeywordTok{geom_point}\NormalTok{() }\OperatorTok{+}\StringTok{ }\KeywordTok{ggtitle}\NormalTok{(}\StringTok{"ggplot2"}\NormalTok{) }\OperatorTok{+}\StringTok{ }
+\StringTok{  }\KeywordTok{stat_smooth}\NormalTok{(}\DataTypeTok{method =} \StringTok{"lm"}\NormalTok{, }\DataTypeTok{se =} \OtherTok{FALSE}\NormalTok{)}
+\NormalTok{p <-}\StringTok{ }\NormalTok{p }\OperatorTok{+}\StringTok{ }\KeywordTok{annotate}\NormalTok{(}\DataTypeTok{geom =} \StringTok{"text"}\NormalTok{, }\DataTypeTok{x =} \DecValTok{6}\NormalTok{, }\DataTypeTok{y =} \FloatTok{2.250}\NormalTok{, }
+  \DataTypeTok{label =}\NormalTok{ lmFits[[}\DecValTok{1}\NormalTok{]][[}\DecValTok{2}\NormalTok{]], }\DataTypeTok{colour =} \DecValTok{2}\NormalTok{)}
+\NormalTok{p <-}\StringTok{ }\NormalTok{p }\OperatorTok{+}\StringTok{ }\KeywordTok{annotate}\NormalTok{(}\DataTypeTok{geom =} \StringTok{"text"}\NormalTok{, }\DataTypeTok{x =} \DecValTok{6}\NormalTok{, }\DataTypeTok{y =} \FloatTok{2.125}\NormalTok{, }
+  \DataTypeTok{label =}\NormalTok{ lmFits[[}\DecValTok{2}\NormalTok{]][[}\DecValTok{2}\NormalTok{]], }\DataTypeTok{colour =} \DecValTok{3}\NormalTok{)}
+\NormalTok{p <-}\StringTok{ }\NormalTok{p }\OperatorTok{+}\StringTok{ }\KeywordTok{annotate}\NormalTok{(}\DataTypeTok{geom =} \StringTok{"text"}\NormalTok{, }\DataTypeTok{x =} \DecValTok{6}\NormalTok{, }\DataTypeTok{y =} \FloatTok{2.000}\NormalTok{, }
+  \DataTypeTok{label =}\NormalTok{ lmFits[[}\DecValTok{3}\NormalTok{]][[}\DecValTok{2}\NormalTok{]], }\DataTypeTok{colour =} \DecValTok{4}\NormalTok{)}
 \NormalTok{p}
 \end{Highlighting}
 \end{Shaded}
@@ -10214,6 +10258,7 @@ Il semble y avoir une relation entre largeur et longueur des sépales par espèc
 \begin{Shaded}
 \begin{Highlighting}[]
 \CommentTok{# base}
+\KeywordTok{par}\NormalTok{(}\DataTypeTok{mar =} \KeywordTok{c}\NormalTok{(}\DecValTok{4}\NormalTok{, }\DecValTok{4}\NormalTok{, }\FloatTok{1.5}\NormalTok{, }\DecValTok{1}\NormalTok{)) }\CommentTok{# réduction des marges}
 \KeywordTok{plot}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ iris}\OperatorTok{$}\NormalTok{Sepal.Length, }\DataTypeTok{y =}\NormalTok{ iris}\OperatorTok{$}\NormalTok{Sepal.Width, }
   \DataTypeTok{main =} \StringTok{"base"}\NormalTok{, }\DataTypeTok{pch =} \DecValTok{16}\NormalTok{, }\DataTypeTok{col =}\NormalTok{ iris}\OperatorTok{$}\NormalTok{Species)}
 \KeywordTok{abline}\NormalTok{(lmFits[[}\DecValTok{1}\NormalTok{]][[}\DecValTok{1}\NormalTok{]], }\DataTypeTok{col =} \DecValTok{1}\NormalTok{)}
@@ -10231,24 +10276,131 @@ Nous pouvons voir sur ces exemples que les graphiques avec \texttt{ggplot2} comm
 
 Dans les couches nous pouvons ajouter des aspects géométriques (le type de graphique, par exemple \texttt{geom\_point()}), des statistiques (par exemple \texttt{stat\_smooth()}), des annotations (par exemple \texttt{annotate()}), et bien d'autres choses liées aux axes, aux couleurs, \ldots{} La documentation complète (en anglais) peut être consultée à l'adresse \url{https://ggplot2.tidyverse.org/} (fiche de résumé : \url{https://github.com/rstudio/cheatsheets/blob/master/data-visualization-2.1.pdf}). De nombreuses extensions à \texttt{ggplot2} sont disponibles à l'adresse \url{http://www.ggplot2-exts.org/gallery/}.
 
+Si nous souhaitons réaliser des graphiques avec le rendu de ggplot2, mais en conservant la méthode inclue avec R, il nous suffit de changer les paramètres graphiques. En voici un exemple qui pourrait servir de base à la construction d'une fonction.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{par}\NormalTok{(}\DataTypeTok{mar =} \KeywordTok{c}\NormalTok{(}\DecValTok{4}\NormalTok{, }\DecValTok{4}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{8}\NormalTok{))}
+\KeywordTok{plot}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ iris}\OperatorTok{$}\NormalTok{Sepal.Length, }\DataTypeTok{y =}\NormalTok{ iris}\OperatorTok{$}\NormalTok{Sepal.Width, }
+  \DataTypeTok{xlab =} \StringTok{"Sepal.Length"}\NormalTok{, }\DataTypeTok{ylab =} \StringTok{"Sepal.Width"}\NormalTok{,}
+  \DataTypeTok{axes =} \OtherTok{FALSE}\NormalTok{, }\DataTypeTok{pch =} \DecValTok{16}\NormalTok{, }\DataTypeTok{col =}\NormalTok{ iris}\OperatorTok{$}\NormalTok{Species, }
+  \DataTypeTok{panel.first =}\NormalTok{ \{}
+    \KeywordTok{rect}\NormalTok{(}\KeywordTok{par}\NormalTok{(}\StringTok{"usr"}\NormalTok{)[}\DecValTok{1}\NormalTok{], }
+      \KeywordTok{par}\NormalTok{(}\StringTok{"usr"}\NormalTok{)[}\DecValTok{3}\NormalTok{], }
+      \KeywordTok{par}\NormalTok{(}\StringTok{"usr"}\NormalTok{)[}\DecValTok{2}\NormalTok{], }
+      \KeywordTok{par}\NormalTok{(}\StringTok{"usr"}\NormalTok{)[}\DecValTok{4}\NormalTok{], }
+      \DataTypeTok{col =} \StringTok{"lightgray"}\NormalTok{,  }\DataTypeTok{border =} \OtherTok{NA}\NormalTok{)}
+    \KeywordTok{abline}\NormalTok{(}\DataTypeTok{v =} \DecValTok{4}\OperatorTok{:}\DecValTok{8}\NormalTok{, }\DataTypeTok{col =} \StringTok{"white"}\NormalTok{, }\DataTypeTok{lwd =} \DecValTok{2}\NormalTok{, }\DataTypeTok{lty =} \DecValTok{1}\NormalTok{)}
+    \KeywordTok{abline}\NormalTok{(}\DataTypeTok{h =} \DecValTok{2}\OperatorTok{:}\DecValTok{5}\NormalTok{, }\DataTypeTok{col =} \StringTok{"white"}\NormalTok{, }\DataTypeTok{lwd =} \DecValTok{2}\NormalTok{, }\DataTypeTok{lty =} \DecValTok{1}\NormalTok{)}
+    \KeywordTok{grid}\NormalTok{(}\DataTypeTok{col =} \StringTok{"white"}\NormalTok{, }\DataTypeTok{lwd =} \DecValTok{1}\NormalTok{, }\DataTypeTok{lty =} \DecValTok{1}\NormalTok{)}
+\NormalTok{  \})}
+\KeywordTok{title}\NormalTok{(}\StringTok{"base"}\NormalTok{, }\DataTypeTok{adj =} \DecValTok{0}\NormalTok{, }\DataTypeTok{line =} \FloatTok{0.5}\NormalTok{)}
+\KeywordTok{axis}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DataTypeTok{col =} \OtherTok{NA}\NormalTok{, }\DataTypeTok{col.ticks =} \DecValTok{1}\NormalTok{, }\DataTypeTok{cex.axis =} \FloatTok{0.9}\NormalTok{)}
+\KeywordTok{axis}\NormalTok{(}\DecValTok{2}\NormalTok{, }\DataTypeTok{col =} \OtherTok{NA}\NormalTok{, }\DataTypeTok{col.ticks =} \DecValTok{1}\NormalTok{, }\DataTypeTok{las =} \DecValTok{1}\NormalTok{, }\DataTypeTok{cex.axis =} \FloatTok{0.9}\NormalTok{)}
+\KeywordTok{par}\NormalTok{(}\DataTypeTok{xpd =} \OtherTok{TRUE}\NormalTok{)}
+\KeywordTok{legend}\NormalTok{(}\FloatTok{8.2}\NormalTok{, }\FloatTok{3.5}\NormalTok{, }\DataTypeTok{legend =} \KeywordTok{levels}\NormalTok{(iris}\OperatorTok{$}\NormalTok{Species), }\DataTypeTok{bty =} \StringTok{"n"}\NormalTok{, }
+  \DataTypeTok{pch =} \DecValTok{16}\NormalTok{, }\DataTypeTok{col =} \KeywordTok{as.numeric}\NormalTok{(}\KeywordTok{unique}\NormalTok{(iris}\OperatorTok{$}\NormalTok{Species)), }
+  \DataTypeTok{title =} \StringTok{"Species"}\NormalTok{)}
+\NormalTok{spp <-}\StringTok{ }\KeywordTok{unique}\NormalTok{(iris}\OperatorTok{$}\NormalTok{Species)}
+\NormalTok{tr <-}\StringTok{ }\KeywordTok{lapply}\NormalTok{(spp, }\ControlFlowTok{function}\NormalTok{(mySpp)\{}
+\NormalTok{  lmX <-}\StringTok{ }\KeywordTok{lm}\NormalTok{(iris}\OperatorTok{$}\NormalTok{Sepal.Width[iris}\OperatorTok{$}\NormalTok{Species }\OperatorTok{==}\StringTok{ }\NormalTok{mySpp] }\OperatorTok{~}\StringTok{ }
+\StringTok{    }\NormalTok{iris}\OperatorTok{$}\NormalTok{Sepal.Length[iris}\OperatorTok{$}\NormalTok{Species }\OperatorTok{==}\StringTok{ }\NormalTok{mySpp])}
+  \KeywordTok{points}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ iris}\OperatorTok{$}\NormalTok{Sepal.Length[iris}\OperatorTok{$}\NormalTok{Species }\OperatorTok{==}\StringTok{ }\NormalTok{mySpp], }
+    \DataTypeTok{y =} \KeywordTok{predict}\NormalTok{(lmX), }\DataTypeTok{type =} \StringTok{'l'}\NormalTok{, }\DataTypeTok{lwd =} \DecValTok{2}\NormalTok{, }\DataTypeTok{col =}\NormalTok{ mySpp)}
+\NormalTok{\})}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{myRBook_FR_files/figure-latex/021-03-graphiques-5b-1.pdf}
+
+Le package graphics de R permet tout comme le package ggplot2 de réaliser des graphiques de qualité mettant en valeur les résultats scientifiques. A nous de choisir le package qui correspond le mieux aux objectifs poursuivis.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{plot}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ iris}\OperatorTok{$}\NormalTok{Sepal.Length, }\DataTypeTok{y =}\NormalTok{ iris}\OperatorTok{$}\NormalTok{Sepal.Width, }
+  \DataTypeTok{type =} \StringTok{'n'}\NormalTok{, }\DataTypeTok{axes =} \OtherTok{FALSE}\NormalTok{, }\DataTypeTok{panel.first =}\NormalTok{ \{}
+    \KeywordTok{grid}\NormalTok{()}
+    \KeywordTok{axis}\NormalTok{(}\DecValTok{1}\NormalTok{)}
+    \KeywordTok{axis}\NormalTok{(}\DecValTok{2}\NormalTok{)}
+\NormalTok{  \})}
+\NormalTok{my3col <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\StringTok{"#3b86ff"}\NormalTok{, }\StringTok{"#e653c8"}\NormalTok{, }\StringTok{"#ffd82b"}\NormalTok{)}
+\NormalTok{spp <-}\StringTok{ }\KeywordTok{unique}\NormalTok{(iris}\OperatorTok{$}\NormalTok{Species)}
+\NormalTok{trash <-}\StringTok{ }\KeywordTok{lapply}\NormalTok{(spp, }\ControlFlowTok{function}\NormalTok{(mySpp)\{}
+\NormalTok{  lmX <-}\StringTok{ }\KeywordTok{lm}\NormalTok{(iris}\OperatorTok{$}\NormalTok{Sepal.Width[iris}\OperatorTok{$}\NormalTok{Species }\OperatorTok{==}\StringTok{ }\NormalTok{mySpp] }\OperatorTok{~}\StringTok{ }
+\StringTok{    }\NormalTok{iris}\OperatorTok{$}\NormalTok{Sepal.Length[iris}\OperatorTok{$}\NormalTok{Species }\OperatorTok{==}\StringTok{ }\NormalTok{mySpp])}
+  \KeywordTok{points}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ iris}\OperatorTok{$}\NormalTok{Sepal.Length[iris}\OperatorTok{$}\NormalTok{Species }\OperatorTok{==}\StringTok{ }\NormalTok{mySpp], }
+    \DataTypeTok{y =} \KeywordTok{predict}\NormalTok{(lmX), }\DataTypeTok{type =} \StringTok{'l'}\NormalTok{, }\DataTypeTok{lwd =} \DecValTok{2}\NormalTok{, }\DataTypeTok{col =}\NormalTok{ my3col[mySpp])}
+\NormalTok{  myCol <-}\StringTok{ }\KeywordTok{colorRampPalette}\NormalTok{(}\KeywordTok{c}\NormalTok{(my3col[mySpp], }\StringTok{"darkred"}\NormalTok{))(}\DecValTok{101}\NormalTok{)}
+\NormalTok{  colRank <-}\StringTok{ }\NormalTok{(iris}\OperatorTok{$}\NormalTok{Sepal.Width[iris}\OperatorTok{$}\NormalTok{Species }\OperatorTok{==}\StringTok{ }\NormalTok{mySpp] }\OperatorTok{-}\StringTok{ }
+\StringTok{    }\KeywordTok{predict}\NormalTok{(lmX))}\OperatorTok{^}\DecValTok{2}
+\NormalTok{  colRank <-}\StringTok{ }\KeywordTok{round}\NormalTok{((colRank }\OperatorTok{-}\StringTok{ }\KeywordTok{min}\NormalTok{(colRank)) }\OperatorTok{/}\StringTok{ }
+\StringTok{    }\NormalTok{(}\KeywordTok{max}\NormalTok{(colRank) }\OperatorTok{-}\StringTok{ }\KeywordTok{min}\NormalTok{(colRank)) }\OperatorTok{*}\StringTok{ }\DecValTok{100}\NormalTok{) }\OperatorTok{+}\StringTok{ }\DecValTok{1}
+  \KeywordTok{points}\NormalTok{(}
+    \DataTypeTok{x =}\NormalTok{ iris}\OperatorTok{$}\NormalTok{Sepal.Length[iris}\OperatorTok{$}\NormalTok{Species }\OperatorTok{==}\StringTok{ }\NormalTok{mySpp],}
+    \DataTypeTok{y =}\NormalTok{ iris}\OperatorTok{$}\NormalTok{Sepal.Width[iris}\OperatorTok{$}\NormalTok{Species }\OperatorTok{==}\StringTok{ }\NormalTok{mySpp], }
+    \DataTypeTok{bg =}\NormalTok{ my3col[mySpp], }\DataTypeTok{col =}\NormalTok{ myCol[colRank], }\DataTypeTok{pch =} \DecValTok{21}\NormalTok{, }
+    \DataTypeTok{cex =} \DecValTok{1} \OperatorTok{+}\StringTok{ }\NormalTok{colRank}\OperatorTok{/}\DecValTok{100}\NormalTok{)}
+\NormalTok{\})}
+\KeywordTok{legend}\NormalTok{(}\StringTok{"topright"}\NormalTok{, }\DataTypeTok{fill =}\NormalTok{ my3col, }
+  \DataTypeTok{legend =} \KeywordTok{levels}\NormalTok{(iris}\OperatorTok{$}\NormalTok{Species), }\DataTypeTok{bty =} \StringTok{"n"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{myRBook_FR_files/figure-latex/021-03-graphiques-5c-1.pdf}
+
 \hypertarget{les-graphiques-interactifs-et-dynamiques-avec-plotly}{%
 \section{\texorpdfstring{Les graphiques interactifs et dynamiques avec \texttt{Plotly}}{Les graphiques interactifs et dynamiques avec Plotly}}\label{les-graphiques-interactifs-et-dynamiques-avec-plotly}}
 
-\texttt{Plotly} est un package permettant de réaliser des graphiques interactifs et dynamiques. Cela peut être particulièrement utile pour les résultats ayant vocation à être diffusées sur Internet. Le package s'installe comme tous les autres avec \texttt{install.packages("plotly")}. Le package est gratuit et open source.
+\texttt{Plotly} est un package permettant de réaliser des graphiques interactifs et dynamiques. Cela peut être particulièrement utile pour les résultats ayant vocation à être diffusées sur Internet. Le package s'installe comme tous les autres avec \texttt{install.packages("plotly")}. Le package est gratuit et open source (sous license MIT -\url{https://github.com/ropensci/plotly/blob/master/LICENSE.md-}).
 
-Cet exemple a été copié depuis le livre de Carson Sievert (\url{https://plotly-book.cpsievert.me}). Le code qui a permis de faire ce graphique est sous licence Creative Commons Attribution-NonCommercial-NoDerivs 3.0 United States License (Carson Sievert ; \url{https://creativecommons.org/licenses/by-nc-nd/3.0/us/}).
+Cet exemple a été copié depuis le site web de plotly (\url{https://plot.ly/r/animations/}). Nous pouvons visualiser l'animation dans son format HTML depuis le site web de plotly. Lors du passage de la souris au-dessus des points, le nom du pays apparaît. En cliquant sur PLAY, une animation parcours l'ensemble des années ente 1952 et 2007.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{pkgCheck <-}\StringTok{ }\ControlFlowTok{function}\NormalTok{(packages)\{}
+    \ControlFlowTok{for}\NormalTok{(x }\ControlFlowTok{in}\NormalTok{ packages)\{}
+        \KeywordTok{try}\NormalTok{(}\ControlFlowTok{if}\NormalTok{ (}\OperatorTok{!}\KeywordTok{require}\NormalTok{(x, }\DataTypeTok{character.only =} \OtherTok{TRUE}\NormalTok{))\{}
+            \KeywordTok{install.packages}\NormalTok{(x, }\DataTypeTok{dependencies =} \OtherTok{TRUE}\NormalTok{)}
+            \ControlFlowTok{if}\NormalTok{(}\OperatorTok{!}\KeywordTok{require}\NormalTok{(x, }\DataTypeTok{character.only =} \OtherTok{TRUE}\NormalTok{)) \{}
+                \KeywordTok{stop}\NormalTok{()}
+\NormalTok{            \}}
+\NormalTok{        \})}
+\NormalTok{    \}}
+\NormalTok{\}}
+\KeywordTok{pkgCheck}\NormalTok{(}\KeywordTok{c}\NormalTok{(}\StringTok{"plotly"}\NormalTok{, }\StringTok{"gapminder"}\NormalTok{))}
+
+\NormalTok{p <-}\StringTok{ }\NormalTok{gapminder }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{plot_ly}\NormalTok{(}
+    \DataTypeTok{x =} \OperatorTok{~}\NormalTok{gdpPercap, }
+    \DataTypeTok{y =} \OperatorTok{~}\NormalTok{lifeExp, }
+    \DataTypeTok{size =} \OperatorTok{~}\NormalTok{pop, }
+    \DataTypeTok{color =} \OperatorTok{~}\NormalTok{continent, }
+    \DataTypeTok{frame =} \OperatorTok{~}\NormalTok{year, }
+    \DataTypeTok{text =} \OperatorTok{~}\NormalTok{country, }
+    \DataTypeTok{hoverinfo =} \StringTok{"text"}\NormalTok{,}
+    \DataTypeTok{type =} \StringTok{'scatter'}\NormalTok{,}
+    \DataTypeTok{mode =} \StringTok{'markers'}
+\NormalTok{  ) }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{layout}\NormalTok{(}
+    \DataTypeTok{xaxis =} \KeywordTok{list}\NormalTok{(}
+      \DataTypeTok{type =} \StringTok{"log"}
+\NormalTok{    )}
+\NormalTok{  )}
+\NormalTok{p}
+\end{Highlighting}
+\end{Shaded}
 
 \includegraphics{myRBook_FR_files/figure-latex/021-03-graphiques-6-1.pdf}
 
 \hypertarget{conclusion-10}{%
 \section{Conclusion}\label{conclusion-10}}
 
-Ce chapitre nous a permis de survoler d'autres options graphiques et en particulier les packages \texttt{ggplot2} et \texttt{plotly}. Des livres spécifiques (en anglais) couvrent tous les aspects de ces packages, ici l'objectif est de savoir que ces options existent pour y avoir recours si besoin. Les sites web ``Data to Viz'' et ``r-graph gallery'' (\url{https://www.data-to-viz.com} ; \url{https://www.r-graph-gallery.com/}) permettront de se faire une idée des possibilités offertes par R quant aux représentations graphiques. Le chapitre suivant traite des processus nécessaires pour transformer un graphique R en une figure publiable dans un article scientifique. A très bientôt !
+Ce chapitre nous a permis de survoler d'autres options graphiques et en particulier les packages \texttt{ggplot2} et \texttt{plotly}. Des livres spécifiques (en anglais) couvrent tous les aspects de ces packages, ici l'objectif est de savoir que ces options existent pour y avoir recours si besoin. Les sites web ``Data to Viz'' et ``r-graph gallery'' (\url{https://www.data-to-viz.com} ; \url{https://www.r-graph-gallery.com/}) permettront de se faire une idée des possibilités offertes par R quant aux représentations graphiques. Le chapitre suivant traite des processus nécessaires pour transformer un graphique R en une figure publiable dans un article scientifique.
 
 \hypertarget{graph4}{%
 \chapter{Du graphique à la figure dans un article scientifique}\label{graph4}}
 
-Une fois nos résultats obtenus, il est primordial de les publier. Ce n'est qu'en publiant nos résultats que nous participons à la science. Cela peut se faire via des communications dans des congrès, via des posters, ou encore (et c'est le plus fréquent), via des articles scientifiques.
+Une fois nos résultats obtenus, il est utile de les communiquer et ainsi de contribuer à la science. Cela peut se faire via des communications dans des congrès, via des posters, ou encore (et c'est le plus fréquent), via des articles scientifiques. Le choix de la revue sort du cadre de ce livre et les exemples montrés ici n'ont été choisi que pour mettre en évidence la diversité des règles à suivre en fonction des revues.
 
 Dans les articles scientifiques, les résultats graphiques prennent la forme de \emph{figures} qui sont souvent le fruit de un ou plusieurs graphiques. Ces figures suivent des critères bien précis dictés par la revue. Prenons cet exemple adapté et traduit du guide de la revue PLoS :
 
@@ -10256,7 +10408,7 @@ Dans les articles scientifiques, les résultats graphiques prennent la forme de 
 
 Il est difficile de respecter toutes ces contraintes avec R. C'est pourquoi nous allons utiliser des logiciels tiers pour transformer nos graphiques en figures. Nous allons utiliser Inkscape pour la mise en page et Gimp pour la transformation dans les formats requis.
 
-Quant on prend une photo, chaque pixel prend une valeur qui va définir la couleur du pixel, donc en zoomant sur une photo on va voir apparaître les pixels (nous perdons en netteté). C'est une image \emph{matricielle}. Dans une image \emph{vectorielle}, les éléments sont codés sous forme de segments, nous ne perdons pas en qualité car chaque élément conserve ses coordonées (Figure \ref{fig:matVec}). L'avantage des images vectorielles est que l'on peut modifier les éléments de l'image sans perdre en qualité. C'est ce que nous allons faire avec Inkscape. L'avantage des images matricielles est que l'on peut choisir entre de très nombreux formats (dont TIFF). C'est ce que nous allons faire avec Gimp.
+Quand on prend une photo, chaque pixel prend une valeur qui va définir la couleur du pixel, donc en zoomant sur une photo on va voir apparaître les pixels (nous perdons en netteté). C'est une image \emph{matricielle}. Dans une image \emph{vectorielle}, les éléments sont codés sous forme de segments, nous ne perdons pas en qualité car chaque élément conserve ses coordonnées (Figure \ref{fig:matVec}). L'avantage des images vectorielles est que l'on peut modifier les éléments de l'image sans perdre en qualité. C'est ce que nous allons faire avec Inkscape. L'avantage des images matricielles est que l'on peut choisir entre de très nombreux formats (dont TIFF). C'est ce que nous allons faire avec Gimp.
 
 \begin{figure}
 \includegraphics[width=4.85in]{myFigures/matVec} \caption{Image matricielle et vectorielle.\label{fig:matVec}}\label{fig:matVec}
@@ -10281,7 +10433,7 @@ Expliciter toutes les fonctionnalités de Inkscape sort du cadre de ce livre, ma
 \end{Highlighting}
 \end{Shaded}
 
-Ensuite il nous suffira d'importer notre pdf sous Inkscape pour le modifier. Par défaut le PDF sera \emph{groupé} en un seul élément. Pour accéder aux sous éléments de notre figure, nous pouvons degrouper l'élément avec le raccourci \texttt{Ctrl+Shift+g}. Il est conseillé d'ajouter un fond blanc à notre figure pour éviter la transparence (un simple rectangle blanc sans bordure fera l'affaire). Une fois notre figure prête à être exportée, il nous faut la sauvegarder dans un fichier PNG avec le raccourci \texttt{Ctrl+Shift+e}, et passer à The Gimp.
+Ensuite il nous suffira d'importer notre pdf sous Inkscape pour le modifier. Par défaut le PDF sera \emph{groupé} en un seul élément. Pour accéder aux sous éléments de notre figure, nous pouvons dégrouper l'élément avec le raccourci \texttt{Ctrl+Shift+g}. Il est conseillé d'ajouter un fond blanc à notre figure pour éviter la transparence (un simple rectangle blanc sans bordure fera l'affaire). Une fois notre figure prête à être exportée, il nous faut la sauvegarder dans un fichier PNG avec le raccourci \texttt{Ctrl+Shift+e}, et passer à The Gimp.
 
 \hypertarget{the-gimp}{%
 \section{The Gimp}\label{the-gimp}}
@@ -10316,11 +10468,19 @@ Science & 9; 12.7; 18.4 & NA & AI, EPS, PDF, TIF, JPEG & 300 dpi & Helvetica & p
 \end{tabular}
 \end{table}
 
-\hypertarget{part-etude-de-cas}{%
-\part{Etude de cas}\label{part-etude-de-cas}}
+\hypertarget{conclusion-11}{%
+\section{Conclusion}\label{conclusion-11}}
+
+Ce chapitre est différent des autres car il ne traite pas directement de R. Il est néanmoins important car il montre une des nombreuses possibilités pour passer d'un graphique sous R à une figure dans un article scientifique. A l'usage de Inkscape et de Gimp, nous verrons rapidement que certaines modifications sont plus faciles à réaliser que sous R. Il s'agira alors de trouver le bon compromis entre R et ces deux logiciels pour la réalisation de nos figures. Il est bon de noter que les modifications apportées a posteriori ne sont pas reproductibles. Il faudra veiller à ce que les rendus sous R soit suffisant pour interpréter les données et assurer la reproductibilité des résultats.
+
+\hypertarget{index}{%
+\chapter{Index}\label{index}}
+
+\hypertarget{part-annexes}{%
+\part{Annexes}\label{part-annexes}}
 
 \hypertarget{studyCase001}{%
-\chapter{Analyser des données de datalogger de température}\label{studyCase001}}
+\chapter{Manipuler des dates et des heures : données de datalogger de température}\label{studyCase001}}
 
 Dans les études de biologie, d'écologie ou d'agronomie, nous utilisons fréquemment des données de température provenant de dataloggers. Dans cette étude de cas, nous verrons comment analyser ces données en utilisant les données de température de l'altiplano bolivien près de la ville de El Alto. La première étape consiste à transformer les données du datalogger en un format facile à lire pour R. Nous utiliserons un fichier CSV et la fonction \protect\hyperlink{import}{\texttt{read.table()}}. Le fichier peut être téléchargé à partir du site Web du livre sur GitHub (\url{https://github.com/frareb/myRBook_FR/blob/master/myFiles/E05C13.csv}), ou alors lu directement par R depuis sa source (\url{https://raw.githubusercontent.com/frareb/myRBook_FR/master/myFiles/E05C13.csv}).
 
@@ -10505,6 +10665,7 @@ Nous pouvons visualiser les données avec la fonction \texttt{plot()}.
 
 \begin{Shaded}
 \begin{Highlighting}[]
+\KeywordTok{par}\NormalTok{(}\DataTypeTok{mar =} \KeywordTok{c}\NormalTok{(}\DecValTok{4}\NormalTok{, }\DecValTok{4}\NormalTok{, }\DecValTok{1}\NormalTok{, }\DecValTok{1}\NormalTok{)) }\CommentTok{# réduction des marges}
 \KeywordTok{plot}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ bdd}\OperatorTok{$}\NormalTok{day, }\DataTypeTok{y =}\NormalTok{ bdd}\OperatorTok{$}\NormalTok{temp, }
     \DataTypeTok{type =} \StringTok{'l'}\NormalTok{, }\DataTypeTok{ylim =} \KeywordTok{c}\NormalTok{(}\OperatorTok{-}\DecValTok{15}\NormalTok{, }\DecValTok{40}\NormalTok{), }
     \DataTypeTok{xlab =} \StringTok{"Temps"}\NormalTok{, }\DataTypeTok{ylab =} \StringTok{"Température (°C)"}\NormalTok{)}
@@ -10520,6 +10681,7 @@ Nous pouvons simplifier les informations en ne calculant que les températures m
 \NormalTok{tempDayMean <-}\StringTok{ }\KeywordTok{tapply}\NormalTok{(bdd}\OperatorTok{$}\NormalTok{temp, }\DataTypeTok{INDEX =}\NormalTok{ bdd}\OperatorTok{$}\NormalTok{day, }\DataTypeTok{FUN =}\NormalTok{ mean)}
 \NormalTok{tempDayMin <-}\StringTok{ }\KeywordTok{tapply}\NormalTok{(bdd}\OperatorTok{$}\NormalTok{temp, }\DataTypeTok{INDEX =}\NormalTok{ bdd}\OperatorTok{$}\NormalTok{day, }\DataTypeTok{FUN =}\NormalTok{ min)}
 \NormalTok{tempDayMax <-}\StringTok{ }\KeywordTok{tapply}\NormalTok{(bdd}\OperatorTok{$}\NormalTok{temp, }\DataTypeTok{INDEX =}\NormalTok{ bdd}\OperatorTok{$}\NormalTok{day, }\DataTypeTok{FUN =}\NormalTok{ max)}
+\KeywordTok{par}\NormalTok{(}\DataTypeTok{mar =} \KeywordTok{c}\NormalTok{(}\DecValTok{4}\NormalTok{, }\DecValTok{4}\NormalTok{, }\DecValTok{1}\NormalTok{, }\DecValTok{1}\NormalTok{)) }\CommentTok{# réduction des marges}
 \KeywordTok{plot}\NormalTok{(}\DataTypeTok{x =} \KeywordTok{as.Date}\NormalTok{(}\KeywordTok{names}\NormalTok{(tempDayMean), }\DataTypeTok{format =} \StringTok{"%Y-%m-%d"}\NormalTok{), }
     \DataTypeTok{y =}\NormalTok{ tempDayMean, }\DataTypeTok{type =} \StringTok{'l'}\NormalTok{, }\DataTypeTok{ylim =} \KeywordTok{c}\NormalTok{(}\OperatorTok{-}\DecValTok{15}\NormalTok{, }\DecValTok{40}\NormalTok{), }
     \DataTypeTok{xlab =} \StringTok{"Temps"}\NormalTok{, }\DataTypeTok{ylab =} \StringTok{"Température (°C)"}\NormalTok{)}
@@ -10557,6 +10719,7 @@ Et voici le graphique par semaine :
   \DataTypeTok{INDEX =} \KeywordTok{format}\NormalTok{(bdd}\OperatorTok{$}\NormalTok{posix, }\DataTypeTok{format =} \StringTok{"%Y-%W-1"}\NormalTok{), }\DataTypeTok{FUN =}\NormalTok{ min)}
 \NormalTok{tempWeekMax <-}\StringTok{ }\KeywordTok{tapply}\NormalTok{(bdd}\OperatorTok{$}\NormalTok{temp, }
   \DataTypeTok{INDEX =} \KeywordTok{format}\NormalTok{(bdd}\OperatorTok{$}\NormalTok{posix, }\DataTypeTok{format =} \StringTok{"%Y-%W-1"}\NormalTok{), }\DataTypeTok{FUN =}\NormalTok{ max)}
+\KeywordTok{par}\NormalTok{(}\DataTypeTok{mar =} \KeywordTok{c}\NormalTok{(}\DecValTok{4}\NormalTok{, }\DecValTok{4}\NormalTok{, }\DecValTok{1}\NormalTok{, }\DecValTok{1}\NormalTok{)) }\CommentTok{# réduction des marges}
 \KeywordTok{plot}\NormalTok{(}\DataTypeTok{x =} \KeywordTok{as.Date}\NormalTok{(}\KeywordTok{names}\NormalTok{(tempWeekMean), }\DataTypeTok{format =} \StringTok{"%Y-%W-%u"}\NormalTok{), }
     \DataTypeTok{y =}\NormalTok{ tempWeekMean, }\DataTypeTok{type =} \StringTok{'l'}\NormalTok{, }\DataTypeTok{ylim =} \KeywordTok{c}\NormalTok{(}\OperatorTok{-}\DecValTok{15}\NormalTok{, }\DecValTok{40}\NormalTok{), }
     \DataTypeTok{xlab =} \StringTok{"Fecha"}\NormalTok{, }\DataTypeTok{ylab =} \StringTok{"Temperatura (°C)"}\NormalTok{)}
@@ -10575,6 +10738,7 @@ Dans ce type de représentation nous perdons l'information sur la variabilité d
 
 \begin{Shaded}
 \begin{Highlighting}[]
+\KeywordTok{par}\NormalTok{(}\DataTypeTok{mar =} \KeywordTok{c}\NormalTok{(}\DecValTok{5}\NormalTok{, }\DecValTok{4}\NormalTok{, }\DecValTok{1}\NormalTok{, }\DecValTok{1}\NormalTok{)) }\CommentTok{# réduction des marges}
 \KeywordTok{boxplot}\NormalTok{(bdd}\OperatorTok{$}\NormalTok{temp }\OperatorTok{~}\StringTok{ }\KeywordTok{format}\NormalTok{(bdd}\OperatorTok{$}\NormalTok{posix, }\DataTypeTok{format =} \StringTok{"%Y-%m"}\NormalTok{), }\DataTypeTok{las =} \DecValTok{3}\NormalTok{,}
   \DataTypeTok{xlab =} \StringTok{""}\NormalTok{, }\DataTypeTok{ylab =} \StringTok{"Température (°C)"}\NormalTok{)}
 \end{Highlighting}
@@ -10592,6 +10756,7 @@ Pour comparer les différentes valeurs de température, il peut être utile d'at
 \NormalTok{tempMeanDayPos <-}\StringTok{ }\KeywordTok{round}\NormalTok{(}
 \NormalTok{  (tempMonthMean }\OperatorTok{-}\StringTok{ }\KeywordTok{min}\NormalTok{(tempMonthMean)) }\OperatorTok{/}\StringTok{ }
 \StringTok{    }\NormalTok{(}\KeywordTok{max}\NormalTok{(tempMonthMean) }\OperatorTok{-}\StringTok{ }\KeywordTok{min}\NormalTok{(tempMonthMean))}\OperatorTok{*}\DecValTok{100}\NormalTok{) }\OperatorTok{+}\StringTok{ }\DecValTok{1}
+\KeywordTok{par}\NormalTok{(}\DataTypeTok{mar =} \KeywordTok{c}\NormalTok{(}\DecValTok{5}\NormalTok{, }\DecValTok{4}\NormalTok{, }\DecValTok{1}\NormalTok{, }\DecValTok{1}\NormalTok{)) }\CommentTok{# réduction des marges}
 \KeywordTok{boxplot}\NormalTok{(bdd}\OperatorTok{$}\NormalTok{temp }\OperatorTok{~}\StringTok{ }\KeywordTok{format}\NormalTok{(bdd}\OperatorTok{$}\NormalTok{posix, }\DataTypeTok{format =} \StringTok{"%Y-%m"}\NormalTok{), }\DataTypeTok{las =} \DecValTok{3}\NormalTok{, }
   \DataTypeTok{col =}\NormalTok{ myCol[tempMeanDayPos],}
   \DataTypeTok{xlab =} \StringTok{""}\NormalTok{, }\DataTypeTok{ylab =} \StringTok{"Température (°C)"}\NormalTok{)}
@@ -10641,6 +10806,7 @@ Nous pouvons également calculer la différence entre la température maximale e
 \begin{Shaded}
 \begin{Highlighting}[]
 \NormalTok{tempDayTR <-}\StringTok{ }\NormalTok{tempDayMax }\OperatorTok{-}\StringTok{ }\NormalTok{tempDayMin}
+\KeywordTok{par}\NormalTok{(}\DataTypeTok{mar =} \KeywordTok{c}\NormalTok{(}\DecValTok{4}\NormalTok{, }\DecValTok{4}\NormalTok{, }\DecValTok{1}\NormalTok{, }\DecValTok{1}\NormalTok{)) }\CommentTok{# réduction des marges}
 \KeywordTok{plot}\NormalTok{(}\DataTypeTok{x =} \KeywordTok{as.Date}\NormalTok{(}\KeywordTok{names}\NormalTok{(tempDayMean), }\DataTypeTok{format =} \StringTok{"%Y-%m-%d"}\NormalTok{), }
     \DataTypeTok{y =}\NormalTok{ tempDayTR, }\DataTypeTok{type =} \StringTok{'l'}\NormalTok{, }\DataTypeTok{ylim =} \KeywordTok{c}\NormalTok{(}\DecValTok{5}\NormalTok{, }\DecValTok{45}\NormalTok{), }
     \DataTypeTok{xlab =} \StringTok{"Fecha"}\NormalTok{, }\DataTypeTok{ylab =} \StringTok{"Variation de température diurne (°C)"}\NormalTok{)}
@@ -10660,6 +10826,7 @@ Une autre possibilité est de regrouper les données pour avoir la température 
 \NormalTok{tempHourMax <-}\StringTok{ }\KeywordTok{aggregate}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ bdd}\OperatorTok{$}\NormalTok{temp, }
   \DataTypeTok{by =} \KeywordTok{list}\NormalTok{(}\KeywordTok{format}\NormalTok{(bdd}\OperatorTok{$}\NormalTok{posix, }\DataTypeTok{format =} \StringTok{"%H:%M"}\NormalTok{)), }\DataTypeTok{FUN =}\NormalTok{ max)}
 \NormalTok{hours <-}\StringTok{ }\KeywordTok{seq}\NormalTok{(}\DataTypeTok{from =} \DecValTok{0}\NormalTok{, }\DataTypeTok{to =} \FloatTok{23.5}\NormalTok{, }\DataTypeTok{by =} \FloatTok{0.5}\NormalTok{)}
+\KeywordTok{par}\NormalTok{(}\DataTypeTok{mar =} \KeywordTok{c}\NormalTok{(}\DecValTok{4}\NormalTok{, }\DecValTok{4}\NormalTok{, }\DecValTok{1}\NormalTok{, }\DecValTok{1}\NormalTok{)) }\CommentTok{# réduction des marges}
 \KeywordTok{plot}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ hours, }
     \DataTypeTok{y =}\NormalTok{ tempHourMean[, }\DecValTok{2}\NormalTok{], }\DataTypeTok{type =} \StringTok{'l'}\NormalTok{, }\DataTypeTok{ylim =} \KeywordTok{c}\NormalTok{(}\OperatorTok{-}\DecValTok{15}\NormalTok{, }\DecValTok{40}\NormalTok{), }
     \DataTypeTok{xlab =} \StringTok{""}\NormalTok{, }\DataTypeTok{ylab =} \StringTok{"Température (°C)"}\NormalTok{, }\DataTypeTok{lwd =} \DecValTok{2}\NormalTok{, }
@@ -10690,9 +10857,9 @@ Nous pouvons également calculer les températures des heures de la journée pou
 \NormalTok{    tempHourMax <-}\StringTok{ }\KeywordTok{aggregate}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ bddX}\OperatorTok{$}\NormalTok{temp, }\DataTypeTok{by =} \KeywordTok{list}\NormalTok{(}\KeywordTok{format}\NormalTok{(bddX}\OperatorTok{$}\NormalTok{posix, }\DataTypeTok{format =} \StringTok{"%H:%M"}\NormalTok{)), }\DataTypeTok{FUN =}\NormalTok{ max)}
     \KeywordTok{return}\NormalTok{(}\KeywordTok{data.frame}\NormalTok{(tempHourMean, tempHourMin, tempHourMax))}
 \NormalTok{\})}
-
-\CommentTok{# for (i in seq_along(tempDayEachMonth))\{ # para todos los meses}
-\ControlFlowTok{for}\NormalTok{ (i }\ControlFlowTok{in} \DecValTok{1}\OperatorTok{:}\DecValTok{2}\NormalTok{)\{ }\CommentTok{# solo para Enero y Febrero }
+\KeywordTok{par}\NormalTok{(}\DataTypeTok{mar =} \KeywordTok{c}\NormalTok{(}\DecValTok{4}\NormalTok{, }\DecValTok{4}\NormalTok{, }\DecValTok{1}\NormalTok{, }\DecValTok{1}\NormalTok{)) }\CommentTok{# réduction des marges}
+\CommentTok{# for (i in seq_along(tempDayEachMonth))\{ # pour tous les mois}
+\ControlFlowTok{for}\NormalTok{ (i }\ControlFlowTok{in} \DecValTok{1}\OperatorTok{:}\DecValTok{2}\NormalTok{)\{ }\CommentTok{# uniquement Janvier et Février }
     \KeywordTok{plot}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ hours, }\DataTypeTok{y =}\NormalTok{ tempDayEachMonth[[i]][, }\DecValTok{2}\NormalTok{], }
         \DataTypeTok{type =} \StringTok{'l'}\NormalTok{, }\DataTypeTok{ylim =} \KeywordTok{c}\NormalTok{(}\OperatorTok{-}\DecValTok{15}\NormalTok{, }\DecValTok{40}\NormalTok{), }
         \DataTypeTok{xlab =} \StringTok{""}\NormalTok{, }\DataTypeTok{ylab =} \StringTok{"Température (°C)"}\NormalTok{, }\DataTypeTok{lwd =} \DecValTok{2}\NormalTok{, }
@@ -10716,6 +10883,7 @@ Ou les regrouper dans un même graphique, ainsi que la variation diurne des temp
 
 \begin{Shaded}
 \begin{Highlighting}[]
+\KeywordTok{par}\NormalTok{(}\DataTypeTok{mar =} \KeywordTok{c}\NormalTok{(}\DecValTok{4}\NormalTok{, }\DecValTok{4}\NormalTok{, }\DecValTok{1}\NormalTok{, }\DecValTok{1}\NormalTok{)) }\CommentTok{# réduction des marges}
 \KeywordTok{plot}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ hours, }\DataTypeTok{y =}\NormalTok{ tempDayEachMonth[[}\DecValTok{1}\NormalTok{]][, }\DecValTok{2}\NormalTok{], }\DataTypeTok{type =} \StringTok{'n'}\NormalTok{, }\DataTypeTok{ylim =} \KeywordTok{c}\NormalTok{(}\OperatorTok{-}\DecValTok{10}\NormalTok{, }\DecValTok{35}\NormalTok{),}
     \DataTypeTok{xlab =} \StringTok{""}\NormalTok{, }\DataTypeTok{ylab =} \StringTok{"Température moyenne (°C)"}\NormalTok{,}
     \DataTypeTok{xaxt =} \StringTok{"n"}\NormalTok{, }
@@ -10741,6 +10909,7 @@ Ou les regrouper dans un même graphique, ainsi que la variation diurne des temp
 
 \begin{Shaded}
 \begin{Highlighting}[]
+\KeywordTok{par}\NormalTok{(}\DataTypeTok{mar =} \KeywordTok{c}\NormalTok{(}\DecValTok{4}\NormalTok{, }\DecValTok{4}\NormalTok{, }\DecValTok{1}\NormalTok{, }\DecValTok{1}\NormalTok{)) }\CommentTok{# réduction des marges}
 \KeywordTok{plot}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ hours, }\DataTypeTok{y =}\NormalTok{ tempDayEachMonth[[}\DecValTok{1}\NormalTok{]][, }\DecValTok{2}\NormalTok{], }\DataTypeTok{type =} \StringTok{'n'}\NormalTok{, }\DataTypeTok{ylim =} \KeywordTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{, }\DecValTok{30}\NormalTok{),}
     \DataTypeTok{xlab =} \StringTok{""}\NormalTok{, }\DataTypeTok{ylab =} \StringTok{"Variation de température diurne (°C)"}\NormalTok{,}
     \DataTypeTok{xaxt =} \StringTok{"n"}\NormalTok{, }
@@ -10804,7 +10973,7 @@ Nous pouvons aussi représenter les températures journalières avec des graphiq
 \includegraphics{myRBook_FR_files/figure-latex/041-studyCase-19-1.pdf}
 
 \hypertarget{studyCase002}{%
-\chapter{Obtenir le numéro WOS d'un article scientifique à partir de son numéro DOI}\label{studyCase002}}
+\chapter{R et Internet, manipuler des URLs : WOS d'un article à partir de son numéro DOI}\label{studyCase002}}
 
 Il peut être intéressant d'obtenir le numéro WOS d'un article scientifique. Ce numéro est cependant fastidieux à obtenir, d'autant plus si nous souhaitons le récupérer pour une liste d'articles ! Par chance \emph{The Kitchin Research Group} dans leur blog de juin 2015 (\url{http://kitchingroup.cheme.cmu.edu/blog/2015/06/08/Getting-a-WOS-Accession-number-from-a-DOI/}) propose une méthode pour récupérer le numéro WOS à partir du numéro DOI. C'est cette méthode que nous allons utiliser avec R et le package \texttt{httr}. En bref, cette méthode consite à interroger le site web du WOS à partir du numéro DOI. Le site web du WOS va répondre en spécifiant qu'il faut se connecter pour accéder à l'article. Il y a pour cela une redirection vers une page web dont l'URL contient le numéro WOS. Il suffit alors d'extraire le numéro WOS de l'URL de la page web. \textbf{Si nous utilisons un proxy pour accéder au site web du WOS, il faut donc le désactiver pour que la méthode fonctionne}.
 
