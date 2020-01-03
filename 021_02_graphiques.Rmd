@@ -5,12 +5,13 @@ Nous avons vu différentes manières d'utiliser les couleurs : avec leur nom (e.
 L'utilisation des numéros de 1 à 8 correspond au noir, rouge, vert, bleu, cyan, magenta, jaune et gris. Cette utilisation est pratique pour visualiser rapidement nos résultats mais donne globalement des graphiques visuellement moyens. Ces couleurs sont plutôt à éviter pour communiquer nos graphiques.
 
 ```{r 021-02-graphiques-1}
+par(mar = c(2, 2, 1, 1)) # réduction des marges
 barplot(sample(10:15, 8, replace = TRUE), col = 1:8, names.arg = 1:8)
 ```
 
 ## `colors()`
 
-Pour choisir des couleurs plus agréables et mettant plus en avant nos résultats, une option consiste à les choisir dans la liste des couleurs pré-enregistrées dans R. Nous pouvons accéder à la liste des couleurs avec la fonction `colors()`
+Pour choisir des couleurs plus agréables et mettant plus en avant nos résultats, une option consiste à les choisir dans la liste des couleurs préenregistrées dans R. Nous pouvons accéder à la liste des couleurs avec la fonction `colors()`
 
 ```{r 021-02-graphiques-2}
 head(colors(), n = 20)
@@ -18,7 +19,7 @@ head(colors(), n = 20)
 
 Nous pouvons utiliser ces couleurs avec leur nom (e.g., "white", "azure3"), ou alors avec leur numéro (e.g., "white" = `colors()[1]`, "azure3" = `colors()[16]`). 
 
-```{r 021-02-graphiques-3}
+```{r 021-02-graphiques-3, fig.width=10, fig.height=6}
 # adapted from http://www.r-graph-gallery.com/42-colors-names/
 op <- par(no.readonly = TRUE)
 par(mar = c(0, 0, 0, 0))
