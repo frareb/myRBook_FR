@@ -1,14 +1,14 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<html lang="" xml:lang="">
 <head>
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title> 16 Manipuler des dates et des heures : données de datalogger de température | Se former au logiciel R : initiation et perfectionnement</title>
+  <title> 15 Manipuler des dates et des heures : données de datalogger de température | Se former au logiciel R : initiation et perfectionnement</title>
   <meta name="description" content="Un guide pour acquérir les bases de la programmation avec R et conduire efficacement la gestion et l’analyse de ses données." />
-  <meta name="generator" content="bookdown 0.16 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.17 and GitBook 2.6.7" />
 
-  <meta property="og:title" content=" 16 Manipuler des dates et des heures : données de datalogger de température | Se former au logiciel R : initiation et perfectionnement" />
+  <meta property="og:title" content=" 15 Manipuler des dates et des heures : données de datalogger de température | Se former au logiciel R : initiation et perfectionnement" />
   <meta property="og:type" content="book" />
   
   <meta property="og:image" content="myFigures/cover.png" />
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="frareb/myRBook_FR" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content=" 16 Manipuler des dates et des heures : données de datalogger de température | Se former au logiciel R : initiation et perfectionnement" />
+  <meta name="twitter:title" content=" 15 Manipuler des dates et des heures : données de datalogger de température | Se former au logiciel R : initiation et perfectionnement" />
   
   <meta name="twitter:description" content="Un guide pour acquérir les bases de la programmation avec R et conduire efficacement la gestion et l’analyse de ses données." />
   <meta name="twitter:image" content="myFigures/cover.png" />
@@ -24,14 +24,14 @@
 <meta name="author" content="François Rebaudo" />
 
 
-<meta name="date" content="2020-01-03" />
+<meta name="date" content="2020-01-27" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="index.html"/>
+<link rel="prev" href="graph4.html"/>
 <link rel="next" href="studyCase002.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -323,10 +323,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="14.3" data-path="graph4.html"><a href="graph4.html#table-de-référence"><i class="fa fa-check"></i><b>14.3</b> Table de référence</a></li>
 <li class="chapter" data-level="14.4" data-path="graph4.html"><a href="graph4.html#conclusion-11"><i class="fa fa-check"></i><b>14.4</b> Conclusion</a></li>
 </ul></li>
-<li class="chapter" data-level="15" data-path="index.html"><a href="index.html#index"><i class="fa fa-check"></i><b>15</b> Index</a></li>
 <li class="part"><span><b>III Annexes</b></span></li>
-<li class="chapter" data-level="16" data-path="studyCase001.html"><a href="studyCase001.html"><i class="fa fa-check"></i><b>16</b> Manipuler des dates et des heures : données de datalogger de température</a></li>
-<li class="chapter" data-level="17" data-path="studyCase002.html"><a href="studyCase002.html"><i class="fa fa-check"></i><b>17</b> R et Internet, manipuler des URLs : WOS d’un article à partir de son numéro DOI</a></li>
+<li class="chapter" data-level="15" data-path="studyCase001.html"><a href="studyCase001.html"><i class="fa fa-check"></i><b>15</b> Manipuler des dates et des heures : données de datalogger de température</a></li>
+<li class="chapter" data-level="16" data-path="studyCase002.html"><a href="studyCase002.html"><i class="fa fa-check"></i><b>16</b> R et Internet, manipuler des URLs : WOS d’un article à partir de son numéro DOI</a></li>
 <li class="divider"></li>
 <li><a href="http://ird.fr/" target="blank"><img src="myLogos/logo_IRD_2016_LONGUEUR_SP_COUL.png" alt="IRD" width="100"></a></li>
 
@@ -348,7 +347,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
             <section class="normal" id="section-">
 <div id="studyCase001" class="section level1">
-<h1><span class="header-section-number"> 16</span> Manipuler des dates et des heures : données de datalogger de température</h1>
+<h1><span class="header-section-number"> 15</span> Manipuler des dates et des heures : données de datalogger de température</h1>
 <p>Dans les études de biologie, d’écologie ou d’agronomie, nous utilisons fréquemment des données de température provenant de dataloggers. Dans cette étude de cas, nous verrons comment analyser ces données en utilisant les données de température de l’altiplano bolivien près de la ville de El Alto. La première étape consiste à transformer les données du datalogger en un format facile à lire pour R. Nous utiliserons un fichier CSV et la fonction <a href="import.html#import"><code>read.table()</code></a>. Le fichier peut être téléchargé à partir du site Web du livre sur GitHub (<a href="https://github.com/frareb/myRBook_FR/blob/master/myFiles/E05C13.csv" class="uri">https://github.com/frareb/myRBook_FR/blob/master/myFiles/E05C13.csv</a>), ou alors lu directement par R depuis sa source (<a href="https://raw.githubusercontent.com/frareb/myRBook_FR/master/myFiles/E05C13.csv" class="uri">https://raw.githubusercontent.com/frareb/myRBook_FR/master/myFiles/E05C13.csv</a>).</p>
 <div class="sourceCode" id="cb1203"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1203-1" title="1"><span class="co"># Lecture du fichier en local après téléchargement : </span></a>
 <a class="sourceLine" id="cb1203-2" title="2">bdd &lt;-<span class="st"> </span><span class="kw">read.table</span>(<span class="st">&quot;myFiles/E05C13.csv&quot;</span>, <span class="dt">skip =</span> <span class="dv">1</span>, <span class="dt">header =</span> <span class="ot">TRUE</span>, </a>
@@ -683,29 +682,24 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <a class="sourceLine" id="cb1237-9" title="9"><span class="kw">pkgCheck</span>(<span class="st">&quot;ggplot2&quot;</span>)</a>
 <a class="sourceLine" id="cb1237-10" title="10"><span class="kw">pkgCheck</span>(<span class="st">&quot;ggridges&quot;</span>)</a></code></pre></div>
 <pre><code>## Loading required package: ggridges</code></pre>
-<pre><code>## 
-## Attaching package: &#39;ggridges&#39;</code></pre>
-<pre><code>## The following object is masked from &#39;package:ggplot2&#39;:
-## 
-##     scale_discrete_manual</code></pre>
-<div class="sourceCode" id="cb1241"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1241-1" title="1"><span class="kw">pkgCheck</span>(<span class="st">&quot;viridis&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb1239"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1239-1" title="1"><span class="kw">pkgCheck</span>(<span class="st">&quot;viridis&quot;</span>)</a></code></pre></div>
 <pre><code>## Loading required package: viridis</code></pre>
 <pre><code>## Loading required package: viridisLite</code></pre>
-<div class="sourceCode" id="cb1244"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1244-1" title="1">meanTemps &lt;-<span class="st"> </span><span class="kw">unlist</span>(<span class="kw">lapply</span>(tempDayEachMonth, <span class="st">&quot;[[&quot;</span>, <span class="dv">2</span>))</a>
-<a class="sourceLine" id="cb1244-2" title="2">labelMonth &lt;-<span class="st"> </span><span class="kw">rep</span>(meses, <span class="dt">each =</span> <span class="dv">48</span>)</a>
-<a class="sourceLine" id="cb1244-3" title="3">dfTemps &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">month =</span> labelMonth, <span class="dt">value =</span> meanTemps, </a>
-<a class="sourceLine" id="cb1244-4" title="4">  <span class="dt">stringsAsFactors =</span> <span class="ot">FALSE</span>)</a>
-<a class="sourceLine" id="cb1244-5" title="5">dfTemps<span class="op">$</span>month &lt;-<span class="st"> </span><span class="kw">factor</span>(dfTemps<span class="op">$</span>month, <span class="dt">levels =</span> <span class="kw">rev</span>(meses))</a>
-<a class="sourceLine" id="cb1244-6" title="6">p &lt;-<span class="st"> </span><span class="kw">ggplot</span>(<span class="dt">data =</span> dfTemps, <span class="kw">aes</span>(<span class="dt">y =</span> month, <span class="dt">x =</span> value,  <span class="dt">fill =</span> ..x..))</a>
-<a class="sourceLine" id="cb1244-7" title="7">p &lt;-<span class="st"> </span>p <span class="op">+</span><span class="st"> </span><span class="kw">geom_density_ridges_gradient</span>(<span class="dt">stat=</span><span class="st">&quot;binline&quot;</span>)</a>
-<a class="sourceLine" id="cb1244-8" title="8">p &lt;-<span class="st"> </span>p <span class="op">+</span><span class="st"> </span><span class="kw">scale_fill_viridis</span>(<span class="dt">name =</span> <span class="st">&quot;Temp. [°C]&quot;</span>, <span class="dt">option =</span> <span class="st">&quot;C&quot;</span>)</a>
-<a class="sourceLine" id="cb1244-9" title="9">p &lt;-<span class="st"> </span>p <span class="op">+</span><span class="st"> </span><span class="kw">xlab</span>(<span class="st">&quot;Temperature&quot;</span>) <span class="op">+</span><span class="st"> </span><span class="kw">ylab</span>(<span class="st">&quot;&quot;</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb1244-10" title="10"><span class="st">    </span><span class="kw">theme</span>(</a>
-<a class="sourceLine" id="cb1244-11" title="11">      <span class="dt">legend.position=</span><span class="st">&quot;none&quot;</span>,</a>
-<a class="sourceLine" id="cb1244-12" title="12">      <span class="dt">panel.spacing =</span> <span class="kw">unit</span>(<span class="fl">0.1</span>, <span class="st">&quot;lines&quot;</span>),</a>
-<a class="sourceLine" id="cb1244-13" title="13">      <span class="dt">strip.text.x =</span> <span class="kw">element_text</span>(<span class="dt">size =</span> <span class="dv">8</span>)</a>
-<a class="sourceLine" id="cb1244-14" title="14">    ) </a>
-<a class="sourceLine" id="cb1244-15" title="15">p</a></code></pre></div>
+<div class="sourceCode" id="cb1242"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1242-1" title="1">meanTemps &lt;-<span class="st"> </span><span class="kw">unlist</span>(<span class="kw">lapply</span>(tempDayEachMonth, <span class="st">&quot;[[&quot;</span>, <span class="dv">2</span>))</a>
+<a class="sourceLine" id="cb1242-2" title="2">labelMonth &lt;-<span class="st"> </span><span class="kw">rep</span>(meses, <span class="dt">each =</span> <span class="dv">48</span>)</a>
+<a class="sourceLine" id="cb1242-3" title="3">dfTemps &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">month =</span> labelMonth, <span class="dt">value =</span> meanTemps, </a>
+<a class="sourceLine" id="cb1242-4" title="4">  <span class="dt">stringsAsFactors =</span> <span class="ot">FALSE</span>)</a>
+<a class="sourceLine" id="cb1242-5" title="5">dfTemps<span class="op">$</span>month &lt;-<span class="st"> </span><span class="kw">factor</span>(dfTemps<span class="op">$</span>month, <span class="dt">levels =</span> <span class="kw">rev</span>(meses))</a>
+<a class="sourceLine" id="cb1242-6" title="6">p &lt;-<span class="st"> </span><span class="kw">ggplot</span>(<span class="dt">data =</span> dfTemps, <span class="kw">aes</span>(<span class="dt">y =</span> month, <span class="dt">x =</span> value,  <span class="dt">fill =</span> ..x..))</a>
+<a class="sourceLine" id="cb1242-7" title="7">p &lt;-<span class="st"> </span>p <span class="op">+</span><span class="st"> </span><span class="kw">geom_density_ridges_gradient</span>(<span class="dt">stat=</span><span class="st">&quot;binline&quot;</span>)</a>
+<a class="sourceLine" id="cb1242-8" title="8">p &lt;-<span class="st"> </span>p <span class="op">+</span><span class="st"> </span><span class="kw">scale_fill_viridis</span>(<span class="dt">name =</span> <span class="st">&quot;Temp. [°C]&quot;</span>, <span class="dt">option =</span> <span class="st">&quot;C&quot;</span>)</a>
+<a class="sourceLine" id="cb1242-9" title="9">p &lt;-<span class="st"> </span>p <span class="op">+</span><span class="st"> </span><span class="kw">xlab</span>(<span class="st">&quot;Temperature&quot;</span>) <span class="op">+</span><span class="st"> </span><span class="kw">ylab</span>(<span class="st">&quot;&quot;</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb1242-10" title="10"><span class="st">    </span><span class="kw">theme</span>(</a>
+<a class="sourceLine" id="cb1242-11" title="11">      <span class="dt">legend.position=</span><span class="st">&quot;none&quot;</span>,</a>
+<a class="sourceLine" id="cb1242-12" title="12">      <span class="dt">panel.spacing =</span> <span class="kw">unit</span>(<span class="fl">0.1</span>, <span class="st">&quot;lines&quot;</span>),</a>
+<a class="sourceLine" id="cb1242-13" title="13">      <span class="dt">strip.text.x =</span> <span class="kw">element_text</span>(<span class="dt">size =</span> <span class="dv">8</span>)</a>
+<a class="sourceLine" id="cb1242-14" title="14">    ) </a>
+<a class="sourceLine" id="cb1242-15" title="15">p</a></code></pre></div>
 <pre><code>## `stat_binline()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
 <p><img src="myRBook_FR_files/figure-html/041-studyCase-19-1.png" width="960" /></p>
 
@@ -715,7 +709,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           </div>
         </div>
       </div>
-<a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="graph4.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
 <a href="studyCase002.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
