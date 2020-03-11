@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title> 7 Les fonctions | Se former au logiciel R : initiation et perfectionnement</title>
+  <title> 7 Les fonctions | R pour les scientifiques : Mise en œuvre de projets et valorisation des résultats</title>
   <meta name="description" content="Un guide pour acquérir les bases de la programmation avec R et conduire efficacement la gestion et l’analyse de ses données." />
   <meta name="generator" content="bookdown 0.18 and GitBook 2.6.7" />
 
-  <meta property="og:title" content=" 7 Les fonctions | Se former au logiciel R : initiation et perfectionnement" />
+  <meta property="og:title" content=" 7 Les fonctions | R pour les scientifiques : Mise en œuvre de projets et valorisation des résultats" />
   <meta property="og:type" content="book" />
   
   <meta property="og:image" content="myFigures/cover.png" />
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="frareb/myRBook_FR" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content=" 7 Les fonctions | Se former au logiciel R : initiation et perfectionnement" />
+  <meta name="twitter:title" content=" 7 Les fonctions | R pour les scientifiques : Mise en œuvre de projets et valorisation des résultats" />
   
   <meta name="twitter:description" content="Un guide pour acquérir les bases de la programmation avec R et conduire efficacement la gestion et l’analyse de ses données." />
   <meta name="twitter:image" content="myFigures/cover.png" />
@@ -144,7 +144,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <nav role="navigation">
 
 <ul class="summary">
-<li><a href="./">Se former au logiciel R : initiation et perfectionnement</a></li>
+<li><a href="./">R pour les scientifiques</a></li>
 
 <li class="divider"></li>
 <li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Préambule</a><ul>
@@ -326,9 +326,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="part"><span><b>III Annexes</b></span></li>
 <li class="chapter" data-level="15" data-path="studyCase001.html"><a href="studyCase001.html"><i class="fa fa-check"></i><b>15</b> Manipuler des dates et des heures : données de datalogger de température</a></li>
 <li class="chapter" data-level="16" data-path="studyCase002.html"><a href="studyCase002.html"><i class="fa fa-check"></i><b>16</b> R et Internet, manipuler des URLs : WOS d’un article à partir de son numéro DOI</a></li>
-<li class="divider"></li>
-<li><a href="http://ird.fr/" target="blank"><img src="myLogos/logo_IRD_2016_LONGUEUR_SP_COUL.png" alt="IRD" width="100"></a></li>
-
 </ul>
 
       </nav>
@@ -338,7 +335,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <div class="body-inner">
         <div class="book-header" role="navigation">
           <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Se former au logiciel R : initiation et perfectionnement</a>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">R pour les scientifiques : Mise en œuvre de projets et valorisation des résultats</a>
           </h1>
         </div>
 
@@ -1103,42 +1100,43 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Tout comme la fonction <code>list.files()</code> permet de faire la liste de tous les fichiers présents dans le répertoire de travail, la fonction <code>ls()</code> permet de faire la liste de tous les objets présents dans l’environnement de travail de R.</p>
 <div class="sourceCode" id="cb875"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb875-1" title="1"><span class="kw">ls</span>()</a></code></pre></div>
 <pre><code>##  [1] &quot;aLogic&quot;       &quot;bddInsect&quot;    &quot;characters&quot;   &quot;contrib&quot;      &quot;dfContrib&quot;   
-##  [6] &quot;dfForMat&quot;     &quot;factor01&quot;     &quot;i&quot;            &quot;irisCopy&quot;     &quot;j&quot;           
-## [11] &quot;k&quot;            &quot;logicals&quot;     &quot;mdat&quot;         &quot;miArray&quot;      &quot;miArray02&quot;   
-## [16] &quot;miDf01&quot;       &quot;miDfSub01&quot;    &quot;miDfSub02&quot;    &quot;miDfSub03&quot;    &quot;miDfSub04&quot;   
-## [21] &quot;miList01&quot;     &quot;miList02&quot;     &quot;miList0203&quot;   &quot;miList03&quot;     &quot;miList04&quot;    
-## [26] &quot;miList05&quot;     &quot;miList06&quot;     &quot;miMat&quot;        &quot;miMat01&quot;      &quot;miMat02&quot;     
-## [31] &quot;miVec01&quot;      &quot;miVec02&quot;      &quot;miVec03&quot;      &quot;miVec04&quot;      &quot;miVec05&quot;     
-## [36] &quot;miVec05b&quot;     &quot;miVec05c&quot;     &quot;miVec06&quot;      &quot;miVec07&quot;      &quot;miVec08&quot;     
-## [41] &quot;miVec09&quot;      &quot;miVec10&quot;      &quot;miVec11&quot;      &quot;miVec12&quot;      &quot;miVec13&quot;     
-## [46] &quot;miVec14&quot;      &quot;miVec15&quot;      &quot;miVec20&quot;      &quot;miVec21&quot;      &quot;miVec22&quot;     
-## [51] &quot;miVec23&quot;      &quot;miVec24&quot;      &quot;miVec25&quot;      &quot;miVecArr&quot;     &quot;miVecArr02&quot;  
-## [56] &quot;miVecConf&quot;    &quot;miVecNA&quot;      &quot;miVecOp&quot;      &quot;msg&quot;          &quot;myCol&quot;       
-## [61] &quot;myRow&quot;        &quot;myText&quot;       &quot;myText2&quot;      &quot;myText3&quot;      &quot;myText4&quot;     
-## [66] &quot;myText5&quot;      &quot;nbrRep&quot;       &quot;newVec&quot;       &quot;newVec2&quot;      &quot;numbers&quot;     
-## [71] &quot;oldWd&quot;        &quot;opAriDf&quot;      &quot;roundDou&quot;     &quot;sumIntDou&quot;    &quot;sumIntInt&quot;   
-## [76] &quot;tabPkgDf&quot;     &quot;terme01&quot;      &quot;terme02&quot;      &quot;vecForMat01&quot;  &quot;vecForMat02&quot; 
-## [81] &quot;vecForMat03&quot;  &quot;vecForMatrix&quot; &quot;vecManip&quot;     &quot;vecManip2&quot;    &quot;vecManip3&quot;</code></pre>
+##  [6] &quot;dfForMat&quot;     &quot;factor01&quot;     &quot;hook_output&quot;  &quot;i&quot;            &quot;irisCopy&quot;    
+## [11] &quot;j&quot;            &quot;k&quot;            &quot;logicals&quot;     &quot;mdat&quot;         &quot;miArray&quot;     
+## [16] &quot;miArray02&quot;    &quot;miDf01&quot;       &quot;miDfSub01&quot;    &quot;miDfSub02&quot;    &quot;miDfSub03&quot;   
+## [21] &quot;miDfSub04&quot;    &quot;miList01&quot;     &quot;miList02&quot;     &quot;miList0203&quot;   &quot;miList03&quot;    
+## [26] &quot;miList04&quot;     &quot;miList05&quot;     &quot;miList06&quot;     &quot;miMat&quot;        &quot;miMat01&quot;     
+## [31] &quot;miMat02&quot;      &quot;miVec01&quot;      &quot;miVec02&quot;      &quot;miVec03&quot;      &quot;miVec04&quot;     
+## [36] &quot;miVec05&quot;      &quot;miVec05b&quot;     &quot;miVec05c&quot;     &quot;miVec06&quot;      &quot;miVec07&quot;     
+## [41] &quot;miVec08&quot;      &quot;miVec09&quot;      &quot;miVec10&quot;      &quot;miVec11&quot;      &quot;miVec12&quot;     
+## [46] &quot;miVec13&quot;      &quot;miVec14&quot;      &quot;miVec15&quot;      &quot;miVec20&quot;      &quot;miVec21&quot;     
+## [51] &quot;miVec22&quot;      &quot;miVec23&quot;      &quot;miVec24&quot;      &quot;miVec25&quot;      &quot;miVecArr&quot;    
+## [56] &quot;miVecArr02&quot;   &quot;miVecConf&quot;    &quot;miVecNA&quot;      &quot;miVecOp&quot;      &quot;msg&quot;         
+## [61] &quot;myCol&quot;        &quot;myRow&quot;        &quot;myText&quot;       &quot;myText2&quot;      &quot;myText3&quot;     
+## [66] &quot;myText4&quot;      &quot;myText5&quot;      &quot;nbrRep&quot;       &quot;newVec&quot;       &quot;newVec2&quot;     
+## [71] &quot;numbers&quot;      &quot;oldWd&quot;        &quot;opAriDf&quot;      &quot;roundDou&quot;     &quot;sumIntDou&quot;   
+## [76] &quot;sumIntInt&quot;    &quot;tabPkgDf&quot;     &quot;terme01&quot;      &quot;terme02&quot;      &quot;vecForMat01&quot; 
+## [81] &quot;vecForMat02&quot;  &quot;vecForMat03&quot;  &quot;vecForMatrix&quot; &quot;vecManip&quot;     &quot;vecManip2&quot;   
+## [86] &quot;vecManip3&quot;</code></pre>
 <div class="sourceCode" id="cb877"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb877-1" title="1">zzz &lt;-<span class="st"> &quot;a new object&quot;</span></a>
 <a class="sourceLine" id="cb877-2" title="2"><span class="kw">ls</span>()</a></code></pre></div>
 <pre><code>##  [1] &quot;aLogic&quot;       &quot;bddInsect&quot;    &quot;characters&quot;   &quot;contrib&quot;      &quot;dfContrib&quot;   
-##  [6] &quot;dfForMat&quot;     &quot;factor01&quot;     &quot;i&quot;            &quot;irisCopy&quot;     &quot;j&quot;           
-## [11] &quot;k&quot;            &quot;logicals&quot;     &quot;mdat&quot;         &quot;miArray&quot;      &quot;miArray02&quot;   
-## [16] &quot;miDf01&quot;       &quot;miDfSub01&quot;    &quot;miDfSub02&quot;    &quot;miDfSub03&quot;    &quot;miDfSub04&quot;   
-## [21] &quot;miList01&quot;     &quot;miList02&quot;     &quot;miList0203&quot;   &quot;miList03&quot;     &quot;miList04&quot;    
-## [26] &quot;miList05&quot;     &quot;miList06&quot;     &quot;miMat&quot;        &quot;miMat01&quot;      &quot;miMat02&quot;     
-## [31] &quot;miVec01&quot;      &quot;miVec02&quot;      &quot;miVec03&quot;      &quot;miVec04&quot;      &quot;miVec05&quot;     
-## [36] &quot;miVec05b&quot;     &quot;miVec05c&quot;     &quot;miVec06&quot;      &quot;miVec07&quot;      &quot;miVec08&quot;     
-## [41] &quot;miVec09&quot;      &quot;miVec10&quot;      &quot;miVec11&quot;      &quot;miVec12&quot;      &quot;miVec13&quot;     
-## [46] &quot;miVec14&quot;      &quot;miVec15&quot;      &quot;miVec20&quot;      &quot;miVec21&quot;      &quot;miVec22&quot;     
-## [51] &quot;miVec23&quot;      &quot;miVec24&quot;      &quot;miVec25&quot;      &quot;miVecArr&quot;     &quot;miVecArr02&quot;  
-## [56] &quot;miVecConf&quot;    &quot;miVecNA&quot;      &quot;miVecOp&quot;      &quot;msg&quot;          &quot;myCol&quot;       
-## [61] &quot;myRow&quot;        &quot;myText&quot;       &quot;myText2&quot;      &quot;myText3&quot;      &quot;myText4&quot;     
-## [66] &quot;myText5&quot;      &quot;nbrRep&quot;       &quot;newVec&quot;       &quot;newVec2&quot;      &quot;numbers&quot;     
-## [71] &quot;oldWd&quot;        &quot;opAriDf&quot;      &quot;roundDou&quot;     &quot;sumIntDou&quot;    &quot;sumIntInt&quot;   
-## [76] &quot;tabPkgDf&quot;     &quot;terme01&quot;      &quot;terme02&quot;      &quot;vecForMat01&quot;  &quot;vecForMat02&quot; 
-## [81] &quot;vecForMat03&quot;  &quot;vecForMatrix&quot; &quot;vecManip&quot;     &quot;vecManip2&quot;    &quot;vecManip3&quot;   
-## [86] &quot;zzz&quot;</code></pre>
+##  [6] &quot;dfForMat&quot;     &quot;factor01&quot;     &quot;hook_output&quot;  &quot;i&quot;            &quot;irisCopy&quot;    
+## [11] &quot;j&quot;            &quot;k&quot;            &quot;logicals&quot;     &quot;mdat&quot;         &quot;miArray&quot;     
+## [16] &quot;miArray02&quot;    &quot;miDf01&quot;       &quot;miDfSub01&quot;    &quot;miDfSub02&quot;    &quot;miDfSub03&quot;   
+## [21] &quot;miDfSub04&quot;    &quot;miList01&quot;     &quot;miList02&quot;     &quot;miList0203&quot;   &quot;miList03&quot;    
+## [26] &quot;miList04&quot;     &quot;miList05&quot;     &quot;miList06&quot;     &quot;miMat&quot;        &quot;miMat01&quot;     
+## [31] &quot;miMat02&quot;      &quot;miVec01&quot;      &quot;miVec02&quot;      &quot;miVec03&quot;      &quot;miVec04&quot;     
+## [36] &quot;miVec05&quot;      &quot;miVec05b&quot;     &quot;miVec05c&quot;     &quot;miVec06&quot;      &quot;miVec07&quot;     
+## [41] &quot;miVec08&quot;      &quot;miVec09&quot;      &quot;miVec10&quot;      &quot;miVec11&quot;      &quot;miVec12&quot;     
+## [46] &quot;miVec13&quot;      &quot;miVec14&quot;      &quot;miVec15&quot;      &quot;miVec20&quot;      &quot;miVec21&quot;     
+## [51] &quot;miVec22&quot;      &quot;miVec23&quot;      &quot;miVec24&quot;      &quot;miVec25&quot;      &quot;miVecArr&quot;    
+## [56] &quot;miVecArr02&quot;   &quot;miVecConf&quot;    &quot;miVecNA&quot;      &quot;miVecOp&quot;      &quot;msg&quot;         
+## [61] &quot;myCol&quot;        &quot;myRow&quot;        &quot;myText&quot;       &quot;myText2&quot;      &quot;myText3&quot;     
+## [66] &quot;myText4&quot;      &quot;myText5&quot;      &quot;nbrRep&quot;       &quot;newVec&quot;       &quot;newVec2&quot;     
+## [71] &quot;numbers&quot;      &quot;oldWd&quot;        &quot;opAriDf&quot;      &quot;roundDou&quot;     &quot;sumIntDou&quot;   
+## [76] &quot;sumIntInt&quot;    &quot;tabPkgDf&quot;     &quot;terme01&quot;      &quot;terme02&quot;      &quot;vecForMat01&quot; 
+## [81] &quot;vecForMat02&quot;  &quot;vecForMat03&quot;  &quot;vecForMatrix&quot; &quot;vecManip&quot;     &quot;vecManip2&quot;   
+## [86] &quot;vecManip3&quot;    &quot;zzz&quot;</code></pre>
 </div>
 <div id="l015rm" class="section level3">
 <h3><span class="header-section-number">7.3.9</span> <code>rm()</code></h3>
@@ -1146,22 +1144,23 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="sourceCode" id="cb879"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb879-1" title="1"><span class="kw">rm</span>(zzz)</a>
 <a class="sourceLine" id="cb879-2" title="2"><span class="kw">ls</span>()</a></code></pre></div>
 <pre><code>##  [1] &quot;aLogic&quot;       &quot;bddInsect&quot;    &quot;characters&quot;   &quot;contrib&quot;      &quot;dfContrib&quot;   
-##  [6] &quot;dfForMat&quot;     &quot;factor01&quot;     &quot;i&quot;            &quot;irisCopy&quot;     &quot;j&quot;           
-## [11] &quot;k&quot;            &quot;logicals&quot;     &quot;mdat&quot;         &quot;miArray&quot;      &quot;miArray02&quot;   
-## [16] &quot;miDf01&quot;       &quot;miDfSub01&quot;    &quot;miDfSub02&quot;    &quot;miDfSub03&quot;    &quot;miDfSub04&quot;   
-## [21] &quot;miList01&quot;     &quot;miList02&quot;     &quot;miList0203&quot;   &quot;miList03&quot;     &quot;miList04&quot;    
-## [26] &quot;miList05&quot;     &quot;miList06&quot;     &quot;miMat&quot;        &quot;miMat01&quot;      &quot;miMat02&quot;     
-## [31] &quot;miVec01&quot;      &quot;miVec02&quot;      &quot;miVec03&quot;      &quot;miVec04&quot;      &quot;miVec05&quot;     
-## [36] &quot;miVec05b&quot;     &quot;miVec05c&quot;     &quot;miVec06&quot;      &quot;miVec07&quot;      &quot;miVec08&quot;     
-## [41] &quot;miVec09&quot;      &quot;miVec10&quot;      &quot;miVec11&quot;      &quot;miVec12&quot;      &quot;miVec13&quot;     
-## [46] &quot;miVec14&quot;      &quot;miVec15&quot;      &quot;miVec20&quot;      &quot;miVec21&quot;      &quot;miVec22&quot;     
-## [51] &quot;miVec23&quot;      &quot;miVec24&quot;      &quot;miVec25&quot;      &quot;miVecArr&quot;     &quot;miVecArr02&quot;  
-## [56] &quot;miVecConf&quot;    &quot;miVecNA&quot;      &quot;miVecOp&quot;      &quot;msg&quot;          &quot;myCol&quot;       
-## [61] &quot;myRow&quot;        &quot;myText&quot;       &quot;myText2&quot;      &quot;myText3&quot;      &quot;myText4&quot;     
-## [66] &quot;myText5&quot;      &quot;nbrRep&quot;       &quot;newVec&quot;       &quot;newVec2&quot;      &quot;numbers&quot;     
-## [71] &quot;oldWd&quot;        &quot;opAriDf&quot;      &quot;roundDou&quot;     &quot;sumIntDou&quot;    &quot;sumIntInt&quot;   
-## [76] &quot;tabPkgDf&quot;     &quot;terme01&quot;      &quot;terme02&quot;      &quot;vecForMat01&quot;  &quot;vecForMat02&quot; 
-## [81] &quot;vecForMat03&quot;  &quot;vecForMatrix&quot; &quot;vecManip&quot;     &quot;vecManip2&quot;    &quot;vecManip3&quot;</code></pre>
+##  [6] &quot;dfForMat&quot;     &quot;factor01&quot;     &quot;hook_output&quot;  &quot;i&quot;            &quot;irisCopy&quot;    
+## [11] &quot;j&quot;            &quot;k&quot;            &quot;logicals&quot;     &quot;mdat&quot;         &quot;miArray&quot;     
+## [16] &quot;miArray02&quot;    &quot;miDf01&quot;       &quot;miDfSub01&quot;    &quot;miDfSub02&quot;    &quot;miDfSub03&quot;   
+## [21] &quot;miDfSub04&quot;    &quot;miList01&quot;     &quot;miList02&quot;     &quot;miList0203&quot;   &quot;miList03&quot;    
+## [26] &quot;miList04&quot;     &quot;miList05&quot;     &quot;miList06&quot;     &quot;miMat&quot;        &quot;miMat01&quot;     
+## [31] &quot;miMat02&quot;      &quot;miVec01&quot;      &quot;miVec02&quot;      &quot;miVec03&quot;      &quot;miVec04&quot;     
+## [36] &quot;miVec05&quot;      &quot;miVec05b&quot;     &quot;miVec05c&quot;     &quot;miVec06&quot;      &quot;miVec07&quot;     
+## [41] &quot;miVec08&quot;      &quot;miVec09&quot;      &quot;miVec10&quot;      &quot;miVec11&quot;      &quot;miVec12&quot;     
+## [46] &quot;miVec13&quot;      &quot;miVec14&quot;      &quot;miVec15&quot;      &quot;miVec20&quot;      &quot;miVec21&quot;     
+## [51] &quot;miVec22&quot;      &quot;miVec23&quot;      &quot;miVec24&quot;      &quot;miVec25&quot;      &quot;miVecArr&quot;    
+## [56] &quot;miVecArr02&quot;   &quot;miVecConf&quot;    &quot;miVecNA&quot;      &quot;miVecOp&quot;      &quot;msg&quot;         
+## [61] &quot;myCol&quot;        &quot;myRow&quot;        &quot;myText&quot;       &quot;myText2&quot;      &quot;myText3&quot;     
+## [66] &quot;myText4&quot;      &quot;myText5&quot;      &quot;nbrRep&quot;       &quot;newVec&quot;       &quot;newVec2&quot;     
+## [71] &quot;numbers&quot;      &quot;oldWd&quot;        &quot;opAriDf&quot;      &quot;roundDou&quot;     &quot;sumIntDou&quot;   
+## [76] &quot;sumIntInt&quot;    &quot;tabPkgDf&quot;     &quot;terme01&quot;      &quot;terme02&quot;      &quot;vecForMat01&quot; 
+## [81] &quot;vecForMat02&quot;  &quot;vecForMat03&quot;  &quot;vecForMatrix&quot; &quot;vecManip&quot;     &quot;vecManip2&quot;   
+## [86] &quot;vecManip3&quot;</code></pre>
 </div>
 </div>
 <div id="quelques-exercices" class="section level2">
@@ -1333,10 +1332,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Il n’y a pas de solution optimale dans l’absolu, tout dépend des objectifs recherchés. La première solution est peut être plus facile à comprendre, et la seconde peut-être plus rapide en terme de vitesse d’exécution (même en répétant l’utilisation de la fonction 100000 fois, le gain de temps est presque nul dans notre cas).</p>
 <div class="sourceCode" id="cb944"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb944-1" title="1"><span class="kw">system.time</span>(<span class="kw">replicate</span>(<span class="dt">n =</span> <span class="dv">100000</span>, <span class="kw">countVowelConso</span>(<span class="dt">word =</span> <span class="st">&quot;qwertyuiop azertyuiop&quot;</span>)))</a></code></pre></div>
 <pre><code>##    user  system elapsed 
-##    1.10    0.02    1.11</code></pre>
+##    1.18    0.00    1.17</code></pre>
 <div class="sourceCode" id="cb946"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb946-1" title="1"><span class="kw">system.time</span>(<span class="kw">replicate</span>(<span class="dt">n =</span> <span class="dv">100000</span>, <span class="kw">countVowelConsoAlt</span>(<span class="dt">word =</span> <span class="st">&quot;qwertyuiop azertyuiop&quot;</span>)))</a></code></pre></div>
 <pre><code>##    user  system elapsed 
-##    1.05    0.00    1.05</code></pre>
+##    1.14    0.00    1.14</code></pre>
 <p>Une fonction peut avoir des valeurs par défaut pour ses arguments. C’est le cas de la plupart des fonctions existantes. Par défaut, notre fonction va désormais compter le nombre de voyelles et de consonnes dans le mot <code>qwerty</code> (les parenthèses restent nécessaires même en l’absence d’arguments).</p>
 <div class="sourceCode" id="cb948"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb948-1" title="1">countVowelConsoAlt &lt;-<span class="st"> </span><span class="cf">function</span>(<span class="dt">word =</span> <span class="st">&quot;qwerty&quot;</span>){ <span class="co"># compte les voyelles et les consonnes</span></a>
 <a class="sourceLine" id="cb948-2" title="2">  <span class="cf">if</span>(<span class="kw">is.vector</span>(word) <span class="op">&amp;</span><span class="st"> </span><span class="kw">is.character</span>(word) <span class="op">&amp;</span><span class="st"> </span><span class="kw">length</span>(word) <span class="op">==</span><span class="st"> </span><span class="dv">1</span>){</a>

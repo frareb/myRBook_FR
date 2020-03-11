@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title> 6 Les conteneurs de données | Se former au logiciel R : initiation et perfectionnement</title>
+  <title> 6 Les conteneurs de données | R pour les scientifiques : Mise en œuvre de projets et valorisation des résultats</title>
   <meta name="description" content="Un guide pour acquérir les bases de la programmation avec R et conduire efficacement la gestion et l’analyse de ses données." />
   <meta name="generator" content="bookdown 0.18 and GitBook 2.6.7" />
 
-  <meta property="og:title" content=" 6 Les conteneurs de données | Se former au logiciel R : initiation et perfectionnement" />
+  <meta property="og:title" content=" 6 Les conteneurs de données | R pour les scientifiques : Mise en œuvre de projets et valorisation des résultats" />
   <meta property="og:type" content="book" />
   
   <meta property="og:image" content="myFigures/cover.png" />
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="frareb/myRBook_FR" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content=" 6 Les conteneurs de données | Se former au logiciel R : initiation et perfectionnement" />
+  <meta name="twitter:title" content=" 6 Les conteneurs de données | R pour les scientifiques : Mise en œuvre de projets et valorisation des résultats" />
   
   <meta name="twitter:description" content="Un guide pour acquérir les bases de la programmation avec R et conduire efficacement la gestion et l’analyse de ses données." />
   <meta name="twitter:image" content="myFigures/cover.png" />
@@ -144,7 +144,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <nav role="navigation">
 
 <ul class="summary">
-<li><a href="./">Se former au logiciel R : initiation et perfectionnement</a></li>
+<li><a href="./">R pour les scientifiques</a></li>
 
 <li class="divider"></li>
 <li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Préambule</a><ul>
@@ -326,9 +326,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="part"><span><b>III Annexes</b></span></li>
 <li class="chapter" data-level="15" data-path="studyCase001.html"><a href="studyCase001.html"><i class="fa fa-check"></i><b>15</b> Manipuler des dates et des heures : données de datalogger de température</a></li>
 <li class="chapter" data-level="16" data-path="studyCase002.html"><a href="studyCase002.html"><i class="fa fa-check"></i><b>16</b> R et Internet, manipuler des URLs : WOS d’un article à partir de son numéro DOI</a></li>
-<li class="divider"></li>
-<li><a href="http://ird.fr/" target="blank"><img src="myLogos/logo_IRD_2016_LONGUEUR_SP_COUL.png" alt="IRD" width="100"></a></li>
-
 </ul>
 
       </nav>
@@ -338,7 +335,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <div class="body-inner">
         <div class="book-header" role="navigation">
           <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Se former au logiciel R : initiation et perfectionnement</a>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">R pour les scientifiques : Mise en œuvre de projets et valorisation des résultats</a>
           </h1>
         </div>
 
@@ -355,8 +352,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="créer-un-vector" class="section level3">
 <h3><span class="header-section-number">6.1.1</span> Créer un <code>vector</code></h3>
 <p>Pour créer un <code>vector</code> nous allons utiliser la fonction <code>c()</code> qui permet de combiner des éléments en un <code>vector</code>. Les éléments à combiner doivent être séparés par des virgules (avec un espace après chaque virgule afin de rester lisible).</p>
-<div class="sourceCode" id="cb214"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb214-1" title="1">miVec01 &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>) <span class="co"># un vecteur de 4 éléments de type numeric ; double</span></a>
-<a class="sourceLine" id="cb214-2" title="2"><span class="kw">print</span>(miVec01)</a></code></pre></div>
+<div class="sourceCode" id="cb214"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb214-1" title="1">miVec01 &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>) <span class="co"># un vecteur de 4 éléments </span></a>
+<a class="sourceLine" id="cb214-2" title="2">                         <span class="co"># de type numeric ; double</span></a>
+<a class="sourceLine" id="cb214-3" title="3"><span class="kw">print</span>(miVec01)</a></code></pre></div>
 <pre><code>## [1] 1 2 3 4</code></pre>
 <div class="sourceCode" id="cb216"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb216-1" title="1"><span class="kw">typeof</span>(miVec01)</a></code></pre></div>
 <pre><code>## [1] &quot;double&quot;</code></pre>
@@ -686,8 +684,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="sourceCode" id="cb399"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb399-1" title="1"><span class="kw">print</span>(miList04[[<span class="dv">2</span>]][[<span class="dv">3</span>]][[<span class="dv">1</span>]][<span class="dv">1</span>])</a></code></pre></div>
 <pre><code>## [1] 4</code></pre>
 <p>Pour rendre concret l’exemple précédent, nous pouvons imaginer des espèces de foreurs de maïs (<em>Sesamia nonagrioides</em> et <em>Ostrinia nubilalis</em>), échantillonnées dans différents sites, avec différentes abondances à quatre dates. Ici nous allons donner des noms aux éléments des listes.</p>
-<div class="sourceCode" id="cb401"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb401-1" title="1">bddInsect &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="dt">Snonagrioides =</span> <span class="kw">list</span>(<span class="dt">site01 =</span> <span class="kw">c</span>(<span class="dv">12</span>, <span class="dv">5</span>, <span class="dv">8</span>, <span class="dv">7</span>), <span class="dt">site02 =</span> <span class="kw">c</span>(<span class="dv">5</span>, <span class="dv">23</span>, <span class="dv">4</span>, <span class="dv">41</span>), <span class="dt">site03 =</span> <span class="kw">c</span>(<span class="dv">12</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>)), <span class="dt">Onubilalis =</span> <span class="kw">list</span>(<span class="dt">site01 =</span> <span class="kw">c</span>(<span class="dv">12</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>), <span class="dt">site02 =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>), <span class="dt">site03 =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>)))</a>
-<a class="sourceLine" id="cb401-2" title="2"><span class="kw">print</span>(bddInsect)</a></code></pre></div>
+<div class="sourceCode" id="cb401"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb401-1" title="1">bddInsect &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="dt">Snonagrioides =</span> <span class="kw">list</span>(<span class="dt">site01 =</span> <span class="kw">c</span>(<span class="dv">12</span>, <span class="dv">5</span>, <span class="dv">8</span>, <span class="dv">7</span>), </a>
+<a class="sourceLine" id="cb401-2" title="2"><span class="dt">site02 =</span> <span class="kw">c</span>(<span class="dv">5</span>, <span class="dv">23</span>, <span class="dv">4</span>, <span class="dv">41</span>), <span class="dt">site03 =</span> <span class="kw">c</span>(<span class="dv">12</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>)), <span class="dt">Onubilalis =</span> </a>
+<a class="sourceLine" id="cb401-3" title="3"><span class="kw">list</span>(<span class="dt">site01 =</span> <span class="kw">c</span>(<span class="dv">12</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>), <span class="dt">site02 =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>), <span class="dt">site03 =</span> </a>
+<a class="sourceLine" id="cb401-4" title="4"><span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>)))</a>
+<a class="sourceLine" id="cb401-5" title="5"><span class="kw">print</span>(bddInsect)</a></code></pre></div>
 <pre><code>## $Snonagrioides
 ## $Snonagrioides$site01
 ## [1] 12  5  8  7

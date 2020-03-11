@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title> 15 Manipuler des dates et des heures : données de datalogger de température | Se former au logiciel R : initiation et perfectionnement</title>
+  <title> 15 Manipuler des dates et des heures : données de datalogger de température | R pour les scientifiques : Mise en œuvre de projets et valorisation des résultats</title>
   <meta name="description" content="Un guide pour acquérir les bases de la programmation avec R et conduire efficacement la gestion et l’analyse de ses données." />
   <meta name="generator" content="bookdown 0.18 and GitBook 2.6.7" />
 
-  <meta property="og:title" content=" 15 Manipuler des dates et des heures : données de datalogger de température | Se former au logiciel R : initiation et perfectionnement" />
+  <meta property="og:title" content=" 15 Manipuler des dates et des heures : données de datalogger de température | R pour les scientifiques : Mise en œuvre de projets et valorisation des résultats" />
   <meta property="og:type" content="book" />
   
   <meta property="og:image" content="myFigures/cover.png" />
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="frareb/myRBook_FR" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content=" 15 Manipuler des dates et des heures : données de datalogger de température | Se former au logiciel R : initiation et perfectionnement" />
+  <meta name="twitter:title" content=" 15 Manipuler des dates et des heures : données de datalogger de température | R pour les scientifiques : Mise en œuvre de projets et valorisation des résultats" />
   
   <meta name="twitter:description" content="Un guide pour acquérir les bases de la programmation avec R et conduire efficacement la gestion et l’analyse de ses données." />
   <meta name="twitter:image" content="myFigures/cover.png" />
@@ -144,7 +144,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <nav role="navigation">
 
 <ul class="summary">
-<li><a href="./">Se former au logiciel R : initiation et perfectionnement</a></li>
+<li><a href="./">R pour les scientifiques</a></li>
 
 <li class="divider"></li>
 <li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Préambule</a><ul>
@@ -326,9 +326,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="part"><span><b>III Annexes</b></span></li>
 <li class="chapter" data-level="15" data-path="studyCase001.html"><a href="studyCase001.html"><i class="fa fa-check"></i><b>15</b> Manipuler des dates et des heures : données de datalogger de température</a></li>
 <li class="chapter" data-level="16" data-path="studyCase002.html"><a href="studyCase002.html"><i class="fa fa-check"></i><b>16</b> R et Internet, manipuler des URLs : WOS d’un article à partir de son numéro DOI</a></li>
-<li class="divider"></li>
-<li><a href="http://ird.fr/" target="blank"><img src="myLogos/logo_IRD_2016_LONGUEUR_SP_COUL.png" alt="IRD" width="100"></a></li>
-
 </ul>
 
       </nav>
@@ -338,7 +335,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <div class="body-inner">
         <div class="book-header" role="navigation">
           <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Se former au logiciel R : initiation et perfectionnement</a>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">R pour les scientifiques : Mise en œuvre de projets et valorisation des résultats</a>
           </h1>
         </div>
 
@@ -353,10 +350,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <a class="sourceLine" id="cb1203-2" title="2">bdd &lt;-<span class="st"> </span><span class="kw">read.table</span>(<span class="st">&quot;myFiles/E05C13.csv&quot;</span>, <span class="dt">skip =</span> <span class="dv">1</span>, <span class="dt">header =</span> <span class="ot">TRUE</span>, </a>
 <a class="sourceLine" id="cb1203-3" title="3">  <span class="dt">sep =</span> <span class="st">&quot;,&quot;</span>, <span class="dt">dec =</span> <span class="st">&quot;.&quot;</span>, <span class="dt">stringsAsFactors =</span> <span class="ot">FALSE</span>)</a>
 <a class="sourceLine" id="cb1203-4" title="4"><span class="co"># Lecture du fichier depuis GitHub : </span></a>
-<a class="sourceLine" id="cb1203-5" title="5"><span class="co"># bdd &lt;- read.table(&quot;https://raw.githubusercontent.com/frareb/myRBook_FR/master/myFiles/E05C13.csv&quot;, </span></a>
-<a class="sourceLine" id="cb1203-6" title="6"><span class="co">#   skip = 1, header = TRUE, sep = &quot;,&quot;, dec = &quot;.&quot;, stringsAsFactors = FALSE)</span></a>
-<a class="sourceLine" id="cb1203-7" title="7"><span class="kw">colnames</span>(bdd) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;id&quot;</span>, <span class="st">&quot;date&quot;</span>, <span class="st">&quot;temp&quot;</span>)</a>
-<a class="sourceLine" id="cb1203-8" title="8"><span class="kw">head</span>(bdd)</a></code></pre></div>
+<a class="sourceLine" id="cb1203-5" title="5"><span class="co"># URL &lt;- &quot;https://raw.githubusercontent.com/frareb/myRBook_FR/</span></a>
+<a class="sourceLine" id="cb1203-6" title="6"><span class="co">#   master/myFiles/E05C13.csv&quot;</span></a>
+<a class="sourceLine" id="cb1203-7" title="7"><span class="co"># bdd &lt;- read.table(</span></a>
+<a class="sourceLine" id="cb1203-8" title="8"><span class="co">#   URL, </span></a>
+<a class="sourceLine" id="cb1203-9" title="9"><span class="co">#   skip = 1, </span></a>
+<a class="sourceLine" id="cb1203-10" title="10"><span class="co">#   header = TRUE,</span></a>
+<a class="sourceLine" id="cb1203-11" title="11"><span class="co">#   sep = &quot;,&quot;,</span></a>
+<a class="sourceLine" id="cb1203-12" title="12"><span class="co">#   dec = &quot;.&quot;,</span></a>
+<a class="sourceLine" id="cb1203-13" title="13"><span class="co">#   stringsAsFactors = FALSE)</span></a>
+<a class="sourceLine" id="cb1203-14" title="14"><span class="kw">colnames</span>(bdd) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;id&quot;</span>, <span class="st">&quot;date&quot;</span>, <span class="st">&quot;temp&quot;</span>)</a>
+<a class="sourceLine" id="cb1203-15" title="15"><span class="kw">head</span>(bdd)</a></code></pre></div>
 <pre><code>##   id              date  temp
 ## 1  1 11/12/15 23:00:00 4.973
 ## 2  2 11/12/15 23:30:00 4.766
