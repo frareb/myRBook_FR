@@ -1,5 +1,5 @@
 ---
-title: "Se former au logiciel R : initiation et perfectionnement"
+title: "R pour les scientifiques : Mise en œuvre de projets et valorisation des résultats"
 author: "François Rebaudo"
 date: "`r Sys.Date()`"
 site: bookdown::bookdown_site
@@ -12,6 +12,24 @@ github-repo: "frareb/myRBook_FR"
 description: "Un guide pour acquérir les bases de la programmation avec R et conduire efficacement la gestion et l'analyse de ses données."
 cover-image: "myFigures/cover.png"
 ---
+
+```{r options, echo=FALSE}
+library(knitr)
+# opts_chunk$set(
+#   tidy.opts = list(width.cutoff = 60), tidy = TRUE) # problem for ident
+# https://github.com/yihui/knitr-examples/blob/master/077-wrap-output.Rmd
+hook_output = knit_hooks$get('output')
+knit_hooks$set(output = function(x, options) {
+  # this hook is used only when the linewidth option is not NULL
+  if (!is.null(n <- options$linewidth)) {
+    x = knitr:::split_lines(x)
+    # any lines wider than n should be wrapped
+    if (any(nchar(x) > n)) x = strwrap(x, width = n)
+    x = paste(x, collapse = '\n')
+  }
+  hook_output(x, options)
+})
+```
 
 # Préambule
 

@@ -11,7 +11,8 @@ Dans R, un `vector` est une combinaison de données avec la particularité que t
 Pour créer un `vector` nous allons utiliser la fonction `c()` qui permet de combiner des éléments en un `vector`. Les éléments à combiner doivent être séparés par des virgules (avec un espace après chaque virgule afin de rester lisible).
 
 ```{r 014-dataType2-1}
-miVec01 <- c(1, 2, 3, 4) # un vecteur de 4 éléments de type numeric ; double
+miVec01 <- c(1, 2, 3, 4) # un vecteur de 4 éléments 
+                         # de type numeric ; double
 print(miVec01)
 typeof(miVec01)
 is.vector(miVec01)
@@ -280,7 +281,10 @@ print(miList04[[2]][[3]][[1]][1])
 Pour rendre concret l'exemple précédent, nous pouvons imaginer des espèces de foreurs de maïs (*Sesamia nonagrioides* et *Ostrinia nubilalis*), échantillonnées dans différents sites, avec différentes abondances à quatre dates. Ici nous allons donner des noms aux éléments des listes.
 
 ```{r 014-dataType2-22}
-bddInsect <- list(Snonagrioides = list(site01 = c(12, 5, 8, 7), site02 = c(5, 23, 4, 41), site03 = c(12, 0, 0, 0)), Onubilalis = list(site01 = c(12, 1, 2, 3), site02 = c(0, 0, 0, 1), site03 = c(1, 1, 2, 3)))
+bddInsect <- list(Snonagrioides = list(site01 = c(12, 5, 8, 7), 
+site02 = c(5, 23, 4, 41), site03 = c(12, 0, 0, 0)), Onubilalis = 
+list(site01 = c(12, 1, 2, 3), site02 = c(0, 0, 0, 1), site03 = 
+c(1, 1, 2, 3)))
 print(bddInsect)
 ```
 

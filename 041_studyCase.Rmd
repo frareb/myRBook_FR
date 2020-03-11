@@ -9,8 +9,15 @@ Dans les études de biologie, d'écologie ou d'agronomie, nous utilisons fréque
 bdd <- read.table("myFiles/E05C13.csv", skip = 1, header = TRUE, 
   sep = ",", dec = ".", stringsAsFactors = FALSE)
 # Lecture du fichier depuis GitHub : 
-# bdd <- read.table("https://raw.githubusercontent.com/frareb/myRBook_FR/master/myFiles/E05C13.csv", 
-#   skip = 1, header = TRUE, sep = ",", dec = ".", stringsAsFactors = FALSE)
+# URL <- "https://raw.githubusercontent.com/frareb/myRBook_FR/
+#   master/myFiles/E05C13.csv"
+# bdd <- read.table(
+#   URL, 
+#   skip = 1, 
+#   header = TRUE,
+#   sep = ",",
+#   dec = ".",
+#   stringsAsFactors = FALSE)
 colnames(bdd) <- c("id", "date", "temp")
 head(bdd)
 tail(bdd)
