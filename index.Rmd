@@ -29,10 +29,13 @@ contrib <- unname(t(data.frame(
 )))
 contrib <- contrib[order(contrib[, 2]),]
 msg <- "Contributeurs :\r"
-for(i in seq_along(contrib[, 2])){
-  msg <- c(msg, paste0(contrib[i, 1], " ",contrib[i, 2], " (", contrib[i, 3],")\r"))
-}
-for(i in msg){cat(i, sep = "")}
+# for(i in seq_along(contrib[, 2])){
+#   msg <- c(msg, paste0(contrib[i, 1], " ",contrib[i, 2], " (", contrib[i, 3],")\r"))
+# }
+# for(i in msg){cat(i, sep = "")}
+dfContrib <- data.frame(contrib)
+names(dfContrib) <- c("Prénom", "Nom", "Pays ; Affiliation")
+knitr::kable(dfContrib)
 ```
 
 Les versions gitbook, html et epub de ce livre utilisent les icônes open source de Font Awesome (https://fontawesome.com). La version PDF utilise les icônes issues du projet Tango disponibles depuis openclipart (https://openclipart.org/). Ce livre a été écrit avec le package R bookdown (https://bookdown.org/). Le code source est disponible sur GitHub (https://github.com/frareb/myRBook_FR). La version en ligne est hébergée et mise à jour grâce à Netlify (http://myrbookfr.netlify.com/).
