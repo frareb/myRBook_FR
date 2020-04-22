@@ -24,7 +24,7 @@
 <meta name="author" content="François Rebaudo" />
 
 
-<meta name="date" content="2020-03-11" />
+<meta name="date" content="2020-04-22" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -53,8 +53,8 @@
 <script src="libs/htmlwidgets-1.5.1/htmlwidgets.js"></script>
 <script src="libs/plotly-binding-4.9.2/plotly.js"></script>
 <script src="libs/typedarray-0.1/typedarray.min.js"></script>
-<link href="libs/crosstalk-1.0.0/css/crosstalk.css" rel="stylesheet" />
-<script src="libs/crosstalk-1.0.0/js/crosstalk.min.js"></script>
+<link href="libs/crosstalk-1.1.0.1/css/crosstalk.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.1.0.1/js/crosstalk.min.js"></script>
 <link href="libs/plotly-htmlwidgets-css-1.52.2/plotly-htmlwidgets.css" rel="stylesheet" />
 <script src="libs/plotly-main-1.52.2/plotly-latest.min.js"></script>
 <!-- Global site tag (gtag.js) - Google Analytics -->
@@ -361,13 +361,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Le répertoire de travail par défaut peut être obtenu avec la fonction <a href="fonctions.html#l015getwd"><code>getwd()</code></a> et spécifié avec la fonction <a href="fonctions.html#l015setwd"><code>setwd()</code></a>.</p>
 <div class="sourceCode" id="cb955"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb955-1" title="1">oldWd &lt;-<span class="st"> </span><span class="kw">getwd</span>()</a>
 <a class="sourceLine" id="cb955-2" title="2"><span class="kw">print</span>(oldWd)</a></code></pre></div>
-<pre><code>## [1] &quot;D:/GitHub/myRBook_FR&quot;</code></pre>
+<pre><code>## [1] &quot;C:/Users/nous/Documents/Francois/TRAVAIL/GitHub/myRBook_FR&quot;</code></pre>
 <div class="sourceCode" id="cb957"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb957-1" title="1"><span class="kw">setwd</span>(<span class="st">&quot;..&quot;</span>)</a>
 <a class="sourceLine" id="cb957-2" title="2"><span class="kw">getwd</span>()</a></code></pre></div>
-<pre><code>## [1] &quot;D:/GitHub&quot;</code></pre>
+<pre><code>## [1] &quot;C:/Users/nous/Documents/Francois/TRAVAIL/GitHub&quot;</code></pre>
 <div class="sourceCode" id="cb959"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb959-1" title="1"><span class="kw">setwd</span>(oldWd)</a>
 <a class="sourceLine" id="cb959-2" title="2"><span class="kw">getwd</span>()</a></code></pre></div>
-<pre><code>## [1] &quot;D:/GitHub/myRBook_FR&quot;</code></pre>
+<pre><code>## [1] &quot;C:/Users/nous/Documents/Francois/TRAVAIL/GitHub/myRBook_FR&quot;</code></pre>
 <p>Nous avons donc quatre options :</p>
 <ul>
 <li>nous pouvons lire le contenu d’un fichier en indiquant à R son chemin complet (à proscrire pour la reproductibilité des résultats, en effet le chemin complet varie d’un ordinateur à un autre)</li>
