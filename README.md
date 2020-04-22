@@ -12,6 +12,10 @@ Ce livre est également disponible en espagnol (http://myrbooksp.netlify.com/).
 
 Dernières modifications:
 
+**v0.1.0-1 22/04/2020**
+
+* typos
+
 **v0.1.0 13/12/2019**
 
 * Première version du livre
