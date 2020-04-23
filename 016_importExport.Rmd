@@ -20,7 +20,7 @@ Commençons par préciser que R travaille dans un répertoire défini par défau
 
 Le répertoire de travail par défaut peut être obtenu avec la fonction [`getwd()`](#l015getwd) et spécifié avec la fonction [`setwd()`](#l015setwd).
 
-```{r 016-importExport-1}
+```{r 016-importExport-1, linewidth=65}
 oldWd <- getwd()
 print(oldWd)
 setwd("..")
@@ -96,7 +96,8 @@ Si le chemin n'est pas correctement renseigné ou si le fichier de données n'ex
 cat("Error in file(file, \"rt\") : impossible d'ouvrir la connexion
 De plus : Warning message:
 In file(file, \"rt\") :
-  impossible d'ouvrir le fichier '../myFiles/data01.csv' : No such file or directory")
+  impossible d'ouvrir le fichier '../myFiles/data01.csv' : 
+  No such file or directory")
 ```
 
 Si tout va bien, R affiche le contenu du fichier "`data01.csv`". Attention aux utilisateurs de Windows car par défaut le nom des fichiers apparaît sans leur extension... Ainsi lorsque nous naviguons dans les répertoires avec l'explorateur de fichiers, il n'y a pas de fichier "`data01.csv`" mais uniquement un fichier "`data01`". Il est indispensable de remédier à ce problème pour éviter les erreurs. Pour ce faire il suffit d'ouvrir les 'Options de l'Explorateur de fichiers' via la touche 'Windows', puis dans l'onglet 'Affichage', de vérifier que l'option 'Masquer les extensions des fichiers dont le type est connu' est bien décochée. 
@@ -121,8 +122,8 @@ head(data01) # vérifier les premières données
 
 Voici un exemple où la première ligne est ignorée avec l'argument `skip = 1`.
 
-```{r 016-importExport-9}
-# Affcihage du fichier brut (10 premières lignes)
+```{r 016-importExport-9, linewidth=65}
+# Affichage du fichier brut (10 premières lignes)
 readLines("myFiles/E05C13.csv", n = 10)
 # lecture du fichier avec R
 bdd <- read.table("myFiles/E05C13.csv", skip = 1, header = TRUE, 
@@ -137,8 +138,12 @@ str(bdd)
 
 La fonction la plus simple pour lire un fichier contenant du texte est `readLines()`. Voici un exemple avec le fichier _bookdown.yml de ce livre, que l'on retrouve sur GitHub.
 
-```{r 016-importExport-10}
-readmeGitHub <- "https://raw.githubusercontent.com/frareb/myRBook_FR/master/_bookdown.yml"
+```{r 016-importExport-10, linewidth=65}
+# découpage de l'URL puis collage avec paste0() 
+# pour tenir sur plusieurs lignes
+readmeGitHub <- paste0(
+  "https://raw.githubusercontent.com/", 
+  "frareb/myRBook_FR/master/_bookdown.yml")
 readLines(readmeGitHub)
 ```
 
@@ -191,7 +196,10 @@ write.table(dfLetters, file = "myFiles/dfLetters.csv",
 # Suppression de l'objet dfLetters
 rm(dfLetters)
 # Lecture du fichier CSV
-read.table(file = "myFiles/dfLetters.csv", header = TRUE, sep = ",")
+read.table(
+  file = "myFiles/dfLetters.csv", 
+  header = TRUE, 
+  sep = ",")
 ```
 
 ## Conclusion

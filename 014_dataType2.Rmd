@@ -110,13 +110,15 @@ miVec12 <- c(1, 1, 1, 1, 1, 1, 1, 1, 1)
 print(miVec12)
 miVec13 <- c(10, 20, 30)
 print(miVec13)
-miVec12 + miVec13 # vecteurs de tailles différentes : attention au résultat
+miVec12 + miVec13 # vecteurs de tailles différentes : 
+                  # attention au résultat
 miVec14 <- c(10, 20, 30, 40, 50, 60, 70, 80, 90)
 print(miVec14)
 miVec12 + miVec14 # les vecteurs sont de la même longueur
 miVec15 <- c(1, 1, 1, 1)
 print(miVec15)
-miVec15 + miVec13 # vecteurs de tailles différentes et non multiples
+miVec15 + miVec13 # vecteurs de tailles différentes 
+                  # et non multiples
 ```
 
 ### Accéder aux valeurs d'un `vector`
@@ -176,7 +178,8 @@ print(miVec21[-c(1, 2, 5)])
 Les éléments d'un `vector` peuvent aussi être sélectionnés sur la base d'un `vector` de type `logical`. Dans ce cas seuls les éléments avec une valeur `TRUE` seront sélectionnés.
 
 ```{r 014-dataType2-12}
-miVec22 <- c(TRUE, TRUE, FALSE, TRUE, FALSE, TRUE, FALSE, TRUE, TRUE)
+miVec22 <- c(TRUE, TRUE, FALSE, TRUE, 
+  FALSE, TRUE, FALSE, TRUE, TRUE)
 print(miVec21[miVec22])
 ```
 
@@ -462,11 +465,13 @@ Puisque chaque colonne est au format `vector`, nous pouvons également faire une
 ```{r 014-dataType2-37}
 miDfSub01 <- miDf01[miDf01$numbers > 2, ]
 print(miDfSub01)
-miDfSub02 <- miDf01[(miDf01$logicals == TRUE) & (miDf01$numbers < 2), ]
+miDfSub02 <- miDf01[(miDf01$logicals == TRUE) & 
+  (miDf01$numbers < 2), ]
 print(miDfSub02)
 miDfSub03 <- miDf01[(miDf01$numbers %% 2) == 0, ]
 print(miDfSub03)
-miDfSub04 <- miDf01[((miDf01$numbers %% 2) == 0) | (miDf01$logicals == TRUE), ]
+miDfSub04 <- miDf01[((miDf01$numbers %% 2) == 0) | 
+  (miDf01$logicals == TRUE), ]
 print(miDfSub04)
 ```
 

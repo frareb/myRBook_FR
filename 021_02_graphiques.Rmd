@@ -4,9 +4,12 @@ Nous avons vu différentes manières d'utiliser les couleurs : avec leur nom (e.
 
 L'utilisation des numéros de 1 à 8 correspond au noir, rouge, vert, bleu, cyan, magenta, jaune et gris. Cette utilisation est pratique pour visualiser rapidement nos résultats mais donne globalement des graphiques visuellement moyens. Ces couleurs sont plutôt à éviter pour communiquer nos graphiques.
 
-```{r 021-02-graphiques-1}
-par(mar = c(2, 2, 1, 1)) # réduction des marges
-barplot(sample(10:15, 8, replace = TRUE), col = 1:8, names.arg = 1:8)
+```{r 021-02-graphiques-1, out.width = '70%'}
+par(mar = c(2, 2, 1, 1)) 
+barplot(
+  sample(10:15, 8, replace = TRUE), 
+  col = 1:8, 
+  names.arg = 1:8)
 ```
 
 ## `colors()`
@@ -29,15 +32,22 @@ numRow <- 26
 numCol <- 26
 rect(
   xleft = rep((0:(numCol - 1)/numCol), numRow),  
-  ybottom = sort(rep((0:(numRow - 1)/numRow),numCol), decreasing = TRUE),
+  ybottom = sort(
+    rep((0:(numRow - 1)/numRow),numCol), 
+    decreasing = TRUE),
   xright = rep((1:numCol/numCol), numRow),
-  ytop = sort(rep((1:numRow/numRow), numCol), decreasing = TRUE),
+  ytop = sort(
+    rep((1:numRow/numRow), numCol), 
+    decreasing = TRUE),
   border = grey(0.5), 
   col = colors()[seq(1, numRow*numCol)])
-myLabels <- c(as.character(1:657), rep("", numRow*numCol - 657))
+myLabels <- c(
+  as.character(1:657), rep("", numRow*numCol - 657))
 text(
   x = rep((0:(numCol - 1)/numCol), numRow) + 0.02,
-  y = sort(rep((0:(numRow - 1)/numRow), numCol), decreasing = TRUE) + 0.02,
+  y = sort(
+    rep((0:(numRow - 1)/numRow), numCol), 
+    decreasing = TRUE) + 0.02,
   labels = myLabels, 
   cex = 0.6)
 par(op)
@@ -135,13 +145,20 @@ Il existe aussi une fonction `colorRampPalette()` qui permet de créer un dégra
 ```{r 021-02-graphiques-7}
 op <- par(no.readonly = TRUE)
 par(mfrow = c(3, 1), mar = c(0, 0, 0, 0))
-boxplot(matrix(rnorm(2500), ncol = 25), 
-  col = colorRampPalette(c('blue', 'red'))(25), axes = FALSE)
-boxplot(matrix(rnorm(2500), ncol = 25), 
-  col = colorRampPalette(c('blue', 'white', 'red'))(25), axes = FALSE)
-boxplot(matrix(rnorm(2500), ncol = 25), 
-  col =  colorRampPalette(c(rgb(255, 136, 0, maxColorValue = 255),  
-  rgb(0, 94, 255, maxColorValue = 255)))(25), axes = FALSE)
+boxplot(
+  matrix(rnorm(2500), ncol = 25), 
+  col = colorRampPalette(c('blue', 'red'))(25), 
+  axes = FALSE)
+boxplot(
+  matrix(rnorm(2500), ncol = 25), 
+  col = colorRampPalette(c('blue', 'white', 'red'))(25), 
+  axes = FALSE)
+boxplot(
+  matrix(rnorm(2500), ncol = 25), 
+  col =  colorRampPalette(
+    c(rgb(255, 136, 0, maxColorValue = 255),  
+    rgb(0, 94, 255, maxColorValue = 255)))(25), 
+  axes = FALSE)
 par(op)
 ```
 
@@ -151,7 +168,7 @@ R est un language de programmation très puissant. Nous pouvons imaginer de nomb
 
 Tout d'abord nous allons charger les packages `raster`, `rgdal` et `jpeg` qui vont nous servir à manipuler notre image sous R.
 
-```{r 021-02-graphiques-8}
+```{r 021-02-graphiques-8, linewidth=65}
 pkgCheck <- function(x){ 
 	if (!require(x, character.only = TRUE)){
 		install.packages(x, dependencies = TRUE)
@@ -167,48 +184,69 @@ pkgCheck("jpeg")
 
 Ensuite nous allons utiliser la fonction `kmeans()` pour effectuer des groupes de couleurs en utilisant les valeurs RGB de chacun des points de notre image. Ici nous avons deux méthodes possibles, la première utilise la fonction `kmeans()` pour les trois valeurs RGB, et la seconde utilise la fonction `kmeans()` pour chaque valeur RGB individuellement (cette seconde fonction donne une palette qui pourra être assez éloignée des couleurs de l'image de départ).
 
-```{r 021-02-graphiques-9}
+```{r 021-02-graphiques-9, out.width = '70%'}
 createPal <- function(photo, met = 1, graph = TRUE, k = 9){
 	if(met == 1){
 		colR <- getValues(raster(photo, band = 1))
 		colG <- getValues(raster(photo, band = 2))
 		colB <- getValues(raster(photo, band = 3))
-		kMeans <- kmeans(data.frame(colR, colG, colB), centers = k)
-		kCol <- rgb(kMeans$centers, maxColorValue = 255)[order(table(
-			kMeans$cluster), decreasing = TRUE)]
+		kMeans <- kmeans(
+		  data.frame(colR, colG, colB), 
+		  centers = k)
+		kCol <- rgb(kMeans$centers, maxColorValue = 255)[
+		  order(table(
+			  kMeans$cluster), decreasing = TRUE)]
 		if(graph == TRUE){
 		  op <- par(no.readonly = TRUE)
 		  par(mfrow = c (1, 2), mar = c(0, 2, 2, 0))
-		  myJpg <- readJPEG("./myFiles/photoKmeans.jpg", native = TRUE)
+		  myJpg <- readJPEG(
+		    "./myFiles/photoKmeans.jpg", 
+		    native = TRUE)
 		  plot(0:1, 0:1, type = "n", ann = FALSE, axes = FALSE)
 		  rasterImage(myJpg, 0, 0, 1, 1)
-		  barplot(table(kMeans$cluster)[order(table(kMeans$cluster), 
-		    decreasing = TRUE)], col = kCol, names.arg = NA)
+		  barplot(
+		    table(kMeans$cluster)[order(table(kMeans$cluster), 
+		      decreasing = TRUE)], 
+		    col = kCol, 
+		    names.arg = NA)
 		  par(op)
 		}
 		return(kCol)
 	} else {
 		if(met == 2){
-			kColR <- kmeans(x = getValues(raster(photo, band = 1)), 
+			kColR <- kmeans(
+			  x = getValues(raster(photo, band = 1)), 
 				centers = k)
-			kColG <- kmeans(x = getValues(raster(photo, band = 2)), 
+			kColG <- kmeans(
+			  x = getValues(raster(photo, band = 2)), 
 				centers = k)
-			kColB <- kmeans(x = getValues(raster(photo, band = 3)), 
+			kColB <- kmeans(
+			  x = getValues(raster(photo, band = 3)), 
 				centers = k)
-			kCol <- (rgb(kColR$centers, kColG$centers, kColB$centers,
-				maxColorValue = 255))
+			kCol <- rgb(
+			  kColR$centers, 
+			  kColG$centers, 
+			  kColB$centers,
+				maxColorValue = 255)
 			if(graph == TRUE){
 				op <- par(no.readonly = TRUE)
 				par(mfrow = c (1, 2), mar = c(0, 2, 2, 0))
-				myJpg <- readJPEG("./myFiles/photoKmeans.jpg", native = TRUE)
-				plot(0:1, 0:1, type = "n", ann = FALSE, axes = FALSE)
+				myJpg <- readJPEG(
+				  "./myFiles/photoKmeans.jpg", 
+				  native = TRUE)
+				plot(x = 0:1, y = 0:1, 
+				     type = "n", 
+				     ann = FALSE, 
+				     axes = FALSE)
 				rasterImage(myJpg, 0, 0, 1, 1)
 				# par(mar = c(0, 0, 0, 0))
 				plot(x = 1:k, y = rep(1, k), ylim = c(0, 1), 
 					xlim = c(0, k), axes = FALSE, xlab = "", 
 					ylab = "", type = "n")
 				for(i in 1:k){
-					polygon(x = c(i-1, i, i, i-1), y = c(0, 0, 1, 1), 
+					polygon(
+					  x = c(i-1, i, i, i-1), 
+					  y = c(0, 0, 1, 1), 
 						col = kCol[i])
 					text(x = i - 0.5, y = 0.5, 
 						labels = as.character(kCol[i]), srt = 90)
@@ -223,17 +261,27 @@ createPal <- function(photo, met = 1, graph = TRUE, k = 9){
 	}
 }
 
-myPalMet1 <- createPal(photo = "./myFiles/photoKmeans.jpg", 
-  met = 1, graph = TRUE, k = 5)
+myPalMet1 <- createPal(
+  photo = "./myFiles/photoKmeans.jpg", 
+  met = 1, 
+  graph = TRUE, 
+  k = 5)
 
-myPalMet2 <- createPal(photo = "./myFiles/photoKmeans.jpg", 
-  met = 2, graph = TRUE, k = 5)
+myPalMet2 <- createPal(
+  photo = "./myFiles/photoKmeans.jpg", 
+  met = 2, 
+  graph = TRUE, 
+  k = 5)
 ```
 
 La fonction nous renvoie les couleurs de la palette avec un graphique en barres représentant le nombre de points de l'image dans chacun des groupes de couleurs. Nous pouvons désormais utiliser notre nouvelle palette pour réaliser nos graphiques. 
 
 ```{r 021-02-graphiques-10}
-makeImpact <- function(myPal, numP = 300, impact = 0.33, multCex = 3){
+makeImpact <- function(
+    myPal, 
+    numP = 300, 
+    impact = 0.33, 
+    multCex = 3){
 	myX <- sample(0:1000, size = numP, replace = TRUE)/1000
 	myY <- sample(0:1000, size = numP, replace = TRUE)/1000
 	distImpact <- sqrt((myX - impact)^2 + (myY - impact)^2)

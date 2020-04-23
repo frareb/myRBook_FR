@@ -21,7 +21,7 @@ Le programme pour installer *Rstudio* se retrouve dans la partie *Products* du s
 Nous pouvons alors ouvrir RStudio. Lors de la première ouverture, l'interface est divisée en deux avec à gauche la console R que nous avons vu au chapitre précédent (Figure \@ref(fig:screenCapRStudio01)). Pour ouvrir un nouveau script, nous allons dans le menu *File*, *New File*, *R script*. Par défaut ce fichier a comme nom *Untitled1*. Nous avons vu au chapitre précédent l'importance de donner un nom pertinent à nos scripts, c'est pourquoi nous allons le renommer *selecEnvDev.R*, dans le menu *File*, avec l'option *Save As...*. 
 Nous avons pu noter que la partie gauche de RStudio est désormais séparée en deux, avec en bas de l'écran la console et en haut de l'écran le script. 
 
-```{r screenCapRStudio01, fig.cap = "Capture d'écran de RStudio sous Windows : fenêtre par défaut.\\label{fig:screenCapRStudio01}", echo = FALSE}
+```{r screenCapRStudio01, fig.cap = "Capture d'écran de RStudio sous Windows : fenêtre par défaut.\\label{fig:screenCapRStudio01}", echo = FALSE, out.width = '100%'}
 knitr::include_graphics("myFigures/screencap_RStudio_01.png")
 ```
 
@@ -43,14 +43,14 @@ pi * nbrRep^2
 
 Pour exécuter notre script, il suffit de sélectionner les lignes que nous souhaitons exécuter et d'utiliser la combinaison de touches `CTRL + ENTER`. R va transformer notre code en langage compréhensible pour la machine (interprétation), puis l’exécuter. Le résultat de l’exécution est renvoyé sous forme lisible dans la console (Figure \@ref(fig:screenCapRStudio02)).
 
-```{r screenCapRStudio02, fig.cap = "Capture d'écran de RStudio sous Windows : exécuter un script avec CTRL + ENTER.\\label{fig:screenCapRStudio02}", echo = FALSE}
+```{r screenCapRStudio02, fig.cap = "Capture d'écran de RStudio sous Windows : exécuter un script avec CTRL + ENTER.\\label{fig:screenCapRStudio02}", echo = FALSE, out.width = '100%'}
 knitr::include_graphics("myFigures/screencap_RStudio_02.png")
 ```
 
 Nous pouvons voir que par défaut dans la partie du script les commentaires apparaissent en vert, les chiffres en bleu, et le reste du code en noir. Dans la partie de la console ce qui a été exécuté apparaît en bleu et les résultats de l'exécution en noir.
 Nous pouvons également noter que dans la partie du code chaque ligne comporte un numéro correspondant au numéro de ligne à gauche sur fond gris. Il s'agit de la coloration syntaxique par défaut avec *RStudio.* Cette coloration syntaxique peut être modifiée en se rendant dans le menu *Tools*, *Global Options...*, *Appearance*, puis en choisissant un autre thème dans la liste *Editor theme:*. Nous allons choisir le thème *Cobalt*, puis *OK* (Figure \@ref(fig:screenCapRStudio03)). 
 
-```{r screenCapRStudio03, fig.cap = "Capture d'écran de RStudio sous Windows : changer les paramètres de coloration syntaxique.\\label{fig:screenCapRStudio03}", echo = FALSE}
+```{r screenCapRStudio03, fig.cap = "Capture d'écran de RStudio sous Windows : changer les paramètres de coloration syntaxique.\\label{fig:screenCapRStudio03}", echo = FALSE, out.width = '100%'}
 knitr::include_graphics("myFigures/screencap_RStudio_03.png")
 ```
 
@@ -74,25 +74,25 @@ Le programme pour installer *Npp2R* est hébergé sur le site de Sourceforge (ht
 
 Lors de la première ouverture *Notepad++* affiche un fichier vide *new 1* (Figure \@ref(fig:screenCapNpp01)). 
 
-```{r screenCapNpp01, fig.cap = "Capture d'écran de Notepad++ sous Windows : fenêtre par défaut.\\label{fig:screenCapNpp01}", echo = FALSE}
+```{r screenCapNpp01, fig.cap = "Capture d'écran de Notepad++ sous Windows : fenêtre par défaut.\\label{fig:screenCapNpp01}", echo = FALSE, out.width = '100%'}
 knitr::include_graphics("myFigures/screencap_Npp_01.png")
 ```
 
 Puisque nous avons déjà créé un script pour le tester avec RStudio, nous allons l'ouvrir à présent avec *Notepad++*. Dans *Fichier*, sélectionnons *Ouvrir...* puis choisir le script *selecEnvDev.R* créé précédemment. Une fois le script ouvert, allons dans *Langage*, puis *R*, et encore une fois *R*. La coloration syntaxique apparaît (Figure \@ref(fig:screenCapNpp02)).
 
-```{r screenCapNpp02, fig.cap = "Capture d'écran de Notepad++ sous Windows : exécuter un script avec F8.\\label{fig:screenCapNpp02}", echo = FALSE}
+```{r screenCapNpp02, fig.cap = "Capture d'écran de Notepad++ sous Windows : exécuter un script avec F8.\\label{fig:screenCapNpp02}", echo = FALSE, out.width = '100%'}
 knitr::include_graphics("myFigures/screencap_Npp_02.png")
 ```
 
 L'exécution du script ne peut se faire que si *Npp2R* est en cours d'exécution. Pour se faire il est nécessaire de lancer le programme *Npp2R* depuis l'invite de Windows. Un icône devrait apparaître en bas de votre écran. L'exécution automatique du code depuis Notepad++ se fait en sélectionnant le code à exécuter puis en utilisant la commande `F8`. Si la commande ne fonctionne pas et que vous venez d'installer Notepad++, il est peut être nécessaire de redémarrer votre ordinateur. Si la commande fonctionne, une nouvelle fenêtre va s'ouvrir aavec une console renvoyant le résultat de l’exécution des lignes souhaitées (Figure \@ref(fig:screenCapNpp03).
 
-```{r screenCapNpp03, fig.cap = "Capture d'écran de Notepad++ sous Windows : la console avec F8.\\label{fig:screenCapNpp03}", echo = FALSE}
+```{r screenCapNpp03, fig.cap = "Capture d'écran de Notepad++ sous Windows : la console avec F8.\\label{fig:screenCapNpp03}", echo = FALSE, out.width = '100%'}
 knitr::include_graphics("myFigures/screencap_Npp_03.png")
 ```
 
 Comme pour *RStudio*, la coloration syntaxique peut être modifiée depuis le menu *Paramètres*, et un nouveau thème peut être sélectionné (par exemple *Solarized* dans la Figure \@ref(fig:screenCapNpp04))
 
-```{r screenCapNpp04, fig.cap = "Capture d'écran de Notepad++ sous Windows : coloration syntaxique avec le thème Solarized.\\label{fig:screenCapNpp04}", echo = FALSE}
+```{r screenCapNpp04, fig.cap = "Capture d'écran de Notepad++ sous Windows : coloration syntaxique avec le thème Solarized.\\label{fig:screenCapNpp04}", echo = FALSE, out.width = '100%'}
 knitr::include_graphics("myFigures/screencap_Npp_04.png")
 ```
 
@@ -112,20 +112,20 @@ Le programme pour l'installation de *Geany* se trouve sous l'onglet *Downloads* 
 
 Lors de la première ouverture, comme pour *RStudio* et *Notepad++*, un fichier vide est créé (Figure \@ref(fig:screenCapGeany01)). 
 
-```{r screenCapGeany01, fig.cap = "Capture d'écran de Geany sous Windows : fenêtre par défaut.\\label{fig:screenCapGeany01}", echo = FALSE}
+```{r screenCapGeany01, fig.cap = "Capture d'écran de Geany sous Windows : fenêtre par défaut.\\label{fig:screenCapGeany01}", echo = FALSE, out.width = '100%'}
 knitr::include_graphics("myFigures/screencap_Geany_01.png")
 ```
 
 Nous pouvons ouvrir notre script avec *Fichier*, *Ouvrir* (Figure \@ref(fig:screenCapGeany02)).
 
-```{r screenCapGeany02, fig.cap = "Capture d'écran de Geany sous Windows : ouvrir un script.\\label{fig:screenCapGeany02}", echo = FALSE}
+```{r screenCapGeany02, fig.cap = "Capture d'écran de Geany sous Windows : ouvrir un script.\\label{fig:screenCapGeany02}", echo = FALSE, out.width = '100%'}
 knitr::include_graphics("myFigures/screencap_Geany_02.png")
 ```
 
 Pour exécuter notre script, la version de *Geany* pour Windows ne dispose pas d'un terminal intégré, ce qui rend son utilisation limitée sous ce système d'exploitation. L'exécution d'un script peut se faire en ouvrant R dans une fenêtre à part et en copiant et collant les lignes à exécuter. Sous Linux et Mac OSX, il suffit d'ouvrir R dans le terminal situé dans la partie basse de la fenêtre de *Geany* avec la commande `R`. Nous pouvons ensuite paramétrer *Geany* pour qu'une combinaison de touches permette d'exécuter le code sélectionné (par exemple `CTRL + R`). Pour cela il faut tout d'abord autoriser l'envoi de sélection vers le terminal (`send_selection_unsafe=true`) dans le fichier `geany.conf` puis choisir la commande d'envoi vers le terminal (dans *Edit*, *Preferences*, *Combinations*).
 Pour changer le thème de *Geany*, il existe une collection de thèmes accessibles sur GitHub (https://github.com/geany/geany-themes/). Le thème peut ensuite être changé via le menu *View*, *Change color theme...* (un exemple avec le thème *Solarized*, Figure \@ref(fig:screenCapGeany03)). 
 
-```{r screenCapGeany03, fig.cap = "Capture d'écran de Geany sous Windows : changer les paramètres de coloration syntaxique.\\label{fig:screenCapGeany03}", echo = FALSE}
+```{r screenCapGeany03, fig.cap = "Capture d'écran de Geany sous Windows : changer les paramètres de coloration syntaxique.\\label{fig:screenCapGeany03}", echo = FALSE, out.width = '100%'}
 knitr::include_graphics("myFigures/screencap_Geany_03.png")
 ```
 

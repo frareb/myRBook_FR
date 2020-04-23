@@ -75,15 +75,19 @@ myVar <- "azerty"
 limInit <- 1
 limEnd <- 50
 if(myVar > limInit & myVar < limEnd){
-  print(paste0(myVar, " is between ", limInit, " and ", limEnd, "."))
+  print(paste0(myVar, " is between ", 
+    limInit, " and ", limEnd, "."))
 } else {
-  print(paste0(myVar, " not between ", limInit, " and ", limEnd, "."))
+  print(paste0(myVar, " not between ", 
+    limInit, " and ", limEnd, "."))
 }
 myVar <- "2azerty"
 if(myVar > limInit & myVar < limEnd){
-  print(paste0(myVar, " is between ", limInit, " and ", limEnd, "."))
+  print(paste0(myVar, " is between ", 
+    limInit, " and ", limEnd, "."))
 } else {
-  print(paste0(myVar, " not between ", limInit, " and ", limEnd, "."))
+  print(paste0(myVar, " not between ", 
+    limInit, " and ", limEnd, "."))
 }
 ```
 
@@ -93,9 +97,11 @@ Donc ce que nous voudrions faire est de tester si `myVar` est bien au format `nu
 myVar <- "2azerty"
 if(is.numeric(myVar)){
   if(myVar > limInit & myVar < limEnd){
-    print(paste0(myVar, " is between ", limInit, " and ", limEnd, "."))
+    print(paste0(myVar, " is between ", 
+      limInit, " and ", limEnd, "."))
   } else {
-    print(paste0(myVar, " not between ", limInit, " and ", limEnd, "."))
+    print(paste0(myVar, " not between ", 
+      limInit, " and ", limEnd, "."))
   }
 } else {
   print(paste0("Object ", myVar, " is not numeric"))
@@ -111,7 +117,8 @@ if(length(mySpecies) == 1 & mySpecies > 10){
 }
 ## Warning message:
 ## In if (length(mySpecies) == 1 & mySpecies > 10) { :
-##   the condition has length > 1 and only the first element will be used
+##   the condition has length > 1 and only the first 
+##   element will be used
 ```
 
 R renvoie une erreur car il ne peut pas au sein d'un test logique avec `if()` vérifier la seconde condition. En effet, `mySpecies > 10` renvoie `TRUE TRUE TRUE TRUE TRUE`. Nous pouvons séparer le code en deux conditions :
@@ -319,7 +326,9 @@ mean(sample(1:6, ntrials, replace = TRUE))
 C'est un bon exercice de parcourir les nombreux exemples disponibles sur Internet sur la boucle `for()` et de tenter de les transformer en opérations vectorielles. Cela nous permet d'acquérir les bons réflexes de programmation avec R. La boucle `for()` reste très utile pour par exemple lire plusieurs fichiers et traiter l'information qu'ils contiennent de la même façon, faire des graphiques, ou encore lorsque les opérations vectorielles deviennent fastidieuses. Imaginons une matrice de 10 colonnes et 100 lignes. Nous voulons la somme de chaque ligne (nous verrons plus loin comment faire avec la fonction `apply()`).
 
 ```{r 017-boucles-21}
-myMat <- matrix(sample(1:100, size = 1000, replace = TRUE), ncol = 10)
+myMat <- matrix(
+  sample(1:100, size = 1000, replace = TRUE), 
+  ncol = 10)
 # VECTOR
 sumRow <- myMat[, 1] + myMat[, 2] + myMat[, 3] + myMat[, 4] + 
   myMat[, 5] + myMat[, 6] + myMat[, 7] + myMat[, 8] + 
@@ -402,7 +411,9 @@ repeat{
   while(Sys.time() - startTime < 2){
     if(myGuess == myNumber){
       numberGuess <- numberGuess + 1
-      print(round(as.numeric(Sys.time() - startTime), digits = 3))
+      print(round(
+        as.numeric(Sys.time() - startTime), 
+        digits = 3))
       break
     }else{
       myGuess <- sample(x = 10000, size = 1)
@@ -468,7 +479,9 @@ En conclusion, si nous utilisons les boucles, alors les mots clefs `next` et `br
 La fonction `apply()` permet d'appliquer une fonction à tous les éléments d'un `array` ou d'une `matrix`. Par exemple si nous souhaitons connaître la somme de chaque ligne d'une `matrix` de 10 colonnes et 100 lignes :
 
 ```{r 017-boucles-30}
-myMat <- matrix(sample(1:100, size = 1000, replace = TRUE), ncol = 10)
+myMat <- matrix(
+  sample(1:100, size = 1000, replace = TRUE), 
+  ncol = 10)
 apply(X = myMat, MARGIN = 1, FUN = sum)
 ```
 
@@ -482,7 +495,9 @@ L'argument `X` correspond à l'objet sur lequel la boucle `apply` va itérer. L'
 
 ```{r 017-boucles-32}
 # création de la matrix
-myArr <- array(sample(1:100, size = 1000, replace = TRUE), dim = c(10, 20, 5))
+myArr <- array(
+  sample(1:100, size = 1000, replace = TRUE), 
+  dim = c(10, 20, 5))
 # Calcul avec APPLY
 apply(X = myArr, MARGIN = 1, FUN = mean)
 # Calcul "à la main"
@@ -648,7 +663,8 @@ for(i in 2:4){
   myPerf <- rep(NA, length(levels(dfSpecies$species)))
   for(spp in seq_along(levels(dfSpecies$species))){
     myPerf[spp] <- mean(
-      dfSpecies[,i][dfSpecies$species == levels(dfSpecies$species)[spp]])
+      dfSpecies[,i][dfSpecies$species == 
+        levels(dfSpecies$species)[spp]])
   }
   assign(x = paste0("perf", i - 1), value = myPerf)
 }
