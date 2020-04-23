@@ -24,7 +24,7 @@
 <meta name="author" content="François Rebaudo" />
 
 
-<meta name="date" content="2020-04-22" />
+<meta name="date" content="2020-04-23" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -50,8 +50,9 @@
 
 
 
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
 <script src="libs/htmlwidgets-1.5.1/htmlwidgets.js"></script>
-<script src="libs/plotly-binding-4.9.2/plotly.js"></script>
+<script src="libs/plotly-binding-4.9.2.1/plotly.js"></script>
 <script src="libs/typedarray-0.1/typedarray.min.js"></script>
 <link href="libs/crosstalk-1.1.0.1/css/crosstalk.css" rel="stylesheet" />
 <script src="libs/crosstalk-1.1.0.1/js/crosstalk.min.js"></script>
@@ -252,7 +253,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="7.4.2" data-path="fonctions.html"><a href="fonctions.html#statistiques-descriptives-1"><i class="fa fa-check"></i><b>7.4.2</b> Statistiques descriptives</a></li>
 </ul></li>
 <li class="chapter" data-level="7.5" data-path="fonctions.html"><a href="fonctions.html#l015function"><i class="fa fa-check"></i><b>7.5</b> Ecrire une fonction</a></li>
-<li class="chapter" data-level="7.6" data-path="fonctions.html"><a href="fonctions.html#autres-fonctions-développées-par-la-communauté-des-utilisateurs-les-packages"><i class="fa fa-check"></i><b>7.6</b> Autres fonctions développées par la communauté des utilisateurs : les packages</a><ul>
+<li class="chapter" data-level="7.6" data-path="fonctions.html"><a href="fonctions.html#les-packages"><i class="fa fa-check"></i><b>7.6</b> Les packages</a><ul>
 <li class="chapter" data-level="7.6.1" data-path="fonctions.html"><a href="fonctions.html#installer-un-package"><i class="fa fa-check"></i><b>7.6.1</b> Installer un package</a></li>
 <li class="chapter" data-level="7.6.2" data-path="fonctions.html"><a href="fonctions.html#charger-un-package"><i class="fa fa-check"></i><b>7.6.2</b> Charger un package</a></li>
 <li class="chapter" data-level="7.6.3" data-path="fonctions.html"><a href="fonctions.html#portabilité-du-code"><i class="fa fa-check"></i><b>7.6.3</b> Portabilité du code</a></li>
@@ -354,7 +355,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">3.2</span> R comme calculatrice</h2>
 <p>Une fois le programme lancé, une fenêtre apparaît dont l’aspect peut varier en fonction de votre système d’exploitation (Figure <a href="premiersPas.html#fig:screenCapConsole">3.1</a>). Cette fenêtre est dénommée la <em>console</em>. La première information que l’on peut trouver sur la console est la version de R utilisée. Il est recommandé de mettre à jour régulièrement sa version de R afin de bénéficier des dernières fonctionnalités. Au moment d’écrire ce livre, la version disponible est la 3.6.2 dénommée “Dark and Stormy Night”.</p>
 <div class="figure"><span id="fig:screenCapConsole"></span>
-<img src="myFigures/screencap_rConsoleFR.png" alt="Capture d'écran de la console R sous Windows.\label{fig:screenCapConsole}" width="266" />
+<img src="myFigures/screencap_rConsoleFR.png" alt="Capture d'écran de la console R sous Windows.\label{fig:screenCapConsole}" width="100%" />
 <p class="caption">
 Figure 3.1: Capture d’écran de la console R sous Windows.
 </p>
@@ -362,7 +363,7 @@ Figure 3.1: Capture d’écran de la console R sous Windows.
 <p>La console correspond à l’interface où va être interprété le code, c’est à dire à l’endroit depuis lequel le code va être transformé en langage machine, puis exécuté par l’ordinateur. Le résultat de cette exécution sera retransmis dans la console sous une forme lisible par des humains. Cela correspond à l’écran d’affichage d’une calculatrice (Figure <a href="premiersPas.html#fig:screenCapConsoleCal">3.2</a>). C’est de cette manière que R va être utilisé dans la suite de cette section.</p>
 <p>Tout au long de ce livre, les exemples de code R apparaîtront sur fond en gris. Ils peuvent être copiés et collés directement dans la console, bien qu’il soit préférable de reproduire soit même les exemples dans la console (ou plus tard dans les scripts). Le résultat de ce qui est envoyé dans la console apparaîtra également sur fond en gris avec <code>##</code> devant le code afin de bien faire la distinction entre le code et le résultat du code.</p>
 <div class="figure"><span id="fig:screenCapConsoleCal"></span>
-<img src="myFigures/screencap_rConsoleCalculatrice.png" alt="Capture d'écran de la console R sous Windows avec la calculatrice Windows.\label{fig:screenCapConsoleCal}" width="242" />
+<img src="myFigures/screencap_rConsoleCalculatrice.png" alt="Capture d'écran de la console R sous Windows avec la calculatrice Windows.\label{fig:screenCapConsoleCal}" width="100%" />
 <p class="caption">
 Figure 3.2: Capture d’écran de la console R sous Windows avec la calculatrice Windows.
 </p>

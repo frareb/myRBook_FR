@@ -24,7 +24,7 @@
 <meta name="author" content="François Rebaudo" />
 
 
-<meta name="date" content="2020-04-22" />
+<meta name="date" content="2020-04-23" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -50,8 +50,9 @@
 
 
 
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
 <script src="libs/htmlwidgets-1.5.1/htmlwidgets.js"></script>
-<script src="libs/plotly-binding-4.9.2/plotly.js"></script>
+<script src="libs/plotly-binding-4.9.2.1/plotly.js"></script>
 <script src="libs/typedarray-0.1/typedarray.min.js"></script>
 <link href="libs/crosstalk-1.1.0.1/css/crosstalk.css" rel="stylesheet" />
 <script src="libs/crosstalk-1.1.0.1/js/crosstalk.min.js"></script>
@@ -252,7 +253,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="7.4.2" data-path="fonctions.html"><a href="fonctions.html#statistiques-descriptives-1"><i class="fa fa-check"></i><b>7.4.2</b> Statistiques descriptives</a></li>
 </ul></li>
 <li class="chapter" data-level="7.5" data-path="fonctions.html"><a href="fonctions.html#l015function"><i class="fa fa-check"></i><b>7.5</b> Ecrire une fonction</a></li>
-<li class="chapter" data-level="7.6" data-path="fonctions.html"><a href="fonctions.html#autres-fonctions-développées-par-la-communauté-des-utilisateurs-les-packages"><i class="fa fa-check"></i><b>7.6</b> Autres fonctions développées par la communauté des utilisateurs : les packages</a><ul>
+<li class="chapter" data-level="7.6" data-path="fonctions.html"><a href="fonctions.html#les-packages"><i class="fa fa-check"></i><b>7.6</b> Les packages</a><ul>
 <li class="chapter" data-level="7.6.1" data-path="fonctions.html"><a href="fonctions.html#installer-un-package"><i class="fa fa-check"></i><b>7.6.1</b> Installer un package</a></li>
 <li class="chapter" data-level="7.6.2" data-path="fonctions.html"><a href="fonctions.html#charger-un-package"><i class="fa fa-check"></i><b>7.6.2</b> Charger un package</a></li>
 <li class="chapter" data-level="7.6.3" data-path="fonctions.html"><a href="fonctions.html#portabilité-du-code"><i class="fa fa-check"></i><b>7.6.3</b> Portabilité du code</a></li>
@@ -366,9 +367,9 @@ Figure 14.2: Logo Inkscape (<a href="https://inkscape.org" class="uri">https://i
 </div>
 <p>Inkscape est un logiciel de dessin vectoriel disponible sous Windows, Mac OS X et GNU/Linux. C’est un logiciel libre et open source sous licence GPL. Nous pouvons le télécharger à l’adresse suivante <a href="https://inkscape.org" class="uri">https://inkscape.org</a>. Inkscape est déjà installé par défaut sur de nombreuses distributions de Linux.</p>
 <p>Expliciter toutes les fonctionnalités de Inkscape sort du cadre de ce livre, mais nous pourrons trouver de nombreux tutoriels en lignes pour rapidement maîtriser cet outil. Brièvement, pour respecter le guide de construction d’une figure d’une revue, nous allons tout d’abord construire notre figure <em>brute</em> sous R, puis l’exporter au format PDF à l’aide de la fonction <code>pdf()</code>.</p>
-<div class="sourceCode" id="cb1202"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1202-1" title="1"><span class="kw">pdf</span>(<span class="st">&quot;maFigure.pdf&quot;</span>)</a>
-<a class="sourceLine" id="cb1202-2" title="2">  <span class="kw">plot</span>(<span class="dv">0</span>)</a>
-<a class="sourceLine" id="cb1202-3" title="3"><span class="kw">dev.off</span>()</a></code></pre></div>
+<div class="sourceCode" id="cb1203"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1203-1" title="1"><span class="kw">pdf</span>(<span class="st">&quot;maFigure.pdf&quot;</span>)</a>
+<a class="sourceLine" id="cb1203-2" title="2">  <span class="kw">plot</span>(<span class="dv">0</span>)</a>
+<a class="sourceLine" id="cb1203-3" title="3"><span class="kw">dev.off</span>()</a></code></pre></div>
 <p>Ensuite il nous suffira d’importer notre pdf sous Inkscape pour le modifier. Par défaut le PDF sera <em>groupé</em> en un seul élément. Pour accéder aux sous éléments de notre figure, nous pouvons dégrouper l’élément avec le raccourci <code>Ctrl+Shift+g</code>. Il est conseillé d’ajouter un fond blanc à notre figure pour éviter la transparence (un simple rectangle blanc sans bordure fera l’affaire). Une fois notre figure prête à être exportée, il nous faut la sauvegarder dans un fichier PNG avec le raccourci <code>Ctrl+Shift+e</code>, et passer à The Gimp.</p>
 </div>
 <div id="the-gimp" class="section level2">
@@ -386,45 +387,103 @@ Figure 14.3: Logo Gimp (<a href="https://www.gimp.org/" class="uri">https://www.
 <h2><span class="header-section-number">14.3</span> Table de référence</h2>
 <p>Voici une Table de référence (Table <a href="graph4.html#tab:tabRefPub">14.1</a>) avec quelques revues illustrant la diversité des formats pour les figures scientifiques.</p>
 <table>
-<caption><span id="tab:tabRefPub">Table 14.1: </span>Table de référence pour la construction des figures.</caption>
+<caption>
+<span id="tab:tabRefPub">Table 14.1: </span>Table de référence pour la construction des figures.
+</caption>
 <thead>
-<tr class="header">
-<th align="left">Revue</th>
-<th align="left">Largeur</th>
-<th align="left">Hauteur</th>
-<th align="left">Format</th>
-<th align="left">Resolution</th>
-<th align="left">Police</th>
-<th align="left">Taille</th>
+<tr>
+<th style="text-align:left;">
+Revue
+</th>
+<th style="text-align:left;">
+Largeur
+</th>
+<th style="text-align:left;">
+Hauteur
+</th>
+<th style="text-align:left;">
+Format
+</th>
+<th style="text-align:left;">
+Resolution
+</th>
+<th style="text-align:left;">
+Police
+</th>
+<th style="text-align:left;">
+Taille
+</th>
 </tr>
 </thead>
 <tbody>
-<tr class="odd">
-<td align="left">PLoS</td>
-<td align="left">6.68-19.05</td>
-<td align="left">max 22.23</td>
-<td align="left">TIFF, EPS</td>
-<td align="left">300-600 dpi</td>
-<td align="left">Arial, Times, Symbol</td>
-<td align="left">9-12</td>
+<tr>
+<td style="text-align:left;">
+PLoS
+</td>
+<td style="text-align:left;">
+6.68-19.05
+</td>
+<td style="text-align:left;">
+max 22.23
+</td>
+<td style="text-align:left;">
+TIFF, EPS
+</td>
+<td style="text-align:left;">
+300-600 dpi
+</td>
+<td style="text-align:left;">
+Arial, Times, Symbol
+</td>
+<td style="text-align:left;">
+9-12
+</td>
 </tr>
-<tr class="even">
-<td align="left">PNAS</td>
-<td align="left">8.7; 11.4; 17.8</td>
-<td align="left">max 22.5</td>
-<td align="left">TIF, EPS</td>
-<td align="left">300 dpi</td>
-<td align="left">Arial, Helvetica, Times, Symbol, Mathematical Pi, European Pi</td>
-<td align="left">min 6-8</td>
+<tr>
+<td style="text-align:left;">
+PNAS
+</td>
+<td style="text-align:left;">
+8.7; 11.4; 17.8
+</td>
+<td style="text-align:left;">
+max 22.5
+</td>
+<td style="text-align:left;">
+TIF, EPS
+</td>
+<td style="text-align:left;">
+300 dpi
+</td>
+<td style="text-align:left;">
+Arial, Helvetica, Times, Symbol, Mathematical Pi, European Pi
+</td>
+<td style="text-align:left;">
+min 6-8
+</td>
 </tr>
-<tr class="odd">
-<td align="left">Science</td>
-<td align="left">9; 12.7; 18.4</td>
-<td align="left">NA</td>
-<td align="left">AI, EPS, PDF, TIF, JPEG</td>
-<td align="left">300 dpi</td>
-<td align="left">Helvetica</td>
-<td align="left">panel 10, axis 6-9, font 5</td>
+<tr>
+<td style="text-align:left;">
+Science
+</td>
+<td style="text-align:left;">
+9; 12.7; 18.4
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+AI, EPS, PDF, TIF, JPEG
+</td>
+<td style="text-align:left;">
+300 dpi
+</td>
+<td style="text-align:left;">
+Helvetica
+</td>
+<td style="text-align:left;">
+panel 10, axis 6-9, font 5
+</td>
 </tr>
 </tbody>
 </table>
