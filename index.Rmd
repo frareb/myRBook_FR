@@ -35,6 +35,20 @@ knit_hooks$set(output = function(x, options) {
 options(width = 60)
 ```
 
+```{r set-packages, echo=FALSE}
+pkgCheck <- function(packages){
+	for(x in packages){
+		try(if (!require(x, character.only = TRUE)){
+			install.packages(x, dependencies = TRUE)
+			if(!require(x, character.only = TRUE)) {
+				stop()
+			}
+		})
+	}
+}
+pkgCheck("kableExtra")
+```
+
 # Préambule
 
 ## Remerciements {#remerciements}
