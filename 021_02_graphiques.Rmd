@@ -168,7 +168,7 @@ R est un language de programmation très puissant. Nous pouvons imaginer de nomb
 
 Tout d'abord nous allons charger les packages `raster`, `rgdal` et `jpeg` qui vont nous servir à manipuler notre image sous R.
 
-```{r 021-02-graphiques-8, linewidth=65}
+```{r 021-02-graphiques-8, warning=FALSE, message=FALSE, linewidth=65}
 pkgCheck <- function(x){ 
 	if (!require(x, character.only = TRUE)){
 		install.packages(
