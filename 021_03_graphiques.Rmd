@@ -27,7 +27,7 @@ boxplot(matrix(rnorm(1000), ncol = 10),
 
 Le package `palettesForR` est un autre package contenant des palettes prêtes à l'emploi, issues des projets 'Gimp' et 'Inkscape'. Comme pour `RColorBrewer`, il suffit d'appeler les palettes pour les utiliser. Les nombreuses palettes disponibles sont listées dans l'aide du package. Voici un exemple d'utilisation.
 
-```{r 021-03-graphiques-2}
+```{r 021-03-graphiques-2, out.width = '70%'}
 pkgCheck <- function(x){ 
 	if (!require(x, character.only = TRUE)){
 		install.packages(x, dependencies = TRUE)
@@ -41,13 +41,13 @@ showPalette(Echo_gpl)
 groupTest <- sample(1:3, size = 100, replace = TRUE) 
 valueTest <- sample(1:7, size = 100, replace = TRUE)
 tableTest <- table(groupTest, valueTest)
-par(mar = c(2, 2, 1, 1)) # réduction des marges
+par(mar = c(2, 0, 0, 0)) # réduction des marges
 barplot(tableTest, 
   col = Echo_gpl, axes = FALSE, beside = TRUE)
 groupTest <- sample(1:3, size = 100, replace = TRUE) 
 valueTest <- sample(1:7, size = 100, replace = TRUE)
 tableTest <- table(groupTest, valueTest)
-par(mar = c(2, 2, 1, 1)) # réduction des marges
+par(mar = c(2, 0, 0, 0)) # réduction des marges
 barplot(tableTest, 
   col = Tango_gpl, axes = FALSE, beside = TRUE)
 ```
@@ -141,9 +141,18 @@ plot(x = iris$Sepal.Length, y = iris$Sepal.Width,
 abline(lmFits[[1]][[1]], col = 1)
 abline(lmFits[[2]][[1]], col = 2)
 abline(lmFits[[3]][[1]], col = 3)
-text(x = 5.5, y = 2.2, labels = lmFits[[1]][[2]], pos = 4)
-text(x = 5.5, y = 2.1, labels = lmFits[[2]][[2]], pos = 4, col = 2)
-text(x = 5.5, y = 2.0, labels = lmFits[[3]][[2]], pos = 4, col = 3)
+text(
+  x = 5.5, y = 2.2, 
+  labels = lmFits[[1]][[2]], 
+  pos = 4)
+text(
+  x = 5.5, y = 2.1, 
+  labels = lmFits[[2]][[2]], 
+  pos = 4, col = 2)
+text(
+  x = 5.5, y = 2.0, 
+  labels = lmFits[[3]][[2]], 
+  pos = 4, col = 3)
 ```
 
 Nous pouvons voir sur ces exemples que les graphiques avec `ggplot2` commencent par un appel de la fonction `ggplot()`, dans laquelle le premier argument `data` correspond à nos données (typiquement une `data.frame`), et le deuxième argument `aes()` correspond aux informations que nous souhaitons utiliser. Par convention cette information est stockée dans un objet `p`. Nous allons ensuite ajouter des couches supplémentaires en utilisant `+`. 

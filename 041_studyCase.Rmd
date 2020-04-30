@@ -1,16 +1,19 @@
 # (PART) Annexes {-}
 
-# Manipuler des dates et des heures : données de datalogger de température {#studyCase001}
+# Manipuler des dates et des heures {#studyCase001}
 
 Dans les études de biologie, d'écologie ou d'agronomie, nous utilisons fréquemment des données de température provenant de dataloggers. Dans cette étude de cas, nous verrons comment analyser ces données en utilisant les données de température de l'altiplano bolivien près de la ville de El Alto. La première étape consiste à transformer les données du datalogger en un format facile à lire pour R. Nous utiliserons un fichier CSV et la fonction [`read.table()`](#import). Le fichier peut être téléchargé à partir du site Web du livre sur GitHub (https://github.com/frareb/myRBook_FR/blob/master/myFiles/E05C13.csv), ou alors lu directement par R depuis sa source (https://raw.githubusercontent.com/frareb/myRBook_FR/master/myFiles/E05C13.csv).
 
-```{r 041-studyCase-1}
+```{r 041-studyCase-1, linewidth=65}
 # Lecture du fichier en local après téléchargement : 
-bdd <- read.table("myFiles/E05C13.csv", skip = 1, header = TRUE, 
-  sep = ",", dec = ".", stringsAsFactors = FALSE)
+bdd <- read.table(
+  "myFiles/E05C13.csv", 
+  skip = 1, header = TRUE, 
+  sep = ",", dec = ".", 
+  stringsAsFactors = FALSE)
 # Lecture du fichier depuis GitHub : 
-# URL <- "https://raw.githubusercontent.com/frareb/myRBook_FR/
-#   master/myFiles/E05C13.csv"
+# URL <- paste0("https://raw.githubusercontent.com/",
+#   "frareb/myRBook_FR/master/myFiles/E05C13.csv")
 # bdd <- read.table(
 #   URL, 
 #   skip = 1, 
@@ -39,28 +42,40 @@ strsplit("11/12/15 23:00:00", split = " ")[[1]]
 Le premier élément du `vector` est la date. Pour avoir toutes les dates, nous allons faire une boucle avec la fonction `sapply()`.
 
 ```{r 041-studyCase-4}
-bddDay <- sapply(strsplit(bdd[, 2], split = " "), "[[", 1)
+bddDay <- sapply(
+  strsplit(
+    bdd[, 2], 
+    split = " "), 
+  "[[", 1)
 head(bddDay)
 ```
 
 Ensuite, nous aurons besoin des dates dans le format `Date`. pour cela nous allons transformer l'objet au format `Date` avec la fonction `as.Date()`. 
 
 ```{r 041-studyCase-5}
-bddDay <- as.Date(sapply(strsplit(bdd[, 2], split = " "), "[[", 1), format = "%m/%d/%y")
+bddDay <- as.Date(
+  sapply(
+    strsplit(
+      bdd[, 2], 
+      split = " "), 
+    "[[", 1), 
+  format = "%m/%d/%y")
 head(bddDay)
 ```
 
 Nous allons maintenant ajouter l'objet `bddDay` à notre `data.frame` `bdd`. Ensuite, nous allons vérifier que cette nouvelle colonne dans notre `data.frame` est bien au format `Date` avec la fonction `str()`
 
-```{r 041-studyCase-6}
+```{r 041-studyCase-6, linewidth=65}
 bdd$day <- bddDay
 str(bdd)
 ```
 
 Si l'information concernant la date n'est pas suffisante, nous pouvons ajouter l'heure. Dans ce cas c'est le format `POSIX` qu'il faudra utiliser avec la fonction `as.POSIXct()`. De la même manière nous allons ajouter l'information dans notre objet `bdd` et vérifier le format avec la fonction `str()`.
 
-```{r 041-studyCase-7}
-bddPosix <- as.POSIXct(bdd$date, format = "%m/%d/%y %H:%M:%S")
+```{r 041-studyCase-7, linewidth=65}
+bddPosix <- as.POSIXct(
+  bdd$date, 
+  format = "%m/%d/%y %H:%M:%S")
 head(bddPosix)
 bdd$posix <- bddPosix
 str(bdd)
@@ -144,8 +159,10 @@ legend("topright", legend = c("min", "max", "promedio"),
 Dans ce type de représentation nous perdons l'information sur la variabilité des températures par semaine. En focntion des objectifs il pourra être intéressant de préférer une représentation sous forme de `boxplot` (ici un boxplot par mois en formattant la date avec `"%Y-%m"`).
 
 ```{r 041-studyCase-12, fig.width=10, fig.height=6}
-par(mar = c(5, 4, 1, 1)) # réduction des marges
-boxplot(bdd$temp ~ format(bdd$posix, format = "%Y-%m"), las = 3,
+par(mar = c(5, 4, 0, 0))
+boxplot(
+  bdd$temp ~ format(bdd$posix, format = "%Y-%m"), 
+  las = 3,
   xlab = "", ylab = "Température (°C)")
 ```
 
@@ -158,8 +175,10 @@ myCol <- colorRampPalette(c("blue", "red"))(101)
 tempMeanDayPos <- round(
   (tempMonthMean - min(tempMonthMean)) / 
     (max(tempMonthMean) - min(tempMonthMean))*100) + 1
-par(mar = c(5, 4, 1, 1)) # réduction des marges
-boxplot(bdd$temp ~ format(bdd$posix, format = "%Y-%m"), las = 3, 
+par(mar = c(5, 4, 0, 0)) 
+boxplot(
+  bdd$temp ~ format(bdd$posix, format = "%Y-%m"), 
+  las = 3, 
   col = myCol[tempMeanDayPos],
   xlab = "", ylab = "Température (°C)")
 ```
@@ -187,8 +206,10 @@ p01 <- ggplot(data = bdd,
   aes(
     x = posix, 
     y = temp, 
-    group = format(bdd$posix, format = "%Y-%m"))) + 
-    geom_boxplot(outlier.colour = "black", fill = myCol[tempMeanDayPos])
+    group = format(posix, format = "%Y-%m"))) + 
+    geom_boxplot(
+      outlier.colour = "black", 
+      fill = myCol[tempMeanDayPos])
 p01
 ```
 
@@ -197,20 +218,28 @@ Nous pouvons également calculer la différence entre la température maximale e
 ```{r 041-studyCase-15, fig.width=10, fig.height=6}
 tempDayTR <- tempDayMax - tempDayMin
 par(mar = c(4, 4, 1, 1)) # réduction des marges
-plot(x = as.Date(names(tempDayMean), format = "%Y-%m-%d"), 
-    y = tempDayTR, type = 'l', ylim = c(5, 45), 
-    xlab = "Fecha", ylab = "Variation de température diurne (°C)")
+plot(
+  x = as.Date(names(tempDayMean), format = "%Y-%m-%d"), 
+  y = tempDayTR, type = 'l', ylim = c(5, 45), 
+  xlab = "Fecha", 
+  ylab = "Variation de température diurne (°C)")
 ```
 
 Une autre possibilité est de regrouper les données pour avoir la température moyenne des heures de la journée avec la fonction `aggregate()`.
 
 ```{r 041-studyCase-16, fig.width=10, fig.height=6}
-tempHourMean <- aggregate(x = bdd$temp, 
-  by = list(format(bdd$posix, format = "%H:%M")), FUN = mean)
-tempHourMin <- aggregate(x = bdd$temp, 
-  by = list(format(bdd$posix, format = "%H:%M")), FUN = min)
-tempHourMax <- aggregate(x = bdd$temp, 
-  by = list(format(bdd$posix, format = "%H:%M")), FUN = max)
+tempHourMean <- aggregate(
+  x = bdd$temp, 
+  by = list(format(bdd$posix, format = "%H:%M")), 
+  FUN = mean)
+tempHourMin <- aggregate(
+  x = bdd$temp, 
+  by = list(format(bdd$posix, format = "%H:%M")), 
+  FUN = min)
+tempHourMax <- aggregate(
+  x = bdd$temp, 
+  by = list(format(bdd$posix, format = "%H:%M")), 
+  FUN = max)
 hours <- seq(from = 0, to = 23.5, by = 0.5)
 par(mar = c(4, 4, 1, 1)) # réduction des marges
 plot(x = hours, 
@@ -220,26 +249,51 @@ plot(x = hours,
 		abline(v = hours, col = "gray", lty = 2)
 		abline(h = 0, lty = 2)	
 	})
-axis(side = 1, at = hours, labels = tempHourMean[, 1], las = 2)
-points(x = hours, y = tempHourMin[, 2], type = 'l', col = 4, lwd = 2)
-points(x = hours, y = tempHourMax[, 2], type = 'l', col = 2, lwd = 2)
+axis(
+  side = 1, 
+  at = hours, 
+  labels = tempHourMean[, 1], 
+  las = 2)
+points(
+  x = hours, 
+  y = tempHourMin[, 2], 
+  type = 'l', col = 4, lwd = 2)
+points(
+  x = hours, 
+  y = tempHourMax[, 2], 
+  type = 'l', col = 2, lwd = 2)
 ```
 
 Nous pouvons également calculer les températures des heures de la journée pour chaque mois.
 
 ```{r 041-studyCase-17, fig.width=10, fig.height=6}
-meses <- c("Janvier", "Février", "Mars", "Avril", "Mai", "Juin", 
-	"Juillet", "Août", "Septembre", "Octobre", "Novembre", "Décembre")
+meses <- c("Janvier", "Février", "Mars", "Avril", "Mai", 
+  "Juin", "Juillet", "Août", "Septembre", "Octobre", 
+  "Novembre", "Décembre")
 hours <- seq(from = 0, to = 23.5, by = 0.5)
 bddMonth <- format(bdd$day, format = "%m")
-tempDayEachMonth <- lapply(sort(unique(bddMonth)), function(myMonth){
-	bddX <- bdd[bddMonth == myMonth, ]
-	tempHourMean <- aggregate(x = bddX$temp, by = list(format(bddX$posix, format = "%H:%M")), FUN = mean)
-	tempHourMin <- aggregate(x = bddX$temp, by = list(format(bddX$posix, format = "%H:%M")), FUN = min)
-	tempHourMax <- aggregate(x = bddX$temp, by = list(format(bddX$posix, format = "%H:%M")), FUN = max)
-	return(data.frame(tempHourMean, tempHourMin, tempHourMax))
+tempDayEachMonth <- lapply(
+  sort(unique(bddMonth)), function(myMonth){
+	  bddX <- bdd[bddMonth == myMonth, ]
+	  tempHourMean <- aggregate(
+	    x = bddX$temp, 
+	    by = list(format(bddX$posix, format = "%H:%M")), 
+	    FUN = mean)
+	  tempHourMin <- aggregate(
+	    x = bddX$temp, 
+	    by = list(format(bddX$posix, format = "%H:%M")), 
+	    FUN = min)
+	  tempHourMax <- aggregate(
+	    x = bddX$temp, 
+	    by = list(format(bddX$posix, format = "%H:%M")), 
+	    FUN = max)
+	return(
+	  data.frame(
+	    tempHourMean, 
+	    tempHourMin, 
+	    tempHourMax))
 })
-par(mar = c(4, 4, 1, 1)) # réduction des marges
+par(mar = c(4, 4, 1, 1)) 
 # for (i in seq_along(tempDayEachMonth)){ # pour tous les mois
 for (i in 1:2){ # uniquement Janvier et Février 
 	plot(x = hours, y = tempDayEachMonth[[i]][, 2], 
@@ -250,10 +304,18 @@ for (i in 1:2){ # uniquement Janvier et Février
 			abline(v = hours, col = "gray", lty = 2)
 			abline(h = 0, lty = 2)	
 		})
-	axis(side = 1, at = hours, labels = tempHourMean[, 1], las = 2)
-	points(x = hours, y = tempDayEachMonth[[i]][, 4], 
+	axis(
+	  side = 1, 
+	  at = hours, 
+	  labels = tempHourMean[, 1], 
+	  las = 2)
+	points(
+	  x = hours, 
+	  y = tempDayEachMonth[[i]][, 4], 
 		type = 'l', col = 4, lwd = 2)
-	points(x = hours, y = tempDayEachMonth[[i]][, 6], 
+	points(
+	  x = hours, 
+	  y = tempDayEachMonth[[i]][, 6], 
 		type = 'l', col = 2, lwd = 2)
 }
 ```
@@ -262,44 +324,78 @@ Ou les regrouper dans un même graphique, ainsi que la variation diurne des temp
 
 ```{r 041-studyCase-18, fig.width=10, fig.height=6}
 par(mar = c(4, 4, 1, 1)) # réduction des marges
-plot(x = hours, y = tempDayEachMonth[[1]][, 2], type = 'n', ylim = c(-10, 35),
-	xlab = "", ylab = "Température moyenne (°C)",
+plot(
+  x = hours, 
+  y = tempDayEachMonth[[1]][, 2], 
+  type = 'n', 
+  ylim = c(-10, 35),
+	xlab = "", 
+  ylab = "Température moyenne (°C)",
 	xaxt = "n", 
 	panel.first = {
 		abline(v = hours, col = "gray", lty = 2)
 		abline(h = 0, lty = 2)	
 	})
-axis(side = 1, at = hours, labels = tempHourMean[, 1], las = 2)
-myColors <- c("#A6CEE3", "#1F78B4", "#B2DF8A", "#33A02C", "#FB9A99", 
-	"#E31A1C", "#FDBF6F", "#FF7F00", "#CAB2D6", "#6A3D9A", "#FFFF99", 
-	"#B15928")
+axis(
+  side = 1, 
+  at = hours, 
+  labels = tempHourMean[, 1], 
+  las = 2)
+myColors <- c("#A6CEE3", "#1F78B4", "#B2DF8A", "#33A02C", 
+  "#FB9A99", "#E31A1C", "#FDBF6F", "#FF7F00", "#CAB2D6", 
+  "#6A3D9A", "#FFFF99", "#B15928")
 for (i in seq_along(tempDayEachMonth)){
 	points(x = hours, 
 		y = tempDayEachMonth[[i]][, 2], 
 		type = 'l', col = myColors[i], lwd = 2)
 }
-legend("topright", ncol = 4, legend = meses, col = myColors, 
-	lty = 1, lwd = 2, cex = 0.8)
+legend(
+  "topright", 
+  ncol = 4, 
+  legend = meses, 
+  col = myColors, 
+	lty = 1, 
+  lwd = 2, 
+  cex = 0.8)
 
 par(mar = c(4, 4, 1, 1)) # réduction des marges
-plot(x = hours, y = tempDayEachMonth[[1]][, 2], type = 'n', ylim = c(0, 30),
-	xlab = "", ylab = "Variation de température diurne (°C)",
+plot(
+  x = hours, 
+  y = tempDayEachMonth[[1]][, 2], 
+  type = 'n', 
+  ylim = c(0, 30),
+	xlab = "", 
+  ylab = "Variation de température diurne (°C)",
 	xaxt = "n", 
 	panel.first = {
 		abline(v = hours, col = "gray", lty = 2)
 		abline(h = 0, lty = 2)	
 	})
-axis(side = 1, at = hours, labels = tempHourMean[, 1], las = 2)
-myColors <- c("#A6CEE3", "#1F78B4", "#B2DF8A", "#33A02C", "#FB9A99", 
-	"#E31A1C", "#FDBF6F", "#FF7F00", "#CAB2D6", "#6A3D9A", "#FFFF99", 
-	"#B15928")
+axis(
+  side = 1, 
+  at = hours, 
+  labels = tempHourMean[, 1], 
+  las = 2)
+myColors <- c("#A6CEE3", "#1F78B4", "#B2DF8A", "#33A02C", 
+  "#FB9A99", "#E31A1C", "#FDBF6F", "#FF7F00", "#CAB2D6", 
+  "#6A3D9A", "#FFFF99", "#B15928")
 for (i in seq_along(tempDayEachMonth)){
-	points(x = hours, 
-		y = tempDayEachMonth[[i]][, 6] - tempDayEachMonth[[i]][, 4], 
-		type = 'l', col = myColors[i], lwd = 2)
+	points(
+	  x = hours, 
+		y = tempDayEachMonth[[i]][, 6] - 
+		  tempDayEachMonth[[i]][, 4], 
+		type = 'l', 
+		col = myColors[i], 
+		lwd = 2)
 }
-legend("topright", ncol = 4, legend = meses, col = myColors, 
-	lty = 1, lwd = 2, cex = 0.8)
+legend(
+  "topright", 
+  ncol = 4, 
+  legend = meses, 
+  col = myColors, 
+	lty = 1, 
+  lwd = 2, 
+  cex = 0.8)
 ```
 
 Nous pouvons aussi représenter les températures journalières avec des graphiques de type "ridgeline" et le package `ggplot2` (https://www.data-to-viz.com/graph/ridgeline.html).
@@ -321,9 +417,12 @@ labelMonth <- rep(meses, each = 48)
 dfTemps <- data.frame(month = labelMonth, value = meanTemps, 
   stringsAsFactors = FALSE)
 dfTemps$month <- factor(dfTemps$month, levels = rev(meses))
-p <- ggplot(data = dfTemps, aes(y = month, x = value,  fill = ..x..))
-p <- p + geom_density_ridges_gradient(stat="binline")
-p <- p + scale_fill_viridis(name = "Temp. [°C]", option = "C")
+p <- ggplot(
+  data = dfTemps, 
+  aes(y = month, x = value,  fill = ..x..))
+p <- p + geom_density_ridges_gradient(stat = "binline")
+p <- p + scale_fill_viridis(
+  name = "Temp. [°C]", option = "C")
 p <- p + xlab("Temperature") + ylab("") +
     theme(
       legend.position="none",
