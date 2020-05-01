@@ -368,10 +368,10 @@ Le logiciel R peut être téléchargé depuis de nombreux serveurs du CRAN (Comp
 \hypertarget{r-comme-calculatrice}{%
 \section{R comme calculatrice}\label{r-comme-calculatrice}}
 
-Une fois le programme lancé, une fenêtre apparaît dont l'aspect peut varier en fonction de votre système d'exploitation (Figure \ref{fig:screenCapConsole}). Cette fenêtre est dénommée la \emph{console}. La première information que l'on peut trouver sur la console est la version de R utilisée. Il est recommandé de mettre à jour régulièrement sa version de R afin de bénéficier des dernières fonctionnalités. Au moment d'écrire ce livre, la version disponible est la 3.6.2 dénommée ``Dark and Stormy Night''.
+Une fois le programme lancé, une fenêtre apparaît dont l'aspect peut varier en fonction de votre système d'exploitation (Figure \ref{fig:screenCapConsole}). Cette fenêtre est dénommée la \emph{console}. La première information que l'on peut trouver sur la console est la version de R utilisée. Il est recommandé de mettre à jour régulièrement sa version de R afin de bénéficier des dernières fonctionnalités. Au moment d'écrire ce livre, la version disponible est la 4.0.0 dénommée ``Arbor Day''.
 
 \begin{figure}
-\includegraphics[width=1\linewidth]{myFigures/screencap_rConsoleFR} \caption{Capture d'écran de la console R sous Windows.\label{fig:screenCapConsole}}\label{fig:screenCapConsole}
+\includegraphics[width=1\linewidth]{myFigures/screencap_rConsoleFR2} \caption{Capture d'écran de la console R sous Windows et Linux Ubuntu.\label{fig:screenCapConsole}}\label{fig:screenCapConsole}
 \end{figure}
 
 La console correspond à l'interface où va être interprété le code, c'est à dire à l'endroit depuis lequel le code va être transformé en langage machine, puis exécuté par l'ordinateur. Le résultat de cette exécution sera retransmis dans la console sous une forme lisible par des humains. Cela correspond à l'écran d'affichage d'une calculatrice (Figure \ref{fig:screenCapConsoleCal}). C'est de cette manière que R va être utilisé dans la suite de cette section.
@@ -379,7 +379,7 @@ La console correspond à l'interface où va être interprété le code, c'est à
 Tout au long de ce livre, les exemples de code R apparaîtront sur fond en gris. Ils peuvent être copiés et collés directement dans la console, bien qu'il soit préférable de reproduire soit même les exemples dans la console (ou plus tard dans les scripts). Le résultat de ce qui est envoyé dans la console apparaîtra également sur fond en gris avec \texttt{\#\#} devant le code afin de bien faire la distinction entre le code et le résultat du code.
 
 \begin{figure}
-\includegraphics[width=1\linewidth]{myFigures/screencap_rConsoleCalculatrice} \caption{Capture d'écran de la console R sous Windows avec la calculatrice Windows.\label{fig:screenCapConsoleCal}}\label{fig:screenCapConsoleCal}
+\includegraphics[width=0.5\linewidth]{myFigures/screencap_rConsoleCalculatrice} \caption{Capture d'écran de la console R sous Windows avec la calculatrice Windows.\label{fig:screenCapConsoleCal}}\label{fig:screenCapConsoleCal}
 \end{figure}
 
 \hypertarget{l011opari}{%
@@ -7318,7 +7318,7 @@ Il n'y a pas de solution optimale dans l'absolu, tout dépend des objectifs rech
 
 \begin{verbatim}
 ##    user  system elapsed 
-##   1.250   0.000   1.251
+##   1.313   0.008   1.321
 \end{verbatim}
 
 \begin{Shaded}
@@ -7331,7 +7331,7 @@ Il n'y a pas de solution optimale dans l'absolu, tout dépend des objectifs rech
 
 \begin{verbatim}
 ##    user  system elapsed 
-##   1.281   0.000   1.281
+##   1.351   0.000   1.351
 \end{verbatim}
 
 Une fonction peut avoir des valeurs par défaut pour ses arguments. C'est le cas de la plupart des fonctions existantes. Par défaut, notre fonction va désormais compter le nombre de voyelles et de consonnes dans le mot \texttt{qwerty} (les parenthèses restent nécessaires même en l'absence d'arguments).
@@ -7424,14 +7424,14 @@ Alternativement nous pouvons utiliser la fonction \texttt{.packages()} pour list
 \end{Shaded}
 
 \begin{verbatim}
-##  [1] "abind"      "ade4"       "alr4"       "anytime"   
-##  [5] "ape"        "askpass"    "assertthat" "av"        
-##  [9] "backports"  "base64enc"  "bcpa"       "bdsmatrix" 
-## [13] "BH"         "bibtex"     "bindr"      "bindrcpp"  
-## [17] "bitops"     "bold"       "bookdown"   "boot"      
-## [21] "brew"       "broom"      "ca"         "Cairo"     
-## [25] "callr"      "car"        "carData"    "caTools"   
-## [29] "cellranger" "class"
+##  [1] "acepack"    "askpass"    "assertthat" "backports" 
+##  [5] "base64enc"  "BH"         "bitops"     "bookdown"  
+##  [9] "brew"       "broom"      "Cairo"      "callr"     
+## [13] "caTools"    "checkmate"  "classInt"   "cli"       
+## [17] "clipr"      "colorspace" "commonmark" "covr"      
+## [21] "crayon"     "crosstalk"  "curl"       "data.table"
+## [25] "DBI"        "debugme"    "dendextend" "desc"      
+## [29] "devtools"   "diffobj"
 \end{verbatim}
 
 La fonction \texttt{pkgCheck()} assure la \textbf{portabilité} de nos scripts : ils fonctionneront sur tous les ordinateurs sans avoir à effectuer de modification. Ainsi nos scripts pourront par exemple être joints à nos articles scientifiques et assurer ainsi la \textbf{reproductibilité} de nos résultats.
@@ -8165,12 +8165,12 @@ En programmation, lorsque nous sommes amenés à répéter plusieurs fois la mê
 
 \begin{verbatim}
 ##      date01    date02
-## 1 11.456883 10.852020
-## 2 11.076562  9.694570
-## 3  9.964917  8.278854
-## 4 11.209803  9.587337
-## 5  9.722988 10.849313
-## 6 10.390586 11.840350
+## 1  9.059668 10.017759
+## 2 10.147336 11.046461
+## 3  8.811339 10.144100
+## 4 11.101582 10.618545
+## 5 10.093403  9.705615
+## 6 10.981530  9.446170
 \end{verbatim}
 
 Nous voudrions quantifier la différence entre la première et la deuxième date, puis mettre un indicateur pour savoir si cette différence est petite ou grande, par exemple avec un seuil arbitraire de 3. Donc pour chaque ligne nous pourrions faire :
@@ -8292,26 +8292,26 @@ Revenons à notre cas. Nous allons itérer sur le nombre de lignes de notre \tex
 
 \begin{verbatim}
 ##       date01    date02        dif isDifBig
-## 1  11.456883 10.852020 0.60486306    small
-## 2  11.076562  9.694570 1.38199159    small
-## 3   9.964917  8.278854 1.68606298    small
-## 4  11.209803  9.587337 1.62246629    small
-## 5   9.722988 10.849313 1.12632521    small
-## 6  10.390586 11.840350 1.44976367    small
-## 7   9.737151  9.473447 0.26370362    small
-## 8   8.092866 11.206391 3.11352469      big
-## 9  10.627978 10.883922 0.25594387    small
-## 10  8.803812  9.252900 0.44908708    small
-## 11 10.540655  9.485574 1.05508052    small
-## 12  9.883533  9.925896 0.04236302    small
-## 13  9.881331 10.738052 0.85672064    small
-## 14 11.287653 11.097830 0.18982317    small
-## 15  8.887625 10.414867 1.52724217    small
-## 16  9.748674 10.674926 0.92625259    small
-## 17 10.595108 10.940528 0.34541975    small
-## 18 10.612780  8.922796 1.68998320    small
-## 19  9.749205  9.019018 0.73018729    small
-## 20  9.305520 10.467149 1.16162866    small
+## 1   9.059668 10.017759 0.95809152    small
+## 2  10.147336 11.046461 0.89912496    small
+## 3   8.811339 10.144100 1.33276155    small
+## 4  11.101582 10.618545 0.48303740    small
+## 5  10.093403  9.705615 0.38778704    small
+## 6  10.981530  9.446170 1.53536043    small
+## 7   9.272824  8.892401 0.38042354    small
+## 8  11.366622  9.675303 1.69131923    small
+## 9   7.861335  9.575778 1.71444311    small
+## 10 10.043458  9.351431 0.69202643    small
+## 11  9.961121 10.224523 0.26340182    small
+## 12 10.922385 11.956297 1.03391180    small
+## 13 11.348562 10.532364 0.81619802    small
+## 14 11.180945 10.053624 1.12732015    small
+## 15 10.367675  9.971827 0.39584788    small
+## 16 10.991826 10.973376 0.01845065    small
+## 17 10.276650 10.557716 0.28106623    small
+## 18  9.860056  9.282658 0.57739831    small
+## 19 11.249722 10.479937 0.76978494    small
+## 20  8.829292 10.775368 1.94607645    small
 \end{verbatim}
 
 En pratique ce n'est pas la meilleure façon de réaliser cet exercice car il s'agit ici de simples calculs sur des vecteurs contenus dans une \texttt{data.frame}. R est particulièrement puissant pour effectuer des opérations sur des vecteurs. Lorsque cela est possible il faut donc toujours privilégier les opérations sur les vecteurs. Ici notre code devient :
@@ -8327,26 +8327,26 @@ En pratique ce n'est pas la meilleure façon de réaliser cet exercice car il s'
 
 \begin{verbatim}
 ##       date01    date02        dif isDifBig
-## 1  11.456883 10.852020 0.60486306    small
-## 2  11.076562  9.694570 1.38199159    small
-## 3   9.964917  8.278854 1.68606298    small
-## 4  11.209803  9.587337 1.62246629    small
-## 5   9.722988 10.849313 1.12632521    small
-## 6  10.390586 11.840350 1.44976367    small
-## 7   9.737151  9.473447 0.26370362    small
-## 8   8.092866 11.206391 3.11352469      big
-## 9  10.627978 10.883922 0.25594387    small
-## 10  8.803812  9.252900 0.44908708    small
-## 11 10.540655  9.485574 1.05508052    small
-## 12  9.883533  9.925896 0.04236302    small
-## 13  9.881331 10.738052 0.85672064    small
-## 14 11.287653 11.097830 0.18982317    small
-## 15  8.887625 10.414867 1.52724217    small
-## 16  9.748674 10.674926 0.92625259    small
-## 17 10.595108 10.940528 0.34541975    small
-## 18 10.612780  8.922796 1.68998320    small
-## 19  9.749205  9.019018 0.73018729    small
-## 20  9.305520 10.467149 1.16162866    small
+## 1   9.059668 10.017759 0.95809152    small
+## 2  10.147336 11.046461 0.89912496    small
+## 3   8.811339 10.144100 1.33276155    small
+## 4  11.101582 10.618545 0.48303740    small
+## 5  10.093403  9.705615 0.38778704    small
+## 6  10.981530  9.446170 1.53536043    small
+## 7   9.272824  8.892401 0.38042354    small
+## 8  11.366622  9.675303 1.69131923    small
+## 9   7.861335  9.575778 1.71444311    small
+## 10 10.043458  9.351431 0.69202643    small
+## 11  9.961121 10.224523 0.26340182    small
+## 12 10.922385 11.956297 1.03391180    small
+## 13 11.348562 10.532364 0.81619802    small
+## 14 11.180945 10.053624 1.12732015    small
+## 15 10.367675  9.971827 0.39584788    small
+## 16 10.991826 10.973376 0.01845065    small
+## 17 10.276650 10.557716 0.28106623    small
+## 18  9.860056  9.282658 0.57739831    small
+## 19 11.249722 10.479937 0.76978494    small
+## 20  8.829292 10.775368 1.94607645    small
 \end{verbatim}
 
 La plupart des exemples que l'on peut trouver sur Internet à propos de la boucle \texttt{for()} peuvent être remplacés par des opérations sur les vecteurs. Voici quelques exemples adaptés de plusieurs sources :
@@ -8367,7 +8367,7 @@ La plupart des exemples que l'on peut trouver sur Internet à propos de la boucl
 \end{Shaded}
 
 \begin{verbatim}
-## [1] 9
+## [1] 10
 \end{verbatim}
 
 \begin{Shaded}
@@ -8378,7 +8378,7 @@ La plupart des exemples que l'on peut trouver sur Internet à propos de la boucl
 \end{Shaded}
 
 \begin{verbatim}
-## [1] 9
+## [1] 10
 \end{verbatim}
 
 \begin{Shaded}
@@ -8424,7 +8424,7 @@ La plupart des exemples que l'on peut trouver sur Internet à propos de la boucl
 \end{Shaded}
 
 \begin{verbatim}
-## [1] 3.611
+## [1] 3.523
 \end{verbatim}
 
 \begin{Shaded}
@@ -8435,7 +8435,7 @@ La plupart des exemples que l'on peut trouver sur Internet à propos de la boucl
 \end{Shaded}
 
 \begin{verbatim}
-## [1] 3.616
+## [1] 3.446
 \end{verbatim}
 
 C'est un bon exercice de parcourir les nombreux exemples disponibles sur Internet sur la boucle \texttt{for()} et de tenter de les transformer en opérations vectorielles. Cela nous permet d'acquérir les bons réflexes de programmation avec R. La boucle \texttt{for()} reste très utile pour par exemple lire plusieurs fichiers et traiter l'information qu'ils contiennent de la même façon, faire des graphiques, ou encore lorsque les opérations vectorielles deviennent fastidieuses. Imaginons une matrice de 10 colonnes et 100 lignes. Nous voulons la somme de chaque ligne (nous verrons plus loin comment faire avec la fonction \texttt{apply()}).
@@ -8454,14 +8454,14 @@ C'est un bon exercice de parcourir les nombreux exemples disponibles sur Interne
 \end{Shaded}
 
 \begin{verbatim}
-##   [1] 598 519 422 620 635 708 371 448 594 466 457 529 460
-##  [14] 329 502 527 382 522 433 493 608 478 688 467 433 510
-##  [27] 390 470 573 540 440 590 538 477 367 450 500 460 332
-##  [40] 458 497 536 462 391 411 506 540 556 367 636 516 703
-##  [53] 553 633 540 692 621 473 453 497 553 508 476 382 743
-##  [66] 364 604 505 547 432 527 527 411 610 431 418 478 514
-##  [79] 432 441 631 592 695 489 481 385 490 534 433 392 446
-##  [92] 481 542 593 417 608 621 525 529 618
+##   [1] 468 437 356 480 522 459 630 495 546 560 499 558 387
+##  [14] 508 425 582 586 506 400 454 463 527 586 541 709 418
+##  [27] 579 434 656 392 545 407 308 414 567 437 433 500 514
+##  [40] 686 725 535 469 493 319 632 465 576 370 559 561 588
+##  [53] 560 563 545 499 538 449 648 595 475 718 629 536 640
+##  [66] 414 487 551 598 452 455 493 568 494 643 591 442 471
+##  [79] 364 448 485 516 436 584 519 538 494 604 559 488 385
+##  [92] 436 377 413 445 467 432 610 490 513
 \end{verbatim}
 
 \begin{Shaded}
@@ -8476,14 +8476,14 @@ C'est un bon exercice de parcourir les nombreux exemples disponibles sur Interne
 \end{Shaded}
 
 \begin{verbatim}
-##   [1] 598 519 422 620 635 708 371 448 594 466 457 529 460
-##  [14] 329 502 527 382 522 433 493 608 478 688 467 433 510
-##  [27] 390 470 573 540 440 590 538 477 367 450 500 460 332
-##  [40] 458 497 536 462 391 411 506 540 556 367 636 516 703
-##  [53] 553 633 540 692 621 473 453 497 553 508 476 382 743
-##  [66] 364 604 505 547 432 527 527 411 610 431 418 478 514
-##  [79] 432 441 631 592 695 489 481 385 490 534 433 392 446
-##  [92] 481 542 593 417 608 621 525 529 618
+##   [1] 468 437 356 480 522 459 630 495 546 560 499 558 387
+##  [14] 508 425 582 586 506 400 454 463 527 586 541 709 418
+##  [27] 579 434 656 392 545 407 308 414 567 437 433 500 514
+##  [40] 686 725 535 469 493 319 632 465 576 370 559 561 588
+##  [53] 560 563 545 499 538 449 648 595 475 718 629 536 640
+##  [66] 414 487 551 598 452 455 493 568 494 643 591 442 471
+##  [79] 364 448 485 516 436 584 519 538 494 604 559 488 385
+##  [92] 436 377 413 445 467 432 610 490 513
 \end{verbatim}
 
 En conclusion, il est recommandé de ne pas utiliser la boucle \texttt{for()} avec R chaque fois que cela est possible, et nous verrons dans ce chapitre des alternatives comme les boucles de la famille \texttt{apply()}.
@@ -8544,7 +8544,7 @@ La boucle \texttt{while()} est très utile pour créer des scripts qui vont effe
 
 \begin{verbatim}
 ## [1] "Number found !"
-## [1] "And I have plenty of time left: 0.72 sec"
+## [1] "And I have plenty of time left: 0.22 sec"
 \end{verbatim}
 
 Dans ce script nous générons un nombre aléatoire à deviner avec la fonction \texttt{sample()}, et chaque essai avec la même fonction \texttt{sample()}. Ensuite nous utilisons la fonction \texttt{Sys.time()} (avec un S majuscule à \texttt{Sys}), pour connaître l'heure de début de la boucle. Tant que la différence entre chaque itération de la boucle et l'heure de démarrage est inférieur à 2 secondes, la boucle \texttt{while()} va vérifier si le bon nombre a été deviné dans le test logique avec \texttt{if()} puis si c'est le cas nous informer que le nombre a été trouvé, nous dire le temps restant avant les deux secondes, puis terminer la boucle avec le mot clef \texttt{break} sur lequel nous reviendrons. En bref, \texttt{break} permet de sortir d'une boucle. Si le nombre n'a pas été deviné, la boucle fait un autre essai avec la fonction \texttt{sample()}.
@@ -8605,11 +8605,11 @@ Si nous reprenons l'exemple précédent, nous pouvons utiliser une boucle \textt
 \end{Shaded}
 
 \begin{verbatim}
-## [1] 0.456
-## [1] 0.464
-## [1] 0.059
-## [1] 0.159
-## [1] 0.01
+## [1] 0.085
+## [1] 0.31
+## [1] 0.233
+## [1] 0.055
+## [1] 0.023
 \end{verbatim}
 
 Comme la boucle \texttt{while()}, la boucle \texttt{repeat()} reste peu utilisée avec R.
@@ -8729,14 +8729,14 @@ La fonction \texttt{apply()} permet d'appliquer une fonction à tous les éléme
 \end{Shaded}
 
 \begin{verbatim}
-##   [1] 474 527 626 413 555 532 579 516 556 388 481 421 454
-##  [14] 413 569 593 347 638 513 510 642 364 539 464 466 575
-##  [27] 522 491 409 676 440 352 572 370 496 372 667 482 559
-##  [40] 589 607 564 498 654 617 493 455 441 538 512 578 407
-##  [53] 496 462 557 668 487 511 700 345 581 489 440 644 380
-##  [66] 220 540 476 513 464 505 664 650 507 650 404 435 531
-##  [79] 592 494 455 489 518 553 426 632 463 538 420 563 406
-##  [92] 638 592 360 345 411 571 484 574 645
+##   [1] 369 597 339 621 413 568 551 420 609 674 488 524 674
+##  [14] 487 463 385 522 603 553 435 405 581 441 485 627 480
+##  [27] 491 566 423 652 562 396 601 585 474 558 561 466 529
+##  [40] 415 479 474 383 551 544 495 552 556 482 455 477 477
+##  [53] 511 496 674 541 624 509 488 388 449 273 648 498 613
+##  [66] 410 683 449 507 624 512 454 634 406 297 348 602 507
+##  [79] 435 589 623 596 461 436 465 537 465 626 572 455 604
+##  [92] 586 461 517 598 520 520 457 535 547
 \end{verbatim}
 
 Si nous souhaitons connaître la médiane de chaque colonne, l'expression devient :
@@ -8748,7 +8748,7 @@ Si nous souhaitons connaître la médiane de chaque colonne, l'expression devien
 \end{Shaded}
 
 \begin{verbatim}
-##  [1] 58.0 49.0 57.0 50.5 54.0 41.0 53.0 44.5 40.5 50.5
+##  [1] 58.5 56.5 55.5 42.5 51.5 49.5 49.5 45.0 44.5 55.0
 \end{verbatim}
 
 L'argument \texttt{X} correspond à l'objet sur lequel la boucle \texttt{apply} va itérer. L'argument \texttt{MARGIN} correspond à la dimension à prendre en compte (1 pour les lignes, et 2 pour les colonnes). L'argument \texttt{FUN} correspond à la fonction à appliquer. Sur un objet de type \texttt{array}, l'argument \texttt{MARGIN} peut prendre autant de valeurs que de dimensions. Dans cet exemple \texttt{MARGIN\ =\ 1} correspond à la moyenne de chaque ligne - dimension 1 - (toutes dimensions confondues), \texttt{MARGIN\ =\ 2} correspond à la moyenne de chaque colonne - dimension 2 - (toutes dimensions confondues), et \texttt{MARGIN\ =\ 3} correspond à la moyenne de chaque dimension 3. Ci-dessous chaque calcul est réalisé de deux manières différentes pour en expliciter le fonctionnement.
@@ -8765,8 +8765,8 @@ L'argument \texttt{X} correspond à l'objet sur lequel la boucle \texttt{apply} 
 \end{Shaded}
 
 \begin{verbatim}
-##  [1] 52.49 47.77 51.49 50.22 51.71 54.61 53.95 49.30 47.34
-## [10] 52.40
+##  [1] 50.58 46.47 53.35 51.40 49.84 48.03 49.60 52.82 49.48
+## [10] 49.16
 \end{verbatim}
 
 \begin{Shaded}
@@ -8779,8 +8779,8 @@ L'argument \texttt{X} correspond à l'objet sur lequel la boucle \texttt{apply} 
 \end{Shaded}
 
 \begin{verbatim}
-##  [1] 52.49 47.77 51.49 50.22 51.71 54.61 53.95 49.30 47.34
-## [10] 52.40
+##  [1] 50.58 46.47 53.35 51.40 49.84 48.03 49.60 52.82 49.48
+## [10] 49.16
 \end{verbatim}
 
 \begin{Shaded}
@@ -8791,9 +8791,9 @@ L'argument \texttt{X} correspond à l'objet sur lequel la boucle \texttt{apply} 
 \end{Shaded}
 
 \begin{verbatim}
-##  [1] 58.72 49.78 50.10 50.06 51.92 53.38 46.68 53.06 51.30
-## [10] 55.42 45.36 42.68 51.60 55.64 51.20 52.66 46.94 51.02
-## [19] 51.06 53.98
+##  [1] 46.60 52.56 51.10 53.40 52.22 47.48 49.98 54.80 48.58
+## [10] 45.84 49.18 50.72 54.88 50.86 50.70 48.38 49.74 47.20
+## [19] 47.32 49.92
 \end{verbatim}
 
 \begin{Shaded}
@@ -8806,9 +8806,9 @@ L'argument \texttt{X} correspond à l'objet sur lequel la boucle \texttt{apply} 
 \end{Shaded}
 
 \begin{verbatim}
-##  [1] 58.72 49.78 50.10 50.06 51.92 53.38 46.68 53.06 51.30
-## [10] 55.42 45.36 42.68 51.60 55.64 51.20 52.66 46.94 51.02
-## [19] 51.06 53.98
+##  [1] 46.60 52.56 51.10 53.40 52.22 47.48 49.98 54.80 48.58
+## [10] 45.84 49.18 50.72 54.88 50.86 50.70 48.38 49.74 47.20
+## [19] 47.32 49.92
 \end{verbatim}
 
 \begin{Shaded}
@@ -8819,7 +8819,7 @@ L'argument \texttt{X} correspond à l'objet sur lequel la boucle \texttt{apply} 
 \end{Shaded}
 
 \begin{verbatim}
-## [1] 51.785 51.850 51.275 51.115 49.615
+## [1] 49.805 49.595 52.965 52.345 45.655
 \end{verbatim}
 
 \begin{Shaded}
@@ -8831,7 +8831,7 @@ L'argument \texttt{X} correspond à l'objet sur lequel la boucle \texttt{apply} 
 \end{Shaded}
 
 \begin{verbatim}
-## [1] 51.785 51.850 51.275 51.115 49.615
+## [1] 49.805 49.595 52.965 52.345 45.655
 \end{verbatim}
 
 Nous pouvons aussi calculer la moyenne pour chaque valeur de ligne et de colonne (la fonction itère alors sur la dimension 3) :
@@ -8844,38 +8844,38 @@ Nous pouvons aussi calculer la moyenne pour chaque valeur de ligne et de colonne
 
 \begin{verbatim}
 ##       [,1] [,2] [,3] [,4] [,5] [,6] [,7] [,8] [,9] [,10]
-##  [1,] 69.6 46.6 55.4 24.6 62.0 69.4 37.6 52.4 67.8  55.6
-##  [2,] 53.0 46.0 53.2 47.2 32.6 37.2 49.0 52.8 39.2  45.0
-##  [3,] 62.2 77.2 60.6 50.6 31.4 47.8 44.2 37.4 33.4  59.2
-##  [4,] 48.0 30.6 44.6 52.8 56.8 43.0 62.2 66.0 62.8  57.8
-##  [5,] 36.8 57.2 41.6 69.8 61.6 45.6 40.0 55.8 49.6  63.6
-##  [6,] 59.2 37.6 71.0 40.0 64.0 60.4 34.0 56.8 41.8  70.8
-##  [7,] 63.8 52.4 53.0 33.2 59.8 70.2 39.4 60.4 74.6  68.6
-##  [8,] 70.0 40.4 44.8 64.0 56.2 57.8 69.0 49.8 54.2  36.4
-##  [9,] 51.2 47.8 20.4 64.0 40.4 65.6 44.0 43.0 40.4  46.2
-## [10,] 73.4 62.0 56.4 54.4 54.4 36.8 47.4 56.2 49.2  51.0
+##  [1,] 28.4 59.6 67.4 63.0 57.4 54.6 54.8 48.8 82.2  32.0
+##  [2,] 44.0 56.0 62.6 47.0 37.4 30.4 34.8 44.4 20.8  30.4
+##  [3,] 39.8 44.8 65.4 49.8 64.4 68.2 45.0 67.0 50.0  59.4
+##  [4,] 38.8 73.8 57.6 55.6 48.6 43.4 58.6 75.0 13.2  45.6
+##  [5,] 33.4 33.2 38.6 54.4 36.4 60.8 46.8 64.6 57.2  65.4
+##  [6,] 55.8 64.4 40.0 60.0 52.4 28.0 42.0 58.0 61.2  51.2
+##  [7,] 68.4 66.0 37.4 51.4 59.0 37.0 68.6 59.4 36.0  42.4
+##  [8,] 66.2 38.4 39.2 44.2 65.2 68.6 58.2 38.6 64.4  39.2
+##  [9,] 39.6 51.8 42.0 58.6 52.0 31.6 51.4 57.6 42.0  34.8
+## [10,] 51.6 37.6 60.8 50.0 49.4 52.2 39.6 34.6 58.8  58.0
 ##       [,11] [,12] [,13] [,14] [,15] [,16] [,17] [,18] [,19]
-##  [1,]  53.6  34.2  41.8  50.0  70.6  55.2  30.6  59.6  51.8
-##  [2,]  43.2  55.4  45.4  65.2  55.2  47.8  39.4  51.8  49.8
-##  [3,]  36.2  52.6  65.6  47.4  45.0  55.0  68.0  61.0  36.4
-##  [4,]  41.0  37.0  39.2  70.0  56.2  49.4  51.6  61.8  29.6
-##  [5,]  46.0  44.8  65.4  37.6  61.4  60.2  50.6  38.0  45.6
-##  [6,]  68.4  46.6  62.4  69.8  50.6  49.2  46.2  48.8  51.0
-##  [7,]  42.0  38.4  59.2  42.2  36.8  68.0  37.2  55.4  80.0
-##  [8,]  27.4  35.2  48.0  55.8  40.6  43.2  42.2  40.0  60.6
-##  [9,]  46.2  46.2  54.2  50.6  37.2  39.8  56.0  32.6  66.2
-## [10,]  49.6  36.4  34.8  67.8  58.4  58.8  47.6  61.2  39.6
+##  [1,]  47.8  39.8  55.8  24.6  35.8  47.2  38.6  65.6  66.0
+##  [2,]  49.2  58.4  57.6  63.4  37.6  51.2  42.8  48.8  59.2
+##  [3,]  46.4  56.8  66.0  66.2  51.6  62.0  52.4  32.0  32.8
+##  [4,]  40.8  53.6  49.4  53.6  68.6  46.2  64.6  51.6  53.6
+##  [5,]  44.2  50.0  47.6  66.0  81.8  54.8  17.0  58.4  36.4
+##  [6,]  47.4  25.0  60.0  48.6  37.0  47.4  51.2  40.6  44.2
+##  [7,]  43.2  55.2  63.6  33.6  30.0  25.0  70.2  30.8  36.6
+##  [8,]  51.4  62.2  61.2  66.0  55.0  50.0  44.8  48.8  51.6
+##  [9,]  58.6  57.6  48.0  46.0  52.0  54.4  63.8  44.4  49.2
+## [10,]  62.8  48.6  39.6  40.6  57.6  45.6  52.0  51.0  43.6
 ##       [,20]
-##  [1,]  61.4
-##  [2,]  47.0
-##  [3,]  58.6
-##  [4,]  44.0
-##  [5,]  63.0
-##  [6,]  63.6
-##  [7,]  44.4
-##  [8,]  50.4
-##  [9,]  54.8
-## [10,]  52.6
+##  [1,]  42.2
+##  [2,]  53.4
+##  [3,]  47.0
+##  [4,]  35.8
+##  [5,]  49.8
+##  [6,]  46.2
+##  [7,]  78.2
+##  [8,]  43.2
+##  [9,]  54.2
+## [10,]  49.2
 \end{verbatim}
 
 \hypertarget{l17sapply}{%
@@ -8899,19 +8899,19 @@ Comme indiqué dans la documentation, \texttt{lapply()} renvoie une liste de mê
 
 \begin{verbatim}
 ## $a
-##  [1] 56 31 49 25 35 98 34 24 51 74
+##  [1]  68  23  33 100   9   5  54  72  88  13
 ## 
 ## $b
-##  [1]  7 12 53 97 65 26 45 74 21 19
+##  [1] 83 61 97 75 99 11 20 56 21 25
 ## 
 ## $c
-##  [1]  5 82 97 70 12 67 25 15 14 63
+##  [1] 98 11 76 15  1 71 66 53 28 54
 ## 
 ## $d
-##  [1] 45 57 69 72 56  1 42 59 93 80
+##  [1] 49 61 77 85 91 11 47 69 98 68
 ## 
 ## $e
-##  [1] 77 33 61 19 23 64  6 91 82 98
+##  [1] 27 69 14 85 63 49 56 71 98 41
 \end{verbatim}
 
 \begin{Shaded}
@@ -8924,19 +8924,19 @@ Comme indiqué dans la documentation, \texttt{lapply()} renvoie une liste de mê
 
 \begin{verbatim}
 ## $a
-## [1] 47.7
+## [1] 46.5
 ## 
 ## $b
-## [1] 41.9
+## [1] 54.8
 ## 
 ## $c
-## [1] 45
+## [1] 47.3
 ## 
 ## $d
-## [1] 57.4
+## [1] 65.6
 ## 
 ## $e
-## [1] 55.4
+## [1] 57.3
 \end{verbatim}
 
 Cela revient à une boucle \texttt{for()} itérant sur les élément de l'objet de type \texttt{list}.
@@ -8964,19 +8964,19 @@ Cependant, la boucle \texttt{for()} ne renvoie pas de résultat. Pour l'obtenir,
 
 \begin{verbatim}
 ## $a
-## [1] 47.7
+## [1] 46.5
 ## 
 ## $b
-## [1] 41.9
+## [1] 54.8
 ## 
 ## $c
-## [1] 45
+## [1] 47.3
 ## 
 ## $d
-## [1] 57.4
+## [1] 65.6
 ## 
 ## $e
-## [1] 55.4
+## [1] 57.3
 \end{verbatim}
 
 Nous comprenons alors que la fonction \texttt{lapply()} est bien plus performante car elle va à la fois permettre de procéder à notre tâche tout en fournissant un résultat qui peut être stocké directement dans un objet (ou pas comme c'est le cas ici).
@@ -8999,19 +8999,19 @@ Comme pour la fonction \texttt{apply()}, nous pouvons passer des arguments suppl
 
 \begin{verbatim}
 ## $a
-##  [1]  4  1 NA NA  3  3  2 NA NA  1
+##  [1] 3 3 5 2 5 1 4 2 3 1
 ## 
 ## $b
-##  [1]  4 NA  2  2  3  4  2 NA  2 NA
+##  [1]  1  1  1  1  3  3 NA  1  4  2
 ## 
 ## $c
-##  [1]  3 NA  2  4 NA  5  5  1  5  4
+##  [1]  3  2  1 NA  3  3  3  2  1  5
 ## 
 ## $d
-##  [1]  2  1  3  3  5 NA  1  1  1 NA
+##  [1] NA  4  3 NA  5  1  4  3 NA  2
 ## 
 ## $e
-##  [1]  2  4  4  5  1  5 NA  1  1  2
+##  [1]  2  4 NA  1  2  5  5  1  3  3
 \end{verbatim}
 
 \begin{Shaded}
@@ -9022,7 +9022,7 @@ Comme pour la fonction \texttt{apply()}, nous pouvons passer des arguments suppl
 
 \begin{verbatim}
 ## $a
-## [1] NA
+## [1] 2.9
 ## 
 ## $b
 ## [1] NA
@@ -9045,19 +9045,19 @@ Comme pour la fonction \texttt{apply()}, nous pouvons passer des arguments suppl
 
 \begin{verbatim}
 ## $a
-## [1] 2.333333
+## [1] 2.9
 ## 
 ## $b
-## [1] 2.714286
+## [1] 1.888889
 ## 
 ## $c
-## [1] 3.625
+## [1] 2.555556
 ## 
 ## $d
-## [1] 2.125
+## [1] 3.142857
 ## 
 ## $e
-## [1] 2.777778
+## [1] 2.888889
 \end{verbatim}
 
 Pour plus de lisibilité ou si plusieurs opérations sont à réaliser au sein de l'argument \texttt{FUN}, nous pouvons utiliser l'écriture suivante :
@@ -9072,19 +9072,19 @@ Pour plus de lisibilité ou si plusieurs opérations sont à réaliser au sein d
 
 \begin{verbatim}
 ## $a
-## [1] 2.333333
+## [1] 2.9
 ## 
 ## $b
-## [1] 2.714286
+## [1] 1.888889
 ## 
 ## $c
-## [1] 3.625
+## [1] 2.555556
 ## 
 ## $d
-## [1] 2.125
+## [1] 3.142857
 ## 
 ## $e
-## [1] 2.777778
+## [1] 2.888889
 \end{verbatim}
 
 Par exemple si nous souhaitons obtenir \texttt{i\^{}2} si la moyenne est supérieure à 3, et \texttt{i\^{}3} sinon :
@@ -9104,19 +9104,19 @@ Par exemple si nous souhaitons obtenir \texttt{i\^{}2} si la moyenne est supéri
 
 \begin{verbatim}
 ## $a
-##  [1] 64  1 NA NA 27 27  8 NA NA  1
+##  [1]  27  27 125   8 125   1  64   8  27   1
 ## 
 ## $b
-##  [1] 64 NA  8  8 27 64  8 NA  8 NA
+##  [1]  1  1  1  1 27 27 NA  1 64  8
 ## 
 ## $c
-##  [1]  9 NA  4 16 NA 25 25  1 25 16
+##  [1]  27   8   1  NA  27  27  27   8   1 125
 ## 
 ## $d
-##  [1]   8   1  27  27 125  NA   1   1   1  NA
+##  [1] NA 16  9 NA 25  1 16  9 NA  4
 ## 
 ## $e
-##  [1]   8  64  64 125   1 125  NA   1   1   8
+##  [1]   8  64  NA   1   8 125 125   1  27  27
 \end{verbatim}
 
 \hypertarget{l17lapply}{%
@@ -9134,19 +9134,19 @@ La fonction \texttt{sapply()} est une version modifiée de la fonction \texttt{l
 
 \begin{verbatim}
 ## $a
-## [1] 2.333333
+## [1] 2.9
 ## 
 ## $b
-## [1] 2.714286
+## [1] 1.888889
 ## 
 ## $c
-## [1] 3.625
+## [1] 2.555556
 ## 
 ## $d
-## [1] 2.125
+## [1] 3.142857
 ## 
 ## $e
-## [1] 2.777778
+## [1] 2.888889
 \end{verbatim}
 
 \begin{Shaded}
@@ -9159,7 +9159,7 @@ La fonction \texttt{sapply()} est une version modifiée de la fonction \texttt{l
 
 \begin{verbatim}
 ##        a        b        c        d        e 
-## 2.333333 2.714286 3.625000 2.125000 2.777778
+## 2.900000 1.888889 2.555556 3.142857 2.888889
 \end{verbatim}
 
 La fonction \texttt{sapply()} est intéressante pour récupérer par exemple le nième élément de chacun des éléments d'une \texttt{list}. La fonction qui est appelée pour faire cela est \texttt{\textquotesingle{}{[}{[}\textquotesingle{}}.
@@ -9171,8 +9171,8 @@ La fonction \texttt{sapply()} est intéressante pour récupérer par exemple le 
 \end{Shaded}
 
 \begin{verbatim}
-##  a  b  c  d  e 
-##  1 NA NA  1  4
+## a b c d e 
+## 3 1 2 4 4
 \end{verbatim}
 
 \hypertarget{l17tapply}{%
@@ -9192,17 +9192,17 @@ La fonction \texttt{tapply()} permet d'appliquer une fonction en prenant comme �
 \end{Shaded}
 
 \begin{verbatim}
-##    species     perf1     perf2    perf3
-## 1        D  9.569456 15680.975 16.54567
-## 2        C 10.629517 25213.938 26.86577
-## 3        A  9.452631 38367.287 15.88420
-## 4        J  9.455449  8373.673 31.36835
-## 5        G  9.018066 11302.574 26.82476
-## 6        F  9.343249 24995.507 10.52189
-## 7        H  9.846461 22717.660 19.23004
-## 8        F 10.456023 39109.409 23.77441
-## 9        A 10.721202 25824.175 30.53191
-## 10       F 10.483393 20496.966 25.09380
+##    species     perf1    perf2    perf3
+## 1        G 10.160541 12195.25 13.97026
+## 2        J  8.998684 30710.85 17.35971
+## 3        C 10.263256 15885.99 11.94917
+## 4        G 10.786622 14856.22 27.10833
+## 5        C 10.177027 10429.46 11.43769
+## 6        B 10.037780 12123.37 11.61956
+## 7        E  9.895256 12006.83 27.37906
+## 8        I  9.753919 24128.74 28.22352
+## 9        F  9.952026 19216.70 18.77517
+## 10       I  9.701159 25258.04 24.73659
 \end{verbatim}
 
 Nous pouvons facilement obtenir un résumé des performances pour chaque espèce avec la fonction \texttt{tapply()} et la fonction \texttt{summary()}.
@@ -9216,43 +9216,43 @@ Nous pouvons facilement obtenir un résumé des performances pour chaque espèce
 \begin{verbatim}
 ## $A
 ##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-##   8.646   9.710  10.092  10.015  10.360  11.156 
+##   8.908   9.688  10.138  10.061  10.405  11.033 
 ## 
 ## $B
 ##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-##   8.515   9.651  10.019  10.006  10.349  11.432 
+##   8.855   9.706   9.974  10.036  10.328  11.493 
 ## 
 ## $C
 ##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-##   8.616   9.714  10.092  10.021  10.378  11.083 
+##   8.533   9.658  10.014   9.967  10.316  11.151 
 ## 
 ## $D
 ##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-##   8.888   9.678   9.985   9.995  10.362  11.313 
+##   8.994   9.705   9.984  10.012  10.382  11.160 
 ## 
 ## $E
 ##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-##   8.738   9.688  10.067  10.083  10.387  11.695 
+##   8.701   9.638  10.018   9.970  10.291  11.010 
 ## 
 ## $F
 ##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-##   8.105   9.600  10.017   9.933  10.246  11.090 
+##   8.545   9.697   9.998  10.007  10.349  11.201 
 ## 
 ## $G
 ##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-##   8.554   9.671   9.976   9.975  10.281  11.754 
+##   8.230   9.663   9.968   9.940  10.285  10.802 
 ## 
 ## $H
 ##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-##   8.658   9.589   9.984   9.952  10.223  11.232 
+##   8.931   9.724   9.977  10.021  10.385  10.993 
 ## 
 ## $I
 ##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-##   8.784   9.672   9.915   9.969  10.280  11.436 
+##   8.707   9.665   9.925   9.953  10.283  11.295 
 ## 
 ## $J
 ##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-##   8.934   9.629   9.927   9.972  10.309  11.287
+##   8.961   9.717  10.036  10.077  10.462  11.098
 \end{verbatim}
 
 Nous pouvons aussi obtenir la valeur moyenne de chacune des performances en combinant une fonction \texttt{sapply()} avec la fonction \texttt{tapply()}et en utilisant la fonction \texttt{mean()}.
@@ -9267,16 +9267,16 @@ Nous pouvons aussi obtenir la valeur moyenne de chacune des performances en comb
 
 \begin{verbatim}
 ##        [,1]     [,2]     [,3]
-## A 10.015435 25526.24 19.64360
-## B 10.006294 25056.82 19.51251
-## C 10.021161 27912.07 19.65978
-## D  9.995131 25116.71 21.53182
-## E 10.083244 23587.93 18.69696
-## F  9.932626 24651.22 19.82520
-## G  9.974981 21918.91 20.35080
-## H  9.952245 28558.51 20.17927
-## I  9.968826 25137.87 20.17588
-## J  9.972206 24017.65 19.60037
+## A 10.060649 25174.85 18.60018
+## B 10.036040 26843.27 20.02619
+## C  9.966816 23825.85 20.12690
+## D 10.012171 24987.74 20.19546
+## E  9.970106 25555.12 19.77580
+## F 10.007073 25919.96 20.09044
+## G  9.940228 23663.30 19.61741
+## H 10.020584 25138.32 21.27047
+## I  9.952811 24453.66 21.11303
+## J 10.077260 23089.43 18.94256
 \end{verbatim}
 
 La fonction \texttt{sapply()} est utilisée pour spécifier la colonne (la colonne 2 correspond à perf1, la colonne 3 correspond à perf2, et la colonne 4 correspond à perf3). La colonne prend alors le nom de variable \texttt{i}. Ensuite, pour chaque colonne \texttt{dfSpecies{[},i{]}}, nous pouvons utiliser la fonction \texttt{tapply()} pour calculer la moyenne par espèce. Voici l'équivalent avec des boucles \texttt{for()}.
@@ -9311,17 +9311,8 @@ Et si nous voulons le résultat sous forme d'une \texttt{data.frame}, le code de
 \end{Shaded}
 
 \begin{verbatim}
-##       perf1    perf2    perf3
-## A 10.015435 25526.24 19.64360
-## B 10.006294 25056.82 19.51251
-## C 10.021161 27912.07 19.65978
-## D  9.995131 25116.71 21.53182
-## E 10.083244 23587.93 18.69696
-## F  9.932626 24651.22 19.82520
-## G  9.974981 21918.91 20.35080
-## H  9.952245 28558.51 20.17927
-## I  9.968826 25137.87 20.17588
-## J  9.972206 24017.65 19.60037
+## [1] perf1 perf2 perf3
+## <0 rows> (or 0-length row.names)
 \end{verbatim}
 
 \hypertarget{l17mapply}{%
@@ -11373,9 +11364,8 @@ Ou les regrouper dans un même graphique, ainsi que la variation diurne des temp
   \DataTypeTok{ncol =} \DecValTok{4}\NormalTok{, }
   \DataTypeTok{legend =}\NormalTok{ meses, }
   \DataTypeTok{col =}\NormalTok{ myColors, }
-    \DataTypeTok{lty =} \DecValTok{1}\NormalTok{, }
-  \DataTypeTok{lwd =} \DecValTok{2}\NormalTok{, }
-  \DataTypeTok{cex =} \FloatTok{0.8}\NormalTok{)}
+    \DataTypeTok{lty =} \DecValTok{1}\NormalTok{, }\DataTypeTok{lwd =} \DecValTok{2}\NormalTok{, }
+  \DataTypeTok{cex =} \FloatTok{0.8}\NormalTok{, }\DataTypeTok{bg =} \StringTok{"white"}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -11418,9 +11408,8 @@ Ou les regrouper dans un même graphique, ainsi que la variation diurne des temp
   \DataTypeTok{ncol =} \DecValTok{4}\NormalTok{, }
   \DataTypeTok{legend =}\NormalTok{ meses, }
   \DataTypeTok{col =}\NormalTok{ myColors, }
-    \DataTypeTok{lty =} \DecValTok{1}\NormalTok{, }
-  \DataTypeTok{lwd =} \DecValTok{2}\NormalTok{, }
-  \DataTypeTok{cex =} \FloatTok{0.8}\NormalTok{)}
+    \DataTypeTok{lty =} \DecValTok{1}\NormalTok{, }\DataTypeTok{lwd =} \DecValTok{2}\NormalTok{, }
+  \DataTypeTok{cex =} \FloatTok{0.8}\NormalTok{, }\DataTypeTok{bg =} \StringTok{"white"}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
