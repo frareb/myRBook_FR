@@ -9,7 +9,7 @@ bookdown::gitbook:
       collapse: section
       before: |
         <li><a href="./">R pour les scientifiques</a></li>
-    download: [["myRBook_FR.pdf", "PDF"], ["myRBook_FR.epub", "EPUB"], ["myRBook_FR.docx", "DOCX"]]
+    download: [["myRBook_FR.pdf", "PDF"]]#, ["myRBook_FR.epub", "EPUB"], ["myRBook_FR.docx", "DOCX"]]
     edit: https://github.com/frareb/myRBook_FR/edit/master/%s
 bookdown::pdf_book:
   includes:
@@ -19,21 +19,14 @@ bookdown::pdf_book:
   citation_package: natbib
   keep_tex: yes
   highlight: monochrome
-bookdown::epub_book: #default
-  stylesheet: myStyle.css
+#bookdown::epub_book: #default
+#  stylesheet: myStyle.css
 # bookdown::word_document2:
 #   toc: true
-  
-  
-  
-  
 # bookdown::html_book:
 #   toc: yes
 #   css: [myStyle.css]
 # bookdown::tufte_html_book:
 #   toc: yes
 #   css: [myStyle.css]
-# dans gitbook/config/toc
-# after: |
-#  <li><a href="http://ird.fr/" target="blank"><img src="myLogos/logo_IRD_2016_LONGUEUR_SP_COUL.png" alt="IRD" width="100"></a></li>
 ---
