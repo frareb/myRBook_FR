@@ -24,7 +24,7 @@
 <meta name="author" content="François Rebaudo" />
 
 
-<meta name="date" content="2020-05-01" />
+<meta name="date" content="2020-05-02" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -148,9 +148,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><a href="./">R pour les scientifiques</a></li>
 
 <li class="divider"></li>
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Préambule</a><ul>
-<li class="chapter" data-level="0.1" data-path="index.html"><a href="index.html#remerciements"><i class="fa fa-check"></i><b>0.1</b> Remerciements</a></li>
-<li class="chapter" data-level="0.2" data-path="index.html"><a href="index.html#licence"><i class="fa fa-check"></i><b>0.2</b> Licence</a></li>
+<li class="chapter" data-level="" data-path="avant-propos.html"><a href="avant-propos.html"><i class="fa fa-check"></i>Avant-propos</a><ul>
+<li class="chapter" data-level="0.1" data-path="avant-propos.html"><a href="avant-propos.html#licence"><i class="fa fa-check"></i><b>0.1</b> Licence</a></li>
 </ul></li>
 <li class="chapter" data-level="1" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>1</b> Introduction</a><ul>
 <li class="chapter" data-level="1.1" data-path="intro.html"><a href="intro.html#pourquoi-se-former-à-r"><i class="fa fa-check"></i><b>1.1</b> Pourquoi se former à R</a></li>
@@ -386,70 +385,70 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Nous avons déjà vu qu’il y avait plusieurs façons d’écrire son code avec R car c’est un langage assez permissif. Le premier pas vers un code lisible et reproductible est donc d’adopter un style de code clair, cohérent, et… fait pour les humains ! Car même si notre code a vocation à être exécuter par les machines, il doit rester compréhensible pour soi et toutes les personnes qui seront amenées à le consulter. Il s’agit par exemple de mettre des espaces après les virgules, ou encore d’utiliser l’indentation. Bien sûr la lisibilité du code doit être à balancer avec l’optimisation du code pour les grands jeux de données, mais dans la plupart des cas nous pouvons associer un code clair et optimisé. Donc la première étape de la documentation et de sa gestion est tout d’abord de rédiger son code en pensant aux personnes qui vont le lire et le reproduire.</p>
 <p>La deuxième étape est de commenter son code. Les commentaires sont indispensables lorsque nous privilégions du code optimisé pour la performance mais qui perd en lisibilité. Les commentaires sont souvent superflus si le code est bien rédigé et les objets et les fonctions bien nommés. Cela veut dire qu’il ne faut pas utiliser les commentaires pour expliquer un code mal rédigé, mais dès le début bien rédiger son code. Les commentaires sont utiles pour apporter des éléments de contexte (e.g., choix d’une méthode plutôt qu’une autre au regard de la littérature). La place des commentaires peut être en fin de ligne ou sur des lignes à part.</p>
 <p>Pour un projet R il est indispensable que chaque script commence par une description de son contenu pour que nous puissions rapidement savoir de quoi il traite. C’est ce que nous avions fait au début de ce livre :</p>
-<div class="sourceCode" id="cb1123"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1123-1" title="1"><span class="co"># ------------------------------------------------------------</span></a>
-<a class="sourceLine" id="cb1123-2" title="2"><span class="co"># Voici un script pour acquérir les concepts de base </span></a>
-<a class="sourceLine" id="cb1123-3" title="3"><span class="co"># avec R</span></a>
-<a class="sourceLine" id="cb1123-4" title="4"><span class="co"># date de création : 25/06/2018</span></a>
-<a class="sourceLine" id="cb1123-5" title="5"><span class="co"># date de modification : 03/01/2020</span></a>
-<a class="sourceLine" id="cb1123-6" title="6"><span class="co"># auteur : François Rebaudo</span></a>
-<a class="sourceLine" id="cb1123-7" title="7"><span class="co"># ------------------------------------------------------------</span></a>
-<a class="sourceLine" id="cb1123-8" title="8"></a>
-<a class="sourceLine" id="cb1123-9" title="9"><span class="co"># [1] création de l&#39;objet nombre de répétitions</span></a>
-<a class="sourceLine" id="cb1123-10" title="10"><span class="co"># ------------------------------------------------------------</span></a>
-<a class="sourceLine" id="cb1123-11" title="11"></a>
-<a class="sourceLine" id="cb1123-12" title="12">nbrRep &lt;-<span class="st"> </span><span class="dv">5</span></a>
-<a class="sourceLine" id="cb1123-13" title="13"></a>
-<a class="sourceLine" id="cb1123-14" title="14"><span class="co"># [2] calculs simples</span></a>
-<a class="sourceLine" id="cb1123-15" title="15"><span class="co"># ------------------------------------------------------------</span></a>
-<a class="sourceLine" id="cb1123-16" title="16"></a>
-<a class="sourceLine" id="cb1123-17" title="17">pi <span class="op">*</span><span class="st"> </span>nbrRep<span class="op">^</span><span class="dv">2</span></a></code></pre></div>
+<div class="sourceCode" id="cb1127"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1127-1" title="1"><span class="co"># ------------------------------------------------------------</span></a>
+<a class="sourceLine" id="cb1127-2" title="2"><span class="co"># Voici un script pour acquérir les concepts de base </span></a>
+<a class="sourceLine" id="cb1127-3" title="3"><span class="co"># avec R</span></a>
+<a class="sourceLine" id="cb1127-4" title="4"><span class="co"># date de création : 25/06/2018</span></a>
+<a class="sourceLine" id="cb1127-5" title="5"><span class="co"># date de modification : 03/01/2020</span></a>
+<a class="sourceLine" id="cb1127-6" title="6"><span class="co"># auteur : François Rebaudo</span></a>
+<a class="sourceLine" id="cb1127-7" title="7"><span class="co"># ------------------------------------------------------------</span></a>
+<a class="sourceLine" id="cb1127-8" title="8"></a>
+<a class="sourceLine" id="cb1127-9" title="9"><span class="co"># [1] création de l&#39;objet nombre de répétitions</span></a>
+<a class="sourceLine" id="cb1127-10" title="10"><span class="co"># ------------------------------------------------------------</span></a>
+<a class="sourceLine" id="cb1127-11" title="11"></a>
+<a class="sourceLine" id="cb1127-12" title="12">nbrRep &lt;-<span class="st"> </span><span class="dv">5</span></a>
+<a class="sourceLine" id="cb1127-13" title="13"></a>
+<a class="sourceLine" id="cb1127-14" title="14"><span class="co"># [2] calculs simples</span></a>
+<a class="sourceLine" id="cb1127-15" title="15"><span class="co"># ------------------------------------------------------------</span></a>
+<a class="sourceLine" id="cb1127-16" title="16"></a>
+<a class="sourceLine" id="cb1127-17" title="17">pi <span class="op">*</span><span class="st"> </span>nbrRep<span class="op">^</span><span class="dv">2</span></a></code></pre></div>
 <p>Ici les commentaires qui suivent l’en-tête ne sont pas nécessaires car le nom de l’objet se comprend de lui-même. Notre fichier devient :</p>
-<div class="sourceCode" id="cb1124"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1124-1" title="1"><span class="co"># ------------------------------------------------------------</span></a>
-<a class="sourceLine" id="cb1124-2" title="2"><span class="co"># Voici un script pour acquérir les concepts de base </span></a>
-<a class="sourceLine" id="cb1124-3" title="3"><span class="co"># avec R</span></a>
-<a class="sourceLine" id="cb1124-4" title="4"><span class="co"># date de création : 25/06/2018</span></a>
-<a class="sourceLine" id="cb1124-5" title="5"><span class="co"># date de modification : 03/01/2020</span></a>
-<a class="sourceLine" id="cb1124-6" title="6"><span class="co"># auteur : François Rebaudo</span></a>
-<a class="sourceLine" id="cb1124-7" title="7"><span class="co"># ------------------------------------------------------------</span></a>
-<a class="sourceLine" id="cb1124-8" title="8"></a>
-<a class="sourceLine" id="cb1124-9" title="9">nbrRep &lt;-<span class="st"> </span><span class="dv">5</span></a>
-<a class="sourceLine" id="cb1124-10" title="10">pi <span class="op">*</span><span class="st"> </span>nbrRep<span class="op">^</span><span class="dv">2</span></a></code></pre></div>
+<div class="sourceCode" id="cb1128"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1128-1" title="1"><span class="co"># ------------------------------------------------------------</span></a>
+<a class="sourceLine" id="cb1128-2" title="2"><span class="co"># Voici un script pour acquérir les concepts de base </span></a>
+<a class="sourceLine" id="cb1128-3" title="3"><span class="co"># avec R</span></a>
+<a class="sourceLine" id="cb1128-4" title="4"><span class="co"># date de création : 25/06/2018</span></a>
+<a class="sourceLine" id="cb1128-5" title="5"><span class="co"># date de modification : 03/01/2020</span></a>
+<a class="sourceLine" id="cb1128-6" title="6"><span class="co"># auteur : François Rebaudo</span></a>
+<a class="sourceLine" id="cb1128-7" title="7"><span class="co"># ------------------------------------------------------------</span></a>
+<a class="sourceLine" id="cb1128-8" title="8"></a>
+<a class="sourceLine" id="cb1128-9" title="9">nbrRep &lt;-<span class="st"> </span><span class="dv">5</span></a>
+<a class="sourceLine" id="cb1128-10" title="10">pi <span class="op">*</span><span class="st"> </span>nbrRep<span class="op">^</span><span class="dv">2</span></a></code></pre></div>
 <p>Pour un gros projet avec de nombreuses fonctions destinées à être utilisées par d’autres usagers, il est préférable que la documentation du code soit à part, dans un fichier d’aide spécifique. C’est le cas de tous les packages R ! Pour gérer la documentation d’un package (et donc de toutes les fonctions), là encore il existe de nombreuses possibilités. La plus répandue consiste à utiliser le package R roxigen2. Sans entrer dans les détails, voici quelques exemples de documentations de package.</p>
-<div class="sourceCode" id="cb1125"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1125-1" title="1"><span class="co">#&#39; Add together two numbers</span></a>
-<a class="sourceLine" id="cb1125-2" title="2"><span class="co">#&#39;</span></a>
-<a class="sourceLine" id="cb1125-3" title="3"><span class="co">#&#39; @param x A number</span></a>
-<a class="sourceLine" id="cb1125-4" title="4"><span class="co">#&#39; @param y A number</span></a>
-<a class="sourceLine" id="cb1125-5" title="5"><span class="co">#&#39; @return The sum of \code{x} and \code{y}</span></a>
-<a class="sourceLine" id="cb1125-6" title="6"><span class="co">#&#39; @examples</span></a>
-<a class="sourceLine" id="cb1125-7" title="7"><span class="co">#&#39; add(1, 1)</span></a>
-<a class="sourceLine" id="cb1125-8" title="8"><span class="co">#&#39; add(10, 1)</span></a>
-<a class="sourceLine" id="cb1125-9" title="9">add &lt;-<span class="st"> </span><span class="cf">function</span>(x, y) {</a>
-<a class="sourceLine" id="cb1125-10" title="10">  x <span class="op">+</span><span class="st"> </span>y</a>
-<a class="sourceLine" id="cb1125-11" title="11">}</a></code></pre></div>
-<div class="sourceCode" id="cb1126"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1126-1" title="1"><span class="co">#&#39; Sum of vector elements.</span></a>
-<a class="sourceLine" id="cb1126-2" title="2"><span class="co">#&#39;</span></a>
-<a class="sourceLine" id="cb1126-3" title="3"><span class="co">#&#39; `sum` returns the sum of all the values present </span></a>
-<a class="sourceLine" id="cb1126-4" title="4"><span class="co">#&#39; in its arguments.</span></a>
-<a class="sourceLine" id="cb1126-5" title="5"><span class="co">#&#39;</span></a>
-<a class="sourceLine" id="cb1126-6" title="6"><span class="co">#&#39; This is a generic function: methods can be defined </span></a>
-<a class="sourceLine" id="cb1126-7" title="7"><span class="co">#&#39; for it directly or via the [Summary()] group generic. </span></a>
-<a class="sourceLine" id="cb1126-8" title="8"><span class="co">#&#39; For this to work properly, the arguments `...` should </span></a>
-<a class="sourceLine" id="cb1126-9" title="9"><span class="co">#&#39; be unnamed, and dispatch is on the first argument.</span></a>
-<a class="sourceLine" id="cb1126-10" title="10">sum &lt;-<span class="st"> </span><span class="cf">function</span>(..., <span class="dt">na.rm =</span> <span class="ot">TRUE</span>) {}</a></code></pre></div>
+<div class="sourceCode" id="cb1129"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1129-1" title="1"><span class="co">#&#39; Add together two numbers</span></a>
+<a class="sourceLine" id="cb1129-2" title="2"><span class="co">#&#39;</span></a>
+<a class="sourceLine" id="cb1129-3" title="3"><span class="co">#&#39; @param x A number</span></a>
+<a class="sourceLine" id="cb1129-4" title="4"><span class="co">#&#39; @param y A number</span></a>
+<a class="sourceLine" id="cb1129-5" title="5"><span class="co">#&#39; @return The sum of \code{x} and \code{y}</span></a>
+<a class="sourceLine" id="cb1129-6" title="6"><span class="co">#&#39; @examples</span></a>
+<a class="sourceLine" id="cb1129-7" title="7"><span class="co">#&#39; add(1, 1)</span></a>
+<a class="sourceLine" id="cb1129-8" title="8"><span class="co">#&#39; add(10, 1)</span></a>
+<a class="sourceLine" id="cb1129-9" title="9">add &lt;-<span class="st"> </span><span class="cf">function</span>(x, y) {</a>
+<a class="sourceLine" id="cb1129-10" title="10">  x <span class="op">+</span><span class="st"> </span>y</a>
+<a class="sourceLine" id="cb1129-11" title="11">}</a></code></pre></div>
+<div class="sourceCode" id="cb1130"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1130-1" title="1"><span class="co">#&#39; Sum of vector elements.</span></a>
+<a class="sourceLine" id="cb1130-2" title="2"><span class="co">#&#39;</span></a>
+<a class="sourceLine" id="cb1130-3" title="3"><span class="co">#&#39; `sum` returns the sum of all the values present </span></a>
+<a class="sourceLine" id="cb1130-4" title="4"><span class="co">#&#39; in its arguments.</span></a>
+<a class="sourceLine" id="cb1130-5" title="5"><span class="co">#&#39;</span></a>
+<a class="sourceLine" id="cb1130-6" title="6"><span class="co">#&#39; This is a generic function: methods can be defined </span></a>
+<a class="sourceLine" id="cb1130-7" title="7"><span class="co">#&#39; for it directly or via the [Summary()] group generic. </span></a>
+<a class="sourceLine" id="cb1130-8" title="8"><span class="co">#&#39; For this to work properly, the arguments `...` should </span></a>
+<a class="sourceLine" id="cb1130-9" title="9"><span class="co">#&#39; be unnamed, and dispatch is on the first argument.</span></a>
+<a class="sourceLine" id="cb1130-10" title="10">sum &lt;-<span class="st"> </span><span class="cf">function</span>(..., <span class="dt">na.rm =</span> <span class="ot">TRUE</span>) {}</a></code></pre></div>
 <p>Cela permet d’écrire la documentation de chaque fonction à côté de la fonction. Le package roxigen2 va ensuite générer à partir de ces commentaires un document d’aide accessible avec la fonction <code>'?'</code>. A moins que nous écrivions un nouveau package, les commentaires simples suffiront, et le développement d’un package sort du cadre de ce livre.</p>
 </div>
 <div id="communiquer-avec-rmarkdown" class="section level2">
 <h2><span class="header-section-number">9.4</span> Communiquer avec rmarkdown</h2>
 <p>Les gestionnaires de version sur serveur sont très utiles car ils permettent à de multiples utilisateurs de contribuer à un même script. Ils constituent des outils collaboratifs très puissants. Cependant dans certains cas nous devons communiquer avec des collaborateurs non-initiés à R et ce en amont du processus de publication scientifique. Dans les cas où le code et les fichiers associés ne suffisent pas (même quand le code est lisible et reproductible), il peut être intéressant de passer par un document qui montrera le code et le résultat de son exécution dans un seul et même fichier. C’est ce que permet le package <em>rmarkdown</em> en permettant la génération de documents (eg HTML, PDF, Word) de manière dynamique (<a href="https://rmarkdown.rstudio.com/" class="uri">https://rmarkdown.rstudio.com/</a>).</p>
-<div class="sourceCode" id="cb1127"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1127-1" title="1">pkgCheck &lt;-<span class="st"> </span><span class="cf">function</span>(x){ </a>
-<a class="sourceLine" id="cb1127-2" title="2">    <span class="cf">if</span> (<span class="op">!</span><span class="kw">require</span>(x, <span class="dt">character.only =</span> <span class="ot">TRUE</span>)){</a>
-<a class="sourceLine" id="cb1127-3" title="3">        <span class="kw">install.packages</span>(x, <span class="dt">dependencies =</span> <span class="ot">TRUE</span>)</a>
-<a class="sourceLine" id="cb1127-4" title="4">        <span class="cf">if</span>(<span class="op">!</span><span class="kw">require</span>(x, <span class="dt">character.only =</span> <span class="ot">TRUE</span>)) {</a>
-<a class="sourceLine" id="cb1127-5" title="5">            <span class="kw">stop</span>()</a>
-<a class="sourceLine" id="cb1127-6" title="6">        }</a>
-<a class="sourceLine" id="cb1127-7" title="7">    }</a>
-<a class="sourceLine" id="cb1127-8" title="8">}</a>
-<a class="sourceLine" id="cb1127-9" title="9"><span class="kw">pkgCheck</span>(<span class="st">&quot;rmarkdown&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb1131"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1131-1" title="1">pkgCheck &lt;-<span class="st"> </span><span class="cf">function</span>(x){ </a>
+<a class="sourceLine" id="cb1131-2" title="2">    <span class="cf">if</span> (<span class="op">!</span><span class="kw">require</span>(x, <span class="dt">character.only =</span> <span class="ot">TRUE</span>)){</a>
+<a class="sourceLine" id="cb1131-3" title="3">        <span class="kw">install.packages</span>(x, <span class="dt">dependencies =</span> <span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb1131-4" title="4">        <span class="cf">if</span>(<span class="op">!</span><span class="kw">require</span>(x, <span class="dt">character.only =</span> <span class="ot">TRUE</span>)) {</a>
+<a class="sourceLine" id="cb1131-5" title="5">            <span class="kw">stop</span>()</a>
+<a class="sourceLine" id="cb1131-6" title="6">        }</a>
+<a class="sourceLine" id="cb1131-7" title="7">    }</a>
+<a class="sourceLine" id="cb1131-8" title="8">}</a>
+<a class="sourceLine" id="cb1131-9" title="9"><span class="kw">pkgCheck</span>(<span class="st">&quot;rmarkdown&quot;</span>)</a></code></pre></div>
 <pre><code>## Loading required package: rmarkdown</code></pre>
 <p>Les possibilités de <em>rmarkdown</em> sont immenses et sortent du cadre de ce livre. Deux ressources de référence couvrent tous les aspects de <em>rmarkdown</em> : le site web officiel (<a href="https://rmarkdown.rstudio.com" class="uri">https://rmarkdown.rstudio.com</a>) et le livre numérique de Yihui Xie, J. J. Allaire, Garrett Grolemund (R Markdown: The Definitive Guide ; <a href="https://bookdown.org/yihui/rmarkdown/" class="uri">https://bookdown.org/yihui/rmarkdown/</a>). Pour aller plus loin, nous pourrons consulter le livre numérique de Yihui Xie (bookdown: Authoring Books and Technical Documents with R Markdown ; <a href="https://bookdown.org/yihui/bookdown/" class="uri">https://bookdown.org/yihui/bookdown/</a>).</p>
 </div>

@@ -24,7 +24,7 @@
 <meta name="author" content="François Rebaudo" />
 
 
-<meta name="date" content="2020-05-01" />
+<meta name="date" content="2020-05-02" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -148,9 +148,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><a href="./">R pour les scientifiques</a></li>
 
 <li class="divider"></li>
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Préambule</a><ul>
-<li class="chapter" data-level="0.1" data-path="index.html"><a href="index.html#remerciements"><i class="fa fa-check"></i><b>0.1</b> Remerciements</a></li>
-<li class="chapter" data-level="0.2" data-path="index.html"><a href="index.html#licence"><i class="fa fa-check"></i><b>0.2</b> Licence</a></li>
+<li class="chapter" data-level="" data-path="avant-propos.html"><a href="avant-propos.html"><i class="fa fa-check"></i>Avant-propos</a><ul>
+<li class="chapter" data-level="0.1" data-path="avant-propos.html"><a href="avant-propos.html#licence"><i class="fa fa-check"></i><b>0.1</b> Licence</a></li>
 </ul></li>
 <li class="chapter" data-level="1" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>1</b> Introduction</a><ul>
 <li class="chapter" data-level="1.1" data-path="intro.html"><a href="intro.html#pourquoi-se-former-à-r"><i class="fa fa-check"></i><b>1.1</b> Pourquoi se former à R</a></li>
@@ -350,198 +349,198 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="l17if" class="section level2">
 <h2><span class="header-section-number">8.1</span> Tests logiques avec <code>if</code></h2>
 <p>Si nous voulons effectuer une opération différente en fonction d’une condition, nous pouvons mettre en place un test logique du type <strong>SI</strong> <em>ceci</em> <strong>ALORS</strong> <em>faire cela</em> <strong>SINON</strong> <em>faire cela</em>. Avec R cela va se traduire par la fonction <code>if(cond) cons.expr else alt.expr</code> comme indiqué dans l’aide de la fonction.</p>
-<div class="sourceCode" id="cb993"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb993-1" title="1">myVar &lt;-<span class="st"> </span><span class="dv">2</span></a>
-<a class="sourceLine" id="cb993-2" title="2"><span class="cf">if</span>(myVar <span class="op">&lt;</span><span class="st"> </span><span class="dv">3</span>) <span class="kw">print</span>(<span class="st">&quot;myVar &lt; 3&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb997"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb997-1" title="1">myVar &lt;-<span class="st"> </span><span class="dv">2</span></a>
+<a class="sourceLine" id="cb997-2" title="2"><span class="cf">if</span>(myVar <span class="op">&lt;</span><span class="st"> </span><span class="dv">3</span>) <span class="kw">print</span>(<span class="st">&quot;myVar &lt; 3&quot;</span>)</a></code></pre></div>
 <pre><code>## [1] &quot;myVar &lt; 3&quot;</code></pre>
-<div class="sourceCode" id="cb995"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb995-1" title="1"><span class="cf">if</span>(myVar <span class="op">&lt;</span><span class="st"> </span><span class="dv">3</span>) <span class="kw">print</span>(<span class="st">&quot;myVar &lt; 3&quot;</span>) <span class="cf">else</span> <span class="kw">print</span>(<span class="st">&quot;myVar &gt; 3&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb999"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb999-1" title="1"><span class="cf">if</span>(myVar <span class="op">&lt;</span><span class="st"> </span><span class="dv">3</span>) <span class="kw">print</span>(<span class="st">&quot;myVar &lt; 3&quot;</span>) <span class="cf">else</span> <span class="kw">print</span>(<span class="st">&quot;myVar &gt; 3&quot;</span>)</a></code></pre></div>
 <pre><code>## [1] &quot;myVar &lt; 3&quot;</code></pre>
 <p>Lorsque il y a plusieurs lignes de codes à exécuter en fonction du test logique, ou simplement pour rendre le code plus facile à lire, nous allons utiliser plusieurs lignes avec les acolades <code>{}</code> et en utilisant l’indentation.</p>
-<div class="sourceCode" id="cb997"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb997-1" title="1">myVar &lt;-<span class="st"> </span><span class="dv">2</span></a>
-<a class="sourceLine" id="cb997-2" title="2">myResult &lt;-<span class="st"> </span><span class="dv">0</span></a>
-<a class="sourceLine" id="cb997-3" title="3"><span class="cf">if</span>(myVar <span class="op">&lt;</span><span class="st"> </span><span class="dv">3</span>){</a>
-<a class="sourceLine" id="cb997-4" title="4">  <span class="kw">print</span>(<span class="st">&quot;myVar &lt; 3&quot;</span>)</a>
-<a class="sourceLine" id="cb997-5" title="5">  myResult &lt;-<span class="st"> </span>myVar <span class="op">+</span><span class="st"> </span><span class="dv">10</span></a>
-<a class="sourceLine" id="cb997-6" title="6">} <span class="cf">else</span> {</a>
-<a class="sourceLine" id="cb997-7" title="7">  <span class="kw">print</span>(<span class="st">&quot;myVar &gt; 3&quot;</span>)</a>
-<a class="sourceLine" id="cb997-8" title="8">  myResult &lt;-<span class="st"> </span>myVar <span class="op">-</span><span class="st"> </span><span class="dv">10</span></a>
-<a class="sourceLine" id="cb997-9" title="9">}</a></code></pre></div>
+<div class="sourceCode" id="cb1001"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1001-1" title="1">myVar &lt;-<span class="st"> </span><span class="dv">2</span></a>
+<a class="sourceLine" id="cb1001-2" title="2">myResult &lt;-<span class="st"> </span><span class="dv">0</span></a>
+<a class="sourceLine" id="cb1001-3" title="3"><span class="cf">if</span>(myVar <span class="op">&lt;</span><span class="st"> </span><span class="dv">3</span>){</a>
+<a class="sourceLine" id="cb1001-4" title="4">  <span class="kw">print</span>(<span class="st">&quot;myVar &lt; 3&quot;</span>)</a>
+<a class="sourceLine" id="cb1001-5" title="5">  myResult &lt;-<span class="st"> </span>myVar <span class="op">+</span><span class="st"> </span><span class="dv">10</span></a>
+<a class="sourceLine" id="cb1001-6" title="6">} <span class="cf">else</span> {</a>
+<a class="sourceLine" id="cb1001-7" title="7">  <span class="kw">print</span>(<span class="st">&quot;myVar &gt; 3&quot;</span>)</a>
+<a class="sourceLine" id="cb1001-8" title="8">  myResult &lt;-<span class="st"> </span>myVar <span class="op">-</span><span class="st"> </span><span class="dv">10</span></a>
+<a class="sourceLine" id="cb1001-9" title="9">}</a></code></pre></div>
 <pre><code>## [1] &quot;myVar &lt; 3&quot;</code></pre>
-<div class="sourceCode" id="cb999"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb999-1" title="1"><span class="kw">print</span>(myResult)</a></code></pre></div>
+<div class="sourceCode" id="cb1003"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1003-1" title="1"><span class="kw">print</span>(myResult)</a></code></pre></div>
 <pre><code>## [1] 12</code></pre>
 <p>Dans cet exemple nous définissons une variable <code>myVar</code>. Si cette variable est inférieure à 3 alors la variable <code>myResult</code> prend comme valeur <code>myVar + 10</code>, et dans le cas contraire <code>myResult</code> prend comme valeur <code>myVar - 10</code>.</p>
 <p>Nous avions déjà vu l’utilisation du test logique <code>if</code> dans le <a href="fonctions.html#l015function">chapitre sur les fonctions</a>. Nous avions alors testé si la variable entrée comme argument dans notre fonction était bien de type <code>character</code>.</p>
-<div class="sourceCode" id="cb1001"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1001-1" title="1">myVar &lt;-<span class="st"> &quot;qwerty&quot;</span></a>
-<a class="sourceLine" id="cb1001-2" title="2"><span class="cf">if</span>(<span class="kw">is.character</span>(myVar)){</a>
-<a class="sourceLine" id="cb1001-3" title="3">  <span class="kw">print</span>(<span class="st">&quot;ok&quot;</span>)</a>
-<a class="sourceLine" id="cb1001-4" title="4">} <span class="cf">else</span> {</a>
-<a class="sourceLine" id="cb1001-5" title="5">  <span class="kw">print</span>(<span class="st">&quot;error&quot;</span>)</a>
-<a class="sourceLine" id="cb1001-6" title="6">}</a></code></pre></div>
+<div class="sourceCode" id="cb1005"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1005-1" title="1">myVar &lt;-<span class="st"> &quot;qwerty&quot;</span></a>
+<a class="sourceLine" id="cb1005-2" title="2"><span class="cf">if</span>(<span class="kw">is.character</span>(myVar)){</a>
+<a class="sourceLine" id="cb1005-3" title="3">  <span class="kw">print</span>(<span class="st">&quot;ok&quot;</span>)</a>
+<a class="sourceLine" id="cb1005-4" title="4">} <span class="cf">else</span> {</a>
+<a class="sourceLine" id="cb1005-5" title="5">  <span class="kw">print</span>(<span class="st">&quot;error&quot;</span>)</a>
+<a class="sourceLine" id="cb1005-6" title="6">}</a></code></pre></div>
 <pre><code>## [1] &quot;ok&quot;</code></pre>
 <p>Nous pouvons aussi imbriquer les tests logiques les uns dans les autres.</p>
-<div class="sourceCode" id="cb1003"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1003-1" title="1">myVar &lt;-<span class="st"> </span><span class="ot">TRUE</span></a>
-<a class="sourceLine" id="cb1003-2" title="2"><span class="cf">if</span>(<span class="kw">is.character</span>(myVar)){</a>
-<a class="sourceLine" id="cb1003-3" title="3">  <span class="kw">print</span>(<span class="st">&quot;myVar: character&quot;</span>)</a>
-<a class="sourceLine" id="cb1003-4" title="4">} <span class="cf">else</span> {</a>
-<a class="sourceLine" id="cb1003-5" title="5">  <span class="cf">if</span>(<span class="kw">is.numeric</span>(myVar)){</a>
-<a class="sourceLine" id="cb1003-6" title="6">    <span class="kw">print</span>(<span class="st">&quot;myVar: numeric&quot;</span>)</a>
-<a class="sourceLine" id="cb1003-7" title="7">  } <span class="cf">else</span> {</a>
-<a class="sourceLine" id="cb1003-8" title="8">    <span class="cf">if</span>(<span class="kw">is.logical</span>(myVar)){</a>
-<a class="sourceLine" id="cb1003-9" title="9">      <span class="kw">print</span>(<span class="st">&quot;myVar: logical&quot;</span>)</a>
-<a class="sourceLine" id="cb1003-10" title="10">    } <span class="cf">else</span> {</a>
-<a class="sourceLine" id="cb1003-11" title="11">      <span class="kw">print</span>(<span class="st">&quot;myVar: ...&quot;</span>)</a>
-<a class="sourceLine" id="cb1003-12" title="12">    }</a>
-<a class="sourceLine" id="cb1003-13" title="13">  }</a>
-<a class="sourceLine" id="cb1003-14" title="14">}</a></code></pre></div>
+<div class="sourceCode" id="cb1007"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1007-1" title="1">myVar &lt;-<span class="st"> </span><span class="ot">TRUE</span></a>
+<a class="sourceLine" id="cb1007-2" title="2"><span class="cf">if</span>(<span class="kw">is.character</span>(myVar)){</a>
+<a class="sourceLine" id="cb1007-3" title="3">  <span class="kw">print</span>(<span class="st">&quot;myVar: character&quot;</span>)</a>
+<a class="sourceLine" id="cb1007-4" title="4">} <span class="cf">else</span> {</a>
+<a class="sourceLine" id="cb1007-5" title="5">  <span class="cf">if</span>(<span class="kw">is.numeric</span>(myVar)){</a>
+<a class="sourceLine" id="cb1007-6" title="6">    <span class="kw">print</span>(<span class="st">&quot;myVar: numeric&quot;</span>)</a>
+<a class="sourceLine" id="cb1007-7" title="7">  } <span class="cf">else</span> {</a>
+<a class="sourceLine" id="cb1007-8" title="8">    <span class="cf">if</span>(<span class="kw">is.logical</span>(myVar)){</a>
+<a class="sourceLine" id="cb1007-9" title="9">      <span class="kw">print</span>(<span class="st">&quot;myVar: logical&quot;</span>)</a>
+<a class="sourceLine" id="cb1007-10" title="10">    } <span class="cf">else</span> {</a>
+<a class="sourceLine" id="cb1007-11" title="11">      <span class="kw">print</span>(<span class="st">&quot;myVar: ...&quot;</span>)</a>
+<a class="sourceLine" id="cb1007-12" title="12">    }</a>
+<a class="sourceLine" id="cb1007-13" title="13">  }</a>
+<a class="sourceLine" id="cb1007-14" title="14">}</a></code></pre></div>
 <pre><code>## [1] &quot;myVar: logical&quot;</code></pre>
 <p>Il est aussi possible de stipuler plusieurs conditions, comme nous l’avons vu lors du chapitre sur les <a href="premiersPas.html#l011opcomp">opérateurs de comparaison</a>.</p>
-<div class="sourceCode" id="cb1005"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1005-1" title="1">myVar &lt;-<span class="st"> </span><span class="dv">2</span></a>
-<a class="sourceLine" id="cb1005-2" title="2"><span class="cf">if</span>(myVar <span class="op">&gt;</span><span class="st"> </span><span class="dv">1</span> <span class="op">&amp;</span><span class="st"> </span>myVar <span class="op">&lt;</span><span class="st"> </span><span class="dv">50</span>){</a>
-<a class="sourceLine" id="cb1005-3" title="3">  <span class="kw">print</span>(<span class="st">&quot;ok&quot;</span>)</a>
-<a class="sourceLine" id="cb1005-4" title="4">}</a></code></pre></div>
+<div class="sourceCode" id="cb1009"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1009-1" title="1">myVar &lt;-<span class="st"> </span><span class="dv">2</span></a>
+<a class="sourceLine" id="cb1009-2" title="2"><span class="cf">if</span>(myVar <span class="op">&gt;</span><span class="st"> </span><span class="dv">1</span> <span class="op">&amp;</span><span class="st"> </span>myVar <span class="op">&lt;</span><span class="st"> </span><span class="dv">50</span>){</a>
+<a class="sourceLine" id="cb1009-3" title="3">  <span class="kw">print</span>(<span class="st">&quot;ok&quot;</span>)</a>
+<a class="sourceLine" id="cb1009-4" title="4">}</a></code></pre></div>
 <pre><code>## [1] &quot;ok&quot;</code></pre>
 <p>Dans cet exemple <code>myVar</code> est au format <code>numeric</code> donc la première condition (<code>&gt;1</code>), et la seconde condition (<code>&lt;50</code>) sont toutes les deux vérifiables. Par contre si nous affectons une variable de type <code>character</code> à <code>myVar</code> alors R va transformer 0 et 10 en objets de type <code>character</code> et tester si <code>myVar &gt; "1"</code> puis si <code>myVar &lt; "50"</code> en se basant sur un tri par ordre alphabétique. Dans l’exemple suivant <code>"azerty"</code> n’est pas situé par ordre alphabétique entre <code>"1"</code> et <code>"50"</code>, par contre c’est le cas de <code>"2azerty"</code>.</p>
-<div class="sourceCode" id="cb1007"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1007-1" title="1">myVar &lt;-<span class="st"> &quot;azerty&quot;</span></a>
-<a class="sourceLine" id="cb1007-2" title="2">limInit &lt;-<span class="st"> </span><span class="dv">1</span></a>
-<a class="sourceLine" id="cb1007-3" title="3">limEnd &lt;-<span class="st"> </span><span class="dv">50</span></a>
-<a class="sourceLine" id="cb1007-4" title="4"><span class="cf">if</span>(myVar <span class="op">&gt;</span><span class="st"> </span>limInit <span class="op">&amp;</span><span class="st"> </span>myVar <span class="op">&lt;</span><span class="st"> </span>limEnd){</a>
-<a class="sourceLine" id="cb1007-5" title="5">  <span class="kw">print</span>(<span class="kw">paste0</span>(myVar, <span class="st">&quot; is between &quot;</span>, </a>
-<a class="sourceLine" id="cb1007-6" title="6">    limInit, <span class="st">&quot; and &quot;</span>, limEnd, <span class="st">&quot;.&quot;</span>))</a>
-<a class="sourceLine" id="cb1007-7" title="7">} <span class="cf">else</span> {</a>
-<a class="sourceLine" id="cb1007-8" title="8">  <span class="kw">print</span>(<span class="kw">paste0</span>(myVar, <span class="st">&quot; not between &quot;</span>, </a>
-<a class="sourceLine" id="cb1007-9" title="9">    limInit, <span class="st">&quot; and &quot;</span>, limEnd, <span class="st">&quot;.&quot;</span>))</a>
-<a class="sourceLine" id="cb1007-10" title="10">}</a></code></pre></div>
+<div class="sourceCode" id="cb1011"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1011-1" title="1">myVar &lt;-<span class="st"> &quot;azerty&quot;</span></a>
+<a class="sourceLine" id="cb1011-2" title="2">limInit &lt;-<span class="st"> </span><span class="dv">1</span></a>
+<a class="sourceLine" id="cb1011-3" title="3">limEnd &lt;-<span class="st"> </span><span class="dv">50</span></a>
+<a class="sourceLine" id="cb1011-4" title="4"><span class="cf">if</span>(myVar <span class="op">&gt;</span><span class="st"> </span>limInit <span class="op">&amp;</span><span class="st"> </span>myVar <span class="op">&lt;</span><span class="st"> </span>limEnd){</a>
+<a class="sourceLine" id="cb1011-5" title="5">  <span class="kw">print</span>(<span class="kw">paste0</span>(myVar, <span class="st">&quot; is between &quot;</span>, </a>
+<a class="sourceLine" id="cb1011-6" title="6">    limInit, <span class="st">&quot; and &quot;</span>, limEnd, <span class="st">&quot;.&quot;</span>))</a>
+<a class="sourceLine" id="cb1011-7" title="7">} <span class="cf">else</span> {</a>
+<a class="sourceLine" id="cb1011-8" title="8">  <span class="kw">print</span>(<span class="kw">paste0</span>(myVar, <span class="st">&quot; not between &quot;</span>, </a>
+<a class="sourceLine" id="cb1011-9" title="9">    limInit, <span class="st">&quot; and &quot;</span>, limEnd, <span class="st">&quot;.&quot;</span>))</a>
+<a class="sourceLine" id="cb1011-10" title="10">}</a></code></pre></div>
 <pre><code>## [1] &quot;azerty not between 1 and 50.&quot;</code></pre>
-<div class="sourceCode" id="cb1009"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1009-1" title="1">myVar &lt;-<span class="st"> &quot;2azerty&quot;</span></a>
-<a class="sourceLine" id="cb1009-2" title="2"><span class="cf">if</span>(myVar <span class="op">&gt;</span><span class="st"> </span>limInit <span class="op">&amp;</span><span class="st"> </span>myVar <span class="op">&lt;</span><span class="st"> </span>limEnd){</a>
-<a class="sourceLine" id="cb1009-3" title="3">  <span class="kw">print</span>(<span class="kw">paste0</span>(myVar, <span class="st">&quot; is between &quot;</span>, </a>
-<a class="sourceLine" id="cb1009-4" title="4">    limInit, <span class="st">&quot; and &quot;</span>, limEnd, <span class="st">&quot;.&quot;</span>))</a>
-<a class="sourceLine" id="cb1009-5" title="5">} <span class="cf">else</span> {</a>
-<a class="sourceLine" id="cb1009-6" title="6">  <span class="kw">print</span>(<span class="kw">paste0</span>(myVar, <span class="st">&quot; not between &quot;</span>, </a>
-<a class="sourceLine" id="cb1009-7" title="7">    limInit, <span class="st">&quot; and &quot;</span>, limEnd, <span class="st">&quot;.&quot;</span>))</a>
-<a class="sourceLine" id="cb1009-8" title="8">}</a></code></pre></div>
+<div class="sourceCode" id="cb1013"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1013-1" title="1">myVar &lt;-<span class="st"> &quot;2azerty&quot;</span></a>
+<a class="sourceLine" id="cb1013-2" title="2"><span class="cf">if</span>(myVar <span class="op">&gt;</span><span class="st"> </span>limInit <span class="op">&amp;</span><span class="st"> </span>myVar <span class="op">&lt;</span><span class="st"> </span>limEnd){</a>
+<a class="sourceLine" id="cb1013-3" title="3">  <span class="kw">print</span>(<span class="kw">paste0</span>(myVar, <span class="st">&quot; is between &quot;</span>, </a>
+<a class="sourceLine" id="cb1013-4" title="4">    limInit, <span class="st">&quot; and &quot;</span>, limEnd, <span class="st">&quot;.&quot;</span>))</a>
+<a class="sourceLine" id="cb1013-5" title="5">} <span class="cf">else</span> {</a>
+<a class="sourceLine" id="cb1013-6" title="6">  <span class="kw">print</span>(<span class="kw">paste0</span>(myVar, <span class="st">&quot; not between &quot;</span>, </a>
+<a class="sourceLine" id="cb1013-7" title="7">    limInit, <span class="st">&quot; and &quot;</span>, limEnd, <span class="st">&quot;.&quot;</span>))</a>
+<a class="sourceLine" id="cb1013-8" title="8">}</a></code></pre></div>
 <pre><code>## [1] &quot;2azerty is between 1 and 50.&quot;</code></pre>
 <p>Donc ce que nous voudrions faire est de tester si <code>myVar</code> est bien au format <code>numeric</code> puis uniquement si c’est le cas de tester les conditions suivantes.</p>
-<div class="sourceCode" id="cb1011"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1011-1" title="1">myVar &lt;-<span class="st"> &quot;2azerty&quot;</span></a>
-<a class="sourceLine" id="cb1011-2" title="2"><span class="cf">if</span>(<span class="kw">is.numeric</span>(myVar)){</a>
-<a class="sourceLine" id="cb1011-3" title="3">  <span class="cf">if</span>(myVar <span class="op">&gt;</span><span class="st"> </span>limInit <span class="op">&amp;</span><span class="st"> </span>myVar <span class="op">&lt;</span><span class="st"> </span>limEnd){</a>
-<a class="sourceLine" id="cb1011-4" title="4">    <span class="kw">print</span>(<span class="kw">paste0</span>(myVar, <span class="st">&quot; is between &quot;</span>, </a>
-<a class="sourceLine" id="cb1011-5" title="5">      limInit, <span class="st">&quot; and &quot;</span>, limEnd, <span class="st">&quot;.&quot;</span>))</a>
-<a class="sourceLine" id="cb1011-6" title="6">  } <span class="cf">else</span> {</a>
-<a class="sourceLine" id="cb1011-7" title="7">    <span class="kw">print</span>(<span class="kw">paste0</span>(myVar, <span class="st">&quot; not between &quot;</span>, </a>
-<a class="sourceLine" id="cb1011-8" title="8">      limInit, <span class="st">&quot; and &quot;</span>, limEnd, <span class="st">&quot;.&quot;</span>))</a>
-<a class="sourceLine" id="cb1011-9" title="9">  }</a>
-<a class="sourceLine" id="cb1011-10" title="10">} <span class="cf">else</span> {</a>
-<a class="sourceLine" id="cb1011-11" title="11">  <span class="kw">print</span>(<span class="kw">paste0</span>(<span class="st">&quot;Object &quot;</span>, myVar, <span class="st">&quot; is not numeric&quot;</span>))</a>
-<a class="sourceLine" id="cb1011-12" title="12">}</a></code></pre></div>
+<div class="sourceCode" id="cb1015"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1015-1" title="1">myVar &lt;-<span class="st"> &quot;2azerty&quot;</span></a>
+<a class="sourceLine" id="cb1015-2" title="2"><span class="cf">if</span>(<span class="kw">is.numeric</span>(myVar)){</a>
+<a class="sourceLine" id="cb1015-3" title="3">  <span class="cf">if</span>(myVar <span class="op">&gt;</span><span class="st"> </span>limInit <span class="op">&amp;</span><span class="st"> </span>myVar <span class="op">&lt;</span><span class="st"> </span>limEnd){</a>
+<a class="sourceLine" id="cb1015-4" title="4">    <span class="kw">print</span>(<span class="kw">paste0</span>(myVar, <span class="st">&quot; is between &quot;</span>, </a>
+<a class="sourceLine" id="cb1015-5" title="5">      limInit, <span class="st">&quot; and &quot;</span>, limEnd, <span class="st">&quot;.&quot;</span>))</a>
+<a class="sourceLine" id="cb1015-6" title="6">  } <span class="cf">else</span> {</a>
+<a class="sourceLine" id="cb1015-7" title="7">    <span class="kw">print</span>(<span class="kw">paste0</span>(myVar, <span class="st">&quot; not between &quot;</span>, </a>
+<a class="sourceLine" id="cb1015-8" title="8">      limInit, <span class="st">&quot; and &quot;</span>, limEnd, <span class="st">&quot;.&quot;</span>))</a>
+<a class="sourceLine" id="cb1015-9" title="9">  }</a>
+<a class="sourceLine" id="cb1015-10" title="10">} <span class="cf">else</span> {</a>
+<a class="sourceLine" id="cb1015-11" title="11">  <span class="kw">print</span>(<span class="kw">paste0</span>(<span class="st">&quot;Object &quot;</span>, myVar, <span class="st">&quot; is not numeric&quot;</span>))</a>
+<a class="sourceLine" id="cb1015-12" title="12">}</a></code></pre></div>
 <pre><code>## [1] &quot;Object 2azerty is not numeric&quot;</code></pre>
 <p>Parfois, nous pouvons avoir besoin de tester une première condition puis une seconde condition uniquement si la première se vérifie dans un même test. Par exemple, pour un site nous voudrions savoir si il y a une seule espèces et tester si son abondance est supérieure à 10. Imaginons un jeu de données avec sous forme de vecteur les abondances. Nous allons tester le nombre d’espèces avec la fonction <a href="fonctions.html#l015length"><code>length()</code></a>.</p>
-<div class="sourceCode" id="cb1013"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1013-1" title="1">mySpecies &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">15</span>, <span class="dv">14</span>, <span class="dv">20</span>, <span class="dv">12</span>)</a>
-<a class="sourceLine" id="cb1013-2" title="2"><span class="cf">if</span>(<span class="kw">length</span>(mySpecies) <span class="op">==</span><span class="st"> </span><span class="dv">1</span> <span class="op">&amp;</span><span class="st"> </span>mySpecies <span class="op">&gt;</span><span class="st"> </span><span class="dv">10</span>){</a>
-<a class="sourceLine" id="cb1013-3" title="3">  <span class="kw">print</span>(<span class="st">&quot;ok!&quot;</span>)</a>
-<a class="sourceLine" id="cb1013-4" title="4">}</a>
-<a class="sourceLine" id="cb1013-5" title="5"><span class="co">## Warning message:</span></a>
-<a class="sourceLine" id="cb1013-6" title="6"><span class="co">## In if (length(mySpecies) == 1 &amp; mySpecies &gt; 10) { :</span></a>
-<a class="sourceLine" id="cb1013-7" title="7"><span class="co">##   the condition has length &gt; 1 and only the first </span></a>
-<a class="sourceLine" id="cb1013-8" title="8"><span class="co">##   element will be used</span></a></code></pre></div>
-<p>R renvoie une erreur car il ne peut pas au sein d’un test logique avec <code>if()</code> vérifier la seconde condition. En effet, <code>mySpecies &gt; 10</code> renvoie <code>TRUE TRUE TRUE TRUE TRUE</code>. Nous pouvons séparer le code en deux conditions :</p>
-<div class="sourceCode" id="cb1014"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1014-1" title="1">mySpecies &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">15</span>, <span class="dv">14</span>, <span class="dv">20</span>, <span class="dv">12</span>)</a>
-<a class="sourceLine" id="cb1014-2" title="2"><span class="cf">if</span>(<span class="kw">length</span>(mySpecies) <span class="op">==</span><span class="st"> </span><span class="dv">1</span>){</a>
-<a class="sourceLine" id="cb1014-3" title="3">  <span class="cf">if</span>(mySpecies <span class="op">&gt;</span><span class="st"> </span><span class="dv">10</span>){</a>
-<a class="sourceLine" id="cb1014-4" title="4">    <span class="kw">print</span>(<span class="st">&quot;ok!&quot;</span>)</a>
-<a class="sourceLine" id="cb1014-5" title="5">  }</a>
-<a class="sourceLine" id="cb1014-6" title="6">}</a></code></pre></div>
-<p>Une alternative plus élégante consiste à spécifier à R de vérifier la seconde condition uniquement si la première est vraie. Pour cela nous pouvons utiliser <code>&amp;&amp;</code> à la place de <code>&amp;</code>.</p>
-<div class="sourceCode" id="cb1015"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1015-1" title="1">mySpecies &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">15</span>, <span class="dv">14</span>, <span class="dv">20</span>, <span class="dv">12</span>)</a>
-<a class="sourceLine" id="cb1015-2" title="2"><span class="cf">if</span>(<span class="kw">length</span>(mySpecies) <span class="op">==</span><span class="st"> </span><span class="dv">1</span> <span class="op">&amp;&amp;</span><span class="st"> </span>mySpecies <span class="op">&gt;</span><span class="st"> </span><span class="dv">10</span>){</a>
-<a class="sourceLine" id="cb1015-3" title="3">  <span class="kw">print</span>(<span class="st">&quot;ok!&quot;</span>)</a>
-<a class="sourceLine" id="cb1015-4" title="4">}</a>
-<a class="sourceLine" id="cb1015-5" title="5">mySpecies &lt;-<span class="st"> </span><span class="dv">15</span></a>
-<a class="sourceLine" id="cb1015-6" title="6"><span class="cf">if</span>(<span class="kw">length</span>(mySpecies) <span class="op">==</span><span class="st"> </span><span class="dv">1</span> <span class="op">&amp;&amp;</span><span class="st"> </span>mySpecies <span class="op">&gt;</span><span class="st"> </span><span class="dv">10</span>){</a>
-<a class="sourceLine" id="cb1015-7" title="7">  <span class="kw">print</span>(<span class="st">&quot;ok!&quot;</span>)</a>
-<a class="sourceLine" id="cb1015-8" title="8">}</a></code></pre></div>
-<pre><code>## [1] &quot;ok!&quot;</code></pre>
-<div class="sourceCode" id="cb1017"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1017-1" title="1">mySpecies &lt;-<span class="st"> </span><span class="dv">5</span></a>
-<a class="sourceLine" id="cb1017-2" title="2"><span class="cf">if</span>(<span class="kw">length</span>(mySpecies) <span class="op">==</span><span class="st"> </span><span class="dv">1</span> <span class="op">&amp;&amp;</span><span class="st"> </span>mySpecies <span class="op">&gt;</span><span class="st"> </span><span class="dv">10</span>){</a>
+<div class="sourceCode" id="cb1017"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1017-1" title="1">mySpecies &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">15</span>, <span class="dv">14</span>, <span class="dv">20</span>, <span class="dv">12</span>)</a>
+<a class="sourceLine" id="cb1017-2" title="2"><span class="cf">if</span>(<span class="kw">length</span>(mySpecies) <span class="op">==</span><span class="st"> </span><span class="dv">1</span> <span class="op">&amp;</span><span class="st"> </span>mySpecies <span class="op">&gt;</span><span class="st"> </span><span class="dv">10</span>){</a>
 <a class="sourceLine" id="cb1017-3" title="3">  <span class="kw">print</span>(<span class="st">&quot;ok!&quot;</span>)</a>
-<a class="sourceLine" id="cb1017-4" title="4">}</a></code></pre></div>
+<a class="sourceLine" id="cb1017-4" title="4">}</a>
+<a class="sourceLine" id="cb1017-5" title="5"><span class="co">## Warning message:</span></a>
+<a class="sourceLine" id="cb1017-6" title="6"><span class="co">## In if (length(mySpecies) == 1 &amp; mySpecies &gt; 10) { :</span></a>
+<a class="sourceLine" id="cb1017-7" title="7"><span class="co">##   the condition has length &gt; 1 and only the first </span></a>
+<a class="sourceLine" id="cb1017-8" title="8"><span class="co">##   element will be used</span></a></code></pre></div>
+<p>R renvoie une erreur car il ne peut pas au sein d’un test logique avec <code>if()</code> vérifier la seconde condition. En effet, <code>mySpecies &gt; 10</code> renvoie <code>TRUE TRUE TRUE TRUE TRUE</code>. Nous pouvons séparer le code en deux conditions :</p>
+<div class="sourceCode" id="cb1018"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1018-1" title="1">mySpecies &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">15</span>, <span class="dv">14</span>, <span class="dv">20</span>, <span class="dv">12</span>)</a>
+<a class="sourceLine" id="cb1018-2" title="2"><span class="cf">if</span>(<span class="kw">length</span>(mySpecies) <span class="op">==</span><span class="st"> </span><span class="dv">1</span>){</a>
+<a class="sourceLine" id="cb1018-3" title="3">  <span class="cf">if</span>(mySpecies <span class="op">&gt;</span><span class="st"> </span><span class="dv">10</span>){</a>
+<a class="sourceLine" id="cb1018-4" title="4">    <span class="kw">print</span>(<span class="st">&quot;ok!&quot;</span>)</a>
+<a class="sourceLine" id="cb1018-5" title="5">  }</a>
+<a class="sourceLine" id="cb1018-6" title="6">}</a></code></pre></div>
+<p>Une alternative plus élégante consiste à spécifier à R de vérifier la seconde condition uniquement si la première est vraie. Pour cela nous pouvons utiliser <code>&amp;&amp;</code> à la place de <code>&amp;</code>.</p>
+<div class="sourceCode" id="cb1019"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1019-1" title="1">mySpecies &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">15</span>, <span class="dv">14</span>, <span class="dv">20</span>, <span class="dv">12</span>)</a>
+<a class="sourceLine" id="cb1019-2" title="2"><span class="cf">if</span>(<span class="kw">length</span>(mySpecies) <span class="op">==</span><span class="st"> </span><span class="dv">1</span> <span class="op">&amp;&amp;</span><span class="st"> </span>mySpecies <span class="op">&gt;</span><span class="st"> </span><span class="dv">10</span>){</a>
+<a class="sourceLine" id="cb1019-3" title="3">  <span class="kw">print</span>(<span class="st">&quot;ok!&quot;</span>)</a>
+<a class="sourceLine" id="cb1019-4" title="4">}</a>
+<a class="sourceLine" id="cb1019-5" title="5">mySpecies &lt;-<span class="st"> </span><span class="dv">15</span></a>
+<a class="sourceLine" id="cb1019-6" title="6"><span class="cf">if</span>(<span class="kw">length</span>(mySpecies) <span class="op">==</span><span class="st"> </span><span class="dv">1</span> <span class="op">&amp;&amp;</span><span class="st"> </span>mySpecies <span class="op">&gt;</span><span class="st"> </span><span class="dv">10</span>){</a>
+<a class="sourceLine" id="cb1019-7" title="7">  <span class="kw">print</span>(<span class="st">&quot;ok!&quot;</span>)</a>
+<a class="sourceLine" id="cb1019-8" title="8">}</a></code></pre></div>
+<pre><code>## [1] &quot;ok!&quot;</code></pre>
+<div class="sourceCode" id="cb1021"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1021-1" title="1">mySpecies &lt;-<span class="st"> </span><span class="dv">5</span></a>
+<a class="sourceLine" id="cb1021-2" title="2"><span class="cf">if</span>(<span class="kw">length</span>(mySpecies) <span class="op">==</span><span class="st"> </span><span class="dv">1</span> <span class="op">&amp;&amp;</span><span class="st"> </span>mySpecies <span class="op">&gt;</span><span class="st"> </span><span class="dv">10</span>){</a>
+<a class="sourceLine" id="cb1021-3" title="3">  <span class="kw">print</span>(<span class="st">&quot;ok!&quot;</span>)</a>
+<a class="sourceLine" id="cb1021-4" title="4">}</a></code></pre></div>
 <p>Avec <code>&amp;</code> R va vérifier toutes les conditions, et avec <code>&amp;&amp;</code> R va prendre chaque condition l’une après l’autre et poursuivre uniquement si elle se vérifie. Cela peut paraître anecdotique mais il est bon de connaître la différence entre <code>&amp;</code> et <code>&amp;&amp;</code> car nous les rencontrons souvent dans les codes disponibles sur Internet ou dans les packages.</p>
 </div>
 <div id="l17switch" class="section level2">
 <h2><span class="header-section-number">8.2</span> Tests logiques avec <code>switch</code></h2>
 <p>La fonction <code>switch()</code> est une variante de <code>if()</code> qui est utile lorsque nous avons de nombreuses options possibles sur une même expression. L’exemple suivant montre comment transformer un code utilisant <code>if()</code> en <code>switch()</code>.</p>
-<div class="sourceCode" id="cb1018"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1018-1" title="1">x &lt;-<span class="st"> &quot;aa&quot;</span></a>
-<a class="sourceLine" id="cb1018-2" title="2"><span class="cf">if</span>(x <span class="op">==</span><span class="st"> &quot;a&quot;</span>){</a>
-<a class="sourceLine" id="cb1018-3" title="3">  result &lt;-<span class="st"> </span><span class="dv">1</span></a>
-<a class="sourceLine" id="cb1018-4" title="4">}</a>
-<a class="sourceLine" id="cb1018-5" title="5"><span class="cf">if</span>(x <span class="op">==</span><span class="st"> &quot;aa&quot;</span>){</a>
-<a class="sourceLine" id="cb1018-6" title="6">  result &lt;-<span class="st"> </span><span class="dv">2</span></a>
-<a class="sourceLine" id="cb1018-7" title="7">}</a>
-<a class="sourceLine" id="cb1018-8" title="8"><span class="cf">if</span>(x <span class="op">==</span><span class="st"> &quot;aaa&quot;</span>){</a>
-<a class="sourceLine" id="cb1018-9" title="9">  result &lt;-<span class="st"> </span><span class="dv">3</span></a>
-<a class="sourceLine" id="cb1018-10" title="10">}</a>
-<a class="sourceLine" id="cb1018-11" title="11"><span class="cf">if</span>(x <span class="op">==</span><span class="st"> &quot;aaaa&quot;</span>){</a>
-<a class="sourceLine" id="cb1018-12" title="12">  result &lt;-<span class="st"> </span><span class="dv">4</span></a>
-<a class="sourceLine" id="cb1018-13" title="13">}</a>
-<a class="sourceLine" id="cb1018-14" title="14"><span class="kw">print</span>(result)</a></code></pre></div>
+<div class="sourceCode" id="cb1022"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1022-1" title="1">x &lt;-<span class="st"> &quot;aa&quot;</span></a>
+<a class="sourceLine" id="cb1022-2" title="2"><span class="cf">if</span>(x <span class="op">==</span><span class="st"> &quot;a&quot;</span>){</a>
+<a class="sourceLine" id="cb1022-3" title="3">  result &lt;-<span class="st"> </span><span class="dv">1</span></a>
+<a class="sourceLine" id="cb1022-4" title="4">}</a>
+<a class="sourceLine" id="cb1022-5" title="5"><span class="cf">if</span>(x <span class="op">==</span><span class="st"> &quot;aa&quot;</span>){</a>
+<a class="sourceLine" id="cb1022-6" title="6">  result &lt;-<span class="st"> </span><span class="dv">2</span></a>
+<a class="sourceLine" id="cb1022-7" title="7">}</a>
+<a class="sourceLine" id="cb1022-8" title="8"><span class="cf">if</span>(x <span class="op">==</span><span class="st"> &quot;aaa&quot;</span>){</a>
+<a class="sourceLine" id="cb1022-9" title="9">  result &lt;-<span class="st"> </span><span class="dv">3</span></a>
+<a class="sourceLine" id="cb1022-10" title="10">}</a>
+<a class="sourceLine" id="cb1022-11" title="11"><span class="cf">if</span>(x <span class="op">==</span><span class="st"> &quot;aaaa&quot;</span>){</a>
+<a class="sourceLine" id="cb1022-12" title="12">  result &lt;-<span class="st"> </span><span class="dv">4</span></a>
+<a class="sourceLine" id="cb1022-13" title="13">}</a>
+<a class="sourceLine" id="cb1022-14" title="14"><span class="kw">print</span>(result)</a></code></pre></div>
 <pre><code>## [1] 2</code></pre>
-<div class="sourceCode" id="cb1020"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1020-1" title="1">x &lt;-<span class="st"> &quot;aa&quot;</span></a>
-<a class="sourceLine" id="cb1020-2" title="2"><span class="cf">switch</span>(x, </a>
-<a class="sourceLine" id="cb1020-3" title="3">  <span class="dt">a =</span> result &lt;-<span class="st"> </span><span class="dv">1</span>,</a>
-<a class="sourceLine" id="cb1020-4" title="4">  <span class="dt">aa =</span> result &lt;-<span class="st"> </span><span class="dv">2</span>,</a>
-<a class="sourceLine" id="cb1020-5" title="5">  <span class="dt">aaa =</span> result &lt;-<span class="st"> </span><span class="dv">3</span>,</a>
-<a class="sourceLine" id="cb1020-6" title="6">  <span class="dt">aaaa =</span> result &lt;-<span class="st"> </span><span class="dv">4</span>)</a>
-<a class="sourceLine" id="cb1020-7" title="7"><span class="kw">print</span>(result)</a></code></pre></div>
+<div class="sourceCode" id="cb1024"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1024-1" title="1">x &lt;-<span class="st"> &quot;aa&quot;</span></a>
+<a class="sourceLine" id="cb1024-2" title="2"><span class="cf">switch</span>(x, </a>
+<a class="sourceLine" id="cb1024-3" title="3">  <span class="dt">a =</span> result &lt;-<span class="st"> </span><span class="dv">1</span>,</a>
+<a class="sourceLine" id="cb1024-4" title="4">  <span class="dt">aa =</span> result &lt;-<span class="st"> </span><span class="dv">2</span>,</a>
+<a class="sourceLine" id="cb1024-5" title="5">  <span class="dt">aaa =</span> result &lt;-<span class="st"> </span><span class="dv">3</span>,</a>
+<a class="sourceLine" id="cb1024-6" title="6">  <span class="dt">aaaa =</span> result &lt;-<span class="st"> </span><span class="dv">4</span>)</a>
+<a class="sourceLine" id="cb1024-7" title="7"><span class="kw">print</span>(result)</a></code></pre></div>
 <pre><code>## [1] 2</code></pre>
 </div>
 <div id="l17for" class="section level2">
 <h2><span class="header-section-number">8.3</span> La boucle <code>for</code></h2>
 <p>En programmation, lorsque nous sommes amenés à répéter plusieurs fois la même ligne de code, c’est un signe indiquant qu’il faut utiliser une <strong>boucle</strong>. Une boucle est une manière d’itérer sur un ensemble d’objets (ou sur les éléments d’un objet), et de répéter une opération. Imaginons une <code>data.frame</code> avec des mesures de terrain à deux dates.</p>
-<div class="sourceCode" id="cb1022"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1022-1" title="1">bdd &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">date01 =</span> <span class="kw">rnorm</span>(<span class="dt">n =</span> <span class="dv">100</span>, <span class="dt">mean =</span> <span class="dv">10</span>, <span class="dt">sd =</span> <span class="dv">1</span>), </a>
-<a class="sourceLine" id="cb1022-2" title="2">                  <span class="dt">date02 =</span> <span class="kw">rnorm</span>(<span class="dt">n =</span> <span class="dv">100</span>, <span class="dt">mean =</span> <span class="dv">10</span>, <span class="dt">sd =</span> <span class="dv">1</span>))</a>
-<a class="sourceLine" id="cb1022-3" title="3"><span class="kw">print</span>(<span class="kw">head</span>(bdd))</a></code></pre></div>
+<div class="sourceCode" id="cb1026"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1026-1" title="1">bdd &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">date01 =</span> <span class="kw">rnorm</span>(<span class="dt">n =</span> <span class="dv">100</span>, <span class="dt">mean =</span> <span class="dv">10</span>, <span class="dt">sd =</span> <span class="dv">1</span>), </a>
+<a class="sourceLine" id="cb1026-2" title="2">                  <span class="dt">date02 =</span> <span class="kw">rnorm</span>(<span class="dt">n =</span> <span class="dv">100</span>, <span class="dt">mean =</span> <span class="dv">10</span>, <span class="dt">sd =</span> <span class="dv">1</span>))</a>
+<a class="sourceLine" id="cb1026-3" title="3"><span class="kw">print</span>(<span class="kw">head</span>(bdd))</a></code></pre></div>
 <pre><code>##      date01    date02
-## 1  9.265876 10.668636
-## 2 10.894963  8.974699
-## 3  9.000012  9.576090
-## 4 10.719674  9.518935
-## 5  8.847503  9.168561
-## 6 11.125781 10.380136</code></pre>
+## 1  7.605367  9.597798
+## 2 11.882715 10.151283
+## 3  9.783041  9.754862
+## 4  9.202097  9.190209
+## 5 10.443029 12.944443
+## 6 10.080664  9.355605</code></pre>
 <p>Nous voudrions quantifier la différence entre la première et la deuxième date, puis mettre un indicateur pour savoir si cette différence est petite ou grande, par exemple avec un seuil arbitraire de 3. Donc pour chaque ligne nous pourrions faire :</p>
-<div class="sourceCode" id="cb1024"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1024-1" title="1">bdd<span class="op">$</span>dif &lt;-<span class="st"> </span><span class="ot">NA</span></a>
-<a class="sourceLine" id="cb1024-2" title="2">bdd<span class="op">$</span>isDifBig &lt;-<span class="st"> </span><span class="ot">NA</span></a>
-<a class="sourceLine" id="cb1024-3" title="3"></a>
-<a class="sourceLine" id="cb1024-4" title="4">bdd<span class="op">$</span>dif[<span class="dv">1</span>] &lt;-<span class="st"> </span><span class="kw">sqrt</span>((bdd<span class="op">$</span>date01[<span class="dv">1</span>] <span class="op">-</span><span class="st"> </span>bdd<span class="op">$</span>date02[<span class="dv">1</span>])<span class="op">^</span><span class="dv">2</span>)</a>
-<a class="sourceLine" id="cb1024-5" title="5">bdd<span class="op">$</span>dif[<span class="dv">2</span>] &lt;-<span class="st"> </span><span class="kw">sqrt</span>((bdd<span class="op">$</span>date01[<span class="dv">2</span>] <span class="op">-</span><span class="st"> </span>bdd<span class="op">$</span>date02[<span class="dv">2</span>])<span class="op">^</span><span class="dv">2</span>)</a>
-<a class="sourceLine" id="cb1024-6" title="6">bdd<span class="op">$</span>dif[<span class="dv">3</span>] &lt;-<span class="st"> </span><span class="kw">sqrt</span>((bdd<span class="op">$</span>date01[<span class="dv">3</span>] <span class="op">-</span><span class="st"> </span>bdd<span class="op">$</span>date02[<span class="dv">3</span>])<span class="op">^</span><span class="dv">2</span>)</a>
-<a class="sourceLine" id="cb1024-7" title="7"><span class="co"># ...</span></a>
-<a class="sourceLine" id="cb1024-8" title="8">bdd<span class="op">$</span>dif[<span class="dv">100</span>] &lt;-<span class="st"> </span><span class="kw">sqrt</span>((bdd<span class="op">$</span>date01[<span class="dv">100</span>] <span class="op">-</span><span class="st"> </span>bdd<span class="op">$</span>date02[<span class="dv">100</span>])<span class="op">^</span><span class="dv">2</span>)</a>
-<a class="sourceLine" id="cb1024-9" title="9"></a>
-<a class="sourceLine" id="cb1024-10" title="10"><span class="cf">if</span>(bdd<span class="op">$</span>dif[<span class="dv">1</span>] <span class="op">&gt;</span><span class="st"> </span><span class="dv">3</span>){</a>
-<a class="sourceLine" id="cb1024-11" title="11">  bdd<span class="op">$</span>isDifBig[<span class="dv">1</span>] &lt;-<span class="st"> &quot;big&quot;</span></a>
-<a class="sourceLine" id="cb1024-12" title="12">}<span class="cf">else</span>{</a>
-<a class="sourceLine" id="cb1024-13" title="13">  bdd<span class="op">$</span>isDifBig[<span class="dv">1</span>] &lt;-<span class="st"> &quot;small&quot;</span></a>
-<a class="sourceLine" id="cb1024-14" title="14">}</a>
-<a class="sourceLine" id="cb1024-15" title="15"><span class="cf">if</span>(bdd<span class="op">$</span>dif[<span class="dv">2</span>] <span class="op">&gt;</span><span class="st"> </span><span class="dv">3</span>){</a>
-<a class="sourceLine" id="cb1024-16" title="16">  bdd<span class="op">$</span>isDifBig[<span class="dv">2</span>] &lt;-<span class="st"> &quot;big&quot;</span></a>
-<a class="sourceLine" id="cb1024-17" title="17">}<span class="cf">else</span>{</a>
-<a class="sourceLine" id="cb1024-18" title="18">  bdd<span class="op">$</span>isDifBig[<span class="dv">2</span>] &lt;-<span class="st"> &quot;small&quot;</span></a>
-<a class="sourceLine" id="cb1024-19" title="19">}</a>
-<a class="sourceLine" id="cb1024-20" title="20"><span class="cf">if</span>(bdd<span class="op">$</span>dif[<span class="dv">3</span>] <span class="op">&gt;</span><span class="st"> </span><span class="dv">3</span>){</a>
-<a class="sourceLine" id="cb1024-21" title="21">  bdd<span class="op">$</span>isDifBig[<span class="dv">3</span>] &lt;-<span class="st"> &quot;big&quot;</span></a>
-<a class="sourceLine" id="cb1024-22" title="22">}<span class="cf">else</span>{</a>
-<a class="sourceLine" id="cb1024-23" title="23">  bdd<span class="op">$</span>isDifBig[<span class="dv">3</span>] &lt;-<span class="st"> &quot;small&quot;</span></a>
-<a class="sourceLine" id="cb1024-24" title="24">}</a>
-<a class="sourceLine" id="cb1024-25" title="25"><span class="co"># ...</span></a>
-<a class="sourceLine" id="cb1024-26" title="26"><span class="cf">if</span>(bdd<span class="op">$</span>dif[<span class="dv">100</span>] <span class="op">&gt;</span><span class="st"> </span><span class="dv">3</span>){</a>
-<a class="sourceLine" id="cb1024-27" title="27">  bdd<span class="op">$</span>isDifBig[<span class="dv">100</span>] &lt;-<span class="st"> &quot;big&quot;</span></a>
-<a class="sourceLine" id="cb1024-28" title="28">}<span class="cf">else</span>{</a>
-<a class="sourceLine" id="cb1024-29" title="29">  bdd<span class="op">$</span>isDifBig[<span class="dv">100</span>] &lt;-<span class="st"> &quot;small&quot;</span></a>
-<a class="sourceLine" id="cb1024-30" title="30">}</a></code></pre></div>
+<div class="sourceCode" id="cb1028"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1028-1" title="1">bdd<span class="op">$</span>dif &lt;-<span class="st"> </span><span class="ot">NA</span></a>
+<a class="sourceLine" id="cb1028-2" title="2">bdd<span class="op">$</span>isDifBig &lt;-<span class="st"> </span><span class="ot">NA</span></a>
+<a class="sourceLine" id="cb1028-3" title="3"></a>
+<a class="sourceLine" id="cb1028-4" title="4">bdd<span class="op">$</span>dif[<span class="dv">1</span>] &lt;-<span class="st"> </span><span class="kw">sqrt</span>((bdd<span class="op">$</span>date01[<span class="dv">1</span>] <span class="op">-</span><span class="st"> </span>bdd<span class="op">$</span>date02[<span class="dv">1</span>])<span class="op">^</span><span class="dv">2</span>)</a>
+<a class="sourceLine" id="cb1028-5" title="5">bdd<span class="op">$</span>dif[<span class="dv">2</span>] &lt;-<span class="st"> </span><span class="kw">sqrt</span>((bdd<span class="op">$</span>date01[<span class="dv">2</span>] <span class="op">-</span><span class="st"> </span>bdd<span class="op">$</span>date02[<span class="dv">2</span>])<span class="op">^</span><span class="dv">2</span>)</a>
+<a class="sourceLine" id="cb1028-6" title="6">bdd<span class="op">$</span>dif[<span class="dv">3</span>] &lt;-<span class="st"> </span><span class="kw">sqrt</span>((bdd<span class="op">$</span>date01[<span class="dv">3</span>] <span class="op">-</span><span class="st"> </span>bdd<span class="op">$</span>date02[<span class="dv">3</span>])<span class="op">^</span><span class="dv">2</span>)</a>
+<a class="sourceLine" id="cb1028-7" title="7"><span class="co"># ...</span></a>
+<a class="sourceLine" id="cb1028-8" title="8">bdd<span class="op">$</span>dif[<span class="dv">100</span>] &lt;-<span class="st"> </span><span class="kw">sqrt</span>((bdd<span class="op">$</span>date01[<span class="dv">100</span>] <span class="op">-</span><span class="st"> </span>bdd<span class="op">$</span>date02[<span class="dv">100</span>])<span class="op">^</span><span class="dv">2</span>)</a>
+<a class="sourceLine" id="cb1028-9" title="9"></a>
+<a class="sourceLine" id="cb1028-10" title="10"><span class="cf">if</span>(bdd<span class="op">$</span>dif[<span class="dv">1</span>] <span class="op">&gt;</span><span class="st"> </span><span class="dv">3</span>){</a>
+<a class="sourceLine" id="cb1028-11" title="11">  bdd<span class="op">$</span>isDifBig[<span class="dv">1</span>] &lt;-<span class="st"> &quot;big&quot;</span></a>
+<a class="sourceLine" id="cb1028-12" title="12">}<span class="cf">else</span>{</a>
+<a class="sourceLine" id="cb1028-13" title="13">  bdd<span class="op">$</span>isDifBig[<span class="dv">1</span>] &lt;-<span class="st"> &quot;small&quot;</span></a>
+<a class="sourceLine" id="cb1028-14" title="14">}</a>
+<a class="sourceLine" id="cb1028-15" title="15"><span class="cf">if</span>(bdd<span class="op">$</span>dif[<span class="dv">2</span>] <span class="op">&gt;</span><span class="st"> </span><span class="dv">3</span>){</a>
+<a class="sourceLine" id="cb1028-16" title="16">  bdd<span class="op">$</span>isDifBig[<span class="dv">2</span>] &lt;-<span class="st"> &quot;big&quot;</span></a>
+<a class="sourceLine" id="cb1028-17" title="17">}<span class="cf">else</span>{</a>
+<a class="sourceLine" id="cb1028-18" title="18">  bdd<span class="op">$</span>isDifBig[<span class="dv">2</span>] &lt;-<span class="st"> &quot;small&quot;</span></a>
+<a class="sourceLine" id="cb1028-19" title="19">}</a>
+<a class="sourceLine" id="cb1028-20" title="20"><span class="cf">if</span>(bdd<span class="op">$</span>dif[<span class="dv">3</span>] <span class="op">&gt;</span><span class="st"> </span><span class="dv">3</span>){</a>
+<a class="sourceLine" id="cb1028-21" title="21">  bdd<span class="op">$</span>isDifBig[<span class="dv">3</span>] &lt;-<span class="st"> &quot;big&quot;</span></a>
+<a class="sourceLine" id="cb1028-22" title="22">}<span class="cf">else</span>{</a>
+<a class="sourceLine" id="cb1028-23" title="23">  bdd<span class="op">$</span>isDifBig[<span class="dv">3</span>] &lt;-<span class="st"> &quot;small&quot;</span></a>
+<a class="sourceLine" id="cb1028-24" title="24">}</a>
+<a class="sourceLine" id="cb1028-25" title="25"><span class="co"># ...</span></a>
+<a class="sourceLine" id="cb1028-26" title="26"><span class="cf">if</span>(bdd<span class="op">$</span>dif[<span class="dv">100</span>] <span class="op">&gt;</span><span class="st"> </span><span class="dv">3</span>){</a>
+<a class="sourceLine" id="cb1028-27" title="27">  bdd<span class="op">$</span>isDifBig[<span class="dv">100</span>] &lt;-<span class="st"> &quot;big&quot;</span></a>
+<a class="sourceLine" id="cb1028-28" title="28">}<span class="cf">else</span>{</a>
+<a class="sourceLine" id="cb1028-29" title="29">  bdd<span class="op">$</span>isDifBig[<span class="dv">100</span>] &lt;-<span class="st"> &quot;small&quot;</span></a>
+<a class="sourceLine" id="cb1028-30" title="30">}</a></code></pre></div>
 <p>Cette façon de faire serait extrêmement fastidieuse à réaliser, et même presque impossible à réaliser si la table contenait 1000 ou 100000 lignes. Il pourrait sembler logique de vouloir itérer sur les lignes de notre <code>data.frame</code> pour obtenir les nouvelles colonnes. Nous allons le réaliser même si ce n’est pas la solution que nous allons retenir par la suite.</p>
 <p>Nous allons utiliser une boucle <code>for()</code>. La boucle <code>for()</code> va itérer sur les éléments d’un objet que nous allons donner en argument. Par exemple voici une boucle qui pour tous les chiffres de 3 à 9 va calculer leur valeur au carré. La valeur courante du chiffre est symbolisé par un objet qui peut prendre le nom que nous souhaitons (ici cela sera <code>i</code>).</p>
-<div class="sourceCode" id="cb1025"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1025-1" title="1"><span class="cf">for</span>(i <span class="cf">in</span> <span class="kw">c</span>(<span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>, <span class="dv">7</span>, <span class="dv">8</span>, <span class="dv">9</span>)){</a>
-<a class="sourceLine" id="cb1025-2" title="2">  <span class="kw">print</span>(i<span class="op">^</span><span class="dv">2</span>)</a>
-<a class="sourceLine" id="cb1025-3" title="3">}</a></code></pre></div>
+<div class="sourceCode" id="cb1029"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1029-1" title="1"><span class="cf">for</span>(i <span class="cf">in</span> <span class="kw">c</span>(<span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>, <span class="dv">7</span>, <span class="dv">8</span>, <span class="dv">9</span>)){</a>
+<a class="sourceLine" id="cb1029-2" title="2">  <span class="kw">print</span>(i<span class="op">^</span><span class="dv">2</span>)</a>
+<a class="sourceLine" id="cb1029-3" title="3">}</a></code></pre></div>
 <pre><code>## [1] 9
 ## [1] 16
 ## [1] 25
@@ -550,18 +549,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## [1] 64
 ## [1] 81</code></pre>
 <p>Que nous pouvons améliorer en utilisant <a href="fonctions.html#l0152points">la fonction <code>:</code></a>.</p>
-<div class="sourceCode" id="cb1027"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1027-1" title="1"><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">3</span><span class="op">:</span><span class="dv">9</span>){</a>
-<a class="sourceLine" id="cb1027-2" title="2">  <span class="kw">print</span>(i<span class="op">^</span><span class="dv">2</span>)</a>
-<a class="sourceLine" id="cb1027-3" title="3">}</a></code></pre></div>
+<div class="sourceCode" id="cb1031"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1031-1" title="1"><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">3</span><span class="op">:</span><span class="dv">9</span>){</a>
+<a class="sourceLine" id="cb1031-2" title="2">  <span class="kw">print</span>(i<span class="op">^</span><span class="dv">2</span>)</a>
+<a class="sourceLine" id="cb1031-3" title="3">}</a></code></pre></div>
 <p>Le choix du nom <code>i</code> est ici arbitraire, nous aurions pu choisir <code>myVarFor</code> de la même façon :</p>
-<div class="sourceCode" id="cb1028"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1028-1" title="1"><span class="cf">for</span>(myVarFor <span class="cf">in</span> <span class="dv">3</span><span class="op">:</span><span class="dv">9</span>){</a>
-<a class="sourceLine" id="cb1028-2" title="2">  <span class="kw">print</span>(myVarFor<span class="op">^</span><span class="dv">2</span>)</a>
-<a class="sourceLine" id="cb1028-3" title="3">}</a></code></pre></div>
+<div class="sourceCode" id="cb1032"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1032-1" title="1"><span class="cf">for</span>(myVarFor <span class="cf">in</span> <span class="dv">3</span><span class="op">:</span><span class="dv">9</span>){</a>
+<a class="sourceLine" id="cb1032-2" title="2">  <span class="kw">print</span>(myVarFor<span class="op">^</span><span class="dv">2</span>)</a>
+<a class="sourceLine" id="cb1032-3" title="3">}</a></code></pre></div>
 <p>La boucle <code>for()</code> peut itérer sur tous les types d’éléments.</p>
-<div class="sourceCode" id="cb1029"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1029-1" title="1">nChar &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;a&quot;</span>, <span class="st">&quot;z&quot;</span>, <span class="st">&quot;e&quot;</span>, <span class="st">&quot;r&quot;</span>, <span class="st">&quot;t&quot;</span>, <span class="st">&quot;y&quot;</span>)</a>
-<a class="sourceLine" id="cb1029-2" title="2"><span class="cf">for</span>(i <span class="cf">in</span> nChar){</a>
-<a class="sourceLine" id="cb1029-3" title="3">  <span class="kw">print</span>(i)</a>
-<a class="sourceLine" id="cb1029-4" title="4">}</a></code></pre></div>
+<div class="sourceCode" id="cb1033"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1033-1" title="1">nChar &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;a&quot;</span>, <span class="st">&quot;z&quot;</span>, <span class="st">&quot;e&quot;</span>, <span class="st">&quot;r&quot;</span>, <span class="st">&quot;t&quot;</span>, <span class="st">&quot;y&quot;</span>)</a>
+<a class="sourceLine" id="cb1033-2" title="2"><span class="cf">for</span>(i <span class="cf">in</span> nChar){</a>
+<a class="sourceLine" id="cb1033-3" title="3">  <span class="kw">print</span>(i)</a>
+<a class="sourceLine" id="cb1033-4" title="4">}</a></code></pre></div>
 <pre><code>## [1] &quot;a&quot;
 ## [1] &quot;z&quot;
 ## [1] &quot;e&quot;
@@ -569,145 +568,145 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## [1] &quot;t&quot;
 ## [1] &quot;y&quot;</code></pre>
 <p>Revenons à notre cas. Nous allons itérer sur le nombre de lignes de notre <code>data.frame</code> <code>bdd</code>. Avant cela nous allons créer les colonnes <code>dif</code> et <code>isDifBig</code> avec les valeurs <code>NA</code>. Ensuite nous allons utiliser <a href="fonctions.html#l015nrow">la fonction <code>nrow()</code></a> pour connaître le nombre de lignes.</p>
-<div class="sourceCode" id="cb1031"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1031-1" title="1">bdd<span class="op">$</span>dif &lt;-<span class="st"> </span><span class="ot">NA</span></a>
-<a class="sourceLine" id="cb1031-2" title="2">bdd<span class="op">$</span>isDifBig &lt;-<span class="st"> </span><span class="ot">NA</span></a>
-<a class="sourceLine" id="cb1031-3" title="3"><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="kw">nrow</span>(bdd)){</a>
-<a class="sourceLine" id="cb1031-4" title="4">  bdd<span class="op">$</span>dif[i] &lt;-<span class="st"> </span><span class="kw">sqrt</span>((bdd<span class="op">$</span>date01[i] <span class="op">-</span><span class="st"> </span>bdd<span class="op">$</span>date02[i])<span class="op">^</span><span class="dv">2</span>)</a>
-<a class="sourceLine" id="cb1031-5" title="5">  <span class="cf">if</span>(bdd<span class="op">$</span>dif[i] <span class="op">&gt;</span><span class="st"> </span><span class="dv">3</span>){</a>
-<a class="sourceLine" id="cb1031-6" title="6">    bdd<span class="op">$</span>isDifBig[i] &lt;-<span class="st"> &quot;big&quot;</span></a>
-<a class="sourceLine" id="cb1031-7" title="7">  }<span class="cf">else</span>{</a>
-<a class="sourceLine" id="cb1031-8" title="8">    bdd<span class="op">$</span>isDifBig[i] &lt;-<span class="st"> &quot;small&quot;</span></a>
-<a class="sourceLine" id="cb1031-9" title="9">  }</a>
-<a class="sourceLine" id="cb1031-10" title="10">}</a>
-<a class="sourceLine" id="cb1031-11" title="11"><span class="kw">print</span>(<span class="kw">head</span>(bdd, <span class="dt">n =</span> <span class="dv">20</span>))</a></code></pre></div>
+<div class="sourceCode" id="cb1035"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1035-1" title="1">bdd<span class="op">$</span>dif &lt;-<span class="st"> </span><span class="ot">NA</span></a>
+<a class="sourceLine" id="cb1035-2" title="2">bdd<span class="op">$</span>isDifBig &lt;-<span class="st"> </span><span class="ot">NA</span></a>
+<a class="sourceLine" id="cb1035-3" title="3"><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="kw">nrow</span>(bdd)){</a>
+<a class="sourceLine" id="cb1035-4" title="4">  bdd<span class="op">$</span>dif[i] &lt;-<span class="st"> </span><span class="kw">sqrt</span>((bdd<span class="op">$</span>date01[i] <span class="op">-</span><span class="st"> </span>bdd<span class="op">$</span>date02[i])<span class="op">^</span><span class="dv">2</span>)</a>
+<a class="sourceLine" id="cb1035-5" title="5">  <span class="cf">if</span>(bdd<span class="op">$</span>dif[i] <span class="op">&gt;</span><span class="st"> </span><span class="dv">3</span>){</a>
+<a class="sourceLine" id="cb1035-6" title="6">    bdd<span class="op">$</span>isDifBig[i] &lt;-<span class="st"> &quot;big&quot;</span></a>
+<a class="sourceLine" id="cb1035-7" title="7">  }<span class="cf">else</span>{</a>
+<a class="sourceLine" id="cb1035-8" title="8">    bdd<span class="op">$</span>isDifBig[i] &lt;-<span class="st"> &quot;small&quot;</span></a>
+<a class="sourceLine" id="cb1035-9" title="9">  }</a>
+<a class="sourceLine" id="cb1035-10" title="10">}</a>
+<a class="sourceLine" id="cb1035-11" title="11"><span class="kw">print</span>(<span class="kw">head</span>(bdd, <span class="dt">n =</span> <span class="dv">20</span>))</a></code></pre></div>
 <pre><code>##       date01    date02        dif isDifBig
-## 1   9.265876 10.668636 1.40275995    small
-## 2  10.894963  8.974699 1.92026434    small
-## 3   9.000012  9.576090 0.57607767    small
-## 4  10.719674  9.518935 1.20073861    small
-## 5   8.847503  9.168561 0.32105754    small
-## 6  11.125781 10.380136 0.74564453    small
-## 7   9.858374 10.631080 0.77270572    small
-## 8   9.211033  8.426349 0.78468348    small
-## 9  12.449286  7.507774 4.94151229      big
-## 10  8.154309  9.199014 1.04470561    small
-## 11  7.915397 10.690411 2.77501431    small
-## 12  8.234127  9.958088 1.72396126    small
-## 13 11.160319  9.867671 1.29264760    small
-## 14 10.179061 10.728940 0.54987827    small
-## 15 11.452104 10.001314 1.45079028    small
-## 16  9.121978  9.136732 0.01475405    small
-## 17  9.812274  8.883184 0.92909021    small
-## 18  9.793796  9.517246 0.27654931    small
-## 19 10.716858 11.075626 0.35876757    small
-## 20  9.433303 10.741986 1.30868364    small</code></pre>
+## 1   7.605367  9.597798 1.99243072    small
+## 2  11.882715 10.151283 1.73143170    small
+## 3   9.783041  9.754862 0.02817892    small
+## 4   9.202097  9.190209 0.01188758    small
+## 5  10.443029 12.944443 2.50141416    small
+## 6  10.080664  9.355605 0.72505909    small
+## 7  10.571043 11.776509 1.20546640    small
+## 8  10.101220 11.259330 1.15811052    small
+## 9  11.243343  9.350320 1.89302241    small
+## 10 10.323709  8.738236 1.58547334    small
+## 11  8.784702  9.751683 0.96698094    small
+## 12  8.963384  9.693088 0.72970340    small
+## 13 10.646233 10.815912 0.16967897    small
+## 14  8.620180  8.378609 0.24157088    small
+## 15  9.293099  9.164466 0.12863307    small
+## 16 10.105835 10.134564 0.02872859    small
+## 17 10.851690 10.341018 0.51067197    small
+## 18  9.511707  9.900624 0.38891652    small
+## 19  9.395669 11.697324 2.30165505    small
+## 20  9.464917 11.825426 2.36050825    small</code></pre>
 <p>En pratique ce n’est pas la meilleure façon de réaliser cet exercice car il s’agit ici de simples calculs sur des vecteurs contenus dans une <code>data.frame</code>. R est particulièrement puissant pour effectuer des opérations sur des vecteurs. Lorsque cela est possible il faut donc toujours privilégier les opérations sur les vecteurs. Ici notre code devient :</p>
-<div class="sourceCode" id="cb1033"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1033-1" title="1">bdd<span class="op">$</span>dif &lt;-<span class="st"> </span><span class="kw">sqrt</span>((bdd<span class="op">$</span>date01 <span class="op">-</span><span class="st"> </span>bdd<span class="op">$</span>date02)<span class="op">^</span><span class="dv">2</span>)</a>
-<a class="sourceLine" id="cb1033-2" title="2">bdd<span class="op">$</span>isDifBig &lt;-<span class="st"> &quot;small&quot;</span></a>
-<a class="sourceLine" id="cb1033-3" title="3">bdd<span class="op">$</span>isDifBig[bdd<span class="op">$</span>dif <span class="op">&gt;</span><span class="st"> </span><span class="dv">3</span>] &lt;-<span class="st"> &quot;big&quot;</span></a>
-<a class="sourceLine" id="cb1033-4" title="4"><span class="kw">print</span>(<span class="kw">head</span>(bdd, <span class="dt">n =</span> <span class="dv">20</span>))</a></code></pre></div>
+<div class="sourceCode" id="cb1037"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1037-1" title="1">bdd<span class="op">$</span>dif &lt;-<span class="st"> </span><span class="kw">sqrt</span>((bdd<span class="op">$</span>date01 <span class="op">-</span><span class="st"> </span>bdd<span class="op">$</span>date02)<span class="op">^</span><span class="dv">2</span>)</a>
+<a class="sourceLine" id="cb1037-2" title="2">bdd<span class="op">$</span>isDifBig &lt;-<span class="st"> &quot;small&quot;</span></a>
+<a class="sourceLine" id="cb1037-3" title="3">bdd<span class="op">$</span>isDifBig[bdd<span class="op">$</span>dif <span class="op">&gt;</span><span class="st"> </span><span class="dv">3</span>] &lt;-<span class="st"> &quot;big&quot;</span></a>
+<a class="sourceLine" id="cb1037-4" title="4"><span class="kw">print</span>(<span class="kw">head</span>(bdd, <span class="dt">n =</span> <span class="dv">20</span>))</a></code></pre></div>
 <pre><code>##       date01    date02        dif isDifBig
-## 1   9.265876 10.668636 1.40275995    small
-## 2  10.894963  8.974699 1.92026434    small
-## 3   9.000012  9.576090 0.57607767    small
-## 4  10.719674  9.518935 1.20073861    small
-## 5   8.847503  9.168561 0.32105754    small
-## 6  11.125781 10.380136 0.74564453    small
-## 7   9.858374 10.631080 0.77270572    small
-## 8   9.211033  8.426349 0.78468348    small
-## 9  12.449286  7.507774 4.94151229      big
-## 10  8.154309  9.199014 1.04470561    small
-## 11  7.915397 10.690411 2.77501431    small
-## 12  8.234127  9.958088 1.72396126    small
-## 13 11.160319  9.867671 1.29264760    small
-## 14 10.179061 10.728940 0.54987827    small
-## 15 11.452104 10.001314 1.45079028    small
-## 16  9.121978  9.136732 0.01475405    small
-## 17  9.812274  8.883184 0.92909021    small
-## 18  9.793796  9.517246 0.27654931    small
-## 19 10.716858 11.075626 0.35876757    small
-## 20  9.433303 10.741986 1.30868364    small</code></pre>
+## 1   7.605367  9.597798 1.99243072    small
+## 2  11.882715 10.151283 1.73143170    small
+## 3   9.783041  9.754862 0.02817892    small
+## 4   9.202097  9.190209 0.01188758    small
+## 5  10.443029 12.944443 2.50141416    small
+## 6  10.080664  9.355605 0.72505909    small
+## 7  10.571043 11.776509 1.20546640    small
+## 8  10.101220 11.259330 1.15811052    small
+## 9  11.243343  9.350320 1.89302241    small
+## 10 10.323709  8.738236 1.58547334    small
+## 11  8.784702  9.751683 0.96698094    small
+## 12  8.963384  9.693088 0.72970340    small
+## 13 10.646233 10.815912 0.16967897    small
+## 14  8.620180  8.378609 0.24157088    small
+## 15  9.293099  9.164466 0.12863307    small
+## 16 10.105835 10.134564 0.02872859    small
+## 17 10.851690 10.341018 0.51067197    small
+## 18  9.511707  9.900624 0.38891652    small
+## 19  9.395669 11.697324 2.30165505    small
+## 20  9.464917 11.825426 2.36050825    small</code></pre>
 <p>La plupart des exemples que l’on peut trouver sur Internet à propos de la boucle <code>for()</code> peuvent être remplacés par des opérations sur les vecteurs. Voici quelques exemples adaptés de plusieurs sources :</p>
-<div class="sourceCode" id="cb1035"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1035-1" title="1"><span class="co"># tester si des nombres sont pairs</span></a>
-<a class="sourceLine" id="cb1035-2" title="2"><span class="co"># [1] FOR</span></a>
-<a class="sourceLine" id="cb1035-3" title="3">x &lt;-<span class="st"> </span><span class="kw">sample</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">100</span>, <span class="dt">size =</span> <span class="dv">20</span>)</a>
-<a class="sourceLine" id="cb1035-4" title="4">count &lt;-<span class="st"> </span><span class="dv">0</span></a>
-<a class="sourceLine" id="cb1035-5" title="5"><span class="cf">for</span> (val <span class="cf">in</span> x) {</a>
-<a class="sourceLine" id="cb1035-6" title="6">  <span class="cf">if</span>(val <span class="op">%%</span><span class="st"> </span><span class="dv">2</span> <span class="op">==</span><span class="st"> </span><span class="dv">0</span>){</a>
-<a class="sourceLine" id="cb1035-7" title="7">    count &lt;-<span class="st"> </span>count <span class="op">+</span><span class="st"> </span><span class="dv">1</span></a>
-<a class="sourceLine" id="cb1035-8" title="8">  }</a>
-<a class="sourceLine" id="cb1035-9" title="9">}</a>
-<a class="sourceLine" id="cb1035-10" title="10"><span class="kw">print</span>(count)</a></code></pre></div>
-<pre><code>## [1] 9</code></pre>
-<div class="sourceCode" id="cb1037"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1037-1" title="1"><span class="co"># [2] VECTOR</span></a>
-<a class="sourceLine" id="cb1037-2" title="2"><span class="kw">sum</span>(x <span class="op">%%</span><span class="st"> </span><span class="dv">2</span> <span class="op">==</span><span class="st"> </span><span class="dv">0</span>)</a></code></pre></div>
-<pre><code>## [1] 9</code></pre>
-<div class="sourceCode" id="cb1039"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1039-1" title="1"><span class="co"># calculer des carrés</span></a>
+<div class="sourceCode" id="cb1039"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1039-1" title="1"><span class="co"># tester si des nombres sont pairs</span></a>
 <a class="sourceLine" id="cb1039-2" title="2"><span class="co"># [1] FOR</span></a>
-<a class="sourceLine" id="cb1039-3" title="3">x &lt;-<span class="st"> </span><span class="kw">rep</span>(<span class="dv">0</span>, <span class="dv">20</span>)</a>
-<a class="sourceLine" id="cb1039-4" title="4"><span class="cf">for</span> (j <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="dv">20</span>){</a>
-<a class="sourceLine" id="cb1039-5" title="5">  x[j] &lt;-<span class="st"> </span>j<span class="op">^</span><span class="dv">2</span></a>
-<a class="sourceLine" id="cb1039-6" title="6">}</a>
-<a class="sourceLine" id="cb1039-7" title="7"><span class="kw">print</span>(x)</a></code></pre></div>
-<pre><code>##  [1]   1   4   9  16  25  36  49  64  81 100 121 144 169 196
-## [15] 225 256 289 324 361 400</code></pre>
+<a class="sourceLine" id="cb1039-3" title="3">x &lt;-<span class="st"> </span><span class="kw">sample</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">100</span>, <span class="dt">size =</span> <span class="dv">20</span>)</a>
+<a class="sourceLine" id="cb1039-4" title="4">count &lt;-<span class="st"> </span><span class="dv">0</span></a>
+<a class="sourceLine" id="cb1039-5" title="5"><span class="cf">for</span> (val <span class="cf">in</span> x) {</a>
+<a class="sourceLine" id="cb1039-6" title="6">  <span class="cf">if</span>(val <span class="op">%%</span><span class="st"> </span><span class="dv">2</span> <span class="op">==</span><span class="st"> </span><span class="dv">0</span>){</a>
+<a class="sourceLine" id="cb1039-7" title="7">    count &lt;-<span class="st"> </span>count <span class="op">+</span><span class="st"> </span><span class="dv">1</span></a>
+<a class="sourceLine" id="cb1039-8" title="8">  }</a>
+<a class="sourceLine" id="cb1039-9" title="9">}</a>
+<a class="sourceLine" id="cb1039-10" title="10"><span class="kw">print</span>(count)</a></code></pre></div>
+<pre><code>## [1] 12</code></pre>
 <div class="sourceCode" id="cb1041"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1041-1" title="1"><span class="co"># [2] VECTOR</span></a>
-<a class="sourceLine" id="cb1041-2" title="2">(<span class="dv">1</span><span class="op">:</span><span class="dv">20</span>)<span class="op">^</span><span class="dv">2</span></a></code></pre></div>
+<a class="sourceLine" id="cb1041-2" title="2"><span class="kw">sum</span>(x <span class="op">%%</span><span class="st"> </span><span class="dv">2</span> <span class="op">==</span><span class="st"> </span><span class="dv">0</span>)</a></code></pre></div>
+<pre><code>## [1] 12</code></pre>
+<div class="sourceCode" id="cb1043"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1043-1" title="1"><span class="co"># calculer des carrés</span></a>
+<a class="sourceLine" id="cb1043-2" title="2"><span class="co"># [1] FOR</span></a>
+<a class="sourceLine" id="cb1043-3" title="3">x &lt;-<span class="st"> </span><span class="kw">rep</span>(<span class="dv">0</span>, <span class="dv">20</span>)</a>
+<a class="sourceLine" id="cb1043-4" title="4"><span class="cf">for</span> (j <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="dv">20</span>){</a>
+<a class="sourceLine" id="cb1043-5" title="5">  x[j] &lt;-<span class="st"> </span>j<span class="op">^</span><span class="dv">2</span></a>
+<a class="sourceLine" id="cb1043-6" title="6">}</a>
+<a class="sourceLine" id="cb1043-7" title="7"><span class="kw">print</span>(x)</a></code></pre></div>
 <pre><code>##  [1]   1   4   9  16  25  36  49  64  81 100 121 144 169 196
 ## [15] 225 256 289 324 361 400</code></pre>
-<div class="sourceCode" id="cb1043"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1043-1" title="1"><span class="co"># répéter un lancer de dés et faire la moyenne</span></a>
-<a class="sourceLine" id="cb1043-2" title="2"><span class="co"># [1] FOR</span></a>
-<a class="sourceLine" id="cb1043-3" title="3">ntrials =<span class="st"> </span><span class="dv">1000</span></a>
-<a class="sourceLine" id="cb1043-4" title="4">trials =<span class="st"> </span><span class="kw">rep</span>(<span class="dv">0</span>, ntrials)</a>
-<a class="sourceLine" id="cb1043-5" title="5"><span class="cf">for</span> (j <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span>ntrials){</a>
-<a class="sourceLine" id="cb1043-6" title="6">  trials[j] =<span class="st"> </span><span class="kw">sample</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">6</span>, <span class="dt">size =</span> <span class="dv">1</span>)</a>
-<a class="sourceLine" id="cb1043-7" title="7">}</a>
-<a class="sourceLine" id="cb1043-8" title="8"><span class="kw">mean</span>(trials)</a></code></pre></div>
-<pre><code>## [1] 3.398</code></pre>
 <div class="sourceCode" id="cb1045"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1045-1" title="1"><span class="co"># [2] VECTOR</span></a>
-<a class="sourceLine" id="cb1045-2" title="2"><span class="kw">mean</span>(<span class="kw">sample</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">6</span>, ntrials, <span class="dt">replace =</span> <span class="ot">TRUE</span>))</a></code></pre></div>
-<pre><code>## [1] 3.543</code></pre>
+<a class="sourceLine" id="cb1045-2" title="2">(<span class="dv">1</span><span class="op">:</span><span class="dv">20</span>)<span class="op">^</span><span class="dv">2</span></a></code></pre></div>
+<pre><code>##  [1]   1   4   9  16  25  36  49  64  81 100 121 144 169 196
+## [15] 225 256 289 324 361 400</code></pre>
+<div class="sourceCode" id="cb1047"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1047-1" title="1"><span class="co"># répéter un lancer de dés et faire la moyenne</span></a>
+<a class="sourceLine" id="cb1047-2" title="2"><span class="co"># [1] FOR</span></a>
+<a class="sourceLine" id="cb1047-3" title="3">ntrials =<span class="st"> </span><span class="dv">1000</span></a>
+<a class="sourceLine" id="cb1047-4" title="4">trials =<span class="st"> </span><span class="kw">rep</span>(<span class="dv">0</span>, ntrials)</a>
+<a class="sourceLine" id="cb1047-5" title="5"><span class="cf">for</span> (j <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span>ntrials){</a>
+<a class="sourceLine" id="cb1047-6" title="6">  trials[j] =<span class="st"> </span><span class="kw">sample</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">6</span>, <span class="dt">size =</span> <span class="dv">1</span>)</a>
+<a class="sourceLine" id="cb1047-7" title="7">}</a>
+<a class="sourceLine" id="cb1047-8" title="8"><span class="kw">mean</span>(trials)</a></code></pre></div>
+<pre><code>## [1] 3.476</code></pre>
+<div class="sourceCode" id="cb1049"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1049-1" title="1"><span class="co"># [2] VECTOR</span></a>
+<a class="sourceLine" id="cb1049-2" title="2"><span class="kw">mean</span>(<span class="kw">sample</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">6</span>, ntrials, <span class="dt">replace =</span> <span class="ot">TRUE</span>))</a></code></pre></div>
+<pre><code>## [1] 3.522</code></pre>
 <p>C’est un bon exercice de parcourir les nombreux exemples disponibles sur Internet sur la boucle <code>for()</code> et de tenter de les transformer en opérations vectorielles. Cela nous permet d’acquérir les bons réflexes de programmation avec R. La boucle <code>for()</code> reste très utile pour par exemple lire plusieurs fichiers et traiter l’information qu’ils contiennent de la même façon, faire des graphiques, ou encore lorsque les opérations vectorielles deviennent fastidieuses. Imaginons une matrice de 10 colonnes et 100 lignes. Nous voulons la somme de chaque ligne (nous verrons plus loin comment faire avec la fonction <code>apply()</code>).</p>
-<div class="sourceCode" id="cb1047"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1047-1" title="1">myMat &lt;-<span class="st"> </span><span class="kw">matrix</span>(</a>
-<a class="sourceLine" id="cb1047-2" title="2">  <span class="kw">sample</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">100</span>, <span class="dt">size =</span> <span class="dv">1000</span>, <span class="dt">replace =</span> <span class="ot">TRUE</span>), </a>
-<a class="sourceLine" id="cb1047-3" title="3">  <span class="dt">ncol =</span> <span class="dv">10</span>)</a>
-<a class="sourceLine" id="cb1047-4" title="4"><span class="co"># VECTOR</span></a>
-<a class="sourceLine" id="cb1047-5" title="5">sumRow &lt;-<span class="st"> </span>myMat[, <span class="dv">1</span>] <span class="op">+</span><span class="st"> </span>myMat[, <span class="dv">2</span>] <span class="op">+</span><span class="st"> </span>myMat[, <span class="dv">3</span>] <span class="op">+</span><span class="st"> </span>myMat[, <span class="dv">4</span>] <span class="op">+</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb1047-6" title="6"><span class="st">  </span>myMat[, <span class="dv">5</span>] <span class="op">+</span><span class="st"> </span>myMat[, <span class="dv">6</span>] <span class="op">+</span><span class="st"> </span>myMat[, <span class="dv">7</span>] <span class="op">+</span><span class="st"> </span>myMat[, <span class="dv">8</span>] <span class="op">+</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb1047-7" title="7"><span class="st">  </span>myMat[, <span class="dv">9</span>] <span class="op">+</span><span class="st"> </span>myMat[, <span class="dv">10</span>]</a>
-<a class="sourceLine" id="cb1047-8" title="8"><span class="kw">print</span>(sumRow)</a></code></pre></div>
-<pre><code>##   [1] 557 437 557 659 509 478 636 497 295 461 517 542 387
-##  [14] 382 512 455 504 343 355 352 516 579 523 537 468 471
-##  [27] 462 506 545 533 358 535 596 660 461 599 639 582 599
-##  [40] 597 531 421 504 431 555 462 590 527 600 350 532 571
-##  [53] 459 519 462 452 506 511 570 481 493 448 375 505 546
-##  [66] 427 616 505 593 350 421 545 505 806 484 743 600 550
-##  [79] 497 419 579 358 420 449 411 356 424 445 345 593 508
-##  [92] 643 396 433 545 461 488 588 592 365</code></pre>
-<div class="sourceCode" id="cb1049"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1049-1" title="1"><span class="co"># FOR</span></a>
-<a class="sourceLine" id="cb1049-2" title="2">sumRow &lt;-<span class="st"> </span><span class="kw">rep</span>(<span class="ot">NA</span>, <span class="dt">times =</span> <span class="kw">nrow</span>(myMat))</a>
-<a class="sourceLine" id="cb1049-3" title="3"><span class="cf">for</span>(j <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="kw">nrow</span>(myMat)){</a>
-<a class="sourceLine" id="cb1049-4" title="4">  sumRow[j] &lt;-<span class="st"> </span><span class="kw">sum</span>(myMat[j, ])</a>
-<a class="sourceLine" id="cb1049-5" title="5">}</a>
-<a class="sourceLine" id="cb1049-6" title="6"><span class="kw">print</span>(sumRow)</a></code></pre></div>
-<pre><code>##   [1] 557 437 557 659 509 478 636 497 295 461 517 542 387
-##  [14] 382 512 455 504 343 355 352 516 579 523 537 468 471
-##  [27] 462 506 545 533 358 535 596 660 461 599 639 582 599
-##  [40] 597 531 421 504 431 555 462 590 527 600 350 532 571
-##  [53] 459 519 462 452 506 511 570 481 493 448 375 505 546
-##  [66] 427 616 505 593 350 421 545 505 806 484 743 600 550
-##  [79] 497 419 579 358 420 449 411 356 424 445 345 593 508
-##  [92] 643 396 433 545 461 488 588 592 365</code></pre>
+<div class="sourceCode" id="cb1051"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1051-1" title="1">myMat &lt;-<span class="st"> </span><span class="kw">matrix</span>(</a>
+<a class="sourceLine" id="cb1051-2" title="2">  <span class="kw">sample</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">100</span>, <span class="dt">size =</span> <span class="dv">1000</span>, <span class="dt">replace =</span> <span class="ot">TRUE</span>), </a>
+<a class="sourceLine" id="cb1051-3" title="3">  <span class="dt">ncol =</span> <span class="dv">10</span>)</a>
+<a class="sourceLine" id="cb1051-4" title="4"><span class="co"># VECTOR</span></a>
+<a class="sourceLine" id="cb1051-5" title="5">sumRow &lt;-<span class="st"> </span>myMat[, <span class="dv">1</span>] <span class="op">+</span><span class="st"> </span>myMat[, <span class="dv">2</span>] <span class="op">+</span><span class="st"> </span>myMat[, <span class="dv">3</span>] <span class="op">+</span><span class="st"> </span>myMat[, <span class="dv">4</span>] <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb1051-6" title="6"><span class="st">  </span>myMat[, <span class="dv">5</span>] <span class="op">+</span><span class="st"> </span>myMat[, <span class="dv">6</span>] <span class="op">+</span><span class="st"> </span>myMat[, <span class="dv">7</span>] <span class="op">+</span><span class="st"> </span>myMat[, <span class="dv">8</span>] <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb1051-7" title="7"><span class="st">  </span>myMat[, <span class="dv">9</span>] <span class="op">+</span><span class="st"> </span>myMat[, <span class="dv">10</span>]</a>
+<a class="sourceLine" id="cb1051-8" title="8"><span class="kw">print</span>(sumRow)</a></code></pre></div>
+<pre><code>##   [1] 314 389 469 434 458 560 486 475 591 567 592 458 698
+##  [14] 445 647 665 522 367 460 366 422 502 539 537 560 545
+##  [27] 629 541 570 704 578 488 598 540 447 528 598 550 583
+##  [40] 501 569 511 636 409 552 572 508 507 408 386 517 454
+##  [53] 439 562 662 505 583 694 471 473 575 686 504 436 489
+##  [66] 639 432 371 422 555 693 506 394 426 622 335 368 520
+##  [79] 362 379 507 501 376 304 617 461 587 525 592 533 539
+##  [92] 518 433 376 428 426 494 626 594 379</code></pre>
+<div class="sourceCode" id="cb1053"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1053-1" title="1"><span class="co"># FOR</span></a>
+<a class="sourceLine" id="cb1053-2" title="2">sumRow &lt;-<span class="st"> </span><span class="kw">rep</span>(<span class="ot">NA</span>, <span class="dt">times =</span> <span class="kw">nrow</span>(myMat))</a>
+<a class="sourceLine" id="cb1053-3" title="3"><span class="cf">for</span>(j <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="kw">nrow</span>(myMat)){</a>
+<a class="sourceLine" id="cb1053-4" title="4">  sumRow[j] &lt;-<span class="st"> </span><span class="kw">sum</span>(myMat[j, ])</a>
+<a class="sourceLine" id="cb1053-5" title="5">}</a>
+<a class="sourceLine" id="cb1053-6" title="6"><span class="kw">print</span>(sumRow)</a></code></pre></div>
+<pre><code>##   [1] 314 389 469 434 458 560 486 475 591 567 592 458 698
+##  [14] 445 647 665 522 367 460 366 422 502 539 537 560 545
+##  [27] 629 541 570 704 578 488 598 540 447 528 598 550 583
+##  [40] 501 569 511 636 409 552 572 508 507 408 386 517 454
+##  [53] 439 562 662 505 583 694 471 473 575 686 504 436 489
+##  [66] 639 432 371 422 555 693 506 394 426 622 335 368 520
+##  [79] 362 379 507 501 376 304 617 461 587 525 592 533 539
+##  [92] 518 433 376 428 426 494 626 594 379</code></pre>
 <p>En conclusion, il est recommandé de ne pas utiliser la boucle <code>for()</code> avec R chaque fois que cela est possible, et nous verrons dans ce chapitre des alternatives comme les boucles de la famille <code>apply()</code>.</p>
 </div>
 <div id="l17while" class="section level2">
 <h2><span class="header-section-number">8.4</span> La boucle <code>while</code></h2>
 <p>La boucle <code>while()</code>, contrairement à la boucle <code>for()</code>, signifie <em>TANT QUE</em>. Tant qu’une condition n’est pas remplie, la boucle va continuer à s’exécuter. Attention car en cas d’erreur, nous pouvons facilement programmer des boucles qui ne terminent jamais ! Cette boucle est moins courante que la boucle <code>for()</code>. Prenons un exemple :</p>
-<div class="sourceCode" id="cb1051"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1051-1" title="1">i &lt;-<span class="st"> </span><span class="dv">0</span></a>
-<a class="sourceLine" id="cb1051-2" title="2"><span class="cf">while</span>(i <span class="op">&lt;</span><span class="st"> </span><span class="dv">10</span>){</a>
-<a class="sourceLine" id="cb1051-3" title="3">  <span class="kw">print</span>(i)</a>
-<a class="sourceLine" id="cb1051-4" title="4">  i &lt;-<span class="st"> </span>i <span class="op">+</span><span class="st"> </span><span class="dv">1</span></a>
-<a class="sourceLine" id="cb1051-5" title="5">}</a></code></pre></div>
+<div class="sourceCode" id="cb1055"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1055-1" title="1">i &lt;-<span class="st"> </span><span class="dv">0</span></a>
+<a class="sourceLine" id="cb1055-2" title="2"><span class="cf">while</span>(i <span class="op">&lt;</span><span class="st"> </span><span class="dv">10</span>){</a>
+<a class="sourceLine" id="cb1055-3" title="3">  <span class="kw">print</span>(i)</a>
+<a class="sourceLine" id="cb1055-4" title="4">  i &lt;-<span class="st"> </span>i <span class="op">+</span><span class="st"> </span><span class="dv">1</span></a>
+<a class="sourceLine" id="cb1055-5" title="5">}</a></code></pre></div>
 <pre><code>## [1] 0
 ## [1] 1
 ## [1] 2
@@ -720,97 +719,97 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## [1] 9</code></pre>
 <p>Dans cet exemple, la variable <code>i</code> a comme valeur 0. TANT QUE <code>i &lt; 10</code>, nous allons afficher <code>i</code>. Pour que cette boucle se termine, il ne faut pas oublier de modifier la valeur de <code>i</code>, c’est ce qui est fait avec la ligne <code>i &lt;- i + 1</code>. Lorsque la condition <code>i &lt; 10</code> ne se vérifie plus, la boucle s’arrête.</p>
 <p>La boucle <code>while()</code> est très utile pour créer des scripts qui vont effectuer des calculs sur des variables dont la valeur évoluent dans le temps. Par exemple imaginons un nombre entre 0 et 10000 et un générateur aléatoire qui va essayer de déterminer la valeur de ce nombre. Si nous souhaitons limiter les tentatives de R à 2 secondes, nous pouvons écrire le script suivant (qui devrait marcher à tous les coups sur un ordinateur de bureau classique pouvant facilement effectuer 35000 essais en 2 secondes) :</p>
-<div class="sourceCode" id="cb1053"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1053-1" title="1">myNumber &lt;-<span class="st"> </span><span class="kw">sample</span>(<span class="dt">x =</span> <span class="dv">10000</span>, <span class="dt">size =</span> <span class="dv">1</span>)</a>
-<a class="sourceLine" id="cb1053-2" title="2">myGuess &lt;-<span class="st"> </span><span class="kw">sample</span>(<span class="dt">x =</span> <span class="dv">10000</span>, <span class="dt">size =</span> <span class="dv">1</span>)</a>
-<a class="sourceLine" id="cb1053-3" title="3">startTime &lt;-<span class="st"> </span><span class="kw">Sys.time</span>()</a>
-<a class="sourceLine" id="cb1053-4" title="4">numberGuess &lt;-<span class="st"> </span><span class="dv">0</span></a>
-<a class="sourceLine" id="cb1053-5" title="5"><span class="cf">while</span>(<span class="kw">Sys.time</span>() <span class="op">-</span><span class="st"> </span>startTime <span class="op">&lt;</span><span class="st"> </span><span class="dv">2</span>){</a>
-<a class="sourceLine" id="cb1053-6" title="6">  <span class="cf">if</span>(myGuess <span class="op">==</span><span class="st"> </span>myNumber){</a>
-<a class="sourceLine" id="cb1053-7" title="7">    numberGuess &lt;-<span class="st"> </span>numberGuess <span class="op">+</span><span class="st"> </span><span class="dv">1</span></a>
-<a class="sourceLine" id="cb1053-8" title="8">    <span class="kw">print</span>(<span class="st">&quot;Number found !&quot;</span>)</a>
-<a class="sourceLine" id="cb1053-9" title="9">    <span class="kw">print</span>(<span class="kw">paste0</span>(<span class="st">&quot;And I have plenty of time left: &quot;</span>, </a>
-<a class="sourceLine" id="cb1053-10" title="10">      <span class="kw">round</span>(<span class="dv">2</span> <span class="op">-</span><span class="st"> </span><span class="kw">as.numeric</span>(<span class="kw">Sys.time</span>() <span class="op">-</span><span class="st"> </span>startTime), <span class="dt">digits =</span> <span class="dv">2</span>), </a>
-<a class="sourceLine" id="cb1053-11" title="11">      <span class="st">&quot; sec&quot;</span>))</a>
-<a class="sourceLine" id="cb1053-12" title="12">    <span class="cf">break</span></a>
-<a class="sourceLine" id="cb1053-13" title="13">  }<span class="cf">else</span>{</a>
-<a class="sourceLine" id="cb1053-14" title="14">    myGuess &lt;-<span class="st"> </span><span class="kw">sample</span>(<span class="dt">x =</span> <span class="dv">10000</span>, <span class="dt">size =</span> <span class="dv">1</span>)</a>
-<a class="sourceLine" id="cb1053-15" title="15">    numberGuess &lt;-<span class="st"> </span>numberGuess <span class="op">+</span><span class="st"> </span><span class="dv">1</span></a>
-<a class="sourceLine" id="cb1053-16" title="16">  }</a>
-<a class="sourceLine" id="cb1053-17" title="17">}</a></code></pre></div>
+<div class="sourceCode" id="cb1057"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1057-1" title="1">myNumber &lt;-<span class="st"> </span><span class="kw">sample</span>(<span class="dt">x =</span> <span class="dv">10000</span>, <span class="dt">size =</span> <span class="dv">1</span>)</a>
+<a class="sourceLine" id="cb1057-2" title="2">myGuess &lt;-<span class="st"> </span><span class="kw">sample</span>(<span class="dt">x =</span> <span class="dv">10000</span>, <span class="dt">size =</span> <span class="dv">1</span>)</a>
+<a class="sourceLine" id="cb1057-3" title="3">startTime &lt;-<span class="st"> </span><span class="kw">Sys.time</span>()</a>
+<a class="sourceLine" id="cb1057-4" title="4">numberGuess &lt;-<span class="st"> </span><span class="dv">0</span></a>
+<a class="sourceLine" id="cb1057-5" title="5"><span class="cf">while</span>(<span class="kw">Sys.time</span>() <span class="op">-</span><span class="st"> </span>startTime <span class="op">&lt;</span><span class="st"> </span><span class="dv">2</span>){</a>
+<a class="sourceLine" id="cb1057-6" title="6">  <span class="cf">if</span>(myGuess <span class="op">==</span><span class="st"> </span>myNumber){</a>
+<a class="sourceLine" id="cb1057-7" title="7">    numberGuess &lt;-<span class="st"> </span>numberGuess <span class="op">+</span><span class="st"> </span><span class="dv">1</span></a>
+<a class="sourceLine" id="cb1057-8" title="8">    <span class="kw">print</span>(<span class="st">&quot;Number found !&quot;</span>)</a>
+<a class="sourceLine" id="cb1057-9" title="9">    <span class="kw">print</span>(<span class="kw">paste0</span>(<span class="st">&quot;And I have plenty of time left: &quot;</span>, </a>
+<a class="sourceLine" id="cb1057-10" title="10">      <span class="kw">round</span>(<span class="dv">2</span> <span class="op">-</span><span class="st"> </span><span class="kw">as.numeric</span>(<span class="kw">Sys.time</span>() <span class="op">-</span><span class="st"> </span>startTime), <span class="dt">digits =</span> <span class="dv">2</span>), </a>
+<a class="sourceLine" id="cb1057-11" title="11">      <span class="st">&quot; sec&quot;</span>))</a>
+<a class="sourceLine" id="cb1057-12" title="12">    <span class="cf">break</span></a>
+<a class="sourceLine" id="cb1057-13" title="13">  }<span class="cf">else</span>{</a>
+<a class="sourceLine" id="cb1057-14" title="14">    myGuess &lt;-<span class="st"> </span><span class="kw">sample</span>(<span class="dt">x =</span> <span class="dv">10000</span>, <span class="dt">size =</span> <span class="dv">1</span>)</a>
+<a class="sourceLine" id="cb1057-15" title="15">    numberGuess &lt;-<span class="st"> </span>numberGuess <span class="op">+</span><span class="st"> </span><span class="dv">1</span></a>
+<a class="sourceLine" id="cb1057-16" title="16">  }</a>
+<a class="sourceLine" id="cb1057-17" title="17">}</a></code></pre></div>
 <pre><code>## [1] &quot;Number found !&quot;
-## [1] &quot;And I have plenty of time left: 1.98 sec&quot;</code></pre>
+## [1] &quot;And I have plenty of time left: 1.63 sec&quot;</code></pre>
 <p>Dans ce script nous générons un nombre aléatoire à deviner avec la fonction <code>sample()</code>, et chaque essai avec la même fonction <code>sample()</code>. Ensuite nous utilisons la fonction <code>Sys.time()</code> (avec un S majuscule à <code>Sys</code>), pour connaître l’heure de début de la boucle. Tant que la différence entre chaque itération de la boucle et l’heure de démarrage est inférieur à 2 secondes, la boucle <code>while()</code> va vérifier si le bon nombre a été deviné dans le test logique avec <code>if()</code> puis si c’est le cas nous informer que le nombre a été trouvé, nous dire le temps restant avant les deux secondes, puis terminer la boucle avec le mot clef <code>break</code> sur lequel nous reviendrons. En bref, <code>break</code> permet de sortir d’une boucle. Si le nombre n’a pas été deviné, la boucle fait un autre essai avec la fonction <code>sample()</code>.</p>
 <p>Plus concrètement nous pourrions imaginer des algorithmes pour explorer un espace de solutions face à un problème avec un temps limité pour y parvenir. La boucle <code>while()</code> peut aussi être pratique pour qu’un script ne s’exécute que lorsque un fichier issu d’un autre programme devient disponible… En pratique la boucle <code>while()</code> reste peu utilisée avec R, car ce genre de script qui manipule des informations système (temps, fichiers, …) est plus communément réalisé avec d’autres langages comme Python.</p>
 </div>
 <div id="l17repeat" class="section level2">
 <h2><span class="header-section-number">8.5</span> La boucle <code>repeat</code></h2>
 <p>La boucle <code>repeat()</code> permet de répéter une opération sans condition à vérifier. Pour sortir de cette boucle il faut donc obligatoirement utiliser le mot clef <code>break</code>.</p>
-<div class="sourceCode" id="cb1055"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1055-1" title="1">i &lt;-<span class="st"> </span><span class="dv">1</span></a>
-<a class="sourceLine" id="cb1055-2" title="2"><span class="cf">repeat</span>{</a>
-<a class="sourceLine" id="cb1055-3" title="3">  <span class="kw">print</span>(i<span class="op">^</span><span class="dv">2</span>)</a>
-<a class="sourceLine" id="cb1055-4" title="4">  i &lt;-<span class="st"> </span>i <span class="op">+</span><span class="st"> </span><span class="dv">1</span></a>
-<a class="sourceLine" id="cb1055-5" title="5">  <span class="cf">if</span>(i <span class="op">==</span><span class="st"> </span><span class="dv">5</span>){</a>
-<a class="sourceLine" id="cb1055-6" title="6">    <span class="cf">break</span></a>
-<a class="sourceLine" id="cb1055-7" title="7">  }</a>
-<a class="sourceLine" id="cb1055-8" title="8">}</a></code></pre></div>
+<div class="sourceCode" id="cb1059"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1059-1" title="1">i &lt;-<span class="st"> </span><span class="dv">1</span></a>
+<a class="sourceLine" id="cb1059-2" title="2"><span class="cf">repeat</span>{</a>
+<a class="sourceLine" id="cb1059-3" title="3">  <span class="kw">print</span>(i<span class="op">^</span><span class="dv">2</span>)</a>
+<a class="sourceLine" id="cb1059-4" title="4">  i &lt;-<span class="st"> </span>i <span class="op">+</span><span class="st"> </span><span class="dv">1</span></a>
+<a class="sourceLine" id="cb1059-5" title="5">  <span class="cf">if</span>(i <span class="op">==</span><span class="st"> </span><span class="dv">5</span>){</a>
+<a class="sourceLine" id="cb1059-6" title="6">    <span class="cf">break</span></a>
+<a class="sourceLine" id="cb1059-7" title="7">  }</a>
+<a class="sourceLine" id="cb1059-8" title="8">}</a></code></pre></div>
 <pre><code>## [1] 1
 ## [1] 4
 ## [1] 9
 ## [1] 16</code></pre>
 <p>Si nous reprenons l’exemple précédent, nous pouvons utiliser une boucle <code>repeat()</code> pour le répéter 5 fois.</p>
-<div class="sourceCode" id="cb1057"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1057-1" title="1">numTry &lt;-<span class="st"> </span><span class="dv">0</span></a>
-<a class="sourceLine" id="cb1057-2" title="2"><span class="cf">repeat</span>{</a>
-<a class="sourceLine" id="cb1057-3" title="3">  myNumber &lt;-<span class="st"> </span><span class="kw">sample</span>(<span class="dt">x =</span> <span class="dv">10000</span>, <span class="dt">size =</span> <span class="dv">1</span>)</a>
-<a class="sourceLine" id="cb1057-4" title="4">  myGuess &lt;-<span class="st"> </span><span class="kw">sample</span>(<span class="dt">x =</span> <span class="dv">10000</span>, <span class="dt">size =</span> <span class="dv">1</span>)</a>
-<a class="sourceLine" id="cb1057-5" title="5">  startTime &lt;-<span class="st"> </span><span class="kw">Sys.time</span>()</a>
-<a class="sourceLine" id="cb1057-6" title="6">  numberGuess &lt;-<span class="st"> </span><span class="dv">0</span></a>
-<a class="sourceLine" id="cb1057-7" title="7">  <span class="cf">while</span>(<span class="kw">Sys.time</span>() <span class="op">-</span><span class="st"> </span>startTime <span class="op">&lt;</span><span class="st"> </span><span class="dv">2</span>){</a>
-<a class="sourceLine" id="cb1057-8" title="8">    <span class="cf">if</span>(myGuess <span class="op">==</span><span class="st"> </span>myNumber){</a>
-<a class="sourceLine" id="cb1057-9" title="9">      numberGuess &lt;-<span class="st"> </span>numberGuess <span class="op">+</span><span class="st"> </span><span class="dv">1</span></a>
-<a class="sourceLine" id="cb1057-10" title="10">      <span class="kw">print</span>(<span class="kw">round</span>(</a>
-<a class="sourceLine" id="cb1057-11" title="11">        <span class="kw">as.numeric</span>(<span class="kw">Sys.time</span>() <span class="op">-</span><span class="st"> </span>startTime), </a>
-<a class="sourceLine" id="cb1057-12" title="12">        <span class="dt">digits =</span> <span class="dv">3</span>))</a>
-<a class="sourceLine" id="cb1057-13" title="13">      <span class="cf">break</span></a>
-<a class="sourceLine" id="cb1057-14" title="14">    }<span class="cf">else</span>{</a>
-<a class="sourceLine" id="cb1057-15" title="15">      myGuess &lt;-<span class="st"> </span><span class="kw">sample</span>(<span class="dt">x =</span> <span class="dv">10000</span>, <span class="dt">size =</span> <span class="dv">1</span>)</a>
-<a class="sourceLine" id="cb1057-16" title="16">      numberGuess &lt;-<span class="st"> </span>numberGuess <span class="op">+</span><span class="st"> </span><span class="dv">1</span></a>
-<a class="sourceLine" id="cb1057-17" title="17">    }</a>
-<a class="sourceLine" id="cb1057-18" title="18">  }</a>
-<a class="sourceLine" id="cb1057-19" title="19">  numTry &lt;-<span class="st"> </span>numTry <span class="op">+</span><span class="st"> </span><span class="dv">1</span></a>
-<a class="sourceLine" id="cb1057-20" title="20">  <span class="cf">if</span>(numTry <span class="op">==</span><span class="st"> </span><span class="dv">5</span>){<span class="cf">break</span>}</a>
-<a class="sourceLine" id="cb1057-21" title="21">}</a></code></pre></div>
-<pre><code>## [1] 0.006
-## [1] 0.117
-## [1] 0.403
-## [1] 0.099
-## [1] 0.079</code></pre>
+<div class="sourceCode" id="cb1061"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1061-1" title="1">numTry &lt;-<span class="st"> </span><span class="dv">0</span></a>
+<a class="sourceLine" id="cb1061-2" title="2"><span class="cf">repeat</span>{</a>
+<a class="sourceLine" id="cb1061-3" title="3">  myNumber &lt;-<span class="st"> </span><span class="kw">sample</span>(<span class="dt">x =</span> <span class="dv">10000</span>, <span class="dt">size =</span> <span class="dv">1</span>)</a>
+<a class="sourceLine" id="cb1061-4" title="4">  myGuess &lt;-<span class="st"> </span><span class="kw">sample</span>(<span class="dt">x =</span> <span class="dv">10000</span>, <span class="dt">size =</span> <span class="dv">1</span>)</a>
+<a class="sourceLine" id="cb1061-5" title="5">  startTime &lt;-<span class="st"> </span><span class="kw">Sys.time</span>()</a>
+<a class="sourceLine" id="cb1061-6" title="6">  numberGuess &lt;-<span class="st"> </span><span class="dv">0</span></a>
+<a class="sourceLine" id="cb1061-7" title="7">  <span class="cf">while</span>(<span class="kw">Sys.time</span>() <span class="op">-</span><span class="st"> </span>startTime <span class="op">&lt;</span><span class="st"> </span><span class="dv">2</span>){</a>
+<a class="sourceLine" id="cb1061-8" title="8">    <span class="cf">if</span>(myGuess <span class="op">==</span><span class="st"> </span>myNumber){</a>
+<a class="sourceLine" id="cb1061-9" title="9">      numberGuess &lt;-<span class="st"> </span>numberGuess <span class="op">+</span><span class="st"> </span><span class="dv">1</span></a>
+<a class="sourceLine" id="cb1061-10" title="10">      <span class="kw">print</span>(<span class="kw">round</span>(</a>
+<a class="sourceLine" id="cb1061-11" title="11">        <span class="kw">as.numeric</span>(<span class="kw">Sys.time</span>() <span class="op">-</span><span class="st"> </span>startTime), </a>
+<a class="sourceLine" id="cb1061-12" title="12">        <span class="dt">digits =</span> <span class="dv">3</span>))</a>
+<a class="sourceLine" id="cb1061-13" title="13">      <span class="cf">break</span></a>
+<a class="sourceLine" id="cb1061-14" title="14">    }<span class="cf">else</span>{</a>
+<a class="sourceLine" id="cb1061-15" title="15">      myGuess &lt;-<span class="st"> </span><span class="kw">sample</span>(<span class="dt">x =</span> <span class="dv">10000</span>, <span class="dt">size =</span> <span class="dv">1</span>)</a>
+<a class="sourceLine" id="cb1061-16" title="16">      numberGuess &lt;-<span class="st"> </span>numberGuess <span class="op">+</span><span class="st"> </span><span class="dv">1</span></a>
+<a class="sourceLine" id="cb1061-17" title="17">    }</a>
+<a class="sourceLine" id="cb1061-18" title="18">  }</a>
+<a class="sourceLine" id="cb1061-19" title="19">  numTry &lt;-<span class="st"> </span>numTry <span class="op">+</span><span class="st"> </span><span class="dv">1</span></a>
+<a class="sourceLine" id="cb1061-20" title="20">  <span class="cf">if</span>(numTry <span class="op">==</span><span class="st"> </span><span class="dv">5</span>){<span class="cf">break</span>}</a>
+<a class="sourceLine" id="cb1061-21" title="21">}</a></code></pre></div>
+<pre><code>## [1] 0.222
+## [1] 0.614
+## [1] 0.365
+## [1] 0.351
+## [1] 0.674</code></pre>
 <p>Comme la boucle <code>while()</code>, la boucle <code>repeat()</code> reste peu utilisée avec R.</p>
 </div>
 <div id="l17spe" class="section level2">
 <h2><span class="header-section-number">8.6</span> <code>next</code> et <code>break</code></h2>
 <p>Nous avons déjà vu le mot clef <code>break</code> qui permet de sortir de la boucle en cours. Par exemple si nous cherchons le premier nombre après 111 qui soit divisible par 32 :</p>
-<div class="sourceCode" id="cb1059"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1059-1" title="1">myVars &lt;-<span class="st"> </span><span class="dv">111</span><span class="op">:</span><span class="dv">1000</span></a>
-<a class="sourceLine" id="cb1059-2" title="2"><span class="cf">for</span>(myVar <span class="cf">in</span> myVars){</a>
-<a class="sourceLine" id="cb1059-3" title="3">  <span class="cf">if</span>(myVar <span class="op">%%</span><span class="st"> </span><span class="dv">32</span> <span class="op">==</span><span class="st"> </span><span class="dv">0</span>){</a>
-<a class="sourceLine" id="cb1059-4" title="4">    <span class="kw">print</span>(myVar)</a>
-<a class="sourceLine" id="cb1059-5" title="5">    <span class="cf">break</span></a>
-<a class="sourceLine" id="cb1059-6" title="6">  }</a>
-<a class="sourceLine" id="cb1059-7" title="7">}</a></code></pre></div>
+<div class="sourceCode" id="cb1063"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1063-1" title="1">myVars &lt;-<span class="st"> </span><span class="dv">111</span><span class="op">:</span><span class="dv">1000</span></a>
+<a class="sourceLine" id="cb1063-2" title="2"><span class="cf">for</span>(myVar <span class="cf">in</span> myVars){</a>
+<a class="sourceLine" id="cb1063-3" title="3">  <span class="cf">if</span>(myVar <span class="op">%%</span><span class="st"> </span><span class="dv">32</span> <span class="op">==</span><span class="st"> </span><span class="dv">0</span>){</a>
+<a class="sourceLine" id="cb1063-4" title="4">    <span class="kw">print</span>(myVar)</a>
+<a class="sourceLine" id="cb1063-5" title="5">    <span class="cf">break</span></a>
+<a class="sourceLine" id="cb1063-6" title="6">  }</a>
+<a class="sourceLine" id="cb1063-7" title="7">}</a></code></pre></div>
 <pre><code>## [1] 128</code></pre>
 <p>Même si nous avons vu que dans la pratique nous pouvons éviter la boucle <code>for()</code> avec une opération sur les vecteurs. Avec une opération sur les vecteurs nous pourrions facilement calculer tous les nombres entre 111 et 1000 qui sont divisibles par 32.</p>
-<div class="sourceCode" id="cb1061"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1061-1" title="1">(<span class="dv">111</span><span class="op">:</span><span class="dv">1000</span>)[<span class="dv">111</span><span class="op">:</span><span class="dv">1000</span> <span class="op">%%</span><span class="st"> </span><span class="dv">32</span> <span class="op">==</span><span class="st"> </span><span class="dv">0</span>]</a></code></pre></div>
+<div class="sourceCode" id="cb1065"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1065-1" title="1">(<span class="dv">111</span><span class="op">:</span><span class="dv">1000</span>)[<span class="dv">111</span><span class="op">:</span><span class="dv">1000</span> <span class="op">%%</span><span class="st"> </span><span class="dv">32</span> <span class="op">==</span><span class="st"> </span><span class="dv">0</span>]</a></code></pre></div>
 <pre><code>##  [1] 128 160 192 224 256 288 320 352 384 416 448 480 512 544
 ## [15] 576 608 640 672 704 736 768 800 832 864 896 928 960 992</code></pre>
 <p>Le premier est 128, que nous pouvons récupérer avec <code>[1]</code>.</p>
-<div class="sourceCode" id="cb1063"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1063-1" title="1">(<span class="dv">111</span><span class="op">:</span><span class="dv">1000</span>)[<span class="dv">111</span><span class="op">:</span><span class="dv">1000</span> <span class="op">%%</span><span class="st"> </span><span class="dv">32</span> <span class="op">==</span><span class="st"> </span><span class="dv">0</span>][<span class="dv">1</span>]</a></code></pre></div>
+<div class="sourceCode" id="cb1067"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1067-1" title="1">(<span class="dv">111</span><span class="op">:</span><span class="dv">1000</span>)[<span class="dv">111</span><span class="op">:</span><span class="dv">1000</span> <span class="op">%%</span><span class="st"> </span><span class="dv">32</span> <span class="op">==</span><span class="st"> </span><span class="dv">0</span>][<span class="dv">1</span>]</a></code></pre></div>
 <pre><code>## [1] 128</code></pre>
 <p>Le mot clef <code>next</code> permet quant à lui de passer à l’itération suivante d’une boucle si une certaine condition est remplie. Par exemple si nous voulons imprimer les lettres de l’alphabet sans les voyelles :</p>
-<div class="sourceCode" id="cb1065"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1065-1" title="1"><span class="cf">for</span>(myLetter <span class="cf">in</span> letters){</a>
-<a class="sourceLine" id="cb1065-2" title="2">  <span class="cf">if</span>(myLetter <span class="op">%in%</span><span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;a&quot;</span>, <span class="st">&quot;e&quot;</span>, <span class="st">&quot;i&quot;</span>, <span class="st">&quot;o&quot;</span>, <span class="st">&quot;u&quot;</span>, <span class="st">&quot;y&quot;</span>)){</a>
-<a class="sourceLine" id="cb1065-3" title="3">    <span class="cf">next</span></a>
-<a class="sourceLine" id="cb1065-4" title="4">  }</a>
-<a class="sourceLine" id="cb1065-5" title="5">  <span class="kw">print</span>(myLetter)</a>
-<a class="sourceLine" id="cb1065-6" title="6">}</a></code></pre></div>
+<div class="sourceCode" id="cb1069"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1069-1" title="1"><span class="cf">for</span>(myLetter <span class="cf">in</span> letters){</a>
+<a class="sourceLine" id="cb1069-2" title="2">  <span class="cf">if</span>(myLetter <span class="op">%in%</span><span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;a&quot;</span>, <span class="st">&quot;e&quot;</span>, <span class="st">&quot;i&quot;</span>, <span class="st">&quot;o&quot;</span>, <span class="st">&quot;u&quot;</span>, <span class="st">&quot;y&quot;</span>)){</a>
+<a class="sourceLine" id="cb1069-3" title="3">    <span class="cf">next</span></a>
+<a class="sourceLine" id="cb1069-4" title="4">  }</a>
+<a class="sourceLine" id="cb1069-5" title="5">  <span class="kw">print</span>(myLetter)</a>
+<a class="sourceLine" id="cb1069-6" title="6">}</a></code></pre></div>
 <pre><code>## [1] &quot;b&quot;
 ## [1] &quot;c&quot;
 ## [1] &quot;d&quot;
@@ -832,7 +831,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## [1] &quot;x&quot;
 ## [1] &quot;z&quot;</code></pre>
 <p>Encore une fois nous pourrions éviter la boucle <code>for()</code> avec :</p>
-<div class="sourceCode" id="cb1067"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1067-1" title="1">letters[<span class="op">!</span><span class="st"> </span>letters <span class="op">%in%</span><span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;a&quot;</span>, <span class="st">&quot;e&quot;</span>, <span class="st">&quot;i&quot;</span>, <span class="st">&quot;o&quot;</span>, <span class="st">&quot;u&quot;</span>, <span class="st">&quot;y&quot;</span>)]</a></code></pre></div>
+<div class="sourceCode" id="cb1071"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1071-1" title="1">letters[<span class="op">!</span><span class="st"> </span>letters <span class="op">%in%</span><span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;a&quot;</span>, <span class="st">&quot;e&quot;</span>, <span class="st">&quot;i&quot;</span>, <span class="st">&quot;o&quot;</span>, <span class="st">&quot;u&quot;</span>, <span class="st">&quot;y&quot;</span>)]</a></code></pre></div>
 <pre><code>##  [1] &quot;b&quot; &quot;c&quot; &quot;d&quot; &quot;f&quot; &quot;g&quot; &quot;h&quot; &quot;j&quot; &quot;k&quot; &quot;l&quot; &quot;m&quot; &quot;n&quot; &quot;p&quot; &quot;q&quot; &quot;r&quot;
 ## [15] &quot;s&quot; &quot;t&quot; &quot;v&quot; &quot;w&quot; &quot;x&quot; &quot;z&quot;</code></pre>
 <p>En conclusion, si nous utilisons les boucles, alors les mots clefs <code>next</code> et <code>break</code> sont souvent très utiles, mais chaque fois que cela est possible il vaut mieux avoir recours à des opérations sur les vecteurs. Lorsque cela n’est pas possible de travailler sur les vecteurs, il est préférable d’utiliser les boucles de la famille <code>apply</code> qui sont le sujet de la prochaine section.</p>
@@ -842,185 +841,185 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="l17apply" class="section level3">
 <h3><span class="header-section-number">8.7.1</span> <code>apply</code></h3>
 <p>La fonction <code>apply()</code> permet d’appliquer une fonction à tous les éléments d’un <code>array</code> ou d’une <code>matrix</code>. Par exemple si nous souhaitons connaître la somme de chaque ligne d’une <code>matrix</code> de 10 colonnes et 100 lignes :</p>
-<div class="sourceCode" id="cb1069"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1069-1" title="1">myMat &lt;-<span class="st"> </span><span class="kw">matrix</span>(</a>
-<a class="sourceLine" id="cb1069-2" title="2">  <span class="kw">sample</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">100</span>, <span class="dt">size =</span> <span class="dv">1000</span>, <span class="dt">replace =</span> <span class="ot">TRUE</span>), </a>
-<a class="sourceLine" id="cb1069-3" title="3">  <span class="dt">ncol =</span> <span class="dv">10</span>)</a>
-<a class="sourceLine" id="cb1069-4" title="4"><span class="kw">apply</span>(<span class="dt">X =</span> myMat, <span class="dt">MARGIN =</span> <span class="dv">1</span>, <span class="dt">FUN =</span> sum)</a></code></pre></div>
-<pre><code>##   [1] 432 443 486 630 584 435 403 463 539 704 575 509 465
-##  [14] 493 348 474 538 423 540 622 536 423 488 526 638 510
-##  [27] 539 462 580 481 404 443 470 377 463 491 379 457 484
-##  [40] 329 352 406 301 360 417 525 593 628 636 362 567 304
-##  [53] 513 495 430 406 542 397 517 427 460 618 711 487 560
-##  [66] 596 452 362 415 496 436 499 466 344 698 616 401 563
-##  [79] 556 555 392 363 478 573 476 416 498 555 419 553 384
-##  [92] 410 564 610 404 601 585 557 447 554</code></pre>
+<div class="sourceCode" id="cb1073"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1073-1" title="1">myMat &lt;-<span class="st"> </span><span class="kw">matrix</span>(</a>
+<a class="sourceLine" id="cb1073-2" title="2">  <span class="kw">sample</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">100</span>, <span class="dt">size =</span> <span class="dv">1000</span>, <span class="dt">replace =</span> <span class="ot">TRUE</span>), </a>
+<a class="sourceLine" id="cb1073-3" title="3">  <span class="dt">ncol =</span> <span class="dv">10</span>)</a>
+<a class="sourceLine" id="cb1073-4" title="4"><span class="kw">apply</span>(<span class="dt">X =</span> myMat, <span class="dt">MARGIN =</span> <span class="dv">1</span>, <span class="dt">FUN =</span> sum)</a></code></pre></div>
+<pre><code>##   [1] 504 528 653 464 595 529 521 554 585 667 530 604 494
+##  [14] 511 487 481 543 496 583 594 606 495 487 515 539 483
+##  [27] 420 469 625 358 623 376 524 439 513 311 597 487 585
+##  [40] 458 360 390 489 491 671 576 417 596 348 459 562 491
+##  [53] 400 427 416 528 303 538 406 375 395 448 495 599 465
+##  [66] 522 363 473 545 416 450 625 555 442 505 408 680 517
+##  [79] 475 516 610 472 455 472 537 594 476 546 400 525 658
+##  [92] 448 718 621 594 656 570 482 543 502</code></pre>
 <p>Si nous souhaitons connaître la médiane de chaque colonne, l’expression devient :</p>
-<div class="sourceCode" id="cb1071"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1071-1" title="1"><span class="kw">apply</span>(<span class="dt">X =</span> myMat, <span class="dt">MARGIN =</span> <span class="dv">2</span>, <span class="dt">FUN =</span> median)</a></code></pre></div>
-<pre><code>##  [1] 41.0 46.0 48.5 48.5 45.5 56.0 42.0 49.0 60.0 42.5</code></pre>
+<div class="sourceCode" id="cb1075"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1075-1" title="1"><span class="kw">apply</span>(<span class="dt">X =</span> myMat, <span class="dt">MARGIN =</span> <span class="dv">2</span>, <span class="dt">FUN =</span> median)</a></code></pre></div>
+<pre><code>##  [1] 44.5 50.0 51.0 46.5 52.0 57.0 45.5 53.0 45.0 57.0</code></pre>
 <p>L’argument <code>X</code> correspond à l’objet sur lequel la boucle <code>apply</code> va itérer. L’argument <code>MARGIN</code> correspond à la dimension à prendre en compte (1 pour les lignes, et 2 pour les colonnes). L’argument <code>FUN</code> correspond à la fonction à appliquer. Sur un objet de type <code>array</code>, l’argument <code>MARGIN</code> peut prendre autant de valeurs que de dimensions. Dans cet exemple <code>MARGIN = 1</code> correspond à la moyenne de chaque ligne - dimension 1 - (toutes dimensions confondues), <code>MARGIN = 2</code> correspond à la moyenne de chaque colonne - dimension 2 - (toutes dimensions confondues), et <code>MARGIN = 3</code> correspond à la moyenne de chaque dimension 3. Ci-dessous chaque calcul est réalisé de deux manières différentes pour en expliciter le fonctionnement.</p>
-<div class="sourceCode" id="cb1073"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1073-1" title="1"><span class="co"># création de la matrix</span></a>
-<a class="sourceLine" id="cb1073-2" title="2">myArr &lt;-<span class="st"> </span><span class="kw">array</span>(</a>
-<a class="sourceLine" id="cb1073-3" title="3">  <span class="kw">sample</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">100</span>, <span class="dt">size =</span> <span class="dv">1000</span>, <span class="dt">replace =</span> <span class="ot">TRUE</span>), </a>
-<a class="sourceLine" id="cb1073-4" title="4">  <span class="dt">dim =</span> <span class="kw">c</span>(<span class="dv">10</span>, <span class="dv">20</span>, <span class="dv">5</span>))</a>
-<a class="sourceLine" id="cb1073-5" title="5"><span class="co"># Calcul avec APPLY</span></a>
-<a class="sourceLine" id="cb1073-6" title="6"><span class="kw">apply</span>(<span class="dt">X =</span> myArr, <span class="dt">MARGIN =</span> <span class="dv">1</span>, <span class="dt">FUN =</span> mean)</a></code></pre></div>
-<pre><code>##  [1] 46.97 56.79 48.53 49.01 47.95 58.29 50.63 54.54 50.45
-## [10] 49.56</code></pre>
-<div class="sourceCode" id="cb1075"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1075-1" title="1"><span class="co"># Calcul &quot;à la main&quot;</span></a>
-<a class="sourceLine" id="cb1075-2" title="2">(<span class="kw">apply</span>(myArr[,,<span class="dv">1</span>], <span class="dv">1</span>, mean) <span class="op">+</span><span class="st"> </span><span class="kw">apply</span>(myArr[,,<span class="dv">2</span>], <span class="dv">1</span>, mean) <span class="op">+</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb1075-3" title="3"><span class="st">  </span><span class="kw">apply</span>(myArr[,,<span class="dv">3</span>], <span class="dv">1</span>, mean) <span class="op">+</span><span class="st"> </span><span class="kw">apply</span>(myArr[,,<span class="dv">4</span>], <span class="dv">1</span>, mean) <span class="op">+</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb1075-4" title="4"><span class="st">  </span><span class="kw">apply</span>(myArr[,,<span class="dv">5</span>], <span class="dv">1</span>, mean))<span class="op">/</span><span class="dv">5</span></a></code></pre></div>
-<pre><code>##  [1] 46.97 56.79 48.53 49.01 47.95 58.29 50.63 54.54 50.45
-## [10] 49.56</code></pre>
-<div class="sourceCode" id="cb1077"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1077-1" title="1"><span class="co"># Calcul avec APPLY</span></a>
-<a class="sourceLine" id="cb1077-2" title="2"><span class="kw">apply</span>(<span class="dt">X =</span> myArr, <span class="dt">MARGIN =</span> <span class="dv">2</span>, <span class="dt">FUN =</span> mean)</a></code></pre></div>
-<pre><code>##  [1] 48.22 47.90 46.86 52.42 48.10 49.10 54.82 57.36 47.56
-## [10] 52.44 51.32 52.16 52.74 54.74 52.06 56.08 46.30 54.40
-## [19] 50.58 50.28</code></pre>
+<div class="sourceCode" id="cb1077"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1077-1" title="1"><span class="co"># création de la matrix</span></a>
+<a class="sourceLine" id="cb1077-2" title="2">myArr &lt;-<span class="st"> </span><span class="kw">array</span>(</a>
+<a class="sourceLine" id="cb1077-3" title="3">  <span class="kw">sample</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">100</span>, <span class="dt">size =</span> <span class="dv">1000</span>, <span class="dt">replace =</span> <span class="ot">TRUE</span>), </a>
+<a class="sourceLine" id="cb1077-4" title="4">  <span class="dt">dim =</span> <span class="kw">c</span>(<span class="dv">10</span>, <span class="dv">20</span>, <span class="dv">5</span>))</a>
+<a class="sourceLine" id="cb1077-5" title="5"><span class="co"># Calcul avec APPLY</span></a>
+<a class="sourceLine" id="cb1077-6" title="6"><span class="kw">apply</span>(<span class="dt">X =</span> myArr, <span class="dt">MARGIN =</span> <span class="dv">1</span>, <span class="dt">FUN =</span> mean)</a></code></pre></div>
+<pre><code>##  [1] 46.05 51.54 42.17 46.15 46.97 51.16 50.30 56.87 54.02
+## [10] 50.42</code></pre>
 <div class="sourceCode" id="cb1079"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1079-1" title="1"><span class="co"># Calcul &quot;à la main&quot;</span></a>
-<a class="sourceLine" id="cb1079-2" title="2">(<span class="kw">apply</span>(myArr[,,<span class="dv">1</span>], <span class="dv">2</span>, mean) <span class="op">+</span><span class="st"> </span><span class="kw">apply</span>(myArr[,,<span class="dv">2</span>], <span class="dv">2</span>, mean) <span class="op">+</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb1079-3" title="3"><span class="st">  </span><span class="kw">apply</span>(myArr[,,<span class="dv">3</span>], <span class="dv">2</span>, mean) <span class="op">+</span><span class="st"> </span><span class="kw">apply</span>(myArr[,,<span class="dv">4</span>], <span class="dv">2</span>, mean) <span class="op">+</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb1079-4" title="4"><span class="st">  </span><span class="kw">apply</span>(myArr[,,<span class="dv">5</span>], <span class="dv">2</span>, mean))<span class="op">/</span><span class="dv">5</span></a></code></pre></div>
-<pre><code>##  [1] 48.22 47.90 46.86 52.42 48.10 49.10 54.82 57.36 47.56
-## [10] 52.44 51.32 52.16 52.74 54.74 52.06 56.08 46.30 54.40
-## [19] 50.58 50.28</code></pre>
+<a class="sourceLine" id="cb1079-2" title="2">(<span class="kw">apply</span>(myArr[,,<span class="dv">1</span>], <span class="dv">1</span>, mean) <span class="op">+</span><span class="st"> </span><span class="kw">apply</span>(myArr[,,<span class="dv">2</span>], <span class="dv">1</span>, mean) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb1079-3" title="3"><span class="st">  </span><span class="kw">apply</span>(myArr[,,<span class="dv">3</span>], <span class="dv">1</span>, mean) <span class="op">+</span><span class="st"> </span><span class="kw">apply</span>(myArr[,,<span class="dv">4</span>], <span class="dv">1</span>, mean) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb1079-4" title="4"><span class="st">  </span><span class="kw">apply</span>(myArr[,,<span class="dv">5</span>], <span class="dv">1</span>, mean))<span class="op">/</span><span class="dv">5</span></a></code></pre></div>
+<pre><code>##  [1] 46.05 51.54 42.17 46.15 46.97 51.16 50.30 56.87 54.02
+## [10] 50.42</code></pre>
 <div class="sourceCode" id="cb1081"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1081-1" title="1"><span class="co"># Calcul avec APPLY</span></a>
-<a class="sourceLine" id="cb1081-2" title="2"><span class="kw">apply</span>(<span class="dt">X =</span> myArr, <span class="dt">MARGIN =</span> <span class="dv">3</span>, <span class="dt">FUN =</span> mean)</a></code></pre></div>
-<pre><code>## [1] 51.525 49.425 52.860 48.875 53.675</code></pre>
+<a class="sourceLine" id="cb1081-2" title="2"><span class="kw">apply</span>(<span class="dt">X =</span> myArr, <span class="dt">MARGIN =</span> <span class="dv">2</span>, <span class="dt">FUN =</span> mean)</a></code></pre></div>
+<pre><code>##  [1] 50.06 43.54 52.44 49.44 44.90 47.44 53.60 46.48 49.80
+## [10] 45.86 50.74 54.70 49.02 52.12 52.48 47.16 46.54 53.04
+## [19] 45.54 56.40</code></pre>
 <div class="sourceCode" id="cb1083"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1083-1" title="1"><span class="co"># Calcul &quot;à la main&quot;</span></a>
-<a class="sourceLine" id="cb1083-2" title="2"><span class="kw">c</span>(<span class="kw">mean</span>(myArr[,,<span class="dv">1</span>]), <span class="kw">mean</span>(myArr[,,<span class="dv">2</span>]), <span class="kw">mean</span>(myArr[,,<span class="dv">3</span>]), </a>
-<a class="sourceLine" id="cb1083-3" title="3">  <span class="kw">mean</span>(myArr[,,<span class="dv">4</span>]), <span class="kw">mean</span>(myArr[,,<span class="dv">5</span>]))</a></code></pre></div>
-<pre><code>## [1] 51.525 49.425 52.860 48.875 53.675</code></pre>
+<a class="sourceLine" id="cb1083-2" title="2">(<span class="kw">apply</span>(myArr[,,<span class="dv">1</span>], <span class="dv">2</span>, mean) <span class="op">+</span><span class="st"> </span><span class="kw">apply</span>(myArr[,,<span class="dv">2</span>], <span class="dv">2</span>, mean) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb1083-3" title="3"><span class="st">  </span><span class="kw">apply</span>(myArr[,,<span class="dv">3</span>], <span class="dv">2</span>, mean) <span class="op">+</span><span class="st"> </span><span class="kw">apply</span>(myArr[,,<span class="dv">4</span>], <span class="dv">2</span>, mean) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb1083-4" title="4"><span class="st">  </span><span class="kw">apply</span>(myArr[,,<span class="dv">5</span>], <span class="dv">2</span>, mean))<span class="op">/</span><span class="dv">5</span></a></code></pre></div>
+<pre><code>##  [1] 50.06 43.54 52.44 49.44 44.90 47.44 53.60 46.48 49.80
+## [10] 45.86 50.74 54.70 49.02 52.12 52.48 47.16 46.54 53.04
+## [19] 45.54 56.40</code></pre>
+<div class="sourceCode" id="cb1085"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1085-1" title="1"><span class="co"># Calcul avec APPLY</span></a>
+<a class="sourceLine" id="cb1085-2" title="2"><span class="kw">apply</span>(<span class="dt">X =</span> myArr, <span class="dt">MARGIN =</span> <span class="dv">3</span>, <span class="dt">FUN =</span> mean)</a></code></pre></div>
+<pre><code>## [1] 46.415 48.990 49.265 52.535 50.620</code></pre>
+<div class="sourceCode" id="cb1087"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1087-1" title="1"><span class="co"># Calcul &quot;à la main&quot;</span></a>
+<a class="sourceLine" id="cb1087-2" title="2"><span class="kw">c</span>(<span class="kw">mean</span>(myArr[,,<span class="dv">1</span>]), <span class="kw">mean</span>(myArr[,,<span class="dv">2</span>]), <span class="kw">mean</span>(myArr[,,<span class="dv">3</span>]), </a>
+<a class="sourceLine" id="cb1087-3" title="3">  <span class="kw">mean</span>(myArr[,,<span class="dv">4</span>]), <span class="kw">mean</span>(myArr[,,<span class="dv">5</span>]))</a></code></pre></div>
+<pre><code>## [1] 46.415 48.990 49.265 52.535 50.620</code></pre>
 <p>Nous pouvons aussi calculer la moyenne pour chaque valeur de ligne et de colonne (la fonction itère alors sur la dimension 3) :</p>
-<div class="sourceCode" id="cb1085"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1085-1" title="1"><span class="kw">apply</span>(<span class="dt">X =</span> myArr, <span class="dt">MARGIN =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>), <span class="dt">FUN =</span> mean)</a></code></pre></div>
+<div class="sourceCode" id="cb1089"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1089-1" title="1"><span class="kw">apply</span>(<span class="dt">X =</span> myArr, <span class="dt">MARGIN =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>), <span class="dt">FUN =</span> mean)</a></code></pre></div>
 <pre><code>##       [,1] [,2] [,3] [,4] [,5] [,6] [,7] [,8] [,9] [,10]
-##  [1,] 48.2 32.4 35.4 41.4 44.6 43.4 52.4 51.0 63.0  38.6
-##  [2,] 57.6 56.8 54.2 64.0 60.2 30.4 77.0 73.0 25.8  46.4
-##  [3,] 31.8 52.6 54.2 49.4 40.0 57.4 49.0 78.4 41.6  48.0
-##  [4,] 44.6 35.0 31.8 48.2 40.0 67.6 57.4 56.6 37.0  63.2
-##  [5,] 49.2 62.2 23.2 54.4 41.6 27.6 51.4 46.4 30.6  39.0
-##  [6,] 77.6 46.6 65.0 38.2 59.6 55.8 53.2 39.0 51.8  51.6
-##  [7,] 53.6 34.2 54.4 60.0 29.0 24.6 46.8 37.4 70.8  63.4
-##  [8,] 47.0 49.0 68.6 49.6 61.8 43.6 61.0 69.6 54.8  54.0
-##  [9,] 24.4 53.4 31.4 69.0 62.0 75.6 53.8 81.0 43.0  68.4
-## [10,] 48.2 56.8 50.4 50.0 42.2 65.0 46.2 41.2 57.2  51.8
+##  [1,] 46.8 48.0 57.8 33.2 37.6 67.6 63.0 47.0 63.2  35.6
+##  [2,] 43.0 55.2 57.0 52.0 54.0 45.4 53.2 60.2 51.2  41.4
+##  [3,] 51.6 28.8 40.2 40.0 47.0 48.4 37.6 38.4 17.2  39.2
+##  [4,] 63.2 37.4 34.2 52.6 58.4 45.8 29.2 39.2 56.8  18.8
+##  [5,] 68.4 29.6 55.0 32.2 29.2 33.6 57.2 55.6 49.0  53.6
+##  [6,] 44.0 47.6 73.0 61.4 46.4 32.4 68.8 43.0 65.4  63.0
+##  [7,] 51.8 43.2 54.2 53.0 37.0 30.0 57.8 37.6 37.8  50.8
+##  [8,] 59.8 47.4 42.0 63.2 72.2 60.0 66.6 47.2 40.2  57.0
+##  [9,] 44.4 45.0 67.4 65.0 28.0 40.4 44.4 62.6 64.4  58.8
+## [10,] 27.6 53.2 43.6 41.8 39.2 70.8 58.2 34.0 52.8  40.4
 ##       [,11] [,12] [,13] [,14] [,15] [,16] [,17] [,18] [,19]
-##  [1,]  57.4  36.6  61.8  40.6  56.8  41.6  35.0  48.6  49.0
-##  [2,]  58.8  61.6  37.2  77.4  71.0  51.0  50.6  59.4  60.6
-##  [3,]  40.0  44.6  34.2  45.4  49.6  49.2  48.2  51.4  61.0
-##  [4,]  31.0  58.2  42.8  56.8  46.4  45.2  63.0  51.8  60.2
-##  [5,]  61.2  42.4  52.4  71.4  50.6  73.4  56.8  52.6  43.2
-##  [6,]  53.6  67.2  74.8  60.6  51.8  66.8  64.8  74.2  57.6
-##  [7,]  62.0  56.2  53.6  50.6  35.0  68.2  53.4  57.6  52.8
-##  [8,]  63.0  59.8  42.2  54.4  46.4  58.4  31.2  61.8  48.2
-##  [9,]  42.2  45.8  66.0  37.6  47.0  52.6  36.8  41.2  33.6
-## [10,]  44.0  49.2  62.4  52.6  66.0  54.4  23.2  45.4  39.6
+##  [1,]  33.2  54.8  36.2  47.6  53.6  48.0  42.2  31.4  33.6
+##  [2,]  47.6  46.8  59.0  51.6  52.6  50.2  68.8  53.4  29.6
+##  [3,]  45.2  65.0  29.4  73.0  54.6  24.2  31.4  52.2  34.2
+##  [4,]  37.8  38.6  42.4  39.0  44.0  59.2  65.0  59.4  41.4
+##  [5,]  46.4  63.6  43.4  54.2  45.2  27.8  30.8  57.2  48.6
+##  [6,]  60.8  36.0  48.6  40.6  55.2  48.2  46.2  27.8  48.0
+##  [7,]  53.4  45.4  38.6  48.4  47.8  51.2  60.4  72.0  67.4
+##  [8,]  87.8  73.6  65.0  52.2  63.2  51.4  41.6  53.0  50.2
+##  [9,]  47.6  40.2  58.0  67.2  62.0  53.0  49.8  64.0  55.8
+## [10,]  47.6  83.0  69.6  47.4  46.6  58.4  29.2  60.0  46.6
 ##       [,20]
-##  [1,]  61.6
-##  [2,]  62.8
-##  [3,]  44.6
-##  [4,]  43.4
-##  [5,]  29.4
-##  [6,]  56.0
-##  [7,]  49.0
-##  [8,]  66.4
-##  [9,]  44.2
-## [10,]  45.4</code></pre>
+##  [1,]  40.6
+##  [2,]  58.6
+##  [3,]  45.8
+##  [4,]  60.6
+##  [5,]  58.8
+##  [6,]  66.8
+##  [7,]  68.2
+##  [8,]  43.8
+##  [9,]  62.4
+## [10,]  58.4</code></pre>
 </div>
 <div id="l17sapply" class="section level3">
 <h3><span class="header-section-number">8.7.2</span> <code>lapply</code></h3>
 <p>Comme indiqué dans la documentation, <code>lapply()</code> renvoie une liste de même longueur que <code>X</code>, chaque élément résultant de l’application de <code>FUN</code> à l’élément correspondant de <code>X</code>. Si <code>X</code> est une <code>list</code> contenant des <code>vector</code> et que nous cherchons à obtenir la moyenne de chacun des éléments de la <code>list</code>, nous pouvons utiliser la fonction <code>lapply()</code> :</p>
-<div class="sourceCode" id="cb1087"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1087-1" title="1"><span class="co"># Création de l&#39;objet myList</span></a>
-<a class="sourceLine" id="cb1087-2" title="2">myList &lt;-<span class="st"> </span><span class="kw">list</span>(</a>
-<a class="sourceLine" id="cb1087-3" title="3">  <span class="dt">a =</span> <span class="kw">sample</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">100</span>, <span class="dt">size =</span> <span class="dv">10</span>), </a>
-<a class="sourceLine" id="cb1087-4" title="4">  <span class="dt">b =</span> <span class="kw">sample</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">100</span>, <span class="dt">size =</span> <span class="dv">10</span>), </a>
-<a class="sourceLine" id="cb1087-5" title="5">  <span class="dt">c =</span> <span class="kw">sample</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">100</span>, <span class="dt">size =</span> <span class="dv">10</span>), </a>
-<a class="sourceLine" id="cb1087-6" title="6">  <span class="dt">d =</span> <span class="kw">sample</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">100</span>, <span class="dt">size =</span> <span class="dv">10</span>), </a>
-<a class="sourceLine" id="cb1087-7" title="7">  <span class="dt">e =</span> <span class="kw">sample</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">100</span>, <span class="dt">size =</span> <span class="dv">10</span>)</a>
-<a class="sourceLine" id="cb1087-8" title="8">)</a>
-<a class="sourceLine" id="cb1087-9" title="9"><span class="kw">print</span>(myList)</a></code></pre></div>
+<div class="sourceCode" id="cb1091"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1091-1" title="1"><span class="co"># Création de l&#39;objet myList</span></a>
+<a class="sourceLine" id="cb1091-2" title="2">myList &lt;-<span class="st"> </span><span class="kw">list</span>(</a>
+<a class="sourceLine" id="cb1091-3" title="3">  <span class="dt">a =</span> <span class="kw">sample</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">100</span>, <span class="dt">size =</span> <span class="dv">10</span>), </a>
+<a class="sourceLine" id="cb1091-4" title="4">  <span class="dt">b =</span> <span class="kw">sample</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">100</span>, <span class="dt">size =</span> <span class="dv">10</span>), </a>
+<a class="sourceLine" id="cb1091-5" title="5">  <span class="dt">c =</span> <span class="kw">sample</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">100</span>, <span class="dt">size =</span> <span class="dv">10</span>), </a>
+<a class="sourceLine" id="cb1091-6" title="6">  <span class="dt">d =</span> <span class="kw">sample</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">100</span>, <span class="dt">size =</span> <span class="dv">10</span>), </a>
+<a class="sourceLine" id="cb1091-7" title="7">  <span class="dt">e =</span> <span class="kw">sample</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">100</span>, <span class="dt">size =</span> <span class="dv">10</span>)</a>
+<a class="sourceLine" id="cb1091-8" title="8">)</a>
+<a class="sourceLine" id="cb1091-9" title="9"><span class="kw">print</span>(myList)</a></code></pre></div>
 <pre><code>## $a
-##  [1] 87  6 11 40 12 35 14 69 72 44
+##  [1] 88 14 70 48 43  8 52 45 92 51
 ## 
 ## $b
-##  [1] 93 54 50  5  1 49  7 77  3 60
+##  [1] 68 88  9 31 22 15 62 12 74 99
 ## 
 ## $c
-##  [1] 29 18 58 77  8 97 67 26 59 82
+##  [1] 71 91 99 34 65 97 68 90 83 14
 ## 
 ## $d
-##  [1] 63 67 12 52 16 24 68 33 90 70
+##  [1] 42 78 13 86 84 16 36 69 96 39
 ## 
 ## $e
-##  [1] 55 52 72 93  2 43 50  6 96  8</code></pre>
-<div class="sourceCode" id="cb1089"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1089-1" title="1"><span class="co"># Fonction moyenne appliquée à chacun des</span></a>
-<a class="sourceLine" id="cb1089-2" title="2"><span class="co"># éléments de la list</span></a>
-<a class="sourceLine" id="cb1089-3" title="3"><span class="kw">lapply</span>(myList, <span class="dt">FUN =</span> mean)</a></code></pre></div>
+##  [1] 27  8  3 55 66 84 47 45 58 75</code></pre>
+<div class="sourceCode" id="cb1093"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1093-1" title="1"><span class="co"># Fonction moyenne appliquée à chacun des</span></a>
+<a class="sourceLine" id="cb1093-2" title="2"><span class="co"># éléments de la list</span></a>
+<a class="sourceLine" id="cb1093-3" title="3"><span class="kw">lapply</span>(myList, <span class="dt">FUN =</span> mean)</a></code></pre></div>
 <pre><code>## $a
-## [1] 39
+## [1] 51.1
 ## 
 ## $b
-## [1] 39.9
+## [1] 48
 ## 
 ## $c
-## [1] 52.1
+## [1] 71.2
 ## 
 ## $d
-## [1] 49.5
+## [1] 55.9
 ## 
 ## $e
-## [1] 47.7</code></pre>
+## [1] 46.8</code></pre>
 <p>Cela revient à une boucle <code>for()</code> itérant sur les élément de l’objet de type <code>list</code>.</p>
-<div class="sourceCode" id="cb1091"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1091-1" title="1"><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="kw">length</span>(myList)){</a>
-<a class="sourceLine" id="cb1091-2" title="2">  <span class="kw">mean</span>(myList[[i]])</a>
-<a class="sourceLine" id="cb1091-3" title="3">}</a></code></pre></div>
+<div class="sourceCode" id="cb1095"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1095-1" title="1"><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="kw">length</span>(myList)){</a>
+<a class="sourceLine" id="cb1095-2" title="2">  <span class="kw">mean</span>(myList[[i]])</a>
+<a class="sourceLine" id="cb1095-3" title="3">}</a></code></pre></div>
 <p>Cependant, la boucle <code>for()</code> ne renvoie pas de résultat. Pour l’obtenir, nous devons au préalable créer un objet qui va contenir notre résultat. A chaque itération de la boucle <code>for()</code>, le résultat sera affecté à l’élément correspondant de notre objet.</p>
-<div class="sourceCode" id="cb1092"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1092-1" title="1">myResult &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="dt">a =</span> <span class="ot">NULL</span>, <span class="dt">b =</span> <span class="ot">NULL</span>, <span class="dt">c =</span> <span class="ot">NULL</span>, </a>
-<a class="sourceLine" id="cb1092-2" title="2">  <span class="dt">d =</span> <span class="ot">NULL</span>, <span class="dt">e =</span> <span class="ot">NULL</span>)</a>
-<a class="sourceLine" id="cb1092-3" title="3"><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="kw">length</span>(myList)){</a>
-<a class="sourceLine" id="cb1092-4" title="4">  myResult[[i]] &lt;-<span class="st"> </span><span class="kw">mean</span>(myList[[i]])</a>
-<a class="sourceLine" id="cb1092-5" title="5">}</a>
-<a class="sourceLine" id="cb1092-6" title="6"><span class="kw">print</span>(myResult)</a></code></pre></div>
+<div class="sourceCode" id="cb1096"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1096-1" title="1">myResult &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="dt">a =</span> <span class="ot">NULL</span>, <span class="dt">b =</span> <span class="ot">NULL</span>, <span class="dt">c =</span> <span class="ot">NULL</span>, </a>
+<a class="sourceLine" id="cb1096-2" title="2">  <span class="dt">d =</span> <span class="ot">NULL</span>, <span class="dt">e =</span> <span class="ot">NULL</span>)</a>
+<a class="sourceLine" id="cb1096-3" title="3"><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="kw">length</span>(myList)){</a>
+<a class="sourceLine" id="cb1096-4" title="4">  myResult[[i]] &lt;-<span class="st"> </span><span class="kw">mean</span>(myList[[i]])</a>
+<a class="sourceLine" id="cb1096-5" title="5">}</a>
+<a class="sourceLine" id="cb1096-6" title="6"><span class="kw">print</span>(myResult)</a></code></pre></div>
 <pre><code>## $a
-## [1] 39
+## [1] 51.1
 ## 
 ## $b
-## [1] 39.9
+## [1] 48
 ## 
 ## $c
-## [1] 52.1
+## [1] 71.2
 ## 
 ## $d
-## [1] 49.5
+## [1] 55.9
 ## 
 ## $e
-## [1] 47.7</code></pre>
+## [1] 46.8</code></pre>
 <p>Nous comprenons alors que la fonction <code>lapply()</code> est bien plus performante car elle va à la fois permettre de procéder à notre tâche tout en fournissant un résultat qui peut être stocké directement dans un objet (ou pas comme c’est le cas ici).</p>
 <p>Comme pour la fonction <code>apply()</code>, nous pouvons passer des arguments supplémentaires à la fonction <code>lapply()</code> en les ajoutant à la suite de la fonction. C’est par exemple utile si notre <code>list</code> contient ces valeurs manquantes <code>NA</code> et que nous voulons les ignorer pour le calcul des moyennes (avec l’argument <code>na.rm = TRUE</code>).</p>
-<div class="sourceCode" id="cb1094"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1094-1" title="1"><span class="co"># Création de l&#39;objet myList</span></a>
-<a class="sourceLine" id="cb1094-2" title="2">myList &lt;-<span class="st"> </span><span class="kw">list</span>(</a>
-<a class="sourceLine" id="cb1094-3" title="3">  <span class="dt">a =</span> <span class="kw">sample</span>(<span class="kw">c</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, <span class="ot">NA</span>), <span class="dt">size =</span> <span class="dv">10</span>, <span class="dt">replace =</span> <span class="ot">TRUE</span>), </a>
-<a class="sourceLine" id="cb1094-4" title="4">  <span class="dt">b =</span> <span class="kw">sample</span>(<span class="kw">c</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, <span class="ot">NA</span>), <span class="dt">size =</span> <span class="dv">10</span>, <span class="dt">replace =</span> <span class="ot">TRUE</span>), </a>
-<a class="sourceLine" id="cb1094-5" title="5">  <span class="dt">c =</span> <span class="kw">sample</span>(<span class="kw">c</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, <span class="ot">NA</span>), <span class="dt">size =</span> <span class="dv">10</span>, <span class="dt">replace =</span> <span class="ot">TRUE</span>), </a>
-<a class="sourceLine" id="cb1094-6" title="6">  <span class="dt">d =</span> <span class="kw">sample</span>(<span class="kw">c</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, <span class="ot">NA</span>), <span class="dt">size =</span> <span class="dv">10</span>, <span class="dt">replace =</span> <span class="ot">TRUE</span>), </a>
-<a class="sourceLine" id="cb1094-7" title="7">  <span class="dt">e =</span> <span class="kw">sample</span>(<span class="kw">c</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, <span class="ot">NA</span>), <span class="dt">size =</span> <span class="dv">10</span>, <span class="dt">replace =</span> <span class="ot">TRUE</span>)</a>
-<a class="sourceLine" id="cb1094-8" title="8">)</a>
-<a class="sourceLine" id="cb1094-9" title="9"><span class="kw">print</span>(myList)</a></code></pre></div>
+<div class="sourceCode" id="cb1098"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1098-1" title="1"><span class="co"># Création de l&#39;objet myList</span></a>
+<a class="sourceLine" id="cb1098-2" title="2">myList &lt;-<span class="st"> </span><span class="kw">list</span>(</a>
+<a class="sourceLine" id="cb1098-3" title="3">  <span class="dt">a =</span> <span class="kw">sample</span>(<span class="kw">c</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, <span class="ot">NA</span>), <span class="dt">size =</span> <span class="dv">10</span>, <span class="dt">replace =</span> <span class="ot">TRUE</span>), </a>
+<a class="sourceLine" id="cb1098-4" title="4">  <span class="dt">b =</span> <span class="kw">sample</span>(<span class="kw">c</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, <span class="ot">NA</span>), <span class="dt">size =</span> <span class="dv">10</span>, <span class="dt">replace =</span> <span class="ot">TRUE</span>), </a>
+<a class="sourceLine" id="cb1098-5" title="5">  <span class="dt">c =</span> <span class="kw">sample</span>(<span class="kw">c</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, <span class="ot">NA</span>), <span class="dt">size =</span> <span class="dv">10</span>, <span class="dt">replace =</span> <span class="ot">TRUE</span>), </a>
+<a class="sourceLine" id="cb1098-6" title="6">  <span class="dt">d =</span> <span class="kw">sample</span>(<span class="kw">c</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, <span class="ot">NA</span>), <span class="dt">size =</span> <span class="dv">10</span>, <span class="dt">replace =</span> <span class="ot">TRUE</span>), </a>
+<a class="sourceLine" id="cb1098-7" title="7">  <span class="dt">e =</span> <span class="kw">sample</span>(<span class="kw">c</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, <span class="ot">NA</span>), <span class="dt">size =</span> <span class="dv">10</span>, <span class="dt">replace =</span> <span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb1098-8" title="8">)</a>
+<a class="sourceLine" id="cb1098-9" title="9"><span class="kw">print</span>(myList)</a></code></pre></div>
 <pre><code>## $a
-##  [1]  2  4 NA  4  5  2  3 NA  5  1
+##  [1]  1  4  5  3 NA  1  4 NA  5  5
 ## 
 ## $b
-##  [1]  1  5 NA  1  2  3  1  3 NA  5
+##  [1] NA  4 NA  4  3  2  1  4  1  2
 ## 
 ## $c
-##  [1]  5 NA  5  5  5  4  3  2  1  3
+##  [1]  2  5  1  1 NA  2  1  1  2  4
 ## 
 ## $d
-##  [1] NA  4  4  3  1  2  5  2  3  1
+##  [1]  3  5  1  2 NA  3  2 NA  1  4
 ## 
 ## $e
-##  [1]  3  1  3  1  1 NA NA  1 NA NA</code></pre>
-<div class="sourceCode" id="cb1096"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1096-1" title="1"><span class="kw">lapply</span>(myList, <span class="dt">FUN =</span> mean)</a></code></pre></div>
+##  [1] NA  1  5  5  4  2  3  1  2  5</code></pre>
+<div class="sourceCode" id="cb1100"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1100-1" title="1"><span class="kw">lapply</span>(myList, <span class="dt">FUN =</span> mean)</a></code></pre></div>
 <pre><code>## $a
 ## [1] NA
 ## 
@@ -1035,198 +1034,198 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 
 ## $e
 ## [1] NA</code></pre>
-<div class="sourceCode" id="cb1098"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1098-1" title="1"><span class="kw">lapply</span>(myList, <span class="dt">FUN =</span> mean, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb1102"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1102-1" title="1"><span class="kw">lapply</span>(myList, <span class="dt">FUN =</span> mean, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)</a></code></pre></div>
 <pre><code>## $a
-## [1] 3.25
+## [1] 3.5
 ## 
 ## $b
 ## [1] 2.625
 ## 
 ## $c
-## [1] 3.666667
+## [1] 2.111111
 ## 
 ## $d
-## [1] 2.777778
+## [1] 2.625
 ## 
 ## $e
-## [1] 1.666667</code></pre>
+## [1] 3.111111</code></pre>
 <p>Pour plus de lisibilité ou si plusieurs opérations sont à réaliser au sein de l’argument <code>FUN</code>, nous pouvons utiliser l’écriture suivante :</p>
-<div class="sourceCode" id="cb1100"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1100-1" title="1"><span class="kw">lapply</span>(myList, <span class="dt">FUN =</span> <span class="cf">function</span>(i){</a>
-<a class="sourceLine" id="cb1100-2" title="2">  <span class="kw">mean</span>(i, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)</a>
-<a class="sourceLine" id="cb1100-3" title="3">})</a></code></pre></div>
-<pre><code>## $a
-## [1] 3.25
-## 
-## $b
-## [1] 2.625
-## 
-## $c
-## [1] 3.666667
-## 
-## $d
-## [1] 2.777778
-## 
-## $e
-## [1] 1.666667</code></pre>
-<p>Par exemple si nous souhaitons obtenir <code>i^2</code> si la moyenne est supérieure à 3, et <code>i^3</code> sinon :</p>
-<div class="sourceCode" id="cb1102"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1102-1" title="1"><span class="kw">lapply</span>(myList, <span class="dt">FUN =</span> <span class="cf">function</span>(i){</a>
-<a class="sourceLine" id="cb1102-2" title="2">  m &lt;-<span class="st"> </span><span class="kw">mean</span>(i, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)</a>
-<a class="sourceLine" id="cb1102-3" title="3">  <span class="cf">if</span>(m <span class="op">&gt;</span><span class="st"> </span><span class="dv">3</span>){</a>
-<a class="sourceLine" id="cb1102-4" title="4">    <span class="kw">return</span>(i<span class="op">^</span><span class="dv">2</span>)  </a>
-<a class="sourceLine" id="cb1102-5" title="5">  }<span class="cf">else</span>{</a>
-<a class="sourceLine" id="cb1102-6" title="6">    <span class="kw">return</span>(i<span class="op">^</span><span class="dv">3</span>)</a>
-<a class="sourceLine" id="cb1102-7" title="7">  }</a>
-<a class="sourceLine" id="cb1102-8" title="8">})</a></code></pre></div>
-<pre><code>## $a
-##  [1]  4 16 NA 16 25  4  9 NA 25  1
-## 
-## $b
-##  [1]   1 125  NA   1   8  27   1  27  NA 125
-## 
-## $c
-##  [1] 25 NA 25 25 25 16  9  4  1  9
-## 
-## $d
-##  [1]  NA  64  64  27   1   8 125   8  27   1
-## 
-## $e
-##  [1] 27  1 27  1  1 NA NA  1 NA NA</code></pre>
-</div>
-<div id="l17lapply" class="section level3">
-<h3><span class="header-section-number">8.7.3</span> <code>sapply</code></h3>
-<p>La fonction <code>sapply()</code> est une version modifiée de la fonction <code>lapply()</code> qui effectue la même opération mais en renvoyant le résultat sous un format simplifié lorsque c’est possible.</p>
 <div class="sourceCode" id="cb1104"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1104-1" title="1"><span class="kw">lapply</span>(myList, <span class="dt">FUN =</span> <span class="cf">function</span>(i){</a>
 <a class="sourceLine" id="cb1104-2" title="2">  <span class="kw">mean</span>(i, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)</a>
 <a class="sourceLine" id="cb1104-3" title="3">})</a></code></pre></div>
 <pre><code>## $a
-## [1] 3.25
+## [1] 3.5
 ## 
 ## $b
 ## [1] 2.625
 ## 
 ## $c
-## [1] 3.666667
+## [1] 2.111111
 ## 
 ## $d
-## [1] 2.777778
+## [1] 2.625
 ## 
 ## $e
-## [1] 1.666667</code></pre>
-<div class="sourceCode" id="cb1106"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1106-1" title="1"><span class="kw">sapply</span>(myList, <span class="dt">FUN =</span> <span class="cf">function</span>(i){</a>
-<a class="sourceLine" id="cb1106-2" title="2">  <span class="kw">mean</span>(i, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)</a>
-<a class="sourceLine" id="cb1106-3" title="3">})</a></code></pre></div>
+## [1] 3.111111</code></pre>
+<p>Par exemple si nous souhaitons obtenir <code>i^2</code> si la moyenne est supérieure à 3, et <code>i^3</code> sinon :</p>
+<div class="sourceCode" id="cb1106"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1106-1" title="1"><span class="kw">lapply</span>(myList, <span class="dt">FUN =</span> <span class="cf">function</span>(i){</a>
+<a class="sourceLine" id="cb1106-2" title="2">  m &lt;-<span class="st"> </span><span class="kw">mean</span>(i, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb1106-3" title="3">  <span class="cf">if</span>(m <span class="op">&gt;</span><span class="st"> </span><span class="dv">3</span>){</a>
+<a class="sourceLine" id="cb1106-4" title="4">    <span class="kw">return</span>(i<span class="op">^</span><span class="dv">2</span>)  </a>
+<a class="sourceLine" id="cb1106-5" title="5">  }<span class="cf">else</span>{</a>
+<a class="sourceLine" id="cb1106-6" title="6">    <span class="kw">return</span>(i<span class="op">^</span><span class="dv">3</span>)</a>
+<a class="sourceLine" id="cb1106-7" title="7">  }</a>
+<a class="sourceLine" id="cb1106-8" title="8">})</a></code></pre></div>
+<pre><code>## $a
+##  [1]  1 16 25  9 NA  1 16 NA 25 25
+## 
+## $b
+##  [1] NA 64 NA 64 27  8  1 64  1  8
+## 
+## $c
+##  [1]   8 125   1   1  NA   8   1   1   8  64
+## 
+## $d
+##  [1]  27 125   1   8  NA  27   8  NA   1  64
+## 
+## $e
+##  [1] NA  1 25 25 16  4  9  1  4 25</code></pre>
+</div>
+<div id="l17lapply" class="section level3">
+<h3><span class="header-section-number">8.7.3</span> <code>sapply</code></h3>
+<p>La fonction <code>sapply()</code> est une version modifiée de la fonction <code>lapply()</code> qui effectue la même opération mais en renvoyant le résultat sous un format simplifié lorsque c’est possible.</p>
+<div class="sourceCode" id="cb1108"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1108-1" title="1"><span class="kw">lapply</span>(myList, <span class="dt">FUN =</span> <span class="cf">function</span>(i){</a>
+<a class="sourceLine" id="cb1108-2" title="2">  <span class="kw">mean</span>(i, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb1108-3" title="3">})</a></code></pre></div>
+<pre><code>## $a
+## [1] 3.5
+## 
+## $b
+## [1] 2.625
+## 
+## $c
+## [1] 2.111111
+## 
+## $d
+## [1] 2.625
+## 
+## $e
+## [1] 3.111111</code></pre>
+<div class="sourceCode" id="cb1110"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1110-1" title="1"><span class="kw">sapply</span>(myList, <span class="dt">FUN =</span> <span class="cf">function</span>(i){</a>
+<a class="sourceLine" id="cb1110-2" title="2">  <span class="kw">mean</span>(i, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb1110-3" title="3">})</a></code></pre></div>
 <pre><code>##        a        b        c        d        e 
-## 3.250000 2.625000 3.666667 2.777778 1.666667</code></pre>
+## 3.500000 2.625000 2.111111 2.625000 3.111111</code></pre>
 <p>La fonction <code>sapply()</code> est intéressante pour récupérer par exemple le nième élément de chacun des éléments d’une <code>list</code>. La fonction qui est appelée pour faire cela est <code>'[['</code>.</p>
-<div class="sourceCode" id="cb1108"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1108-1" title="1"><span class="kw">sapply</span>(myList, <span class="dt">FUN =</span> <span class="st">&#39;[[&#39;</span>, <span class="dv">2</span>)</a></code></pre></div>
-<pre><code>##  a  b  c  d  e 
-##  4  5 NA  4  1</code></pre>
+<div class="sourceCode" id="cb1112"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1112-1" title="1"><span class="kw">sapply</span>(myList, <span class="dt">FUN =</span> <span class="st">&#39;[[&#39;</span>, <span class="dv">2</span>)</a></code></pre></div>
+<pre><code>## a b c d e 
+## 4 4 5 5 1</code></pre>
 </div>
 <div id="l17tapply" class="section level3">
 <h3><span class="header-section-number">8.7.4</span> <code>tapply</code></h3>
 <p>La fonction <code>tapply()</code> permet d’appliquer une fonction en prenant comme élément à itérer une variable existante. Imaginons des informations sur des espèces représentées par des lettres majuscules (e.g., A, B, C) et des valeurs de performances à différentes localisations.</p>
-<div class="sourceCode" id="cb1110"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1110-1" title="1">species &lt;-<span class="st"> </span><span class="kw">sample</span>(LETTERS[<span class="dv">1</span><span class="op">:</span><span class="dv">10</span>], <span class="dt">size =</span> <span class="dv">1000</span>, <span class="dt">replace =</span> <span class="ot">TRUE</span>)</a>
-<a class="sourceLine" id="cb1110-2" title="2">perf1 &lt;-<span class="st"> </span><span class="kw">rnorm</span>(<span class="dt">n =</span> <span class="dv">1000</span>, <span class="dt">mean =</span> <span class="dv">10</span>, <span class="dt">sd =</span> <span class="fl">0.5</span>)</a>
-<a class="sourceLine" id="cb1110-3" title="3">perf2 &lt;-<span class="st"> </span><span class="kw">rlnorm</span>(<span class="dt">n =</span> <span class="dv">1000</span>, <span class="dt">meanlog =</span> <span class="dv">10</span>, <span class="dt">sdlog =</span> <span class="fl">0.5</span>)</a>
-<a class="sourceLine" id="cb1110-4" title="4">perf3 &lt;-<span class="st"> </span><span class="kw">rgamma</span>(<span class="dt">n =</span> <span class="dv">1000</span>, <span class="dt">shape =</span> <span class="dv">10</span>, <span class="dt">rate =</span> <span class="fl">0.5</span>)</a>
-<a class="sourceLine" id="cb1110-5" title="5">dfSpecies &lt;-<span class="st"> </span><span class="kw">data.frame</span>(species, perf1, perf2, perf3)</a>
-<a class="sourceLine" id="cb1110-6" title="6"><span class="kw">print</span>(<span class="kw">head</span>(dfSpecies, <span class="dt">n =</span> <span class="dv">10</span>))</a></code></pre></div>
-<pre><code>##    species     perf1     perf2     perf3
-## 1        E 10.064470 25079.497 21.444571
-## 2        G 10.259490 23861.442  9.559526
-## 3        G 10.575444 44489.265 14.657863
-## 4        H 10.063867 12907.235 18.943748
-## 5        G 10.972518 38677.771 21.980186
-## 6        A 10.394055 15031.746 14.706717
-## 7        I  9.920184  7751.328 18.358473
-## 8        J 10.163135 20080.961 25.749347
-## 9        A  9.700490 14502.111 17.876171
-## 10       J 10.098620 13373.332 15.354093</code></pre>
+<div class="sourceCode" id="cb1114"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1114-1" title="1">species &lt;-<span class="st"> </span><span class="kw">sample</span>(LETTERS[<span class="dv">1</span><span class="op">:</span><span class="dv">10</span>], <span class="dt">size =</span> <span class="dv">1000</span>, <span class="dt">replace =</span> <span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb1114-2" title="2">perf1 &lt;-<span class="st"> </span><span class="kw">rnorm</span>(<span class="dt">n =</span> <span class="dv">1000</span>, <span class="dt">mean =</span> <span class="dv">10</span>, <span class="dt">sd =</span> <span class="fl">0.5</span>)</a>
+<a class="sourceLine" id="cb1114-3" title="3">perf2 &lt;-<span class="st"> </span><span class="kw">rlnorm</span>(<span class="dt">n =</span> <span class="dv">1000</span>, <span class="dt">meanlog =</span> <span class="dv">10</span>, <span class="dt">sdlog =</span> <span class="fl">0.5</span>)</a>
+<a class="sourceLine" id="cb1114-4" title="4">perf3 &lt;-<span class="st"> </span><span class="kw">rgamma</span>(<span class="dt">n =</span> <span class="dv">1000</span>, <span class="dt">shape =</span> <span class="dv">10</span>, <span class="dt">rate =</span> <span class="fl">0.5</span>)</a>
+<a class="sourceLine" id="cb1114-5" title="5">dfSpecies &lt;-<span class="st"> </span><span class="kw">data.frame</span>(species, perf1, perf2, perf3)</a>
+<a class="sourceLine" id="cb1114-6" title="6"><span class="kw">print</span>(<span class="kw">head</span>(dfSpecies, <span class="dt">n =</span> <span class="dv">10</span>))</a></code></pre></div>
+<pre><code>##    species     perf1    perf2    perf3
+## 1        D  9.989003 13809.29 22.09284
+## 2        F  9.851623 24995.09 18.87333
+## 3        H  9.101762 49009.14 15.77890
+## 4        B 11.211700 32048.74 13.83819
+## 5        J 10.130943 21274.68 20.46743
+## 6        D 10.608555 19376.20 14.35675
+## 7        D  9.735519 52635.76 24.18117
+## 8        B 10.085270 50306.58 32.37325
+## 9        D  9.123710 19765.22 15.16309
+## 10       C 10.239711 21088.63 13.67764</code></pre>
 <p>Nous pouvons facilement obtenir un résumé des performances pour chaque espèce avec la fonction <code>tapply()</code> et la fonction <code>summary()</code>.</p>
-<div class="sourceCode" id="cb1112"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1112-1" title="1"><span class="kw">tapply</span>(dfSpecies<span class="op">$</span>perf1, <span class="dt">INDEX =</span> dfSpecies<span class="op">$</span>species, <span class="dt">FUN =</span> summary)</a></code></pre></div>
+<div class="sourceCode" id="cb1116"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1116-1" title="1"><span class="kw">tapply</span>(dfSpecies<span class="op">$</span>perf1, <span class="dt">INDEX =</span> dfSpecies<span class="op">$</span>species, <span class="dt">FUN =</span> summary)</a></code></pre></div>
 <pre><code>## $A
 ##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-##   8.861   9.629   9.943   9.981  10.354  11.561 
+##   8.874   9.599  10.062   9.965  10.280  11.025 
 ## 
 ## $B
 ##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-##   8.930   9.713  10.022  10.028  10.351  11.123 
+##   8.903   9.797  10.045  10.078  10.377  11.290 
 ## 
 ## $C
 ##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-##   8.736   9.671   9.994   9.974  10.369  11.071 
+##   9.016   9.736  10.015  10.041  10.380  11.083 
 ## 
 ## $D
 ##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-##   8.626   9.720  10.033  10.029  10.414  11.522 
+##   8.587   9.550  10.001   9.971  10.365  11.187 
 ## 
 ## $E
 ##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-##   8.729   9.622  10.017   9.987  10.303  11.610 
+##   8.959   9.645   9.933   9.941  10.260  11.263 
 ## 
 ## $F
 ##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-##   8.616   9.599   9.944   9.990  10.328  11.516 
+##   8.745   9.594   9.917   9.957  10.260  11.154 
 ## 
 ## $G
 ##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-##   8.996   9.684  10.061  10.069  10.381  11.460 
+##   8.799   9.555   9.965   9.951  10.264  11.742 
 ## 
 ## $H
 ##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-##   8.281   9.528   9.984   9.950  10.383  11.300 
+##   8.715   9.591  10.015  10.045  10.463  11.200 
 ## 
 ## $I
 ##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-##   8.750   9.703   9.933   9.995  10.180  11.286 
+##   8.862   9.726  10.067  10.031  10.358  11.839 
 ## 
 ## $J
 ##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-##   8.698   9.660   9.951  10.000  10.305  11.214</code></pre>
+##   8.466   9.677   9.980   9.948  10.243  11.214</code></pre>
 <p>Nous pouvons aussi obtenir la valeur moyenne de chacune des performances en combinant une fonction <code>sapply()</code> avec la fonction <code>tapply()</code>et en utilisant la fonction <code>mean()</code>.</p>
-<div class="sourceCode" id="cb1114"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1114-1" title="1"><span class="kw">sapply</span>(<span class="dv">2</span><span class="op">:</span><span class="dv">4</span>, <span class="dt">FUN =</span> <span class="cf">function</span>(i){</a>
-<a class="sourceLine" id="cb1114-2" title="2">  <span class="kw">tapply</span>(dfSpecies[,i], <span class="dt">INDEX =</span> dfSpecies<span class="op">$</span>species, <span class="dt">FUN =</span> mean)</a>
-<a class="sourceLine" id="cb1114-3" title="3">})</a></code></pre></div>
+<div class="sourceCode" id="cb1118"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1118-1" title="1"><span class="kw">sapply</span>(<span class="dv">2</span><span class="op">:</span><span class="dv">4</span>, <span class="dt">FUN =</span> <span class="cf">function</span>(i){</a>
+<a class="sourceLine" id="cb1118-2" title="2">  <span class="kw">tapply</span>(dfSpecies[,i], <span class="dt">INDEX =</span> dfSpecies<span class="op">$</span>species, <span class="dt">FUN =</span> mean)</a>
+<a class="sourceLine" id="cb1118-3" title="3">})</a></code></pre></div>
 <pre><code>##        [,1]     [,2]     [,3]
-## A  9.981457 25871.87 20.87172
-## B 10.027617 23952.65 20.26703
-## C  9.974496 25354.29 18.91766
-## D 10.029047 25888.35 19.59067
-## E  9.987444 25175.49 21.02225
-## F  9.990217 26259.02 20.87141
-## G 10.068671 25176.53 19.45185
-## H  9.950083 24678.94 19.16424
-## I  9.994945 24424.55 19.31252
-## J  9.999977 24384.17 20.67601</code></pre>
+## A  9.964937 25673.11 20.00426
+## B 10.078226 26643.68 19.94247
+## C 10.040885 24839.78 20.70549
+## D  9.971041 25097.19 18.98671
+## E  9.941294 23206.20 21.68819
+## F  9.956729 23640.85 20.12917
+## G  9.950592 22598.45 19.61683
+## H 10.045082 24312.45 19.69420
+## I 10.031370 24655.11 20.14945
+## J  9.948001 25976.32 20.21349</code></pre>
 <p>La fonction <code>sapply()</code> est utilisée pour spécifier la colonne (la colonne 2 correspond à perf1, la colonne 3 correspond à perf2, et la colonne 4 correspond à perf3). La colonne prend alors le nom de variable <code>i</code>. Ensuite, pour chaque colonne <code>dfSpecies[,i]</code>, nous pouvons utiliser la fonction <code>tapply()</code> pour calculer la moyenne par espèce. Voici l’équivalent avec des boucles <code>for()</code>.</p>
-<div class="sourceCode" id="cb1116"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1116-1" title="1"><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">2</span><span class="op">:</span><span class="dv">4</span>){</a>
-<a class="sourceLine" id="cb1116-2" title="2">  <span class="cf">for</span>(spp <span class="cf">in</span> <span class="kw">levels</span>(dfSpecies<span class="op">$</span>species)){</a>
-<a class="sourceLine" id="cb1116-3" title="3">    <span class="kw">mean</span>(dfSpecies[,i][dfSpecies<span class="op">$</span>species <span class="op">==</span><span class="st"> </span>spp])</a>
-<a class="sourceLine" id="cb1116-4" title="4">  }</a>
-<a class="sourceLine" id="cb1116-5" title="5">}</a></code></pre></div>
+<div class="sourceCode" id="cb1120"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1120-1" title="1"><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">2</span><span class="op">:</span><span class="dv">4</span>){</a>
+<a class="sourceLine" id="cb1120-2" title="2">  <span class="cf">for</span>(spp <span class="cf">in</span> <span class="kw">levels</span>(dfSpecies<span class="op">$</span>species)){</a>
+<a class="sourceLine" id="cb1120-3" title="3">    <span class="kw">mean</span>(dfSpecies[,i][dfSpecies<span class="op">$</span>species <span class="op">==</span><span class="st"> </span>spp])</a>
+<a class="sourceLine" id="cb1120-4" title="4">  }</a>
+<a class="sourceLine" id="cb1120-5" title="5">}</a></code></pre></div>
 <p>Et si nous voulons le résultat sous forme d’une <code>data.frame</code>, le code devient beaucoup plus long et fastidieux (le code suivant correspond à une solution parmi d’autres). Là encore nous voyons toute la puissance des boucles de la famille <code>apply</code>.</p>
-<div class="sourceCode" id="cb1117"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1117-1" title="1"><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">2</span><span class="op">:</span><span class="dv">4</span>){</a>
-<a class="sourceLine" id="cb1117-2" title="2">  myPerf &lt;-<span class="st"> </span><span class="kw">rep</span>(<span class="ot">NA</span>, <span class="kw">length</span>(<span class="kw">levels</span>(dfSpecies<span class="op">$</span>species)))</a>
-<a class="sourceLine" id="cb1117-3" title="3">  <span class="cf">for</span>(spp <span class="cf">in</span> <span class="kw">seq_along</span>(<span class="kw">levels</span>(dfSpecies<span class="op">$</span>species))){</a>
-<a class="sourceLine" id="cb1117-4" title="4">    myPerf[spp] &lt;-<span class="st"> </span><span class="kw">mean</span>(</a>
-<a class="sourceLine" id="cb1117-5" title="5">      dfSpecies[,i][dfSpecies<span class="op">$</span>species <span class="op">==</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb1117-6" title="6"><span class="st">        </span><span class="kw">levels</span>(dfSpecies<span class="op">$</span>species)[spp]])</a>
-<a class="sourceLine" id="cb1117-7" title="7">  }</a>
-<a class="sourceLine" id="cb1117-8" title="8">  <span class="kw">assign</span>(<span class="dt">x =</span> <span class="kw">paste0</span>(<span class="st">&quot;perf&quot;</span>, i <span class="op">-</span><span class="st"> </span><span class="dv">1</span>), <span class="dt">value =</span> myPerf)</a>
-<a class="sourceLine" id="cb1117-9" title="9">}</a>
-<a class="sourceLine" id="cb1117-10" title="10">myDF &lt;-<span class="st"> </span><span class="kw">data.frame</span>(perf1, perf2, perf3)</a>
-<a class="sourceLine" id="cb1117-11" title="11"><span class="kw">rownames</span>(myDF) &lt;-<span class="st"> </span><span class="kw">levels</span>(dfSpecies<span class="op">$</span>species)</a>
-<a class="sourceLine" id="cb1117-12" title="12"><span class="kw">print</span>(myDF)</a></code></pre></div>
+<div class="sourceCode" id="cb1121"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1121-1" title="1"><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">2</span><span class="op">:</span><span class="dv">4</span>){</a>
+<a class="sourceLine" id="cb1121-2" title="2">  myPerf &lt;-<span class="st"> </span><span class="kw">rep</span>(<span class="ot">NA</span>, <span class="kw">length</span>(<span class="kw">levels</span>(dfSpecies<span class="op">$</span>species)))</a>
+<a class="sourceLine" id="cb1121-3" title="3">  <span class="cf">for</span>(spp <span class="cf">in</span> <span class="kw">seq_along</span>(<span class="kw">levels</span>(dfSpecies<span class="op">$</span>species))){</a>
+<a class="sourceLine" id="cb1121-4" title="4">    myPerf[spp] &lt;-<span class="st"> </span><span class="kw">mean</span>(</a>
+<a class="sourceLine" id="cb1121-5" title="5">      dfSpecies[,i][dfSpecies<span class="op">$</span>species <span class="op">==</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb1121-6" title="6"><span class="st">        </span><span class="kw">levels</span>(dfSpecies<span class="op">$</span>species)[spp]])</a>
+<a class="sourceLine" id="cb1121-7" title="7">  }</a>
+<a class="sourceLine" id="cb1121-8" title="8">  <span class="kw">assign</span>(<span class="dt">x =</span> <span class="kw">paste0</span>(<span class="st">&quot;perf&quot;</span>, i <span class="op">-</span><span class="st"> </span><span class="dv">1</span>), <span class="dt">value =</span> myPerf)</a>
+<a class="sourceLine" id="cb1121-9" title="9">}</a>
+<a class="sourceLine" id="cb1121-10" title="10">myDF &lt;-<span class="st"> </span><span class="kw">data.frame</span>(perf1, perf2, perf3)</a>
+<a class="sourceLine" id="cb1121-11" title="11"><span class="kw">rownames</span>(myDF) &lt;-<span class="st"> </span><span class="kw">levels</span>(dfSpecies<span class="op">$</span>species)</a>
+<a class="sourceLine" id="cb1121-12" title="12"><span class="kw">print</span>(myDF)</a></code></pre></div>
 <pre><code>## [1] perf1 perf2 perf3
 ## &lt;0 rows&gt; (or 0-length row.names)</code></pre>
 </div>
 <div id="l17mapply" class="section level3">
 <h3><span class="header-section-number">8.7.5</span> <code>mapply</code></h3>
 <p>La fonction <code>mapply()</code> est une version de la fonction <code>sapply()</code>qui utilise de multiples arguments. Par exemple si nous avons une liste de deux éléments <code>1:5</code> et <code>5:1</code> et que nous souhaitons ajouter <code>10</code> au premier élément et <code>100</code> au deuxième élément :</p>
-<div class="sourceCode" id="cb1119"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1119-1" title="1"><span class="kw">mapply</span>(</a>
-<a class="sourceLine" id="cb1119-2" title="2">  <span class="dt">FUN =</span> <span class="cf">function</span>(i, j){i<span class="op">+</span>j}, </a>
-<a class="sourceLine" id="cb1119-3" title="3">  <span class="dt">i =</span> <span class="kw">list</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, <span class="dv">5</span><span class="op">:</span><span class="dv">1</span>), </a>
-<a class="sourceLine" id="cb1119-4" title="4">  <span class="dt">j =</span> <span class="kw">c</span>(<span class="dv">10</span>, <span class="dv">100</span>))</a></code></pre></div>
+<div class="sourceCode" id="cb1123"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1123-1" title="1"><span class="kw">mapply</span>(</a>
+<a class="sourceLine" id="cb1123-2" title="2">  <span class="dt">FUN =</span> <span class="cf">function</span>(i, j){i<span class="op">+</span>j}, </a>
+<a class="sourceLine" id="cb1123-3" title="3">  <span class="dt">i =</span> <span class="kw">list</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, <span class="dv">5</span><span class="op">:</span><span class="dv">1</span>), </a>
+<a class="sourceLine" id="cb1123-4" title="4">  <span class="dt">j =</span> <span class="kw">c</span>(<span class="dv">10</span>, <span class="dv">100</span>))</a></code></pre></div>
 <pre><code>##      [,1] [,2]
 ## [1,]   11  105
 ## [2,]   12  104

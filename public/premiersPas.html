@@ -24,7 +24,7 @@
 <meta name="author" content="François Rebaudo" />
 
 
-<meta name="date" content="2020-05-01" />
+<meta name="date" content="2020-05-02" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -148,9 +148,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><a href="./">R pour les scientifiques</a></li>
 
 <li class="divider"></li>
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Préambule</a><ul>
-<li class="chapter" data-level="0.1" data-path="index.html"><a href="index.html#remerciements"><i class="fa fa-check"></i><b>0.1</b> Remerciements</a></li>
-<li class="chapter" data-level="0.2" data-path="index.html"><a href="index.html#licence"><i class="fa fa-check"></i><b>0.2</b> Licence</a></li>
+<li class="chapter" data-level="" data-path="avant-propos.html"><a href="avant-propos.html"><i class="fa fa-check"></i>Avant-propos</a><ul>
+<li class="chapter" data-level="0.1" data-path="avant-propos.html"><a href="avant-propos.html#licence"><i class="fa fa-check"></i><b>0.1</b> Licence</a></li>
 </ul></li>
 <li class="chapter" data-level="1" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>1</b> Introduction</a><ul>
 <li class="chapter" data-level="1.1" data-path="intro.html"><a href="intro.html#pourquoi-se-former-à-r"><i class="fa fa-check"></i><b>1.1</b> Pourquoi se former à R</a></li>
@@ -349,7 +348,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <div id="installation-de-r" class="section level2">
 <h2><span class="header-section-number">2.1</span> Installation de R</h2>
-<p>Le programme permettant l’installation du logiciel R peut être téléchargé depuis le site web de R : <a href="https://www.r-project.org/" class="uri">https://www.r-project.org/</a>. Sur le site de R il faut au préalable choisir un miroir CRAN (serveur depuis lequel télécharger R ; sauf cas particulier le plus proche de sa localisation géographique), puis télécharger le fichier <em>base</em>. Les utilisateurs de Linux pourront préférer un <code>sudo apt-get install r-base</code>.</p>
+<p>Le programme permettant l’installation du logiciel R peut être téléchargé depuis le site web de R : <a href="https://www.r-project.org/" class="uri">https://www.r-project.org/</a>. Sur le site de R il faut au préalable choisir un miroir CRAN (serveur depuis lequel télécharger R ; sauf cas particulier le plus proche de sa localisation géographique), puis télécharger le fichier <em>base</em> correspondant à son système d’exploitation. Les utilisateurs de Linux pourront préférer un <code>sudo apt-get install r-base</code> (ou équivalent).</p>
 <p>Le logiciel R peut être téléchargé depuis de nombreux serveurs du CRAN (Comprehensive R Archive Network) à travers le monde. Ces serveurs s’appellent des miroirs. Le choix du miroir est manuel.</p>
 </div>
 <div id="r-comme-calculatrice" class="section level2">
@@ -689,7 +688,12 @@ FALSE
 <pre><code>## [1] TRUE</code></pre>
 <div class="sourceCode" id="cb67"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb67-1" title="1">(F <span class="op">+</span><span class="st"> </span><span class="dv">1</span>) <span class="op">==</span><span class="st"> </span><span class="ot">TRUE</span></a></code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
-<p>Bien que cette façon de se référer à <code>TRUE</code> et <code>FALSE</code> par <code>T</code> et <code>F</code> soit assez répandue, dans ce livre nous utiliserons toujours <code>TRUE</code> et <code>FALSE</code> afin que le code soit plus facile à lire. Encore une fois l’objectif d’un code est de non seulement être fonctionnel mais aussi d’être facile à lire et à relire.</p>
+<p>Bien que cette façon de se référer à <code>TRUE</code> et <code>FALSE</code> par <code>T</code> et <code>F</code> soit assez répandue, dans ce livre nous utiliserons toujours <code>TRUE</code> et <code>FALSE</code> afin que le code soit plus facile à lire. Encore une fois l’objectif d’un code est de non seulement être fonctionnel mais aussi d’être facile à lire et à relire. De plus, il est possible -bien que non recommandé- de créer une variable <code>T</code> et de lui affecter la valeur <code>False</code> (cf. la notion d’objet que nous verrons plus tard). L’utilisation de <code>TRUE</code> et <code>FALSE</code> permet d’éviter ce problème.</p>
+<div class="sourceCode" id="cb69"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb69-1" title="1"><span class="kw">print</span>(T)</a></code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+<div class="sourceCode" id="cb71"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb71-1" title="1">T &lt;-<span class="st"> </span><span class="ot">FALSE</span></a>
+<a class="sourceLine" id="cb71-2" title="2"><span class="kw">print</span>(T)</a></code></pre></div>
+<pre><code>## [1] FALSE</code></pre>
 </div>
 <div id="l011oplog" class="section level3">
 <h3><span class="header-section-number">2.2.3</span> Les opérateurs logiques</h3>
@@ -743,26 +747,26 @@ xor()
 </tr>
 </tbody>
 </table>
-<div class="sourceCode" id="cb69"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb69-1" title="1"><span class="op">!</span><span class="ot">TRUE</span></a></code></pre></div>
+<div class="sourceCode" id="cb73"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb73-1" title="1"><span class="op">!</span><span class="ot">TRUE</span></a></code></pre></div>
 <pre><code>## [1] FALSE</code></pre>
-<div class="sourceCode" id="cb71"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb71-1" title="1"><span class="op">!</span><span class="ot">FALSE</span></a></code></pre></div>
+<div class="sourceCode" id="cb75"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb75-1" title="1"><span class="op">!</span><span class="ot">FALSE</span></a></code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
-<div class="sourceCode" id="cb73"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb73-1" title="1">((<span class="dv">3</span> <span class="op">+</span><span class="st"> </span><span class="dv">2</span>) <span class="op">==</span><span class="st"> </span><span class="dv">5</span>) <span class="op">&amp;</span><span class="st"> </span>((<span class="dv">3</span> <span class="op">+</span><span class="st"> </span><span class="dv">3</span>) <span class="op">==</span><span class="st"> </span><span class="dv">5</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb77"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb77-1" title="1">((<span class="dv">3</span> <span class="op">+</span><span class="st"> </span><span class="dv">2</span>) <span class="op">==</span><span class="st"> </span><span class="dv">5</span>) <span class="op">&amp;</span><span class="st"> </span>((<span class="dv">3</span> <span class="op">+</span><span class="st"> </span><span class="dv">3</span>) <span class="op">==</span><span class="st"> </span><span class="dv">5</span>)</a></code></pre></div>
 <pre><code>## [1] FALSE</code></pre>
-<div class="sourceCode" id="cb75"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb75-1" title="1">((<span class="dv">3</span> <span class="op">+</span><span class="st"> </span><span class="dv">2</span>) <span class="op">==</span><span class="st"> </span><span class="dv">5</span>) <span class="op">&amp;</span><span class="st"> </span>((<span class="dv">3</span> <span class="op">+</span><span class="st"> </span><span class="dv">3</span>) <span class="op">==</span><span class="st"> </span><span class="dv">6</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb79"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb79-1" title="1">((<span class="dv">3</span> <span class="op">+</span><span class="st"> </span><span class="dv">2</span>) <span class="op">==</span><span class="st"> </span><span class="dv">5</span>) <span class="op">&amp;</span><span class="st"> </span>((<span class="dv">3</span> <span class="op">+</span><span class="st"> </span><span class="dv">3</span>) <span class="op">==</span><span class="st"> </span><span class="dv">6</span>)</a></code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
-<div class="sourceCode" id="cb77"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb77-1" title="1">(<span class="dv">3</span> <span class="op">&lt;</span><span class="st"> </span><span class="dv">5</span>) <span class="op">&amp;</span><span class="st"> </span>(<span class="dv">5</span> <span class="op">&lt;</span><span class="st"> </span><span class="dv">5</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb81"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb81-1" title="1">(<span class="dv">3</span> <span class="op">&lt;</span><span class="st"> </span><span class="dv">5</span>) <span class="op">&amp;</span><span class="st"> </span>(<span class="dv">5</span> <span class="op">&lt;</span><span class="st"> </span><span class="dv">5</span>)</a></code></pre></div>
 <pre><code>## [1] FALSE</code></pre>
-<div class="sourceCode" id="cb79"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb79-1" title="1">(<span class="dv">3</span> <span class="op">&lt;</span><span class="st"> </span><span class="dv">5</span>) <span class="op">&amp;</span><span class="st"> </span>(<span class="dv">5</span> <span class="op">&lt;=</span><span class="st"> </span><span class="dv">5</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb83"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb83-1" title="1">(<span class="dv">3</span> <span class="op">&lt;</span><span class="st"> </span><span class="dv">5</span>) <span class="op">&amp;</span><span class="st"> </span>(<span class="dv">5</span> <span class="op">&lt;=</span><span class="st"> </span><span class="dv">5</span>)</a></code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
 <p>L’opérateur logique <code>xor()</code> correspond à un <em>ou exclusif</em>. C’est à dire que l’un des deux <strong>arguments</strong> de la <strong>fonction</strong> <code>xor()</code> doit être vrai, mais pas les deux. Nous reviendrons plus tard sur les <strong>fonctions</strong> et leurs <strong>arguments</strong>, mais retenons que l’on identifie une fonction par ses parenthèses qui contiennent des arguments séparés par des virgules.</p>
-<div class="sourceCode" id="cb81"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb81-1" title="1"><span class="kw">xor</span>((<span class="dv">3</span> <span class="op">+</span><span class="st"> </span><span class="dv">2</span>) <span class="op">==</span><span class="st"> </span><span class="dv">5</span>, (<span class="dv">3</span> <span class="op">+</span><span class="st"> </span><span class="dv">3</span>) <span class="op">==</span><span class="st"> </span><span class="dv">6</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb85"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb85-1" title="1"><span class="kw">xor</span>((<span class="dv">3</span> <span class="op">+</span><span class="st"> </span><span class="dv">2</span>) <span class="op">==</span><span class="st"> </span><span class="dv">5</span>, (<span class="dv">3</span> <span class="op">+</span><span class="st"> </span><span class="dv">3</span>) <span class="op">==</span><span class="st"> </span><span class="dv">6</span>)</a></code></pre></div>
 <pre><code>## [1] FALSE</code></pre>
-<div class="sourceCode" id="cb83"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb83-1" title="1"><span class="kw">xor</span>((<span class="dv">3</span> <span class="op">+</span><span class="st"> </span><span class="dv">2</span>) <span class="op">==</span><span class="st"> </span><span class="dv">5</span>, (<span class="dv">3</span> <span class="op">+</span><span class="st"> </span><span class="dv">2</span>) <span class="op">==</span><span class="st"> </span><span class="dv">6</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb87"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb87-1" title="1"><span class="kw">xor</span>((<span class="dv">3</span> <span class="op">+</span><span class="st"> </span><span class="dv">2</span>) <span class="op">==</span><span class="st"> </span><span class="dv">5</span>, (<span class="dv">3</span> <span class="op">+</span><span class="st"> </span><span class="dv">2</span>) <span class="op">==</span><span class="st"> </span><span class="dv">6</span>)</a></code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
-<div class="sourceCode" id="cb85"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb85-1" title="1"><span class="kw">xor</span>((<span class="dv">3</span> <span class="op">+</span><span class="st"> </span><span class="dv">3</span>) <span class="op">==</span><span class="st"> </span><span class="dv">5</span>, (<span class="dv">3</span> <span class="op">+</span><span class="st"> </span><span class="dv">2</span>) <span class="op">==</span><span class="st"> </span><span class="dv">6</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb89"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb89-1" title="1"><span class="kw">xor</span>((<span class="dv">3</span> <span class="op">+</span><span class="st"> </span><span class="dv">3</span>) <span class="op">==</span><span class="st"> </span><span class="dv">5</span>, (<span class="dv">3</span> <span class="op">+</span><span class="st"> </span><span class="dv">2</span>) <span class="op">==</span><span class="st"> </span><span class="dv">6</span>)</a></code></pre></div>
 <pre><code>## [1] FALSE</code></pre>
-<div class="sourceCode" id="cb87"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb87-1" title="1"><span class="kw">xor</span>((<span class="dv">3</span> <span class="op">+</span><span class="st"> </span><span class="dv">3</span>) <span class="op">==</span><span class="st"> </span><span class="dv">5</span>, (<span class="dv">3</span> <span class="op">+</span><span class="st"> </span><span class="dv">3</span>) <span class="op">==</span><span class="st"> </span><span class="dv">6</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb91"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb91-1" title="1"><span class="kw">xor</span>((<span class="dv">3</span> <span class="op">+</span><span class="st"> </span><span class="dv">3</span>) <span class="op">==</span><span class="st"> </span><span class="dv">5</span>, (<span class="dv">3</span> <span class="op">+</span><span class="st"> </span><span class="dv">3</span>) <span class="op">==</span><span class="st"> </span><span class="dv">6</span>)</a></code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
 <p>Il est recommandé que les virgules (<code>,</code>) soient suivies par un espace afin que le code soit plus agréable à lire. Cela fait beaucoup de recommandations sur le style du code qui peuvent sembler à ce stade superflues. Néanmoins il est important d’adopter de bonnes pratiques de programmation dès le début de notre apprentissage de R (il est toujours plus facile de prendre de bonnes habitudes que de devoir corriger de mauvaises habitudes par la suite).</p>
 </div>
@@ -773,7 +777,7 @@ xor()
 </div>
 <div id="l011object" class="section level2">
 <h2><span class="header-section-number">2.3</span> La notion d’objet</h2>
-<p>Un aspect important de la programmation avec R, mais aussi de la programmation en général est la notion d’objet. Comme indiqué sur la page web de wikipedia (<a href="https://fr.wikipedia.org/wiki/Objet_(informatique)" class="uri">https://fr.wikipedia.org/wiki/Objet_(informatique)</a>), en informatique, un objet est un <em>conteneur</em>, c’est à dire quelque chose qui va contenir de l’information. L’information contenue dans un objet peut être très variée, mais pour le moment nous allons contenir dans un objet le chiffre 5. Pour ce faire (et pour pouvoir le réutiliser par la suite), il nous faut donner un nom à notre objet. Avec R le nom des objets ne doit pas comprendre de caractères spéciaux comme <em>^$?|+()[]}{</em>, ne doit pas commencer par un chiffre ni contenir d’espaces. Le nom de l’objet doit être représentatif de ce qu’il contient, tout en étant ni trop court ni trop long. Imaginons que notre chiffre 5 corresponde au nombre de répétitions d’une expérience. Nous voudrions lui donner un nom faisant référence à <em>nombre</em> et à <em>répétition</em>, que nous pourrions réduire à <em>nbr</em> et <em>rep</em>, respectivement. Il existe plusieurs possibilités qui sont toutes assez répandues sous R :</p>
+<p>Un aspect important de la programmation avec R, mais aussi de la programmation en général est la notion d’objet. Dans les exemples utilisés jusqu’à présent, les résultats étaient affichés dans la console mais “perdus” pour l’utilisateur car pas stockés en mémoire. Les objets vont permettre de pallier ce problème. Comme indiqué sur la page web de wikipedia (<a href="https://fr.wikipedia.org/wiki/Objet_(informatique)" class="uri">https://fr.wikipedia.org/wiki/Objet_(informatique)</a>), en informatique, un objet est un <em>conteneur</em>, c’est à dire quelque chose qui va contenir de l’information. L’information contenue dans un objet peut être très variée, mais pour le moment nous allons contenir dans un objet le chiffre 5. Pour ce faire (et pour pouvoir le réutiliser par la suite), il nous faut donner un nom à notre objet. Avec R le nom des objets ne doit pas comprendre de caractères spéciaux comme <em>^$?|+()[]}{</em>, ne doit pas commencer par un chiffre ni contenir d’espaces. Le nom de l’objet doit être représentatif de ce qu’il contient, tout en étant ni trop court ni trop long. Imaginons que notre chiffre 5 corresponde au nombre de répétitions d’une expérience. Nous voudrions lui donner un nom faisant référence à <em>nombre</em> et à <em>répétition</em>, que nous pourrions réduire à <em>nbr</em> et <em>rep</em>, respectivement. Il existe plusieurs possibilités qui sont toutes assez répandues sous R :</p>
 <ul>
 <li>la séparation au moyen du caractère <em>tiret bas</em> : <code>nbr_rep</code></li>
 <li>la séparation au moyen du caractère <em>point</em> : <code>nbr.rep</code></li>
@@ -789,65 +793,65 @@ xor()
 <li>avec le signe <code>=</code></li>
 <li>avec le signe <code>-&gt;</code></li>
 </ul>
-<div class="sourceCode" id="cb89"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb89-1" title="1">nbrRep &lt;-<span class="st"> </span><span class="dv">5</span></a>
-<a class="sourceLine" id="cb89-2" title="2">nbrRep =<span class="st"> </span><span class="dv">5</span></a>
-<a class="sourceLine" id="cb89-3" title="3"><span class="dv">5</span> -&gt;<span class="st"> </span>nbrRep</a></code></pre></div>
+<div class="sourceCode" id="cb93"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb93-1" title="1">nbrRep &lt;-<span class="st"> </span><span class="dv">5</span></a>
+<a class="sourceLine" id="cb93-2" title="2">nbrRep =<span class="st"> </span><span class="dv">5</span></a>
+<a class="sourceLine" id="cb93-3" title="3"><span class="dv">5</span> -&gt;<span class="st"> </span>nbrRep</a></code></pre></div>
 <p>Dans ce livre nous utiliserons toujours la forme <code>&lt;-</code> par souci de consistance et aussi parce que c’est la forme la plus répandue.</p>
-<div class="sourceCode" id="cb90"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb90-1" title="1">nbrRep &lt;-<span class="st"> </span><span class="dv">5</span></a></code></pre></div>
+<div class="sourceCode" id="cb94"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb94-1" title="1">nbrRep &lt;-<span class="st"> </span><span class="dv">5</span></a></code></pre></div>
 <p>Nous venons de créer un objet <code>nbrRep</code> et de lui affecter la valeur 5. Cet objet est désormais disponible dans notre environnement de calcul et peut donc être utilisé. Voici quelques exemples :</p>
-<div class="sourceCode" id="cb91"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb91-1" title="1">nbrRep <span class="op">+</span><span class="st"> </span><span class="dv">2</span></a></code></pre></div>
+<div class="sourceCode" id="cb95"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb95-1" title="1">nbrRep <span class="op">+</span><span class="st"> </span><span class="dv">2</span></a></code></pre></div>
 <pre><code>## [1] 7</code></pre>
-<div class="sourceCode" id="cb93"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb93-1" title="1">nbrRep <span class="op">*</span><span class="st"> </span><span class="dv">5</span> <span class="op">-</span><span class="st"> </span><span class="dv">45</span><span class="op">/</span><span class="dv">56</span></a></code></pre></div>
+<div class="sourceCode" id="cb97"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb97-1" title="1">nbrRep <span class="op">*</span><span class="st"> </span><span class="dv">5</span> <span class="op">-</span><span class="st"> </span><span class="dv">45</span><span class="op">/</span><span class="dv">56</span></a></code></pre></div>
 <pre><code>## [1] 24.19643</code></pre>
-<div class="sourceCode" id="cb95"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb95-1" title="1">pi <span class="op">*</span><span class="st"> </span>nbrRep<span class="op">^</span><span class="dv">2</span></a></code></pre></div>
+<div class="sourceCode" id="cb99"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb99-1" title="1">pi <span class="op">*</span><span class="st"> </span>nbrRep<span class="op">^</span><span class="dv">2</span></a></code></pre></div>
 <pre><code>## [1] 78.53982</code></pre>
 <p>La valeur associée à notre objet <code>nbrRep</code> peut être modifiée de la même manière que lors de sa création :</p>
-<div class="sourceCode" id="cb97"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb97-1" title="1">nbrRep &lt;-<span class="st"> </span><span class="dv">5</span></a>
-<a class="sourceLine" id="cb97-2" title="2">nbrRep <span class="op">+</span><span class="st"> </span><span class="dv">2</span></a></code></pre></div>
-<pre><code>## [1] 7</code></pre>
-<div class="sourceCode" id="cb99"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb99-1" title="1">nbrRep &lt;-<span class="st"> </span><span class="dv">10</span></a>
-<a class="sourceLine" id="cb99-2" title="2">nbrRep <span class="op">+</span><span class="st"> </span><span class="dv">2</span></a></code></pre></div>
-<pre><code>## [1] 12</code></pre>
-<div class="sourceCode" id="cb101"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb101-1" title="1">nbrRep &lt;-<span class="st"> </span><span class="dv">5</span> <span class="op">*</span><span class="st"> </span><span class="dv">2</span> <span class="op">+</span><span class="st"> </span><span class="dv">7</span><span class="op">/</span><span class="dv">3</span></a>
+<div class="sourceCode" id="cb101"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb101-1" title="1">nbrRep &lt;-<span class="st"> </span><span class="dv">5</span></a>
 <a class="sourceLine" id="cb101-2" title="2">nbrRep <span class="op">+</span><span class="st"> </span><span class="dv">2</span></a></code></pre></div>
+<pre><code>## [1] 7</code></pre>
+<div class="sourceCode" id="cb103"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb103-1" title="1">nbrRep &lt;-<span class="st"> </span><span class="dv">10</span></a>
+<a class="sourceLine" id="cb103-2" title="2">nbrRep <span class="op">+</span><span class="st"> </span><span class="dv">2</span></a></code></pre></div>
+<pre><code>## [1] 12</code></pre>
+<div class="sourceCode" id="cb105"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb105-1" title="1">nbrRep &lt;-<span class="st"> </span><span class="dv">5</span> <span class="op">*</span><span class="st"> </span><span class="dv">2</span> <span class="op">+</span><span class="st"> </span><span class="dv">7</span><span class="op">/</span><span class="dv">3</span></a>
+<a class="sourceLine" id="cb105-2" title="2">nbrRep <span class="op">+</span><span class="st"> </span><span class="dv">2</span></a></code></pre></div>
 <pre><code>## [1] 14.33333</code></pre>
 <p>L’utilisation des objets prend tout son sens lorsque nous avons des opérations complexes à réaliser et rend le code plus agréable à lire et à comprendre.</p>
-<div class="sourceCode" id="cb103"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb103-1" title="1">(<span class="dv">5</span> <span class="op">+</span><span class="st"> </span><span class="dv">9</span><span class="op">^</span><span class="dv">2</span> <span class="op">-</span><span class="st"> </span><span class="dv">1</span><span class="op">/</span><span class="dv">18</span>) <span class="op">/</span><span class="st"> </span>(<span class="dv">32</span> <span class="op">*</span><span class="st"> </span><span class="dv">45</span><span class="op">/</span><span class="dv">8</span> <span class="op">+</span><span class="st"> </span><span class="dv">3</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb107"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb107-1" title="1">(<span class="dv">5</span> <span class="op">+</span><span class="st"> </span><span class="dv">9</span><span class="op">^</span><span class="dv">2</span> <span class="op">-</span><span class="st"> </span><span class="dv">1</span><span class="op">/</span><span class="dv">18</span>) <span class="op">/</span><span class="st"> </span>(<span class="dv">32</span> <span class="op">*</span><span class="st"> </span><span class="dv">45</span><span class="op">/</span><span class="dv">8</span> <span class="op">+</span><span class="st"> </span><span class="dv">3</span>)</a></code></pre></div>
 <pre><code>## [1] 0.4696418</code></pre>
-<div class="sourceCode" id="cb105"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb105-1" title="1">terme01 &lt;-<span class="st"> </span><span class="dv">5</span> <span class="op">+</span><span class="st"> </span><span class="dv">9</span><span class="op">^</span><span class="dv">2</span> <span class="op">-</span><span class="st"> </span><span class="dv">1</span><span class="op">/</span><span class="dv">18</span></a>
-<a class="sourceLine" id="cb105-2" title="2">terme02 &lt;-<span class="st"> </span><span class="dv">32</span> <span class="op">*</span><span class="st"> </span><span class="dv">45</span><span class="op">/</span><span class="dv">8</span> <span class="op">+</span><span class="st"> </span><span class="dv">3</span></a>
-<a class="sourceLine" id="cb105-3" title="3">terme01 <span class="op">/</span><span class="st"> </span>terme02</a></code></pre></div>
+<div class="sourceCode" id="cb109"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb109-1" title="1">terme01 &lt;-<span class="st"> </span><span class="dv">5</span> <span class="op">+</span><span class="st"> </span><span class="dv">9</span><span class="op">^</span><span class="dv">2</span> <span class="op">-</span><span class="st"> </span><span class="dv">1</span><span class="op">/</span><span class="dv">18</span></a>
+<a class="sourceLine" id="cb109-2" title="2">terme02 &lt;-<span class="st"> </span><span class="dv">32</span> <span class="op">*</span><span class="st"> </span><span class="dv">45</span><span class="op">/</span><span class="dv">8</span> <span class="op">+</span><span class="st"> </span><span class="dv">3</span></a>
+<a class="sourceLine" id="cb109-3" title="3">terme01 <span class="op">/</span><span class="st"> </span>terme02</a></code></pre></div>
 <pre><code>## [1] 0.4696418</code></pre>
 </div>
 <div id="les-scripts" class="section level2">
 <h2><span class="header-section-number">2.4</span> Les scripts</h2>
-<p>R est un langage de programmation souvent dénommé <em>langage de script</em>. Cela fait référence au fait que la plupart des utilisateurs vont écrire des petits bouts de code plutôt que des programmes entiers. R peut être utilisé comme une simple calculatrice, et dans ce cas il ne sera pas nécessaire de conserver un historique des opérations qui ont été réalisées. Mais si les opérations à réaliser sont longues et complexes, il peut devenir nécessaire de pouvoir sauvegarder ce qui a été fait à un moment donné pour pouvoir poursuivre plus tard. Le fichier dans lequel seront conservées les opérations constitue ce que l’on appelle communément le script. Un script est donc un fichier contenant une succession d’informations compréhensibles par R et qu’il est possible d’exécuter.</p>
+<p>R est un langage de programmation souvent dénommé <em>langage de script</em>. Cela fait référence au fait que la plupart des utilisateurs vont écrire des petits bouts de code plutôt que des programmes entiers. R peut être utilisé comme une simple calculatrice, et dans ce cas il ne sera pas nécessaire de conserver un historique des opérations qui ont été réalisées. Mais si les opérations à réaliser sont longues et complexes, il peut devenir nécessaire de pouvoir sauvegarder ce qui a été fait à un moment donné pour pouvoir poursuivre plus tard. Le fichier dans lequel seront conservées les opérations constitue ce que l’on appelle communément le script. Un script est donc un fichier contenant une succession d’informations compréhensibles par R et qu’il est possible d’exécuter. Les scripts sont indispensables pour répéter les analyses (reproductibilité des résultats), pour échanger avec ses collègues, ou pour faire des analyses sur un serveur. Les scripts sont par ailleurs des documents qui trouvent de plus en plus leur place dans les annexes des articles scientifiques, assurant ainsi la transparence et la reproductibilité des résultats (et la réutilisation des méthodes).</p>
 <div id="créer-un-script-et-le-documenter" class="section level3">
 <h3><span class="header-section-number">2.4.1</span> Créer un script et le documenter</h3>
 <p>Pour ouvrir un nouveau script il suffit de créer un fichier texte vide qui sera édité par un éditeur de texte comme le <em>bloc note</em> sous Windows ou Mac OS, ou encore <em>Gedit</em> ou même <em>nano</em> sous Linux. Par convention ce fichier prend l’extension “.r” ou plus souvent “.R”. C’est cette dernière convention qui sera utilisée dans ce livre. Depuis l’interface graphique de R il est possible de créer un nouveau script sous Mac OS et Windows via <em>fichier</em> puis <em>nouveau script</em> et <em>enregistrer sous</em>.
 Tout comme le nom des objets, le nom du script est important pour que nous puissions facilement identifier son contenu. Par exemple nous pourrions créer un fichier <code>formRConceptsBase.R</code> contenant les objets que nous venons de créer et les calculs effectués. Mais même avec des noms de variables et un nom de fichier bien définis, il sera difficile de se rappeler le sens de ce fichier sans une documentation accompagnant le script. Pour documenter un script nous allons utiliser des <em>commentaires</em>. Les commentaires sont des éléments qui seront identifiés par R et qui ne seront pas exécutés. Pour spécifier à R que nous allons faire un commentaire, il faut utiliser le caractère octothorpe (croisillon ; différent du caractère dièse) <code>#</code>. Les commentaires peuvent être insérés sur une nouvelle ligne ou en fin de ligne.</p>
-<div class="sourceCode" id="cb107"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb107-1" title="1"><span class="co"># création objet nombre de répétitions</span></a>
-<a class="sourceLine" id="cb107-2" title="2">nbrRep &lt;-<span class="st"> </span><span class="dv">5</span> <span class="co"># commentaire de fin de ligne</span></a></code></pre></div>
+<div class="sourceCode" id="cb111"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb111-1" title="1"><span class="co"># création objet nombre de répétitions</span></a>
+<a class="sourceLine" id="cb111-2" title="2">nbrRep &lt;-<span class="st"> </span><span class="dv">5</span> <span class="co"># commentaire de fin de ligne</span></a></code></pre></div>
 <p>Les commentaires peuvent aussi être utilisés pour qu’une ligne ne soit plus exécutée.</p>
-<div class="sourceCode" id="cb108"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb108-1" title="1">nbrRep &lt;-<span class="st"> </span><span class="dv">5</span></a>
-<a class="sourceLine" id="cb108-2" title="2"><span class="co"># nbrRep + 5</span></a></code></pre></div>
+<div class="sourceCode" id="cb112"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb112-1" title="1">nbrRep &lt;-<span class="st"> </span><span class="dv">5</span></a>
+<a class="sourceLine" id="cb112-2" title="2"><span class="co"># nbrRep + 5</span></a></code></pre></div>
 <p>Pour en revenir à la documentation du script, il est recommandé de commencer chacun de ses scripts par une brève description de son contenu, puis lorsque le script devient long, de le structurer en différentes parties pour faciliter sa lecture.</p>
-<div class="sourceCode" id="cb109"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb109-1" title="1"><span class="co"># ------------------------------------------------------------</span></a>
-<a class="sourceLine" id="cb109-2" title="2"><span class="co"># Voici un script pour acquérir les concepts de base </span></a>
-<a class="sourceLine" id="cb109-3" title="3"><span class="co"># avec R</span></a>
-<a class="sourceLine" id="cb109-4" title="4"><span class="co"># date de création : 25/06/2018</span></a>
-<a class="sourceLine" id="cb109-5" title="5"><span class="co"># auteur : François Rebaudo</span></a>
-<a class="sourceLine" id="cb109-6" title="6"><span class="co"># ------------------------------------------------------------</span></a>
-<a class="sourceLine" id="cb109-7" title="7"></a>
-<a class="sourceLine" id="cb109-8" title="8"><span class="co"># [1] création de l&#39;objet nombre de répétitions</span></a>
-<a class="sourceLine" id="cb109-9" title="9"><span class="co"># ------------------------------------------------------------</span></a>
-<a class="sourceLine" id="cb109-10" title="10"></a>
-<a class="sourceLine" id="cb109-11" title="11">nbrRep &lt;-<span class="st"> </span><span class="dv">5</span></a>
-<a class="sourceLine" id="cb109-12" title="12"></a>
-<a class="sourceLine" id="cb109-13" title="13"><span class="co"># [2] calculs simples</span></a>
-<a class="sourceLine" id="cb109-14" title="14"><span class="co"># ------------------------------------------------------------</span></a>
-<a class="sourceLine" id="cb109-15" title="15"></a>
-<a class="sourceLine" id="cb109-16" title="16">pi <span class="op">*</span><span class="st"> </span>nbrRep<span class="op">^</span><span class="dv">2</span></a></code></pre></div>
+<div class="sourceCode" id="cb113"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb113-1" title="1"><span class="co"># ------------------------------------------------------------</span></a>
+<a class="sourceLine" id="cb113-2" title="2"><span class="co"># Voici un script pour acquérir les concepts de base </span></a>
+<a class="sourceLine" id="cb113-3" title="3"><span class="co"># avec R</span></a>
+<a class="sourceLine" id="cb113-4" title="4"><span class="co"># date de création : 25/06/2018</span></a>
+<a class="sourceLine" id="cb113-5" title="5"><span class="co"># auteur : François Rebaudo</span></a>
+<a class="sourceLine" id="cb113-6" title="6"><span class="co"># ------------------------------------------------------------</span></a>
+<a class="sourceLine" id="cb113-7" title="7"></a>
+<a class="sourceLine" id="cb113-8" title="8"><span class="co"># [1] création de l&#39;objet nombre de répétitions</span></a>
+<a class="sourceLine" id="cb113-9" title="9"><span class="co"># ------------------------------------------------------------</span></a>
+<a class="sourceLine" id="cb113-10" title="10"></a>
+<a class="sourceLine" id="cb113-11" title="11">nbrRep &lt;-<span class="st"> </span><span class="dv">5</span></a>
+<a class="sourceLine" id="cb113-12" title="12"></a>
+<a class="sourceLine" id="cb113-13" title="13"><span class="co"># [2] calculs simples</span></a>
+<a class="sourceLine" id="cb113-14" title="14"><span class="co"># ------------------------------------------------------------</span></a>
+<a class="sourceLine" id="cb113-15" title="15"></a>
+<a class="sourceLine" id="cb113-16" title="16">pi <span class="op">*</span><span class="st"> </span>nbrRep<span class="op">^</span><span class="dv">2</span></a></code></pre></div>
 <pre><code>## [1] 78.53982</code></pre>
 <p>Pour aller plus loin sur le style de code, un guide de recommandations est disponible en ligne sur le site de tidyverse (en anglais ; <a href="http://style.tidyverse.org/" class="uri">http://style.tidyverse.org/</a>). Nous verrons que ce livre suit les principales recommandations de ce site, mais pas toutes car notre préoccupation principale est d’avoir un code lisible et reproductible.</p>
 </div>
