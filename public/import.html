@@ -487,17 +487,30 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## [7] &quot;delete_merged_file: true&quot;
 ## [8] &quot;rmd_files:&quot;
 ## [9] &quot; latex: [\&quot;index.Rmd\&quot;, \&quot;000_preambule.Rmd\&quot;,
-\&quot;002_introduction.Rmd\&quot;, \&quot;011_conceptBase.Rmd\&quot;, &quot;
-## [10] &quot; \&quot;012_choixIDE.Rmd\&quot;, \&quot;013_dataType1.Rmd\&quot;,
+\&quot;002_introduction.Rmd\&quot;, &quot;
+## [10] &quot; \&quot;011_conceptBase.Rmd\&quot;, &quot;
+## [11] &quot; \&quot;012_choixIDE.Rmd\&quot;, \&quot;013_dataType1.Rmd\&quot;,
 \&quot;014_dataType2.Rmd\&quot;, &quot;
-## [11] &quot; \&quot;015_fonctions.Rmd\&quot;, \&quot;016_importExport.Rmd\&quot;,
+## [12] &quot; \&quot;015_fonctions.Rmd\&quot;, \&quot;016_importExport.Rmd\&quot;,
 \&quot;017_boucles.Rmd\&quot;, &quot;
-## [12] &quot; \&quot;018_gestproj.Rmd\&quot;, \&quot;021_01_graphiques.Rmd\&quot;,
+## [13] &quot; \&quot;018_gestproj.Rmd\&quot;, \&quot;021_01_graphiques.Rmd\&quot;,
 \&quot;021_02_graphiques.Rmd\&quot;,&quot;
-## [13] &quot; \&quot;021_03_graphiques.Rmd\&quot;, \&quot;022_InkscapeGimp.Rmd\&quot;,
+## [14] &quot; \&quot;021_03_graphiques.Rmd\&quot;, \&quot;022_InkscapeGimp.Rmd\&quot;,
 \&quot;041_studyCase.Rmd\&quot;,&quot;
-## [14] &quot; \&quot;042_studyCase.Rmd\&quot;]&quot;
-## [15] &quot;---&quot;</code></pre>
+## [15] &quot; \&quot;042_studyCase.Rmd\&quot;]&quot;
+## [16] &quot; html: [\&quot;index.Rmd\&quot;, \&quot;000_preambule.Rmd\&quot;,
+\&quot;001_licence.Rmd\&quot;, &quot;
+## [17] &quot; \&quot;002_introduction.Rmd\&quot;, \&quot;011_conceptBase.Rmd\&quot;, &quot;
+## [18] &quot; \&quot;012_choixIDE.Rmd\&quot;, \&quot;013_dataType1.Rmd\&quot;,
+\&quot;014_dataType2.Rmd\&quot;, &quot;
+## [19] &quot; \&quot;015_fonctions.Rmd\&quot;, \&quot;016_importExport.Rmd\&quot;,
+\&quot;017_boucles.Rmd\&quot;, &quot;
+## [20] &quot; \&quot;018_gestproj.Rmd\&quot;, \&quot;021_01_graphiques.Rmd\&quot;,
+\&quot;021_02_graphiques.Rmd\&quot;,&quot;
+## [21] &quot; \&quot;021_03_graphiques.Rmd\&quot;, \&quot;022_InkscapeGimp.Rmd\&quot;,
+\&quot;041_studyCase.Rmd\&quot;,&quot;
+## [22] &quot; \&quot;042_studyCase.Rmd\&quot;]&quot;
+## [23] &quot;---&quot;</code></pre>
 <p>Il existe aussi la fonction <code>scan()</code> qui va renvoyer l’ensemble des mots séparés par des espaces. Nous pouvons consulter l’aide pour plus d’information.</p>
 <div class="sourceCode" id="cb983"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb983-1" title="1"><span class="kw">scan</span>(readmeGitHub, <span class="dt">what =</span> <span class="st">&quot;character&quot;</span>)</a></code></pre></div>
 <pre><code>##  [1] &quot;---&quot;                   &quot;book_filename:&quot;       
@@ -523,7 +536,25 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## [41] &quot;022_InkscapeGimp.Rmd&quot;  &quot;,&quot;                    
 ## [43] &quot;041_studyCase.Rmd&quot;     &quot;,&quot;                    
 ## [45] &quot;042_studyCase.Rmd&quot;     &quot;]&quot;                    
-## [47] &quot;---&quot;</code></pre>
+## [47] &quot;html:&quot;                 &quot;[\&quot;index.Rmd\&quot;,&quot;      
+## [49] &quot;000_preambule.Rmd&quot;     &quot;,&quot;                    
+## [51] &quot;001_licence.Rmd&quot;       &quot;,&quot;                    
+## [53] &quot;002_introduction.Rmd&quot;  &quot;,&quot;                    
+## [55] &quot;011_conceptBase.Rmd&quot;   &quot;,&quot;                    
+## [57] &quot;012_choixIDE.Rmd&quot;      &quot;,&quot;                    
+## [59] &quot;013_dataType1.Rmd&quot;     &quot;,&quot;                    
+## [61] &quot;014_dataType2.Rmd&quot;     &quot;,&quot;                    
+## [63] &quot;015_fonctions.Rmd&quot;     &quot;,&quot;                    
+## [65] &quot;016_importExport.Rmd&quot;  &quot;,&quot;                    
+## [67] &quot;017_boucles.Rmd&quot;       &quot;,&quot;                    
+## [69] &quot;018_gestproj.Rmd&quot;      &quot;,&quot;                    
+## [71] &quot;021_01_graphiques.Rmd&quot; &quot;,&quot;                    
+## [73] &quot;021_02_graphiques.Rmd&quot; &quot;,&quot;                    
+## [75] &quot;021_03_graphiques.Rmd&quot; &quot;,&quot;                    
+## [77] &quot;022_InkscapeGimp.Rmd&quot;  &quot;,&quot;                    
+## [79] &quot;041_studyCase.Rmd&quot;     &quot;,&quot;                    
+## [81] &quot;042_studyCase.Rmd&quot;     &quot;]&quot;                    
+## [83] &quot;---&quot;</code></pre>
 </div>
 </div>
 <div id="l016save" class="section level2">
@@ -649,7 +680,7 @@ gitbook.start({
 "link": null,
 "text": null
 },
-"download": [["myRBook_FR.pdf", "PDF"], ["myRBook_FR.epub", "EPUB"], ["myRBook_FR.docx", "DOCX"]],
+"download": [["myRBook_FR.pdf", "PDF"]],
 "toc": {
 "collapse": "section"
 }

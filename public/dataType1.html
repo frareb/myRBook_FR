@@ -349,8 +349,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Nous avons vu précédemment comment créer un objet. Un objet est comme une boîte dans laquelle nous allons <em>stocker</em> de l’information. Jusqu’à présent nous n’avons stocké que des nombres mais dans ce chapitre nous allons voir qu’il est possible de stocker d’autres informations et nous allons nous attarder sur les types les plus courants. Dans ce chapitre nous allons utiliser des <strong>fonctions</strong> sur lesquelles nous reviendrons plus tard.</p>
 <div id="le-type-numeric" class="section level2">
 <h2><span class="header-section-number">4.1</span> Le type <code>numeric</code></h2>
-<p>Le type <code>numeric</code> correspond à ce que nous avons fait jusqu’à présent, stocker des nombres. Il existe deux principaux types de nombres avec R: les nombres entiers (<em>integers</em>), et les nombres à virgule (<em>double</em>). Par défaut R considère tous les nombres comme des nombres à virgule et attribue le type <code>double</code>.
-Pour vérifier le type de données nous allons utiliser la fonction <code>typeof()</code> qui prend comme argument un objet (ou directement l’information que nous souhaitons tester). Nous pouvons également utiliser la fonction <code>is.double()</code> qui va renvoyer <code>TRUE</code> si le nombre est au format <code>double</code> et <code>FALSE</code> dans le cas contraire. La fonction générique <code>is.numeric()</code> va quant à elle renvoyer <code>TRUE</code> si l’objet est au format <code>numeric</code> et <code>FALSE</code> dans le cas contraire.</p>
+<p>Le type <code>numeric</code> correspond à ce que nous avons fait jusqu’à présent, stocker des nombres. Il existe deux types de nombres avec R: les nombres entiers (<em>integers</em>), et les nombres à virgule (<em>double</em>). Par défaut R considère tous les nombres comme des nombres à virgule et attribue le type <code>double</code>.
+Pour vérifier le type de données nous allons utiliser la fonction <code>typeof()</code> qui prend comme argument un objet (ou directement l’information que nous souhaitons tester). Nous pouvons également utiliser la fonction <code>is.double()</code> qui va renvoyer <code>TRUE</code> si le nombre est au format <code>double</code> et <code>FALSE</code> dans le cas contraire. La fonction <code>is.numeric()</code> va quant à elle renvoyer <code>TRUE</code> si l’objet est au format <code>numeric</code> et <code>FALSE</code> dans le cas contraire.</p>
 <div class="sourceCode" id="cb116"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb116-1" title="1">nbrRep &lt;-<span class="st"> </span><span class="dv">5</span></a>
 <a class="sourceLine" id="cb116-2" title="2"><span class="kw">typeof</span>(nbrRep)</a></code></pre></div>
 <pre><code>## [1] &quot;double&quot;</code></pre>
@@ -390,10 +390,9 @@ Pour vérifier le type de données nous allons utiliser la fonction <code>typeof
 <div class="sourceCode" id="cb146"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb146-1" title="1">sumIntInt &lt;-<span class="st"> </span><span class="kw">as.integer</span>(<span class="dv">5</span>) <span class="op">+</span><span class="st"> </span><span class="kw">as.integer</span>(<span class="dv">5</span>)</a>
 <a class="sourceLine" id="cb146-2" title="2"><span class="kw">typeof</span>(sumIntInt)</a></code></pre></div>
 <pre><code>## [1] &quot;integer&quot;</code></pre>
-<p>Pour résumer, le type <code>numeric</code> contient deux sous-types, le type <code>integer</code> pour les nombres entiers et le type <code>double</code> pour les nombres à virgule. Par défaut R attribue le type <code>double</code> aux nombres.</p>
-<p>Deux nombres particuliers doivent être considérés. <code>Inf</code> est un nombre de type <code>double</code>. Il désigne un nombre infini. Par exemple, <code>1/0</code> retourne <code>Inf</code> et aucun nombre ne peut être plus grand que <code>Inf</code>. <code>NaN</code> est une valeur qui signifie <code>Not a Number</code> : par exemple <code>0/0</code> retourne <code>NaN</code>. Cela peut être testé par <code>is.nan(0/0)</code>. Attention à ne pas confondre avec NA qui désigne une donnée absente (voir plus loin).</p>
+<p>Pour résumer, le type <code>numeric</code> contient deux sous-types, le type <code>integer</code> pour les nombres entiers et le type <code>double</code> pour les nombres à virgule. Par défaut R attribue le type <code>double</code> aux nombres. L’utilisateur n’a en général pas à se soucier de la différence entre <code>integer</code> et <code>double</code>, R le fait très bien à notre place.</p>
+<p>Deux nombres particuliers doivent être considérés. <code>Inf</code> est un nombre de type <code>double</code>. Il désigne un nombre infini. Par exemple, <code>1/0</code> retourne <code>Inf</code> (et <code>-1/0</code> retourne <code>-Inf</code>) et aucun nombre ne peut être plus grand que <code>Inf</code>. <code>NaN</code> est une valeur qui signifie <code>Not a Number</code> : par exemple <code>0/0</code> retourne <code>NaN</code>. Cela peut être testé par <code>is.nan(0/0)</code>. Attention à ne pas confondre avec NA qui désigne une donnée absente (voir plus loin). R comporte cependant des limites, auxquelles nous pouvons accéder avec la variable <code>.Machine</code>. Nous pourrons noter par exemple que le plus grand nombre de type <code>double</code> est 1.797693e+308, et que les nombres supérieurs à cette valeur seront considérés comme <code>Inf</code> (<code>10^500</code> renvoie <code>Inf</code> et <code>-10^500</code> renvoie <code>-Inf</code>).</p>
 <p>Attention, il y a un piège à l’utilisation de la fonction <code>is.integer()</code>. Elle ne nous dit pas si le nombre est un entier mais s’il est du type <code>integer</code>. En effet, nous pouvons très bien stocker un nombre entier dans une variable de type <code>double</code>.</p>
-<p>Les nombres stockés dans une variable <code>integer</code> sont codés sur 32 bits et peuvent prendre des valeurs comprises entre 0 et 2^32-1 = 4294967295. Il existe une autre façon d’indiquer à R qu’un nombre est un entier, en utilisant le suffixe L. Par exemple, écrire <code>5L</code> revient à la même chose qu’écrire <code>as.integer(5)</code>. L’origine de ce suffixe <code>L</code> date d’une époque où les ordinateurs utilisaient des mots de 16 bits, et 32 bits étaient bien un type <code>Long</code>. Maintenant les ordinateurs utilisent des mots de 64 bits et 32 bits est plutôt court !</p>
 <p>Nous ne pouvons pas quitter cette section sans mentionner les fonctions <a href="fonctions.html#l015round"><code>ceiling()</code></a>, <a href="fonctions.html#l015round"><code>floor()</code></a>, <a href="fonctions.html#l015round"><code>trunc()</code></a> ou <a href="fonctions.html#l015round"><code>round()</code></a> qui retournent la partie entière d’un nombre mais le laisse au type <code>double</code>. Pour en savoir plus, nous pouvons utiliser <a href="fonctions.html#l015help">l’aide de R</a> avec <code>?round</code>. Nous reviendrons sur ces fonctions plus tard.</p>
 <div class="sourceCode" id="cb148"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb148-1" title="1">roundDou &lt;-<span class="st"> </span><span class="kw">round</span>(<span class="fl">5.2</span>)</a>
 <a class="sourceLine" id="cb148-2" title="2"><span class="kw">typeof</span>(roundDou)</a></code></pre></div>
@@ -401,7 +400,7 @@ Pour vérifier le type de données nous allons utiliser la fonction <code>typeof
 </div>
 <div id="le-type-character" class="section level2">
 <h2><span class="header-section-number">4.2</span> Le type <code>character</code></h2>
-<p>Le type <code>character</code> correspond au texte. Pour spécifier à R que l’information contenue dans un objet est au format texte, il faut utiliser les guillemets doubles (<code>"</code>), ou simples (<code>'</code>). Nous noterons que les guillemets doubles ou simples sont droits, par opposition au signe apostrophe (<code>‘</code>) ou encore aux signes correspondant aux ouvertures et fermetures de guillemets (<code>«  »</code>, <code>ˮ</code> et <code>˝  ̏</code>).</p>
+<p>Le type <code>character</code> correspond au texte. Pour spécifier à R que l’information contenue dans un objet est au format texte, il faut utiliser les guillemets doubles (<code>"</code>), ou simples (<code>'</code>). Nous noterons que les guillemets doubles ou simples sont droits, par opposition au signe apostrophe (<code>’</code>) ou encore aux signes correspondant aux ouvertures et fermetures de guillemets (<code>«  »</code>, <code>ˮ</code> et <code>˝  ̏</code>).</p>
 <div class="sourceCode" id="cb150"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb150-1" title="1">myText &lt;-<span class="st"> &quot;azerty&quot;</span></a>
 <a class="sourceLine" id="cb150-2" title="2">myText2 &lt;-<span class="st"> &#39;azerty&#39;</span></a>
 <a class="sourceLine" id="cb150-3" title="3">myText3 &lt;-<span class="st"> &#39;azerty uiop qsdfg hjklm&#39;</span></a>
@@ -471,6 +470,7 @@ Pour vérifier le type de données nous allons utiliser la fonction <code>typeof
 <pre><code>## [1] &quot;aaa&quot;</code></pre>
 <div class="sourceCode" id="cb188"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb188-1" title="1"><span class="kw">as.numeric</span>(factor01)</a></code></pre></div>
 <pre><code>## [1] 1</code></pre>
+<p>Nous avons pu voir que <code>factor</code> n’est pas vraiment un type (<code>typeof(factor01)</code> renvoie <code>integer</code>). C’est en fait une classe (<code>class(factor01)</code> renvoie bien <code>factor</code>), mais à ce stade nous pouvons le considérer comme un type de données.</p>
 </div>
 <div id="l013logi" class="section level2">
 <h2><span class="header-section-number">4.4</span> Le type <code>logical</code></h2>
@@ -516,7 +516,7 @@ Pour vérifier le type de données nous allons utiliser la fonction <code>typeof
 <li>Reconnaître et faire des objets dans les principaux types de données</li>
 <li>Transformer les types de données d’un type à un autre</li>
 </ul>
-<p>Ce chapitre un peu fastidieux est la base pour aborder le prochain chapitre sur les conteneurs des données.</p>
+<p>Dans la plupart des cas c’est R qui va gérer à notre place les types de données, mais il est important de les connaître pour s’assurer du bon déroulement de nos analyses. Ce chapitre un peu fastidieux est la base pour aborder le prochain chapitre sur les conteneurs des données.</p>
 
 </div>
 </div>
@@ -568,7 +568,7 @@ gitbook.start({
 "link": null,
 "text": null
 },
-"download": [["myRBook_FR.pdf", "PDF"], ["myRBook_FR.epub", "EPUB"], ["myRBook_FR.docx", "DOCX"]],
+"download": [["myRBook_FR.pdf", "PDF"]],
 "toc": {
 "collapse": "section"
 }
