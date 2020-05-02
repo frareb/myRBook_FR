@@ -1,28 +1,23 @@
-# Préambule{-}
+# Avant-propos {-}
 
-## Remerciements {#remerciements}
+Je remercie tous ceux qui ont participé à améliorer ce livre par leurs conseils, leurs suggestions de modifications et leurs corrections (par ordre alphabétique) : Camila Benavides Frias, Marc Girondot, Susi Loza Herrera, Estefania Quenta Herrera, Emmanuel Paradis, Batiste Régnier et Jean-Christophe Sandoz.
 
-Je remercie tous les contributeurs qui ont participé à améliorer ce livre par leurs conseils, leurs suggestions de modifications et leurs corrections (par ordre alphabétique) : 
+```{r index-1, echo = FALSE, eval=FALSE}
+# contrib <- unname(t(data.frame(
+#   c("Baptiste", "Régnier", "France ; UMR 247 EGCE"),
+#   c("Camila", "Benavides Frias", "Bolivia"), 
+#   c("Estefania", "Quenta Herrera",  "Bolivia"), 
+#   c("Susi", "Loza Herrera", "Bolivia"),
+#   c("Marc", "Girondot", "France ; UMR 8079 ESE")
+# )))
+# contrib <- contrib[order(contrib[, 2]),]
+# msg <- "Contributeurs :\r"
+# dfContrib <- data.frame(contrib)
+# names(dfContrib) <- c("Prénom", "Nom", "Pays ; Affiliation")
+# knitr::kable(dfContrib)
 
-```{r index-1, echo = FALSE}
-contrib <- unname(t(data.frame(
-  c("Baptiste", "Régnier", "France ; UMR 247 EGCE"),
-  c("Camila", "Benavides Frias", "Bolivia"), 
-  c("Estefania", "Quenta Herrera",  "Bolivia"), 
-  c("Susi", "Loza Herrera", "Bolivia"),
-  c("Marc", "Girondot", "France ; UMR 8079 ESE")
-)))
-contrib <- contrib[order(contrib[, 2]),]
-msg <- "Contributeurs :\r"
-# for(i in seq_along(contrib[, 2])){
-#   msg <- c(msg, paste0(contrib[i, 1], " ",contrib[i, 2], " (", contrib[i, 3],")\r"))
-# }
-# for(i in msg){cat(i, sep = "")}
-dfContrib <- data.frame(contrib)
-names(dfContrib) <- c("Prénom", "Nom", "Pays ; Affiliation")
-knitr::kable(dfContrib)
+# Les versions gitbook, html et epub de ce livre utilisent les icônes open source de Font Awesome (https://fontawesome.com). La version PDF utilise les icônes issues du projet Tango disponibles depuis openclipart (https://openclipart.org/). Ce livre a été écrit avec le package R bookdown (https://bookdown.org/). Le code source est disponible sur GitHub (https://github.com/frareb/myRBook_FR). La version en ligne est hébergée et mise à jour grâce à Netlify (http://myrbookfr.netlify.com/).
+
+# Les diapositives du [module de formation IRD sur l'analyse de variance et le modèle linéaire sont disponibles ici](http://myrbookfr.netlify.com/myHtmls/France_Montpellier_2019/R00_links.html).
 ```
 
-Les versions gitbook, html et epub de ce livre utilisent les icônes open source de Font Awesome (https://fontawesome.com). La version PDF utilise les icônes issues du projet Tango disponibles depuis openclipart (https://openclipart.org/). Ce livre a été écrit avec le package R bookdown (https://bookdown.org/). Le code source est disponible sur GitHub (https://github.com/frareb/myRBook_FR). La version en ligne est hébergée et mise à jour grâce à Netlify (http://myrbookfr.netlify.com/).
-
-Les diapositives du [module de formation IRD sur l'analyse de variance et le modèle linéaire sont disponibles ici](http://myrbookfr.netlify.com/myHtmls/France_Montpellier_2019/R00_links.html).
