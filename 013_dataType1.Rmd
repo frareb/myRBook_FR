@@ -6,8 +6,8 @@ Nous avons vu précédemment comment créer un objet. Un objet est comme une bo�
 
 ## Le type `numeric`
 
-Le type `numeric` correspond à ce que nous avons fait jusqu'à présent, stocker des nombres. Il existe deux principaux types de nombres avec R: les nombres entiers (*integers*), et les nombres à virgule (*double*). Par défaut R considère tous les nombres comme des nombres à virgule et attribue le type `double`.
-Pour vérifier le type de données nous allons utiliser la fonction `typeof()` qui prend comme argument un objet (ou directement l'information que nous souhaitons tester). Nous pouvons également utiliser la fonction `is.double()` qui va renvoyer `TRUE` si le nombre est au format `double` et `FALSE` dans le cas contraire. La fonction générique `is.numeric()` va quant à elle renvoyer `TRUE` si l'objet est au format `numeric` et `FALSE` dans le cas contraire.
+Le type `numeric` correspond à ce que nous avons fait jusqu'à présent, stocker des nombres. Il existe deux types de nombres avec R: les nombres entiers (*integers*), et les nombres à virgule (*double*). Par défaut R considère tous les nombres comme des nombres à virgule et attribue le type `double`.
+Pour vérifier le type de données nous allons utiliser la fonction `typeof()` qui prend comme argument un objet (ou directement l'information que nous souhaitons tester). Nous pouvons également utiliser la fonction `is.double()` qui va renvoyer `TRUE` si le nombre est au format `double` et `FALSE` dans le cas contraire. La fonction `is.numeric()` va quant à elle renvoyer `TRUE` si l'objet est au format `numeric` et `FALSE` dans le cas contraire.
 
 ```{r 013-dataType1-1}
 nbrRep <- 5
@@ -47,13 +47,11 @@ sumIntInt <- as.integer(5) + as.integer(5)
 typeof(sumIntInt)
 ```
 
-Pour résumer, le type `numeric` contient deux sous-types, le type `integer` pour les nombres entiers et le type `double` pour les nombres à virgule. Par défaut R attribue le type `double` aux nombres.
+Pour résumer, le type `numeric` contient deux sous-types, le type `integer` pour les nombres entiers et le type `double` pour les nombres à virgule. Par défaut R attribue le type `double` aux nombres. L'utilisateur n'a en général pas à se soucier de la différence entre `integer` et `double`, R le fait très bien à notre place.
 
-Deux nombres particuliers doivent être considérés. `Inf` est un nombre de type `double`. Il désigne un nombre infini. Par exemple, `1/0` retourne `Inf` et aucun nombre ne peut être plus grand que `Inf`. `NaN` est une valeur qui signifie `Not a Number` : par exemple `0/0` retourne `NaN`. Cela peut être testé par `is.nan(0/0)`. Attention à ne pas confondre avec NA qui désigne une donnée absente (voir plus loin).
+Deux nombres particuliers doivent être considérés. `Inf` est un nombre de type `double`. Il désigne un nombre infini. Par exemple, `1/0` retourne `Inf` (et `-1/0` retourne `-Inf`) et aucun nombre ne peut être plus grand que `Inf`. `NaN` est une valeur qui signifie `Not a Number` : par exemple `0/0` retourne `NaN`. Cela peut être testé par `is.nan(0/0)`. Attention à ne pas confondre avec NA qui désigne une donnée absente (voir plus loin). R comporte cependant des limites, auxquelles nous pouvons accéder avec la variable `.Machine`. Nous pourrons noter par exemple que le plus grand nombre de type `double` est 1.797693e+308, et que les nombres supérieurs à cette valeur seront considérés comme `Inf` (`10^500` renvoie `Inf` et `-10^500` renvoie `-Inf`).
 
-Attention, il y a un piège à l'utilisation de la fonction `is.integer()`. Elle ne nous dit pas si le nombre est un entier mais s'il est du type `integer`. En effet, nous pouvons très bien stocker un nombre entier dans une variable de type `double`.
-
-Les nombres stockés dans une variable `integer` sont codés sur 32 bits et peuvent prendre des valeurs comprises entre 0 et 2^32-1 = 4294967295. Il existe une autre façon d'indiquer à R qu'un nombre est un entier, en utilisant le suffixe L. Par exemple, écrire `5L` revient à la même chose qu'écrire `as.integer(5)`. L'origine de ce suffixe `L` date d'une époque où les ordinateurs utilisaient des mots de 16 bits, et 32 bits étaient bien un type `Long`. Maintenant les ordinateurs utilisent des mots de 64 bits et 32 bits est plutôt court !
+Attention, il y a un piège à l'utilisation de la fonction `is.integer()`. Elle ne nous dit pas si le nombre est un entier mais s'il est du type `integer`. En effet, nous pouvons très bien stocker un nombre entier dans une variable de type `double`. 
 
 Nous ne pouvons pas quitter cette section sans mentionner les fonctions [`ceiling()`](#l015round), [`floor()`](#l015round), [`trunc()`](#l015round) ou [`round()`](#l015round) qui retournent la partie entière d'un nombre mais le laisse au type `double`. Pour en savoir plus, nous pouvons utiliser [l'aide de R](#l015help) avec `?round`. Nous reviendrons sur ces fonctions plus tard.
 
@@ -64,7 +62,7 @@ typeof(roundDou)
 
 ## Le type `character`
 
-Le type `character` correspond au texte. Pour spécifier à R que l'information contenue dans un objet est au format texte, il faut utiliser les guillemets doubles (`"`), ou simples (`'`). Nous noterons que les guillemets doubles ou simples sont droits, par opposition au signe apostrophe (`‘`) ou encore aux signes correspondant aux ouvertures et fermetures de guillemets (`«  »`, `ˮ` et `˝  ̏`).
+Le type `character` correspond au texte. Pour spécifier à R que l'information contenue dans un objet est au format texte, il faut utiliser les guillemets doubles (`"`), ou simples (`'`). Nous noterons que les guillemets doubles ou simples sont droits, par opposition au signe apostrophe (`’`) ou encore aux signes correspondant aux ouvertures et fermetures de guillemets (`«  »`, `ˮ` et `˝  ̏`).
 
 ```{r 013-dataType1-6}
 myText <- "azerty"
@@ -142,6 +140,8 @@ as.character(factor01)
 as.numeric(factor01)
 ```
 
+Nous avons pu voir que `factor` n'est pas vraiment un type (`typeof(factor01)` renvoie `integer`). C'est en fait une classe (`class(factor01)` renvoie bien `factor`), mais à ce stade nous pouvons le considérer comme un type de données.
+
 ## Le type `logical` {#l013logi}
 
 Le type `logical` correspond aux valeurs `TRUE` et `FALSE` (et `NA`) que nous avons déjà vu avec les opérateurs de comparaison. 
@@ -178,4 +178,4 @@ Félicitations, nous sommes arrivés au bout de ce chapitre sur les types de don
 * Reconnaître et faire des objets dans les principaux types de données
 * Transformer les types de données d'un type à un autre
 
-Ce chapitre un peu fastidieux est la base pour aborder le prochain chapitre sur les conteneurs des données.
+Dans la plupart des cas c'est R qui va gérer à notre place les types de données, mais il est important de les connaître pour s'assurer du bon déroulement de nos analyses. Ce chapitre un peu fastidieux est la base pour aborder le prochain chapitre sur les conteneurs des données.
