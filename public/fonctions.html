@@ -1533,12 +1533,12 @@ incorrect (5)&quot;</code></pre>
 <a class="sourceLine" id="cb950-2" title="2">  <span class="dt">n =</span> <span class="dv">100000</span>, </a>
 <a class="sourceLine" id="cb950-3" title="3">  <span class="kw">countVowelConso</span>(<span class="dt">word =</span> <span class="st">&quot;qwertyuiop azertyuiop&quot;</span>)))</a></code></pre></div>
 <pre><code>##    user  system elapsed 
-##   1.239   0.012   1.251</code></pre>
+##   1.295   0.000   1.295</code></pre>
 <div class="sourceCode" id="cb952"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb952-1" title="1"><span class="kw">system.time</span>(<span class="kw">replicate</span>(</a>
 <a class="sourceLine" id="cb952-2" title="2">  <span class="dt">n =</span> <span class="dv">100000</span>, </a>
 <a class="sourceLine" id="cb952-3" title="3">  <span class="kw">countVowelConsoAlt</span>(<span class="dt">word =</span> <span class="st">&quot;qwertyuiop azertyuiop&quot;</span>)))</a></code></pre></div>
 <pre><code>##    user  system elapsed 
-##   1.302   0.000   1.302</code></pre>
+##   1.465   0.000   1.465</code></pre>
 <p>Une fonction peut avoir des valeurs par défaut pour ses arguments. C’est le cas de la plupart des fonctions existantes. Par défaut, notre fonction va désormais compter le nombre de voyelles et de consonnes dans le mot <code>qwerty</code> (les parenthèses restent nécessaires même en l’absence d’arguments).</p>
 <div class="sourceCode" id="cb954"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb954-1" title="1">countVowelConsoAlt &lt;-<span class="st"> </span><span class="cf">function</span>(<span class="dt">word =</span> <span class="st">&quot;qwerty&quot;</span>){ </a>
 <a class="sourceLine" id="cb954-2" title="2">  <span class="cf">if</span>(<span class="kw">is.vector</span>(word) <span class="op">&amp;</span><span class="st"> </span><span class="kw">is.character</span>(word) <span class="op">&amp;</span><span class="st"> </span><span class="kw">length</span>(word) <span class="op">==</span><span class="st"> </span><span class="dv">1</span>){</a>

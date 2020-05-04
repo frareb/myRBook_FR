@@ -580,7 +580,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div id="l014list" class="section level2">
 <h2><span class="header-section-number">5.2</span> Le conteneur <code>list</code></h2>
-<p>Le deuxième type de conteneur que nous allons introduire est le conteneur <code>list</code>, qui est également le deuxième conteneur après le type <code>vector</code> de par son importance dans la programmation avec R. Le conteneur de type <code>list</code> permet de stocker une <strong>liste</strong> d’éléments. Contrairement à ce que nous avons vu précédemment avec le type <code>vector</code>, les éléments du type <code>list</code> peuvent être différents (par exemple un <code>vector</code> de type <code>numeric</code>, puis un <code>vector</code> de type <code>character</code>). Les éléments du type <code>list</code> peuvent aussi être des conteneurs différents (par exemple un <code>vector</code>, puis une <code>list</code>). Le type de conteneur <code>list</code> prendra tout son sens lorsque nous aurons étudié les <strong>boucles</strong> et les <strong>fonctions</strong> de la famille <code>apply</code>.</p>
+<p>Le deuxième type de conteneur que nous allons introduire est le conteneur <code>list</code>, qui est également le deuxième conteneur après le type <code>vector</code> de par son importance dans la programmation avec R. Le conteneur de type <code>list</code> permet de stocker une <strong>liste</strong> d’éléments. Contrairement à ce que nous avons vu précédemment avec le type <code>vector</code>, les éléments du type <code>list</code> peuvent être différents (par exemple un <code>vector</code> de type <code>numeric</code>, puis un <code>vector</code> de type <code>character</code>). Les éléments du type <code>list</code> peuvent aussi être des conteneurs différents (par exemple un <code>vector</code>, puis une <code>list</code>). Nous pouvons d’une certaine manière assimiler le type <code>list</code> à un <code>vector</code> dont les éléments seraient des <em>objets</em>. Le type de conteneur <code>list</code> prendra tout son sens lorsque nous aurons étudié les <strong>boucles</strong> et les <strong>fonctions</strong> de la famille <code>apply</code>.</p>
 <div id="créer-une-list" class="section level3">
 <h3><span class="header-section-number">5.2.1</span> Créer une <code>list</code></h3>
 <p>Pour créer une <code>list</code> nous allons utiliser la fonction <code>list()</code> qui prend comme argument des éléments (objets).</p>
@@ -1003,7 +1003,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 
 ## [[5]]
 ## [1] &quot;fgh&quot; &quot;ijk&quot;</code></pre>
-<p>Pour supprimer un élément à une <code>list</code>, lune possibilité est d’attribuer la valeur <code>NULL</code> à l’élément à supprimer.</p>
+<p>Pour supprimer un élément à une <code>list</code>, une possibilité est d’attribuer la valeur <code>NULL</code> à l’élément à supprimer.</p>
 <div class="sourceCode" id="cb470"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb470-1" title="1"><span class="kw">print</span>(miList05)</a></code></pre></div>
 <pre><code>## [[1]]
 ## [1] &quot;a&quot;
@@ -1343,7 +1343,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## [2,]   -8   -4    0
 ## [3,]   -7   -3    1
 ## [4,]   -6   -2    2</code></pre>
-<p>Pour effectuer des opérations algébriques nous pouvons utiliser la fonction <code>%*%</code>.</p>
+<p>Pour effectuer des opérations algébriques nous pouvons utiliser la fonction <code>%*%</code> (produit matriciel).</p>
 <div class="sourceCode" id="cb564"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb564-1" title="1"><span class="co"># opérations algébriques</span></a>
 <a class="sourceLine" id="cb564-2" title="2">miVecConf &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">10</span>, <span class="dv">100</span>)</a>
 <a class="sourceLine" id="cb564-3" title="3">miMat01 <span class="op">%*%</span><span class="st"> </span>miVecConf</a></code></pre></div>
