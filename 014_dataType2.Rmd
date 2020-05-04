@@ -6,7 +6,7 @@ Jusqu'à présent nous avons fait des objets simples ne contenant qu'une seule v
 
 ## Le conteneur `vector` {#l014vector}
 
-Dans R, un `vector` est une combinaison de données avec la particularité que toutes les données contenues dans un `vector` sont du même type. Nous pouvons donc stocker plusieurs `numeric` ou `character` dans un `vector`, mais pas les deux. Le conteneur `vector` est important car c'est l'élément de base de R (R tire toute sa puissance des opérations sur les `vector`). 
+Dans R, un `vector` est une combinaison de données avec la particularité que toutes les données contenues dans un `vector` sont du même type. Nous pouvons donc stocker plusieurs `numeric` ou `character` dans un `vector`, mais pas les deux. Le conteneur `vector` est important car c'est l'élément de base de R. 
 
 ### Créer un `vector`
 
@@ -105,7 +105,7 @@ miVec01 * 2
 miVec01 /10
 ```
 
-Les opérations d'un `vector` sur un autre sont possibles, mais il faut veiller à ce que le nombre d'éléments d'un `vector` soit le même que l'autre, sinon R va effectuer le calcul en repartant du début du `vector` le plus court. Voici un exemple pour illustrer ce que R fait:
+Les opérations d'un `vector` sur un autre sont possibles, mais il faut veiller à ce que le nombre d'éléments d'un `vector` soit le même que l'autre, sinon R va effectuer le calcul en repartant du début du `vector` le plus court (principe du *recyclage*). Voici un exemple pour illustrer ce que R fait:
 
 ```{r 014-dataType2-6}
 miVec12 <- c(1, 1, 1, 1, 1, 1, 1, 1, 1)
@@ -113,19 +113,23 @@ print(miVec12)
 miVec13 <- c(10, 20, 30)
 print(miVec13)
 miVec12 + miVec13 # vecteurs de tailles différentes : 
-                  # attention au résultat
 miVec14 <- c(10, 20, 30, 40, 50, 60, 70, 80, 90)
 print(miVec14)
 miVec12 + miVec14 # les vecteurs sont de la même longueur
 miVec15 <- c(1, 1, 1, 1)
 print(miVec15)
-miVec15 + miVec13 # vecteurs de tailles différentes 
-                  # et non multiples
+miVec15 + miVec13 # vecteurs de tailles dif. et non multiples
+```
+
+Cela peut être utile d'effectuer des opérations avec des `vector` de tailles différentes, par exemple pour répéter des opérations : 
+
+```{r 014-dataType2-6b, warning=FALSE}
+miVec14 + c(10, 100)
 ```
 
 ### Accéder aux valeurs d'un `vector`
 
-Il souvent nécessaire de pouvoir accéder aux valeurs d'un `vector`, c'est à dire de récupérer une valeur ou un groupe de valeurs au sein d'un `vector`. Pour récupérer une valeur ou un groupe de valeurs dans un `vector` nous utilisons les crochets `[]`. Entre les crochets, nous pouvons utiliser un numéro correspondant au numéro de l'élément dans le `vector`.
+Il est souvent nécessaire de pouvoir accéder aux valeurs d'un `vector`, c'est à dire de récupérer une valeur ou un groupe de valeurs au sein d'un `vector`. Pour récupérer une valeur ou un groupe de valeurs dans un `vector` nous utilisons les crochets `[]`. Entre les crochets, nous pouvons utiliser un numéro correspondant au numéro de l'élément dans le `vector`.
 
 ```{r 014-dataType2-7}
 miVec20 <- c(10, 20, 30, 40, 50, 60, 70, 80, 90)
@@ -137,7 +141,7 @@ print(miVec20[1])
 print(miVec21[3])
 ```
 
-Nous pouvons aussi utiliser la combinaison de différents éléments (un autre `vector`).
+Nous pouvons aussi utiliser la combinaison de différents éléments (l'élément entre crochets est lui-même un `vector`).
 
 ```{r 014-dataType2-8}
 print(miVec20[c(1, 5, 9)])
@@ -213,7 +217,7 @@ miVec23["ccc"] <- miVec23["ccc"] + 100
 print(miVec23)
 ```
 
-Nous pouvons aussi changer les noms associés aux éléments d'un `vector`.
+Nous pouvons aussi changer les noms associés aux éléments d'un `vector` (car c'est un `vector` de type `character`).
 
 ```{r 014-dataType2-15}
 print(miVec23)
