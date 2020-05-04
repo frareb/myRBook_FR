@@ -24,7 +24,7 @@
 <meta name="author" content="François Rebaudo" />
 
 
-<meta name="date" content="2020-05-02" />
+<meta name="date" content="2020-05-04" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -362,13 +362,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Le répertoire de travail par défaut peut être obtenu avec la fonction <a href="fonctions.html#l015getwd"><code>getwd()</code></a> et spécifié avec la fonction <a href="fonctions.html#l015setwd"><code>setwd()</code></a>.</p>
 <div class="sourceCode" id="cb960"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb960-1" title="1">oldWd &lt;-<span class="st"> </span><span class="kw">getwd</span>()</a>
 <a class="sourceLine" id="cb960-2" title="2"><span class="kw">print</span>(oldWd)</a></code></pre></div>
-<pre><code>## [1] &quot;/home/fr/myRBook_FR&quot;</code></pre>
+<pre><code>## [1]
+&quot;C:/Users/nous/Documents/Francois/TRAVAIL/GitHub/myRBook_FR&quot;</code></pre>
 <div class="sourceCode" id="cb962"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb962-1" title="1"><span class="kw">setwd</span>(<span class="st">&quot;..&quot;</span>)</a>
 <a class="sourceLine" id="cb962-2" title="2"><span class="kw">getwd</span>()</a></code></pre></div>
-<pre><code>## [1] &quot;/home/fr&quot;</code></pre>
+<pre><code>## [1] &quot;C:/Users/nous/Documents/Francois/TRAVAIL/GitHub&quot;</code></pre>
 <div class="sourceCode" id="cb964"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb964-1" title="1"><span class="kw">setwd</span>(oldWd)</a>
 <a class="sourceLine" id="cb964-2" title="2"><span class="kw">getwd</span>()</a></code></pre></div>
-<pre><code>## [1] &quot;/home/fr/myRBook_FR&quot;</code></pre>
+<pre><code>## [1]
+&quot;C:/Users/nous/Documents/Francois/TRAVAIL/GitHub/myRBook_FR&quot;</code></pre>
 <p>Nous avons donc quatre options :</p>
 <ul>
 <li>nous pouvons lire le contenu d’un fichier en indiquant à R son chemin complet (à proscrire pour la reproductibilité des résultats, en effet le chemin complet varie d’un ordinateur à un autre)</li>
@@ -431,8 +433,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Voici un exemple où la première ligne est ignorée avec l’argument <code>skip = 1</code>.</p>
 <div class="sourceCode" id="cb973"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb973-1" title="1"><span class="co"># Affichage du fichier brut (10 premières lignes)</span></a>
 <a class="sourceLine" id="cb973-2" title="2"><span class="kw">readLines</span>(<span class="st">&quot;myFiles/E05C13.csv&quot;</span>, <span class="dt">n =</span> <span class="dv">10</span>)</a></code></pre></div>
-<pre><code>## [1] &quot;\&quot;Titre de tracé : E05C13\&quot;&quot;
-## [2] &quot;\&quot;#\&quot;,\&quot;Date Heure, GMT-04:00\&quot;,\&quot;Temp., °C (LGR S/N:
+<pre><code>## [1] &quot;ï»¿\&quot;Titre de tracÃ© : E05C13\&quot;&quot;
+## [2] &quot;\&quot;#\&quot;,\&quot;Date Heure, GMT-04:00\&quot;,\&quot;Temp., Â°C (LGR S/N:
 10362176, SEN S/N: 10362176)\&quot;&quot;
 ## [3] &quot;1,11/12/15 23:00:00,4.973&quot;
 ## [4] &quot;2,11/12/15 23:30:00,4.766&quot;

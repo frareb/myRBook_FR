@@ -24,7 +24,7 @@
 <meta name="author" content="François Rebaudo" />
 
 
-<meta name="date" content="2020-05-02" />
+<meta name="date" content="2020-05-04" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -1235,20 +1235,23 @@ R utility functions.
 <h3><span class="header-section-number">6.3.5</span> <code>getwd()</code></h3>
 <p>La fonction <code>getwd()</code> définit le répertoire de travail. Cela correspond à l’endroit relatif à partir duquel R se positionne pour identifier les fichiers. Ce concept prendra son sens lorsque nous verrons comment importer et exporter des données.</p>
 <div class="sourceCode" id="cb868"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb868-1" title="1"><span class="kw">getwd</span>()</a></code></pre></div>
-<pre><code>## [1] &quot;/home/fr/myRBook_FR&quot;</code></pre>
+<pre><code>## [1]
+&quot;C:/Users/nous/Documents/Francois/TRAVAIL/GitHub/myRBook_FR&quot;</code></pre>
 </div>
 <div id="l015setwd" class="section level3">
 <h3><span class="header-section-number">6.3.6</span> <code>setwd()</code></h3>
 <p>La fonction <code>setwd()</code> permet de définir un nouveau répertoire de travail.</p>
 <div class="sourceCode" id="cb870"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb870-1" title="1">oldWd &lt;-<span class="st"> </span><span class="kw">getwd</span>()</a>
 <a class="sourceLine" id="cb870-2" title="2"><span class="kw">print</span>(oldWd)</a></code></pre></div>
-<pre><code>## [1] &quot;/home/fr/myRBook_FR&quot;</code></pre>
+<pre><code>## [1]
+&quot;C:/Users/nous/Documents/Francois/TRAVAIL/GitHub/myRBook_FR&quot;</code></pre>
 <div class="sourceCode" id="cb872"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb872-1" title="1"><span class="kw">setwd</span>(<span class="st">&quot;..&quot;</span>)</a>
 <a class="sourceLine" id="cb872-2" title="2"><span class="kw">getwd</span>()</a></code></pre></div>
-<pre><code>## [1] &quot;/home/fr&quot;</code></pre>
+<pre><code>## [1] &quot;C:/Users/nous/Documents/Francois/TRAVAIL/GitHub&quot;</code></pre>
 <div class="sourceCode" id="cb874"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb874-1" title="1"><span class="kw">setwd</span>(oldWd)</a>
 <a class="sourceLine" id="cb874-2" title="2"><span class="kw">getwd</span>()</a></code></pre></div>
-<pre><code>## [1] &quot;/home/fr/myRBook_FR&quot;</code></pre>
+<pre><code>## [1]
+&quot;C:/Users/nous/Documents/Francois/TRAVAIL/GitHub/myRBook_FR&quot;</code></pre>
 </div>
 <div id="l015listfiles" class="section level3">
 <h3><span class="header-section-number">6.3.7</span> <code>list.files()</code></h3>
@@ -1533,12 +1536,12 @@ incorrect (5)&quot;</code></pre>
 <a class="sourceLine" id="cb949-2" title="2">  <span class="dt">n =</span> <span class="dv">100000</span>, </a>
 <a class="sourceLine" id="cb949-3" title="3">  <span class="kw">countVowelConso</span>(<span class="dt">word =</span> <span class="st">&quot;qwertyuiop azertyuiop&quot;</span>)))</a></code></pre></div>
 <pre><code>##    user  system elapsed 
-##   1.268   0.004   1.272</code></pre>
+##    1.61    0.00    1.61</code></pre>
 <div class="sourceCode" id="cb951"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb951-1" title="1"><span class="kw">system.time</span>(<span class="kw">replicate</span>(</a>
 <a class="sourceLine" id="cb951-2" title="2">  <span class="dt">n =</span> <span class="dv">100000</span>, </a>
 <a class="sourceLine" id="cb951-3" title="3">  <span class="kw">countVowelConsoAlt</span>(<span class="dt">word =</span> <span class="st">&quot;qwertyuiop azertyuiop&quot;</span>)))</a></code></pre></div>
 <pre><code>##    user  system elapsed 
-##   1.292   0.000   1.292</code></pre>
+##    1.53    0.00    1.53</code></pre>
 <p>Une fonction peut avoir des valeurs par défaut pour ses arguments. C’est le cas de la plupart des fonctions existantes. Par défaut, notre fonction va désormais compter le nombre de voyelles et de consonnes dans le mot <code>qwerty</code> (les parenthèses restent nécessaires même en l’absence d’arguments).</p>
 <div class="sourceCode" id="cb953"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb953-1" title="1">countVowelConsoAlt &lt;-<span class="st"> </span><span class="cf">function</span>(<span class="dt">word =</span> <span class="st">&quot;qwerty&quot;</span>){ </a>
 <a class="sourceLine" id="cb953-2" title="2">  <span class="cf">if</span>(<span class="kw">is.vector</span>(word) <span class="op">&amp;</span><span class="st"> </span><span class="kw">is.character</span>(word) <span class="op">&amp;</span><span class="st"> </span><span class="kw">length</span>(word) <span class="op">==</span><span class="st"> </span><span class="dv">1</span>){</a>
@@ -1589,14 +1592,14 @@ incorrect (5)&quot;</code></pre>
 <a class="sourceLine" id="cb957-11" title="11"><span class="kw">pkgCheck</span>(<span class="kw">c</span>(<span class="st">&quot;stats&quot;</span>, <span class="st">&quot;graphics&quot;</span>))</a></code></pre></div>
 <p>Alternativement nous pouvons utiliser la fonction <code>.packages()</code> pour lister les packages disponibles sur le CRAN par ordre alphabétique.</p>
 <div class="sourceCode" id="cb958"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb958-1" title="1"><span class="kw">head</span>(<span class="kw">.packages</span>(<span class="dt">all.available =</span> <span class="ot">TRUE</span>), <span class="dt">n =</span> <span class="dv">30</span>)</a></code></pre></div>
-<pre><code>##  [1] &quot;acepack&quot;    &quot;askpass&quot;    &quot;assertthat&quot; &quot;backports&quot; 
-##  [5] &quot;base64enc&quot;  &quot;BH&quot;         &quot;bitops&quot;     &quot;bookdown&quot;  
-##  [9] &quot;brew&quot;       &quot;broom&quot;      &quot;Cairo&quot;      &quot;callr&quot;     
-## [13] &quot;caTools&quot;    &quot;checkmate&quot;  &quot;classInt&quot;   &quot;cli&quot;       
-## [17] &quot;clipr&quot;      &quot;colorspace&quot; &quot;commonmark&quot; &quot;covr&quot;      
-## [21] &quot;crayon&quot;     &quot;crosstalk&quot;  &quot;curl&quot;       &quot;data.table&quot;
-## [25] &quot;DBI&quot;        &quot;debugme&quot;    &quot;dendextend&quot; &quot;desc&quot;      
-## [29] &quot;devtools&quot;   &quot;diffobj&quot;</code></pre>
+<pre><code>##  [1] &quot;abind&quot;      &quot;acepack&quot;    &quot;ade4&quot;       &quot;agricolae&quot; 
+##  [5] &quot;AlgDesign&quot;  &quot;alr4&quot;       &quot;aof&quot;        &quot;ape&quot;       
+##  [9] &quot;askpass&quot;    &quot;assertthat&quot; &quot;backports&quot;  &quot;barplotOr&quot; 
+## [13] &quot;base64enc&quot;  &quot;bcpa&quot;       &quot;bdsmatrix&quot;  &quot;BH&quot;        
+## [17] &quot;bibtex&quot;     &quot;bindr&quot;      &quot;bindrcpp&quot;   &quot;BioFTF&quot;    
+## [21] &quot;bitops&quot;     &quot;bold&quot;       &quot;bookdown&quot;   &quot;boot&quot;      
+## [25] &quot;brew&quot;       &quot;broom&quot;      &quot;ca&quot;         &quot;callr&quot;     
+## [29] &quot;car&quot;        &quot;carData&quot;</code></pre>
 <p>La fonction <code>pkgCheck()</code> assure la <strong>portabilité</strong> de nos scripts : ils fonctionneront sur tous les ordinateurs sans avoir à effectuer de modification. Ainsi nos scripts pourront par exemple être joints à nos articles scientifiques et assurer ainsi la <strong>reproductibilité</strong> de nos résultats.</p>
 </div>
 </div>
