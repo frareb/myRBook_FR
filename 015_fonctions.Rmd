@@ -361,6 +361,18 @@ La fonction `summary()` renvoie un résumé composé du minimum, premier quartil
 summary(iris[, 1])
 ```
 
+La fonction `summary()` ne prends pas d'argument `na.rm`. Le nombre de `NA/NaN` (s'il y en a) est indiqué après "Max".
+
+```{r 015-fonctions-26b}
+summary(
+  sample(
+    x = c(1:5, NA), 
+    size = 100, 
+    replace = TRUE
+  )
+)
+```
+
 #### `median()` {#l015median}
 
 La fonction `median()` renvoie la médiane.
