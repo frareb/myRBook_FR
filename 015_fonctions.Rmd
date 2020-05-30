@@ -588,36 +588,6 @@ rm(zzz)
 ls()
 ```
 
-## Quelques exercices
-
-Voici quelques exercices pour se perfectionner dans l'usage des fonctions et en apprendre de nouvelles grâce à la documentation. Certains exercices sont difficiles, nous pourrons y revenir plus tard.
-
-### Séquences
-
-#### Reproduisons les séquences suivantes :
-
--3 -4 -5 -6 -7 -8 -9 -10 –11
-
--3 -1 1 3 5 7 9 11
-
-3.0 3.2 3.4 3.6 3.8 4.0
-
-20 18 16 14 12 10 8 6
-
-"a" "f" "k" "p" "u" "z"
-
-"a" "a" "a" "a" "a" "f" "f" "f" "f" "f" "k" "k" "k" "k" "k" "p" "p" "p" "p" "p" "u" "u" "u" "u" "u" "z" "z" "z" "z" "z"
-
-#### Solutions possibles (car il y a toujours plusieurs solutions) : 
-
-```{r 015-fonctions-48}
--3:-11
-seq(from = -3, to = 11, by = 2)
-seq(from = 3.0, to = 4.0, by = 0.2)
-letters[seq(from = 1, to = 26, by = 5)]
-letters[rep(seq(from = 1, to = 26, by = 5), each = 5)]
-```
-
 ### Statistiques descriptives
 
 Dans le jeu de données `iris`, combien de valeurs de largeur de sépales sont supérieures à 3 ? Entre 2.8 et 3.2 ? 
