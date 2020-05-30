@@ -273,7 +273,7 @@ rev(vecManip2)
 
 #### `%in%` {#l015in}
 
-La fonction `%in%` peut être assimilée à un [opérateur de comparaison](#l011opcomp). Cette fonction prend deux objets comme arguments et renvoie `TRUE` ou `FALSE` pour chacun des éléments du premier objet en fonction de leur présence ou absence dans le second objet. Pour accéder à la documentation de la fonction, il faut utiliser des guillemets `help('%in%')`.
+La fonction `%in%` peut être assimilée à un [opérateur de comparaison](#l011opcomp). Cette fonction prend deux objets comme arguments et renvoie `TRUE` ou `FALSE` pour chacun des éléments du premier objet en fonction de leur présence ou absence dans le second objet (elle utilise la fonction `match()` qui renvoie les positions des premières occurrences des éléments d'un vecteur dans un autre vecteur). Pour accéder à la documentation de la fonction, il faut utiliser des guillemets `help('%in%')`.
 
 ```{r 015-fonctions-20}
 print(vecManip)
