@@ -307,7 +307,7 @@ Nous pouvons également effectuer des statistiques descriptives très simplement
 
 #### `mean()` {#l015mean}
 
-La fonction `mean()` renvoie la moyenne. Pour ignorer les valeurs manquantes `NA`, il faut donner la valeur `TRUE` à l'argument `na.rm()`.
+La fonction `mean()` renvoie la moyenne. Pour ignorer les valeurs manquantes `NA`, il faut donner la valeur `TRUE` à l'argument `na.rm`. L'argument `na.rm` se retrouve dans la plupart des fonctions de cette partie sur les statistiques descriptives.
 
 ```{r 015-fonctions-22}
 mean(iris[, 1])
@@ -316,12 +316,13 @@ mean(vecManip3)
 mean(vecManip3, na.rm = TRUE)
 ```
 
-#### `sd()` {#l015sd}
+#### `sd()` et `var()` {#l015sd}
 
-La fonction `sd()` renvoie l'écart type.
+La fonction `sd()` renvoie l'écart type et la fonction `var()` la variance.
 
 ```{r 015-fonctions-23}
 sd(iris[, 1])
+sqrt(var(iris[, 1]))
 print(vecManip3)
 sd(vecManip3)
 sd(vecManip3, na.rm = TRUE)
