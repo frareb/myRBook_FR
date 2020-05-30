@@ -111,7 +111,7 @@ if(is.numeric(myVar)){
 }
 ```
 
-Parfois, nous pouvons avoir besoin de tester une première condition puis une seconde condition uniquement si la première se vérifie dans un même test. Par exemple, pour un site nous voudrions savoir si il y a une seule espèces et tester si son abondance est supérieure à 10. Imaginons un jeu de données avec sous forme de vecteur les abondances. Nous allons tester le nombre d'espèces avec la fonction [`length()`](#l015length). 
+Parfois, nous pouvons avoir besoin de tester une première condition puis une seconde condition uniquement si la première se vérifie dans un même test. Par exemple, pour un site nous voudrions savoir si il y a une seule espèce et tester si son abondance est supérieure à 10. Imaginons un jeu de données sous forme de vecteur des abondances. Nous allons tester le nombre d'espèces avec la fonction [`length()`](#l015length). 
 
 ```{r 017-boucles-8, eval = FALSE}
 mySpecies <- c(15, 14, 20, 12)
@@ -124,7 +124,7 @@ if(length(mySpecies) == 1 & mySpecies > 10){
 ##   element will be used
 ```
 
-R renvoie une erreur car il ne peut pas au sein d'un test logique avec `if()` vérifier la seconde condition. En effet, `mySpecies > 10` renvoie `TRUE TRUE TRUE TRUE TRUE`. Nous pouvons séparer le code en deux conditions :
+R renvoie un avertissement car il ne peut pas au sein d'un test logique avec `if()` vérifier la seconde condition. En effet, `mySpecies > 10` renvoie `TRUE TRUE TRUE TRUE TRUE`. Nous pouvons séparer le code en deux conditions :
 
 ```{r 017-boucles-9}
 mySpecies <- c(15, 14, 20, 12)
