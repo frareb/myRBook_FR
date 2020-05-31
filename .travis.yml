@@ -1,29 +1,29 @@
-language: R
-sudo: required #false
-dist: trusty
-addons:
-  apt:
-    packages:
-      - libgdal-dev
-      - libproj-dev
-cache:
-  packages: true
-  directories:
-  - _bookdown_files
-  - $HOME/.npm
-
-pandoc_version: 2.1.1
-
-before_install:
-#- sudo apt-key update # packages cannot be authenticated!
-#- sudo apt-get update # packages cannot be authenticated!
-- mkdir ~/.R
-#- npm install netlify-cli -g
-
-script:
-- Rscript -e 'bookdown::render_book("index.Rmd")'
-
-#deploy:
-#  provider: script
-#  script: bash scripts/deploy.sh
-#  skip_cleanup: true
+#language: R
+#sudo: required #false
+#dist: trusty
+#addons:
+#  apt:
+#    packages:
+#      - libgdal-dev
+#      - libproj-dev
+#cache:
+#  packages: true
+#  directories:
+#  - _bookdown_files
+#  - $HOME/.npm
+#
+#pandoc_version: 2.1.1
+#
+#before_install:
+##- sudo apt-key update # packages cannot be authenticated!
+##- sudo apt-get update # packages cannot be authenticated!
+#- mkdir ~/.R
+##- npm install netlify-cli -g
+#
+#script:
+#- Rscript -e 'bookdown::render_book("index.Rmd")'
+#
+##deploy:
+##  provider: script
+##  script: bash scripts/deploy.sh
+##  skip_cleanup: true
