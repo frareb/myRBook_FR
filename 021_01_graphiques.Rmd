@@ -42,7 +42,7 @@ Le type de point peut être défini avec l'argument `pch` qui peut prendre un ca
 ```{r 021-01-graphiques-4, out.width = '70%'}
 par(mar = c(4, 4, 0, 0)) # réduction des marges
 plot(x = rep(seq(1:5), 5), y = rep(seq(1:5), each = 5),
-  pch = 1:25)
+  pch = 1:25, bg = "gray")
 plot(x = myX, y = myY, 
   pch = c(
     "a", "@", "#", "1", "=", "-", "_", "o", "O", "0", 
