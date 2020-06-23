@@ -57,7 +57,11 @@ par(op)
 
 ## `rgb()`
 
-Une autre option consiste à construire ses propres couleurs ave la fonction `rgb()` qui prend comme argument la quantité de rouge, de de vert, et de bleu. Par défaut ces valeurs sont comprises entre 0 et 1. Ce réglage par défaut peut être modifié avec l'arguement `maxColorValue` pour par exemple avoir des valeurs entre 0 et 255 (`maxColorValue = 255` ; norme pour la représentation des couleurs RGB).
+Une autre option consiste à construire ses propres couleurs ave la fonction `rgb()` qui prend comme argument la quantité de rouge, de de vert, et de bleu. Par défaut ces valeurs sont comprises entre 0 et 1. Ce réglage par défaut peut être modifié avec l'arguement `maxColorValue` pour par exemple avoir des valeurs entre 0 et 255 (`maxColorValue = 255` ; norme pour la représentation des couleurs RGB). Pour transformer une couleur de R en RGB, nous pouvons utiliser la fonction `col2rgb()`.
+
+```{r 021-02-graphiques-4b}
+col2rgb(c("red", "green", "blue"))
+```
 
 Nous allons reprendre notre fonction permettant de représenter la distribution de points dans un nuage de points au moyen de `barplot` avec cette fois trois couleurs de points (rouge, vert, bleu), et des `barplot` dont la couleur correspondra à la quantité de chaque couleur avec la fonction `rgb()`.
 
