@@ -122,7 +122,7 @@ Cela permet d'écrire la documentation de chaque fonction à côté de la foncti
 
 ## Communiquer avec rmarkdown
 
-Les gestionnaires de version sur serveur sont très utiles car ils permettent à de multiples utilisateurs de contribuer à un même script. Ils constituent des outils collaboratifs très puissants. Cependant dans certains cas nous devons communiquer avec des collaborateurs non-initiés à R et ce en amont du processus de publication scientifique. Dans les cas où le code et les fichiers associés ne suffisent pas (même quand le code est lisible et reproductible), il peut être intéressant de passer par un document qui montrera le code et le résultat de son exécution dans un seul et même fichier. C’est ce que permet le package *rmarkdown* en permettant la génération de documents (eg HTML, PDF, Word) de manière dynamique (https://rmarkdown.rstudio.com/). 
+Les gestionnaires de version sur serveur sont très utiles car ils permettent à de multiples utilisateurs de contribuer à un même script. Ils constituent des outils collaboratifs très puissants. Cependant dans certains cas nous devons communiquer avec des collaborateurs non-initiés à R et ce en amont du processus de publication scientifique. Dans les cas où le code et les fichiers associés ne suffisent pas (même quand le code est lisible et reproductible), il peut être intéressant de passer par un document qui montrera le code et le résultat de son exécution dans un seul et même fichier. C’est ce que permet le package *rmarkdown* en permettant la génération de documents (eg HTML, PDF, Word) de manière dynamique (https://rmarkdown.rstudio.com/), et en assurant la reproductibilité des analyses. 
 
 ```{r install-rmarkdown}
 pkgCheck <- function(x){ 
@@ -136,7 +136,7 @@ pkgCheck <- function(x){
 pkgCheck("rmarkdown")
 ```
 
-Les possibilités de *rmarkdown* sont immenses et sortent du cadre de ce livre. Deux ressources de référence couvrent tous les aspects de *rmarkdown* : le site web officiel (https://rmarkdown.rstudio.com) et le livre numérique de Yihui Xie, J. J. Allaire, Garrett Grolemund (R Markdown: The Definitive Guide ; https://bookdown.org/yihui/rmarkdown/). Pour aller plus loin, nous pourrons consulter le livre numérique de Yihui Xie (bookdown: Authoring Books and Technical Documents with R Markdown ; https://bookdown.org/yihui/bookdown/).
+Les possibilités de *rmarkdown* sont immenses et sortent du cadre de ce livre. Deux ressources de référence couvrent tous les aspects de *rmarkdown* : le site web officiel (https://rmarkdown.rstudio.com) et le livre numérique de Yihui Xie, J. J. Allaire, Garrett Grolemund (R Markdown: The Definitive Guide ; https://bookdown.org/yihui/rmarkdown/). Pour aller plus loin, nous pourrons consulter le livre numérique de Yihui Xie (bookdown: Authoring Books and Technical Documents with R Markdown ; https://bookdown.org/yihui/bookdown/). Il existe d'autres possibilités comme `Sweave` qui permet d'introduire du code et des sorties R dans un document LaTeX (`?Sweave` ; F. Leisch et R-core 2002), ou encore `knitr` (https://yihui.org/knitr/) pour générer des rapports dynamiques (*rmarkdown* utilise le package `knitr`).
 
 ## Conclusion
 
