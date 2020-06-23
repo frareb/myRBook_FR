@@ -4,13 +4,19 @@ Vous trouverez ici le code source du livre *Se former au logiciel R : initiation
 
 Ce livre est mis à jour régulièrement, alors n'hésitez pas à consulter les dernières modifications ci-dessous. 
 
-Si vous avez des commentaires, des suggestions ou si vous identifiez des erreurs, n'hésitez pas à m'envoyer un email (francois.rebaudo@ird.fr), ou si vous connaissez GitHub sur le site du projet (https://github.com/frareb/myRBook_FR). Ce livre est collaboratif, il repose sur votre participation. 
+Si vous avez des commentaires, des suggestions ou si vous identifiez des erreurs, n'hésitez pas à me contacter via GitHub (https://github.com/frareb/myRBook_FR). Toutes les contributions sont bienvenues. 
 
-Les diapositives du [module de 35h sur l'analyse de variance et le modèle linéaire sont disponibles ici](http://myrbookfr.netlify.com/myHtmls/France_Montpellier_2019/R00_links.html).
+Les diapositives du [module sur l'analyse de variance et le modèle linéaire sont disponibles ici](http://myrbookfr.netlify.com/myHtmls/France_Montpellier_2019/R00_links.html).
 
-Ce livre est également disponible en espagnol (http://myrbooksp.netlify.com/). 
+Ce livre dispose d'une version en espagnol dont le contenu diffère, mais qui est disponible dans plusieurs formats numérique et qui est consultable en ligne (http://myrbooksp.netlify.com/). 
+
+Si vous souhaitez vous procurer une version papier ou au format numérique de ce livre, un lien sera fourni dans le courant du premier semestre 2021.
 
 Dernières modifications:
+
+**v0.1.0-3 23/06/2020**
+
+* mise en page et modifications du dossier public
 
 **v0.1.0-2 04/05/2020**
 
@@ -22,7 +28,7 @@ Dernières modifications:
 
 **v0.1.0 13/12/2019**
 
-* Première version du livre
+* Première version du "livre"
 
 **v0.0.21 13/12/2019**
 
