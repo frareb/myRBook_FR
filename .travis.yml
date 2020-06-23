@@ -1,4 +1,4 @@
-#language: R
+language: R
 #sudo: required #false
 #dist: trusty
 #addons:
@@ -12,7 +12,7 @@
 #  - _bookdown_files
 #  - $HOME/.npm
 
-#pandoc_version: 2.1.1
+pandoc_version: 2.1.1
 #
 #before_install:
 ##- sudo apt-key update # packages cannot be authenticated!
@@ -20,8 +20,8 @@
 #- mkdir ~/.R
 ##- npm install netlify-cli -g
 #
-#script:
-#- Rscript -e 'bookdown::render_book("index.Rmd")'
+script:
+- Rscript -e 'bookdown::render_book("index.Rmd")'
 #
 ##deploy:
 ##  provider: script
