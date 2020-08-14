@@ -10,12 +10,12 @@ Le package `RColorBrewer` est un package populaire qui contient des palettes com
 
 ```{r 021-03-graphiques-1, fig.width=11, fig.height=6}
 pkgCheck <- function(x){ 
-	if (!require(x, character.only = TRUE)){
-		install.packages(x, dependencies = TRUE)
-		if(!require(x, character.only = TRUE)) {
-			stop()
-		}
-	}
+  if (!require(x, character.only = TRUE)){
+    install.packages(x, dependencies = TRUE)
+    if(!require(x, character.only = TRUE)) {
+      stop()
+    }
+  }
 }
 pkgCheck("RColorBrewer")
 par(mar = c(1, 4, 1, 1)) # réduction des marges
@@ -31,12 +31,12 @@ Le package `palettesForR` est un autre package contenant des palettes prêtes à
 
 ```{r 021-03-graphiques-2, out.width = '70%'}
 pkgCheck <- function(x){ 
-	if (!require(x, character.only = TRUE)){
-		install.packages(x, dependencies = TRUE)
-		if(!require(x, character.only = TRUE)) {
-			stop()
-		}
-	}
+  if (!require(x, character.only = TRUE)){
+    install.packages(x, dependencies = TRUE)
+    if(!require(x, character.only = TRUE)) {
+      stop()
+    }
+  }
 }
 pkgCheck("palettesForR")
 showPalette(Echo_gpl)
@@ -71,12 +71,12 @@ Pour revenir à `ggplot2`, commençons par un exemple avec les données `iris`.
 
 ```{r 021-03-graphiques-3, fig.width=11, fig.height=6}
 pkgCheck <- function(x){ 
-	if (!require(x, character.only = TRUE)){
-		install.packages(x, dependencies = TRUE)
-		if(!require(x, character.only = TRUE)) {
-			stop()
-		}
-	}
+  if (!require(x, character.only = TRUE)){
+    install.packages(x, dependencies = TRUE)
+    if(!require(x, character.only = TRUE)) {
+      stop()
+    }
+  }
 }
 pkgCheck("ggplot2")
 data(iris)
@@ -233,14 +233,14 @@ Cet exemple a été copié depuis le site web de plotly (https://plot.ly/r/anima
 
 ```{r 021-03-graphiques-6, echo = TRUE, message = FALSE, warning = FALSE, fig.width=11, fig.height=6}
 pkgCheck <- function(packages){
-	for(x in packages){
-		try(if (!require(x, character.only = TRUE)){
-			install.packages(x, dependencies = TRUE)
-			if(!require(x, character.only = TRUE)) {
-				stop()
-			}
-		})
-	}
+  for(x in packages){
+    try(if (!require(x, character.only = TRUE)){
+      install.packages(x, dependencies = TRUE)
+      if(!require(x, character.only = TRUE)) {
+        stop()
+      }
+    })
+  }
 }
 pkgCheck(c("plotly", "gapminder"))
 

@@ -126,12 +126,12 @@ Les gestionnaires de version sur serveur sont très utiles car ils permettent à
 
 ```{r install-rmarkdown}
 pkgCheck <- function(x){ 
-	if (!require(x, character.only = TRUE)){
-		install.packages(x, dependencies = TRUE)
-		if(!require(x, character.only = TRUE)) {
-			stop()
-		}
-	}
+  if (!require(x, character.only = TRUE)){
+    install.packages(x, dependencies = TRUE)
+    if(!require(x, character.only = TRUE)) {
+      stop()
+    }
+  }
 }
 pkgCheck("rmarkdown")
 ```

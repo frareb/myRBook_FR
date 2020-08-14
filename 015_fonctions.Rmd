@@ -73,12 +73,12 @@ Le paragraphe `Arguments` détaille les valeurs et le type de conteneur de chacu
 #           expression vector). Non-atomic classed R 
 #           objects are coerced by as.vector and all 
 #           attributes discarded.
-# nrow	    the desired number of rows.
-# ncol	    the desired number of columns.
-# byrow	    logical. If FALSE (the default) the matrix is 
+# nrow      the desired number of rows.
+# ncol      the desired number of columns.
+# byrow     logical. If FALSE (the default) the matrix is 
 #           filled by columns, otherwise the matrix is 
 #           filled by rows.
-# dimnames	A dimnames attribute for the matrix: NULL or 
+# dimnames  A dimnames attribute for the matrix: NULL or 
 #           a list of length 2 giving the row and column 
 #           names respectively. An empty list is treated as 
 #           NULL, and a list of length one as row names. The 
@@ -805,14 +805,14 @@ Nous venons de voir que l'installation d'un package est à faire une seule fois 
 
 ```{r 015-fonctions-64, eval = FALSE}
 pkgCheck <- function(packages){
-	for(x in packages){
-		try(if(!require(x, character.only = TRUE)){
-			install.packages(x, dependencies = TRUE)
-			if(!require(x, character.only = TRUE)){
-				stop()
-			}
-		})
-	}
+  for(x in packages){
+    try(if(!require(x, character.only = TRUE)){
+      install.packages(x, dependencies = TRUE)
+      if(!require(x, character.only = TRUE)){
+        stop()
+      }
+    })
+  }
 }
 pkgCheck(c("stats", "graphics"))
 ```

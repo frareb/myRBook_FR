@@ -9,14 +9,14 @@ Tout d'abord si cela n'est pas déjà fait il faut installer le package `httr` a
 
 ```{r 042-studyCase-1, eval = FALSE}
 pkgCheck <- function(packages){
-	for(x in packages){
-		try(if (!require(x, character.only = TRUE)){
-			install.packages(x, dependencies = TRUE)
-			if(!require(x, character.only = TRUE)) {
-				stop()
-			}
-		})
-	}
+  for(x in packages){
+    try(if (!require(x, character.only = TRUE)){
+      install.packages(x, dependencies = TRUE)
+      if(!require(x, character.only = TRUE)) {
+        stop()
+      }
+    })
+  }
 }
 pkgCheck("httr")
 ```
@@ -165,14 +165,14 @@ Voici le code complet :
 
 ```{r 042-studyCase-11, eval = FALSE}
 pkgCheck <- function(packages){
-	for(x in packages){
-		try(if (!require(x, character.only = TRUE)){
-			install.packages(x, dependencies = TRUE)
-			if(!require(x, character.only = TRUE)) {
-				stop()
-			}
-		})
-	}
+  for(x in packages){
+    try(if (!require(x, character.only = TRUE)){
+      install.packages(x, dependencies = TRUE)
+      if(!require(x, character.only = TRUE)) {
+        stop()
+      }
+    })
+  }
 }
 pkgCheck("httr")
 

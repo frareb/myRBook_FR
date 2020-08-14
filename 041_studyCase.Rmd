@@ -106,8 +106,8 @@ Nous pouvons visualiser les données avec la fonction `plot()`.
 ```{r 041-studyCase-8, fig.width=10, fig.height=6}
 par(mar = c(4, 4, 1, 1)) # réduction des marges
 plot(x = bdd$day, y = bdd$temp, 
-	type = 'l', ylim = c(-15, 40), 
-	xlab = "Temps", ylab = "Température (°C)")
+  type = 'l', ylim = c(-15, 40), 
+  xlab = "Temps", ylab = "Température (°C)")
 ```
 
 Nous pouvons simplifier les informations en ne calculant que les températures minimales, moyennes et maximales avec la fonction `tapply()`. 
@@ -118,12 +118,12 @@ tempDayMin <- tapply(bdd$temp, INDEX = bdd$day, FUN = min)
 tempDayMax <- tapply(bdd$temp, INDEX = bdd$day, FUN = max)
 par(mar = c(4, 4, 1, 1)) # réduction des marges
 plot(x = as.Date(names(tempDayMean), format = "%Y-%m-%d"), 
-	y = tempDayMean, type = 'l', ylim = c(-15, 40), 
-	xlab = "Temps", ylab = "Température (°C)")
+  y = tempDayMean, type = 'l', ylim = c(-15, 40), 
+  xlab = "Temps", ylab = "Température (°C)")
 points(as.Date(names(tempDayMin), format = "%Y-%m-%d"), 
-	y = tempDayMin, type = 'l', col = 4)
+  y = tempDayMin, type = 'l', col = 4)
 points(as.Date(names(tempDayMax), format = "%Y-%m-%d"), 
-	y = tempDayMax, type = 'l', col = 2)
+  y = tempDayMax, type = 'l', col = 2)
 legend("topright", legend = c("min", "max", "mean"), 
   lty = 1, lwd = 2, col = c(4, 2, 1))
 ```
@@ -243,12 +243,12 @@ tempHourMax <- aggregate(
 hours <- seq(from = 0, to = 23.5, by = 0.5)
 par(mar = c(4, 4, 1, 1)) # réduction des marges
 plot(x = hours, 
-	y = tempHourMean[, 2], type = 'l', ylim = c(-15, 40), 
-	xlab = "", ylab = "Température (°C)", lwd = 2, 
-	xaxt = "n", panel.first = {
-		abline(v = hours, col = "gray", lty = 2)
-		abline(h = 0, lty = 2)	
-	})
+  y = tempHourMean[, 2], type = 'l', ylim = c(-15, 40), 
+  xlab = "", ylab = "Température (°C)", lwd = 2, 
+  xaxt = "n", panel.first = {
+    abline(v = hours, col = "gray", lty = 2)
+    abline(h = 0, lty = 2)  
+  })
 axis(
   side = 1, 
   at = hours, 
@@ -274,49 +274,49 @@ hours <- seq(from = 0, to = 23.5, by = 0.5)
 bddMonth <- format(bdd$day, format = "%m")
 tempDayEachMonth <- lapply(
   sort(unique(bddMonth)), function(myMonth){
-	  bddX <- bdd[bddMonth == myMonth, ]
-	  tempHourMean <- aggregate(
-	    x = bddX$temp, 
-	    by = list(format(bddX$posix, format = "%H:%M")), 
-	    FUN = mean)
-	  tempHourMin <- aggregate(
-	    x = bddX$temp, 
-	    by = list(format(bddX$posix, format = "%H:%M")), 
-	    FUN = min)
-	  tempHourMax <- aggregate(
-	    x = bddX$temp, 
-	    by = list(format(bddX$posix, format = "%H:%M")), 
-	    FUN = max)
-	return(
-	  data.frame(
-	    tempHourMean, 
-	    tempHourMin, 
-	    tempHourMax))
+    bddX <- bdd[bddMonth == myMonth, ]
+    tempHourMean <- aggregate(
+      x = bddX$temp, 
+      by = list(format(bddX$posix, format = "%H:%M")), 
+      FUN = mean)
+    tempHourMin <- aggregate(
+      x = bddX$temp, 
+      by = list(format(bddX$posix, format = "%H:%M")), 
+      FUN = min)
+    tempHourMax <- aggregate(
+      x = bddX$temp, 
+      by = list(format(bddX$posix, format = "%H:%M")), 
+      FUN = max)
+  return(
+    data.frame(
+      tempHourMean, 
+      tempHourMin, 
+      tempHourMax))
 })
 par(mar = c(4, 4, 1, 1)) 
 # for (i in seq_along(tempDayEachMonth)){ # pour tous les mois
 for (i in 1:2){ # uniquement Janvier et Février 
-	plot(x = hours, y = tempDayEachMonth[[i]][, 2], 
-		type = 'l', ylim = c(-15, 40), 
-		xlab = "", ylab = "Température (°C)", lwd = 2, 
-		main = meses[i],
-		xaxt = "n", panel.first = {
-			abline(v = hours, col = "gray", lty = 2)
-			abline(h = 0, lty = 2)	
-		})
-	axis(
-	  side = 1, 
-	  at = hours, 
-	  labels = tempHourMean[, 1], 
-	  las = 2)
-	points(
-	  x = hours, 
-	  y = tempDayEachMonth[[i]][, 4], 
-		type = 'l', col = 4, lwd = 2)
-	points(
-	  x = hours, 
-	  y = tempDayEachMonth[[i]][, 6], 
-		type = 'l', col = 2, lwd = 2)
+  plot(x = hours, y = tempDayEachMonth[[i]][, 2], 
+    type = 'l', ylim = c(-15, 40), 
+    xlab = "", ylab = "Température (°C)", lwd = 2, 
+    main = meses[i],
+    xaxt = "n", panel.first = {
+      abline(v = hours, col = "gray", lty = 2)
+      abline(h = 0, lty = 2)  
+    })
+  axis(
+    side = 1, 
+    at = hours, 
+    labels = tempHourMean[, 1], 
+    las = 2)
+  points(
+    x = hours, 
+    y = tempDayEachMonth[[i]][, 4], 
+    type = 'l', col = 4, lwd = 2)
+  points(
+    x = hours, 
+    y = tempDayEachMonth[[i]][, 6], 
+    type = 'l', col = 2, lwd = 2)
 }
 ```
 
@@ -329,13 +329,13 @@ plot(
   y = tempDayEachMonth[[1]][, 2], 
   type = 'n', 
   ylim = c(-10, 35),
-	xlab = "", 
+  xlab = "", 
   ylab = "Température moyenne (°C)",
-	xaxt = "n", 
-	panel.first = {
-		abline(v = hours, col = "gray", lty = 2)
-		abline(h = 0, lty = 2)	
-	})
+  xaxt = "n", 
+  panel.first = {
+    abline(v = hours, col = "gray", lty = 2)
+    abline(h = 0, lty = 2)  
+  })
 axis(
   side = 1, 
   at = hours, 
@@ -345,9 +345,9 @@ myColors <- c("#A6CEE3", "#1F78B4", "#B2DF8A", "#33A02C",
   "#FB9A99", "#E31A1C", "#FDBF6F", "#FF7F00", "#CAB2D6", 
   "#6A3D9A", "#FFFF99", "#B15928")
 for (i in seq_along(tempDayEachMonth)){
-	points(x = hours, 
-		y = tempDayEachMonth[[i]][, 2], 
-		type = 'l', col = myColors[i], lwd = 2)
+  points(x = hours, 
+    y = tempDayEachMonth[[i]][, 2], 
+    type = 'l', col = myColors[i], lwd = 2)
 }
 legend(
   "topright", 
@@ -363,13 +363,13 @@ plot(
   y = tempDayEachMonth[[1]][, 2], 
   type = 'n', 
   ylim = c(0, 30),
-	xlab = "", 
+  xlab = "", 
   ylab = "Variation de température diurne (°C)",
-	xaxt = "n", 
-	panel.first = {
-		abline(v = hours, col = "gray", lty = 2)
-		abline(h = 0, lty = 2)	
-	})
+  xaxt = "n", 
+  panel.first = {
+    abline(v = hours, col = "gray", lty = 2)
+    abline(h = 0, lty = 2)  
+  })
 axis(
   side = 1, 
   at = hours, 
@@ -379,13 +379,13 @@ myColors <- c("#A6CEE3", "#1F78B4", "#B2DF8A", "#33A02C",
   "#FB9A99", "#E31A1C", "#FDBF6F", "#FF7F00", "#CAB2D6", 
   "#6A3D9A", "#FFFF99", "#B15928")
 for (i in seq_along(tempDayEachMonth)){
-	points(
-	  x = hours, 
-		y = tempDayEachMonth[[i]][, 6] - 
-		  tempDayEachMonth[[i]][, 4], 
-		type = 'l', 
-		col = myColors[i], 
-		lwd = 2)
+  points(
+    x = hours, 
+    y = tempDayEachMonth[[i]][, 6] - 
+      tempDayEachMonth[[i]][, 4], 
+    type = 'l', 
+    col = myColors[i], 
+    lwd = 2)
 }
 legend(
   "topright", 
@@ -400,12 +400,12 @@ Nous pouvons aussi représenter les températures journalières avec des graphiq
 
 ```{r 041-studyCase-19, fig.width=10, fig.height=6}
 pkgCheck <- function(x){ 
-	if (!require(x, character.only = TRUE)){
-		install.packages(x, dependencies = TRUE)
-		if(!require(x, character.only = TRUE)) {
-			stop()
-		}
-	}
+  if (!require(x, character.only = TRUE)){
+    install.packages(x, dependencies = TRUE)
+    if(!require(x, character.only = TRUE)) {
+      stop()
+    }
+  }
 }
 pkgCheck("ggplot2")
 pkgCheck("ggridges")
