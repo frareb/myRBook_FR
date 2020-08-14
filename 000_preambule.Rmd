@@ -39,21 +39,21 @@ options(width = 60)
 
 ```{r set-packages, echo=FALSE, warning=FALSE, message=FALSE}
 pkgCheck <- function(packages){
-	for(x in packages){
-		try(if (!require(x, character.only = TRUE)){
-			install.packages(x, dependencies = TRUE)
-			if(!require(x, character.only = TRUE)) {
-				stop()
-			}
-		})
-	}
+  for(x in packages){
+    try(if (!require(x, character.only = TRUE)){
+      install.packages(x, dependencies = TRUE)
+      if(!require(x, character.only = TRUE)) {
+        stop()
+      }
+    })
+  }
 }
 pkgCheck("kableExtra")
 ```
 
 # Avant-propos {-}
 
-Je remercie toutes celles et ceux qui ont participé à améliorer ce livre par leurs conseils, leurs suggestions de modifications et leurs corrections (par ordre alphabétique) : Camila Benavides Frias, Marc Girondot, Susi Loza Herrera, Emmanuel Paradis, Estefania Quenta Herrera, Baptiste Régnier et Jean-Christophe Sandoz.
+Je remercie toutes celles et ceux qui ont participé à améliorer ce livre par leurs conseils, leurs suggestions de modifications et leurs corrections (par ordre alphabétique) : Camila BF, Marc G, Susi LH, Emmanuel P, Estefania QH, Baptiste R et Jean-Christophe S.
 
 ```{r index-1, echo = FALSE, eval=FALSE}
 # contrib <- unname(t(data.frame(
