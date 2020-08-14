@@ -176,13 +176,13 @@ Tout d'abord nous allons charger les packages `raster`, `rgdal` et `jpeg` qui vo
 
 ```{r 021-02-graphiques-8, warning=FALSE, message=FALSE, linewidth=65}
 pkgCheck <- function(x){ 
-	if (!require(x, character.only = TRUE)){
-		install.packages(
-		  x, dependencies = TRUE, quiet = TRUE)
-		if(!require(x, character.only = TRUE)) {
-			stop()
-		}
-	}
+  if (!require(x, character.only = TRUE)){
+    install.packages(
+      x, dependencies = TRUE, quiet = TRUE)
+    if(!require(x, character.only = TRUE)) {
+      stop()
+    }
+  }
 }
 pkgCheck("raster")
 pkgCheck("rgdal")
@@ -193,79 +193,78 @@ Ensuite nous allons utiliser la fonction `kmeans()` pour effectuer des groupes d
 
 ```{r 021-02-graphiques-9, out.width = '70%'}
 createPal <- function(photo, met = 1, graph = TRUE, k = 9){
-	if(met == 1){
-		colR <- getValues(raster(photo, band = 1))
-		colG <- getValues(raster(photo, band = 2))
-		colB <- getValues(raster(photo, band = 3))
-		kMeans <- kmeans(
-		  data.frame(colR, colG, colB), 
-		  centers = k)
-		kCol <- rgb(kMeans$centers, maxColorValue = 255)[
-		  order(table(
-			  kMeans$cluster), decreasing = TRUE)]
-		if(graph == TRUE){
-		  op <- par(no.readonly = TRUE)
-		  par(mfrow = c (1, 2), mar = c(0, 2, 2, 0))
-		  myJpg <- readJPEG(
-		    "./myFiles/photoKmeans.jpg", 
-		    native = TRUE)
-		  plot(0:1, 0:1, type = "n", ann = FALSE, axes = FALSE)
-		  rasterImage(myJpg, 0, 0, 1, 1)
-		  barplot(
-		    table(kMeans$cluster)[order(table(kMeans$cluster), 
-		      decreasing = TRUE)], 
-		    col = kCol, 
-		    names.arg = NA)
-		  par(op)
-		}
-		return(kCol)
-	} else {
-		if(met == 2){
-			kColR <- kmeans(
-			  x = getValues(raster(photo, band = 1)), 
-				centers = k)
-			kColG <- kmeans(
-			  x = getValues(raster(photo, band = 2)), 
-				centers = k)
-			kColB <- kmeans(
-			  x = getValues(raster(photo, band = 3)), 
-				centers = k)
-			kCol <- rgb(
-			  kColR$centers, 
-			  kColG$centers, 
-			  kColB$centers,
-				maxColorValue = 255)
-			if(graph == TRUE){
-				op <- par(no.readonly = TRUE)
-				par(mfrow = c (1, 2), mar = c(0, 2, 2, 0))
-				myJpg <- readJPEG(
-				  "./myFiles/photoKmeans.jpg", 
-				  native = TRUE)
-				plot(x = 0:1, y = 0:1, 
-				     type = "n", 
-				     ann = FALSE, 
-				     axes = FALSE)
-				rasterImage(myJpg, 0, 0, 1, 1)
-				# par(mar = c(0, 0, 0, 0))
-				plot(x = 1:k, y = rep(1, k), ylim = c(0, 1), 
-					xlim = c(0, k), axes = FALSE, xlab = "", 
-					ylab = "", type = "n")
-				for(i in 1:k){
-					polygon(
-					  x = c(i-1, i, i, i-1), 
-					  y = c(0, 0, 1, 1), 
-						col = kCol[i])
-					text(x = i - 0.5, y = 0.5, 
-						labels = as.character(kCol[i]), srt = 90)
-				}
-				par(op)
-			}
-			return(kCol)
-		} else {
-			print(paste0("No method ", met, "."))
-			return(rgb(0, 0, 0))
-		}
-	}
+  if(met == 1){
+    colR <- getValues(raster(photo, band = 1))
+    colG <- getValues(raster(photo, band = 2))
+    colB <- getValues(raster(photo, band = 3))
+    kMeans <- kmeans(
+      data.frame(colR, colG, colB), 
+      centers = k)
+    kCol <- rgb(kMeans$centers, maxColorValue = 255)[
+      order(table(
+        kMeans$cluster), decreasing = TRUE)]
+    if(graph == TRUE){
+      op <- par(no.readonly = TRUE)
+      par(mfrow = c (1, 2), mar = c(0, 2, 2, 0))
+      myJpg <- readJPEG(
+        "./myFiles/photoKmeans.jpg", 
+        native = TRUE)
+      plot(0:1, 0:1, type = "n", ann = FALSE, axes = FALSE)
+      rasterImage(myJpg, 0, 0, 1, 1)
+      barplot(
+        table(kMeans$cluster)[order(table(kMeans$cluster), 
+          decreasing = TRUE)], 
+        col = kCol, 
+        names.arg = NA)
+      par(op)
+    }
+    return(kCol)
+  } else {
+    if(met == 2){
+      kColR <- kmeans(
+        x = getValues(raster(photo, band = 1)), 
+        centers = k)
+      kColG <- kmeans(
+        x = getValues(raster(photo, band = 2)), 
+        centers = k)
+      kColB <- kmeans(
+        x = getValues(raster(photo, band = 3)), 
+        centers = k)
+      kCol <- rgb(
+        kColR$centers, 
+        kColG$centers, 
+        kColB$centers,
+        maxColorValue = 255)
+      if(graph == TRUE){
+        op <- par(no.readonly = TRUE)
+        par(mfrow = c (1, 2), mar = c(0, 2, 2, 0))
+        myJpg <- readJPEG(
+          "./myFiles/photoKmeans.jpg", 
+          native = TRUE)
+        plot(x = 0:1, y = 0:1, 
+             type = "n", 
+             ann = FALSE, 
+             axes = FALSE)
+        rasterImage(myJpg, 0, 0, 1, 1)
+        plot(x = 1:k, y = rep(1, k), ylim = c(0, 1), 
+          xlim = c(0, k), axes = FALSE, xlab = "", 
+          ylab = "", type = "n")
+        for(i in 1:k){
+          polygon(
+            x = c(i-1, i, i, i-1), 
+            y = c(0, 0, 1, 1), 
+            col = kCol[i])
+          text(x = i - 0.5, y = 0.5, 
+            labels = as.character(kCol[i]), srt = 90)
+        }
+        par(op)
+      }
+      return(kCol)
+    } else {
+      print(paste0("No method ", met, "."))
+      return(rgb(0, 0, 0))
+    }
+  }
 }
 
 myPalMet1 <- createPal(
@@ -289,13 +288,13 @@ makeImpact <- function(
     numP = 300, 
     impact = 0.33, 
     multCex = 3){
-	myX <- sample(0:1000, size = numP, replace = TRUE)/1000
-	myY <- sample(0:1000, size = numP, replace = TRUE)/1000
-	distImpact <- sqrt((myX - impact)^2 + (myY - impact)^2)
-	dfXY <- data.frame(myX, myY, distImpact)
-	plot(x = dfXY$myX, y = dfXY$myY, axes = FALSE, 
-		xlab = "", ylab = "", cex = dfXY$distImpact*multCex, 
-		col = myPal, pch = 16)
+  myX <- sample(0:1000, size = numP, replace = TRUE)/1000
+  myY <- sample(0:1000, size = numP, replace = TRUE)/1000
+  distImpact <- sqrt((myX - impact)^2 + (myY - impact)^2)
+  dfXY <- data.frame(myX, myY, distImpact)
+  plot(x = dfXY$myX, y = dfXY$myY, axes = FALSE, 
+    xlab = "", ylab = "", cex = dfXY$distImpact*multCex, 
+    col = myPal, pch = 16)
 }
 
 op <- par(no.readonly = TRUE)
