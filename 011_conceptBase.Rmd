@@ -131,7 +131,7 @@ FALSE + 1
 
 La valeur de `TRUE` est de 1 et la valeur de `FALSE` est de 0. Si cela peut paraître étrange à ce stade, nous verrons plus tard comment utiliser cette information et toutes les fonctionnalités qu’elle permet.
 
-R est aussi un langage relativement permissif, cela veut dire qu'il admet une certaine flexibilité dans la manière de rédiger le code. Débattre du bien-fondé de cette flexibilité sort du cadre de ce livre mais nous pourrons trouver dans du code R sur Internet ou dans d'autres ouvrages le raccourcis `T` pour `TRUE` et `F` pour `FALSE`. 
+R est aussi un langage relativement permissif, cela veut dire qu'il admet une certaine flexibilité dans la manière de rédiger le code. Débattre du bien-fondé de cette flexibilité sort du cadre de ce livre mais nous pourrons trouver dans du code R sur Internet ou dans d'autres ouvrages les raccourcis `T` pour `TRUE` et `F` pour `FALSE`. 
 
 ```{r 011-conceptBase-11}
 T == TRUE
@@ -141,7 +141,7 @@ F == 0
 (F + 1) == TRUE
 ```
 
-Bien que cette façon de se référer à `TRUE` et `FALSE` par `T` et `F` soit assez répandue, dans ce livre nous utiliserons toujours `TRUE` et `FALSE` afin que le code soit plus facile à lire. Encore une fois l'objectif d'un code est de non seulement être fonctionnel mais aussi d'être facile à lire et à relire. De plus, il est possible -bien que non recommandé- de créer une variable `T` et de lui affecter la valeur `False` (cf. la notion d'objet que nous verrons plus tard). L'utilisation de `TRUE` et `FALSE` permet d'éviter ce problème.
+Bien que cette façon de se référer à `TRUE` et `FALSE` par `T` et `F` soit assez répandue, dans ce livre nous utiliserons toujours `TRUE` et `FALSE` afin que le code soit plus facile à lire. Encore une fois l'objectif d'un code est de non seulement être fonctionnel mais aussi d'être facile à lire et à relire. De plus, il est possible -bien que non recommandé- de créer une variable `T` et de lui affecter la valeur `FALSE` (cf. la notion d'objet que nous verrons plus tard). L'utilisation de `TRUE` et `FALSE` permet d'éviter ce problème.
 
 ```{r 011-conceptBase-11b}
 print(T)
@@ -189,7 +189,7 @@ Le fichier d'aide en anglais sur les opérateurs arithmétiques peut être obten
 
 ## La notion d'objet {#l011object}
 
-Un aspect important de la programmation avec R, mais aussi de la programmation en général est la notion d'objet. Dans les exemples utilisés jusqu'à présent, les résultats étaient affichés dans la console mais "perdus" pour l'utilisateur car pas stockés en mémoire. Les objets vont permettre de pallier ce problème. Comme indiqué sur la page web de wikipedia (https://fr.wikipedia.org/wiki/Objet_(informatique)), en informatique, un objet est un *conteneur*, c'est à dire quelque chose qui va contenir de l'information. L'information contenue dans un objet peut être très variée, mais pour le moment nous allons contenir dans un objet le chiffre 5. Pour ce faire (et pour pouvoir le réutiliser par la suite), il nous faut donner un nom à notre objet. Avec R le nom des objets ne doit pas comprendre de caractères spéciaux comme *^$?|+()[]}{*, ne doit pas commencer par un chiffre ni contenir d'espaces. Le nom de l'objet doit être représentatif de ce qu'il contient, tout en étant ni trop court ni trop long. Imaginons que notre chiffre 5 corresponde au nombre de répétitions d'une expérience. Nous voudrions lui donner un nom faisant référence à *nombre* et à *répétition*, que nous pourrions réduire à *nbr* et *rep*, respectivement. Il existe plusieurs possibilités qui sont toutes assez répandues sous R : 
+Un aspect important de la programmation avec R, mais aussi de la programmation en général est la notion d'objet. Dans les exemples utilisés jusqu'à présent, les résultats étaient affichés dans la console mais "perdus" pour l'utilisateur car pas stockés en mémoire. Les objets vont permettre de pallier ce problème. Comme indiqué sur la page web de wikipedia (https://fr.wikipedia.org/wiki/Objet_(informatique)), en informatique, un objet est un *conteneur*, c'est à dire quelque chose qui va contenir de l'information. L'information contenue dans un objet peut être très variée, mais pour le moment nous allons contenir dans un objet le chiffre 5. Pour ce faire (et pour pouvoir le réutiliser par la suite), il nous faut donner un nom à notre objet. Avec R, le nom des objets ne doit pas comprendre de caractères spéciaux comme *^$?|+()[]}{*, et ne doit ni commencer par un chiffre, ni contenir d'espaces. Le nom de l'objet doit être représentatif de ce qu'il contient, tout en étant ni trop court ni trop long. Imaginons que notre chiffre 5 corresponde au nombre de répétitions d'une expérience. Nous voudrions lui donner un nom faisant référence à *nombre* et à *répétition*, que nous pourrions réduire à *nbr* et *rep*, respectivement. Il existe plusieurs possibilités qui sont toutes assez répandues sous R : 
 
 * la séparation au moyen du caractère *tiret bas* :  `nbr_rep`
 * la séparation au moyen du caractère *point* : `nbr.rep`
@@ -275,7 +275,8 @@ Pour en revenir à la documentation du script, il est recommandé de commencer c
 # Voici un script pour acquérir les concepts de base 
 # avec R
 # date de création : 25/06/2018
-# auteur : François Rebaudo
+# date de modification : 31/08/2020
+# auteur : Jean Petit
 # ------------------------------------------------------------
 
 # [1] création de l'objet nombre de répétitions

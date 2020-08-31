@@ -5,7 +5,7 @@
 ## Editeurs de texte et environnement de développement
 
 Il existe de très nombreux éditeurs de texte, le chapitre précédent a permis d'en introduire quelques-uns parmi les plus simples comme le *bloc note* de Windows. Rapidement les limites de ces éditeurs ont rendu la tâche d'écrire un script fastidieuse. En effet, même en structurant son script avec des commentaires, il reste difficile de se repérer dans celui-ci. C'est là qu'interviennent les éditeurs de texte spécialisés qui vont permettre une écriture et une lecture agréable et simplifiée. 
-L'éditeur de texte pour R le plus répandu est certainement *Rstudio*, mais il en existe bien d'autres. Faire une liste exhaustive de toutes les solutions disponibles sort du cadre de ce livre, ainsi nous nous focaliserons sur les trois solutions que j'utilise au quotidien que sont **Notepad++**, **Rstudio**, et **Geany**. Il est bon de noter que tous les éditeurs de texte sont compatibles entre eux : un script édité avec Geany pourra par exemple être modifié avec Notepad++ sans aucun problème, c'est même essentiel pour la reproductibilité des résultats. 
+L'éditeur de texte pour R le plus répandu est certainement *Rstudio*, mais il en existe bien d'autres. Faire une liste exhaustive de toutes les solutions disponibles sort du cadre de ce livre, ainsi nous nous focaliserons sur les trois solutions que j'utilise au quotidien que sont **Notepad++**, **Rstudio**, et **Geany**. Certains éditeurs spécialisés proposent des outils soit disant pour *faciliter* certaines opérations comme la lecture de fichiers externes. Dans ce livre nous n'utiliserons **jamais** ces fonctionnalités car un script doit rester fonctionnel quel que soit l'éditeur de texte utilisé. Par exemple, un script édité avec RStudio devra être fonctionnel et modifiable avec Notepad++, Gedit ou Geany sans aucun problème, c'est même essentiel pour la reproductibilité des résultats. 
 
 ## RStudio
 
@@ -33,7 +33,6 @@ Nous pouvons alors commencer l'écriture de notre script avec les commentaires d
 # Un script pour choisir son IDE
 # créé le 27/06/2018
 # modifié le 17/12/2019
-# François Rebaudo
 # ------------------------------------------------------------
 
 # [1] calcul simple
@@ -85,7 +84,7 @@ Puisque nous avons déjà créé un script pour le tester avec RStudio, nous all
 knitr::include_graphics("myFigures/screencap_Npp_02.png")
 ```
 
-L'exécution du script ne peut se faire que si *Npp2R* est en cours d'exécution. Pour se faire il est nécessaire de lancer le programme *Npp2R* depuis l'invite de Windows. Un icône devrait apparaître en bas de votre écran. L'exécution automatique du code depuis Notepad++ se fait en sélectionnant le code à exécuter puis en utilisant la commande `F8`. Si la commande ne fonctionne pas et que vous venez d'installer Notepad++, il est peut être nécessaire de redémarrer votre ordinateur. Si la commande fonctionne, une nouvelle fenêtre va s'ouvrir aavec une console renvoyant le résultat de l’exécution des lignes souhaitées (Figure \@ref(fig:screenCapNpp03).
+L'exécution du script ne peut se faire que si *Npp2R* est en cours d'exécution. Pour se faire il est nécessaire de lancer le programme *Npp2R* depuis l'invite de Windows. Un icône devrait apparaître en bas de votre écran. L'exécution automatique du code depuis Notepad++ se fait en sélectionnant le code à exécuter puis en utilisant la commande `F8`. Si la commande ne fonctionne pas et que vous venez d'installer Notepad++, il est peut être nécessaire de redémarrer votre ordinateur. Si la commande fonctionne, une nouvelle fenêtre va s'ouvrir avec une console renvoyant le résultat de l’exécution des lignes souhaitées (Figure \@ref(fig:screenCapNpp03).
 
 ```{r screenCapNpp03, fig.cap = "Capture d'écran de Notepad++ sous Windows : la console avec F8.\\label{fig:screenCapNpp03}", echo = FALSE, out.width = '100%'}
 knitr::include_graphics("myFigures/screencap_Npp_03.png")
