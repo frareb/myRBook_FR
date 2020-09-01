@@ -14,8 +14,7 @@ if(myVar < 3) print("myVar < 3")
 if(myVar < 3) print("myVar < 3") else print("myVar > 3")
 ```
 
-Lorsque il y a plusieurs lignes de codes à exécuter en fonction du test logique, ou simplement pour rendre le code plus facile à lire, nous allons utiliser plusieurs lignes avec les acolades `{}` et en utilisant l'indentation.
-
+Lorsque il y a plusieurs lignes de codes à exécuter en fonction du test logique, ou simplement pour rendre le code plus facile à lire, nous allons utiliser plusieurs lignes avec les acolades `{}` et en utilisant l'indentation. Nous pouvons retenir comme règle de présentation qu'une ligne de code de plus de 80 caractères (voire 60) doit être découpée en plusieurs lignes. Les éditeurs de texte les plus communs permettent la visualisation d'une ligne verticale à 80 ou 60 caractères pour symboliser cette barrière.
 
 ```{r 017-boucles-2}
 myVar <- 2
@@ -185,7 +184,7 @@ print(result)
 
 ## La boucle `for` {#l17for}
 
-En programmation, lorsque nous sommes amenés à répéter plusieurs fois la même ligne de code, c'est un signe indiquant qu'il faut utiliser une **boucle**. Une boucle est une manière d'itérer sur un ensemble d'objets (ou sur les éléments d'un objet), et de répéter une opération. Imaginons une `data.frame` avec des mesures de terrain à deux dates. 
+En programmation, lorsque nous sommes amenés à répéter plusieurs fois la même ligne de code, c'est un signe indiquant qu'il faut utiliser une **boucle**. Une boucle est une manière d'itérer sur un ensemble d'objets (ou sur les éléments d'un objet), et de répéter une opération. Imaginons un `data.frame` avec des mesures de terrain à deux dates. 
 
 ```{r 017-boucles-12}
 bdd <- data.frame(date01 = rnorm(n = 100, mean = 10, sd = 1), 
@@ -279,7 +278,7 @@ for(i in 1:nrow(bdd)){
 print(head(bdd, n = 20))
 ```
 
-En pratique ce n'est pas la meilleure façon de réaliser cet exercice car il s'agit ici de simples calculs sur des vecteurs contenus dans une `data.frame`. R est particulièrement puissant pour effectuer des opérations sur des vecteurs. Lorsque cela est possible il faut donc toujours privilégier les opérations sur les vecteurs. Ici notre code devient :
+En pratique ce n'est pas la meilleure façon de réaliser cet exercice car il s'agit ici de simples calculs sur des vecteurs contenus dans un `data.frame`. R est particulièrement puissant pour effectuer des opérations sur des vecteurs. Lorsque cela est possible il faut donc toujours privilégier les opérations sur les vecteurs. Ici notre code devient :
 
 ```{r 017-boucles-19}
 bdd$dif <- sqrt((bdd$date01 - bdd$date02)^2)
@@ -383,7 +382,7 @@ while(Sys.time() - startTime < 2){
 }
 ```
 
-Dans ce script nous générons un nombre aléatoire à deviner avec la fonction `sample()`, et chaque essai avec la même fonction `sample()`. Ensuite nous utilisons la fonction `Sys.time()` (avec un S majuscule à `Sys`), pour connaître l'heure de début de la boucle. Tant que la différence entre chaque itération de la boucle et l'heure de démarrage est inférieur à 2 secondes, la boucle `while()` va vérifier si le bon nombre a été deviné dans le test logique avec `if()` puis si c'est le cas nous informer que le nombre a été trouvé, nous dire le temps restant avant les deux secondes, puis terminer la boucle avec le mot clef `break` sur lequel nous reviendrons. En bref, `break` permet de sortir d'une boucle. Si le nombre n'a pas été deviné, la boucle fait un autre essai avec la fonction `sample()`.
+Dans ce script nous générons un nombre aléatoire à deviner avec la fonction `sample()`, et chaque essai avec la même fonction `sample()`. Ensuite nous utilisons la fonction `Sys.time()` (avec un S majuscule à `Sys`), pour connaître l'heure de début de la boucle. Tant que la différence entre chaque itération de la boucle et l'heure de démarrage est inférieure à 2 secondes, la boucle `while()` va vérifier si le bon nombre a été deviné dans le test logique avec `if()` puis si c'est le cas nous informer que le nombre a été trouvé, nous dire le temps restant avant les deux secondes, puis terminer la boucle avec le mot clef `break` sur lequel nous reviendrons. En bref, `break` permet de sortir d'une boucle. Si le nombre n'a pas été deviné, la boucle fait un autre essai avec la fonction `sample()`.
 
 Plus concrètement nous pourrions imaginer des algorithmes pour explorer un espace de solutions face à un problème avec un temps limité pour y parvenir. La boucle `while()` peut aussi être pratique pour qu'un script ne s'exécute que lorsque un fichier issu d'un autre programme devient disponible... En pratique la boucle `while()` reste peu utilisée avec R, car ce genre de script qui manipule des informations système (temps, fichiers, …) est plus communément réalisé avec d’autres langages comme Python.
 
@@ -659,7 +658,7 @@ for(i in 2:4){
 }
 ```
 
-Et si nous voulons le résultat sous forme d'une `data.frame`, le code devient beaucoup plus long et fastidieux (le code suivant correspond à une solution parmi d'autres). Là encore nous voyons toute la puissance des boucles de la famille `apply`.
+Et si nous voulons le résultat sous forme d'un `data.frame`, le code devient beaucoup plus long et fastidieux (le code suivant correspond à une solution parmi d'autres). Là encore nous voyons toute la puissance des boucles de la famille `apply`.
 
 ```{r 017-boucles-42c}
 for(i in 2:4){

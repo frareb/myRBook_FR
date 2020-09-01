@@ -10,7 +10,7 @@ Il existe de nombreuses façons de lire le contenu d'un fichier avec R. Cependan
 
 Concrètement, depuis Microsoft Excel, il suffit d'aller dans *Fichier*, puis *Enregistrer sous*, de sélectionner l'endroit où nous souhaitons sauvegarder notre fichier (cf. chapitre suivant sur la gestion d'un projet R) puis dans la fenêtre de sauvegarde changer le *Type* depuis XLSX vers CSV. Depuis LibreOffice Calc, il suffit d'aller dans *Fichier*, puis *Enregistrer sous*, puis de sélectionner le *Type* CSV. Il est important de savoir que le format CSV ne supporte pas la mise en forme des fichiers tableurs avec par exemple des couleurs, et que le fichier CSV ne contient qu'un seul onglet. Si nous avons un fichier tableur avec plusieurs onglets, il faudra sauvegarder autant de fichiers CSV que d'onglets.
 
-CSV vient de l'anglais *Comma-separated values* (https://fr.wikipedia.org/wiki/Comma-separated_values), et représente des données de tableur au format texte séparées par des virgules (ou des points virgules suivant les pays). Un fichier CSV pourra toujours s'ouvrir avec notre logiciel de tableur, mais aussi avec un simple éditeur de texte comme le bloc-notes de Windows ou encore avec Notepad++. Il est d'ailleurs préférable d'ouvrir les fichiers CSV avec un éditeur de texte car les tableurs ont la fâcheuse tendance à vouloir modifier automatiquement les fichiers CSV et cela a pour conséquence de les rendre difficiles à lire. 
+CSV vient de l'anglais *Comma-Separated Values* (https://fr.wikipedia.org/wiki/Comma-separated_values), et représente des données de tableur au format texte séparées par des virgules (ou des points virgules suivant les pays). Un fichier CSV pourra toujours s'ouvrir avec notre logiciel de tableur, mais aussi avec un simple éditeur de texte comme le bloc-notes de Windows ou encore avec Notepad++. Il est d'ailleurs préférable d'ouvrir les fichiers CSV avec un éditeur de texte car les tableurs ont la fâcheuse tendance à vouloir modifier automatiquement les fichiers CSV et cela a pour conséquence de les rendre difficiles à lire. 
 
 Une fois le fichier TXT ou CSV obtenu, la lecture du contenu depuis R est facile, même si elle demande un peu de rigueur.
 
@@ -102,7 +102,7 @@ In file(file, \"rt\") :
   No such file or directory")
 ```
 
-Si tout va bien, R affiche le contenu du fichier "`data01.csv`". Attention aux utilisateurs de Windows car par défaut le nom des fichiers apparaît sans leur extension... Ainsi lorsque nous naviguons dans les répertoires avec l'explorateur de fichiers, il n'y a pas de fichier "`data01.csv`" mais uniquement un fichier "`data01`". Il est indispensable de remédier à ce problème pour éviter les erreurs. Pour ce faire il suffit d'ouvrir les 'Options de l'Explorateur de fichiers' via la touche 'Windows', puis dans l'onglet 'Affichage', de vérifier que l'option 'Masquer les extensions des fichiers dont le type est connu' est bien décochée. 
+Si tout va bien, R affiche le contenu du fichier "`data01.csv`". Attention aux utilisateurs de Windows car par défaut le nom des fichiers apparaît sans leur extension... Ainsi lorsque nous naviguons dans les répertoires avec l'explorateur de fichiers, il n'y a pas de fichier "`data01.csv`" mais uniquement un fichier "`data01`". Il est indispensable de remédier à ce problème pour éviter les erreurs. Pour ce faire il suffit d'ouvrir les `Options de l'Explorateur de fichiers` via la touche `Windows`, puis dans l'onglet `Affichage`, de vérifier que l'option `Masquer les extensions des fichiers dont le type est connu` est bien décochée. 
 
 En consultant l'aide sur la fonction `read.table()`, nous pouvons voir qu'elle possède de nombreux arguments. Les principaux sont les suivants :
 
@@ -112,7 +112,7 @@ En consultant l'aide sur la fonction `read.table()`, nous pouvons voir qu'elle p
 
 Avec ces trois arguments la plupart des fichiers pourront être lus sans problème. En cas de besoin l'aide est faite pour être consultée, et elle est très complète.
 
-La fonction `read.table()` renvoie le contenu du fichier sous forme d'une `data.frame`. Pour pouvoir utiliser le contenu du fichier nous allons donc stocker la `data.frame` dans un objet.
+La fonction `read.table()` renvoie le contenu du fichier sous forme d'un `data.frame`. Pour pouvoir utiliser le contenu du fichier nous allons donc stocker le `data.frame` dans un objet.
 
 ```{r 016-importExport-8, eval = FALSE}
 myWD <- "../myFiles/"
@@ -187,7 +187,7 @@ print(myObject)
 
 Le meilleur moyen de communiquer vos résultats ou vos données est de transmettre vos scripts et vos fichiers de données. Parfois ce n'est pas possible ou pas adapté, et il peut être utile d'exporter ses données dans un fichier texte ou CSV. Pour ce faire il existe la fonction générique `write()` et la fonction `write.table()` pour les `data.frame`.
 
-Par exemple nous allons créer une `data.frame` avec les numéros de 1 à 26 et les lettres correspondantes, puis les sauver dans un fichier CSV, puis lire les données contenues dans ce fichier.
+Par exemple nous allons créer un `data.frame` avec les numéros de 1 à 26 et les lettres correspondantes, puis les sauver dans un fichier CSV, puis lire les données contenues dans ce fichier.
 
 ```{r 016-importExport-14}
 # Création de l'objet dfLetters
