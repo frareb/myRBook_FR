@@ -312,7 +312,7 @@ boxplot(df, col = c(rgb(0, 94, 255, maxColorValue = 255),
   rgb(119, 255, 0, maxColorValue = 255)))
 ```
 
-Si une variable est de type `factor`, la fonction `boxplot()` permet facilement de représenter chaque catégorie. Cela fonctionne aussi avec les variables numériques mais il faut veiller à ne pas avoir trop de valeurs différentes pour que le graphique reste lisible.
+Si une variable est de type `factor` ou `character`, la fonction `boxplot()` permet facilement de représenter chaque catégorie. Cela fonctionne aussi avec les variables numériques mais il faut veiller à ne pas avoir trop de valeurs différentes pour que le graphique reste lisible.
 
 ```{r 021-01-graphiques-20, out.width = '70%'}
 df$cat <- sample(
