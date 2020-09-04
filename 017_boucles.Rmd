@@ -652,7 +652,7 @@ La fonction `sapply()` est utilisée pour spécifier la colonne (la colonne 2 co
 
 ```{r 017-boucles-42b}
 for(i in 2:4){
-  for(spp in levels(dfSpecies$species)){
+  for(spp in unique(dfSpecies$species)){
     mean(dfSpecies[,i][dfSpecies$species == spp])
   }
 }
@@ -662,18 +662,20 @@ Et si nous voulons le résultat sous forme d'un `data.frame`, le code devient be
 
 ```{r 017-boucles-42c}
 for(i in 2:4){
-  myPerf <- rep(NA, length(levels(dfSpecies$species)))
-  for(spp in seq_along(levels(dfSpecies$species))){
+  myPerf <- rep(NA, length(unique(dfSpecies$species)))
+  for(spp in seq_along(unique(dfSpecies$species))){
     myPerf[spp] <- mean(
       dfSpecies[,i][dfSpecies$species == 
-        levels(dfSpecies$species)[spp]])
+        unique(dfSpecies$species)[spp]])
   }
   assign(x = paste0("perf", i - 1), value = myPerf)
 }
 myDF <- data.frame(perf1, perf2, perf3)
-rownames(myDF) <- levels(dfSpecies$species)
+rownames(myDF) <- unique(dfSpecies$species)
 print(myDF)
 ```
+
+Depuis la version 4.0.0 de R, les colonnes contenant des données de type `character` ne sont plus automatiquement transformées en type `factor` lors de la création d'un `data.frame`. Pour les versions antérieures à celle-ci, il faudra utiliser `levels()` à la place de `unique()`.
 
 ### `mapply` {#l17mapply}
 
