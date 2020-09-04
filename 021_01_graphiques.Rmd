@@ -85,7 +85,7 @@ plot(x = dfGraph$myX, y = dfGraph$myY,
   xlab = "", ylab = "")
 ```
 
-`myX` et `myY` correspondent à des tirages aléatoires dans une loi Normale centrée sur zéro et d'écart type 1. Ensuite nous créons l’objet `dfGraph` qui est une `data.frame` avec une colonne pour `myX` et une colonne pour `myY`. La `data.frame` `dfGraph` est alors ordonnée selon les valeurs de la colonne `myX` avec la fonction `order()`, comme nous l’avons vu précédemment. Une fois la `data.frame` ordonnée, nous ajoutons un nouvelle colonne `myCol` avec `dfGraph$myCol`. Cette nouvelle colonne contient un gradient de couleur du bleu au rouge avec 100 valeurs de couleur (même taille que `myX` et `myY`), avec la fonction `colorRampPalette()`. A présent nous allons ordonner la `data.frame` en fonction de la colonne `myY` avec la fonction `order()`. Nous créons une nouvelle colonne `myCex` avec `dfGraph$myCex` qui va contenir une séquence de taille 100 (`length.out = 100`) entre 0.5 et 3. Enfin nous pouvons faire notre graphique qui va prendre comme taille des points notre colonne `myCex`, et comme couleur des points notre colonne `myCol`. Ici l’intérêt est faible car les informations X et Y sont déjà présentes, mais l’objectif est pédagogique et nous verrons comment améliorer cet exemple dans la suite de ce livre.
+`myX` et `myY` correspondent à des tirages aléatoires dans une loi Normale centrée sur zéro et d'écart type 1. Ensuite nous créons l’objet `dfGraph` qui est un `data.frame` avec une colonne pour `myX` et une colonne pour `myY`. Le `data.frame` `dfGraph` est alors ordonné selon les valeurs de la colonne `myX` avec la fonction `order()`, comme nous l’avons vu précédemment. Une fois le `data.frame` ordonné, nous ajoutons un nouvelle colonne `myCol` avec `dfGraph$myCol`. Cette nouvelle colonne contient un gradient de couleur du bleu au rouge avec 100 valeurs de couleur (même taille que `myX` et `myY`), avec la fonction `colorRampPalette()`. A présent nous allons ordonner le `data.frame` en fonction de la colonne `myY` avec la fonction `order()`. Nous créons une nouvelle colonne `myCex` avec `dfGraph$myCex` qui va contenir une séquence de taille 100 (`length.out = 100`) entre 0.5 et 3. Enfin nous pouvons faire notre graphique qui va prendre comme taille des points notre colonne `myCex`, et comme couleur des points notre colonne `myCol`. Ici l’intérêt est faible car les informations X et Y sont déjà présentes, mais l’objectif est pédagogique et nous verrons comment améliorer cet exemple dans la suite de ce livre.
 
 R offre la possibilité de relier les points des nuages de points de différentes façons. Les différentes options sont disponibles dans l'aide de la fonction `plot()` et `plot.default()`.
 
@@ -144,7 +144,7 @@ plot(x = myX, y = myY,
 
 ## `hist` {#graph1hist}
 
-Pour faire un histogramme nous utilisons la fonction `hist()`. C'est une fonction graphique utile pour visualiser rapidement la distribution d'un jeu de données (nourviendrons sur la gestion des couleurs dans un autre chapitre et notamment sur l'utilisation de `heat.colors()`). 
+Pour faire un histogramme nous utilisons la fonction `hist()`. C'est une fonction graphique utile pour visualiser rapidement la distribution d'un jeu de données (nous reviendrons sur la gestion des couleurs dans un autre chapitre et notamment sur l'utilisation de `heat.colors()`). 
 
 ```{r 021-01-graphiques-12}
 op <- par(no.readonly = TRUE)
