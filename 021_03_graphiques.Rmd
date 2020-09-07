@@ -20,6 +20,9 @@ pkgCheck <- function(x){
 pkgCheck("RColorBrewer")
 par(mar = c(1, 4, 1, 1)) # réduction des marges
 display.brewer.all()
+```
+
+```{r 021-03-graphiques-1b, out.width = '70%'}
 par(mar = c(1, 1, 1, 1)) # réduction des marges
 boxplot(matrix(rnorm(1000), ncol = 10), 
   col = brewer.pal(10, "Paired"), axes = FALSE)
@@ -157,7 +160,7 @@ text(
   pos = 4, col = 3)
 ```
 
-Nous pouvons voir sur ces exemples que les graphiques avec `ggplot2` commencent par un appel de la fonction `ggplot()`, dans laquelle le premier argument `data` correspond à nos données (typiquement une `data.frame`), et le deuxième argument `aes()` correspond aux informations que nous souhaitons utiliser. Par convention cette information est stockée dans un objet `p`. Nous allons ensuite ajouter des couches supplémentaires en utilisant `+`. 
+Nous pouvons voir sur ces exemples que les graphiques avec `ggplot2` commencent par un appel de la fonction `ggplot()`, dans laquelle le premier argument `data` correspond à nos données (typiquement un `data.frame`), et le deuxième argument `aes()` correspond aux informations que nous souhaitons utiliser. Par convention cette information est stockée dans un objet `p`. Nous allons ensuite ajouter des couches supplémentaires en utilisant `+`. 
 
 Dans les couches nous pouvons ajouter des aspects géométriques (le type de graphique, par exemple `geom_point()`), des statistiques (par exemple `stat_smooth()`), des annotations (par exemple `annotate()`), et bien d'autres choses liées aux axes, aux couleurs, ... La documentation complète (en anglais) peut être consultée à l'adresse https://ggplot2.tidyverse.org/ (fiche de résumé : https://github.com/rstudio/cheatsheets/blob/master/data-visualization-2.1.pdf). De nombreuses extensions à `ggplot2` sont disponibles à l'adresse http://www.ggplot2-exts.org/gallery/.
 
@@ -194,7 +197,7 @@ tr <- lapply(spp, function(mySpp){
 })
 ```
 
-Le package graphics de R permet tout comme le package ggplot2 de réaliser des graphiques de qualité mettant en valeur les résultats scientifiques. A nous de choisir le package qui correspond le mieux aux objectifs poursuivis. 
+Le package `graphics` de R permet tout comme le package `ggplot2` de réaliser des graphiques de qualité mettant en valeur les résultats scientifiques. A nous de choisir le package qui correspond le mieux aux objectifs poursuivis. 
 
 ```{r 021-03-graphiques-5c, fig.width=11, fig.height=6}
 plot(x = iris$Sepal.Length, y = iris$Sepal.Width, 

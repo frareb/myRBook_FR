@@ -9,14 +9,16 @@ L'utilisation des numéros de 1 à 8 correspondait avant la version 4.0.0 au noi
 ```{r 021-02-graphiques-1, out.width = '70%'}
 par(mar = c(2, 0, 0, 0), mfrow = c(1, 2)) 
 barplot(
-  matrix(rep(5, 8), ncol = 1),
+  matrix(rep(1, 8), ncol = 1),
   col = c("black", "red", "green", "blue", 
     "cyan", "magenta", "yellow", "grey"), 
   names.arg = c("R < 4.0.0"), axes = FALSE)
+text(x = rep(1, 8), y = 1:8 - 0.5, labels = 1:8)
 barplot(
-  matrix(rep(5, 8), ncol = 1),
+  matrix(rep(1, 8), ncol = 1),
   col = c(1:8), 
   names.arg = c("R >= 4.0.0"), axes = FALSE)
+text(x = rep(1, 8), y = 1:8 - 0.5, labels = 1:8)
 ```
 
 ## `colors()`
@@ -119,7 +121,7 @@ Avec la fonction `rgb()` nous pouvons donc représenter `256^3` couleurs, soit 1
 
 Les palettes sont des jeux de couleurs représentées sous forme d'un `vector` avec les couleurs au format hexadécimal (valeur renvoyée par la fonction `rgb()` par exemple).
 
-```{r 021-02-graphiques-5}
+```{r 021-02-graphiques-5, out.width = '70%'}
 myPal <- c(
   rgb(0, 94, 255, maxColorValue = 255),  
   rgb(255, 0, 174, maxColorValue = 255),  
@@ -135,25 +137,23 @@ axis(2)
 Il existe des palettes inclues dans R : `terrain.colors()`, `heat.colors()`, `topo.colors()`, 
 `cm.colors()`, `rainbow()`. 
 
-```{r 021-02-graphiques-6}
+```{r 021-02-graphiques-6, out.width = '70%'}
 op <- par(no.readonly = TRUE)
 par(mfrow = c(2, 3), mar = c(0, 0, 2, 0))
-boxplot(matrix(rnorm(1000), ncol = 10), main = "terrain.colors()", 
-  col = terrain.colors(10), axes = FALSE)
-boxplot(matrix(rnorm(1000), ncol = 10), main = "heat.colors()", 
-  col = heat.colors(10), axes = FALSE)
-boxplot(matrix(rnorm(1000), ncol = 10), main = "topo.colors()", 
-  col = topo.colors(10), axes = FALSE)
-boxplot(matrix(rnorm(1000), ncol = 10), main = "cm.colors()", 
-  col = cm.colors(10), axes = FALSE)
-boxplot(matrix(rnorm(1000), ncol = 10), main = "rainbow()", 
-  col = rainbow(10), axes = FALSE)
+myPals <- list(terrain.colors(10), heat.colors(10), 
+  topo.colors(10), cm.colors(10), rainbow(10))
+myPalNames <- c("terrain.colors()", "heat.colors()",
+  "topo.colors()", "cm.colors()", "rainbow()")
+tr <- lapply(seq_along(myPals), function(i){
+  boxplot(matrix(rnorm(1000), ncol = 10), axes = FALSE, 
+    main = myPalNames[i], col = myPals[[i]])
+})
 par(op)
 ```
 
 Il existe aussi une fonction `colorRampPalette()` qui permet de créer un dégradé de couleur.
 
-```{r 021-02-graphiques-7}
+```{r 021-02-graphiques-7, out.width = '70%'}
 op <- par(no.readonly = TRUE)
 par(mfrow = c(3, 1), mar = c(0, 0, 0, 0))
 boxplot(
@@ -287,7 +287,7 @@ myPalMet2 <- createPal(
 
 La fonction nous renvoie les couleurs de la palette avec un graphique en barres représentant le nombre de points de l'image dans chacun des groupes de couleurs. Nous pouvons désormais utiliser notre nouvelle palette pour réaliser nos graphiques. 
 
-```{r 021-02-graphiques-10}
+```{r 021-02-graphiques-10, out.width = '70%'}
 makeImpact <- function(
     myPal, 
     numP = 300, 
