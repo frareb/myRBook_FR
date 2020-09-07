@@ -4,14 +4,19 @@
 
 Nous avons vu différentes manières d'utiliser les couleurs : avec leur nom (e.g., `"salmon"`), avec un numéro de 1 à 8, avec la fonction `rgb()` (pour "red", "green", "blue"), et avec la fonction `colors()`. Il en existe d'autres mais celles-ci sont les principales.
 
-L'utilisation des numéros de 1 à 8 correspond au noir, rouge, vert, bleu, cyan, magenta, jaune et gris. Cette utilisation est pratique pour visualiser rapidement nos résultats mais donne globalement des graphiques visuellement moyens. Ces couleurs sont plutôt à éviter pour communiquer nos graphiques.
+L'utilisation des numéros de 1 à 8 correspondait avant la version 4.0.0 au noir, rouge, vert, bleu, cyan, magenta, jaune et gris (`black`, `red`, `green`, `blue`, `cyan`, `magenta`, `yellow`, `grey`). Ce qui avait pour conséquence de produire des graphiques visuellement insuffisants (saturation, luminosité). Depuis la version 4.0.0, une nouvelle palette par défaut est disponible (voir `palette()`) et améliore un peu les graphiques. Cette utilisation est pratique pour visualiser rapidement nos résultats mais ces couleurs restent plutôt à éviter pour communiquer nos graphiques.
 
 ```{r 021-02-graphiques-1, out.width = '70%'}
-par(mar = c(2, 2, 1, 1)) 
+par(mar = c(2, 0, 0, 0), mfrow = c(1, 2)) 
 barplot(
-  sample(10:15, 8, replace = TRUE), 
-  col = 1:8, 
-  names.arg = 1:8)
+  matrix(rep(5, 8), ncol = 1),
+  col = c("black", "red", "green", "blue", 
+    "cyan", "magenta", "yellow", "grey"), 
+  names.arg = c("R < 4.0.0"), axes = FALSE)
+barplot(
+  matrix(rep(5, 8), ncol = 1),
+  col = c(1:8), 
+  names.arg = c("R >= 4.0.0"), axes = FALSE)
 ```
 
 ## `colors()`
