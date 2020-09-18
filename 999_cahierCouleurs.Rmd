@@ -1,0 +1,80 @@
+---
+geometry: "left=0.5cm, right=0.5cm, top=0.5cm, bottom=0.5cm, paperwidth=170.00mm, paperheight=240.00mm"
+title: "Figures en couleurs"
+output: pdf_document
+---
+
+```{r 021-01-graphiques-6, out.width='45%', fig.show="hold", echo=FALSE, fig.align='center'}
+myX <- rnorm(100, mean = 0, sd = 1)
+myY <- rnorm(100, mean = 10, sd = 1)
+par(mar = c(5, 2, 0, 0)) # réduction des marges
+plot(x = myX, y = myY, xlab = "", cex.lab = 1.5, ylab = "",
+  cex = seq(from = 0.5, to = 3, length.out = 100),
+  pch = 16,
+  col = sample(colors(), 100), 
+  sub = "Figure 10.X. Couleur des points (col)", cex.sub = 1.5)
+#```
+#
+#```{r 021-01-graphiques-7, out.width='45%', echo=FALSE, fig.align='center'}
+myX <- rnorm(100)
+myY <- rnorm(100)
+dfGraph <- data.frame(myX, myY)
+dfGraph <- dfGraph[order(dfGraph$myX),]
+dfGraph$myCol <- colorRampPalette(c("blue", "red"))(100)
+dfGraph <- dfGraph[order(dfGraph$myY),]
+dfGraph$myCex <- seq(from = 0.5, to = 3, length.out = 100)
+par(mar = c(5, 2, 0, 0)) # réduction des marges
+plot(x = dfGraph$myX, y = dfGraph$myY, 
+  cex = dfGraph$myCex, pch = 16, col = dfGraph$myCol, 
+  xlab = "", ylab = "", 
+  sub = "Figure 10.X. Couleur et taille des points (col)", cex.sub = 1.5)
+```
+
+```{r 021-01-graphiques-10, out.width='70%', fig.cap="Figure 10.X. Quatre graphiques avec lapply()", echo=FALSE, fig.align='center'}
+op <- par(no.readonly = TRUE)
+par(mfrow = c(2, 2), mar = c(2, 2, 0, 0))
+graph4 <- lapply(1:4, function(i){
+  plot(x = rnorm(100), y = rnorm(100),
+    xlab = "", ylab = "",
+    col = i, pch = 16,)
+})
+# mtext("Figure 10.X. Quatre graphiques avec lapply()", cex = 1.5, side = 3, line = -31, outer = TRUE)
+par(op)
+```
+
+```{r 021-01-graphiques-11, out.width='50%', echo=FALSE, fig.align='center'}
+myX <- rnorm(100)
+myY <- rnorm(100)
+par(mar = c(5, 2, 0, 0)) 
+plot(x = myX, y = myY, xlab = "", ylab = "",
+  xlim = c(-4, 4), ylim = c(-4, 4),   
+  pch = 16, cex = 1.5, 
+  col = sample(colors(), size = 100),
+  panel.first = {
+    grid()
+    abline(v = c(min(myX), max(myX)), lty = 2)
+    abline(h = c(min(myY), max(myY)), lty = 2)
+    abline(v = mean(myX), lty = 1)
+    abline(h = mean(myY), lty = 1)
+}, 
+  sub = "Figure 10.X. Lignes verticales et horizontales avec abline()", cex.sub = 1.5)
+```
+
+```{r 021-01-graphiques-12, out.width='70%', fig.cap="Figure 10.X. Histogramme avec hist()", echo=FALSE, fig.align='center'}
+op <- par(no.readonly = TRUE)
+par(mfrow = c(2, 2), mar = c(2, 2, 1, 1))
+myX <- list(
+  rnorm(1000),
+  rgamma(1000, shape = 1),
+  sample(1:100, size = 1000, replace = TRUE),
+  rbeta(1000, shape1 = 1, shape2 = 2)
+)
+myTitle <- c("Normal", "Gamma", "Uniform", "Beta")
+tr <- lapply(1:4, function(i){
+  hist(myX[[i]], 
+    col = heat.colors(15), 
+    main = myTitle[i]
+  )
+})
+par(op)
+```
