@@ -4,6 +4,8 @@
 \mtcselectlanguage{french} %FR minitoc french
 % --- ---
 
+\renewcommand{\baselinestretch}{0.5}\normalsize %FR espace entre les lignes pour avoir 238 pages
+
 \usepackage{pdfpages} % FR insert frontPage
 
 \usepackage{booktabs}
@@ -107,11 +109,17 @@
 \urlstyle{tt}
 
 \usepackage{amsthm}
+
+\setlength{\OuterFrameSep}{-1pt} %FR spaces between code and output
+
 \makeatletter
 \def\thm@space@setup{%
   \thm@preskip=8pt plus 2pt minus 4pt
   \thm@postskip=\thm@preskip
 }
+
+\preto{\@verbatim}{\topsep=-0pt \partopsep=-2pt } %FR spaces between code and output
+
 \makeatother
 
 \mainmatter %frontmatter
