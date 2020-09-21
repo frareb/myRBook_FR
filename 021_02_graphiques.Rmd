@@ -31,7 +31,7 @@ Pour choisir des couleurs plus agréables et mettant plus en avant nos résultat
 head(colors(), n = 20)
 ```
 
-Nous pouvons utiliser ces couleurs avec leur nom (e.g., "white", "azure3"), ou alors avec leur numéro (e.g., "white" = `colors()[1]`, "azure3" = `colors()[16]` ; Figure \@ref(fig:021-02-graphiques-2)). 
+Nous pouvons utiliser ces couleurs avec leur nom (e.g., "white", "azure3"), ou alors avec leur numéro (e.g., "white" = `colors()[1]`, "azure3" = `colors()[16]` ; Figure \@ref(fig:021-02-graphiques-3)). 
 
 ```{r 021-02-graphiques-3, fig.width=10, fig.height=6, fig.cap="La fonction colors() ; voir cahier en couleurs"}
 # adapted from http://www.r-graph-gallery.com/42-colors-names/
@@ -72,9 +72,9 @@ Une autre option consiste à construire ses propres couleurs ave la fonction `rg
 col2rgb(c("red", "green", "blue"))
 ```
 
-Nous allons reprendre notre fonction permettant de représenter la distribution de points dans un nuage de points au moyen de `barplot` avec cette fois trois couleurs de points (rouge, vert, bleu), et des `barplot` dont la couleur correspondra à la quantité de chaque couleur avec la fonction `rgb()`.
+Nous allons reprendre notre fonction permettant de représenter la distribution de points dans un nuage de points au moyen de `barplot` avec cette fois trois couleurs de points (rouge, vert, bleu), et des `barplot` dont la couleur correspondra à la quantité de chaque couleur avec la fonction `rgb()` (Figure \@ref(fig:021-02-graphiques-4)).
 
-```{r 021-02-graphiques-4}
+```{r 021-02-graphiques-4, fig.cap="Graphique avec rgb() ; voir cahier en couleurs"}
 graphBarplotCol <- function(n){
   myX <- rnorm(n)
   myY <- rnorm(n)
@@ -121,9 +121,9 @@ Avec la fonction `rgb()` nous pouvons donc représenter `256^3` couleurs, soit 1
 
 ## Palettes
 
-Les palettes sont des jeux de couleurs représentées sous forme d'un `vector` avec les couleurs au format hexadécimal (valeur renvoyée par la fonction `rgb()` par exemple).
+Les palettes sont des jeux de couleurs représentées sous forme d'un `vector` avec les couleurs au format hexadécimal (valeur renvoyée par la fonction `rgb()` par exemple ; Figure \@ref(fig:021-02-graphiques-5)).
 
-```{r 021-02-graphiques-5, out.width = '70%'}
+```{r 021-02-graphiques-5, out.width = '70%', fig.cap="Exemple de palette ; voir cahier en couleurs"}
 myPal <- c(
   rgb(0, 94, 255, maxColorValue = 255),  
   rgb(255, 0, 174, maxColorValue = 255),  
@@ -131,15 +131,15 @@ myPal <- c(
   rgb(119, 255, 0, maxColorValue = 255))
 print(myPal)
 par(mar = c(2, 2, 1, 1)) # réduction des marges
-boxplot(matrix(rnorm(100), ncol = 5), col = myPal, axes = FALSE)
+boxplot(matrix(rnorm(100), ncol = 4), col = myPal, axes = FALSE)
 axis(1)
 axis(2)
 ```
 
 Il existe des palettes inclues dans R : `terrain.colors()`, `heat.colors()`, `topo.colors()`, 
-`cm.colors()`, `rainbow()`. 
+`cm.colors()` et `rainbow()` (Figure \@ref(fig:021-02-graphiques-6)). 
 
-```{r 021-02-graphiques-6, out.width = '70%'}
+```{r 021-02-graphiques-6, out.width = '90%', fig.cap="Palettes inclues dans R ; voir cahier en couleurs"}
 op <- par(no.readonly = TRUE)
 par(mfrow = c(2, 3), mar = c(0, 0, 2, 0))
 myPals <- list(terrain.colors(10), heat.colors(10), 
@@ -153,9 +153,9 @@ tr <- lapply(seq_along(myPals), function(i){
 par(op)
 ```
 
-Il existe aussi une fonction `colorRampPalette()` qui permet de créer un dégradé de couleur.
+Il existe aussi une fonction `colorRampPalette()` qui permet de créer un dégradé de couleur (Figure \@ref(fig:021-02-graphiques-7)).
 
-```{r 021-02-graphiques-7, out.width = '70%'}
+```{r 021-02-graphiques-7, out.width = '70%', fig.cap="La fonction colorRampPalette() ; voir cahier en couleurs"}
 op <- par(no.readonly = TRUE)
 par(mfrow = c(3, 1), mar = c(0, 0, 0, 0))
 boxplot(
@@ -175,9 +175,9 @@ boxplot(
 par(op)
 ```
 
-Nous pouvons aussi créer nos propres palettes en utilisant des sites web dédiés à la sélection des couleurs comme http://paletton.com/ ou https://coolors.co/ (il en existe bien d'autres), puis les utiliser dans R en recopiant dans un vecteur les valeurs héxadécimales ou rgb. 
+Nous pouvons aussi créer nos propres palettes en utilisant des sites web dédiés à la sélection des couleurs comme http://paletton.com/ ou https://coolors.co/ (il en existe bien d'autres), puis les utiliser dans R en recopiant dans un vecteur les valeurs hexadécimales ou rgb. 
 
-R est un language de programmation très puissant. Nous pouvons imaginer de nombreuses façons de créer automatiquement des palettes en fonction de critères variés. Par exemple nous pouvons importer une image dont les teintes nous semblent pertinentes, puis extraire les informations de chacun des points pour ensuite sélectionner les couleurs dominantes via un regroupement par cluster. C'est ce que fait la fonction suivante.
+R est un langage de programmation très puissant. Nous pouvons imaginer de nombreuses façons de créer automatiquement des palettes en fonction de critères variés. Par exemple nous pouvons importer une image dont les teintes nous semblent pertinentes, puis extraire les informations de chacun des points pour ensuite sélectionner les couleurs dominantes via un regroupement par cluster. C'est ce que fait la fonction suivante.
 
 Tout d'abord nous allons charger les packages `raster`, `rgdal` et `jpeg` qui vont nous servir à manipuler notre image sous R.
 
@@ -196,9 +196,9 @@ pkgCheck("rgdal")
 pkgCheck("jpeg")
 ```
 
-Ensuite nous allons utiliser la fonction `kmeans()` pour effectuer des groupes de couleurs en utilisant les valeurs RGB de chacun des points de notre image. Ici nous avons deux méthodes possibles, la première utilise la fonction `kmeans()` pour les trois valeurs RGB, et la seconde utilise la fonction `kmeans()` pour chaque valeur RGB individuellement (cette seconde fonction donne une palette qui pourra être assez éloignée des couleurs de l'image de départ).
+Ensuite nous allons utiliser la fonction `kmeans()` pour effectuer des groupes de couleurs en utilisant les valeurs RGB de chacun des points de notre image. Ici nous avons deux méthodes possibles, la première utilise la fonction `kmeans()` pour les trois valeurs RGB, et la seconde utilise la fonction `kmeans()` pour chaque valeur RGB individuellement (cette seconde fonction donne une palette qui pourra être assez éloignée des couleurs de l'image de départ ; Figures \@ref(fig:021-02-graphiques-9) et \@ref(fig:021-02-graphiques-9b)).
 
-```{r 021-02-graphiques-9, out.width = '70%'}
+```{r 021-02-graphiques-9, out.width = '70%', fig.cap="Palette depuis une image, méthode 1 ; voir cahier en couleurs"}
 createPal <- function(photo, met = 1, graph = TRUE, k = 9){
   if(met == 1){
     colR <- getValues(raster(photo, band = 1))
@@ -279,7 +279,9 @@ myPalMet1 <- createPal(
   met = 1, 
   graph = TRUE, 
   k = 5)
+```
 
+```{r 021-02-graphiques-9b, out.width = '70%', fig.cap="Palette depuis une image, méthode 2 ; voir cahier en couleurs"}
 myPalMet2 <- createPal(
   photo = "./myFiles/photoKmeans.jpg", 
   met = 2, 
@@ -287,9 +289,9 @@ myPalMet2 <- createPal(
   k = 5)
 ```
 
-La fonction nous renvoie les couleurs de la palette avec un graphique en barres représentant le nombre de points de l'image dans chacun des groupes de couleurs. Nous pouvons désormais utiliser notre nouvelle palette pour réaliser nos graphiques. 
+La fonction nous renvoie les couleurs de la palette avec un graphique en barres représentant le nombre de points de l'image dans chacun des groupes de couleurs. Nous pouvons désormais utiliser notre nouvelle palette pour réaliser nos graphiques (Figure \@ref(fig:021-02-graphiques-10)). 
 
-```{r 021-02-graphiques-10, out.width = '70%'}
+```{r 021-02-graphiques-10, out.width = '90%', fig.cap="Utilisation d'une palette ; voir cahier en couleurs"}
 makeImpact <- function(
     myPal, 
     numP = 300, 
