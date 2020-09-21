@@ -1,80 +1,360 @@
 ---
-geometry: "left=0.5cm, right=0.5cm, top=0.5cm, bottom=0.5cm, paperwidth=170.00mm, paperheight=240.00mm"
+geometry: "left=0.5in, right=0.5in, top=0.3in, bottom=0.6in, paperwidth=170.00mm, paperheight=240.00mm"
 title: "Figures en couleurs"
-output: pdf_document
+output: 
+  pdf_document
+header-includes:
+- \usepackage{caption}
+- \captionsetup[figure]{labelformat=empty}
 ---
 
-```{r 021-01-graphiques-6, out.width='45%', fig.show="hold", echo=FALSE, fig.align='center'}
-myX <- rnorm(100, mean = 0, sd = 1)
-myY <- rnorm(100, mean = 10, sd = 1)
-par(mar = c(5, 2, 0, 0)) # réduction des marges
-plot(x = myX, y = myY, xlab = "", cex.lab = 1.5, ylab = "",
-  cex = seq(from = 0.5, to = 3, length.out = 100),
-  pch = 16,
-  col = sample(colors(), 100), 
-  sub = "Figure 10.X. Couleur des points (col)", cex.sub = 1.5)
-#```
-#
-#```{r 021-01-graphiques-7, out.width='45%', echo=FALSE, fig.align='center'}
-myX <- rnorm(100)
-myY <- rnorm(100)
-dfGraph <- data.frame(myX, myY)
-dfGraph <- dfGraph[order(dfGraph$myX),]
-dfGraph$myCol <- colorRampPalette(c("blue", "red"))(100)
-dfGraph <- dfGraph[order(dfGraph$myY),]
-dfGraph$myCex <- seq(from = 0.5, to = 3, length.out = 100)
-par(mar = c(5, 2, 0, 0)) # réduction des marges
-plot(x = dfGraph$myX, y = dfGraph$myY, 
-  cex = dfGraph$myCex, pch = 16, col = dfGraph$myCol, 
-  xlab = "", ylab = "", 
-  sub = "Figure 10.X. Couleur et taille des points (col)", cex.sub = 1.5)
+<!-- rmarkdown::render(input = "999_cahierCouleurs.Rmd", output_format = "pdf_document") -->
+
+```{r, include=FALSE}
+pdf(file = "./999_cahierCouleurs/Figure10-7.pdf", height = 2.5, width = 7)
+  par(mfrow = c(1, 2))
+  myX <- rnorm(100, mean = 0, sd = 1)
+  myY <- rnorm(100, mean = 10, sd = 1)
+  par(mar = c(2, 2, 0, 0))
+  plot(x = myX, y = myY, xlab = "", cex.lab = 1.5, ylab = "",
+    cex = seq(from = 0.5, to = 3, length.out = 100),
+    pch = 16,
+    col = sample(colors(), 100))
+  myX <- rnorm(100)
+  myY <- rnorm(100)
+  dfGraph <- data.frame(myX, myY)
+  dfGraph <- dfGraph[order(dfGraph$myX),]
+  dfGraph$myCol <- colorRampPalette(c("blue", "red"))(100)
+  dfGraph <- dfGraph[order(dfGraph$myY),]
+  dfGraph$myCex <- seq(from = 0.5, to = 3, length.out = 100)
+  plot(x = dfGraph$myX, y = dfGraph$myY, 
+    cex = dfGraph$myCex, pch = 16, col = dfGraph$myCol, 
+    xlab = "", ylab = "")
+dev.off()
 ```
 
-```{r 021-01-graphiques-10, out.width='70%', fig.cap="Figure 10.X. Quatre graphiques avec lapply()", echo=FALSE, fig.align='center'}
-op <- par(no.readonly = TRUE)
-par(mfrow = c(2, 2), mar = c(2, 2, 0, 0))
-graph4 <- lapply(1:4, function(i){
-  plot(x = rnorm(100), y = rnorm(100),
-    xlab = "", ylab = "",
-    col = i, pch = 16,)
-})
-# mtext("Figure 10.X. Quatre graphiques avec lapply()", cex = 1.5, side = 3, line = -31, outer = TRUE)
-par(op)
+<center>
+
+![Figure 10.7. Couleur des points (col) ; Figure 10.8. Couleur et taille des points (col)](999_cahierCouleurs/Figure10-7.pdf)
+
+</center>
+
+```{r, include=FALSE}
+pdf(file = "./999_cahierCouleurs/Figure10-11.pdf", height = 4.5, width = 7)
+  par(mfrow = c(2, 2), mar = c(2, 2, 0, 0))
+  graph4 <- lapply(1:4, function(i){
+    plot(x = rnorm(100), y = rnorm(100),
+      xlab = "", ylab = "",
+      col = i, pch = 16,)
+  })
+dev.off()
 ```
 
-```{r 021-01-graphiques-11, out.width='50%', echo=FALSE, fig.align='center'}
-myX <- rnorm(100)
-myY <- rnorm(100)
-par(mar = c(5, 2, 0, 0)) 
-plot(x = myX, y = myY, xlab = "", ylab = "",
-  xlim = c(-4, 4), ylim = c(-4, 4),   
-  pch = 16, cex = 1.5, 
-  col = sample(colors(), size = 100),
-  panel.first = {
-    grid()
-    abline(v = c(min(myX), max(myX)), lty = 2)
-    abline(h = c(min(myY), max(myY)), lty = 2)
-    abline(v = mean(myX), lty = 1)
-    abline(h = mean(myY), lty = 1)
-}, 
-  sub = "Figure 10.X. Lignes verticales et horizontales avec abline()", cex.sub = 1.5)
+<center>
+
+![Figure 10.11. Quatre graphiques avec lapply()](999_cahierCouleurs/Figure10-11.pdf)
+
+</center>
+
+```{r, include=FALSE}
+pdf(file = "./999_cahierCouleurs/Figure10-12.pdf", height = 4.5, width = 7)
+  myX <- rnorm(100)
+  myY <- rnorm(100)
+  par(mar = c(5, 2, 0, 0)) 
+  plot(x = myX, y = myY, xlab = "", ylab = "",
+    xlim = c(-4, 4), ylim = c(-4, 4),   
+    pch = 16, cex = 1.5, 
+    col = sample(colors(), size = 100),
+    panel.first = {
+      grid()
+      abline(v = c(min(myX), max(myX)), lty = 2)
+      abline(h = c(min(myY), max(myY)), lty = 2)
+      abline(v = mean(myX), lty = 1)
+      abline(h = mean(myY), lty = 1)
+  })
+dev.off()
 ```
 
-```{r 021-01-graphiques-12, out.width='70%', fig.cap="Figure 10.X. Histogramme avec hist()", echo=FALSE, fig.align='center'}
-op <- par(no.readonly = TRUE)
-par(mfrow = c(2, 2), mar = c(2, 2, 1, 1))
-myX <- list(
-  rnorm(1000),
-  rgamma(1000, shape = 1),
-  sample(1:100, size = 1000, replace = TRUE),
-  rbeta(1000, shape1 = 1, shape2 = 2)
-)
-myTitle <- c("Normal", "Gamma", "Uniform", "Beta")
-tr <- lapply(1:4, function(i){
-  hist(myX[[i]], 
-    col = heat.colors(15), 
-    main = myTitle[i]
+<center>
+
+![Figure 10.12. Lignes verticales et horizontales avec abline()](999_cahierCouleurs/Figure10-12.pdf)
+
+</center>
+
+```{r, include=FALSE}
+pdf(file = "./999_cahierCouleurs/Figure10-13.pdf", height = 4.5, width = 7)
+  par(mfrow = c(2, 2), mar = c(2, 2, 1, 1))
+  myX <- list(
+    rnorm(1000),
+    rgamma(1000, shape = 1),
+    sample(1:100, size = 1000, replace = TRUE),
+    rbeta(1000, shape1 = 1, shape2 = 2)
   )
-})
-par(op)
+  myTitle <- c("Normal", "Gamma", "Uniform", "Beta")
+  tr <- lapply(1:4, function(i){
+    hist(myX[[i]], 
+      col = heat.colors(15), 
+      main = myTitle[i]
+    )
+  })
+dev.off()
 ```
+
+<center>
+
+![Figure 10.13. Histogramme avec hist()](999_cahierCouleurs/Figure10-13.pdf)
+
+</center>
+
+```{r, include=FALSE}
+pdf(file = "./999_cahierCouleurs/Figure10-16.pdf", height = 4.5, width = 7)
+  n <- 50
+  myX <- rnorm(n)
+  myY <- rnorm(n)
+  myCol <- c(2, sample(c(4, 2), size = (n - 1), replace = TRUE))
+  myColors <- colorRampPalette(c("blue", "red"))(100)
+  myYCut <- cut(myY, breaks = -4:4)
+  myXCut <- cut(myX, breaks = -4:4)
+  myYCutCol <- table(myCol, myYCut)
+  myXCutCol <- table(myCol, myXCut)
+  xCol <- round(
+    myXCutCol[1,] / (myXCutCol[1,] + myXCutCol[2,]) * 100
+  )
+  xCol[is.na(xCol) | xCol == 0] <- 1
+  yCol <- round(
+    myYCutCol[1,] / (myYCutCol[1,] + myYCutCol[2,]) * 100
+  )
+  yCol[is.na(yCol) | yCol == 0] <- 1
+  op <- par(no.readonly = TRUE)
+  par(mar = c(2, 3, 1, 1))
+  layout(matrix(c(1, 1, 0, 
+                  2, 2, 3, 
+                  2, 2, 3), ncol = 3, byrow = TRUE))
+  barplot(table(myXCut), las = 1, col = myColors[xCol])
+  plot(x = myX, y = myY, col = myCol, pch = 16, 
+    xlim = c(-4, 4), ylim = c(-4, 4), cex = 1.5, 
+    panel.first = grid())
+  barplot(
+    table(myYCut), 
+    las = 1, 
+    horiz = TRUE, 
+    col = myColors[yCol])
+dev.off()
+```
+
+<center>
+
+![Figure 10.16. Graphique composé](999_cahierCouleurs/Figure10-16.pdf)
+
+</center>
+
+```{r, include=FALSE}
+graphBarplotCol <- function(n){
+  myX <- rnorm(n)
+  myY <- rnorm(n)
+  myCol <- c(2, sample(c(4, 2), size = (n - 1), replace = TRUE))
+  myColors <- colorRampPalette(c("blue", "red"))(100)
+  myYCut <- cut(myY, breaks = -4:4)
+  myXCut <- cut(myX, breaks = -4:4)
+  myYCutCol <- table(myCol, myYCut)
+  myXCutCol <- table(myCol, myXCut)
+  xCol <- round(
+    myXCutCol[1,] / (myXCutCol[1,] + myXCutCol[2,]) * 100
+  )
+  xCol[is.na(xCol) | xCol == 0] <- 1
+  yCol <- round(
+    myYCutCol[1,] / (myYCutCol[1,] + myYCutCol[2,]) * 100
+  )
+  yCol[is.na(yCol) | yCol == 0] <- 1
+  op <- par(no.readonly = TRUE)
+  par(mar = c(2, 3, 1, 1))
+  layout(matrix(c(1, 1, 0, 
+                  2, 2, 3, 
+                  2, 2, 3), ncol = 3, byrow = TRUE))
+  barplot(table(myXCut), las = 1, col = myColors[xCol])
+  plot(x = myX, y = myY, col = myCol, pch = 16, 
+    xlim = c(-4, 4), ylim = c(-4, 4), cex = 1.5, 
+    panel.first = grid())
+  barplot(
+    table(myYCut), 
+    las = 1, 
+    horiz = TRUE, 
+    col = myColors[yCol])
+  par(op)
+}
+pdf(file = "./999_cahierCouleurs/Figure10-17.pdf", height = 4.5, width = 7)
+  graphBarplotCol(n = 1000)
+dev.off()
+```
+
+<center>
+
+![Figure 10.17. Graphique sous forme de fonction](999_cahierCouleurs/Figure10-17.pdf)
+
+</center>
+
+```{r, include=FALSE}
+pdf(file = "./999_cahierCouleurs/Figure10-18.pdf", height = 2.5, width = 7)
+  layout(matrix(c(1, 1, 2, 3), ncol = 4, byrow = TRUE))
+  par(mar = c(3, 1, 1, 1)) 
+  barplot(rnorm(20), horiz = TRUE, col = rainbow(20))
+  gender <- data.frame(
+    m = cut(sample(1:75, 1000, replace = TRUE), 
+      breaks = seq(from = 0, to = 80, by = 10)), 
+    f = cut(sample(1:75, 1000, replace = TRUE), 
+      breaks = seq(from = 0, to = 80, by = 10))
+  )
+  par(mar = c(3, 1, 1, 1))
+  barplot(-table(gender$f), horiz = TRUE, col = "salmon")
+  barplot(table(gender$m), horiz = TRUE, col = "lightblue")
+dev.off()
+```
+
+<center>
+
+![Figure 10.18. Barplot avec valeurs négatives ; Figure 10.19. Pyramide des âges](999_cahierCouleurs/Figure10-18.pdf)
+
+</center>
+
+```{r, include=FALSE}
+pdf(file = "./999_cahierCouleurs/Figure10-20.pdf", height = 2.5, width = 7)
+  par(mfrow = c(1, 2))
+  df <- data.frame(
+    box1 = rnorm(1000), 
+    box2 = rgamma(1000, shape = 1), 
+    box3 = sample(-3:3, size = 1000, replace = TRUE),
+    box4 = rbeta(1000, shape1 = 1, shape2 = 2)
+  )
+  par(mar = c(2, 2, 0, 0)) 
+  boxplot(df, col = c(rgb(0, 94, 255, maxColorValue = 255),  
+    rgb(255, 0, 174, maxColorValue = 255),  
+    rgb(255, 136, 0, maxColorValue = 255),  
+    rgb(119, 255, 0, maxColorValue = 255)))
+  df$cat <- sample(
+    c("w", "x", "y", "z"), 
+    size = 1000, 
+    replace = TRUE)
+  par(mar = c(2, 4, 0, 0)) 
+  boxplot(df$box3 ~ df$cat, 
+    col = c(rgb(0, 94, 255, maxColorValue = 255),  
+      rgb(255, 0, 174, maxColorValue = 255),  
+      rgb(255, 136, 0, maxColorValue = 255),  
+      rgb(119, 255, 0, maxColorValue = 255)), 
+    ylab = "Box3")
+dev.off()
+```
+
+<center>
+
+![Figure 10.20. Boxplot ; Figure 10.21. Boxplot par catégorie](999_cahierCouleurs/Figure10-20.pdf)
+
+</center>
+
+```{r, include=FALSE}
+pdf(file = "./999_cahierCouleurs/Figure10-22.pdf", height = 2.5, width = 7)
+  par(mfrow = c(1, 2))
+  df$cat2 <- sample(1:3, size = 1000, replace = TRUE)
+  par(mar = c(2, 2, 0, 0))
+  boxplot(df$box4 ~ df$cat*df$cat2, col = c(
+    rgb(0, 94, 255, maxColorValue = 255),
+    rgb(255, 0, 174, maxColorValue = 255),
+    rgb(255, 136, 0, maxColorValue = 255),
+    rgb(119, 255, 0, maxColorValue = 255)), ylab = "Box4")
+  
+  df$cat <- sample(
+    c("w", "x", "y", "z"), 
+    size = 1000, 
+    replace = TRUE)
+  par(mar = c(2, 2, 0, 0)) 
+  boxplot(df$box2 ~ df$cat, horizontal = TRUE, 
+    col = c(rgb(255, 110, 0, maxColorValue = 255),  
+    rgb(230, 255, 0, maxColorValue = 255),  
+    rgb(0, 178, 255, maxColorValue = 255),  
+    rgb(166, 0, 255, maxColorValue = 255)), xlab = "Box2")
+dev.off()
+```
+
+<center>
+
+![Figure 10.22. Boxplot par catégorie ; Figure 10.23. Boxplot horizontal](999_cahierCouleurs/Figure10-22.pdf)
+
+</center>
+
+```{r, include=FALSE}
+pdf(file = "./999_cahierCouleurs/Figure11-1.pdf", height = 2.5, width = 7)
+  par(mar = c(2, 0, 0, 0), mfrow = c(1, 2)) 
+  barplot(
+    matrix(rep(1, 8), ncol = 1),
+    col = c("black", "red", "green", "blue", 
+      "cyan", "magenta", "yellow", "grey"), 
+    names.arg = c("R < 4.0.0"), axes = FALSE)
+  text(x = rep(1, 8), y = 1:8 - 0.5, labels = 1:8, col = c("white", rep(1, 7)), cex = 1)
+  barplot(
+    matrix(rep(1, 8), ncol = 1),
+    col = c(1:8), 
+    names.arg = c("R >= 4.0.0"), axes = FALSE)
+  text(x = rep(1, 8), y = 1:8 - 0.5, labels = 1:8, col = c("white", rep(1, 7)), cex = 1)
+dev.off()
+```
+
+<center>
+
+![Figure 11.1. Les novelles couleurs de R 4.x](999_cahierCouleurs/Figure11-1.pdf)
+
+</center>
+
+```{r, include=FALSE}
+pdf(file = "./999_cahierCouleurs/Figure11-2.pdf", height = 7, width = 7)
+  par(mar = c(0, 0, 0, 0))
+  plot(0, type = "n", xlim = c(0, 1), ylim = c(0, 1), 
+    axes = FALSE, xlab = "", ylab = "")
+  numRow <- 26
+  numCol <- 26
+  rect(
+    xleft = rep((0:(numCol - 1)/numCol), numRow),  
+    ybottom = sort(
+      rep((0:(numRow - 1)/numRow),numCol), 
+      decreasing = TRUE),
+    xright = rep((1:numCol/numCol), numRow),
+    ytop = sort(
+      rep((1:numRow/numRow), numCol), 
+      decreasing = TRUE),
+    border = grey(0.5), 
+    col = colors()[seq(1, numRow*numCol)])
+  myLabels <- c(
+    as.character(1:657), rep("", numRow*numCol - 657))
+  text(
+    x = rep((0:(numCol - 1)/numCol), numRow) + 0.02,
+    y = sort(
+      rep((0:(numRow - 1)/numRow), numCol), 
+      decreasing = TRUE) + 0.02,
+    labels = myLabels, 
+    cex = 0.6)
+dev.off()
+```
+
+<center>
+
+![Figure 11.2. La fonction colors()](999_cahierCouleurs/Figure11-2.pdf)
+
+</center>
+
+
+
+
+
+
+
+
+
+```{r, include=FALSE}
+pdf(file = "./999_cahierCouleurs/Figure11-XX.pdf", height = 2.5, width = 7)
+  plot(1)
+dev.off()
+```
+
+<center>
+
+![Figure 11.XX. XXXXXXXX](999_cahierCouleurs/Figure11-XX.pdf)
+
+</center>
