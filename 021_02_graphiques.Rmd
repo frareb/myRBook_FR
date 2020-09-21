@@ -4,34 +4,36 @@
 
 Nous avons vu différentes manières d'utiliser les couleurs : avec leur nom (e.g., `"salmon"`), avec un numéro de 1 à 8, avec la fonction `rgb()` (pour "red", "green", "blue"), et avec la fonction `colors()`. Il en existe d'autres mais celles-ci sont les principales.
 
-L'utilisation des numéros de 1 à 8 correspondait avant la version 4.0.0 au noir, rouge, vert, bleu, cyan, magenta, jaune et gris (`black`, `red`, `green`, `blue`, `cyan`, `magenta`, `yellow`, `grey`). Ce qui avait pour conséquence de produire des graphiques visuellement insuffisants (saturation, luminosité). Depuis la version 4.0.0, une nouvelle palette par défaut est disponible (voir `palette()`) et améliore un peu les graphiques. Cette utilisation est pratique pour visualiser rapidement nos résultats mais ces couleurs restent plutôt à éviter pour communiquer nos graphiques.
+L'utilisation des numéros de 1 à 8 correspondait avant la version 4.0.0 au noir, rouge, vert, bleu, cyan, magenta, jaune et gris (`black`, `red`, `green`, `blue`, `cyan`, `magenta`, `yellow`, `grey`). Ce qui avait pour conséquence de produire des graphiques visuellement insuffisants (saturation, luminosité). Depuis la version 4.0.0, une nouvelle palette par défaut est disponible (voir `palette()`) et améliore un peu les graphiques (Figure \@ref(fig:021-02-graphiques-1)). Cette utilisation est pratique pour visualiser rapidement nos résultats mais ces couleurs restent plutôt à éviter pour communiquer nos graphiques.
 
-```{r 021-02-graphiques-1, out.width = '70%'}
+```{r 021-02-graphiques-1, out.width = '70%', fig.cap="Les novelles couleurs de R 4.x ; voir cahier en couleurs"}
 par(mar = c(2, 0, 0, 0), mfrow = c(1, 2)) 
 barplot(
   matrix(rep(1, 8), ncol = 1),
   col = c("black", "red", "green", "blue", 
     "cyan", "magenta", "yellow", "grey"), 
   names.arg = c("R < 4.0.0"), axes = FALSE)
-text(x = rep(1, 8), y = 1:8 - 0.5, labels = 1:8)
+text(x = rep(1, 8), y = 1:8 - 0.5, labels = 1:8, 
+  col = c("white", rep(1, 7)), cex = 2)
 barplot(
   matrix(rep(1, 8), ncol = 1),
   col = c(1:8), 
   names.arg = c("R >= 4.0.0"), axes = FALSE)
-text(x = rep(1, 8), y = 1:8 - 0.5, labels = 1:8)
+text(x = rep(1, 8), y = 1:8 - 0.5, labels = 1:8, 
+  col = c("white", rep(1, 7)), cex = 2)
 ```
 
 ## `colors()`
 
-Pour choisir des couleurs plus agréables et mettant plus en avant nos résultats, une option consiste à les choisir dans la liste des couleurs préenregistrées dans R. Nous pouvons accéder à la liste des couleurs avec la fonction `colors()`
+Pour choisir des couleurs plus agréables et mettant plus en avant nos résultats, une option consiste à les choisir dans la liste des couleurs préenregistrées dans R. Nous pouvons accéder à la liste des couleurs avec la fonction `colors()`.
 
 ```{r 021-02-graphiques-2}
 head(colors(), n = 20)
 ```
 
-Nous pouvons utiliser ces couleurs avec leur nom (e.g., "white", "azure3"), ou alors avec leur numéro (e.g., "white" = `colors()[1]`, "azure3" = `colors()[16]`). 
+Nous pouvons utiliser ces couleurs avec leur nom (e.g., "white", "azure3"), ou alors avec leur numéro (e.g., "white" = `colors()[1]`, "azure3" = `colors()[16]` ; Figure \@ref(fig:021-02-graphiques-2)). 
 
-```{r 021-02-graphiques-3, fig.width=10, fig.height=6}
+```{r 021-02-graphiques-3, fig.width=10, fig.height=6, fig.cap="La fonction colors() ; voir cahier en couleurs"}
 # adapted from http://www.r-graph-gallery.com/42-colors-names/
 op <- par(no.readonly = TRUE)
 par(mar = c(0, 0, 0, 0))
