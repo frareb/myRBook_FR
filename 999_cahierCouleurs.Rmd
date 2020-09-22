@@ -399,7 +399,7 @@ pdf(file = "./999_cahierCouleurs/Figure11-4.pdf", height = 2, width = 7)
     rgb(119, 255, 0, maxColorValue = 255))
   print(myPal)
   par(mar = c(2, 2, 1, 1)) # réduction des marges
-  boxplot(matrix(rnorm(100), ncol = 4), col = myPal, axes = FALSE)
+  boxplot(matrix(runif(100), ncol = 4), col = myPal, axes = FALSE)
   axis(1)
   axis(2)
 dev.off()
@@ -645,7 +645,60 @@ dev.off()
 
 </center>
 
+```{r, include=FALSE}
+pkgCheck <- function(x){ 
+  if (!require(x, character.only = TRUE)){
+    install.packages(x, dependencies = TRUE)
+    if(!require(x, character.only = TRUE)) {
+      stop()
+    }
+  }
+}
+pkgCheck("palettesForR")
+pdf(file = "./999_cahierCouleurs/Figure12-3.pdf", height = 2.5, width = 7)
+  showPalette(Echo_gpl)
+dev.off()
+```
 
+<center>
+
+![Figure 12.3. Exemple d'utilisation de paletteForR](999_cahierCouleurs/Figure12-3.pdf)
+
+</center>
+
+```{r, include=FALSE}
+pdf(file = "./999_cahierCouleurs/Figure12-4.pdf", height = 2.5, width = 7)
+  groupTest <- sample(1:3, size = 100, replace = TRUE) 
+  valueTest <- sample(1:7, size = 100, replace = TRUE)
+  tableTest <- table(groupTest, valueTest)
+  par(mar = c(2, 0, 0, 0)) # réduction des marges
+  barplot(tableTest, 
+    col = Echo_gpl, axes = FALSE, beside = TRUE)
+dev.off()
+```
+
+<center>
+
+![Figure 12.4. Exemple d'utilisation de paletteForR](999_cahierCouleurs/Figure12-4.pdf)
+
+</center>
+
+```{r, include=FALSE}
+pdf(file = "./999_cahierCouleurs/Figure12-5.pdf", height = 2.5, width = 7)
+  groupTest <- sample(1:3, size = 100, replace = TRUE) 
+  valueTest <- sample(1:7, size = 100, replace = TRUE)
+  tableTest <- table(groupTest, valueTest)
+  par(mar = c(2, 0, 0, 0)) # réduction des marges
+  barplot(tableTest, 
+    col = Tango_gpl, axes = FALSE, beside = TRUE)
+dev.off()
+```
+
+<center>
+
+![Figure 12.5. Exemple d'utilisation de paletteForR](999_cahierCouleurs/Figure12-5.pdf)
+
+</center>
 
 
 

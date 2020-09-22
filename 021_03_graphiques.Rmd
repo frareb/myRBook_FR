@@ -30,9 +30,9 @@ boxplot(matrix(runif(1000), ncol = 10),
 
 ### `palettesForR`
 
-Le package `palettesForR` est un autre package contenant des palettes prêtes à l'emploi, issues des projets 'Gimp' et 'Inkscape'. Comme pour `RColorBrewer`, il suffit d'appeler les palettes pour les utiliser. Les nombreuses palettes disponibles sont listées dans l'aide du package. Voici un exemple d'utilisation.
+Le package `palettesForR` est un autre package contenant des palettes prêtes à l'emploi, issues des projets 'Gimp' et 'Inkscape'. Comme pour `RColorBrewer`, il suffit d'appeler les palettes pour les utiliser. Les nombreuses palettes disponibles sont listées dans l'aide du package. Voici un exemple d'utilisation (Figures \@ref(fig:021-03-graphiques-2), \@ref(fig:021-03-graphiques-2b) et \@ref(fig:021-03-graphiques-2c)).
 
-```{r 021-03-graphiques-2, out.width = '70%'}
+```{r 021-03-graphiques-2, out.width = '70%', fig.cap="Exemple d'utilisation de paletteForR ; voir cahier en couleurs"}
 pkgCheck <- function(x){ 
   if (!require(x, character.only = TRUE)){
     install.packages(x, dependencies = TRUE)
@@ -43,12 +43,18 @@ pkgCheck <- function(x){
 }
 pkgCheck("palettesForR")
 showPalette(Echo_gpl)
+```
+
+```{r 021-03-graphiques-2b, out.width = '70%', fig.cap="Exemple d'utilisation de paletteForR ; voir cahier en couleurs"}
 groupTest <- sample(1:3, size = 100, replace = TRUE) 
 valueTest <- sample(1:7, size = 100, replace = TRUE)
 tableTest <- table(groupTest, valueTest)
 par(mar = c(2, 0, 0, 0)) # réduction des marges
 barplot(tableTest, 
   col = Echo_gpl, axes = FALSE, beside = TRUE)
+```
+
+```{r 021-03-graphiques-2c, out.width = '70%', fig.cap="Exemple d'utilisation de paletteForR ; voir cahier en couleurs"}
 groupTest <- sample(1:3, size = 100, replace = TRUE) 
 valueTest <- sample(1:7, size = 100, replace = TRUE)
 tableTest <- table(groupTest, valueTest)
@@ -70,9 +76,9 @@ Il existe de très nombreux packages contenant des palettes. Par exemple :
 
 Le package `ggplot2` est une alternative aux fonctions de base de R pour réaliser des graphiques. Il repose sur "La Grammaire des Graphiques" de Leland Wilkinson et permet de réaliser des graphiques sous forme de couches, avec en général un rendu esthétique supérieur aux graphiques réalisés avec les fonctions R de base. Est-ce qu'il faut pour autant oublier ce qui a été vu jusqu'à présent et se concentrer sur l'utilisation de `ggplot2` ? Heureusement que non ! Si pour explorer un jeu de données et en sortir les tendances principales `ggplot2` s'avère parfois plus puissant, nos graphiques ne viennent jamais seuls et sont accompagnés d'analyses statistiques rendant nécessaire un travail souvent poussé sur la gestion des données. Une fois nos hypothèses de travail testées statistiquement, il devient facile de réaliser nos graphiques quel que soit leur niveau de complexité (avec les fonctions de base ou avec `ggplot2`). Par ailleurs nous verrons dans le chapitre suivant que depuis le graphique jusqu'à la figure dans l'article scientifique, il y a une série de traitements à effectuer et la manipulation des paramètres esthétiques peut se faire indépendamment de R. Donc `ggplot2` est un package intéressant car il apporte une alternative avec une autre philosophie dans la construction des graphiques, mais il ne se substitue pas à ce que nous venons d'apprendre jusqu'à présent. Dans la pratique nous pourrons utiliser l'un ou l'autre en fonction des données et des manipulations que nous souhaitons en faire. 
 
-Pour revenir à `ggplot2`, commençons par un exemple avec les données `iris`. 
+Pour introduire `ggplot2`, commençons par un exemple avec les données `iris` (Figures \@ref(fig:021-03-graphiques-3) et \@ref(fig:021-03-graphiques-3b)). 
 
-```{r 021-03-graphiques-3, fig.width=11, fig.height=6}
+```{r 021-03-graphiques-3, fig.width=11, fig.height=6, fig.cap="Graphique avec ggplot2"}
 pkgCheck <- function(x){ 
   if (!require(x, character.only = TRUE)){
     install.packages(x, dependencies = TRUE)
@@ -88,30 +94,36 @@ p <- ggplot(data = iris, aes(
   x = Sepal.Length, 
   y = Sepal.Width))
 p + geom_point() + ggtitle("ggplot2")
+```
+
+```{r 021-03-graphiques-3b, fig.width=11, fig.height=6, fig.cap="Graphique avec R-base"}
 # base
 par(mar = c(4, 4, 1.5, 1)) # réduction des marges
 plot(x = iris$Sepal.Length, y = iris$Sepal.Width, 
   main = "base", pch = 16)
 ```
 
-Maintenant séparons l'information en fonction de l'espèce de fleur.
+Maintenant séparons l'information en fonction de l'espèce de fleur (Figures \@ref(fig:021-03-graphiques-4) et \@ref(fig:021-03-graphiques-4b)).
 
-```{r 021-03-graphiques-4, fig.width=11, fig.height=6}
+```{r 021-03-graphiques-4, fig.width=11, fig.height=6, fig.cap="Graphique avec ggplot2"}
 # ggplot2
 p <- ggplot(data = iris, aes(
   x = Sepal.Length, 
   y = Sepal.Width, 
   colour = Species))
 p + geom_point() + ggtitle("ggplot2")
+```
+
+```{r 021-03-graphiques-4b, fig.width=11, fig.height=6, fig.cap="Graphique avec R-base"}
 # base
 par(mar = c(4, 4, 1.5, 1)) # réduction des marges
 plot(x = iris$Sepal.Length, y = iris$Sepal.Width, 
   main = "base", pch = 16, col = iris$Species)
 ```
 
-Il semble y avoir une relation entre largeur et longueur des sépales par espèces. 
+Il semble y avoir une relation entre largeur et longueur des sépales par espèces (Figures \@ref(fig:021-03-graphiques-5) et \@ref(fig:021-03-graphiques-5b)). 
 
-```{r 021-03-graphiques-5, fig.width=11, fig.height=6}
+```{r 021-03-graphiques-5, fig.width=11, fig.height=6, fig.cap="Graphique avec ggplot2"}
 # linear regressions
 lmFits <- lapply(1:3, function(i){
   fitSp1 <- lm(iris$Sepal.Width[as.numeric(iris$Species) == i] ~ 
@@ -139,6 +151,9 @@ p <- p + annotate(geom = "text", x = 6, y = 2.125,
 p <- p + annotate(geom = "text", x = 6, y = 2.000, 
   label = lmFits[[3]][[2]], colour = 4)
 p
+```
+
+```{r 021-03-graphiques-5b, fig.width=11, fig.height=6, fig.cap="Graphique avec R-base"}
 # base
 par(mar = c(4, 4, 1.5, 1)) # réduction des marges
 plot(x = iris$Sepal.Length, y = iris$Sepal.Width, 
@@ -166,7 +181,7 @@ Dans les couches nous pouvons ajouter des aspects géométriques (le type de gra
 
 Si nous souhaitons réaliser des graphiques avec le rendu de ggplot2, mais en conservant la méthode inclue avec R, il nous suffit de changer les paramètres graphiques. En voici un exemple qui pourrait servir de base à la construction d'une fonction. 
 
-```{r 021-03-graphiques-5b, fig.width=11, fig.height=6}
+```{r 021-03-graphiques-5c, fig.width=11, fig.height=6}
 par(mar = c(4, 4, 2, 8))
 plot(x = iris$Sepal.Length, y = iris$Sepal.Width, 
   xlab = "Sepal.Length", ylab = "Sepal.Width",
@@ -199,7 +214,7 @@ tr <- lapply(spp, function(mySpp){
 
 Le package `graphics` de R permet tout comme le package `ggplot2` de réaliser des graphiques de qualité mettant en valeur les résultats scientifiques. A nous de choisir le package qui correspond le mieux aux objectifs poursuivis. 
 
-```{r 021-03-graphiques-5c, fig.width=11, fig.height=6}
+```{r 021-03-graphiques-5d, fig.width=11, fig.height=6}
 plot(x = iris$Sepal.Length, y = iris$Sepal.Width, 
   type = 'n', axes = FALSE, panel.first = {
     grid()
