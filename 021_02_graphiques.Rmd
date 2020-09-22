@@ -129,11 +129,28 @@ myPal <- c(
   rgb(255, 0, 174, maxColorValue = 255),  
   rgb(255, 136, 0, maxColorValue = 255),  
   rgb(119, 255, 0, maxColorValue = 255))
+myDarkPal <- c(
+  "darkblue", 
+  "darkred", 
+  "darkorange4", 
+  "darkgreen")
 print(myPal)
-par(mar = c(2, 2, 1, 1)) # réduction des marges
-boxplot(matrix(rnorm(100), ncol = 4), col = myPal, axes = FALSE)
+par(mar = c(2, 2, 1, 1))
+matY <- matrix(runif(100), ncol = 4)
+boxplot(matY, col = myPal, axes = FALSE)
 axis(1)
 axis(2)
+matJitterX <- matrix(
+  rnorm(n = 100, mean = 1:4, sd = 0.05), 
+  ncol = 4, byrow = TRUE)
+tr <- lapply(1:ncol(matJitterX), function(i){
+  points(
+    x = matJitterX[,i],
+    y = matY[,i],
+    bg = myDarkPal[i],
+    col = 1, pch = 21, 
+  )
+})
 ```
 
 Il existe des palettes inclues dans R : `terrain.colors()`, `heat.colors()`, `topo.colors()`, 
