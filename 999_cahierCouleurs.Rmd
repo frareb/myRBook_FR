@@ -339,6 +339,326 @@ dev.off()
 
 </center>
 
+```{r, include=FALSE}
+graphBarplotCol <- function(n){
+  myX <- rnorm(n)
+  myY <- rnorm(n)
+  myCol <- c(2, 3, 4, sample(2:4, size = (n - 3), replace = TRUE))
+  myYCut <- cut(myY, breaks = -4:4)
+  myXCut <- cut(myX, breaks = -4:4)
+  myYCutCol <- table(myCol, myYCut)
+  myXCutCol <- table(myCol, myXCut)
+  rColX <- myXCutCol[1,] / (myXCutCol[1,] + myXCutCol[2,] + 
+    myXCutCol[3,])
+  gColX <- myXCutCol[2,] / (myXCutCol[1,] + myXCutCol[2,] + 
+    myXCutCol[3,])
+  bColX <- myXCutCol[3,] / (myXCutCol[1,] + myXCutCol[2,] + 
+    myXCutCol[3,])
+  rColX[is.na(rColX)] <- 0
+  gColX[is.na(gColX)] <- 0
+  bColX[is.na(bColX)] <- 0
+  rColY <- myYCutCol[1,] / (myYCutCol[1,] + myYCutCol[2,] + 
+    myYCutCol[3,])
+  gColY <- myYCutCol[2,] / (myYCutCol[1,] + myYCutCol[2,] + 
+    myYCutCol[3,])
+  bColY <- myYCutCol[3,] / (myYCutCol[1,] + myYCutCol[2,] + 
+    myYCutCol[3,])
+  rColY[is.na(rColY)] <- 0
+  gColY[is.na(gColY)] <- 0
+  bColY[is.na(bColY)] <- 0
+  op <- par(no.readonly = TRUE)
+  par(mar = c(2, 3, 1, 1))
+  layout(matrix(c(1, 1, 0, 
+                  2, 2, 3, 
+                  2, 2, 3), ncol = 3, byrow = TRUE))
+  barplot(table(myXCut), las = 1, col = rgb(rColX, gColX, bColX))
+  plot(x = myX, y = myY, bg = myCol, col = "black", pch = 21, 
+    xlim = c(-4, 4), ylim = c(-4, 4), cex = 3, 
+    panel.first = grid(lwd = 2))
+  barplot(table(myYCut), las = 1, horiz = TRUE, 
+    col = rgb(rColY, gColY, bColY))
+  par(op)
+}
+pdf(file = "./999_cahierCouleurs/Figure11-3.pdf", height = 4.5, width = 7)
+  graphBarplotCol(n = 50)
+dev.off()
+```
+
+<center>
+
+![Figure 11.3. Graphique avec rgb()](999_cahierCouleurs/Figure11-3.pdf)
+
+</center>
+
+```{r, include=FALSE}
+pdf(file = "./999_cahierCouleurs/Figure11-4.pdf", height = 2, width = 7)
+  myPal <- c(
+    rgb(0, 94, 255, maxColorValue = 255),  
+    rgb(255, 0, 174, maxColorValue = 255),  
+    rgb(255, 136, 0, maxColorValue = 255),  
+    rgb(119, 255, 0, maxColorValue = 255))
+  print(myPal)
+  par(mar = c(2, 2, 1, 1)) # réduction des marges
+  boxplot(matrix(rnorm(100), ncol = 4), col = myPal, axes = FALSE)
+  axis(1)
+  axis(2)
+dev.off()
+```
+
+<center>
+
+![Figure 11.4. Exemple de palette](999_cahierCouleurs/Figure11-4.pdf)
+
+</center>
+
+```{r, include=FALSE}
+pdf(file = "./999_cahierCouleurs/Figure11-5.pdf", height = 2.5, width = 7)
+  par(mfrow = c(1, 5), mar = c(0, 0, 2, 0))
+  myPals <- list(terrain.colors(10), heat.colors(10), 
+    topo.colors(10), cm.colors(10), rainbow(10))
+  myPalNames <- c("terrain.colors()", "heat.colors()",
+    "topo.colors()", "cm.colors()", "rainbow()")
+  tr <- lapply(seq_along(myPals), function(i){
+    barplot(
+      matrix(
+        sample(
+          x = 1:2, 
+          size = 100, 
+          replace = TRUE), 
+        ncol = 10), 
+      axes = FALSE, 
+      main = myPalNames[i], col = myPals[[i]])
+  })
+dev.off()
+```
+
+<center>
+
+![Figure 11.5. Palettes inclues dans R](999_cahierCouleurs/Figure11-5.pdf)
+
+</center>
+
+```{r, include=FALSE}
+pdf(file = "./999_cahierCouleurs/Figure11-6.pdf", height = 2.5, width = 7)
+  par(mfrow = c(3, 1), mar = c(0, 0, 0, 0))
+  boxplot(
+    matrix(runif(2500), ncol = 25), 
+    col = colorRampPalette(c('blue', 'red'))(25), 
+    axes = FALSE)
+  boxplot(
+    matrix(runif(2500), ncol = 25), 
+    col = colorRampPalette(c('blue', 'white', 'red'))(25), 
+    axes = FALSE)
+  boxplot(
+    matrix(runif(2500), ncol = 25), 
+    col =  colorRampPalette(
+      c(rgb(255, 136, 0, maxColorValue = 255),  
+      rgb(0, 94, 255, maxColorValue = 255)))(25), 
+    axes = FALSE)
+dev.off()
+```
+
+<center>
+
+![Figure 11.6. La fonction colorRampPalette()](999_cahierCouleurs/Figure11-6.pdf)
+
+</center>
+
+```{r, include=FALSE}
+pkgCheck <- function(x){ 
+  if (!require(x, character.only = TRUE)){
+    install.packages(
+      x, dependencies = TRUE, quiet = TRUE)
+    if(!require(x, character.only = TRUE)) {
+      stop()
+    }
+  }
+}
+pkgCheck("raster")
+pkgCheck("rgdal")
+pkgCheck("jpeg")
+createPal <- function(photo, met = 1, graph = TRUE, k = 9){
+  if(met == 1){
+    colR <- getValues(raster(photo, band = 1))
+    colG <- getValues(raster(photo, band = 2))
+    colB <- getValues(raster(photo, band = 3))
+    kMeans <- kmeans(
+      data.frame(colR, colG, colB), 
+      centers = k)
+    kCol <- rgb(kMeans$centers, maxColorValue = 255)[
+      order(table(
+        kMeans$cluster), decreasing = TRUE)]
+    if(graph == TRUE){
+      op <- par(no.readonly = TRUE)
+      par(mfrow = c (1, 2), mar = c(0, 2, 2, 0))
+      myJpg <- readJPEG(
+        "./myFiles/photoKmeans.jpg", 
+        native = TRUE)
+      plot(0:1, 0:1, type = "n", ann = FALSE, axes = FALSE)
+      rasterImage(myJpg, 0, 0, 1, 1)
+      barplot(
+        table(kMeans$cluster)[order(table(kMeans$cluster), 
+          decreasing = TRUE)], 
+        col = kCol, 
+        names.arg = NA)
+      par(op)
+    }
+    return(kCol)
+  } else {
+    if(met == 2){
+      kColR <- kmeans(
+        x = getValues(raster(photo, band = 1)), 
+        centers = k)
+      kColG <- kmeans(
+        x = getValues(raster(photo, band = 2)), 
+        centers = k)
+      kColB <- kmeans(
+        x = getValues(raster(photo, band = 3)), 
+        centers = k)
+      kCol <- rgb(
+        kColR$centers, 
+        kColG$centers, 
+        kColB$centers,
+        maxColorValue = 255)
+      if(graph == TRUE){
+        op <- par(no.readonly = TRUE)
+        par(mfrow = c (1, 2), mar = c(0, 2, 2, 0))
+        myJpg <- readJPEG(
+          "./myFiles/photoKmeans.jpg", 
+          native = TRUE)
+        plot(x = 0:1, y = 0:1, 
+             type = "n", 
+             ann = FALSE, 
+             axes = FALSE)
+        rasterImage(myJpg, 0, 0, 1, 1)
+        plot(x = 1:k, y = rep(1, k), ylim = c(0, 1), 
+          xlim = c(0, k), axes = FALSE, xlab = "", 
+          ylab = "", type = "n")
+        for(i in 1:k){
+          polygon(
+            x = c(i-1, i, i, i-1), 
+            y = c(0, 0, 1, 1), 
+            col = kCol[i])
+          text(x = i - 0.5, y = 0.5, 
+            labels = as.character(kCol[i]), srt = 90)
+        }
+        par(op)
+      }
+      return(kCol)
+    } else {
+      print(paste0("No method ", met, "."))
+      return(rgb(0, 0, 0))
+    }
+  }
+}
+pdf(file = "./999_cahierCouleurs/Figure11-7.pdf", height = 2.5, width = 5)
+  myPalMet1 <- createPal(
+    photo = "./myFiles/photoKmeans.jpg", 
+    met = 1, 
+    graph = TRUE, 
+    k = 5)
+dev.off()
+```
+
+<center>
+
+![Figure 11.7. Palette depuis une image, méthode 1](999_cahierCouleurs/Figure11-7.pdf)
+
+</center>
+
+```{r, include=FALSE}
+pdf(file = "./999_cahierCouleurs/Figure11-8.pdf", height = 2.5, width = 5)
+  myPalMet2 <- createPal(
+    photo = "./myFiles/photoKmeans.jpg", 
+    met = 2, 
+    graph = TRUE, 
+    k = 5)
+dev.off()
+```
+
+<center>
+
+![Figure 11.8. Palette depuis une image, méthode 2](999_cahierCouleurs/Figure11-8.pdf)
+
+</center>
+
+```{r, include=FALSE}
+makeImpact <- function(
+    myPal, 
+    numP = 300, 
+    impact = 0.33, 
+    multCex = 3){
+  myX <- sample(0:1000, size = numP, replace = TRUE)/1000
+  myY <- sample(0:1000, size = numP, replace = TRUE)/1000
+  distImpact <- sqrt((myX - impact)^2 + (myY - impact)^2)
+  dfXY <- data.frame(myX, myY, distImpact)
+  plot(x = dfXY$myX, y = dfXY$myY, axes = FALSE, 
+    xlab = "", ylab = "", cex = dfXY$distImpact*multCex, 
+    col = myPal, pch = 16)
+}
+pdf(file = "./999_cahierCouleurs/Figure11-9.pdf", height = 2.5, width = 7)
+  par(mfrow = c (1, 2), mar = c(0, 0, 0, 0))
+  makeImpact(myPal = myPalMet1, numP = 3000, impact = 0.33)
+  makeImpact(myPal = myPalMet2, numP = 3000, impact = 0.66)
+dev.off()
+```
+
+<center>
+
+![Figure 11.9. Utilisation d'une palette](999_cahierCouleurs/Figure11-9.pdf)
+
+</center>
+
+```{r, include=FALSE}
+pkgCheck <- function(x){ 
+  if (!require(x, character.only = TRUE)){
+    install.packages(x, dependencies = TRUE)
+    if(!require(x, character.only = TRUE)) {
+      stop()
+    }
+  }
+}
+pkgCheck("RColorBrewer")
+pdf(file = "./999_cahierCouleurs/Figure12-1.pdf", height = 4, width = 7)
+  par(mar = c(0, 4, 0, 0))
+  display.brewer.all()
+dev.off()
+```
+
+<center>
+
+![Figure 12.1. Le package RColorBrewer](999_cahierCouleurs/Figure12-1.pdf)
+
+</center>
+
+```{r, include=FALSE}
+pdf(file = "./999_cahierCouleurs/Figure12-2.pdf", height = 2.5, width = 7)
+  par(mar = c(1, 1, 1, 1)) 
+  boxplot(matrix(runif(1000), ncol = 10), 
+    col = brewer.pal(10, "Paired"), axes = FALSE)
+dev.off()
+```
+
+<center>
+
+![Figure 12.2. Exemple d'utilisation de RColorBrewer](999_cahierCouleurs/Figure12-2.pdf)
+
+</center>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -348,13 +668,13 @@ dev.off()
 
 
 ```{r, include=FALSE}
-pdf(file = "./999_cahierCouleurs/Figure11-XX.pdf", height = 2.5, width = 7)
+pdf(file = "./999_cahierCouleurs/Figure12-XX.pdf", height = 2.5, width = 7)
   plot(1)
 dev.off()
 ```
 
 <center>
 
-![Figure 11.XX. XXXXXXXX](999_cahierCouleurs/Figure11-XX.pdf)
+![Figure 12.XX. XXXXXXXX](999_cahierCouleurs/Figure12-XX.pdf)
 
 </center>

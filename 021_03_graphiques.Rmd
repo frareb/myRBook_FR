@@ -6,9 +6,9 @@
 
 ### `RColorBrewer`
 
-Le package `RColorBrewer` est un package populaire qui contient des palettes complémentaires à celle disponibles dans la version de base de R. Une fois le package installé, il suffit d'appeler les palettes pour les utiliser. Voici les palettes disponibles et un exemple d'utilisation.
+Le package `RColorBrewer` est un package populaire qui contient des palettes complémentaires à celle disponibles dans la version de base de R. Une fois le package installé, il suffit d'appeler les palettes pour les utiliser. Voici les palettes disponibles et un exemple d'utilisation (Figures \@ref(fig:021-03-graphiques-1) et \@ref(fig:021-03-graphiques-1b)).
 
-```{r 021-03-graphiques-1, fig.width=11, fig.height=6}
+```{r 021-03-graphiques-1, fig.width=11, fig.height=6, fig.cap="Le package RColorBrewer ; voir cahier en couleurs"}
 pkgCheck <- function(x){ 
   if (!require(x, character.only = TRUE)){
     install.packages(x, dependencies = TRUE)
@@ -22,9 +22,9 @@ par(mar = c(1, 4, 1, 1)) # réduction des marges
 display.brewer.all()
 ```
 
-```{r 021-03-graphiques-1b, out.width = '70%'}
+```{r 021-03-graphiques-1b, out.width = '70%', fig.cap="Exemple d'utilisation de RColorBrewer ; voir cahier en couleurs"}
 par(mar = c(1, 1, 1, 1)) # réduction des marges
-boxplot(matrix(rnorm(1000), ncol = 10), 
+boxplot(matrix(runif(1000), ncol = 10), 
   col = brewer.pal(10, "Paired"), axes = FALSE)
 ```
 

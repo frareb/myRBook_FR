@@ -6,7 +6,7 @@ Nous avons vu différentes manières d'utiliser les couleurs : avec leur nom (e.
 
 L'utilisation des numéros de 1 à 8 correspondait avant la version 4.0.0 au noir, rouge, vert, bleu, cyan, magenta, jaune et gris (`black`, `red`, `green`, `blue`, `cyan`, `magenta`, `yellow`, `grey`). Ce qui avait pour conséquence de produire des graphiques visuellement insuffisants (saturation, luminosité). Depuis la version 4.0.0, une nouvelle palette par défaut est disponible (voir `palette()`) et améliore un peu les graphiques (Figure \@ref(fig:021-02-graphiques-1)). Cette utilisation est pratique pour visualiser rapidement nos résultats mais ces couleurs restent plutôt à éviter pour communiquer nos graphiques.
 
-```{r 021-02-graphiques-1, out.width = '70%', fig.cap="Les novelles couleurs de R 4.x ; voir cahier en couleurs"}
+```{r 021-02-graphiques-1, out.width = '70%', fig.cap="Les nouvelles couleurs de R 4.x ; voir cahier en couleurs"}
 par(mar = c(2, 0, 0, 0), mfrow = c(1, 2)) 
 barplot(
   matrix(rep(1, 8), ncol = 1),
@@ -107,8 +107,8 @@ graphBarplotCol <- function(n){
                   2, 2, 3, 
                   2, 2, 3), ncol = 3, byrow = TRUE))
   barplot(table(myXCut), las = 1, col = rgb(rColX, gColX, bColX))
-  plot(x = myX, y = myY, col = myCol, pch = 16, 
-    xlim = c(-4, 4), ylim = c(-4, 4), cex = 1.5, 
+  plot(x = myX, y = myY, bg = myCol, col = "black", pch = 21, 
+    xlim = c(-4, 4), ylim = c(-4, 4), cex = 3, 
     panel.first = grid())
   barplot(table(myYCut), las = 1, horiz = TRUE, 
     col = rgb(rColY, gColY, bColY))
@@ -141,13 +141,20 @@ Il existe des palettes inclues dans R : `terrain.colors()`, `heat.colors()`, `to
 
 ```{r 021-02-graphiques-6, out.width = '90%', fig.cap="Palettes inclues dans R ; voir cahier en couleurs"}
 op <- par(no.readonly = TRUE)
-par(mfrow = c(2, 3), mar = c(0, 0, 2, 0))
+par(mfrow = c(1, 5), mar = c(0, 0, 2, 0))
 myPals <- list(terrain.colors(10), heat.colors(10), 
   topo.colors(10), cm.colors(10), rainbow(10))
 myPalNames <- c("terrain.colors()", "heat.colors()",
   "topo.colors()", "cm.colors()", "rainbow()")
 tr <- lapply(seq_along(myPals), function(i){
-  boxplot(matrix(rnorm(1000), ncol = 10), axes = FALSE, 
+  barplot(
+    matrix(
+      sample(
+        x = 1:2, 
+        size = 100, 
+        replace = TRUE), 
+      ncol = 10), 
+    axes = FALSE, 
     main = myPalNames[i], col = myPals[[i]])
 })
 par(op)
@@ -159,15 +166,15 @@ Il existe aussi une fonction `colorRampPalette()` qui permet de créer un dégra
 op <- par(no.readonly = TRUE)
 par(mfrow = c(3, 1), mar = c(0, 0, 0, 0))
 boxplot(
-  matrix(rnorm(2500), ncol = 25), 
+  matrix(runif(2500), ncol = 25), 
   col = colorRampPalette(c('blue', 'red'))(25), 
   axes = FALSE)
 boxplot(
-  matrix(rnorm(2500), ncol = 25), 
+  matrix(runif(2500), ncol = 25), 
   col = colorRampPalette(c('blue', 'white', 'red'))(25), 
   axes = FALSE)
 boxplot(
-  matrix(rnorm(2500), ncol = 25), 
+  matrix(runif(2500), ncol = 25), 
   col =  colorRampPalette(
     c(rgb(255, 136, 0, maxColorValue = 255),  
     rgb(0, 94, 255, maxColorValue = 255)))(25), 
