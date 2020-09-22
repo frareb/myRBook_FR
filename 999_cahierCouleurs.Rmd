@@ -6,6 +6,7 @@ output:
 header-includes:
 - \usepackage{caption}
 - \captionsetup[figure]{labelformat=empty}
+- \pagenumbering{roman}
 ---
 
 <!-- rmarkdown::render(input = "999_cahierCouleurs.Rmd", output_format = "pdf_document") -->
@@ -397,11 +398,28 @@ pdf(file = "./999_cahierCouleurs/Figure11-4.pdf", height = 2, width = 7)
     rgb(255, 0, 174, maxColorValue = 255),  
     rgb(255, 136, 0, maxColorValue = 255),  
     rgb(119, 255, 0, maxColorValue = 255))
+  myDarkPal <- c(
+    "darkblue", 
+    "darkred", 
+    "darkorange4", 
+    "darkgreen")
   print(myPal)
-  par(mar = c(2, 2, 1, 1)) # réduction des marges
-  boxplot(matrix(runif(100), ncol = 4), col = myPal, axes = FALSE)
+  par(mar = c(2, 2, 1, 1))
+  matY <- matrix(runif(100), ncol = 4)
+  boxplot(matY, col = myPal, axes = FALSE)
   axis(1)
   axis(2)
+  matJitterX <- matrix(
+    rnorm(n = 100, mean = 1:4, sd = 0.05), 
+    ncol = 4, byrow = TRUE)
+  tr <- lapply(1:ncol(matJitterX), function(i){
+    points(
+      x = matJitterX[,i],
+      y = matY[,i],
+      bg = myDarkPal[i],
+      col = 1, pch = 21, 
+    )
+  })
 dev.off()
 ```
 
