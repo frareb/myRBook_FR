@@ -179,7 +179,7 @@ par(op)
 
 Il existe aussi une fonction `colorRampPalette()` qui permet de créer un dégradé de couleur (Figure \@ref(fig:021-02-graphiques-7)).
 
-```{r 021-02-graphiques-7, out.width = '70%', fig.cap="La fonction colorRampPalette() ; voir cahier en couleurs"}
+```{r 021-02-graphiques-7, out.width = '90%', fig.cap="La fonction colorRampPalette() ; voir cahier en couleurs"}
 op <- par(no.readonly = TRUE)
 par(mfrow = c(3, 1), mar = c(0, 0, 0, 0))
 boxplot(
@@ -325,15 +325,25 @@ makeImpact <- function(
   myY <- sample(0:1000, size = numP, replace = TRUE)/1000
   distImpact <- sqrt((myX - impact)^2 + (myY - impact)^2)
   dfXY <- data.frame(myX, myY, distImpact)
-  plot(x = dfXY$myX, y = dfXY$myY, axes = FALSE, 
-    xlab = "", ylab = "", cex = dfXY$distImpact*multCex, 
+  plot(
+    x = dfXY$myX, 
+    y = dfXY$myY, 
+    axes = FALSE, 
+    xlab = "", ylab = "", 
+    cex = dfXY$distImpact*multCex, 
     col = myPal, pch = 16)
 }
 
 op <- par(no.readonly = TRUE)
 par(mfrow = c (1, 2), mar = c(0, 0, 0, 0))
-makeImpact(myPal = myPalMet1, numP = 3000, impact = 0.33)
-makeImpact(myPal = myPalMet2, numP = 3000, impact = 0.66)
+makeImpact(
+  myPal = myPalMet1, 
+  numP = 3000, 
+  impact = 0.33)
+makeImpact(
+  myPal = myPalMet2, 
+  numP = 3000, 
+  impact = 0.66)
 par(op)
 ```
 
