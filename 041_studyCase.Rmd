@@ -143,13 +143,20 @@ tempWeekMin <- tapply(bdd$temp,
 tempWeekMax <- tapply(bdd$temp, 
   INDEX = format(bdd$posix, format = "%Y-%W-1"), FUN = max)
 par(mar = c(4, 4, 1, 1)) # réduction des marges
-plot(x = as.Date(names(tempWeekMean), format = "%Y-%W-%u"), 
-    y = tempWeekMean, type = 'l', ylim = c(-15, 40), 
-    xlab = "Date", ylab = "Temperature (°C)", lwd = 3)
-points(x = as.Date(names(tempWeekMin), format = "%Y-%W-%u"), 
-    y = tempWeekMin, type = 'l', col = 4, lwd = 3)
-points(x = as.Date(names(tempWeekMax), format = "%Y-%W-%u"), 
-    y = tempWeekMax, type = 'l', col = 2, lwd = 3)
+plot(
+  x = as.Date(names(tempWeekMean), format = "%Y-%W-%u"), 
+  y = tempWeekMean, 
+  type = 'l', ylim = c(-15, 40), 
+  xlab = "Date", ylab = "Temperature (°C)", 
+  lwd = 3)
+points(
+  x = as.Date(names(tempWeekMin), format = "%Y-%W-%u"), 
+  y = tempWeekMin, 
+  type = 'l', col = 4, lwd = 3)
+points(
+  x = as.Date(names(tempWeekMax), format = "%Y-%W-%u"), 
+  y = tempWeekMax, 
+  type = 'l', col = 2, lwd = 3)
 legend("topright", legend = c("min", "max", "mean"), 
   lty = 1, lwd = 2, col = c(4, 2, 1))
 ```
@@ -202,7 +209,8 @@ myCol <- colorRampPalette(c("blue", "red"))(101)
 tempMeanDayPos <- round(
   (tempMonthMean - min(tempMonthMean)) / 
     (max(tempMonthMean) - min(tempMonthMean))*100) + 1
-p01 <- ggplot(data = bdd, 
+p01 <- ggplot(
+  data = bdd, 
   aes(
     x = posix, 
     y = temp, 
@@ -243,10 +251,14 @@ tempHourMax <- aggregate(
   FUN = max)
 hours <- seq(from = 0, to = 23.5, by = 0.5)
 par(mar = c(4, 4, 1, 1)) # réduction des marges
-plot(x = hours, 
-  y = tempHourMean[, 2], type = 'l', ylim = c(-15, 40), 
-  xlab = "", ylab = "Température (°C)", lwd = 2, 
-  xaxt = "n", panel.first = {
+plot(
+  x = hours, 
+  y = tempHourMean[, 2], 
+  type = 'l', ylim = c(-15, 40), 
+  xlab = "", ylab = "Température (°C)", 
+  lwd = 2, 
+  xaxt = "n", 
+  panel.first = {
     abline(v = hours, col = "gray", lty = 2)
     abline(h = 0, lty = 2)  
   })
@@ -297,9 +309,12 @@ tempDayEachMonth <- lapply(
 par(mar = c(4, 4, 1, 1)) 
 # for (i in seq_along(tempDayEachMonth)){ # pour tous les mois
 i <- 1 # uniquement Janvier 
-  plot(x = hours, y = tempDayEachMonth[[i]][, 2], 
+  plot(
+    x = hours, 
+    y = tempDayEachMonth[[i]][, 2], 
     type = 'l', ylim = c(-15, 40), 
-    xlab = "", ylab = "Température (°C)", lwd = 2, 
+    xlab = "", ylab = "Température (°C)", 
+    lwd = 2, 
     main = meses[i],
     xaxt = "n", panel.first = {
       abline(v = hours, col = "gray", lty = 2)

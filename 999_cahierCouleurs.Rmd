@@ -718,34 +718,570 @@ dev.off()
 
 </center>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 ```{r, include=FALSE}
-pdf(file = "./999_cahierCouleurs/Figure12-XX.pdf", height = 2.5, width = 7)
-  plot(1)
+pkgCheck <- function(x){ 
+  if (!require(x, character.only = TRUE)){
+    install.packages(x, dependencies = TRUE)
+    if(!require(x, character.only = TRUE)) {
+      stop()
+    }
+  }
+}
+pkgCheck("ggplot2")
+data(iris)
+pdf(file = "./999_cahierCouleurs/Figure12-6.pdf", height = 4.5, width = 7)
+  # ggplot2
+  p <- ggplot(data = iris, aes(
+    x = Sepal.Length, 
+    y = Sepal.Width, 
+    colour = Species))
+  p + geom_point() + ggtitle("ggplot2")
 dev.off()
 ```
 
 <center>
 
-![Figure 12.XX. XXXXXXXX](999_cahierCouleurs/Figure12-XX.pdf)
+![Figure 12.6. Graphique avec ggplot2](999_cahierCouleurs/Figure12-6.pdf)
+
+</center>
+
+```{r, include=FALSE}
+pdf(file = "./999_cahierCouleurs/Figure12-9.pdf", height = 4.5, width = 7)
+  par(mar = c(4, 4, 1.5, 1)) # réduction des marges
+  plot(x = iris$Sepal.Length, y = iris$Sepal.Width, 
+    main = "base", pch = 16, col = iris$Species)
+dev.off()
+```
+
+<center>
+
+![Figure 12.9. Graphique avec R-base](999_cahierCouleurs/Figure12-9.pdf)
+
+</center>
+
+```{r, include=FALSE}
+lmFits <- lapply(1:3, function(i){
+  fitSp1 <- lm(iris$Sepal.Width[as.numeric(iris$Species) == i] ~ 
+    iris$Sepal.Length[as.numeric(iris$Species) == i])
+  fStat1 <- summary(fitSp1)$fstatistic
+  rSq1 <- summary(fitSp1)$r.squared
+  pVal1 <- summary(fitSp1)$coefficients[2, 4]
+  stat1 <- paste0("F=", round(fStat1[1], digits = 2), 
+    "; DF=", fStat1[2], "/", fStat1[3], 
+    "; r2=", round(rSq1, digits = 2), 
+    "; p-val=", round(pVal1, digits = 6))
+  return(list(fitSp1, stat1))
+})
+pdf(file = "./999_cahierCouleurs/Figure12-10.pdf", height = 4.5, width = 7)
+  p <- ggplot(data = iris, aes(
+    x = Sepal.Length, 
+    y = Sepal.Width, 
+    colour = Species))
+  p <- p + geom_point() + ggtitle("ggplot2") + 
+    stat_smooth(method = "lm", se = FALSE)
+  p <- p + annotate(geom = "text", x = 6, y = 2.250, 
+    label = lmFits[[1]][[2]], colour = 2)
+  p <- p + annotate(geom = "text", x = 6, y = 2.125, 
+    label = lmFits[[2]][[2]], colour = 3)
+  p <- p + annotate(geom = "text", x = 6, y = 2.000, 
+    label = lmFits[[3]][[2]], colour = 4)
+  p
+dev.off()
+```
+
+<center>
+
+![Figure 12.10. Graphique avec ggplot2](999_cahierCouleurs/Figure12-10.pdf)
+
+</center>
+
+```{r, include=FALSE}
+pdf(file = "./999_cahierCouleurs/Figure12-11.pdf", height = 4.5, width = 7)
+  par(mar = c(4, 4, 1.5, 1)) # réduction des marges
+  plot(x = iris$Sepal.Length, y = iris$Sepal.Width, 
+    main = "base", pch = 16, col = iris$Species)
+  abline(lmFits[[1]][[1]], col = 1)
+  abline(lmFits[[2]][[1]], col = 2)
+  abline(lmFits[[3]][[1]], col = 3)
+  text(
+    x = 5.5, y = 2.2, 
+    labels = lmFits[[1]][[2]], 
+    pos = 4)
+  text(
+    x = 5.5, y = 2.1, 
+    labels = lmFits[[2]][[2]], 
+    pos = 4, col = 2)
+  text(
+    x = 5.5, y = 2.0, 
+    labels = lmFits[[3]][[2]], 
+    pos = 4, col = 3)
+dev.off()
+```
+
+<center>
+
+![Figure 12.11. Graphique avec R-base](999_cahierCouleurs/Figure12-11.pdf)
+
+</center>
+
+```{r, include=FALSE}
+pdf(file = "./999_cahierCouleurs/Figure12-12.pdf", height = 4.5, width = 7)
+  par(mar = c(4, 4, 2, 8))
+  plot(x = iris$Sepal.Length, y = iris$Sepal.Width, 
+    xlab = "Sepal.Length", ylab = "Sepal.Width",
+    axes = FALSE, pch = 16, col = iris$Species, 
+    panel.first = {
+      rect(par("usr")[1], 
+        par("usr")[3], 
+        par("usr")[2], 
+        par("usr")[4], 
+        col = "lightgray",  border = NA)
+      abline(v = 4:8, col = "white", lwd = 2, lty = 1)
+      abline(h = 2:5, col = "white", lwd = 2, lty = 1)
+      grid(col = "white", lwd = 1, lty = 1)
+    })
+  title("base", adj = 0, line = 0.5)
+  axis(1, col = NA, col.ticks = 1, cex.axis = 0.9)
+  axis(2, col = NA, col.ticks = 1, las = 1, cex.axis = 0.9)
+  par(xpd = TRUE)
+  legend(8.2, 3.5, legend = levels(iris$Species), bty = "n", 
+    pch = 16, col = as.numeric(unique(iris$Species)), 
+    title = "Species")
+  spp <- unique(iris$Species)
+  tr <- lapply(spp, function(mySpp){
+    lmX <- lm(iris$Sepal.Width[iris$Species == mySpp] ~ 
+      iris$Sepal.Length[iris$Species == mySpp])
+    points(x = iris$Sepal.Length[iris$Species == mySpp], 
+      y = predict(lmX), type = 'l', lwd = 2, col = mySpp)
+  })
+dev.off()
+```
+
+<center>
+
+![Figure 12.12. Graphique avec R-base dans le style de ggplot2](999_cahierCouleurs/Figure12-12.pdf)
+
+</center>
+
+```{r, include=FALSE}
+pdf(file = "./999_cahierCouleurs/Figure12-13.pdf", height = 4.5, width = 7)
+  par(mar = c(4, 4, 0, 0.5))
+  plot(x = iris$Sepal.Length, y = iris$Sepal.Width, 
+    type = 'n', axes = FALSE, panel.first = {
+      grid()
+      axis(1)
+      axis(2)
+    })
+  my3col <- c("#3b86ff", "#e653c8", "#ffd82b")
+  spp <- unique(iris$Species)
+  trash <- lapply(spp, function(mySpp){
+    lmX <- lm(iris$Sepal.Width[iris$Species == mySpp] ~ 
+      iris$Sepal.Length[iris$Species == mySpp])
+    points(x = iris$Sepal.Length[iris$Species == mySpp], 
+      y = predict(lmX), type = 'l', lwd = 2, col = my3col[mySpp])
+    myCol <- colorRampPalette(c(my3col[mySpp], "darkred"))(101)
+    colRank <- (iris$Sepal.Width[iris$Species == mySpp] - 
+      predict(lmX))^2
+    colRank <- round((colRank - min(colRank)) / 
+      (max(colRank) - min(colRank)) * 100) + 1
+    points(
+      x = iris$Sepal.Length[iris$Species == mySpp],
+      y = iris$Sepal.Width[iris$Species == mySpp], 
+      bg = my3col[mySpp], col = myCol[colRank], pch = 21, 
+      cex = 1 + colRank/100)
+  })
+  legend("topright", fill = my3col, 
+    legend = levels(iris$Species), bty = "n")
+dev.off()
+```
+
+<center>
+
+![Figure 12.13. Graphique avec R-base des données iris](999_cahierCouleurs/Figure12-13.pdf)
+
+</center>
+
+```{r, include=FALSE}
+bdd <- read.table(
+  "myFiles/E05C13.csv", 
+  skip = 1, header = TRUE, 
+  sep = ",", dec = ".", 
+  stringsAsFactors = FALSE)
+colnames(bdd) <- c("id", "date", "temp")
+bddDay <- as.Date(
+  sapply(
+    strsplit(
+      bdd[, 2], 
+      split = " "), 
+    "[[", 1), 
+  format = "%m/%d/%y")
+bdd$day <- bddDay
+bddPosix <- as.POSIXct(
+  bdd$date, 
+  format = "%m/%d/%y %H:%M:%S")
+bdd$posix <- bddPosix
+```
+
+```{r, include=FALSE}
+pdf(file = "./999_cahierCouleurs/Figure14-2.pdf", height = 2.5, width = 7)
+  tempDayMean <- tapply(bdd$temp, INDEX = bdd$day, FUN = mean)
+  tempDayMin <- tapply(bdd$temp, INDEX = bdd$day, FUN = min)
+  tempDayMax <- tapply(bdd$temp, INDEX = bdd$day, FUN = max)
+  par(mar = c(4, 4, 1, 1))
+  plot(x = as.Date(names(tempDayMean), format = "%Y-%m-%d"), 
+    y = tempDayMean, type = 'l', ylim = c(-15, 40), 
+    xlab = "Temps", ylab = "Température (°C)", lwd = 2)
+  points(as.Date(names(tempDayMin), format = "%Y-%m-%d"), 
+    y = tempDayMin, type = 'l', col = 4, lwd = 2)
+  points(as.Date(names(tempDayMax), format = "%Y-%m-%d"), 
+    y = tempDayMax, type = 'l', col = 2, lwd = 2)
+  legend("topright", legend = c("min", "max", "mean"), 
+    lty = 1, lwd = 2, col = c(4, 2, 1), bg = "white")
+dev.off()
+```
+
+<center>
+
+![Figure 14.2. Données agrégées par jour](999_cahierCouleurs/Figure14-2.pdf)
+
+</center>
+
+```{r, include=FALSE}
+anoSem <- format(bdd$posix, format = "%Y-%W")
+pdf(file = "./999_cahierCouleurs/Figure14-3.pdf", height = 2.5, width = 7)
+  tempWeekMean <- tapply(bdd$temp, 
+    INDEX = format(bdd$posix, format = "%Y-%W-1"), FUN = mean)
+  tempWeekMin <- tapply(bdd$temp, 
+    INDEX = format(bdd$posix, format = "%Y-%W-1"), FUN = min)
+  tempWeekMax <- tapply(bdd$temp, 
+    INDEX = format(bdd$posix, format = "%Y-%W-1"), FUN = max)
+  par(mar = c(4, 4, 1, 1)) # réduction des marges
+  plot(
+    x = as.Date(names(tempWeekMean), format = "%Y-%W-%u"), 
+    y = tempWeekMean, 
+    type = 'l', ylim = c(-15, 40), 
+    xlab = "Date", ylab = "Temperature (°C)", 
+    lwd = 3)
+  points(
+    x = as.Date(names(tempWeekMin), format = "%Y-%W-%u"), 
+    y = tempWeekMin, 
+    type = 'l', col = 4, lwd = 3)
+  points(
+    x = as.Date(names(tempWeekMax), format = "%Y-%W-%u"), 
+    y = tempWeekMax, 
+    type = 'l', col = 2, lwd = 3)
+  legend("topright", legend = c("min", "max", "mean"), 
+    lty = 1, lwd = 2, col = c(4, 2, 1), bg = "white")
+dev.off()
+```
+
+<center>
+
+![Figure 14.3. Données agrégées par semaine](999_cahierCouleurs/Figure14-3.pdf)
+
+</center>
+
+```{r, include=FALSE}
+pdf(file = "./999_cahierCouleurs/Figure14-5.pdf", height = 4, width = 7)
+  tempMonthMean <- tapply(bdd$temp, 
+    INDEX = format(bdd$posix, format = "%Y-%m"), FUN = mean)
+  myCol <- colorRampPalette(c("blue", "red"))(101)
+  tempMeanDayPos <- round(
+    (tempMonthMean - min(tempMonthMean)) / 
+      (max(tempMonthMean) - min(tempMonthMean))*100) + 1
+  par(mar = c(5, 4, 0, 0)) 
+  boxplot(
+    bdd$temp ~ format(bdd$posix, format = "%Y-%m"), 
+    las = 3, 
+    col = myCol[tempMeanDayPos],
+    xlab = "", ylab = "Température (°C)")
+dev.off()
+```
+
+<center>
+
+![Figure 14.5. Données agrégées par mois](999_cahierCouleurs/Figure14-5.pdf)
+
+</center>
+
+```{r, include=FALSE}
+pkgCheck <- function(x){ 
+    if (!require(x, character.only = TRUE)){
+        install.packages(x, dependencies = TRUE)
+        if(!require(x, character.only = TRUE)) {
+            stop()
+        }
+    }
+}
+pkgCheck("ggplot2")
+tempMonthMean <- tapply(bdd$temp, 
+  INDEX = format(bdd$posix, format = "%Y-%m"), FUN = mean)
+myCol <- colorRampPalette(c("blue", "red"))(101)
+tempMeanDayPos <- round(
+  (tempMonthMean - min(tempMonthMean)) / 
+    (max(tempMonthMean) - min(tempMonthMean))*100) + 1
+pdf(file = "./999_cahierCouleurs/Figure14-6.pdf", height = 4.5, width = 7)
+  p01 <- ggplot(
+    data = bdd, 
+    aes(
+      x = posix, 
+      y = temp, 
+      group = format(posix, format = "%Y-%m"))) + 
+      geom_boxplot(
+        outlier.colour = "black", 
+        fill = myCol[tempMeanDayPos])
+  p01
+dev.off()
+```
+
+<center>
+
+![Figure 14.6. Données agrégées par mois](999_cahierCouleurs/Figure14-6.pdf)
+
+</center>
+
+```{r, include=FALSE}
+pdf(file = "./999_cahierCouleurs/Figure14-8.pdf", height = 4.5, width = 7)
+  tempHourMean <- aggregate(
+    x = bdd$temp, 
+    by = list(format(bdd$posix, format = "%H:%M")), 
+    FUN = mean)
+  tempHourMin <- aggregate(
+    x = bdd$temp, 
+    by = list(format(bdd$posix, format = "%H:%M")), 
+    FUN = min)
+  tempHourMax <- aggregate(
+    x = bdd$temp, 
+    by = list(format(bdd$posix, format = "%H:%M")), 
+    FUN = max)
+  hours <- seq(from = 0, to = 23.5, by = 0.5)
+  par(mar = c(4, 4, 1, 1)) # réduction des marges
+  plot(
+    x = hours, 
+    y = tempHourMean[, 2], 
+    type = 'l', ylim = c(-15, 40), 
+    xlab = "", ylab = "Température (°C)", 
+    lwd = 2, 
+    xaxt = "n", 
+    panel.first = {
+      abline(v = hours, col = "gray", lty = 2)
+      abline(h = 0, lty = 2)  
+    })
+  axis(
+    side = 1, 
+    at = hours, 
+    labels = tempHourMean[, 1], 
+    las = 2)
+  points(
+    x = hours, 
+    y = tempHourMin[, 2], 
+    type = 'l', col = 4, lwd = 2)
+  points(
+    x = hours, 
+    y = tempHourMax[, 2], 
+    type = 'l', col = 2, lwd = 2)
+dev.off()
+```
+
+<center>
+
+![Figure 14.8. Données agrégées par heure](999_cahierCouleurs/Figure14-8.pdf)
+
+</center>
+
+```{r, include=FALSE}
+pdf(file = "./999_cahierCouleurs/Figure14-9.pdf", height = 4.5, width = 7)
+  meses <- c("Janvier", "Février", "Mars", "Avril", "Mai", 
+    "Juin", "Juillet", "Août", "Septembre", "Octobre", 
+    "Novembre", "Décembre")
+  hours <- seq(from = 0, to = 23.5, by = 0.5)
+  bddMonth <- format(bdd$day, format = "%m")
+  tempDayEachMonth <- lapply(
+    sort(unique(bddMonth)), function(myMonth){
+      bddX <- bdd[bddMonth == myMonth, ]
+      tempHourMean <- aggregate(
+        x = bddX$temp, 
+        by = list(format(bddX$posix, format = "%H:%M")), 
+        FUN = mean)
+      tempHourMin <- aggregate(
+        x = bddX$temp, 
+        by = list(format(bddX$posix, format = "%H:%M")), 
+        FUN = min)
+      tempHourMax <- aggregate(
+        x = bddX$temp, 
+        by = list(format(bddX$posix, format = "%H:%M")), 
+        FUN = max)
+    return(
+      data.frame(
+        tempHourMean, 
+        tempHourMin, 
+        tempHourMax))
+  })
+  par(mar = c(4, 4, 1, 1)) 
+  # for (i in seq_along(tempDayEachMonth)){ # pour tous les mois
+  i <- 1 # uniquement Janvier 
+    plot(
+      x = hours, 
+      y = tempDayEachMonth[[i]][, 2], 
+      type = 'l', ylim = c(-15, 40), 
+      xlab = "", ylab = "Température (°C)", 
+      lwd = 2, 
+      main = meses[i],
+      xaxt = "n", panel.first = {
+        abline(v = hours, col = "gray", lty = 2)
+        abline(h = 0, lty = 2)  
+      })
+    axis(
+      side = 1, 
+      at = hours, 
+      labels = tempHourMean[, 1], 
+      las = 2)
+    points(
+      x = hours, 
+      y = tempDayEachMonth[[i]][, 4], 
+      type = 'l', col = 4, lwd = 2)
+    points(
+      x = hours, 
+      y = tempDayEachMonth[[i]][, 6], 
+      type = 'l', col = 2, lwd = 2)
+  # }
+dev.off()
+```
+
+<center>
+
+![Figure 14.9. Données agrégées par heure et par mois](999_cahierCouleurs/Figure14-9.pdf)
+
+</center>
+
+```{r, include=FALSE}
+pdf(file = "./999_cahierCouleurs/Figure14-10.pdf", height = 4.5, width = 7)
+  par(mar = c(4, 4, 1, 1)) # réduction des marges
+  plot(
+    x = hours, 
+    y = tempDayEachMonth[[1]][, 2], 
+    type = 'n', 
+    ylim = c(-10, 35),
+    xlab = "", 
+    ylab = "Température moyenne (°C)",
+    xaxt = "n", 
+    panel.first = {
+      abline(v = hours, col = "gray", lty = 2)
+      abline(h = 0, lty = 2)  
+    })
+  axis(
+    side = 1, 
+    at = hours, 
+    labels = tempHourMean[, 1], 
+    las = 2)
+  myColors <- c("#A6CEE3", "#1F78B4", "#B2DF8A", "#33A02C", 
+    "#FB9A99", "#E31A1C", "#FDBF6F", "#FF7F00", "#CAB2D6", 
+    "#6A3D9A", "#FFFF99", "#B15928")
+  for (i in seq_along(tempDayEachMonth)){
+    points(x = hours, 
+      y = tempDayEachMonth[[i]][, 2], 
+      type = 'l', col = myColors[i], lwd = 2)
+  }
+  legend(
+    "topright", 
+    ncol = 4, 
+    legend = meses, 
+    col = myColors, 
+    lty = 1, lwd = 2, 
+    cex = 0.8, bg = "white")
+dev.off()
+```
+
+<center>
+
+![Figure 14.10. Température par heure et par mois](999_cahierCouleurs/Figure14-10.pdf)
+
+</center>
+
+```{r, include=FALSE}
+pdf(file = "./999_cahierCouleurs/Figure14-11.pdf", height = 4.5, width = 7)
+  par(mar = c(4, 4, 1, 1)) # réduction des marges
+  plot(
+    x = hours, 
+    y = tempDayEachMonth[[1]][, 2], 
+    type = 'n', 
+    ylim = c(0, 30),
+    xlab = "", 
+    ylab = "Variation de température diurne (°C)",
+    xaxt = "n", 
+    panel.first = {
+      abline(v = hours, col = "gray", lty = 2)
+      abline(h = 0, lty = 2)  
+    })
+  axis(
+    side = 1, 
+    at = hours, 
+    labels = tempHourMean[, 1], 
+    las = 2)
+  myColors <- c("#A6CEE3", "#1F78B4", "#B2DF8A", "#33A02C", 
+    "#FB9A99", "#E31A1C", "#FDBF6F", "#FF7F00", "#CAB2D6", 
+    "#6A3D9A", "#FFFF99", "#B15928")
+  for (i in seq_along(tempDayEachMonth)){
+    points(
+      x = hours, 
+      y = tempDayEachMonth[[i]][, 6] - 
+        tempDayEachMonth[[i]][, 4], 
+      type = 'l', 
+      col = myColors[i], 
+      lwd = 2)
+  }
+  legend(
+    "topright", 
+    ncol = 4, 
+    legend = meses, 
+    col = myColors,
+    lty = 1, lwd = 2, 
+    cex = 0.8, bg = "white")
+dev.off()
+```
+
+<center>
+
+![Figure 14.11. Variations de température par mois](999_cahierCouleurs/Figure14-11.pdf)
+
+</center>
+
+```{r, include=FALSE}
+pkgCheck <- function(x){ 
+  if (!require(x, character.only = TRUE)){
+    install.packages(x, dependencies = TRUE)
+    if(!require(x, character.only = TRUE)) {
+      stop()
+    }
+  }
+}
+pkgCheck("ggplot2")
+pkgCheck("ggridges")
+pkgCheck("viridis")
+meanTemps <- unlist(lapply(tempDayEachMonth, "[[", 2))
+labelMonth <- rep(meses, each = 48)
+dfTemps <- data.frame(month = labelMonth, value = meanTemps, 
+  stringsAsFactors = FALSE)
+dfTemps$month <- factor(dfTemps$month, levels = rev(meses))
+pdf(file = "./999_cahierCouleurs/Figure14-12.pdf", height = 4.5, width = 7)
+  p <- ggplot(
+    data = dfTemps, 
+    aes(y = month, x = value,  fill = ..x..))
+  p <- p + geom_density_ridges_gradient(stat = "binline")
+  p <- p + scale_fill_viridis(
+    name = "Temp. [°C]", option = "C")
+  p <- p + xlab("Temperature") + ylab("") +
+      theme(
+        legend.position="none",
+        panel.spacing = unit(0.1, "lines"),
+        strip.text.x = element_text(size = 8)
+      ) 
+  p
+dev.off()
+```
+
+<center>
+
+![Figure 14.12. Graphique de type ridgeline](999_cahierCouleurs/Figure14-12.pdf)
 
 </center>

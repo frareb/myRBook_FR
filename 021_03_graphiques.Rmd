@@ -183,9 +183,13 @@ Si nous souhaitons réaliser des graphiques avec le rendu de ggplot2, mais en co
 
 ```{r 021-03-graphiques-5c, fig.width=11, fig.height=6, fig.cap="Graphique avec R-base dans le style de ggplot2 ; voir cahier en couleurs"}
 par(mar = c(4, 4, 2, 8))
-plot(x = iris$Sepal.Length, y = iris$Sepal.Width, 
-  xlab = "Sepal.Length", ylab = "Sepal.Width",
-  axes = FALSE, pch = 16, col = iris$Species, 
+plot(
+  x = iris$Sepal.Length, 
+  y = iris$Sepal.Width, 
+  xlab = "Sepal.Length", 
+  ylab = "Sepal.Width",
+  axes = FALSE, 
+  pch = 16, col = iris$Species, 
   panel.first = {
     rect(par("usr")[1], 
       par("usr")[3], 
@@ -215,6 +219,7 @@ tr <- lapply(spp, function(mySpp){
 Le package `graphics` de R permet tout comme le package `ggplot2` de réaliser des graphiques de qualité mettant en valeur les résultats scientifiques. A nous de choisir le package qui correspond le mieux aux objectifs poursuivis (Figure \@ref(fig:021-03-graphiques-5d)). 
 
 ```{r 021-03-graphiques-5d, fig.width=11, fig.height=8, fig.cap="Graphique avec R-base des données iris ; voir cahier en couleurs"}
+par(mar = c(4, 4, 0, 0.5))
 plot(x = iris$Sepal.Length, y = iris$Sepal.Width, 
   type = 'n', axes = FALSE, panel.first = {
     grid()
