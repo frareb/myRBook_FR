@@ -2,7 +2,7 @@
 
 \minitoc
 
-En consultant [Wikipedia](https://fr.wikipedia.org/wiki/Algorithmique), nous pouvons lire que *L'algorithmique est l'étude et la production de règles et techniques qui sont impliquées dans la définition et la conception d'algorithmes, c'est-à-dire de processus systématiques de résolution d'un problème permettant de décrire précisément des étapes pour résoudre un problème algorithmique*. Imaginons un problème simple consistant à trier des sportifs en fonction de leurs performances. Après la définition d'un seuil (par exemple courir le 100 m en moins de 12 secondes), notre règle consistera à dire que *si* le sportif court le 100 m en moins de 12 secondes, *alors* il est vraiment doué, *sinon* il doit encore s'entraîner. Dans ce chapitre nous allons voir comment formaliser ce type de problème en abordant les algorithmes les plus simples et les plus utiles. Cela nous permettra par la suite de consulter avec plus d'aisance les ouvrages spécifiques sur l'algorithmique avec R.
+En consultant [Wikipedia](https://fr.wikipedia.org/wiki/Algorithmique), nous pouvons lire que *L'algorithmique est l'étude et la production de règles et techniques qui sont impliquées dans la définition et la conception d'algorithmes, c'est-à-dire de processus systématiques de résolution d'un problème permettant de décrire précisément des étapes pour résoudre un problème algorithmique*. Imaginons un problème simple consistant à trier des sportifs en fonction de leurs performances. Après la définition d'un seuil (par exemple courir le 100 m en moins de 12 secondes), notre règle consistera à dire que *si* le sportif court le 100 m en moins de 12 secondes, *alors* il est bien entraîné, *sinon* il doit encore s'entraîner. Dans ce chapitre nous allons voir comment formaliser ce type de problème en abordant les algorithmes les plus simples et les plus utiles. Cela nous permettra par la suite de consulter avec plus d'aisance les ouvrages spécifiques sur l'algorithmique avec R.
 
 ## Tests logiques avec `if` {#l17if}
 
@@ -360,7 +360,7 @@ while(i < 10){
 
 Dans cet exemple, la variable `i` a comme valeur 0. TANT QUE `i < 10`, nous allons afficher `i`. Pour que cette boucle se termine, il ne faut pas oublier de modifier la valeur de `i`, c'est ce qui est fait avec la ligne `i <- i + 1`. Lorsque la condition `i < 10` ne se vérifie plus, la boucle s'arrête.
 
-La boucle `while()` est très utile pour créer des scripts qui vont effectuer des calculs sur des variables dont la valeur évoluent dans le temps. Par exemple imaginons un nombre entre 0 et 10000 et un générateur aléatoire qui va essayer de déterminer la valeur de ce nombre. Si nous souhaitons limiter les tentatives de R à 2 secondes, nous pouvons écrire le script suivant (qui devrait marcher à tous les coups sur un ordinateur de bureau classique pouvant facilement effectuer 35000 essais en 2 secondes) :
+La boucle `while()` est très utile pour créer des scripts qui vont effectuer des calculs sur des variables dont la valeur évoluent dans le temps. Par exemple imaginons un nombre entre 0 et 10000 et un générateur aléatoire qui va essayer de déterminer la valeur de ce nombre. Si nous souhaitons limiter les tentatives de R à 2 secondes, nous pouvons écrire le script suivant (qui devrait marcher à tous les coups sur un ordinateur de bureau classique pouvant facilement effectuer plusieurs dizaines de milliers d'essais en 2 secondes) :
 
 ```{r 017-boucles-23}
 myNumber <- sample(x = 10000, size = 1)
