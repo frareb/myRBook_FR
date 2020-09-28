@@ -1111,11 +1111,16 @@ pdf(file = "./999_cahierCouleurs/Figure14-9.pdf", height = 4.5, width = 7)
         x = bddX$temp, 
         by = list(format(bddX$posix, format = "%H:%M")), 
         FUN = max)
+    tempHourSd <- aggregate(
+      x = bddX$temp, 
+      by = list(format(bddX$posix, format = "%H:%M")), 
+      FUN = sd)
     return(
       data.frame(
-        tempHourMean, 
-        tempHourMin, 
-        tempHourMax))
+      tempHourMean, 
+      min = tempHourMin[, 2], 
+      max = tempHourMax[, 2], 
+      sd = tempHourSd[, 2]))
   })
   par(mar = c(4, 4, 1, 1)) 
   # for (i in seq_along(tempDayEachMonth)){ # pour tous les mois
@@ -1138,11 +1143,11 @@ pdf(file = "./999_cahierCouleurs/Figure14-9.pdf", height = 4.5, width = 7)
       las = 2)
     points(
       x = hours, 
-      y = tempDayEachMonth[[i]][, 4], 
+      y = tempDayEachMonth[[i]]$min, 
       type = 'l', col = 4, lwd = 2)
     points(
       x = hours, 
-      y = tempDayEachMonth[[i]][, 6], 
+      y = tempDayEachMonth[[i]]$max, 
       type = 'l', col = 2, lwd = 2)
   # }
 dev.off()
@@ -1205,9 +1210,9 @@ pdf(file = "./999_cahierCouleurs/Figure14-11.pdf", height = 4.5, width = 7)
     x = hours, 
     y = tempDayEachMonth[[1]][, 2], 
     type = 'n', 
-    ylim = c(0, 30),
+    ylim = c(0, 8),
     xlab = "", 
-    ylab = "Variation de température diurne (°C)",
+    ylab = "Écarts-types par tranche horaire et par mois",
     xaxt = "n", 
     panel.first = {
       abline(v = hours, col = "gray", lty = 2)
@@ -1224,8 +1229,7 @@ pdf(file = "./999_cahierCouleurs/Figure14-11.pdf", height = 4.5, width = 7)
   for (i in seq_along(tempDayEachMonth)){
     points(
       x = hours, 
-      y = tempDayEachMonth[[i]][, 6] - 
-        tempDayEachMonth[[i]][, 4], 
+      y = tempDayEachMonth[[i]]$sd,
       type = 'l', 
       col = myColors[i], 
       lwd = 2)
