@@ -590,7 +590,9 @@ ls()
 
 ### Statistiques descriptives
 
-Dans le jeu de données `iris`, combien de valeurs de largeur de sépales sont supérieures à 3 ? Entre 2.8 et 3.2 ? 
+Voici un court exemple de statistiques descriptives à travers quelques questions sur le jeu de donnéees `iris`. 
+
+Combien de valeurs de largeur de sépales sont supérieures à 3 ? Entre 2.8 et 3.2 ? 
 
 Comment peut-on visualiser la distribution des données (fonction `table()`) ? 
 
@@ -600,7 +602,7 @@ Comment calculer un intervalle contenant 90% des valeurs ?
 
 Si la distribution des données était Normale, quelle serait la valeur théorique de cet intervalle de 90% (fonction `qnorm()`) ?
 
-Solutions :
+Solutions proposées :
 
 ```{r 015-fonctions-49}
 length(iris$Sepal.Width[iris$Sepal.Width > 3])
@@ -721,7 +723,7 @@ countVowelConso(word = "qwertyuiop azertyuiop")
 countVowelConso(word = 5)
 ```
 
-Avec R comme pour tout langage de programmation, pour un problème il existe toujours de multiples solutions. Nous nous souvenons de la section sur les types de données ([type de données `logical`](#l013logi)), ainsi que de la section sur les [opérateurs de comparaison](#l011opcomp) que la valeur de `TRUE` est de 1 et la valeur de `FALSE` est de 0. Nous venons de voir ci-dessus que la fonction [`%in%`](#l015in) renvoie `TRUE` ou `FALSE` pour chacun des éléments du premier objet en fonction de leur présence ou absence dans le second objet. Notre fonction aurait pu donc se passer de la fonction `length()` pour le comptage des voyelles et des consonnes et utiliser la fonction `sum()`. 
+Avec R comme pour tout langage de programmation, pour un problème il existe toujours de multiples solutions. Nous nous souvenons de la section sur les types de données ([type de données `logical`](#l013logi)), ainsi que de la section sur les [opérateurs de comparaison](#l011opcomp) que la valeur de `TRUE` est de 1 et la valeur de `FALSE` est de 0. Nous venons de voir ci-dessus que la fonction [`%in%`](#l015in) renvoie `TRUE` ou `FALSE` pour chacun des éléments du premier objet en fonction de leur présence ou absence dans le second objet. Notre fonction aurait donc pu se passer de la fonction `length()` pour le comptage des voyelles et des consonnes et utiliser la fonction `sum()`. 
 
 ```{r 015-fonctions-59}
 countVowelConsoAlt <- function(word){ # compte les voyelles 
