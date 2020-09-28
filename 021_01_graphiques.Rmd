@@ -325,7 +325,7 @@ boxplot(
     rgb(119, 255, 0, maxColorValue = 255)))
 ```
 
-Si une variable est de type `factor` ou `character`, la fonction `boxplot()` permet facilement de représenter chaque catégorie. Cela fonctionne aussi avec les variables numériques mais il faut veiller à ne pas avoir trop de valeurs différentes pour que le graphique reste lisible (Figure \@ref(fig:021-01-graphiques-20))).
+Si une variable est de type `factor` ou `character`, la fonction `boxplot()` permet facilement de représenter chaque catégorie. Cela fonctionne aussi avec les variables numériques mais il faut veiller à ne pas avoir trop de valeurs différentes pour que le graphique reste lisible (Figures \@ref(fig:021-01-graphiques-20) et \@ref(fig:021-01-graphiques-20b)).
 
 ```{r 021-01-graphiques-20, out.width = '70%', fig.cap="Boxplot par catégorie ; voir cahier en couleurs"}
 df$cat <- sample(
@@ -340,6 +340,9 @@ boxplot(
     rgb(255, 136, 0, maxColorValue = 255),  
     rgb(119, 255, 0, maxColorValue = 255)), 
   ylab = "Box3")
+```
+
+```{r 021-01-graphiques-20b, out.width = '70%', fig.cap="Boxplot par catégorie ; voir cahier en couleurs"}
 df$cat2 <- sample(1:3, size = 1000, replace = TRUE)
 par(mar = c(2, 2, 0, 0)) 
 boxplot(
@@ -352,7 +355,7 @@ boxplot(
   ylab = "Box4")
 ```
 
-Le `boxplot` peut être représenté horizontalement ou verticalement (Figure \@ref(fig:021-01-graphiques-21))).
+Le `boxplot` peut être représenté horizontalement ou verticalement (Figure \@ref(fig:021-01-graphiques-21)).
 
 ```{r 021-01-graphiques-21, out.width = '70%', fig.cap="Boxplot horizontal"}
 df$cat <- sample(
