@@ -2,6 +2,8 @@
 
 \minitoc
 
+\index{couleur}
+
 Nous avons vu différentes manières d'utiliser les couleurs : avec leur nom (e.g., `"salmon"`), avec un numéro de 1 à 8, avec la fonction `rgb()` (pour "red", "green", "blue"), et avec la fonction `colors()`. Il en existe d'autres mais celles-ci sont les principales.
 
 L'utilisation des numéros de 1 à 8 correspondait avant la version 4.0.0 au noir, rouge, vert, bleu, cyan, magenta, jaune et gris (`black`, `red`, `green`, `blue`, `cyan`, `magenta`, `yellow`, `grey`). Ce qui avait pour conséquence de produire des graphiques visuellement insuffisants (saturation, luminosité). Depuis la version 4.0.0, une nouvelle palette par défaut est disponible (voir `palette()`) et améliore un peu les graphiques (Figure \@ref(fig:021-02-graphiques-1)). Cette utilisation est pratique pour visualiser rapidement nos résultats mais ces couleurs restent plutôt à éviter pour communiquer nos graphiques.
@@ -24,6 +26,8 @@ text(x = rep(1, 8), y = 1:8 - 0.5, labels = 1:8,
 ```
 
 ## `colors()`
+
+\index{colors()}
 
 Pour choisir des couleurs plus agréables et mettant plus en avant nos résultats, une option consiste à les choisir dans la liste des couleurs préenregistrées dans R. Nous pouvons accéder à la liste des couleurs avec la fonction `colors()`.
 
@@ -65,6 +69,8 @@ par(op)
 ```
 
 ## `rgb()`
+
+\index{rgb()}
 
 Une autre option consiste à construire ses propres couleurs ave la fonction `rgb()` qui prend comme argument la quantité de rouge, de de vert, et de bleu. Par défaut ces valeurs sont comprises entre 0 et 1. Ce réglage par défaut peut être modifié avec l'argument `maxColorValue` pour par exemple avoir des valeurs entre 0 et 255 (`maxColorValue = 255` ; norme pour la représentation des couleurs RGB). Pour transformer une couleur de R en RGB, nous pouvons utiliser la fonction `col2rgb()`.
 
@@ -120,6 +126,8 @@ graphBarplotCol(n = 50)
 Avec la fonction `rgb()` nous pouvons donc représenter `256^3` couleurs, soit 167 777 216 couleurs différentes. Notre objectif reste cependant de faire des graphiques agréables à lire et qui mettent bien en valeurs nos résultats scientifiques. Il faut donc choisir les couleurs adéquates au regard de notre objectif. C'est pour cela que nous allons utiliser des palettes.
 
 ## Palettes
+
+\index{palette}
 
 Les palettes sont des jeux de couleurs représentées sous forme d'un `vector` avec les couleurs au format hexadécimal (valeur renvoyée par la fonction `rgb()` par exemple ; Figure \@ref(fig:021-02-graphiques-5)).
 

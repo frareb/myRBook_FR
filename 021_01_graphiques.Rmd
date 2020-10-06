@@ -2,9 +2,13 @@
 
 # Graphiques simples {#graph1}
 
+\index{graphique}
+
 \minitoc
 
 ## `plot` {#graph1plot}
+
+\index{plot()}
 
 Le premier type de graphique que nous allons voir est le nuage de points. Dans un nuage de points, chaque point est représenté par sa valeur en x et en y. La fonction permettant de faire un nuage de points est `plot()`. Il est recommandé de spécifier les arguments `x` et `y` même si ceux-ci ne sont pas nécessaires. Cela permet de gagner en lisibilité et d’éviter les erreurs (Figure \@ref(fig:021-01-graphiques-1)).
 
@@ -148,6 +152,8 @@ plot(x = myX, y = myY, xlab = "", ylab = "",
 
 ## `hist` {#graph1hist}
 
+\index{hist()}
+
 Pour faire un histogramme nous utilisons la fonction `hist()` (Figure \@ref(fig:021-01-graphiques-12)). C'est une fonction graphique utile pour visualiser rapidement la distribution d'un jeu de données (nous reviendrons sur la gestion des couleurs dans un autre chapitre et notamment sur l'utilisation de `heat.colors()`). 
 
 ```{r 021-01-graphiques-12, fig.cap="Histogramme avec hist() ; voir cahier en couleurs"}
@@ -170,6 +176,8 @@ par(op)
 ```
 
 ## `barplot` {#graph1barplot}
+
+\index{barplot()}
 
 Le graphique en barres se fait au moyen de la fonction `barplot()`. Il existe une différence fondamentale entre la fonction `hist()` et la fonction `barplot()`. La fonction `hist()` procède à des calculs qui sont retournés (de façon invisible), tandis que la fonction `barplot()` fait simplement un graphique (qui est parfois appelé à tord histogramme dans certains logiciels classiques ; Figure \@ref(fig:021-01-graphiques-13)).
 
@@ -303,6 +311,8 @@ par(op)
 ```
 
 ## `boxplot` {#graph1boxplot}
+
+\index{boxplot()}
 
 Les `boxplot` ou boîtes à moustache sont des graphiques très courant avec R car ils donnent un bon aperçu d'un jeu de données en représentant les valeurs extrêmes ("outliers"), la médiane, les quartiles, les minimums et les maximums (tout comme la fonction `hist()`, la fonction `boxplot()` fait des calculs qui sont retournés de façon invisible ; Figure \@ref(fig:021-01-graphiques-19)).
 

@@ -4,7 +4,12 @@
 
 ## les packages de palettes
 
+\index{package}
+\index{palette}
+
 ### `RColorBrewer`
+
+\index{RColorBrewer}
 
 Le package `RColorBrewer` est un package populaire qui contient des palettes complémentaires à celle disponibles dans la version de base de R. Une fois le package installé, il suffit d'appeler les palettes pour les utiliser. Voici les palettes disponibles et un exemple d'utilisation (Figures \@ref(fig:021-03-graphiques-1) et \@ref(fig:021-03-graphiques-1b)).
 
@@ -29,6 +34,8 @@ boxplot(matrix(runif(1000), ncol = 10),
 ```
 
 ### `palettesForR`
+
+\index{palettesForR}
 
 Le package `palettesForR` est un autre package contenant des palettes prêtes à l'emploi, issues des projets 'Gimp' et 'Inkscape'. Comme pour `RColorBrewer`, il suffit d'appeler les palettes pour les utiliser. Les nombreuses palettes disponibles sont listées dans l'aide du package. Voici un exemple d'utilisation (Figures \@ref(fig:021-03-graphiques-2), \@ref(fig:021-03-graphiques-2b) et \@ref(fig:021-03-graphiques-2c)).
 
@@ -65,6 +72,8 @@ barplot(tableTest,
 
 ### Les autres packages
 
+\index{viridis}
+
 Il existe de très nombreux packages contenant des palettes. Par exemple :
 
 * `viridis` (https://CRAN.R-project.org/package=viridis)
@@ -73,6 +82,9 @@ Il existe de très nombreux packages contenant des palettes. Par exemple :
 * ...
 
 ## Le package `ggplot2`
+
+\index{ggplot2}
+\index{tidyverse}
 
 Le package `ggplot2` est une alternative aux fonctions de base de R pour réaliser des graphiques. Il repose sur "La Grammaire des Graphiques" de Leland Wilkinson et permet de réaliser des graphiques sous forme de couches, avec en général un rendu esthétique supérieur aux graphiques réalisés avec les fonctions R de base. Est-ce qu'il faut pour autant oublier ce qui a été vu jusqu'à présent et se concentrer sur l'utilisation de `ggplot2` ? Heureusement que non ! Si pour explorer un jeu de données et en sortir les tendances principales `ggplot2` s'avère parfois plus puissant, nos graphiques ne viennent jamais seuls et sont accompagnés d'analyses statistiques rendant nécessaire un travail souvent poussé sur la gestion des données. Une fois nos hypothèses de travail testées statistiquement, il devient facile de réaliser nos graphiques quel que soit leur niveau de complexité (avec les fonctions de base ou avec `ggplot2`). Par ailleurs nous verrons dans le chapitre suivant que depuis le graphique jusqu'à la figure dans l'article scientifique, il y a une série de traitements à effectuer et la manipulation des paramètres esthétiques peut se faire indépendamment de R. Donc `ggplot2` est un package intéressant car il apporte une alternative avec une autre philosophie dans la construction des graphiques, mais il ne se substitue pas à ce que nous venons d'apprendre jusqu'à présent. Dans la pratique nous pourrons utiliser l'un ou l'autre en fonction des données et des manipulations que nous souhaitons en faire. 
 
@@ -249,6 +261,8 @@ legend("topright", fill = my3col,
 ```
 
 ## Les graphiques interactifs et dynamiques avec `Plotly`
+
+\index{Plotly}
 
 `Plotly` est un package permettant de réaliser des graphiques interactifs et dynamiques (disponible pour *R*, mais aussi pour *python* et *JavaScript*). Cela peut être particulièrement utile pour les résultats ayant vocation à être diffusées sur Internet. Le package s'installe comme tous les autres avec `install.packages("plotly")`. Le package est gratuit et open source (sous license MIT -https://github.com/ropensci/plotly/blob/master/LICENSE.md-). 
 
