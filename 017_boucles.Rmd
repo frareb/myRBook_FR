@@ -2,9 +2,13 @@
 
 \minitoc
 
+\index{algorithmique}
+
 En consultant [Wikipedia](https://fr.wikipedia.org/wiki/Algorithmique), nous pouvons lire que *L'algorithmique est l'étude et la production de règles et techniques qui sont impliquées dans la définition et la conception d'algorithmes, c'est-à-dire de processus systématiques de résolution d'un problème permettant de décrire précisément des étapes pour résoudre un problème algorithmique*. Imaginons un problème simple consistant à trier des sportifs en fonction de leurs performances. Après la définition d'un seuil (par exemple courir le 100 m en moins de 12 secondes), notre règle consistera à dire que *si* le sportif court le 100 m en moins de 12 secondes, *alors* il est bien entraîné, *sinon* il doit encore s'entraîner. Dans ce chapitre nous allons voir comment formaliser ce type de problème en abordant les algorithmes les plus simples et les plus utiles. Cela nous permettra par la suite de consulter avec plus d'aisance les ouvrages spécifiques sur l'algorithmique avec R.
 
 ## Tests logiques avec `if` {#l17if}
+
+\index{if()}
 
 Si nous voulons effectuer une opération différente en fonction d'une condition, nous pouvons mettre en place un test logique du type **SI** *ceci* **ALORS** *faire cela* **SINON** *faire cela*. Avec R cela va se traduire par la fonction `if(cond) cons.expr else alt.expr` comme indiqué dans l'aide de la fonction.
 
@@ -155,6 +159,8 @@ Avec `&` R va vérifier toutes les conditions, et avec `&&` R va prendre chaque 
 
 ## Tests logiques avec `switch` {#l17switch}
 
+\index{switch()}
+
 La fonction `switch()` est une variante de `if()` qui est utile lorsque nous avons de nombreuses options possibles sur une même expression. L'exemple suivant montre comment transformer un code utilisant `if()` en `switch()`.
 
 ```{r 017-boucles-11}
@@ -183,6 +189,9 @@ print(result)
 ```
 
 ## La boucle `for` {#l17for}
+
+\index{for()}
+\index{boucle}
 
 En programmation, lorsque nous sommes amenés à répéter plusieurs fois la même ligne de code, c'est un signe indiquant qu'il faut utiliser une **boucle**. Une boucle est une manière d'itérer sur un ensemble d'objets (ou sur les éléments d'un objet), et de répéter une opération. Imaginons un `data.frame` avec des mesures de terrain à deux dates. 
 
@@ -348,6 +357,8 @@ En conclusion, il est recommandé de ne pas utiliser la boucle `for()` avec R ch
 
 ## La boucle `while` {#l17while}
 
+\index{while()}
+
 La boucle `while()`, contrairement à la boucle `for()`, signifie *TANT QUE*. Tant qu'une condition n'est pas remplie, la boucle va continuer à s'exécuter. Attention car en cas d'erreur, nous pouvons facilement programmer des boucles qui ne terminent jamais ! Cette boucle est moins courante que la boucle `for()`. Prenons un exemple :
 
 ```{r 017-boucles-22}
@@ -387,6 +398,8 @@ Dans ce script nous générons un nombre aléatoire à deviner avec la fonction 
 Plus concrètement nous pourrions imaginer des algorithmes pour explorer un espace de solutions face à un problème avec un temps limité pour y parvenir. La boucle `while()` peut aussi être pratique pour qu'un script ne s'exécute que lorsque un fichier issu d'un autre programme devient disponible... En pratique la boucle `while()` reste peu utilisée avec R, car ce genre de script qui manipule des informations système (temps, fichiers, …) est plus communément réalisé avec d’autres langages comme Python.
 
 ## La boucle `repeat` {#l17repeat}
+
+\index{repeat()}
 
 La boucle `repeat()` permet de répéter une opération sans condition à vérifier. Pour sortir de cette boucle il faut donc obligatoirement utiliser le mot clef `break`.
 
@@ -430,6 +443,9 @@ repeat{
 Comme la boucle `while()`, la boucle `repeat()` reste peu utilisée avec R, sauf dans certaines disciplines en lien avec des données courantes par exemple.
 
 ## `next` et `break` {#l17spe}
+
+\index{next}
+\index{break}
 
 Nous avons déjà vu le mot clef `break` qui permet de sortir de la boucle en cours. Par exemple si nous cherchons le premier nombre après 111 qui soit divisible par 32 :
 
@@ -475,6 +491,8 @@ letters[! letters %in% c("a", "e", "i", "o", "u", "y")]
 En conclusion, si nous utilisons les boucles, alors les mots clefs `next` et `break` sont souvent très utiles, mais chaque fois que cela est possible il vaut mieux avoir recours à des opérations sur les vecteurs. Lorsque cela n'est pas possible de travailler sur les vecteurs, il est préférable d'utiliser les boucles de la famille `apply` qui sont le sujet de la prochaine section.
 
 ## Les boucles de la famille `apply` {#l17applyfamily}
+
+\index{apply()}
 
 ### `apply` {#l17apply}
 
@@ -526,6 +544,8 @@ apply(X = myArr, MARGIN = c(1, 2), FUN = mean)
 ```
 
 ### `lapply` {#l17sapply}
+
+\index{lapply()}
 
 Comme indiqué dans la documentation, `lapply()` renvoie une liste de même longueur que `X`, chaque élément résultant de l'application de `FUN` à l'élément correspondant de `X`. Si `X` est une `list` contenant des `vector` et que nous cherchons à obtenir la moyenne de chacun des éléments de la `list`, nous pouvons utiliser la fonction `lapply()` :
 
@@ -604,6 +624,8 @@ lapply(myList, FUN = function(i){
 
 ### `sapply` {#l17lapply}
 
+\index{sapply()}
+
 La fonction `sapply()` est une version modifiée de la fonction `lapply()` qui effectue la même opération mais en renvoyant le résultat sous un format simplifié lorsque c'est possible.
 
 ```{r 017-boucles-38}
@@ -622,6 +644,8 @@ sapply(myList, FUN = '[[', 2)
 ```
 
 ### `tapply` {#l17tapply}
+
+\index{tapply()}
 
 La fonction `tapply()` permet d'appliquer une fonction en prenant comme élément à itérer une variable existante. Imaginons des informations sur des espèces représentées par des lettres majuscules (e.g., A, B, C) et des valeurs de performances à différentes localisations.
 
@@ -678,6 +702,8 @@ print(myDF)
 Depuis la version 4.0.0 de R, les colonnes contenant des données de type `character` ne sont plus automatiquement transformées en type `factor` lors de la création d'un `data.frame`. Pour les versions antérieures à celle-ci, il faudra utiliser `levels()` à la place de `unique()`.
 
 ### `mapply` {#l17mapply}
+
+\index{mapply()}
 
 La fonction `mapply()` est une version de la fonction `sapply()`qui utilise de multiples arguments. Par exemple si nous avons une liste de deux éléments `1:5` et `5:1` et que nous souhaitons ajouter `10` au premier élément et `100` au deuxième élément :
 

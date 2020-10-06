@@ -2,9 +2,14 @@
 
 \minitoc
 
+\index{gestion}
+\index{projet}
+
 Maintenant que nous avons vu les concepts de base de R, il nous reste à aborder un élément déterminant pour le bon déroulement de nos activités scientifiques avec R : la gestion de projet. Cela consiste à intégrer ses développements dans un environnement et avec une logique visant à faciliter son travail et donc augmenter son efficacité. Il ne s'agit ici que d'une façon de faire parmi les innombrables possibilités, à adapter pour chacune et chacun. 
 
 ## Gestion des fichiers et des répertoires de travail
+
+\index{répertoire}
 
 Entre les fichiers d'entrée (i.e., les fichiers qui contiennent nos données brutes), les fichiers de sortie (e.g., avec la fonction `write()`), les graphiques (prochain chapitre), et les nombreux scripts associés à un projet de recherche, un minimum d'organisation s'impose pour pouvoir être efficace et reprendre rapidement son projet en cours. La solution la plus simple consiste à structurer son environnement de travail en dossiers en fonction de chaque catégorie de fichiers. Par exemple avec un dossier "myProject" pour le projet en cours, contenant lui-même les dossiers "myFiles" pour les fichiers d'entrée, un dossier "myScripts" pour les fichiers script R, et un dossier "myOutputs" pour les fichiers de sortie (e.g., les graphiques et les analyses). Si les fichiers sont organisés d’une façon définie, les chemins relatifs pour charger les données ou pour sauvegarder des résultats seront toujours les mêmes d’un ordinateur à un autre.
 
@@ -21,6 +26,9 @@ cat("-myProject
 ```
 
 ## Gestion des versions de script
+
+\index{version}
+\index{script}
 
 Le travail sur un script est itératif : même si les objectifs sont définis dès le départ, nous allons retravailler certaines parties pour obtenir par exemples des informations supplémentaires, ou encore pour optimiser telle ou telle fonction, ou encore rendre généralisable un script pour le communiquer à la communauté scientifique ou tout simplement à un collègue. Parfois ce que nous allons voir comme une amélioration va au final se révéler être une erreur, et le retour au script initial peut être difficile. Il faut donc gérer des versions. 
 
@@ -45,6 +53,8 @@ cat("-myProject
 ```
 
 ## Gestion de la documentation
+
+\index{documentation}
 
 La documentation de son code est essentielle pour pouvoir facilement reprendre un travail ou communiquer son travail avec ses collègues et la communauté scientifique. Un code bien documenté sera compréhensible par un plus grand nombre et donc utilisé d'avantage. Il est donc important d'adopter de bonnes pratiques.
 
@@ -121,6 +131,8 @@ sum <- function(..., na.rm = TRUE) {}
 Cela permet d'écrire la documentation de chaque fonction à côté de la fonction (contrairement à la fonction `prompt()` qui va créer un fichier de documentation pour un objet R qu'il faudra ensuite éditer manuellement). Le package roxigen2 va ensuite générer à partir de ces commentaires un document d'aide accessible avec la fonction `'?'`. A moins que nous écrivions un nouveau package, les commentaires simples suffiront, et le développement d'un package sort du cadre de ce livre. 
 
 ## Communiquer avec rmarkdown
+
+\index{rmarkdown}
 
 Les gestionnaires de version sur serveur sont très utiles car ils permettent à de multiples utilisateurs de contribuer à un même script. Ils constituent des outils collaboratifs très puissants. Cependant dans certains cas nous devons communiquer avec des collaborateurs non-initiés à R et ce en amont du processus de publication scientifique. Dans les cas où le code et les fichiers associés ne suffisent pas (même quand le code est lisible et reproductible), il peut être intéressant de passer par un document qui montrera le code et le résultat de son exécution dans un seul et même fichier. C’est ce que permet le package *rmarkdown* en permettant la génération de documents (eg HTML, PDF, Word) de manière dynamique (https://rmarkdown.rstudio.com/), et en assurant la reproductibilité des analyses. 
 

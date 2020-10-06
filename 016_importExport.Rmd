@@ -2,9 +2,19 @@
 
 \minitoc
 
+\index{import}
+\index{export}
+\index{fichier}
+\index{getwd()}
+\index{setwd()}
+\index{list.files()}
+\index{read.table()}
+
 ## Lire des données depuis un fichier {#l016read}
 
 ### Transformer ses données au format TXT ou CSV {#l016transfo}
+
+\index{CSV}
 
 Il existe de nombreuses façons de lire le contenu d'un fichier avec R. Cependant nous nous focaliserons sur la lecture des fichiers TXT et CSV qui sont les plus communs et les plus fiables. A de rares exceptions près tous les fichiers de données peuvent très facilement être transformés aux formats TXT et CSV. C'est la pratique à préférer pour une analyse des données avec R. Dans tous les autres cas et pour couvrir l’ensemble des possibilités avec R, nous pourrons nous référer au manuel de référence sur l’import et l’export de données sur le site web de R (en anglais ; https://cran.r-project.org/manuals.html).
 
@@ -138,6 +148,8 @@ str(bdd)
 
 ### Lire un fichier texte  {#l016readTXT}
 
+\index{TXT}
+
 La fonction la plus simple pour lire un fichier contenant du texte est `readLines()`. Voici un exemple avec le fichier _bookdown.yml de ce livre, que l'on retrouve sur GitHub.
 
 ```{r 016-importExport-10, linewidth=65}
@@ -156,6 +168,9 @@ scan(readmeGitHub, what = "character")
 ```
 
 ## Exporter ou charger des données pour R {#l016save}
+
+\index{save()}
+\index{load()}
 
 Il est parfois utile de pouvoir sauvegarder un objet R pour pouvoir le réutiliser plus tard. C'est le cas par exemple lorsque le temps de calcul pour arriver à un résultat est très long, ou alors lorsque l'on souhaite libérer de l'espace dans la RAM. Pour ce faire il existe la fonction `save()` qui prend comme argument principal le nom du ou des objets que nous voulons sauvegarder.
 
@@ -184,6 +199,8 @@ print(myObject)
 ```
 
 ## Exporter des données {#l016write}
+
+\index{write()}
 
 Le meilleur moyen de communiquer vos résultats ou vos données est de transmettre vos scripts et vos fichiers de données. Parfois ce n'est pas possible ou pas adapté, et il peut être utile d'exporter ses données dans un fichier texte ou CSV. Pour ce faire il existe la fonction générique `write()` et la fonction `write.table()` pour les `data.frame`.
 

@@ -2,6 +2,9 @@
 
 \minitoc
 
+\index{fonction}
+\index{argument}
+
 ## Qu'est-ce qu'une fonction
 
 Avec ce chapitre nous allons avoir un premier aperçu de la puissance de R grâce aux fonctions. Une fonction est un ensemble de lignes de code permettant d'exécuter une tâche particulière. Nous avons vu de nombreuses fonctions lors des précédents chapitres, la plus simple étant la fonction `+` permettant d'ajouter deux nombres entre eux, ou d'autres plus complexes comme `c()` ou `data.frame()` permettant de créer un `vector` ou un `data.frame`. Dans tous les cas une fonction se reconnait grâce aux parenthèses qui la suive dans laquelle nous allons renseigner des **arguments**. Les arguments correspondent aux informations que nous souhaitons transmettre à notre fonction pour qu'elle exécute la tâche que nous souhaitons réaliser. 
@@ -35,6 +38,8 @@ Pour travailler avec les fonctions nous allons utiliser le jeu de données `iris
 ### L'accès à la documentation
 
 #### `help()` {#l015help}
+
+\index{help()}
 
 La fonction indispensable de R est celle permettant d'accéder à la documentation. Toutes les fonctions et tous les jeux de données de R possèdent une documentation. Nous pouvons accéder à la documentation avec la fonction `help()` ou en utilisant le raccourci `?`. 
 
@@ -134,6 +139,8 @@ La fonction `help.search()` renvoie vers une page contenant la liste des pages o
 
 #### `str()` {#l015str}
 
+\index{str()}
+
 La fonction `str()` permet de visualiser la structure interne d'un objet, comme indiqué dans la documentation que nous pouvons consulter avec `help(str)`.
 
 ```{r 015-fonctions-9, linewidth=60}
@@ -143,6 +150,9 @@ str(iris)
 La fonction `str()` renvoie le type d'objet (`data.frame`), le nombre d'observations (150), le nombre de variables (5), le nom de chacune des variables (`Sepal.Length`, `Sepal.Width`, `Petal.Length`, `Petal.Width`, et `Species`), le type de chacune des variables (`num`, `Factor`), et les premières valeurs de chacune des variables. C'est une fonction utile pour avoir un aperçu d'un jeu de données, mais aussi pour contrôler que les données sont du type voulu avant de procéder à des analyses statistiques.
 
 #### `head()` et `tail()` {#l015head}
+
+\index{head()}
+\index{tail()}
 
 La fonction `head()` renvoie les premières valeurs d'un objet, et la fonction `tail()` les dernières valeurs d'un objet. Par défaut six valeurs sont retournées (l'argument `n` contrôle le nombre de valeurs à retourner). 
 
@@ -154,6 +164,8 @@ head(iris, n = 2)
 
 #### `names()` {#l015names}
 
+\index{names()}
+
 Nous avons déjà vu la fonction `names()` qui permet à la fois de connaître le nom des éléments d'un objet, mais aussi d'assigner des noms aux éléments d'un objet comme une [`matrix`](#l014matrix), une [`list`](#l014list) ou un [`data.frame`](#l014dataframe).
 
 ```{r 015-fonctions-11}
@@ -164,6 +176,9 @@ names(irisCopy)
 ```
 
 #### `cat()` et `print()` {#l015print}
+
+\index{cat()}
+\index{print()}
 
 La fonction `cat()` permet d'afficher le contenu d'un objet alors que la fonction `print()` retourne la valeur d'un objet (avec la possibilité d'effectuer des opérations comme avec l'argument `digits` qui va permettre de fixer le nombre de chiffres significatifs).
 
@@ -178,6 +193,8 @@ print(iris[1, 1], digits = 0)
 ### Manipuler les données 
 
 #### `rank()` {#l015rank}
+
+\index{rank()}
 
 La fonction `rank()` renvoie pour un ensemble d'éléments le numéro de la position de chacun des éléments. En cas d'éléments de même valeur, l'argument `ties.method` permet de faire un choix sur le classement. Comme pour toutes les fonctions, les détails sont présents dans la documentation. Le recours à la documentation doit devenir un réflexe pour chaque nouvelle fonction utilisée.
 
@@ -199,6 +216,8 @@ rank(iris[, 1], ties.method = "average")
 ```
 
 #### `order()` {#l015order}
+
+\index{order()}
 
 La fonction `order()` retourne le numéro du réarrangement des éléments en fonction de leur position. Elle est très utile par exemple pour trier un `data.frame` en fonction d'une colonne.
 
@@ -222,6 +241,8 @@ head(iris[order(iris[, 1]),], n = 10)
 
 #### `sort()` {#l015sort}
 
+\index{sort()}
+
 La fonction `sort()` permet de trier les éléments d'un objet. Elle ne permet pas de trier selon plusieurs variables comme c'est le cas avec `order()`.
 
 ```{r 015-fonctions-15}
@@ -233,6 +254,8 @@ sort(iris[, 1])
 
 #### `append()` {#l015append}
 
+\index{append()}
+
 Cette fonction permet d'ajouter un élément à un `vector` à une position déterminée par l'argument `after`. Cette fonction est une alternative à celle consistant à utiliser la fonction [`c()`](#l014vector). 
 
 ```{r 015-fonctions-16}
@@ -243,6 +266,9 @@ append(vecManip2, 5, after = 2)
 
 #### `cbind()` et `rbind()` {#l015cbind}
 
+\index{cbind()}
+\index{rbind()}
+
 Les fonctions `cbind()` et `rbind()` permettent de combiner des éléments par colonne ou par ligne.
 
 ```{r 015-fonctions-17}
@@ -251,6 +277,9 @@ rbind(vecManip2, vecManip2)
 ```
 
 #### `paste()` et `paste0()` {#l015paste}
+
+\index{paste()}
+\index{paste0()}
 
 Voilà deux fonctions que nous allons beaucoup utiliser par la suite. Les fonctions `paste()` et `paste0()` permettent de concaténer des chaines de caractère. La fonction `paste0()` est équivalente à `paste()` sans proposer de séparateur entre les éléments à concaténer. Elle est aussi plus rapide.
 
@@ -264,6 +293,8 @@ paste(vecManip2, rank(vecManip2), sep = "_")
 
 #### `rev()` {#l015rev}
 
+\index{rev()}
+
 La fonction `rev()` renvoie les éléments d'un objet dans l'ordre inverse.
 
 ```{r 015-fonctions-19}
@@ -272,6 +303,8 @@ rev(vecManip2)
 ```
 
 #### `%in%` {#l015in}
+
+\index{%in%}
 
 La fonction `%in%` peut être assimilée à un [opérateur de comparaison](#l011opcomp). Cette fonction prend deux objets comme arguments et renvoie `TRUE` ou `FALSE` pour chacun des éléments du premier objet en fonction de leur présence ou absence dans le second objet (elle utilise la fonction `match()` qui renvoie les positions des premières occurrences des éléments d'un vecteur dans un autre vecteur). Pour accéder à la documentation de la fonction, il faut utiliser des guillemets `help('%in%')`.
 
@@ -283,6 +316,8 @@ vecManip2 %in% vecManip
 ```
 
 ### Fonctions mathématiques
+
+\index{mathématiques}
 
 Nous avons déjà vu les fonctions `+`, `-`, `*`, `/`, `^`, `%%` et autres [opérateurs arithmétiques](#l011opari). R possède également les fonctions mathématiques de base comme exponentielle `exp()`, racine carrée `sqrt()`, valeur absolue `abs()`, sinus `sin()`, cosinus `cos()`, tangente `tan()`, logarithme népérien `log()`, logarithme décimal `log10()`, arc cosinus `acos()`, arc sinus `asin()`, et arc tangente `atan()`.
 
@@ -303,9 +338,13 @@ atan(vecManip2/100)
 
 ### Statistiques descriptives
 
+\index{statistiques}
+
 Nous pouvons également effectuer des statistiques descriptives très simplement à partir d'un jeu de données.
 
 #### `mean()` {#l015mean}
+
+\index{mean()}
 
 La fonction `mean()` renvoie la moyenne. Pour ignorer les valeurs manquantes `NA`, il faut donner la valeur `TRUE` à l'argument `na.rm`. L'argument `na.rm` se retrouve dans la plupart des fonctions de cette partie sur les statistiques descriptives.
 
@@ -318,6 +357,9 @@ mean(vecManip3, na.rm = TRUE)
 
 #### `sd()` et `var()` {#l015sd}
 
+\index{sd()}
+\index{var()}
+
 La fonction `sd()` renvoie l'écart type et la fonction `var()` la variance.
 
 ```{r 015-fonctions-23}
@@ -329,6 +371,9 @@ sd(vecManip3, na.rm = TRUE)
 ```
 
 #### `max()` et `min()` {#l015max}
+
+\index{max()}
+\index{min()}
 
 La fonction `max()` renvoie la valeur maximale et `min()` la valeur minimale.
 
@@ -345,6 +390,8 @@ min(vecManip3, na.rm = TRUE)
 
 #### `quantile()` {#l015quantile}
 
+\index{quantile()}
+
 La fonction `quantile()` renvoie le quantile défini par l'argument `probs`.
 
 ```{r 015-fonctions-25}
@@ -354,6 +401,8 @@ quantile(iris[, 1], probs = c(0, 0.1, 0.5, 0.9, 1))
 ```
 
 #### `summary()` {#l015summary}
+
+\index{summary()}
 
 La fonction `summary()` renvoie un résumé composé du minimum, premier quartile, médiane, moyenne, troisième quartile et maximum.
 
@@ -375,6 +424,8 @@ summary(
 
 #### `median()` {#l015median}
 
+\index{median()}
+
 La fonction `median()` renvoie la médiane.
 
 ```{r 015-fonctions-27}
@@ -386,6 +437,8 @@ median(vecManip3, na.rm = TRUE)
 
 #### `length()` {#l015length}
 
+\index{length()}
+
 La fonction `length()` renvoie la taille d'un objet (nombre d'éléments).
 
 ```{r 015-fonctions-28}
@@ -396,6 +449,9 @@ length(vecManip3)
 
 #### `nrow()` et `ncol()` {#l015nrow}
 
+\index{nrow()}
+\index{ncol()}
+
 La fonction `nrow()` renvoie le nombre de lignes et la fonction `ncol()` le nombre de colonnes d'un objet.
 
 ```{r 015-fonctions-29}
@@ -404,6 +460,11 @@ ncol(iris)
 ```
 
 #### `round()`, `ceiling()`, `floor()`, et `trunc()` {#l015round}
+
+\index{round()}
+\index{ceiling()}
+\index{floor()}
+\index{trunc()}
 
 La fonction `round()` permet de sélectionner un certain nombre de décimales (0 par défaut)
 
@@ -435,6 +496,9 @@ trunc(5.0001)
 
 #### `rowSums()` et `colSums()` {#l015rowsums}
 
+\index{rowSums()}
+\index{colSums()}
+
 Les fonctions `rowSums()` et `colSums()` calculent la somme des lignes et des colonnes.
 
 ```{r 015-fonctions-34}
@@ -444,6 +508,9 @@ colSums(iris[, c(1, 2, 3, 4)])
 
 #### `rowMeans()` et `colMeans()` {#l015rowmeans}
 
+\index{rowMeans()}
+\index{colMeans()}
+
 Les fonctions `rowMeans()` et `colMeans()` calculent la moyenne des lignes et des colonnes.
 
 ```{r 015-fonctions-35}
@@ -452,6 +519,8 @@ colMeans(iris[, c(1, 2, 3, 4)])
 ```
 
 #### `aggregate()` {#l015aggregate}
+
+\index{aggregate()}
 
 La fonction `aggregate()` permet de grouper les éléments d'un objet en fonction d'une valeur et d'effectuer une opération sur les groupes. L'argument `by` définit l'élément sur lequel est effectué le regroupement. Il doit être de type [`list`](#l014list).
 
@@ -468,6 +537,8 @@ aggregate(
 
 #### `range()` {#l015range}
 
+\index{range()}
+
 La fonction `range()` renvoie le minimum et le maximum.
 
 ```{r 015-fonctions-37}
@@ -478,6 +549,8 @@ range(vecManip3, na.rm = TRUE)
 ```
 
 #### `unique()` {#l015unique}
+
+\index{unique()}
 
 La fonction `unique()` renvoie les valeurs uniques d'un objet (sans les doublons).
 
@@ -493,6 +566,8 @@ Nous ne pouvons aborder toutes les fonctions utiles, ici nous ne ferons qu'abord
 
 ### `seq_along()` {#l015seqalong}
 
+\index{seq_along()}
+
 La fonction `seq_along()` permet de créer un `vector` de la taille de l'objet renseigné et prenant comme valeurs les chiffres de 1 à N (N correspondant aux nombres d'éléments de l'objet). Cette fonction nous servira beaucoup lors du chapitre sur les boucles.
 
 ```{r 015-fonctions-39}
@@ -501,6 +576,8 @@ seq_along(vecManip3)
 ```
 
 ### `:` {#l0152points}
+
+\index{:}
 
 La fonction `:` permet de créer une séquence de `a` à `b` par pas de 1, avec `a` et `b` le début et la fin de la séquence souhaitée. Il a été difficile d'écrire les chapitres précédents sans y avoir recours tant cette fonction est utile. 
 
@@ -517,6 +594,8 @@ paste("X", 1:10, sep = "_")
 
 ### `rep()` {#l015rep}
 
+\index{rep()}
+
 La fonction `rep()` permet de répéter des éléments.
 
 ```{r 015-fonctions-41}
@@ -530,6 +609,8 @@ rep(1:3, each = 3)
 
 ### `seq()` {#l015seq}
 
+\index{seq()}
+
 La fonction `seq()` permet de créer une séquence personnalisée.
 
 ```{r 015-fonctions-42}
@@ -541,6 +622,8 @@ rep(seq(from = 1, to = 2, by = 0.5), times = 3)
 
 ### `getwd()` {#l015getwd}
 
+\index{getwd()}
+
 La fonction `getwd()` renvoie le répertoire courant de travail. Cela correspond à *l'endroit* à partir duquel R se positionne pour identifier les fichiers. Ce concept prendra son sens lorsque nous verrons comment importer et exporter des données.
 
 ```{r 015-fonctions-43, linewidth=65}
@@ -548,6 +631,8 @@ getwd()
 ```
 
 ### `setwd()` {#l015setwd}
+
+\index{setwd()}
 
 La fonction `setwd()` permet de définir un nouveau répertoire de travail.
 
@@ -562,6 +647,8 @@ getwd()
 
 ### `list.files()` {#l015listfiles}
 
+\index{list.files()}
+
 La fonction `list.files()` permet de faire la liste de tous les fichiers présents dans le répertoire de travail. 
 
 ```{r 015-fonctions-45}
@@ -570,6 +657,8 @@ list.files(pattern = "(pdf)$") # pdf
 ```
 
 ### `ls()` {#l015ls}
+
+\index{ls()}
 
 Tout comme la fonction `list.files()` permet de faire la liste de tous les fichiers présents dans le répertoire de travail, la fonction `ls()` permet de faire la liste de tous les objets présents dans l'environnement de travail de R.
 
@@ -580,6 +669,8 @@ ls()
 ```
 
 ### `rm()` {#l015rm}
+
+\index{rm()}
 
 La fonction `rm()` permet de supprimer un objet présent dans l'environnement de travail de R.
 
@@ -622,6 +713,8 @@ qnorm(
 ```
 
 ## Ecrire une fonction {#l015function}
+
+\index{fonction}
 
 Lorsque nous reproduisons plusieurs fois les mêmes opérations, le code devient fastidieux à écrire, et plus difficile à maintenir car si nous devons effectuer une modification, il faudra la répéter chaque fois que nous l'avons utilisée. C'est un signe indiquant la nécessité de recourir à une **fonction**. Dans l'exemple qui suit, il est fastidieux de modifier le code si nous souhaitons ajouter +45 au lieu de +20 à chaque ligne.
 
@@ -776,6 +869,8 @@ countVowelConsoAlt()
 R compte de nombreuses fonctions, donc avant de vous lancer dans l'écriture d'une nouvelle fonction, il faut toujours vérifier que celle-ci n'existe pas déjà soit dans la version de base de R, soit dans des **packages** développés par la communauté des utilisateurs. Pour cela nous pouvons utiliser l'aide et la fonction `??`, mais aussi notre navigateur Internet.
 
 ## Les packages
+
+\index{package}
 
 Un package est un ensemble de fichiers que l'on va ajouter à R pour pouvoir utiliser des fonctions (ou des jeux de données) que d'autres personnes ont développés. Il y a à ce jour plus de 10000 packages sur les serveurs de R (CRAN ; https://cran.r-project.org/web/packages/), plus de 1000 sur les serveurs de BioConductor (pour l'analyse génomique), et plusieurs centaines sur GitHub (il existe d’autres serveurs populaires comme R-forge ou encore Omegahat). Chaque package permet de mettre à disposition des fonctions pour à peu près tout faire... Il peut donc être difficile de trouver le package adapté à ce que nous souhaitons réaliser. Il est donc important de consacrer du temps à sa recherche, de tester plusieurs solutions et de consulter l'aide. 
 

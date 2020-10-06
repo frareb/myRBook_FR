@@ -2,9 +2,15 @@
 
 \minitoc
 
+\index{objet}
+
 Nous avons vu précédemment comment créer un objet. Un objet est comme une boîte dans laquelle nous allons *stocker* de l'information. Jusqu'à présent nous n'avons stocké que des nombres mais dans ce chapitre nous allons voir qu'il est possible de stocker d'autres informations et nous allons nous attarder sur les types les plus courants. Dans ce chapitre nous allons utiliser des **fonctions** sur lesquelles nous reviendrons plus tard. 
 
 ## Le type `numeric`
+
+\index{numeric}
+\index{integer}
+\index{double}
 
 Le type `numeric` correspond à ce que nous avons fait jusqu'à présent, stocker des nombres. Il existe deux types de nombres avec R: les nombres entiers (*integers*), et les nombres à virgule (*double*). Par défaut R considère tous les nombres comme des nombres à virgule et attribue le type `double`.
 Pour vérifier le type de données nous allons utiliser la fonction `typeof()` qui prend comme argument un objet (ou directement l'information que nous souhaitons tester). Nous pouvons également utiliser la fonction `is.double()` qui va renvoyer `TRUE` si le nombre est au format `double` et `FALSE` dans le cas contraire. La fonction `is.numeric()` va quant à elle renvoyer `TRUE` si l'objet est au format `numeric` et `FALSE` dans le cas contraire.
@@ -61,6 +67,8 @@ typeof(roundDou)
 ```
 
 ## Le type `character`
+
+\index{character}
 
 Le type `character` correspond au texte. Pour spécifier à R que l'information contenue dans un objet est au format texte, il faut utiliser les guillemets doubles (`"`), ou simples (`'`). Nous noterons que les guillemets doubles ou simples sont droits, par opposition au signe apostrophe (`’`) ou encore aux signes correspondant aux ouvertures et fermetures de guillemets (`«  »`, `ˮ` et `˝  ̏`).
 
@@ -122,6 +130,8 @@ Pour résumer, le type `character` permet la saisie de texte, nous pouvons le re
 
 ## Le type `factor`
 
+\index{factor}
+
 Le type `factor` correspond aux facteurs (variables catégorielles ou qualitatives). Les facteurs sont un choix parmi une liste finie de possibilités. Par exemple les pays sont des facteurs car il y a une liste finie de pays dans le monde à un temps donné. Un facteur peut être défini avec la fonction `factor()` ou transformé en utilisant la fonction `as.factor()`. Comme pour les autres types de donnée nous pouvons utiliser la fonction `is.factor()` pour vérifier le type de donnée. Pour avoir la liste de toutes les possibilités, il existe la fonction `levels()` (cette fonction prendra plus de sens quand nous aurons abordé les types de conteneur de l'information).
 
 ```{r 013-dataType1-11}
@@ -144,6 +154,8 @@ Nous avons pu voir que `factor` n'est pas vraiment un type (`typeof(factor01)` r
 
 ## Le type `logical` {#l013logi}
 
+\index{logical}
+
 Le type `logical` correspond aux valeurs `TRUE` et `FALSE` (et `NA`) que nous avons déjà vu avec les opérateurs de comparaison. 
 
 ```{r 013-dataType1-13}
@@ -157,6 +169,8 @@ as.character(aLogic)
 ```
 
 ## A propos de `NA`
+
+\index{NA}
 
 La valeur `NA` peut être utilisée pour spécifier l'absence de données ou les données manquantes. Par défaut `NA` est de type `logical` mais il peut être utilisé pour du texte, ou des nombres.
 

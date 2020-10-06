@@ -2,9 +2,13 @@
 
 \minitoc
 
+\index{conteneur}
+
 Jusqu'à présent nous avons fait des objets simples ne contenant qu'une seule valeur. Nous avons néanmoins pu voir qu'un objet avait différents attributs, comme sa valeur, mais aussi le type de donnée contenue. Maintenant nous allons voir qu'il existe différents types de conteneurs permettant de stocker plusieurs données.
 
 ## Le conteneur `vector` {#l014vector}
+
+\index{vector}
 
 Dans R, un `vector` est une combinaison de données avec la particularité que toutes les données contenues dans un `vector` sont du même type. Nous pouvons donc stocker plusieurs `numeric` ou `character` dans un `vector`, mais pas les deux. Le conteneur `vector` est important car c'est l'élément de base de R. 
 
@@ -229,6 +233,8 @@ Nous pouvons faire bien plus avec un `vector` et reviendrons sur les manipulatio
 
 ## Le conteneur `list` {#l014list}
 
+\index{list}
+
 Le deuxième type de conteneur que nous allons introduire est le conteneur `list`, qui est également le deuxième conteneur après le type `vector` de par son importance dans la programmation avec R. Le conteneur de type `list` permet de stocker une **liste** d'éléments. Contrairement à ce que nous avons vu précédemment avec le type `vector`, les éléments du type `list` peuvent être différents (par exemple un `vector` de type `numeric`, puis un `vector` de type `character`). Les éléments du type `list` peuvent aussi être des conteneurs différents (par exemple un `vector`, puis une `list`). Nous pouvons d'une certaine manière assimiler le type `list` à un `vector` dont les éléments seraient des *objets*. Le type de conteneur `list` prendra tout son sens lorsque nous aurons étudié les **boucles** et les **fonctions** de la famille `apply`.
 
 ### Créer une `list`
@@ -412,6 +418,8 @@ print(miList05)
 
 ## Le conteneur `data.frame` {#l014dataframe}
 
+\index{data.frame}
+
 Le conteneur `data.frame` peut être assimilé à un *tableau*. Il s'agit en réalité d'un cas particulier de `list` où tous les éléments de la `list` ont la même longueur. 
 
 ### Créer un `data.frame`
@@ -531,6 +539,8 @@ is.data.frame(as.data.frame(newVec2))
 
 ## Le conteneur `matrix` {#l014matrix}
 
+\index{matrix}
+
 Le conteneur `matrix` peut être vu comme un `vector` à deux dimensions (lignes et colonnes). Il correspond à une matrice en mathématiques, et ne peut contenir qu'un seul type de données (`logical`, `numeric`, `character`, ...).
 
 ### Créer une `matrix`
@@ -648,6 +658,8 @@ print(miMat01[10])
 ```
 
 ## Le conteneur `array` {#l014array}
+
+\index{array}
 
 Le conteneur de type `array` est une généralisation du conteneur de type `matrix`. Là où le type `matrix` a deux dimensions (les lignes et les colonnes), le type `array` a un nombre indéfini de dimensions. Nous pouvons connaître le nombre de dimensions d'un `array` (et donc d'une `matrix`) avec la fonction `dim()`.
 
