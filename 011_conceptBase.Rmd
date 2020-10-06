@@ -6,11 +6,19 @@
 
 ## Installation de R
 
+\index{installation}
+\index{miroir}
+\index{CRAN}
+
 Le programme permettant l'installation du logiciel R peut être téléchargé depuis le site web de R : https://www.r-project.org/. Sur le site de R il faut au préalable choisir un miroir CRAN (serveur depuis lequel télécharger R ; sauf cas particulier le plus proche de sa localisation géographique), puis télécharger le fichier *base* correspondant à son système d'exploitation. Les utilisateurs de Linux pourront préférer un `sudo apt-get install r-base` (ou équivalent). 
 
 Le logiciel R peut être téléchargé depuis de nombreux serveurs du CRAN (Comprehensive R Archive Network) à travers le monde. Ces serveurs s'appellent des miroirs. Le choix du miroir est manuel. 
 
 ## R comme calculatrice
+
+\index{calculatrice}
+\index{version}
+\index{console}
 
 Une fois le programme lancé, une fenêtre apparaît dont l'aspect peut varier en fonction de votre système d'exploitation (Figure \@ref(fig:screenCapConsole)). Cette fenêtre est dénommée la *console*. La première information que l’on peut trouver sur la console est la version de R utilisée. Il est recommandé de mettre à jour régulièrement sa version de R afin de bénéficier des dernières fonctionnalités. Au moment d’écrire ce livre, la version disponible est la 4.0.2 dénommée "Taking Off Again".
 
@@ -23,6 +31,10 @@ La console correspond à l'interface où va être interprété le code, c'est à
 Tout au long de ce livre, les exemples de code R apparaîtront sur fond en gris. Ils peuvent être copiés et collés directement dans la console (pour la version électronique de ce livre, et alternativement depuis le site web https://www.dunod.com/), bien qu'il soit préférable de reproduire soit même les exemples dans la console (ou plus tard dans les scripts). Le résultat de ce qui est envoyé dans la console apparaîtra sur fond en blanc avec `##` devant le code afin de bien faire la distinction entre le code et le résultat du code.
 
 ### Les opérateurs arithmétiques {#l011opari}
+
+\index{opérateur}
+\index{arithmétique}
+\index{modulo}
 
 ```{r 011-conceptBase-1}
 5 + 5
@@ -67,6 +79,9 @@ pi * 5^2
 Le *style* du code est important car le code est destiné à être lisible par nous plus tard et par d'autres personnes de manière générale. Pour avoir un style lisible il est recommandé de mettre des espaces avant et après les opérateurs arithmétiques (bonnes pratiques de programmation). 
 
 ### Les opérateurs de comparaison {#l011opcomp}
+
+\index{opérateur}
+\index{comparaison}
 
 R est cependant bien plus qu'une simple calculatrice puisqu'il permet un autre type d'opérateurs : les opérateurs de comparaison. Ils servent comme leur nom l'indique à *comparer* des valeurs entre elles (Table \@ref(tab:tabOpCom)).
 
@@ -155,6 +170,10 @@ rm(T)
 
 ### Les opérateurs logiques {#l011oplog}
 
+\index{opérateur}
+\index{logique}
+\index{xor()}
+
 Il existe un dernier type d'opérateur, les opérateurs logiques. Ils sont utiles pour combiner des opérateurs de comparaison (Table \@ref(tab:tabOpLog)). 
 
 ```{r tabOpLog, echo = FALSE}
@@ -185,9 +204,15 @@ Il est recommandé que les virgules (`,`) soient suivies par un espace afin que 
 
 ### Aide sur les opérateurs
 
+\index{aide}
+
 Le fichier d'aide en anglais sur les opérateurs arithmétiques peut être obtenu avec la commande `?'+'`. Le fichier d'aide sur les opérateurs de comparaison peut être obtenu avec la commande `?'=='` et celui sur les opérateurs logiques avec la commande `?'&'`.
 
 ## La notion d'objet {#l011object}
+
+\index{objet}
+\index{conteneur}
+\index{style}
 
 Un aspect important de la programmation avec R, mais aussi de la programmation en général est la notion d'objet. Dans les exemples utilisés jusqu'à présent, les résultats étaient affichés dans la console mais "perdus" pour l'utilisateur car pas stockés en mémoire. Les objets vont permettre de pallier ce problème. Comme indiqué sur la page web de wikipedia (https://fr.wikipedia.org/wiki/Objet_(informatique)), en informatique, un objet est un *conteneur*, c'est à dire quelque chose qui va contenir de l'information. L'information contenue dans un objet peut être très variée, mais pour le moment nous allons contenir dans un objet le chiffre 5. Pour ce faire (et pour pouvoir le réutiliser par la suite), il nous faut donner un nom à notre objet. Avec R, le nom des objets ne doit pas comprendre de caractères spéciaux comme *^$?|+()[]}{*, et ne doit ni commencer par un chiffre, ni contenir d'espaces. Le nom de l'objet doit être représentatif de ce qu'il contient, tout en étant ni trop court ni trop long. Imaginons que notre chiffre 5 corresponde au nombre de répétitions d'une expérience. Nous voudrions lui donner un nom faisant référence à *nombre* et à *répétition*, que nous pourrions réduire à *nbr* et *rep*, respectivement. Il existe plusieurs possibilités qui sont toutes assez répandues sous R : 
 
@@ -249,9 +274,14 @@ terme01 / terme02
 
 ## Les scripts
 
+\index{script}
+
 R est un langage de programmation souvent dénommé *langage de script*. Cela fait référence au fait que la plupart des utilisateurs vont écrire des petits bouts de code plutôt que des programmes entiers. R peut être utilisé comme une simple calculatrice, et dans ce cas il ne sera pas nécessaire de conserver un historique des opérations qui ont été réalisées. Mais si les opérations à réaliser sont longues et complexes, il peut devenir nécessaire de pouvoir sauvegarder ce qui a été fait à un moment donné pour pouvoir poursuivre plus tard. Le fichier dans lequel seront conservées les opérations constitue ce que l'on appelle communément le script. Un script est donc un fichier contenant une succession d'informations compréhensibles par R et qu'il est possible d'exécuter. Les scripts sont indispensables pour répéter les analyses (reproductibilité des résultats), pour échanger avec ses collègues, ou pour faire des analyses sur un serveur. Les scripts sont par ailleurs des documents qui trouvent de plus en plus leur place dans les annexes des articles scientifiques, assurant ainsi la transparence et la reproductibilité des résultats (et la réutilisation des méthodes).
 
 ### Créer un script et le documenter
+
+\index{commentaire}
+\index{documentation}
 
 Pour ouvrir un nouveau script il suffit de créer un fichier texte vide qui sera édité par un éditeur de texte comme le *bloc note* sous Windows ou Mac OS, ou encore *Gedit* ou même *nano* sous Linux. Par convention ce fichier prend l'extension ".r" ou plus souvent ".R". C'est cette dernière convention qui sera utilisée dans ce livre. Depuis l'interface graphique de R il est possible de créer un nouveau script sous Mac OS et Windows via *fichier* puis *nouveau script* et *enregistrer sous*.
 Tout comme le nom des objets, le nom du script est important pour que nous puissions facilement identifier son contenu. Par exemple nous pourrions créer un fichier `formRConceptsBase.R` contenant les objets que nous venons de créer et les calculs effectués. Mais même avec des noms de variables et un nom de fichier bien définis, il sera difficile de se rappeler le sens de ce fichier sans une documentation accompagnant le script. Pour documenter un script nous allons utiliser des *commentaires*. Les commentaires sont des éléments qui seront identifiés par R et qui ne seront pas exécutés. Pour spécifier à R que nous allons faire un commentaire, il faut utiliser le caractère octothorpe (croisillon ; différent du caractère dièse) `#`. Les commentaires peuvent être insérés sur une nouvelle ligne ou en fin de ligne.
