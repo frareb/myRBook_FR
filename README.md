@@ -1,18 +1,12 @@
 # myRBook_FR
 
-Vous trouverez ici le code source du livre *Se former au logiciel R : initiation et perfectionnement*, construit avec bookdown.
-
-Ce livre est mis à jour régulièrement, alors n'hésitez pas à consulter les dernières modifications ci-dessous. 
-
-Si vous avez des commentaires, des suggestions ou si vous identifiez des erreurs, n'hésitez pas à me contacter via GitHub (https://github.com/frareb/myRBook_FR). Toutes les contributions sont bienvenues. 
-
 Les diapositives du [module sur l'analyse de variance et le modèle linéaire sont disponibles ici](http://myrbookfr.netlify.com/myHtmls/France_Montpellier_2019/R00_links.html).
 
-Ce livre dispose d'une version en espagnol dont le contenu diffère, mais qui est disponible dans plusieurs formats numérique et qui est consultable en ligne (http://myrbooksp.netlify.com/). 
-
-Si vous souhaitez vous procurer une version papier ou au format numérique de ce livre, un lien sera fourni dans le courant du premier semestre 2021.
-
 Dernières modifications:
+
+**v0.2.0 28/10/2020**
+
+* révisions
 
 **v0.1.0-3 23/06/2020**
 
