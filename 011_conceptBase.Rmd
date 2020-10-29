@@ -276,15 +276,15 @@ terme01 / terme02
 
 \index{script}
 
-R est un langage de programmation souvent dénommé *langage de script*. Cela fait référence au fait que la plupart des utilisateurs vont écrire des petits bouts de code plutôt que des programmes entiers. R peut être utilisé comme une simple calculatrice, et dans ce cas il ne sera pas nécessaire de conserver un historique des opérations qui ont été réalisées. Mais si les opérations à réaliser sont longues et complexes, il peut devenir nécessaire de pouvoir sauvegarder ce qui a été fait à un moment donné pour pouvoir poursuivre plus tard. Le fichier dans lequel seront conservées les opérations constitue ce que l'on appelle communément le script. Un script est donc un fichier contenant une succession d'informations compréhensibles par R et qu'il est possible d'exécuter. Les scripts sont indispensables pour répéter les analyses (reproductibilité des résultats), pour échanger avec ses collègues, ou pour faire des analyses sur un serveur. Les scripts sont par ailleurs des documents qui trouvent de plus en plus leur place dans les annexes des articles scientifiques, assurant ainsi la transparence et la reproductibilité des résultats (et la réutilisation des méthodes).
+R est un langage de programmation souvent appelé **langage de script**. Cela fait référence au fait que la plupart des utilisateurs vont écrire des petits bouts de code plutôt que des programmes entiers. R peut être utilisé comme une simple calculatrice, et dans ce cas il ne sera pas nécessaire de conserver un historique des opérations qui ont été réalisées. Mais si les opérations à réaliser sont longues et complexes, il peut devenir nécessaire de sauvegarder ce qui a été fait à un moment donné pour poursuivre plus tard. Le fichier dans lequel sont conservées les opérations constitue ce que l'on appelle communément le script. Un script est donc un fichier contenant une succession d'informations compréhensibles par R et qu'il est possible d'exécuter. Les scripts sont essentiels pour répéter les analyses (reproductibilité des résultats), pour échanger avec ses collègues, ou pour faire des analyses sur un serveur. Par ailleurs, les scripts trouvent de plus en plus leur place dans les annexes des articles scientifiques, assurant ainsi la transparence et la reproductibilité des résultats (et la réutilisation des méthodes).
 
 ### Créer un script et le documenter
 
 \index{commentaire}
 \index{documentation}
 
-Pour ouvrir un nouveau script il suffit de créer un fichier texte vide qui sera édité par un éditeur de texte comme le *bloc note* sous Windows ou Mac OS, ou encore *Gedit* ou même *nano* sous Linux. Par convention ce fichier prend l'extension ".r" ou plus souvent ".R". C'est cette dernière convention qui sera utilisée dans ce livre. Depuis l'interface graphique de R il est possible de créer un nouveau script sous Mac OS et Windows via *fichier* puis *nouveau script* et *enregistrer sous*.
-Tout comme le nom des objets, le nom du script est important pour que nous puissions facilement identifier son contenu. Par exemple nous pourrions créer un fichier `formRConceptsBase.R` contenant les objets que nous venons de créer et les calculs effectués. Mais même avec des noms de variables et un nom de fichier bien définis, il sera difficile de se rappeler le sens de ce fichier sans une documentation accompagnant le script. Pour documenter un script nous allons utiliser des *commentaires*. Les commentaires sont des éléments qui seront identifiés par R et qui ne seront pas exécutés. Pour spécifier à R que nous allons faire un commentaire, il faut utiliser le caractère octothorpe (croisillon ; différent du caractère dièse) `#`. Les commentaires peuvent être insérés sur une nouvelle ligne ou en fin de ligne.
+Pour ouvrir un nouveau script il suffit de créer un fichier texte vide qui est édité par un éditeur de texte comme le **bloc note** sous Windows ou Mac OS, ou encore **Gedit** ou même **nano** sous Linux. Par convention ce fichier prend l'extension ".r" ou plus souvent ".R". C'est cette dernière convention qui sera utilisée dans ce livre. Depuis l'interface graphique de R il est possible de créer un nouveau script sous Mac OS et Windows via **fichier** puis **nouveau script** et **enregistrer sous**.
+Tout comme le nom des objets, le nom du script est important pour que nous puissions facilement identifier son contenu. Par exemple nous pourrions créer un fichier `formRConceptsBase.R` contenant les objets que nous venons de créer et les calculs effectués. Mais même avec des noms de variables et un nom de fichier bien définis, il sera difficile de se rappeler le sens de ce fichier sans une documentation accompagnant le script. Pour documenter un script nous allons utiliser des **commentaires**. Les commentaires sont des éléments qui seront identifiés par R et qui ne seront pas exécutés. Pour spécifier à R que nous allons faire un commentaire, il faut utiliser le caractère octothorpe (croisillon ; différent du caractère dièse) `#`. Les commentaires peuvent être insérés sur une nouvelle ligne ou en fin de ligne.
 
 ```{r 011-conceptBase-19}
 # création objet nombre de répétitions
@@ -326,16 +326,16 @@ Pour aller plus loin sur le style de code, un guide de recommandations est dispo
 
 Depuis que nous avons un script, nous ne travaillons plus directement dans la console. Or seule la console est capable d'interpréter le code R et de nous renvoyer les résultats que nous souhaitons obtenir. Pour l'instant la technique la plus simple consiste à copier-coller les lignes que nous souhaitons exécuter depuis notre script vers la console. A partir de maintenant nous n'allons plus utiliser les éditeurs de texte comme le bloc note mais des éditeurs spécialisés pour la confection de scripts R. C'est l'objet du chapitre suivant.
 
-## Conclusion
+## En bref
 
 Félicitations, nous avons atteint la fin de ce premier chapitre sur les éléments de base de R. Nous savons:
 
-* Installer R
-* Utiliser R comme une calculatrice
-* Créez des **objets** et les utiliser pour les calculs arithmétiques, les comparaisons et les tests logiques
-* Choisir des noms pertinents pour les objets
-* Créer de nouveaux **scripts**
-* Choisir un nom pertinent pour les fichiers de script
-* Exécuter le code d'un script
-* Documenter les scripts avec des **commentaires**
-* Utiliser un style de code pour le rendre agréable à lire et facile à comprendre
+* installer R, 
+* utiliser R comme une calculatrice, 
+* créez des **objets** et les utiliser pour les calculs arithmétiques, les comparaisons et les tests logiques, 
+* choisir des noms pertinents pour les objets, 
+* créer de nouveaux **scripts**, 
+* choisir un nom pertinent pour les fichiers de script, 
+* exécuter le code d'un script, 
+* documenter les scripts avec des **commentaires**, 
+* utiliser un style de code pour le rendre agréable à lire et facile à comprendre.
