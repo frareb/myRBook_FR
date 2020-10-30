@@ -4,17 +4,17 @@
 
 \index{conteneur}
 
-Jusqu'à présent nous avons fait des objets simples ne contenant qu'une seule valeur. Nous avons néanmoins pu voir qu'un objet avait différents attributs, comme sa valeur, mais aussi le type de donnée contenue. Maintenant nous allons voir qu'il existe différents types de conteneurs permettant de stocker plusieurs données.
+Jusqu'à présent nous avons construit des objets simples ne contenant qu'une seule valeur. Nous avons néanmoins pu voir qu'un objet avait différents attributs, comme sa valeur, mais aussi le type de donnée contenue. Maintenant nous allons voir qu'il existe différents types de conteneurs permettant de stocker plusieurs données.
 
 ## Le conteneur `vector` {#l014vector}
 
 \index{vector}
 
-Dans R, un `vector` est une combinaison de données avec la particularité que toutes les données contenues dans un `vector` sont du même type. Nous pouvons donc stocker plusieurs `numeric` ou `character` dans un `vector`, mais pas les deux. Le conteneur `vector` est important car c'est l'élément de base de R. 
+Dans R, un `vector` est une combinaison de données avec pour particularité que toutes les données contenues dans un `vector` sont du même type. Nous pouvons donc stocker plusieurs `numeric` ou `character` dans un `vector`, mais pas les deux types ensemble. Le conteneur `vector` est important car c'est l'élément de base de R. 
 
 ### Créer un `vector`
 
-Pour créer un `vector` nous allons utiliser la fonction `c()` qui permet de combiner des éléments en un `vector`. Les éléments à combiner doivent être séparés par des virgules (avec un espace après chaque virgule afin de rester lisible).
+Pour créer un `vector` nous allons utiliser la fonction `c()` qui permet de combiner des éléments en un `vector`. Les éléments à combiner doivent être séparés par des virgules (avec une espace après chaque virgule afin de rester lisible).
 
 ```{r 014-dataType2-1}
 miVec01 <- c(1, 2, 3, 4) # un vecteur de 4 éléments 
@@ -48,7 +48,7 @@ typeof(miVec04)
 is.vector(miVec04)
 ```
 
-Si l'on combine différents types de données, par défaut R va chercher à transformer les éléments en un seul type. Si comme ici dans l'objet `miVec04` nous avons des `character` et des `numeric`, R va transformer tous les éléments en `character`. 
+Si l'on combine différents types de données, R va chercher par défaut à transformer les éléments en un seul type. Si, comme ici dans l'objet `miVec04`, nous avons des `character` et des `numeric`, R va transformer tous les éléments en `character`. 
 
 ```{r 014-dataType2-3}
 miVec05 <- c(factor("abc"), "def")
@@ -56,7 +56,7 @@ print(miVec05)
 typeof(miVec05)
 ```
 
-Ici nous combinons un élément de type `factor` et un élément de type `character`. Comme R n’accepte que des éléments de même type dans un `vector`, R transforme tous les éléments en type le plus simple (ici en `character`). Lors de la conversion de l’élément `factor` en `character`, R prend par défaut la valeur numérique associé à ce `factor`, c'est-à-dire 1. C’est pour cela que `print(miVec05)` renvoie un `vector` de deux éléments au format `character`, que sont `"1"` et `"def"`. Pour transformer `factor("abc")` en type `character`, nous utiliserons `as.character(factor("abc"))` qui lui renvoie bien `"abc"`.
+Ici nous combinons un élément de type `factor` et un élément de type `character`. Comme R n’accepte que des éléments de même type dans un `vector`, R transforme tous les éléments en type le plus simple (ici en `character`). Lors de la conversion de l’élément `factor` en `character`, R prend par défaut la valeur numérique associée à ce `factor`, c'est-à-dire 1. C’est pour cela que `print(miVec05)` renvoie un `vector` de deux éléments au format `character`, que sont `"1"` et `"def"`. Pour transformer `factor("abc")` en type `character`, nous utiliserons `as.character(factor("abc"))` qui lui renvoie bien `"abc"`.
 
 ```{r 014-dataType2-3b}
 miVec05b <- c(factor("abc"), factor("ghi"), "def")
@@ -97,7 +97,7 @@ miVec11 <- c(789, miVec01 , 564)
 print(miVec11)
 ```
 
-### Opérations sur un `vector`
+### Les opérations sur un `vector`
 
 Nous pouvons également effectuer des opérations sur un `vector`.
 
@@ -109,7 +109,7 @@ miVec01 * 2
 miVec01 /10
 ```
 
-Les opérations d'un `vector` sur un autre sont possibles, mais il faut veiller à ce que le nombre d'éléments d'un `vector` soit le même que l'autre, sinon R va effectuer le calcul en repartant du début du `vector` le plus court (principe du *recyclage*). Voici un exemple pour illustrer ce que R fait:
+Les opérations d'un `vector` sur un autre sont possibles, mais il faut veiller à ce que le nombre d'éléments d'un `vector` soit le même que l'autre, sinon R va effectuer le calcul en repartant du début du `vector` le plus court (c'est le principe du **recyclage** illustrant ce qu'il se passe). Voici un exemple :
 
 ```{r 014-dataType2-6}
 miVec12 <- c(1, 1, 1, 1, 1, 1, 1, 1, 1)
@@ -125,7 +125,7 @@ print(miVec15)
 miVec15 + miVec13 # vecteurs de tailles dif. et non multiples
 ```
 
-Cela peut être utile d'effectuer des opérations avec des `vector` de tailles différentes, par exemple pour répéter des opérations : 
+Il peut être utile d'effectuer des opérations avec des `vector` de tailles différentes, par exemple pour répéter des opérations : 
 
 ```{r 014-dataType2-6b, warning=FALSE}
 miVec14 + c(10, 100)
@@ -133,7 +133,7 @@ miVec14 + c(10, 100)
 
 ### Accéder aux valeurs d'un `vector`
 
-Il est souvent nécessaire de pouvoir accéder aux valeurs d'un `vector`, c'est à dire de récupérer une valeur ou un groupe de valeurs au sein d'un `vector`. Pour récupérer une valeur ou un groupe de valeurs dans un `vector` nous utilisons les crochets `[]`. Entre les crochets, nous pouvons utiliser un numéro correspondant au numéro de l'élément dans le `vector`.
+Il est souvent nécessaire d'accéder aux valeurs d'un `vector`, c'est-à-dire de récupérer une valeur ou un groupe de valeurs au sein d'un `vector`. Pour récupérer une valeur ou un groupe de valeurs dans un `vector` nous utilisons les crochets `[]`. Entre les crochets, nous pouvons utiliser un numéro correspondant au numéro de l'élément dans le `vector`.
 
 ```{r 014-dataType2-7}
 miVec20 <- c(10, 20, 30, 40, 50, 60, 70, 80, 90)
@@ -185,7 +185,7 @@ print(miVec20[-c(1, 2, 5)])
 print(miVec21[-c(1, 2, 5)])
 ```
 
-Les éléments d'un `vector` peuvent aussi être sélectionnés sur la base d'un `vector` de type `logical`. Dans ce cas seuls les éléments avec une valeur `TRUE` seront sélectionnés.
+Enfin, les éléments d'un `vector` peuvent être sélectionnés sur la base d'un `vector` de type `logical`. Dans ce cas, seuls les éléments avec une valeur `TRUE` seront sélectionnés.
 
 ```{r 014-dataType2-12}
 miVec22 <- c(TRUE, TRUE, FALSE, TRUE, 
@@ -195,7 +195,7 @@ print(miVec21[miVec22])
 
 ### Nommer les éléments d'un `vector`
 
-Les éléments d'un `vector` peuvent être nommés pour pouvoir s'y référer par la suite et opérer une sélection. La fonction `names()` permet de récupérer les noms des éléments d'un vecteur.
+Les éléments d'un `vector` peuvent être nommés afin que l'on puisse s'y référer par la suite et opérer une sélection. La fonction `names()` permet de récupérer les noms des éléments d'un vecteur.
 
 ```{r 014-dataType2-13}
 miVec23 <- c(aaa = 10, bbb = 20, ccc = 30, ddd = 40, eee = 50)
@@ -229,13 +229,13 @@ names(miVec23)[2] <- "bb_bb"
 print(miVec23)
 ```
 
-Nous pouvons faire bien plus avec un `vector` et reviendrons sur les manipulations et les opérations possibles lors du chapitre sur les fonctions.
+Nous pouvons faire bien plus avec un `vector` et reviendrons sur les manipulations et les opérations possibles au chapitre 5 sur les fonctions.
 
 ## Le conteneur `list` {#l014list}
 
 \index{list}
 
-Le deuxième type de conteneur que nous allons introduire est le conteneur `list`, qui est également le deuxième conteneur après le type `vector` de par son importance dans la programmation avec R. Le conteneur de type `list` permet de stocker une **liste** d'éléments. Contrairement à ce que nous avons vu précédemment avec le type `vector`, les éléments du type `list` peuvent être différents (par exemple un `vector` de type `numeric`, puis un `vector` de type `character`). Les éléments du type `list` peuvent aussi être des conteneurs différents (par exemple un `vector`, puis une `list`). Nous pouvons d'une certaine manière assimiler le type `list` à un `vector` dont les éléments seraient des *objets*. Le type de conteneur `list` prendra tout son sens lorsque nous aurons étudié les **boucles** et les **fonctions** de la famille `apply`.
+Le deuxième type de conteneur que nous allons introduire est le conteneur `list`, qui constitue également le deuxième conteneur après le type `vector` de par son importance dans la programmation avec R. Le conteneur de type `list` permet de stocker une **liste** d'éléments. Contrairement à ce que nous avons vu précédemment avec le type `vector`, les éléments du type `list` peuvent être différents (par exemple un `vector` de type `numeric`, puis un `vector` de type `character`). Les éléments du type `list` peuvent aussi être des conteneurs différents (par exemple un `vector`, puis une `list`). Nous pouvons, d'une certaine manière, assimiler le type `list` à un `vector` dont les éléments seraient des **objets**. Le type de conteneur `list` prendra tout son sens lorsque nous aurons étudié les **boucles** et les **fonctions** de la famille `apply`.
 
 ### Créer une `list`
 
@@ -250,7 +250,7 @@ miList03 <- list(5, "qwerty", list(c(4, 5, 6), c("a", "b", "c")))
 print(miList03)
 ```
 
-La fonction `is.list()` permet de tester si nous avons bien créé un objet de type `list`.
+La fonction `is.list()` permet de vérifier que nous avons bien créé un objet de type `list`.
 
 ```{r 014-dataType2-17}
 is.list(miList02)
@@ -259,13 +259,13 @@ typeof(miList02)
 
 ### Accéder aux valeurs d'une `list`
 
-Les éléments du conteneur `list` sont identifiables grâce aux double crochets `[[ ]]`. 
+Les éléments du conteneur `list` sont identifiables grâce aux doubles crochets `[[ ]]`. 
 
 ```{r 014-dataType2-18}
 print(miList02)
 ```
 
-Dans l'objet `miList02` de type `list`, il y a quatre éléments identifiables avec `[[1]]`, `[[2]]`, `[[3]]`, et `[[4]]`. Chacun des éléments est de type `vector` de taille 1 et de type `double` pour le premier élément, de taille 1 et de type `character` pour le deuxième élément, de taille 3 et de type `double` pour le troisième élément, et de taille 3 et de type `character` pour le quatrième élément.
+Dans l'objet `miList02` de type `list`, il y a quatre éléments identifiables avec `[[1]]`, `[[2]]`, `[[3]]`, et `[[4]]`. Chacun de ces éléments est de type `vector` de taille 1 et de type `double` pour le premier élément, de taille 1 et de type `character` pour le deuxième élément, de taille 3 et de type `double` pour le troisième élément, et de taille 3 et de type `character` pour le quatrième élément.
 
 ```{r 014-dataType2-19}
 typeof(miList02)
@@ -279,13 +279,13 @@ print(miList02[[4]])
 typeof(miList02[[4]])
 ```
 
-L'accès au deuxième élément du `vector` situé en quatrième position de la liste se fait donc avec `miList02[[4]][2]`. Nous utilisons un double crochet pour le quatrième élément de la `list`, puis un simple crochet pour le deuxième élément du `vector`.
+L'accès au deuxième élément du `vector` situé en quatrième position de la liste se fait donc avec `miList02[[4]][2]`. Nous utilisons un double-crochet pour le quatrième élément de la `list`, puis un crochet simple pour le deuxième élément du `vector`.
 
 ```{r 014-dataType2-20}
 print(miList02[[4]][2])
 ```
 
-Comme une `list` peut contenir elle-même une ou plusieurs `list`, nous pouvons accéder à l'information recherchée en combinant les doubles crochets. L'objet `miList04` est une `list` de deux éléments, les `list` `miList02` et `miList03`. L'objet `miList03` contient lui-même une `list` comme élément en troisième position. Pour accéder au premier élément du `vector` en première position de l'élément en troisième position du deuxième élément de la `list` `miList04`, nous pouvons utiliser `miList04[[2]][[3]][[1]][1]`. Il n'y a pas de limite quant à la profondeur des `list` mais dans la pratique il n'y que rarement besoin de faire des `list` de `list` de `list`.
+Comme une `list` peut contenir elle-même une ou plusieurs `list`, nous pouvons accéder à l'information recherchée en combinant les doubles-crochets. L'objet `miList04` est une `list` de deux éléments, les `list` `miList02` et `miList03`. L'objet `miList03` contient lui-même une `list` comme élément en troisième position. Pour accéder au premier élément du `vector` en première position de l'élément en troisième position du deuxième élément de la `list` `miList04`, nous pouvons utiliser `miList04[[2]][[3]][[1]][1]`. Il n'y a pas de limite quant à la profondeur des `list` mais dans la pratique il n'y que rarement besoin de faire des `list` de `list` de `list`.
 
 ```{r 014-dataType2-21}
 miList04 <- list(miList02, miList03)
@@ -293,7 +293,7 @@ print(miList04)
 print(miList04[[2]][[3]][[1]][1])
 ```
 
-Pour rendre concret l'exemple précédent, nous pouvons imaginer des espèces de foreurs de maïs (*Sesamia nonagrioides* et *Ostrinia nubilalis*), échantillonnées dans différents sites, avec différentes abondances à quatre dates. Ici nous allons donner des noms aux éléments des listes.
+Pour rendre concret l'exemple précédent, nous pouvons imaginer des espèces d'insectes foreurs du maïs (**Sesamia nonagrioides** et **Ostrinia nubilalis**), échantillonnées sur différents sites, avec différentes abondances à quatre dates. Ici nous allons donner des noms aux éléments des listes.
 
 ```{r 014-dataType2-22}
 bddInsect <- list(Snonagrioides = list(site01 = c(12, 5, 8, 7), 
@@ -303,7 +303,7 @@ c(1, 1, 2, 3)))
 print(bddInsect)
 ```
 
-La lecture d'une ligne de code longue comme celle de la création de l'objet `bddInsect` est difficile à lire car la profondeur des éléments ne peut se déduire que grâce aux parenthèses. C'est pourquoi nous allons réorganiser le code pour lui donner plus de lisibilité grâce à l'**indentation**. L'indentation consiste à mettre l'information à des niveaux différents de telle manière que nous puissions rapidement identifier les différents niveaux d'un code. L'indentation se fait au moyen de la touche de tabulation du clavier. Nous reviendrons sur l'indentation avec plus de précisions lors du chapitre sur les **boucles**. Nous retiendrons pour le moment que si une ligne de code est trop longue, nous gagnons en lisibilité en passant à la ligne et que R va lire l'ensemble comme une seule ligne de code.
+La lecture d'une ligne de code longue comme celle de la création de l'objet `bddInsect` est difficile à lire car la profondeur des éléments ne peut se déduire que grâce aux parenthèses. C'est pourquoi nous allons réorganiser le code pour lui donner plus de lisibilité grâce à l'**indentation**. L'indentation consiste à mettre l'information à des niveaux différents de telle manière que nous puissions rapidement identifier les différents niveaux d'un code. L'indentation se fait au moyen de la touche de tabulation du clavier. Nous reviendrons sur l'indentation avec plus de précisions lors du chapitre 7 sur les **boucles**. Nous retiendrons pour le moment que lorsqu'une ligne de code est trop longue, nous gagnons en lisibilité en passant à la ligne et que R va lire l'ensemble comme une seule ligne de code.
 
 ```{r 014-dataType2-23}
 bddInsect <- list(
@@ -320,7 +320,7 @@ bddInsect <- list(
 )
 ```
 
-Nous pouvons sélectionner les données d'abondance du deuxième site de la première espèce comme précédemment `bddInsect[[1]][[2]]`, ou alternativement en utilisant les noms des éléments `bddInsect$Snonagrioides$site02`. Pour ce faire nous utilisons le signe `$`, ou alors le nom des éléments avec des guillemets simples ou doubles `bddInsect[['Snonagrioides']][['site02']]`.
+Nous pouvons sélectionner les données d'abondance du deuxième site de la première espèce comme précédemment `bddInsect[[1]][[2]]`, ou alternativement en utilisant les noms des éléments `bddInsect$Snonagrioides$site02`. Pour ce faire, nous utilisons le signe `$`, ou alors le nom des éléments avec des guillemets simples ou doubles `bddInsect[['Snonagrioides']][['site02']]`.
 
 ```{r 014-dataType2-24}
 print(bddInsect[[1]][[2]])
@@ -335,7 +335,7 @@ names(bddInsect)
 names(bddInsect[[1]])
 ```
 
-Lorsque nous utilisons les doubles crochets `[[]]` ou le signe `$`, R renvoie le contenu de l'élément sélectionné. Dans notre exemple les données d'abondance sont contenues sous la forme d'un `vector`, donc R renvoie un élément de type `vector`. Si nous souhaitons sélectionner un élément d'une `list` mais en conservant le format `list`, alors nous pouvons utiliser les crochets simples `[]`.
+Lorsque nous utilisons les doubles-crochets `[[]]` ou le signe `$`, R renvoie le contenu de l'élément sélectionné. Dans notre exemple, les données d'abondance sont contenues sous la forme d'un `vector`, donc R renvoie un élément de type `vector`. Si nous souhaitons sélectionner un élément d'une `list` mais en conservant le format `list`, alors nous pouvons utiliser les crochets simples `[]`.
 
 ```{r 014-dataType2-26}
 print(bddInsect[[1]][[2]])
@@ -356,7 +356,7 @@ print(bddInsect[[1]][c("site01", "site02")])
 
 ### Modification d'une `list`
 
-Une `list` peut être modifiée de la même façon que pour le conteneur `vector`, c'est à dire en se référant avec des crochets à l'élément que nous souhaitons modifier.
+Une `list` peut être modifiée de la même façon que le conteneur `vector`, c'est-à-dire en se référant à l'aide de crochets à l'élément que nous souhaitons modifier.
 
 ```{r 014-dataType2-28}
 print(miList02)
@@ -420,11 +420,11 @@ print(miList05)
 
 \index{data.frame}
 
-Le conteneur `data.frame` peut être assimilé à un *tableau*. Il s'agit en réalité d'un cas particulier de `list` où tous les éléments de la `list` ont la même longueur. 
+Le conteneur `data.frame` peut être assimilé à un **tableau**. Il s'agit en réalité d'un cas particulier de `list` où tous les éléments de la `list` ont la même longueur. 
 
 ### Créer un `data.frame`
 
-Pour créer un `data.frame` nous allons utiliser la fonction `data.frame()` qui prend comme arguments les éléments du tableau que nous souhaitons créer. Les éléments sont de type `vector` et font tous la même taille. Nous pouvons donner un nom à chaque *colonne* (`vector`) de notre *tableau* (`data.frame`).
+Pour créer un `data.frame` nous allons utiliser la fonction `data.frame()` qui prend comme arguments les éléments du tableau que nous souhaitons créer. Les éléments sont de type `vector` et font tous la même taille. Nous pouvons donner un nom à chaque **colonne** (`vector`) de notre **tableau** (`data.frame`).
 
 ```{r 014-dataType2-33}
 # création d'un data.frame 
@@ -445,7 +445,7 @@ print(miDf01)
 
 ### Accéder aux valeurs d'un `data.frame`
 
-L'accès aux différentes valeurs d'un `data.frame` peut se faire de la même façon que pour un conteneur de type `list`.
+L'accès aux différentes valeurs d'un `data.frame` peut se faire de la même façon que dans le cas d'un conteneur de type `list`.
 
 ```{r 014-dataType2-34}
 print(miDf01$numbers) # vector
@@ -455,7 +455,7 @@ print(miDf01["numbers"]) # list
 print(miDf01[["numbers"]]) # vector
 ```
 
-Nous pouvons aussi utiliser une autre forme qui consiste à spécifier la (ou les) ligne suivie d'une virgule (et comme nous en avons pris l'habitude, d'un espace après la virgule), puis la (ou les) colonne entre crochets simples. Si l'information ligne ou colonne est omise, R affichera toutes les lignes ou toutes les colonnes. Là encore nous pouvons utiliser le numéro correspondant à un élément ou alors le nom de l'élément que nous souhaitons sélectionner.
+Nous pouvons également utiliser une autre forme qui consiste à spécifier la (ou les) ligne(s) suivie(s) d'une virgule (et comme nous en avons pris l'habitude, d'une espace après la virgule), puis la (ou les) colonne(s) entre crochets simples. Si l'information ligne ou colonne est omise, R affichera toutes les lignes ou toutes les colonnes. Là encore, nous pouvons utiliser le numéro correspondant à un élément ou alors le nom de l'élément que nous souhaitons sélectionner.
 
 ```{r 014-dataType2-35}
 myRow <- 2
@@ -474,7 +474,7 @@ print(miDf01[, c(1, 2)])
 print(miDf01[c(2, 1), ])
 ```
 
-Puisque chaque colonne est au format `vector`, nous pouvons également faire une sélection qui dépendra du contenu avec les opérateurs de comparaison et les opérateurs logiques.
+Puisque chaque colonne est au format `vector`, nous pouvons également procéder à une sélection qui dépendra du contenu en utilisant les opérateurs de comparaison et les opérateurs logiques.
 
 ```{r 014-dataType2-37}
 miDfSub01 <- miDf01[miDf01$numbers > 2, ]
@@ -491,7 +491,7 @@ print(miDfSub04)
 
 ### Modifier un `data.frame`
 
-Pour ajouter un élément à un `data.frame`, nous allons procéder comme pour un conteneur de type `list`. Il faudra veiller à ce que le nouvel élément soit de la même taille que les autres éléments de notre `data.frame`. Par défaut un nouvel élément dans un `data.frame` prend comme nom la lettre *V* suivie du numéro de la colonne. Nous pouvons changer les noms de colonne avec la fonction `colnames()`. Nous avons la possibilité de donner un nom aux lignes avec la fonction `rownames()`
+Pour ajouter un élément à un `data.frame`, nous allons procéder comme pour un conteneur de type `list`. Il faudra veiller à ce que le nouvel élément soit de la même taille que les autres éléments de notre `data.frame`. Par défaut un nouvel élément dans un `data.frame` prend comme nom la lettre `V` suivie du numéro de la colonne. Nous pouvons changer les noms de colonne avec la fonction `colnames()`. Nous avons la possibilité de donner un nom aux lignes avec la fonction `rownames()`
 
 ```{r 014-dataType2-38}
 newVec <- c(4, 5, 6, 7)
@@ -505,7 +505,7 @@ rownames(miDf01) <- c("row1", "row2", "row3", "row4")
 print(miDf01)
 ```
 
-Une autre façon d'ajouter une *colonne* à un `data.frame` est d'utiliser le symbole `$` suivi du nom de la *colonne* à ajouter.
+Une autre façon d'ajouter une **colonne** à un `data.frame` est d'utiliser le symbole `$` suivi du nom de la **colonne** à ajouter.
 
 ```{r 014-dataType2-38b}
 # création d'un vecor
@@ -518,7 +518,7 @@ miDf01$newVec2 <- c(40, 50, 60, 70)
 print(miDf01)
 ```
 
-Comme le type de conteneur `data.frame` est un cas particulier de `list`, la sélection et la modification se fait comme pour un conteneur de type `list`. Comme les éléments d'un `data.frame` sont de type `vector`, la sélection et la modification des éléments d'un `data.frame` se fait comme pour un conteneur de type `vector`.
+Comme le type de conteneur `data.frame` est un cas particulier de `list`, la sélection et la modification se fait comme dans le cas d'un conteneur de type `list`. Les éléments d'un `data.frame` étant de type `vector`, la sélection et la modification des éléments d'un `data.frame` se fait comme pour un conteneur de type `vector`.
 
 ```{r 014-dataType2-39}
 miDf01$newVec2 <- miDf01$newVec2 * 2
@@ -541,7 +541,7 @@ is.data.frame(as.data.frame(newVec2))
 
 \index{matrix}
 
-Le conteneur `matrix` peut être vu comme un `vector` à deux dimensions (lignes et colonnes). Il correspond à une matrice en mathématiques, et ne peut contenir qu'un seul type de données (`logical`, `numeric`, `character`, ...).
+Le conteneur `matrix` peut être vu comme un `vector` à deux dimensions (lignes et colonnes). Il correspond à une matrice en mathématiques, et ne peut contenir qu'un seul type de données (`logical`, `numeric`, `character` ...).
 
 ### Créer une `matrix`
 
@@ -562,14 +562,14 @@ miMat <- matrix(vecForMatrix, ncol = 4)
 print(miMat)
 ```
 
-Nous observons que les différents éléments du `vector` initial sont renseignés par colonne. Si nous souhaitons renseigner la `matrix` par lignes alors il faut donner la valeur `TRUE` à l'argument `byrow`. Comme toujours nous pourrons consulter l'aide avec la fonction `?` (`?matrix`) pour voir les différents arguments.
+Nous observons que les différents éléments du `vector` initial sont renseignés par colonne. Si nous souhaitons renseigner la `matrix` par lignes, il faut alors donner la valeur `TRUE` à l'argument `byrow`. Comme toujours, nous pourrons consulter l'aide avec la fonction `?` (`?matrix`) pour voir les différents arguments.
 
 ```{r 014-dataType2-43}
 miMat <- matrix(vecForMatrix, nrow = 3, byrow = TRUE)
 print(miMat)
 ```
 
-Nous pouvons également donner un nom aux lignes et aux colonnes de notre `matrix` lors de sa création avec l'argument `dimnames` qui prend comme valeur une `list` de deux éléments : le nom des lignes puis le nom des colonnes. Nous pouvons aussi changer le nom des lignes et des colonnes a posteriori avec les fonctions `rownames()` et `colnames()`.
+Nous pouvons également donner un nom aux lignes et aux colonnes de notre `matrix` lors de sa création avec l'argument `dimnames` qui prend comme valeur une `list` de deux éléments : le nom des lignes puis le nom des colonnes. Nous pouvons aussi changer le nom des lignes et des colonnes *a posteriori* avec les fonctions `rownames()` et `colnames()`.
 
 ```{r 014-dataType2-44}
 miMat <- matrix(
@@ -636,7 +636,7 @@ diag(miMat02)
 det(miMat02)
 ```
 
-Il est souvent utile de pouvoir transposer une `matrix` (colonnes en lignes ou lignes en colonnes). Pour cela il existe les fonctions `aperm()` ou `t()`. la fonction `t()` est plus générique et fonctionne aussi sur les `data.frame`.
+Il est souvent utile de transposer une `matrix` (colonnes en lignes ou lignes en colonnes). Pour cela il existe les fonctions `aperm()` ou `t()`. la fonction `t()` est plus générique et fonctionne aussi sur les `data.frame`.
 
 ```{r 014-dataType2-50}
 aperm(miMat01)
@@ -661,7 +661,7 @@ print(miMat01[10])
 
 \index{array}
 
-Le conteneur de type `array` est une généralisation du conteneur de type `matrix`. Là où le type `matrix` a deux dimensions (les lignes et les colonnes), le type `array` a un nombre indéfini de dimensions. Nous pouvons connaître le nombre de dimensions d'un `array` (et donc d'une `matrix`) avec la fonction `dim()`.
+Le conteneur de type `array` correspond à une généralisation du conteneur de type `matrix`. Là où le type `matrix` présente deux dimensions (les lignes et les colonnes), le type `array` en présente un nombre indéfini. Nous pouvons connaître le nombre de dimensions d'un `array` (et donc d'une `matrix`) avec la fonction `dim()`.
 
 ```{r 014-dataType2-52}
 dim(miMat01)
@@ -701,7 +701,7 @@ print(miArray02)
 
 ### Manipuler un `array`
 
-La manipulation d'un `array` se fait de la même façon que pour une `matrix`. Pour accéder aux différents éléments d'un `array`, il suffit de spécifier la ligne `i`, la colonne `j`, et dans notre exemple, la `matrix` `k`.
+La manipulation d'un `array` se fait de la même façon que celle d'une `matrix`. Pour accéder aux différents éléments d'un `array`, il suffit de spécifier la ligne `i`, la colonne `j`, et dans notre exemple, la `matrix` `k`.
 
 ```{r 014-dataType2-55}
 i <- 2
@@ -713,12 +713,12 @@ print(miArray02[i, , k])
 print(miArray02[i, j, ])
 ```
 
-## Conclusion
+## En bref
 
-Félicitations ! Nous connaissons à présent les principaux types d'objets que nous allons utiliser avec R. Un objet se caractérise par ses attributs :
+Félicitations ! Vous connaissez à présent les principaux types d'objets que nous allons utiliser avec R. Un objet se caractérise par ses attributs :
 
-* le type de conteneur (`vector`, `data.frame`, `matrix`, `array`)
-* le type de contenu de chacun des éléments (`numeric`, `logical`, `character`, ...)
-* la valeur de chacun des éléments (5, "qwerty", TRUE, ...)
+* le type de conteneur (`vector`, `data.frame`, `matrix`, `array`),
+* le type de contenu de chacun des éléments (`numeric`, `logical`, `character` ...),
+* la valeur de chacun des éléments (5, "qwerty", TRUE ...).
 
-Tous ces objets sont stockés temporairement dans l'environnement global de R (dans la RAM de notre ordinateur). Le prochain chapitre va traiter des fonctions, et mettra en lumière un des aspects qui rend R si puissant pour analyser et gérer nos données.
+Tous ces objets sont stockés temporairement dans l'environnement global de R (dans la RAM de l'ordinateur). Le chapitre qui suit traite des fonctions et met en lumière un des aspects qui rend R si puissant pour analyser et gérer nos données.
