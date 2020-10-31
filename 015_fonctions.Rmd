@@ -7,16 +7,16 @@
 
 ## Qu'est-ce qu'une fonction
 
-Avec ce chapitre nous allons avoir un premier aperçu de la puissance de R grâce aux fonctions. Une fonction est un ensemble de lignes de code permettant d'exécuter une tâche particulière. Nous avons vu de nombreuses fonctions lors des précédents chapitres, la plus simple étant la fonction `+` permettant d'ajouter deux nombres entre eux, ou d'autres plus complexes comme `c()` ou `data.frame()` permettant de créer un `vector` ou un `data.frame`. Dans tous les cas une fonction se reconnait grâce aux parenthèses qui la suive dans laquelle nous allons renseigner des **arguments**. Les arguments correspondent aux informations que nous souhaitons transmettre à notre fonction pour qu'elle exécute la tâche que nous souhaitons réaliser. 
+Dans ce chapitre, vous allez commencer à comprendre combien R devient puissant grâce aux fonctions. Une fonction est constitué d'un ensemble de lignes de code permettant d'exécuter une tâche particulière. Nous avons vu de nombreuses fonctions lors des précédents chapitres, la plus simple étant la fonction `+` permettant d'additionner deux nombres entre eux, ou d'autres plus complexes comme `c()` ou `data.frame()` permettant de créer un `vector` ou un `data.frame`. Dans tous les cas une fonction se reconnait grâce aux parenthèses qui la suivent dans lesquelles sont renseignées les **arguments**. Les arguments correspondent aux informations que nous souhaitons transmettre à notre fonction pour qu'elle exécute la tâche que nous souhaitons réaliser. 
 
-Pour les fonctions les plus simples comme `+`, les parenthèses ont été supprimées pour que le code soit plus facile à lire, mais il s'agit bien d'une fonction qui peut s'utiliser avec des parenthèses si nous utilisons le signe `+` entre guillemets. Les arguments sont les nombres que nous souhaitons ajouter.
+Dans le cas des fonctions les plus simples comme `+`, les parenthèses ont été supprimées pour que le code soit plus facile à lire, mais il s'agit bien d'une fonction qui peut s'utiliser avec des parenthèses si nous utilisons le signe `+` entre guillemets. Les arguments sont les nombres que nous souhaitons additionner.
 
 ```{r 015-fonctions-1}
 5 + 2
 '+'(5, 2)
 ```
 
-Dans ce chapitre nous allons nous focaliser sur les fonctions les plus courantes de façon à ce que ce chapitre soit consultable comme un dictionnaire. Il ne s'agit donc pas de tout apprendre par cœur mais bien de savoir que ces fonctions existent et de pouvoir consulter ce chapitre plus tard comme référence. Avec le temps et la pratique nous finirons par les connaître par cœur ! Il y a plus de 1000 fonctions à ce jour dans la version de base de R, et plus de 10000 packages complémentaires pouvant être installés, chacun contenant plusieurs dizaines de fonctions. Avant de nous lancer dans l'écriture d'une nouvelle fonction, il faudra toujours vérifier qu'elle n'existe pas déjà. Une bonne pratique pour un code durable est de privilégier les fonctions fournies de base avec R. R vient en effet avec une série de packages (Table \@ref(tab:tabPkg)). La liste à jour des packages fournis systématiquement avec R peut être consultée sur le site web de R dans la partie FAQ (https://cran.r-project.org/doc/FAQ/R-FAQ.html#Add_002don-packages-in-R). 
+Nous nous concentrons ici sur les fonctions les plus courantes de façon à ce que ce chapitre soit consultable comme un dictionnaire. Il ne s'agit donc pas de tout apprendre par cœur mais bien de savoir que ces fonctions existent et de pouvoir consulter ce chapitre comme une référence. Avec le temps et la pratique vous finirez par les connaître par cœur ! Il y a plus de 1 000 fonctions à ce jour dans la version de base de R, et plus de 10 000 packages complémentaires pouvent être installés, chacun contenant plusieurs dizaines de fonctions. Avant de nous lancer dans l'écriture d'une nouvelle fonction, il faudra toujours vérifier qu'elle n'existe pas déjà. Une bonne pratique pour un code durable consiste à privilégier les fonctions fournies de base avec R (Table \@ref(tab:tabPkg)). La liste à jour des packages fournis initialement avec R peut être consultée sur le site web de R dans la partie FAQ (https://cran.r-project.org/doc/FAQ/R-FAQ.html#Add_002don-packages-in-R). 
 
 ```{r tabPkg_prec, echo=FALSE}
 library(kableExtra)
@@ -27,17 +27,17 @@ tabPkgDf <- data.frame(
   package = c("base", "compiler", "datasets", "grDevices", "graphics", "grid", "methods", "parallel", "splines", "stats", "stats4", "tcltk", "tools", "utils"), 
   description = c("Base R functions (and datasets before R 2.0.0).", "R byte code compiler (added in R 2.13.0).", "Base R datasets (added in R 2.0.0).", "Graphics devices for base and grid graphics (added in R 2.0.0).", "R functions for base graphics.", "A rewrite of the graphics layout capabilities, plus some support for interaction.", "Formally defined methods and classes for R objects, plus other programming tools, as described in the Green Book.", "Support for parallel computation, including by forking and by sockets, and random-number generation (added in R 2.14.0).", "Regression spline functions and classes.", "R statistical functions.", "Statistical functions using S4 classes.", "Interface and language bindings to Tcl/Tk GUI elements.", "Tools for package development and administration.", "R utility functions.")
 )
-knitr::kable(tabPkgDf, longtable = TRUE, caption = "R et ses packages de base.\\label{tab:tabPkg}") %>%
+knitr::kable(tabPkgDf, longtable = TRUE, caption = "Les packages fournis avec la version de base de R.\\label{tab:tabPkg}") %>%
   kable_styling(latex_options = c("repeat_header")) %>% column_spec(2, width = "25em")
 ```
 
 ## Les fonctions les plus courantes {#l015mainfun}
 
-Pour travailler avec les fonctions nous allons utiliser le jeu de données `iris` qui est inclus avec la version de base de R et qui correspond à la longueur et à la largeur des sépales et des pétales de différentes espèces d'iris. Le jeu de données est sous la forme d'un `data.frame` de 5 colonnes et de 150 lignes. Pour plus d'information sur le jeu de données `iris` nous pouvons consulter la documentation de R avec la fonction `help(iris)` (ou `?iris`). L'accès à la documentation est l'objet de la section ci-dessous.
+Afin de travailler avec les fonctions nous allons utiliser le jeu de données `iris` qui est inclus à la version de base de R et qui correspond à la longueur et à la largeur des sépales et des pétales de différentes espèces d'iris. Le jeu de données se présente sous la forme d'un `data.frame` de cinq colonnes et de 150 lignes. Pour plus d'information sur le jeu de données `iris` nous pouvons consulter la documentation de R avec la fonction `help(iris)` (ou `?iris`). L'accès à la documentation est l'objet de la section suivante.
 
 ### L'accès à la documentation
 
-#### `help()` {#l015help}
+#### La fonction `help()` {#l015help}
 
 \index{help()}
 
@@ -47,11 +47,11 @@ La fonction indispensable de R est celle permettant d'accéder à la documentati
 help(matrix) # équivalent à ?matrix
 ```
 
-La documentation est toujours structurée de la même manière. Tout d'abord nous avons le nom de la fonction recherchée (`matrix`), suivi entre accolades par le nom du package R dont la fonction dépend (`{base}`). Nous verrons comment installer des packages additionnels plus tard. Pour l'instant nous disposons de ceux fournis avec la version de base de R. Ici nous pouvons voir que la fonction `matrix()` dépend du package `base` (Table \@ref(tab:tabPkg)).
+La documentation est toujours structurée de la même manière. Tout d'abord il y a le nom de la fonction recherchée (`matrix`), suivi entre accolades par le nom du package R dont la fonction dépend (`{base}`). Nous verrons par la suite comment installer des packages additionnels. Pour l'instant nous disposons de ceux fournis avec la version de base de R. Ici nous pouvons voir que la fonction `matrix()` dépend du package `base` (Table \@ref(tab:tabPkg)).
 
-Ensuite nous pouvons voir le libellé de la fonction (`Matrices`), suivi des paragraphes `Description`, `Usage`, et `Arguments`. Parfois viennent s'ajouter les paragraphes `Details`, `Note`, `References`, et `See also`. Le dernier paragraphe est `Examples`. La dernière ligne de la documentation permet de revenir à l'index du package dont dépend la fonction consultée. 
+Il y a ensuite le libellé de la fonction (`Matrices`), suivi des paragraphes `Description`, `Usage`, et `Arguments`. Parfois viennent s'ajouter les paragraphes `Details`, `Note`, `References`, et `See also`. Le dernier paragraphe est `Examples`. La dernière ligne de la documentation permet de revenir à l'index du package dont dépend la fonction consultée. 
 
-Nous pouvons voir que le paragraphe `Description` indique ce que fait la fonction. Dans le cas de `help(matrix)`, il y a trois fonctions qui sont présentées : `matrix()`, `as.matrix()`, et `is.matrix()`.
+Le paragraphe `Description` indique ce que fait la fonction. Dans le cas de `help(matrix)`, il y a trois fonctions qui sont présentées : `matrix()`, `as.matrix()`, et `is.matrix()`.
 
 ```{r 015-fonctions-3}
 # Description
@@ -60,7 +60,7 @@ Nous pouvons voir que le paragraphe `Description` indique ce que fait la fonctio
 # is.matrix tests if its argument is a (strict) matrix.
 ```
 
-Le paragraphe `Usage` explique comment utiliser la fonction et quels sont les valeurs par défaut éventuelles pour chacun des arguments.
+Le paragraphe `Usage` explique comment utiliser la fonction et indique les éventuelles valeurs par défaut pour chacun des arguments.
 
 ```{r 015-fonctions-4}
 # Usage
@@ -68,9 +68,9 @@ Le paragraphe `Usage` explique comment utiliser la fonction et quels sont les va
 #        dimnames = NULL)
 ```
 
-La fonction `matrix()` peut prendre 5 arguments : `data`, `nrow`, `ncol`, `byrow`, et `dimnames`. Nous pouvons voir que par défaut, une `matrix` sera composée d'une seule donnée `NA`, d'une seule ligne et d'une seule colonne, que les informations seront renseignées par colonne, et que le nom des colonnes et des lignes sera `NULL`.
+La fonction `matrix()` peut prendre cinq arguments : `data`, `nrow`, `ncol`, `byrow`, et `dimnames`. Par défaut, une `matrix` est composée d'une seule donnée `NA`, d'une seule ligne et d'une seule colonne, les informations sont renseignées par colonne et le nom des colonnes et des lignes est `NULL`.
 
-Le paragraphe `Arguments` détaille les valeurs et le type de conteneur de chacun des arguments de notre fonction. Par exemple nous pouvons voir que l'argument `dimnames` doit être de type `list`. C'est pourquoi nous avons utilisé ce format lors de la section sur les  [`matrix`](#l014matrix). 
+Le paragraphe `Arguments` détaille les valeurs et le type de conteneur de chacun des arguments de notre fonction. Par exemple, l'argument `dimnames` doit être de type `list`. C'est pourquoi nous avons utilisé ce format lors de la section sur les  [`matrix`](#l014matrix). 
 
 ```{r 015-fonctions-5}
 # Arguments
@@ -91,7 +91,7 @@ Le paragraphe `Arguments` détaille les valeurs et le type de conteneur de chacu
 #           used as names for the dimensions.
 ```
 
-Le paragraphe `Details` apporte des éléments complémentaires sur la fonction. Le paragraphe `Examples` procure des exemples reproductibles dans la console.
+Le paragraphe `Details` apporte des éléments complémentaires sur la fonction. Le paragraphe `Examples` donne des exemples reproductibles dans la console.
 
 ```{r 015-fonctions-6}
 ## Example of setting row and column names
@@ -104,7 +104,7 @@ mdat <- matrix(
 print(mdat)
 ```
 
-Le nom des arguments n'est pas nécessaire pour qu'une fonction soit correctement interprétée par R. Néanmoins par soucis de clarté il est préférable d'utiliser le nom complet des arguments suivi du signe `=` pour que le code soit plus lisible. 
+Il n'est pas nécessaire d'utiliser le nom des arguments pour qu'une fonction soit correctement interprétée par R. Néanmoins par soucis de clarté il est préférable d'utiliser le nom complet des arguments suivi du signe `=` pour que le code soit plus lisible. 
 
 ```{r 015-fonctions-7}
 # bon exemple
@@ -121,7 +121,7 @@ mdat <- matrix(
 mdat <- matrix(c(1,2,3,11,12,13),2,3,T)
 ```
 
-Le résultat de ces trois exemples est identique pour R. Dans le premier cas le code est facile à lire et à comprendre. Nous avons utilisé le nom complet des arguments, des espaces après les virgules, et des sauts de lignes pour séparer les arguments et faire en sorte que chaque ligne ne soit pas trop longue. Il sera facilement compréhensible par d'autres personnes appelées à lire notre code. Le deuxième exemple fait appel à des noms d'arguments incomplets. Il reste fonctionnel, mais porte à confusion. R est un langage permissif. Dans ce cas il va lire le nom des arguments, et utiliser le nom qui s'en rapproche le plus. Dans le troisième exemple le code est là aussi fonctionnel. Néanmoins il est difficile à lire car il n'y a ni espace, ni nom des arguments, et la valeur `TRUE` est remplacée par `T`. C'est bien sûr le premier exemple qui doit être utilisé pour améliorer la lisibilité et la transparence des analyses.
+Le résultat de ces trois exemples est identique pour R. Dans le premier cas le code est facile à lire et à comprendre. Nous avons utilisé le nom complet des arguments, des espaces après les virgules et des sauts de lignes pour séparer les arguments et faire en sorte que chaque ligne ne soit pas trop longue. Il sera facilement compréhensible par d'autres personnes appelées à lire notre code. Le deuxième exemple fait appel à des noms d'arguments incomplets. Il reste fonctionnel, mais porte à confusion. R est un langage permissif. Dans ce cas il va lire le nom des arguments, et utiliser le nom qui s'en rapproche le plus. Dans le troisième exemple le code est là aussi fonctionnel. Néanmoins il est difficile à lire car il n'y a ni espace, ni nom des arguments, et la valeur `TRUE` est remplacée par `T`. C'est bien sûr le premier exemple qui doit être utilisé pour améliorer la lisibilité et la transparence des analyses.
 
 #### `help.search()` {#l015helpsearch}
 
