@@ -121,9 +121,9 @@ mdat <- matrix(
 mdat <- matrix(c(1,2,3,11,12,13),2,3,T)
 ```
 
-Le résultat de ces trois exemples est identique pour R. Dans le premier cas le code est facile à lire et à comprendre. Nous avons utilisé le nom complet des arguments, des espaces après les virgules et des sauts de lignes pour séparer les arguments et faire en sorte que chaque ligne ne soit pas trop longue. Il sera facilement compréhensible par d'autres personnes appelées à lire notre code. Le deuxième exemple fait appel à des noms d'arguments incomplets. Il reste fonctionnel, mais porte à confusion. R est un langage permissif. Dans ce cas il va lire le nom des arguments, et utiliser le nom qui s'en rapproche le plus. Dans le troisième exemple le code est là aussi fonctionnel. Néanmoins il est difficile à lire car il n'y a ni espace, ni nom des arguments, et la valeur `TRUE` est remplacée par `T`. C'est bien sûr le premier exemple qui doit être utilisé pour améliorer la lisibilité et la transparence des analyses.
+Le résultat de ces trois exemples est identique pour R. Dans le premier cas le code est facile à lire et à comprendre. Nous avons utilisé le nom complet des arguments, des espaces après les virgules et des sauts de lignes pour séparer les arguments et faire en sorte que chaque ligne ne soit pas trop longue. Il sera facilement compréhensible par d'autres personnes appelées à lire notre code. Le deuxième exemple fait appel à des noms d'arguments incomplets. Il reste fonctionnel, mais porte à confusion. R est un langage permissif. Dans ce cas il va lire le nom des arguments, et utiliser le nom qui s'en rapproche le plus. Dans le troisième exemple le code est là aussi fonctionnel. Néanmoins il est difficile à lire car il n'y a ni espace, ni nom des arguments, et la valeur `TRUE` est remplacée par `T`. C'est bien sûr le premier exemple qui doit être utilisé pour une meilleure lisibilité et une meilleure transparence des analyses.
 
-#### `help.search()` {#l015helpsearch}
+#### La fonction `help.search()` {#l015helpsearch}
 
 La fonction `help.search()` ou `??` permet de rechercher une expression dans l'ensemble de la documentation. Elle est utile lorsque l'on cherche une fonctionnalité sans connaître le nom de la fonction sous R.
 
@@ -137,24 +137,24 @@ La fonction `help.search()` renvoie vers une page contenant la liste des pages o
 
 ### Visualiser les données
 
-#### `str()` {#l015str}
+#### La fonction `str()` {#l015str}
 
 \index{str()}
 
-La fonction `str()` permet de visualiser la structure interne d'un objet, comme indiqué dans la documentation que nous pouvons consulter avec `help(str)`.
+La fonction `str()` permet de visualiser la structure interne d'un objet, comme l'indique la documentation que nous pouvons consulter avec `help(str)` ou `?str`.
 
 ```{r 015-fonctions-9, linewidth=60}
 str(iris)
 ```
 
-La fonction `str()` renvoie le type d'objet (`data.frame`), le nombre d'observations (150), le nombre de variables (5), le nom de chacune des variables (`Sepal.Length`, `Sepal.Width`, `Petal.Length`, `Petal.Width`, et `Species`), le type de chacune des variables (`num`, `Factor`), et les premières valeurs de chacune des variables. C'est une fonction utile pour avoir un aperçu d'un jeu de données, mais aussi pour contrôler que les données sont du type voulu avant de procéder à des analyses statistiques.
+La fonction `str()` renvoie le type d'objet (`data.frame`), le nombre d'observations (150), le nombre de variables (5), le nom de chacune des variables (`Sepal.Length`, `Sepal.Width`, `Petal.Length`, `Petal.Width`, et `Species`), le type de chacune des variables (`num`, `Factor`) et les premières valeurs de chacune des variables. C'est une fonction utile pour avoir un aperçu d'un jeu de données, mais aussi pour contrôler que les données sont du type voulu avant de procéder à des analyses statistiques.
 
-#### `head()` et `tail()` {#l015head}
+#### Les fonctions `head()` et `tail()` {#l015head}
 
 \index{head()}
 \index{tail()}
 
-La fonction `head()` renvoie les premières valeurs d'un objet, et la fonction `tail()` les dernières valeurs d'un objet. Par défaut six valeurs sont retournées (l'argument `n` contrôle le nombre de valeurs à retourner). 
+La fonction `head()` renvoie les premières valeurs d'un objet et la fonction `tail()` les dernières valeurs d'un objet. Par défaut, six valeurs sont retournées (l'argument `n` contrôle le nombre de valeurs à retourner). 
 
 ```{r 015-fonctions-10}
 head(iris)
@@ -162,7 +162,7 @@ tail(iris)
 head(iris, n = 2)
 ```
 
-#### `names()` {#l015names}
+#### La fonction `names()` {#l015names}
 
 \index{names()}
 
@@ -175,7 +175,7 @@ names(irisCopy) <- c("a", "b", "c", "d", "e")
 names(irisCopy)
 ```
 
-#### `cat()` et `print()` {#l015print}
+#### Les fonctions `cat()` et `print()` {#l015print}
 
 \index{cat()}
 \index{print()}
@@ -192,11 +192,11 @@ print(iris[1, 1], digits = 0)
 
 ### Manipuler les données 
 
-#### `rank()` {#l015rank}
+#### La fonction `rank()` {#l015rank}
 
 \index{rank()}
 
-La fonction `rank()` renvoie pour un ensemble d'éléments le numéro de la position de chacun des éléments. En cas d'éléments de même valeur, l'argument `ties.method` permet de faire un choix sur le classement. Comme pour toutes les fonctions, les détails sont présents dans la documentation. Le recours à la documentation doit devenir un réflexe pour chaque nouvelle fonction utilisée.
+La fonction `rank()` renvoie, pour un ensemble d'éléments, le numéro de la position de chacun des éléments. Lorsque des éléments ont la même valeur, l'argument `ties.method` permet de faire un choix sur le classement. Comme pour toutes les fonctions, les détails sont présentés dans la documentation. Le recours à la documentation doit devenir un réflexe pour chaque nouvelle fonction utilisée.
 
 ```{r 015-fonctions-13}
 vecManip <- c(10, 20, 30, 70, 60, 50, 40)
@@ -215,7 +215,7 @@ rank(iris[, 1], ties.method = "average")
 #       "random", "max", "min"))
 ```
 
-#### `order()` {#l015order}
+#### La fonction `order()` {#l015order}
 
 \index{order()}
 
@@ -239,11 +239,11 @@ head(iris, n = 10)
 head(iris[order(iris[, 1]),], n = 10)
 ```
 
-#### `sort()` {#l015sort}
+#### La fonction `sort()` {#l015sort}
 
 \index{sort()}
 
-La fonction `sort()` permet de trier les éléments d'un objet. Elle ne permet pas de trier selon plusieurs variables comme c'est le cas avec `order()`.
+La fonction `sort()` permet de trier les éléments d'un objet. Elle ne permet pas de trier selon plusieurs variables comme c'est le cas de la fonction `order()`.
 
 ```{r 015-fonctions-15}
 print(vecManip2)
@@ -252,7 +252,7 @@ print(iris[, 1])
 sort(iris[, 1])
 ```
 
-#### `append()` {#l015append}
+#### La fonction `append()` {#l015append}
 
 \index{append()}
 
@@ -264,7 +264,7 @@ append(vecManip2, 5)
 append(vecManip2, 5, after = 2)
 ```
 
-#### `cbind()` et `rbind()` {#l015cbind}
+#### Les fonctions `cbind()` et `rbind()` {#l015cbind}
 
 \index{cbind()}
 \index{rbind()}
@@ -276,12 +276,12 @@ cbind(vecManip2, vecManip2)
 rbind(vecManip2, vecManip2)
 ```
 
-#### `paste()` et `paste0()` {#l015paste}
+#### Les fonctions `paste()` et `paste0()` {#l015paste}
 
 \index{paste()}
 \index{paste0()}
 
-Voilà deux fonctions que nous allons beaucoup utiliser par la suite. Les fonctions `paste()` et `paste0()` permettent de concaténer des chaines de caractère. La fonction `paste0()` est équivalente à `paste()` sans proposer de séparateur entre les éléments à concaténer. Elle est aussi plus rapide.
+Voilà deux fonctions que nous allons beaucoup utiliser par la suite. Les fonctions `paste()` et `paste0()` permettent de concaténer des chaînes de caractères. La fonction `paste0()` est équivalente à `paste()` sans proposer de séparateur entre les éléments à concaténer. Elle est aussi plus rapide.
 
 ```{r 015-fonctions-18}
 paste(1, "a")
@@ -291,7 +291,7 @@ paste0("prefix_", vecManip2, "_suffix")
 paste(vecManip2, rank(vecManip2), sep = "_")
 ```
 
-#### `rev()` {#l015rev}
+#### La fonction `rev()` {#l015rev}
 
 \index{rev()}
 
@@ -302,9 +302,7 @@ print(vecManip2)
 rev(vecManip2)
 ```
 
-#### `%in%` {#l015in}
-
-\index{%in%}
+#### La fonction `%in%` {#l015in}
 
 La fonction `%in%` peut être assimilée à un [opérateur de comparaison](#l011opcomp). Cette fonction prend deux objets comme arguments et renvoie `TRUE` ou `FALSE` pour chacun des éléments du premier objet en fonction de leur présence ou absence dans le second objet (elle utilise la fonction `match()` qui renvoie les positions des premières occurrences des éléments d'un vecteur dans un autre vecteur). Pour accéder à la documentation de la fonction, il faut utiliser des guillemets `help('%in%')`.
 
@@ -336,13 +334,13 @@ asin(vecManip2/100)
 atan(vecManip2/100)
 ```
 
-### Statistiques descriptives
+### Les statistiques descriptives
 
 \index{statistiques}
 
-Nous pouvons également effectuer des statistiques descriptives très simplement à partir d'un jeu de données.
+Il est également possible d'effectuer des statistiques descriptives très simplement à partir d'un jeu de données.
 
-#### `mean()` {#l015mean}
+#### La fonction `mean()` {#l015mean}
 
 \index{mean()}
 
@@ -355,7 +353,7 @@ mean(vecManip3)
 mean(vecManip3, na.rm = TRUE)
 ```
 
-#### `sd()` et `var()` {#l015sd}
+#### Les fonctions `sd()` et `var()` {#l015sd}
 
 \index{sd()}
 \index{var()}
@@ -370,7 +368,7 @@ sd(vecManip3)
 sd(vecManip3, na.rm = TRUE)
 ```
 
-#### `max()` et `min()` {#l015max}
+#### Les fonctions `max()` et `min()` {#l015max}
 
 \index{max()}
 \index{min()}
@@ -388,7 +386,7 @@ min(vecManip3)
 min(vecManip3, na.rm = TRUE)
 ```
 
-#### `quantile()` {#l015quantile}
+#### La fonction `quantile()` {#l015quantile}
 
 \index{quantile()}
 
@@ -400,7 +398,7 @@ quantile(iris[, 1], probs = c(0, 0.25, 0.5, 0.75, 1))
 quantile(iris[, 1], probs = c(0, 0.1, 0.5, 0.9, 1))
 ```
 
-#### `summary()` {#l015summary}
+#### La fonction `summary()` {#l015summary}
 
 \index{summary()}
 
@@ -410,7 +408,7 @@ La fonction `summary()` renvoie un résumé composé du minimum, premier quartil
 summary(iris[, 1])
 ```
 
-La fonction `summary()` ne prends pas d'argument `na.rm`. Le nombre de `NA/NaN` (s'il y en a) est indiqué après "Max".
+La fonction `summary()` ne prends pas d'argument `na.rm`. Le nombre de `NA/NaN` (s'il y en a) est indiqué après `Max.`.
 
 ```{r 015-fonctions-26b}
 summary(
@@ -422,7 +420,7 @@ summary(
 )
 ```
 
-#### `median()` {#l015median}
+#### La fonction `median()` {#l015median}
 
 \index{median()}
 
@@ -435,7 +433,7 @@ median(vecManip3)
 median(vecManip3, na.rm = TRUE)
 ```
 
-#### `length()` {#l015length}
+#### La fonction `length()` {#l015length}
 
 \index{length()}
 
@@ -447,7 +445,7 @@ print(vecManip3)
 length(vecManip3)
 ```
 
-#### `nrow()` et `ncol()` {#l015nrow}
+#### Les fonctions `nrow()` et `ncol()` {#l015nrow}
 
 \index{nrow()}
 \index{ncol()}
@@ -459,14 +457,14 @@ nrow(iris)
 ncol(iris)
 ```
 
-#### `round()`, `ceiling()`, `floor()`, et `trunc()` {#l015round}
+#### Les fonctions `round()`, `ceiling()`, `floor()` et `trunc()` {#l015round}
 
 \index{round()}
 \index{ceiling()}
 \index{floor()}
 \index{trunc()}
 
-La fonction `round()` permet de sélectionner un certain nombre de décimales (0 par défaut)
+La fonction `round()` permet de sélectionner un certain nombre de décimales (0 par défaut).
 
 ```{r 015-fonctions-30}
 round(5.56874258564)
@@ -494,7 +492,7 @@ trunc(5.9999)
 trunc(5.0001)
 ```
 
-#### `rowSums()` et `colSums()` {#l015rowsums}
+#### Les fonctions `rowSums()` et `colSums()` {#l015rowsums}
 
 \index{rowSums()}
 \index{colSums()}
@@ -506,7 +504,7 @@ rowSums(iris[, c(1, 2, 3, 4)])
 colSums(iris[, c(1, 2, 3, 4)])
 ```
 
-#### `rowMeans()` et `colMeans()` {#l015rowmeans}
+#### Les fonctions `rowMeans()` et `colMeans()` {#l015rowmeans}
 
 \index{rowMeans()}
 \index{colMeans()}
@@ -518,7 +516,7 @@ rowMeans(iris[, c(1, 2, 3, 4)])
 colMeans(iris[, c(1, 2, 3, 4)])
 ```
 
-#### `aggregate()` {#l015aggregate}
+#### La fonction `aggregate()` {#l015aggregate}
 
 \index{aggregate()}
 
@@ -535,7 +533,7 @@ aggregate(
   FUN = summary)
 ```
 
-#### `range()` {#l015range}
+#### La fonction `range()` {#l015range}
 
 \index{range()}
 
@@ -548,7 +546,7 @@ range(vecManip3)
 range(vecManip3, na.rm = TRUE)
 ```
 
-#### `unique()` {#l015unique}
+#### La fonction `unique()` {#l015unique}
 
 \index{unique()}
 
@@ -560,20 +558,20 @@ print(vecManip3)
 unique(vecManip3)
 ```
 
-## Autres fonctions utiles
+## Les autres fonctions utiles
 
-Nous ne pouvons aborder toutes les fonctions utiles, ici nous ne ferons qu'aborder certaines fonctions. Tout au long de ce livre de nouvelles fonctions seront utilisées. Lorsqu'une nouvelle fonction est utilisée, notre réflexe doit être toujours le même : **consulter la documentation** avec la fonction `help()`.
+Il est impossible de décrire toutes les fonctions utiles, nous n'aborderons ici que certaines d'entre elles. Tout au long de ce livre de nouvelles fonctions seront utilisées. Lorsqu'une nouvelle fonction est utilisée, notre réflexe doit être toujours le même : **consulter la documentation** avec la fonction `help()`.
 
-### `seq_along()` {#l015seqalong}
+### La fonction `seq_along()` {#l015seqalong}
 
-La fonction `seq_along()` permet de créer un `vector` de la taille de l'objet renseigné et prenant comme valeurs les chiffres de 1 à N (N correspondant aux nombres d'éléments de l'objet). Cette fonction nous servira beaucoup lors du chapitre sur les boucles.
+La fonction `seq_along()` permet de créer un `vector` de la taille de l'objet renseigné et prenant comme valeurs les chiffres de 1 à N (N correspondant aux nombres d'éléments de l'objet). Cette fonction sera très utile lors du chapitre sur les boucles.
 
 ```{r 015-fonctions-39}
 print(vecManip3)
 seq_along(vecManip3)
 ```
 
-### `:` {#l0152points}
+### La fonction `:` {#l0152points}
 
 \index{:}
 
@@ -590,7 +588,7 @@ miVec01 <- 1:4 # ;-)
 paste("X", 1:10, sep = "_")
 ```
 
-### `rep()` {#l015rep}
+### La fonction `rep()` {#l015rep}
 
 \index{rep()}
 
@@ -605,7 +603,7 @@ rep(1:3, length.out = 10)
 rep(1:3, each = 3)
 ```
 
-### `seq()` {#l015seq}
+### La fonction `seq()` {#l015seq}
 
 \index{seq()}
 
@@ -618,17 +616,17 @@ letters[seq(from = 1, to = 26, by = 2)]
 rep(seq(from = 1, to = 2, by = 0.5), times = 3)
 ```
 
-### `getwd()` {#l015getwd}
+### La fonction `getwd()` {#l015getwd}
 
 \index{getwd()}
 
-La fonction `getwd()` renvoie le répertoire courant de travail. Cela correspond à *l'endroit* à partir duquel R se positionne pour identifier les fichiers. Ce concept prendra son sens lorsque nous verrons comment importer et exporter des données.
+La fonction `getwd()` renvoie le **répertoire courant de travail**. Cela correspond à l'endroit à partir duquel R se positionne pour identifier les fichiers. Ce concept prendra tout son sens lorsque nous verrons comment importer et exporter des données.
 
 ```{r 015-fonctions-43, linewidth=65}
 getwd()
 ```
 
-### `setwd()` {#l015setwd}
+### La fonction `setwd()` {#l015setwd}
 
 \index{setwd()}
 
@@ -643,18 +641,18 @@ setwd(oldWd)
 getwd()
 ```
 
-### `list.files()` {#l015listfiles}
+### La fonction `list.files()` {#l015listfiles}
 
 \index{list.files()}
 
-La fonction `list.files()` permet de faire la liste de tous les fichiers présents dans le répertoire de travail. 
+La fonction `list.files()` permet d'établir la liste de tous les fichiers présents dans le répertoire de travail. 
 
 ```{r 015-fonctions-45}
-list.files(pattern = "(html)$") # html
+list.files(pattern = "(R)$") # R
 list.files(pattern = "(pdf)$") # pdf
 ```
 
-### `ls()` {#l015ls}
+### La fonction `ls()` {#l015ls}
 
 \index{ls()}
 
@@ -666,7 +664,7 @@ zzz <- "a new object"
 ls()
 ```
 
-### `rm()` {#l015rm}
+### La fonction `rm()` {#l015rm}
 
 \index{rm()}
 
@@ -677,21 +675,21 @@ rm(zzz)
 ls()
 ```
 
-### Statistiques descriptives
+### Une exemple de statistiques descriptives
 
-Voici un court exemple de statistiques descriptives à travers quelques questions sur le jeu de donnéees `iris`. 
+Voici un court exemple de statistiques descriptives à travers quelques questions sur le jeu de données `iris`. 
 
 Combien de valeurs de largeur de sépales sont supérieures à 3 ? Entre 2.8 et 3.2 ? 
 
 Comment peut-on visualiser la distribution des données (fonction `table()`) ? 
 
-Quelles sont les 10 valeurs les plus petites ?
+Quelles sont les dix valeurs les plus petites ?
 
-Comment calculer un intervalle contenant 90% des valeurs ?
+Comment calculer un intervalle contenant 90 % des valeurs ?
 
-Si la distribution des données était Normale, quelle serait la valeur théorique de cet intervalle de 90% (fonction `qnorm()`) ?
+Si la distribution des données était Normale, quelle serait la valeur théorique de cet intervalle de 90 % (fonction `qnorm()`) ?
 
-Solutions proposées :
+**Solutions proposées**
 
 ```{r 015-fonctions-49}
 length(iris$Sepal.Width[iris$Sepal.Width > 3])
@@ -710,11 +708,11 @@ qnorm(
 )
 ```
 
-## Ecrire une fonction {#l015function}
+## Écrire une fonction {#l015function}
 
 \index{fonction}
 
-Lorsque nous reproduisons plusieurs fois les mêmes opérations, le code devient fastidieux à écrire, et plus difficile à maintenir car si nous devons effectuer une modification, il faudra la répéter chaque fois que nous l'avons utilisée. C'est un signe indiquant la nécessité de recourir à une **fonction**. Dans l'exemple qui suit, il est fastidieux de modifier le code si nous souhaitons ajouter +45 au lieu de +20 à chaque ligne.
+Lorsque nous reproduisons plusieurs fois les mêmes opérations, le code devient fastidieux à écrire et plus difficile à maintenir, car si nous devons effectuer une modification, il faudra la répéter chaque fois que nous l'avons utilisée. C'est un signe indiquant la nécessité de recourir à une **fonction**. Dans l'exemple qui suit, il est fastidieux de modifier le code si nous souhaitons ajouter 45 au lieu de 20 à chaque ligne.
 
 ```{r 015-fonctions-50}
 35 + 20
@@ -723,7 +721,7 @@ Lorsque nous reproduisons plusieurs fois les mêmes opérations, le code devient
 782 + 20
 ```
 
-Comme pour les fonctions de base de R, nos fonctions vont avoir un **nom**, et des **arguments**. Comme pour les noms des objets et les noms des fichiers, il est important de bien choisir le nom de notre fonction (cf. [section sur les objets](#l011object)). Pour créer une fonction nous allons utiliser la fonction `function()` qui prend comme arguments les arguments de notre fonction. La fonction va retourner le résultat souhaité. Par défaut le résultat renvoyé est le dernier utilisé, mais il est préférable de l'expliciter avec la fonction `return()`. La fonction suivante `addX` prend comme argument `x` et renvoie `x + 20`.
+Comme c'est le cas les fonctions de base de R, nos fonctions vont avoir un **nom** et des **arguments**. À l'instar des noms des objets et des noms des fichiers, il est important de bien choisir le nom de notre fonction (voir la [section 1.3 sur les objets](#l011object)). Pour créer une fonction nous allons utiliser la fonction `function()` qui prend comme arguments ceux de notre fonction. La fonction va retourner le résultat souhaité. Par défaut le résultat renvoyé est le dernier utilisé, mais il est préférable de l'expliciter avec la fonction `return()`. La fonction suivante `addX` prend comme argument `x` et renvoie `x + 20`.
 
 ```{r 015-fonctions-51}
 addX <- function(x){
@@ -758,7 +756,7 @@ Ici nous aurions pu utiliser le format `vector` pour éviter les répétitions, 
 c(35, 758, 862, 782) + 20
 ```
 
-Voyons cette fonction qui va compter le nombre de consonnes et de voyelles en minuscule dans un mot. Tout d'abord nous allons séparer toutes les lettres avec la fonction `strsplit` (nous pouvons consulter l'aide pour en savoir plus sur cette fonction). Ensuite nous allons compter les voyelles et les consonnes avec la fonction [`length()`](#l015length). Pour avoir la liste des lettres nous allons utiliser la constante `letters` (consulter l'aide). 
+Voyons cette fonction qui va compter le nombre de consonnes et de voyelles en minuscules dans un mot. Tout d'abord nous allons séparer toutes les lettres avec la fonction `strsplit` (nous pouvons consulter l'aide pour en savoir plus sur cette fonction). Ensuite nous allons compter les voyelles et les consonnes avec la fonction [`length()`](#l015length). Pour obtenir la liste des lettres nous allons utiliser la constante `letters` (consulter l'aide). 
 
 ```{r 015-fonctions-55}
 countVowelConso <- function(word){
@@ -777,7 +775,7 @@ Nous pouvons maintenant utiliser notre fonction.
 countVowelConso(word = "qwertyuiop azertyuiop")
 ```
 
-Cette fonction peut être modifiée en affichant un message plus explicite. Même si en général ce genre de message est à éviter pour ne pas surcharger les fonctions, il peut être utile pour vérifier que tout se déroule correctement (nous le supprimerons ensuite).
+Cette fonction peut être modifiée en affichant un message plus explicite. Même si d'une manière générale ce genre de message est à éviter pour ne pas surcharger les fonctions, il peut être utile pour vérifier que tout se déroule correctement (nous le supprimerons ensuite).
 
 ```{r 015-fonctions-57, linewidth=65}
 countVowelConso <- function(word){
@@ -793,7 +791,7 @@ countVowelConso <- function(word){
 countVowelConso(word = "qwertyuiop azertyuiop")
 ```
 
-Par contre si nous utilisons `countVowelConso(word = 5)`, une erreur va être renvoyée car notre fonction attend un objet de type `character`. De manière générale il est recommandé de gérer les erreurs renvoyées par nos fonctions afin que notre code soit plus facile à débugger. Ici nous allons simplement vérifier que l'argument est de type `character`, dans un `vector` de taille 1. Nous allons aussi commenter notre fonction pour rapidement retrouver ce qu'elle réalise (commentaire inséré sur la première ligne, que l'on retrouve aussi parfois sur la dernière ligne des fonctions).
+En revanche, si nous utilisons `countVowelConso(word = 5)`, une erreur va être renvoyée car notre fonction attend un objet de type `character`. D'une manière générale, il est recommandé de gérer les erreurs renvoyées par nos fonctions afin de générer un code qui soit plus facile à débugger. Ici nous allons simplement vérifier que l'argument est de type `character`, dans un `vector` de taille 1. Nous allons aussi commenter notre fonction pour rapidement retrouver ce qu'elle réalise (commentaire inséré sur la première ligne, que l'on retrouve aussi parfois sur la dernière ligne des fonctions).
 
 ```{r 015-fonctions-58, linewidth=65}
 countVowelConso <- function(word){ # compte les voyelles 
@@ -814,7 +812,7 @@ countVowelConso(word = "qwertyuiop azertyuiop")
 countVowelConso(word = 5)
 ```
 
-Avec R comme pour tout langage de programmation, pour un problème il existe toujours de multiples solutions. Nous nous souvenons de la section sur les types de données ([type de données `logical`](#l013logi)), ainsi que de la section sur les [opérateurs de comparaison](#l011opcomp) que la valeur de `TRUE` est de 1 et la valeur de `FALSE` est de 0. Nous venons de voir ci-dessus que la fonction [`%in%`](#l015in) renvoie `TRUE` ou `FALSE` pour chacun des éléments du premier objet en fonction de leur présence ou absence dans le second objet. Notre fonction aurait donc pu se passer de la fonction `length()` pour le comptage des voyelles et des consonnes et utiliser la fonction `sum()`. 
+Avec R, comme pour tout langage de programmation, pour un problème il existe toujours de multiples solutions. Nous nous souvenons de la section 3.4 sur les types de données ([type de données `logical`](#l013logi)), ainsi que de la section 1.2 sur les [opérateurs de comparaison](#l011opcomp) que la valeur de `TRUE` est de 1 et la valeur de `FALSE` est de 0. Nous venons de voir que la fonction [`%in%`](#l015in) renvoie `TRUE` ou `FALSE` pour chacun des éléments du premier objet en fonction de leur présence ou absence dans le second objet. Notre fonction aurait donc pu se passer de la fonction `length()` pour le comptage des voyelles et des consonnes et utiliser la fonction `sum()`. 
 
 ```{r 015-fonctions-59}
 countVowelConsoAlt <- function(word){ # compte les voyelles 
@@ -834,7 +832,7 @@ countVowelConsoAlt <- function(word){ # compte les voyelles
 countVowelConsoAlt(word = "qwertyuiop azertyuiop")
 ```
 
-Il n'y a pas de solution optimale dans l'absolu, tout dépend des objectifs recherchés. La première solution est peut être plus facile à comprendre, et la seconde peut-être plus rapide en terme de vitesse d'exécution (même en répétant l'utilisation de la fonction 100000 fois, le gain de temps est presque nul dans notre cas).
+Il n'y a pas de solution optimale dans l'absolu, tout dépend des objectifs recherchés. La première solution est peut-être plus facile à comprendre, et la seconde peut-être plus rapide en termes de vitesse d'exécution (même en répétant l'utilisation de la fonction 100 000 fois, le gain de temps est presque nul dans notre cas).
 
 ```{r 015-fonctions-60}
 system.time(replicate(
@@ -845,7 +843,7 @@ system.time(replicate(
   countVowelConsoAlt(word = "qwertyuiop azertyuiop")))
 ```
 
-Une fonction peut avoir des valeurs par défaut pour ses arguments. C'est le cas de la plupart des fonctions existantes. Par défaut, notre fonction va désormais compter le nombre de voyelles et de consonnes dans le mot `qwerty` (les parenthèses restent nécessaires même en l'absence d'arguments).
+Bien souvent, les arguments des fonctions existantes prennent des valeurs par défaut. Par défaut, notre fonction va désormais compter le nombre de voyelles et de consonnes dans le mot `qwerty` (les parenthèses restent nécessaires même en l'absence d'arguments).
 
 ```{r 015-fonctions-61}
 countVowelConsoAlt <- function(word = "qwerty"){ 
@@ -864,39 +862,39 @@ countVowelConsoAlt <- function(word = "qwerty"){
 countVowelConsoAlt()
 ```
 
-R compte de nombreuses fonctions, donc avant de vous lancer dans l'écriture d'une nouvelle fonction, il faut toujours vérifier que celle-ci n'existe pas déjà soit dans la version de base de R, soit dans des **packages** développés par la communauté des utilisateurs. Pour cela nous pouvons utiliser l'aide et la fonction `??`, mais aussi notre navigateur Internet.
+R compte de nombreuses fonctions, donc avant de vous lancer dans l'écriture d'une nouvelle fonction, il faut toujours vérifier que celle-ci n'existe pas déjà soit dans la version de base de R, soit dans des **packages** développés par la communauté des utilisateurs. Pour cela nous pouvons utiliser l'aide et la fonction `??`, mais aussi le navigateur Internet.
 
 ## Les packages
 
 \index{package}
 
-Un package est un ensemble de fichiers que l'on va ajouter à R pour pouvoir utiliser des fonctions (ou des jeux de données) que d'autres personnes ont développés. Il y a à ce jour plus de 10000 packages sur les serveurs de R (CRAN ; https://cran.r-project.org/web/packages/), plus de 1000 sur les serveurs de BioConductor (pour l'analyse génomique), et plusieurs centaines sur GitHub (il existe d’autres serveurs populaires comme R-forge ou encore Omegahat). Chaque package permet de mettre à disposition des fonctions pour à peu près tout faire... Il peut donc être difficile de trouver le package adapté à ce que nous souhaitons réaliser. Il est donc important de consacrer du temps à sa recherche, de tester plusieurs solutions et de consulter l'aide. 
+Un package est constitué d'un ensemble de fichiers que l'on va ajouter à R pour pouvoir utiliser des fonctions (ou des jeux de données) que d'autres personnes ont développés. Il existe à ce jour plus de 10 000 packages sur les serveurs de R (CRAN ; https://cran.r-project.org/web/packages/), plus de 1000 sur les serveurs de BioConductor (pour l'analyse génomique), et plusieurs centaines sur GitHub (il existe d’autres serveurs populaires comme R-forge ou encore Omegahat). Chaque package permet de mettre à disposition des fonctions pour à peu près tout faire... Il peut donc être difficile de trouver le package adapté. Il est donc important de consacrer du temps à sa recherche, de tester plusieurs solutions et de consulter l'aide. 
 
-Pour utiliser un package il nous faut tout d'abord l'**installer**, puis le **charger** dans notre session de R.
+Pour utiliser un package il nous faut tout d'abord l'**installer**, puis le **charger** dans la session de R.
 
 ### Installer un package
 
-Une fois notre package identifié, nous pouvons le télécharger et l'installer avec la fonction `install.packages()` qui prend comme argument le nom du package entre guillemets (la fonction tolère l'absence de guillemets mais il est préférable de les utiliser pour que le code soit plus lisible). Certains packages sont installés par défaut avec R, c'est le cas par exemple de `stats` (qui est aussi chargé par défaut).
+Une fois le package identifié, nous pouvons le télécharger et l'installer avec la fonction `install.packages()` qui prend comme argument le nom du package entre guillemets (la fonction tolère l'absence de guillemets mais il est préférable de les utiliser pour que le code soit plus lisible). Certains packages sont installés par défaut avec R, c'est le cas par exemple de `stats` (qui est aussi chargé par défaut).
 
 ```{r 015-fonctions-62, eval = FALSE}
 install.packages("stats") # R statistical functions
 ```
 
-L'installation d'un package est à réaliser une seule fois, ensuite le package est physiquement sur notre ordinateur, mais pas pour autant disponible pour R.
+L'installation d'un package ne se fait qu'une seule fois, ensuite le package est physiquement sur l'ordinateur, mais pas pour autant disponible pour R.
 
 ### Charger un package
 
-Pour pouvoir utiliser les fonctions d'un package, nous devons le charger dans notre session de R. Il y a tellement de packages disponibles que R ne va pas charger par défaut tous ceux que nous avons installé, mais seulement ceux dont nous allons avoir besoin pour notre étude en cours. Pour charger un package nous utilisons la fonction `library()`. 
+Pour pouvoir utiliser les fonctions d'un package, nous devons le charger dans notre session de R. Il existe tellement de packages disponibles que R ne va pas charger par défaut tous ceux que nous avons installés, mais seulement ceux dont nous allons avoir besoin pour l'étude en cours. Pour charger un package nous utilisons la fonction `library()`. 
 
 ```{r 015-fonctions-63, eval = FALSE}
 library("stats")
 ```
 
-Le chargement du package est à réaliser à chaque fois que nous souhaitons exécuter notre code, il fait donc partie intégrante de notre script.
+Le chargement du package est à réaliser à chaque fois que nous souhaitons exécuter le code, il fait donc partie intégrante du script.
 
-### Portabilité du code
+### La portabilité du code
 
-Nous venons de voir que l'installation d'un package est à faire une seule fois par ordinateur, et que par contre le chargement d'un package est à réaliser pour chaque nouvelle session de R. Si l'on change d'ordinateur ou si l'on partage un script avec un collègue, il peut donc y avoir des erreurs à l'exécution liées à l'absence de l'installation d'un package. Pour pallier à ce problème, il est recommandé d'utiliser une fonction qui va vérifier si les packages nécessaires à l'exécution d'un script sont installés, si besoin les installer, puis les charger. Il existe de nombreuses fonctions pour faire cela sur Internet. La solution que nous proposons ici est un mélange adapté de différentes sources. Il n'est pas nécessaire de comprendre les détails de ce script pour le moment, mais simplement de comprendre ce qu'il fait. Voici un exemple pour les packages `stats` et `graphics` qui sont deux packages déjà présents avec la version de base de R, mais nous pouvons essayer avec tous les packages disponibles sur le CRAN, dont la liste se trouve ici : https://cran.r-project.org/web/packages/available_packages_by_name.html.
+Nous venons de voir que l'installation d'un package est à faire une seule fois par ordinateur, mais qu'en revanche, le chargement d'un package est à réaliser pour chaque nouvelle session de R. Si l'on change d'ordinateur ou si l'on partage un script avec un collègue, il peut donc y avoir des erreurs à l'exécution, liées à l'absence de l'installation d'un package. Pour pallier ce problème, il est recommandé d'utiliser une fonction qui va vérifier que les packages nécessaires à l'exécution d'un script sont installés, si besoin les installer, puis les charger. Il existe de nombreuses fonctions pour faire cela sur Internet. La solution que nous proposons ici correspond à une combinaison de différentes sources. Il n'est pas nécessaire de comprendre les détails de ce script pour le moment, mais simplement de comprendre ce qu'il fait. Voici un exemple pour les packages `stats` et `graphics` qui sont deux packages fournis avec la version de base de R, mais nous pouvons essayer avec tous les packages disponibles sur le CRAN, dont la liste se trouve ici : https://cran.r-project.org/web/packages/available_packages_by_name.html.
 
 ```{r 015-fonctions-64, eval = FALSE}
 pkgCheck <- function(packages){
@@ -912,14 +910,14 @@ pkgCheck <- function(packages){
 pkgCheck(c("stats", "graphics"))
 ```
 
-Alternativement nous pouvons utiliser la fonction `.packages()` pour lister les packages disponibles sur le CRAN par ordre alphabétique.
+Alternativement, nous pouvons utiliser la fonction `.packages()` pour lister les packages disponibles sur le CRAN par ordre alphabétique.
 
 ```{r 015-fonctions-65}
 head(.packages(all.available = TRUE), n = 30)
 ```
 
-La fonction `pkgCheck()` assure la **portabilité** de nos scripts : ils fonctionneront sur tous les ordinateurs sans avoir à effectuer de modification. Ainsi nos scripts pourront par exemple être joints à nos articles scientifiques et assurer ainsi la **reproductibilité** de nos résultats.
+La fonction `pkgCheck()` assure la **portabilité** des scripts : ils fonctionneront sur tous les ordinateurs sans avoir à être modifiés. Ainsi les scripts pourront par exemple être joints à des articles scientifiques et assurer ainsi la **reproductibilité** des résultats.
 
-## Conclusion
+## En bref
 
-Félicitations ! Nous savons à présent ce qu'est une fonction, comment chercher de l'aide sur une fonction, et même écrire nos propres fonctions. Nous savons aussi qu'il existe de nombreuses fonctions développées par la communauté des utilisateurs de R au sein de packages que nous savons installer et charger, et s'assurer de la portabilité de nos script d'un ordinateur à un autre (important pour la reproductibilité des résultats). Le prochain chapitre va s'intéresser à la lecture et à l'écriture de fichiers car bien souvent, nos données sont sur des fichiers de texte ou de tableurs.
+Félicitations ! Vous savez à présent ce qu'est une fonction, comment chercher de l'aide sur une fonction, et même écrire vos propres fonctions. Vous savez aussi qu'il existe de nombreuses fonctions développées par la communauté des utilisateurs de R au sein de packages que vous savez installer et charger, et vous assurer de la portabilité de vos script d'un ordinateur à un autre (important pour la reproductibilité des résultats). Le prochain chapitre va traiter de la lecture et de l'écriture de fichiers, car bien souvent, les données sont contenues par des fichiers de texte ou des tableurs.
