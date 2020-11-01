@@ -2,18 +2,18 @@
 
 \minitoc
 
-## les packages de palettes
+## Les packages de palettes
 
 \index{package}
 \index{palette}
 
-### `RColorBrewer`
+### Le package `RColorBrewer`
 
 \index{RColorBrewer}
 
 Le package `RColorBrewer` est un package populaire qui contient des palettes complémentaires à celle disponibles dans la version de base de R. Une fois le package installé, il suffit d'appeler les palettes pour les utiliser. Voici les palettes disponibles et un exemple d'utilisation (Figures \@ref(fig:021-03-graphiques-1) et \@ref(fig:021-03-graphiques-1b)).
 
-```{r 021-03-graphiques-1, fig.width=11, fig.height=6, fig.cap="Le package RColorBrewer ; voir cahier en couleurs"}
+```{r 021-03-graphiques-1, fig.width=11, fig.height=6, fig.cap="Le package RColorBrewer ; voir le cahier en couleurs."}
 pkgCheck <- function(x){ 
   if (!require(x, character.only = TRUE)){
     install.packages(x, dependencies = TRUE)
@@ -27,19 +27,19 @@ par(mar = c(1, 4, 1, 1)) # réduction des marges
 display.brewer.all()
 ```
 
-```{r 021-03-graphiques-1b, out.width = '70%', fig.cap="Exemple d'utilisation de RColorBrewer ; voir cahier en couleurs"}
+```{r 021-03-graphiques-1b, out.width = '70%', fig.cap="Exemple d'utilisation de RColorBrewer ; voir le cahier en couleurs."}
 par(mar = c(1, 1, 1, 1)) # réduction des marges
 boxplot(matrix(runif(1000), ncol = 10), 
   col = brewer.pal(10, "Paired"), axes = FALSE)
 ```
 
-### `palettesForR`
+### Le package `palettesForR`
 
 \index{palettesForR}
 
 Le package `palettesForR` est un autre package contenant des palettes prêtes à l'emploi, issues des projets 'Gimp' et 'Inkscape'. Comme pour `RColorBrewer`, il suffit d'appeler les palettes pour les utiliser. Les nombreuses palettes disponibles sont listées dans l'aide du package. Voici un exemple d'utilisation (Figures \@ref(fig:021-03-graphiques-2), \@ref(fig:021-03-graphiques-2b) et \@ref(fig:021-03-graphiques-2c)).
 
-```{r 021-03-graphiques-2, out.width = '70%', fig.cap="Exemple d'utilisation de paletteForR ; voir cahier en couleurs"}
+```{r 021-03-graphiques-2, out.width = '70%', fig.cap="Exemple d'utilisation de palettesForR ; voir le cahier en couleurs."}
 pkgCheck <- function(x){ 
   if (!require(x, character.only = TRUE)){
     install.packages(x, dependencies = TRUE)
@@ -52,7 +52,7 @@ pkgCheck("palettesForR")
 showPalette(Echo_gpl)
 ```
 
-```{r 021-03-graphiques-2b, out.width = '70%', fig.cap="Exemple d'utilisation de paletteForR ; voir cahier en couleurs"}
+```{r 021-03-graphiques-2b, out.width = '70%', fig.cap="Exemple d'utilisation de palettesForR ; voir le cahier en couleurs."}
 groupTest <- sample(1:3, size = 100, replace = TRUE) 
 valueTest <- sample(1:7, size = 100, replace = TRUE)
 tableTest <- table(groupTest, valueTest)
@@ -61,7 +61,7 @@ barplot(tableTest,
   col = Echo_gpl, axes = FALSE, beside = TRUE)
 ```
 
-```{r 021-03-graphiques-2c, out.width = '70%', fig.cap="Exemple d'utilisation de paletteForR ; voir cahier en couleurs"}
+```{r 021-03-graphiques-2c, out.width = '70%', fig.cap="Exemple d'utilisation de palettesForR ; voir le cahier en couleurs."}
 groupTest <- sample(1:3, size = 100, replace = TRUE) 
 valueTest <- sample(1:7, size = 100, replace = TRUE)
 tableTest <- table(groupTest, valueTest)
@@ -86,11 +86,11 @@ Il existe de très nombreux packages contenant des palettes. Par exemple :
 \index{ggplot2}
 \index{tidyverse}
 
-Le package `ggplot2` est une alternative aux fonctions de base de R pour réaliser des graphiques. Il repose sur "La Grammaire des Graphiques" de Leland Wilkinson et permet de réaliser des graphiques sous forme de couches, avec en général un rendu esthétique supérieur aux graphiques réalisés avec les fonctions R de base. Est-ce qu'il faut pour autant oublier ce qui a été vu jusqu'à présent et se concentrer sur l'utilisation de `ggplot2` ? Heureusement que non ! Si pour explorer un jeu de données et en sortir les tendances principales `ggplot2` s'avère parfois plus puissant, nos graphiques ne viennent jamais seuls et sont accompagnés d'analyses statistiques rendant nécessaire un travail souvent poussé sur la gestion des données. Une fois nos hypothèses de travail testées statistiquement, il devient facile de réaliser nos graphiques quel que soit leur niveau de complexité (avec les fonctions de base ou avec `ggplot2`). Par ailleurs nous verrons dans le chapitre suivant que depuis le graphique jusqu'à la figure dans l'article scientifique, il y a une série de traitements à effectuer et la manipulation des paramètres esthétiques peut se faire indépendamment de R. Donc `ggplot2` est un package intéressant car il apporte une alternative avec une autre philosophie dans la construction des graphiques, mais il ne se substitue pas à ce que nous venons d'apprendre jusqu'à présent. Dans la pratique nous pourrons utiliser l'un ou l'autre en fonction des données et des manipulations que nous souhaitons en faire. 
+Le package `ggplot2` constitue une alternative aux fonctions de base de R pour réaliser des graphiques. Il repose sur "La Grammaire des Graphiques" de Leland Wilkinson et permet de réaliser des graphiques sous forme de couches. Le rendu esthétique est généralement supérieur à celui des graphiques réalisés avec les fonctions R de base, du fait du choix des options graphiques par défaut. Est-ce qu'il faut pour autant oublier ce qui a été vu jusqu'à présent et se concentrer sur l'utilisation de `ggplot2` ? Heureusement que non ! Si, pour explorer un jeu de données et en sortir les tendances principales, `ggplot2` s'avère parfois plus puissant, nos graphiques ne viennent jamais seuls et sont accompagnés d'analyses statistiques rendant nécessaire un travail souvent poussé sur la gestion des données. Une fois nos hypothèses de travail testées statistiquement, il devient facile de créer nos graphiques, et ce quel que soit leur niveau de complexité (avec les fonctions de base ou avec `ggplot2`). Par ailleurs nous verrons dans le chapitre 12 que, depuis le graphique jusqu'à la figure dans l'article scientifique, il existe une série de traitements à effectuer et la manipulation des paramètres esthétiques peut se faire indépendamment de R. `ggplot2` est donc un package intéressant car il apporte une alternative avec une autre philosophie dans la construction des graphiques. Cependant, il ne se substitue pas à ce que nous venons d'apprendre jusqu'à présent. Dans la pratique, nous pourrons utiliser l'un ou l'autre en fonction des données et des manipulations que nous souhaitons en faire. 
 
 Pour introduire `ggplot2`, commençons par un exemple avec les données `iris` (Figures \@ref(fig:021-03-graphiques-3) et \@ref(fig:021-03-graphiques-3b)). 
 
-```{r 021-03-graphiques-3, fig.width=11, fig.height=6, fig.cap="Graphique avec ggplot2"}
+```{r 021-03-graphiques-3, fig.width=11, fig.height=6, fig.cap="Graphique obtenu avec ggplot2."}
 pkgCheck <- function(x){ 
   if (!require(x, character.only = TRUE)){
     install.packages(x, dependencies = TRUE)
@@ -108,16 +108,16 @@ p <- ggplot(data = iris, aes(
 p + geom_point() + ggtitle("ggplot2")
 ```
 
-```{r 021-03-graphiques-3b, fig.width=11, fig.height=6, fig.cap="Graphique avec R-base"}
+```{r 021-03-graphiques-3b, fig.width=11, fig.height=6, fig.cap="Graphique obtenu avec R-base."}
 # base
 par(mar = c(4, 4, 1.5, 1)) # réduction des marges
 plot(x = iris$Sepal.Length, y = iris$Sepal.Width, 
   main = "base", pch = 16)
 ```
 
-Maintenant séparons l'information en fonction de l'espèce de fleur (Figures \@ref(fig:021-03-graphiques-4) et \@ref(fig:021-03-graphiques-4b)).
+À présent, séparons l'information en fonction de l'espèce de fleur (Figures \@ref(fig:021-03-graphiques-4) et \@ref(fig:021-03-graphiques-4b)).
 
-```{r 021-03-graphiques-4, fig.width=11, fig.height=6, fig.cap="Graphique avec ggplot2 ; voir cahier en couleurs"}
+```{r 021-03-graphiques-4, fig.width=11, fig.height=6, fig.cap="Graphique obtenu avec ggplot2 ; voir le cahier en couleurs."}
 # ggplot2
 p <- ggplot(data = iris, aes(
   x = Sepal.Length, 
@@ -126,16 +126,16 @@ p <- ggplot(data = iris, aes(
 p + geom_point() + ggtitle("ggplot2")
 ```
 
-```{r 021-03-graphiques-4b, fig.width=11, fig.height=6, fig.cap="Graphique avec R-base ; voir cahier en couleurs"}
+```{r 021-03-graphiques-4b, fig.width=11, fig.height=6, fig.cap="Graphique obtenu avec R-base ; voir le cahier en couleurs."}
 # base
 par(mar = c(4, 4, 1.5, 1)) # réduction des marges
 plot(x = iris$Sepal.Length, y = iris$Sepal.Width, 
   main = "base", pch = 16, col = iris$Species)
 ```
 
-Il semble y avoir une relation entre largeur et longueur des sépales par espèces (Figures \@ref(fig:021-03-graphiques-5) et \@ref(fig:021-03-graphiques-5b)). 
+Il semble exister une relation entre largeur et longueur des sépales selon les espèces (Figures \@ref(fig:021-03-graphiques-5) et \@ref(fig:021-03-graphiques-5b)). 
 
-```{r 021-03-graphiques-5, fig.width=11, fig.height=6, fig.cap="Graphique avec ggplot2 ; voir cahier en couleurs"}
+```{r 021-03-graphiques-5, fig.width=11, fig.height=6, fig.cap="Graphique obtenu avec ggplot2 ; voir le cahier en couleurs."}
 # linear regressions
 lmFits <- lapply(1:3, function(i){
   fitSp1 <- lm(iris$Sepal.Width[as.numeric(iris$Species) == i] ~ 
@@ -165,7 +165,7 @@ p <- p + annotate(geom = "text", x = 6, y = 2.000,
 p
 ```
 
-```{r 021-03-graphiques-5b, fig.width=11, fig.height=6, fig.cap="Graphique avec R-base ; voir cahier en couleurs"}
+```{r 021-03-graphiques-5b, fig.width=11, fig.height=6, fig.cap="Graphique obtenu avec R-base ; voir le cahier en couleurs."}
 # base
 par(mar = c(4, 4, 1.5, 1)) # réduction des marges
 plot(x = iris$Sepal.Length, y = iris$Sepal.Width, 
@@ -187,13 +187,13 @@ text(
   pos = 4, col = 3)
 ```
 
-Nous pouvons voir sur ces exemples que les graphiques avec `ggplot2` commencent par un appel de la fonction `ggplot()`, dans laquelle le premier argument `data` correspond à nos données (typiquement un `data.frame`), et le deuxième argument `aes()` correspond aux informations que nous souhaitons utiliser. Par convention cette information est stockée dans un objet `p`. Nous allons ensuite ajouter des couches supplémentaires en utilisant `+`. 
+Remarquons que les graphiques créés avec `ggplot2` commencent par un appel de la fonction `ggplot()`, dans laquelle le premier argument `data` correspond à nos données (typiquement un `data.frame`), et le deuxième argument `aes()` correspond aux informations que nous souhaitons utiliser. Par convention, cette information est stockée dans un objet `p`. Nous allons ensuite ajouter des couches supplémentaires en utilisant `+`. 
 
-Dans les couches nous pouvons ajouter des aspects géométriques (le type de graphique, par exemple `geom_point()`), des statistiques (par exemple `stat_smooth()`), des annotations (par exemple `annotate()`), et bien d'autres choses liées aux axes, aux couleurs, ... La documentation complète (en anglais) peut être consultée à l'adresse https://ggplot2.tidyverse.org/ (fiche de résumé : https://github.com/rstudio/cheatsheets/blob/master/data-visualization-2.1.pdf). De nombreuses extensions à `ggplot2` sont disponibles à l'adresse http://www.ggplot2-exts.org/gallery/.
+Dans les couches, nous pouvons ajouter des aspects géométriques (le type de graphique, par exemple `geom_point()`), des statistiques (par exemple `stat_smooth()`), des annotations (par exemple `annotate()`), et bien d'autres choses liées aux axes, aux couleurs, etc. La documentation complète (en anglais) peut être consultée à l'adresse https://ggplot2.tidyverse.org/ (fiche de résumé : https://github.com/rstudio/cheatsheets/blob/master/data-visualization-2.1.pdf). De nombreuses extensions à `ggplot2` sont disponibles à l'adresse http://www.ggplot2-exts.org/gallery/.
 
-Si nous souhaitons réaliser des graphiques avec le rendu de ggplot2, mais en conservant la méthode inclue avec R, il nous suffit de changer les paramètres graphiques. En voici un exemple qui pourrait servir de base à la construction d'une fonction (Figure \@ref(fig:021-03-graphiques-5c)). 
+Pour obtenir des graphiques avec le rendu de `ggplot2`, tout en conservant la méthode incluse avec R, il nous suffit de changer les paramètres graphiques. Voici un exemple qui pourrait servir de base à la construction d'une fonction (Figure \@ref(fig:021-03-graphiques-5c)). 
 
-```{r 021-03-graphiques-5c, fig.width=11, fig.height=6, fig.cap="Graphique avec R-base dans le style de ggplot2 ; voir cahier en couleurs"}
+```{r 021-03-graphiques-5c, fig.width=11, fig.height=6, fig.cap="Graphique obtenu avec R-base dans le style de ggplot2 ; voir le cahier en couleurs."}
 par(mar = c(4, 4, 2, 8))
 plot(
   x = iris$Sepal.Length, 
@@ -228,9 +228,9 @@ tr <- lapply(spp, function(mySpp){
 })
 ```
 
-Le package `graphics` de R permet tout comme le package `ggplot2` de réaliser des graphiques de qualité mettant en valeur les résultats scientifiques. A nous de choisir le package qui correspond le mieux aux objectifs poursuivis (Figure \@ref(fig:021-03-graphiques-5d)). 
+Le package `graphics` de R permet, tout comme le package `ggplot2`, de réaliser des graphiques de qualité mettant en valeur les résultats scientifiques. À nous de choisir le package qui correspond le mieux aux objectifs poursuivis (Figure \@ref(fig:021-03-graphiques-5d)). 
 
-```{r 021-03-graphiques-5d, fig.width=11, fig.height=8, fig.cap="Graphique avec R-base des données iris ; voir cahier en couleurs"}
+```{r 021-03-graphiques-5d, fig.width=11, fig.height=8, fig.cap="Graphique obtenu avec R-base pour les données iris ; voir le cahier en couleurs."}
 par(mar = c(4, 4, 0, 0.5))
 plot(x = iris$Sepal.Length, y = iris$Sepal.Width, 
   type = 'n', axes = FALSE, panel.first = {
@@ -264,11 +264,11 @@ legend("topright", fill = my3col,
 
 \index{Plotly}
 
-`Plotly` est un package permettant de réaliser des graphiques interactifs et dynamiques (disponible pour *R*, mais aussi pour *python* et *JavaScript*). Cela peut être particulièrement utile pour les résultats ayant vocation à être diffusées sur Internet. Le package s'installe comme tous les autres avec `install.packages("plotly")`. Le package est gratuit et open source (sous license MIT -https://github.com/ropensci/plotly/blob/master/LICENSE.md-). 
+`Plotly` est un package permettant de réaliser des graphiques interactifs et dynamiques (disponible pour **R**, mais aussi pour **python** et **JavaScript**). Cela peut s'avérer particulièrement utile dans le cas de résultats ayant vocation à être diffusées sur Internet. Le package s'installe comme tous les autres avec `install.packages("plotly")`. Il est gratuit et disponible en open source (sous license MIT -https://github.com/ropensci/plotly/blob/master/LICENSE.md-). 
 
-Cet exemple a été copié depuis le site web de plotly (https://plot.ly/r/animations/). Nous pouvons visualiser l’animation dans son format HTML depuis le site web de plotly. Lors du passage de la souris au-dessus des points, le nom du pays apparaît. En cliquant sur PLAY, une animation parcours l’ensemble des années ente 1952 et 2007. 
+Cet exemple a été copié depuis le site web de plotly (https://plot.ly/r/animations/). Nous pouvons visualiser l’animation dans son format HTML depuis le site web de plotly. Lors du passage de la souris au-dessus des points, le nom du pays apparaît. En cliquant sur *PLAY*, une animation parcours l’ensemble des années ente 1952 et 2007. 
 
-```{r 021-03-graphiques-6, echo = TRUE, message = FALSE, warning = FALSE, fig.width=11, fig.height=6, fig.cap="Graphique avec plotly (à visualiser en ligne)"}
+```{r 021-03-graphiques-6, echo = TRUE, message = FALSE, warning = FALSE, fig.width=11, fig.height=6, fig.cap="Graphique obtenu avec plotly (à visualiser en ligne)."}
 pkgCheck <- function(packages){
   for(x in packages){
     try(if (!require(x, character.only = TRUE)){
@@ -301,6 +301,6 @@ p <- gapminder %>%
 p
 ```
 
-## Conclusion
+## En bref
 
-Ce chapitre nous a permis de survoler d'autres options graphiques et en particulier les packages `ggplot2` et `plotly`. Des livres spécifiques (en anglais) couvrent tous les aspects de ces packages, ici l'objectif est de savoir que ces options existent pour y avoir recours si besoin. Les sites web "Data to Viz" et "r-graph gallery" (https://www.data-to-viz.com ; https://www.r-graph-gallery.com/) permettront de se faire une idée des possibilités offertes par R quant aux représentations graphiques. Le chapitre suivant traite des processus nécessaires pour transformer un graphique R en une figure publiable dans un article scientifique. 
+Ce chapitre vous a permis de connaître d'autres options graphiques et en particulier les packages `ggplot2` et `plotly`. Des livres spécifiques (en anglais) couvrent tous les aspects de ces packages. Votre objectif est ici de savoir que ces options existent pour y avoir recours si besoin. Les sites web "*Data to Viz*" et "*r-graph gallery*" (https://www.data-to-viz.com ; https://www.r-graph-gallery.com/) vous permettront de vous faire une idée des possibilités offertes par R quant aux représentations graphiques. Le chapitre suivant traite des processus nécessaires à la transformation d'un graphique R en une figure publiable dans un article scientifique. 
