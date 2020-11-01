@@ -1,22 +1,22 @@
 # (PART) Les graphiques {-}
 
-# Graphiques simples {#graph1}
+# Les graphiques simples {#graph1}
 
 \index{graphique}
 
 \minitoc
 
-## `plot` {#graph1plot}
+## La fonction `plot` {#graph1plot}
 
 \index{plot()}
 
-Le premier type de graphique que nous allons voir est le nuage de points. Dans un nuage de points, chaque point est représenté par sa valeur en x et en y. La fonction permettant de faire un nuage de points est `plot()`. Il est recommandé de spécifier les arguments `x` et `y` même si ceux-ci ne sont pas nécessaires. Cela permet de gagner en lisibilité et d’éviter les erreurs (Figure \@ref(fig:021-01-graphiques-1)).
+Le premier type de graphique que nous allons considérer est le nuage de points. Dans un nuage de points, chaque point est représenté par sa valeur en *x* et en *y*. La fonction permettant de réaliser un nuage de points est `plot()`. Il est recommandé de spécifier les arguments `x` et `y` même si ceux-ci ne sont pas nécessaires. Cela permet de gagner en lisibilité et d’éviter les erreurs (Figure \@ref(fig:021-01-graphiques-1)).
 
 ```{r 021-01-graphiques-1_preamble, echo=FALSE}
 op <- par(no.readonly = TRUE)
 ```
 
-```{r 021-01-graphiques-1, out.width = '70%', fig.cap = "Nuage de points avec plot()"}
+```{r 021-01-graphiques-1, out.width = '70%', fig.cap = "Nuage de points avec plot()."}
 # tirage aléatoire de 50 valeurs dans une loi Normale
 myX <- rnorm(50, mean = 0, sd = 1) 
 myY <- rnorm(50, mean = 10, sd = 1)
@@ -24,17 +24,17 @@ par(mar = c(4, 4, 0, 0)) # réduction des marges
 plot(x = myX, y = myY)
 ```
 
-Comme pour tous les types de graphiques, nous pouvons ajouter une légende sur l'axe des x et des y (Figure \@ref(fig:021-01-graphiques-2)). Par défaut les axes prennent le nom des objets utilisés pour le graphique, dans la figure \@ref(fig:021-01-graphiques-1), `myX` et `myY`.
+Comme pour tous les types de graphiques, nous pouvons ajouter une légende sur l'axe des abscisses et des ordonnées (Figure \@ref(fig:021-01-graphiques-2)). Par défaut, les axes prennent le nom des objets utilisés pour le graphique, dans la figure \@ref(fig:021-01-graphiques-1), `myX` et `myY`.
 
-```{r 021-01-graphiques-2, out.width = '70%', fig.cap = "Légende des axes (xlab et ylab)"}
+```{r 021-01-graphiques-2, out.width = '70%', fig.cap = "Légende des axes (xlab et ylab)."}
 par(mar = c(4, 4, 0, 0)) # réduction des marges
 plot(x = myX, y = myY, 
   xlab = "Légende X", ylab = "Légende Y")
 ```
 
-Nous pouvons aussi définir les limites des axes en X et en Y. Ici nous représentons l’axe des X entre -3 et 3, et l’axe des Y entre 7 et 13 (Figure \@ref(fig:021-01-graphiques-3)).
+Nous pouvons aussi définir les limites des axes en abscisses et en ordonnées. Ici nous représentons l’axe des abscisses entre -3 et 3, et l’axe des ordonnées entre 7 et 13 (Figure \@ref(fig:021-01-graphiques-3)).
 
-```{r 021-01-graphiques-3, out.width = '70%', fig.cap = "Bornes des axes (xlim et ylim)"}
+```{r 021-01-graphiques-3, out.width = '70%', fig.cap = "Bornes des axes (xlim et ylim)."}
 par(mar = c(4, 4, 0, 0)) # réduction des marges
 plot(x = myX, y = myY, 
   xlab = "X", ylab = "Y", 
@@ -43,13 +43,13 @@ plot(x = myX, y = myY,
 
 Le type de point peut être défini avec l'argument `pch` qui peut prendre un caractère ou un nombre de 1 à 25 (Figures \@ref(fig:021-01-graphiques-4) et \@ref(fig:021-01-graphiques-4b)).
 
-```{r 021-01-graphiques-4, out.width = '70%', fig.cap = "Type de point 1:25 (pch)"}
+```{r 021-01-graphiques-4, out.width = '70%', fig.cap = "Type de point 1:25 (pch)."}
 par(mar = c(2, 2, 0, 0)) # réduction des marges
 plot(x = rep(seq(1:5), 5), y = rep(seq(1:5), each = 5),
   pch = 1:25, bg = "gray", xlab = "", ylab = "")
 ```
 
-```{r 021-01-graphiques-4b, out.width = '70%', fig.cap = "Type de point libre (pch)"}
+```{r 021-01-graphiques-4b, out.width = '70%', fig.cap = "Type de point libre (pch)."}
 par(mar = c(2, 2, 0, 0)) # réduction des marges
 plot(x = myX, y = myY, xlab = "", ylab = "",
   pch = c(
@@ -59,15 +59,15 @@ plot(x = myX, y = myY, xlab = "", ylab = "",
 
 La taille des points peut se définir avec l'argument `cex` (Figure \@ref(fig:021-01-graphiques-5)).
 
-```{r 021-01-graphiques-5, out.width = '70%', fig.cap = "Taille des points (cex)"}
+```{r 021-01-graphiques-5, out.width = '70%', fig.cap = "Taille des points (cex)."}
 par(mar = c(2, 2, 0, 0)) # réduction des marges
 plot(x = myX, y = myY, xlab = "", ylab = "",
   cex = seq(from = 0.5, to = 3, length.out = 50))
 ```
 
-La couleur des points peut se définir avec l'argument `col` (Figure \@ref(fig:021-01-graphiques-6)). Nous reviendrons sur les couleurs dans un prochain chapitre.
+La couleur des points peut se définir avec l'argument `col` (Figure \@ref(fig:021-01-graphiques-6)). Nous reviendrons sur les couleurs dans le chapitre 10.
 
-```{r 021-01-graphiques-6, out.width = '70%', fig.cap = "Couleur des points (col) ; voir cahier en couleurs"}
+```{r 021-01-graphiques-6, out.width = '70%', fig.cap = "Couleur des points (col) ; voir le cahier en couleurs."}
 myX <- rnorm(100, mean = 0, sd = 1)
 myY <- rnorm(100, mean = 10, sd = 1)
 par(mar = c(2, 2, 0, 0)) # réduction des marges
@@ -79,7 +79,7 @@ plot(x = myX, y = myY, xlab = "", ylab = "",
 
 Dans la représentation de nos points, la couleur et la taille des points peuvent représenter des informations complémentaires. Ici nous allons représenter par un gradient de taille la variable `myY` et par un gradient de couleur la variable `myX` (Figure \@ref(fig:021-01-graphiques-7)).
 
-```{r 021-01-graphiques-7, out.width = '70%', fig.cap="Couleur et taille des points (col) ; voir cahier en couleurs"}
+```{r 021-01-graphiques-7, out.width = '70%', fig.cap="Couleur et taille des points (col) ; voir le cahier en couleurs."}
 myX <- rnorm(100)
 myY <- rnorm(100)
 dfGraph <- data.frame(myX, myY)
@@ -93,11 +93,11 @@ plot(x = dfGraph$myX, y = dfGraph$myY,
   xlab = "", ylab = "")
 ```
 
-`myX` et `myY` correspondent à des tirages aléatoires dans une loi Normale centrée sur zéro et d'écart type 1. Ensuite nous créons l’objet `dfGraph` qui est un `data.frame` avec une colonne pour `myX` et une colonne pour `myY`. Le `data.frame` `dfGraph` est alors ordonné selon les valeurs de la colonne `myX` avec la fonction `order()`, comme nous l’avons vu précédemment. Une fois le `data.frame` ordonné, nous ajoutons un nouvelle colonne `myCol` avec `dfGraph$myCol`. Cette nouvelle colonne contient un gradient de couleurs du bleu au rouge avec 100 valeurs de couleur (même taille que `myX` et `myY`), avec la fonction `colorRampPalette()`. A présent nous allons ordonner le `data.frame` en fonction de la colonne `myY` avec la fonction `order()`. Nous créons une nouvelle colonne `myCex` avec `dfGraph$myCex` qui va contenir une séquence de taille 100 (`length.out = 100`) entre 0.5 et 3. Enfin nous pouvons faire notre graphique qui va prendre comme taille des points notre colonne `myCex`, et comme couleur des points notre colonne `myCol`. Ici l’intérêt est faible car les informations X et Y sont déjà présentes, mais l’objectif est pédagogique et nous verrons comment améliorer cet exemple dans la suite de ce livre.
+`myX` et `myY` correspondent à des tirages aléatoires dans une loi normale centrée sur zéro et d'écart type 1. Ensuite nous créons l’objet `dfGraph` qui est un `data.frame` rassemblant `myX` et `myY` dans deux colonnes. Le `data.frame` `dfGraph` est alors ordonné selon les valeurs de la colonne `myX` avec la fonction `order()`, comme nous l’avons vu précédemment. Une fois le `data.frame` ordonné, nous ajoutons un nouvelle colonne `myCol` avec `dfGraph$myCol`. Cette nouvelle colonne contient un gradient de couleurs du bleu au rouge avec 100 valeurs de couleur (même taille que `myX` et `myY`), avec la fonction `colorRampPalette()`. À présent, nous allons ordonner le `data.frame` en fonction de la colonne `myY` avec la fonction `order()`. Nous créons une nouvelle colonne `myCex` avec `dfGraph$myCex` qui va contenir une séquence de taille 100 (`length.out = 100`) entre 0.5 et 3. Enfin nous pouvons créer notre graphique qui va prendre comme taille des points notre colonne `myCex`, et comme couleur des points notre colonne `myCol`. Dans cet exemple, l’intérêt est faible car les informations X et Y sont déjà présentes, mais l’objectif est pédagogique et nous verrons comment améliorer cet exemple dans la suite de ce livre.
 
 R offre la possibilité de relier les points des nuages de points de différentes façons (Figure \@ref(fig:021-01-graphiques-8)). Les différentes options sont disponibles dans l'aide de la fonction `plot()` et `plot.default()`.
 
-```{r 021-01-graphiques-8, out.width = '70%', fig.cap="Type de lien entre les points (type)"}
+```{r 021-01-graphiques-8, out.width = '70%', fig.cap="Type de lien entre les points (type)."}
 myX <- 1:20
 myY <- rnorm(20, mean = 10, sd = 1)
 par(mar = c(2, 2, 0, 0)) # réduction des marges
@@ -105,9 +105,9 @@ plot(x = myX, y = myY, xlab = "", ylab = "",
   type = 'b') # 'p', 'l', 'b', 'c', 'o', 'h', 's', 'S', 'n'
 ```
 
-Une dernière option très utile est l'argument `panel.first` qui permet de réaliser une opération graphique sur une couche située en dessous de notre graphique. Voici un exemple illustratif avec une grille réalisée avec et sans `panel.first` (Figure \@ref(fig:021-01-graphiques-9)). La grille se fait grâce à la fonction `grid()`. Pour mettre les graphiques côte à côte nous allons utiliser `mfrow`.
+Une dernière option très utile est l'argument `panel.first` qui permet de réaliser une opération graphique sur une couche située en dessous du graphique. Voici un exemple concernant une grille réalisée avec et sans `panel.first` (Figure \@ref(fig:021-01-graphiques-9)). La grille se fait grâce à la fonction `grid()`. Pour placer les graphiques côte à côte nous allons utiliser `mfrow`.
 
-```{r 021-01-graphiques-9, out.width = '70%', fig.cap="Une grille avec panel.first()"}
+```{r 021-01-graphiques-9, out.width = '70%', fig.cap="Une grille avec panel.first()."}
 par(mfrow = c(1, 2), mar = c(2, 2, 0, 0))
 plot(x = myX, y = myY, xlab = "", ylab = "",
   type = 'b', pch = 16, cex = 3) 
@@ -118,9 +118,9 @@ plot(x = myX, y = myY, xlab = "", ylab = "",
 par(mfrow = c(1, 1))
 ```
 
-La fonction `par()` permet d'accéder aux paramètres graphiques. Parmi ces paramètres il y a `mfrow` qui permet de diviser l'espace graphique comme une matrice. `mfrow` prend comme arguments un vecteur numérique de taille 2 : le premier élément correspond au nombre de lignes et le deuxième élément au nombre de colonnes. Le paramètre `mar` permet de contrôler les marges en bas, à gauche, en haut et à droite, respectivement, au moyen d'un vecteur numérique de taille 4. Après avoir modifié les paramètres graphiques par défaut il est recommandé de les réinitialiser pour que cela n'affecte pas les graphiques à venir. Les valeurs par défaut de `mfrow` sont `c(1, 1)` et `mar = c(5.1 4.1 4.1 2.1)`. Nous pouvons remettre ces valeurs par défaut comme ci-dessus en redéfinissant chacun des paramètres. Nous pouvons également enregistrer au préalable les valeurs courantes (dans un objet `op`), puis les modifier pour les besoins de nos graphiques, puis ensuite rappeler les valeurs contenues dans l'objet `op`. Ici nous utilisons `lapply` pour réaliser rapidement quatre graphiques (Figure \@ref(fig:021-01-graphiques-10)).
+La fonction `par()` permet d'accéder aux paramètres graphiques. Parmi ces paramètres, `mfrow` permet de diviser l'espace graphique comme une matrice. `mfrow` prend comme arguments un vecteur numérique de taille 2 : le premier élément correspond au nombre de lignes et le deuxième élément au nombre de colonnes. Le paramètre `mar` permet de contrôler les marges en bas, à gauche, en haut et à droite, respectivement, au moyen d'un vecteur numérique de taille 4. Après avoir modifié les paramètres graphiques par défaut il est recommandé de les réinitialiser pour que cela n'affecte pas les graphiques à venir. Les valeurs par défaut de `mfrow` sont `c(1, 1)` et `mar = c(5.1 4.1 4.1 2.1)`. Nous pouvons reprendre ces valeurs par défaut comme précédemment en redéfinissant chacun des paramètres. Nous pouvons également enregistrer au préalable les valeurs courantes (dans un objet `op`), puis les modifier pour les besoins de nos graphiques, puis ensuite rappeler les valeurs contenues dans l'objet `op`. Ici nous utilisons `lapply` afin de réaliser rapidement quatre graphiques (Figure \@ref(fig:021-01-graphiques-10)).
 
-```{r 021-01-graphiques-10, out.width='70%', fig.cap="Quatre graphiques avec lapply() ; voir cahier en couleurs"}
+```{r 021-01-graphiques-10, out.width='70%', fig.cap="Quatre graphiques avec lapply() ; voir le cahier en couleurs."}
 op <- par(no.readonly = TRUE)
 par(mfrow = c(2, 2), mar = c(2, 2, 0, 0))
 graph4 <- lapply(1:4, function(i){
@@ -131,9 +131,9 @@ graph4 <- lapply(1:4, function(i){
 par(op)
 ```
 
-Il est souvent utile de faire figurer des lignes verticales ou horizontales pour représenter des valeurs particulières (Figure \@ref(fig:021-01-graphiques-11)). Ces lignes peuvent être ajoutées avec la fonction `abline()`. 
+Il est généralement utile de faire figurer des lignes verticales ou horizontales pour représenter des valeurs particulières (Figure \@ref(fig:021-01-graphiques-11)). Ces lignes peuvent être ajoutées avec la fonction `abline()`. 
 
-```{r 021-01-graphiques-11, out.width='70%', fig.cap="Lignes verticales et horizontales avec abline() ; voir cahier en couleurs"}
+```{r 021-01-graphiques-11, out.width='70%', fig.cap="Lignes verticales et horizontales avec abline() ; voir le cahier en couleurs."}
 myX <- rnorm(100)
 myY <- rnorm(100)
 par(mar = c(2, 2, 0, 0)) 
@@ -150,13 +150,13 @@ plot(x = myX, y = myY, xlab = "", ylab = "",
 })
 ```
 
-## `hist` {#graph1hist}
+## La fonction `hist` {#graph1hist}
 
 \index{hist()}
 
-Pour faire un histogramme nous utilisons la fonction `hist()` (Figure \@ref(fig:021-01-graphiques-12)). C'est une fonction graphique utile pour visualiser rapidement la distribution d'un jeu de données (nous reviendrons sur la gestion des couleurs dans un autre chapitre et notamment sur l'utilisation de `heat.colors()`). 
+Pour créer un histogramme nous utilisons la fonction `hist()` (Figure \@ref(fig:021-01-graphiques-12)). Cette fonction graphique permet de visualiser rapidement la distribution d'un jeu de données (nous reviendrons sur la gestion des couleurs dans le chapitre 10 et notamment sur l'utilisation de `heat.colors()`). 
 
-```{r 021-01-graphiques-12, fig.cap="Histogramme avec hist() ; voir cahier en couleurs"}
+```{r 021-01-graphiques-12, fig.cap="Histogramme avec hist() ; voir le cahier en couleurs."}
 op <- par(no.readonly = TRUE)
 par(mfrow = c(2, 2), mar = c(2, 2, 1, 1))
 myX <- list(
@@ -175,21 +175,21 @@ tr <- lapply(1:4, function(i){
 par(op)
 ```
 
-## `barplot` {#graph1barplot}
+## La fonction `barplot` {#graph1barplot}
 
 \index{barplot()}
 
-Le graphique en barres se fait au moyen de la fonction `barplot()`. Il existe une différence fondamentale entre la fonction `hist()` et la fonction `barplot()`. La fonction `hist()` procède à des calculs qui sont retournés (de façon invisible), tandis que la fonction `barplot()` fait simplement un graphique (qui est parfois appelé à tord histogramme dans certains logiciels classiques ; Figure \@ref(fig:021-01-graphiques-13)).
+Le graphique en barres se fait au moyen de la fonction `barplot()`. Il existe une différence fondamentale entre la fonction `hist()` et la fonction `barplot()`. La fonction `hist()` procède à des calculs qui sont retournés (de façon invisible), tandis que la fonction `barplot()` permet simplement de construire un graphique (qui est parfois appelé à tord histogramme dans certains logiciels classiques ; Figure \@ref(fig:021-01-graphiques-13)).
 
-```{r 021-01-graphiques-13, out.width = '70%', fig.cap="Graphique en barres avec barplot()"}
+```{r 021-01-graphiques-13, out.width = '70%', fig.cap="Graphique en barres avec barplot()."}
 myX <- c(4, 5, 8)
 par(mar = c(3, 3, 1, 1)) 
 barplot(myX, names.arg = c("A", "B", "C"))
 ```
 
-Quand l'objet envoyé à cette fonction est un `vector` alors la fonction `barplot()` renvoie un graphique en barres simples. Quand c'est une `matrix` alors les barres sont superposées (Figure \@ref(fig:021-01-graphiques-14)).
+Lorsque l'objet envoyé à cette fonction est un `vector`, alors la fonction `barplot()` renvoie un graphique en barres simples. Quand c'est une `matrix`, alors les barres sont superposées (Figure \@ref(fig:021-01-graphiques-14)).
 
-```{r 021-01-graphiques-14, out.width = '70%', fig.cap="Barplot à partir d'un objet de type matrix"}
+```{r 021-01-graphiques-14, out.width = '70%', fig.cap="Barplot à partir d'un objet de type matrix."}
 op <- par(no.readonly = TRUE)
 par(mfrow = c(1, 2), mar = c(2, 2, 1, 1))
 myX <- matrix(c(4, 5, 8, 4, 6, 2), nrow = 2)
@@ -199,15 +199,15 @@ barplot(myX, names.arg = c("A", "B", "C"))
 par(op)
 ```
 
-La fonction `barplot()` peut aussi être utilisée pour représenter l'équivalent d'un histogramme. Cela peut être utile pour représenter la distribution d'une variable en fonction de l'axe des abscisses et l'axe des ordonnées. Dans l'exemple qui suit nous avons `n` points tirés au hasard dans une loi normale de paramètres `mean = 0` et `sd = 1` (`myX <- rnorm(n)`). Ces points sont soit représentés en bleu, soit représentés en rouge (la couleur bleue est codée avec la valeur 4 et la couleur rouge avec la valeur 2, nous en reparlerons dans un prochain chapitre). Le tirage au hasard de la couleur se fait avec la fonction `sample()` (`myCol <- sample(c(4, 2), size = n, replace = TRUE)`). Ici nous voulons représenter un nuage de points avec les points en rouge ou en bleu, puis pour l'axe des abscisses et l'axe des ordonnées, des histogrammes pour voir la répartition des points et un gradient de couleur du bleu au rouge en fonction de la proportion des points de couleur dans chaque catégorie. Le gradient de couleur avec 100 valeurs entre bleu et rouge se réalise avec la fonction `colorRampPalette()` (`myColors <- colorRampPalette(c("blue", "red"))(100)`).
+La fonction `barplot()` peut aussi être utilisée pour représenter l'équivalent d'un histogramme. Cela peut être utile pour représenter la distribution d'une variable en fonction de l'axe des abscisses et l'axe des ordonnées. Dans l'exemple qui suit nous avons `n` points tirés au hasard dans une loi normale de paramètres `mean = 0` et `sd = 1` (`myX <- rnorm(n)`). Ces points sont soit représentés en bleu, soit représentés en rouge (la couleur bleue est codée avec la valeur 4 et la couleur rouge avec la valeur 2, nous en reparlerons dans le chapitre 10). Le tirage au hasard de la couleur se fait avec la fonction `sample()` (`myCol <- sample(c(4, 2), size = n, replace = TRUE)`). Ici nous voulons représenter un nuage de points avec les points en rouge ou en bleu, puis pour l'axe des abscisses et l'axe des ordonnées, des histogrammes pour voir la répartition des points et un gradient de couleur du bleu au rouge en fonction de la proportion des points de couleur dans chaque catégorie. Le gradient de couleur avec 100 valeurs entre bleu et rouge se réalise avec la fonction `colorRampPalette()` (`myColors <- colorRampPalette(c("blue", "red"))(100)`).
 
-Pour faire l'histogramme nous allons découper les données avec la fonction `cut()` en spécifiant que nous souhaitons des séparations faites entre -4 et 4 par pas de 1 (`myYCut <- cut(myY, breaks = -4:4)`). Pour avoir le compte du nombre de points dans chacune des catégories et pour chaque couleur il nous suffit d'utiliser la fonction `table()` (`myYCutCol <- table(myCol, myYCut)`). Dans cette table la première ligne correspond à la première couleur rencontrée dans le jeu de données et la deuxième ligne à l'autre couleur. C'est pourquoi il nous faut modifier le tirage aléatoire des couleurs pour que la première ligne corresponde toujours au bleu et la deuxième ligne au rouge : `myCol <- c(2, sample(c(4, 2), size = (n - 1), replace = TRUE))`.
+Pour construire l'histogramme nous allons découper les données avec la fonction `cut()` en spécifiant que nous souhaitons des séparations entre -4 et 4 par pas de 1 (`myYCut <- cut(myY, breaks = -4:4)`). Pour obtenir le compte du nombre de points dans chacune des catégories et pour chaque couleur il nous suffit d'utiliser la fonction `table()` (`myYCutCol <- table(myCol, myYCut)`). Dans cette table, la première ligne correspond à la première couleur rencontrée dans le jeu de données et la deuxième ligne à l'autre couleur. C'est pourquoi il nous faut modifier le tirage aléatoire des couleurs pour que la première ligne corresponde toujours au bleu et la deuxième ligne au rouge : `myCol <- c(2, sample(c(4, 2), size = (n - 1), replace = TRUE))`.
 
-Ensuite nous pouvons calculer la proportion de rouge en divisant la première ligne par la somme des deux lignes que nous allons représenter en pourcentage en multipliant par 100 : `myXCutCol[1,] / (myXCutCol[1,] + myXCutCol[2,]) * 100`. Pour que ce nombre corresponde à une couleur nous allons arrondir le pourcentage avec la fonction `round()`. Si le pourcentage est de zéro ou si le résultat n'est pas possible du fait d'une division par zéro alors il nous faut le remplacer par 1 afin que cela corresponde à une couleur dans notre gradient qui va de 1 à 100 (`xCol[is.na(xCol) | xCol == 0] <- 1`). L’autre option plus exacte serait de faire un gradient de 1 à 101.
+Ensuite nous pouvons calculer la proportion de rouge en divisant la première ligne par la somme des deux lignes que nous allons représenter en pourcentage en multipliant par 100 : `myXCutCol[1,] / (myXCutCol[1,] + myXCutCol[2,]) * 100`. Pour que ce nombre corresponde à une couleur nous allons arrondir le pourcentage avec la fonction `round()`. Si le pourcentage est de zéro ou si le résultat n'est pas possible du fait d'une division par zéro alors il nous faut le remplacer par 1 afin que cela corresponde à une couleur dans notre gradient qui va de 1 à 100 (`xCol[is.na(xCol) | xCol == 0] <- 1`). L’autre option plus exacte serait d'utiliser un gradient allant de 1 à 101.
 
-Il ne nous reste plus qu'à organiser l'espace graphique avec la fonction `layout()` qui prend comme argument une matrice dont les valeurs et leur position vont correspondre à l'agencement des différents graphiques que nous souhaitons réaliser. Le graphique 1 correspond au barplot du haut, le graphique 2 au nuage de points et le graphique 3 au barplot de droite (Figure \@ref(fig:021-01-graphiques-15)).  
+Il ne nous reste plus qu'à organiser l'espace graphique avec la fonction `layout()` qui prend comme argument une matrice dont les valeurs et les positions vont correspondre à l'agencement des différents graphiques que nous souhaitons réaliser. Le graphique 1 correspond au `barplot` du haut, le graphique 2 au nuage de points et le graphique 3 au `barplot` de droite (Figure \@ref(fig:021-01-graphiques-15)).  
 
-```{r 021-01-graphiques-15, fig.cap="Graphique composé ; voir cahier en couleurs"}
+```{r 021-01-graphiques-15, fig.cap="Graphique composé ; voir le cahier en couleurs."}
 n <- 50
 myX <- rnorm(n)
 myY <- rnorm(n)
@@ -242,9 +242,9 @@ barplot(
 par(op)
 ```
 
-Nous pouvons ensuite intégrer ce script dans une fonction pour par exemple étudier l'effet de la variable `n` (Figure \@ref(fig:021-01-graphiques-16)).
+Nous pouvons ensuite intégrer ce script dans une fonction afin par exemple d'étudier l'effet de la variable `n` (Figure \@ref(fig:021-01-graphiques-16)).
 
-```{r 021-01-graphiques-16, fig.cap="Graphique sous forme de fonction ; voir cahier en couleurs"}
+```{r 021-01-graphiques-16, fig.cap="Graphique sous forme de fonction ; voir le cahier en couleurs."}
 graphBarplotCol <- function(n){
   myX <- rnorm(n)
   myY <- rnorm(n)
@@ -283,14 +283,14 @@ graphBarplotCol(n = 1000)
 
 Un `barplot` peut bien sûr prendre des valeurs positives ou négatives (Figure \@ref(fig:021-01-graphiques-17)).
 
-```{r 021-01-graphiques-17, out.width = '70%', fig.cap="Barplot avec valeurs négatives ; voir cahier en couleurs"}
+```{r 021-01-graphiques-17, out.width = '70%', fig.cap="Barplot avec valeurs négatives ; voir le cahier en couleurs."}
 par(mar = c(3, 1, 1, 1)) # réduction des marges
 barplot(rnorm(20), horiz = TRUE, col = rainbow(20))
 ```
 
-Le `barplot` peut aussi être utilisé pour faire une pyramide des âges (il existe des fonctions pour réaliser des pyramides des âges, ici l'objectif est pédagogique ; Figure \@ref(fig:021-01-graphiques-18)).
+Le `barplot` peut aussi être utilisé pour générer une pyramide des âges (il existe des fonctions permettant de réaliser des pyramides des âges, ici l'objectif est pédagogique ; Figure \@ref(fig:021-01-graphiques-18)).
 
-```{r 021-01-graphiques-18, out.width = '70%', fig.cap="Pyramide des âges ; voir cahier en couleurs"}
+```{r 021-01-graphiques-18, out.width = '70%', fig.cap="Pyramide des âges ; voir le cahier en couleurs."}
 gender <- data.frame(
   m = cut(sample(1:75, 1000, replace = TRUE), 
     breaks = seq(from = 0, to = 80, by = 10)), 
@@ -310,15 +310,15 @@ barplot(
 par(op)
 ```
 
-## `boxplot` {#graph1boxplot}
+## La fonction `boxplot` {#graph1boxplot}
 
 \index{boxplot()}
 
-Les `boxplot` ou boîtes à moustache sont des graphiques très courant avec R car ils donnent un bon aperçu d'un jeu de données en représentant les valeurs extrêmes ("outliers"), la médiane, les quartiles, les minimums et les maximums (tout comme la fonction `hist()`, la fonction `boxplot()` fait des calculs qui sont retournés de façon invisible ; Figure \@ref(fig:021-01-graphiques-19)).
+Les `boxplot` ou "boîtes à moustache" sont des graphiques très courant avec R car ils donnent un bon aperçu d'un jeu de données en représentant les valeurs extrêmes ("*outliers*"), la médiane, les quartiles, les minimums et les maximums (tout comme la fonction `hist()`, la fonction `boxplot()` permet de procéder à des calculs qui sont retournés de façon invisible ; Figure \@ref(fig:021-01-graphiques-19)).
 
 La fonction `boxplot()` s'applique à un ou plusieurs `vector`.
 
-```{r 021-01-graphiques-19, out.width = '70%', fig.cap="Boxplot ; voir cahier en couleurs"}
+```{r 021-01-graphiques-19, out.width = '70%', fig.cap="Boxplot ; voir le cahier en couleurs."}
 df <- data.frame(
   box1 = rnorm(1000), 
   box2 = rgamma(1000, shape = 1), 
@@ -337,7 +337,7 @@ boxplot(
 
 Si une variable est de type `factor` ou `character`, la fonction `boxplot()` permet facilement de représenter chaque catégorie. Cela fonctionne aussi avec les variables numériques mais il faut veiller à ne pas avoir trop de valeurs différentes pour que le graphique reste lisible (Figures \@ref(fig:021-01-graphiques-20) et \@ref(fig:021-01-graphiques-20b)).
 
-```{r 021-01-graphiques-20, out.width = '70%', fig.cap="Boxplot par catégorie ; voir cahier en couleurs"}
+```{r 021-01-graphiques-20, out.width = '70%', fig.cap="Boxplot par catégorie ; voir le cahier en couleurs."}
 df$cat <- sample(
   c("w", "x", "y", "z"), 
   size = 1000, 
@@ -352,7 +352,7 @@ boxplot(
   ylab = "Box3")
 ```
 
-```{r 021-01-graphiques-20b, out.width = '70%', fig.cap="Boxplot par catégorie ; voir cahier en couleurs"}
+```{r 021-01-graphiques-20b, out.width = '70%', fig.cap="Boxplot par catégorie ; voir le cahier en couleurs."}
 df$cat2 <- sample(1:3, size = 1000, replace = TRUE)
 par(mar = c(2, 2, 0, 0)) 
 boxplot(
@@ -367,7 +367,7 @@ boxplot(
 
 Le `boxplot` peut être représenté horizontalement ou verticalement (Figure \@ref(fig:021-01-graphiques-21)).
 
-```{r 021-01-graphiques-21, out.width = '70%', fig.cap="Boxplot horizontal"}
+```{r 021-01-graphiques-21, out.width = '70%', fig.cap="Boxplot horizontal."}
 df$cat <- sample(
   c("w", "x", "y", "z"), 
   size = 1000, 
@@ -382,10 +382,10 @@ boxplot(
   rgb(166, 0, 255, maxColorValue = 255)), xlab = "Box2")
 ```
 
-## Autres graphiques
+## Les autres graphiques
 
-Il existe de nombreux autres graphiques mais ceux que nous venons de voir constituent la base. Pour plus d'information et d'idées pour représenter vos données nous pouvons consulter le très beau site https://www.data-to-viz.com/ ou encore la galerie de graphiques R https://www.r-graph-gallery.com/ (en anglais ; la plupart des graphiques sont réalisés avec le package ggplot2 que nous verrons plus tard). Pour plus d'idées vous pouvez aussi utiliser la démonstration du package `graphics` en utilisant la commande `demo("graphics")` (la touche "Entrée" permet d'afficher les graphiques).
+Il existe de nombreux autres graphiques mais ceux que nous venons de décrire constituent une bonne base de travail. Pour aller plus loin vous pouvez consulter le site https://www.data-to-viz.com/ ou encore la galerie de graphiques R https://www.r-graph-gallery.com/ (en anglais ; la plupart des graphiques sont réalisés avec le package ggplot2 que nous verrons plus tard). Vous pouvez également utiliser la démonstration du package `graphics` en utilisant la commande `demo("graphics")` (la touche "Entrée" permet d'afficher les graphiques).
 
 ## Conclusion
 
-Félicitations, nous sommes arrivés à la fin de ce chapitre sur les graphiques simples ! Nous savons désormais réaliser les principaux graphiques `plot()`, `hist()`, `barplot()`, et `boxplot()`. Tout au long de ce chapitre nous avons utilisé différentes couleurs et différentes façons de représenter les couleurs : il est temps de formaliser l'utilisation et la gestion des couleurs. C'est le sujet du prochain chapitre !
+Félicitations, vous êtes arrivé à la fin de ce chapitre sur les graphiques simples ! Nous savons désormais réaliser les principaux graphiques `plot()`, `hist()`, `barplot()`, et `boxplot()`. Tout au long de ce chapitre nous avons utilisé différentes couleurs et différentes façons de représenter les couleurs : il est temps de formaliser l'utilisation et la gestion des couleurs. C'est le sujet du prochain chapitre !
