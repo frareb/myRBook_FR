@@ -1,17 +1,17 @@
-# Gestion d'un projet avec R {#project}
+# Gérer un projet avec R {#project}
 
 \minitoc
 
 \index{gestion}
 \index{projet}
 
-Maintenant que nous avons vu les concepts de base de R, il nous reste à aborder un élément déterminant pour le bon déroulement de nos activités scientifiques avec R : la gestion de projet. Cela consiste à intégrer ses développements dans un environnement et avec une logique visant à faciliter son travail et donc augmenter son efficacité. Il ne s'agit ici que d'une façon de faire parmi les innombrables possibilités, à adapter pour chacune et chacun. 
+Maintenant que nous avons vu les concepts de base de R, il nous reste à aborder un aspect déterminant pour le bon déroulement de nos activités scientifiques avec R : la gestion de projet. Il s'agit de gagner en efficacité en intégrant les développements (fichiers, scripts ...) dans un environnement de travail selon une logique visant à faciliter la conduite de projet. Il ne s'agit ici que d'une façon de faire parmi les innombrables possibilités, à adapter pour chacune et chacun. 
 
-## Gestion des fichiers et des répertoires de travail
+## Gérer des fichiers et des répertoires de travail
 
 \index{répertoire}
 
-Entre les fichiers d'entrée (i.e., les fichiers qui contiennent nos données brutes), les fichiers de sortie (e.g., avec la fonction `write()`), les graphiques (prochain chapitre), et les nombreux scripts associés à un projet de recherche, un minimum d'organisation s'impose pour pouvoir être efficace et reprendre rapidement son projet en cours. La solution la plus simple consiste à structurer son environnement de travail en dossiers en fonction de chaque catégorie de fichiers. Par exemple avec un dossier "myProject" pour le projet en cours, contenant lui-même les dossiers "myFiles" pour les fichiers d'entrée, un dossier "myScripts" pour les fichiers script R, et un dossier "myOutputs" pour les fichiers de sortie (e.g., les graphiques et les analyses). Si les fichiers sont organisés d’une façon définie, les chemins relatifs pour charger les données ou pour sauvegarder des résultats seront toujours les mêmes d’un ordinateur à un autre.
+Entre les fichiers d'entrée (c'est-à-dire les fichiers qui contiennent les données brutes), les fichiers de sortie (par exemple les fichiers issus de la fonction `write()`), les graphiques (chapitre 9), et les nombreux scripts associés à un projet de recherche, un minimum d'organisation s'impose pour pouvoir être efficace et reprendre rapidement son projet en cours. La solution la plus simple consiste à structurer son environnement de travail en dossiers en fonction de chaque catégorie de fichiers. Par exemple avec un dossier "myProject" pour le projet en cours, contenant lui-même les dossiers "myFiles" pour les fichiers d'entrée, un dossier "myScripts" pour les fichiers script R, et un dossier "myOutputs" pour les fichiers de sortie (par exemple les graphiques et les analyses). Lorsque les fichiers sont organisés d’une façon définie, les chemins relatifs permettant de charger les données ou de sauvegarder des résultats sont toujours les mêmes d’un ordinateur à un autre.
 
 ```{r 018-gestproj-1, echo = FALSE}
 cat("-myProject
@@ -25,16 +25,16 @@ cat("-myProject
 |-|-figure01.pdf")
 ```
 
-## Gestion des versions de script
+## Gérer des versions de script
 
 \index{version}
 \index{script}
 
-Le travail sur un script est itératif : même si les objectifs sont définis dès le départ, nous allons retravailler certaines parties pour obtenir par exemples des informations supplémentaires, ou encore pour optimiser telle ou telle fonction, ou encore rendre généralisable un script pour le communiquer à la communauté scientifique ou tout simplement à un collègue. Parfois ce que nous allons voir comme une amélioration va au final se révéler être une erreur, et le retour au script initial peut être difficile. Il faut donc gérer des versions. 
+Le travail sur un script est itératif : même si les objectifs sont définis dès le départ, il est nécessaire de retravailler certaines parties afin d'obtenir par exemple des informations supplémentaires, ou bien pour optimiser telle ou telle fonction, ou encore pour rendre généralisable un script et le communiquer à la communauté scientifique ou tout simplement à un collègue. Parfois, ce que nous voyons comme une amélioration va au final se révéler être une erreur, et le retour au script initial peut être difficile. Cela implique donc de gérer des versions. 
 
-Pour ce faire il existe des logiciels spécialisées dans la gestion des versions, on les appelle tout simplement des gestionnaires de version. Les plus connus sont GIT (https://git-scm.com/) et Subversion (https://subversion.apache.org/). Nous pouvons les utiliser localement sur notre ordinateur, puis synchroniser nos contenus (scripts R, fichiers de données, ...) avec des versions sur serveur afin de pouvoir travailler à plusieurs sur le même code ou alors pour rendre disponible son code tout en permettant la collaboration. Les versions pour serveurs viennent avec une couche logicielle supplémentaire afin de faciliter l'administration de la gestion des dépôts. Il existe de nombreux serveurs gratuits en ligne comme GitHub (https://github.com/ ; ce livre utilise GitHub), GitLab (https://about.gitlab.com/), Bitbucket (https://bitbucket.org/), SourceForge (https://sourceforge.net/), GitKraken (https://www.gitkraken.com/), ou encore Launchpad (https://launchpad.net/). Les adhérents aux services de RENATER pourront utiliser GIT avec SourceSup (https://services.renater.fr/sourcesup/git/index).
+Pour ce faire il existe des logiciels spécialisées dans la gestion des versions, on les appelle tout simplement des gestionnaires de version. Les plus connus sont GIT (https://git-scm.com/) et Subversion (https://subversion.apache.org/). Nous pouvons les utiliser localement sur notre ordinateur, puis synchroniser nos contenus (scripts R, fichiers de données ...) avec des versions en ligne afin de pouvoir travailler à plusieurs sur le même code ou alors pour rendre disponible son code tout en permettant la collaboration. Les versions pour serveurs viennent avec une couche logicielle supplémentaire afin de faciliter l'administration de la gestion des dépôts. Il existe de nombreux serveurs gratuits en ligne comme GitHub (https://github.com/ ; ce livre utilise GitHub), GitLab (https://about.gitlab.com/), Bitbucket (https://bitbucket.org/), SourceForge (https://sourceforge.net/), GitKraken (https://www.gitkraken.com/), ou encore Launchpad (https://launchpad.net/). Les adhérents aux services de RENATER pourront utiliser GIT avec SourceSup (https://services.renater.fr/sourcesup/git/index).
 
-L'utilisation de ces différents services de gestion des versions sort du cadre de ce livre. Pour le débutant ou pour les projets ne nécessitant pas un travail collaboratif sur les scripts, une alternative consiste à gérer ses versions manuellement. Par exemple une solution consiste à ajouter un numéro à la fin de son nom de fichier de script (e.g., "myFirstScript_01.R"). Dès qu'une modification importante est apportée à ce script, il suffira alors de le sauver avec un nouveau nom (e.g., "myFirstScript_02.R") et de placer l'ancien script dans un dossier d'archive pour ne pas encombrer l'espace de travail et risquer des erreurs. En cas de problème, nous pourrons ainsi facilement retourner au script antérieur et reprendre notre travail.
+L'utilisation de ces différents services de gestion des versions sort du cadre de ce livre. Pour le débutant ou pour les projets ne nécessitant pas un travail collaboratif sur les scripts, une alternative consiste à gérer ses versions manuellement. Par exemple une solution consiste à ajouter un numéro à la fin de son nom de fichier de script (par exemple, "myFirstScript_01.R"). Dès qu'une modification importante est apportée à ce script, il suffit alors de le sauvegarder avec un nouveau nom (par exemple, "myFirstScript_02.R") et de placer l'ancien script dans un dossier d'archive pour ne pas encombrer l'espace de travail et ne pas se tromper de version. En cas de problème, il est facile de retourner au script antérieur et de reprendre le travail.
 
 ```{r 018-gestproj-2, echo = FALSE}
 cat("-myProject
@@ -52,17 +52,17 @@ cat("-myProject
 |-|-figure01.pdf")
 ```
 
-## Gestion de la documentation
+## Gérer la documentation
 
 \index{documentation}
 
-La documentation de son code est essentielle pour pouvoir facilement reprendre un travail ou communiquer son travail avec ses collègues et la communauté scientifique. Un code bien documenté sera compréhensible par un plus grand nombre et donc utilisé d'avantage. Il est donc important d'adopter de bonnes pratiques.
+La documentation du code est essentielle au bon déroulement d'un travail collaboratif ou de communication. Un code bien documenté sera compréhensible par le plus grand nombre et donc d'avantage utilisé. Il est donc important d'adopter de bonnes pratiques.
 
-Nous avons déjà vu qu'il y avait plusieurs façons d'écrire son code avec R car c'est un langage assez permissif. Le premier pas vers un code lisible et reproductible est donc d'adopter un style de code clair, cohérent, et... fait pour les humains ! Car même si notre code a vocation à être exécuté par les machines, il doit rester compréhensible pour soi et toutes les personnes qui seront amenées à le consulter et/ou l'utiliser. Il s'agit par exemple de mettre des espaces après les virgules, ou encore d'utiliser l'indentation (l'identation peut être automatique avec certains éditeurs comme Emacs). Il s'agit aussi d'éviter les lignes trop longues ou le trop grand nombre de parenthèses emboîtées. Bien sûr la lisibilité du code doit être à balancer avec l'optimisation du code pour les  grands jeux de données, mais dans la plupart des cas nous pouvons associer un code clair et optimisé. Donc la première étape de la documentation et de sa gestion est tout d'abord de rédiger son code en pensant aux personnes qui vont le lire et le reproduire.
+Nous avons déjà vu qu'il existe plusieurs façons d'écrire son code avec R car pour un problème donné, il existe plusieurs solutions, mais également car c'est un langage assez permissif. Le premier pas vers un code lisible et reproductible est donc d'adopter un style de code clair, cohérent et... fait pour les humains ! Car même si notre code a vocation à être exécuté par les machines, il doit rester compréhensible pour soi et toutes les personnes qui seront amenées à le consulter et/ou l'utiliser. Il s'agit par exemple de mettre des espaces après les virgules, ou encore d'utiliser l'indentation (l'indentation peut être automatique avec certains éditeurs comme Emacs). Il s'agit aussi d'éviter les lignes trop longues ou le trop grand nombre de parenthèses emboîtées. Bien sûr, la lisibilité du code doit être à équilibrer avec l'optimisation du code pour les  grands jeux de données, mais dans la plupart des cas nous pouvons associer un code clair et optimisé. Donc la première étape de la documentation et de sa gestion consiste tout d'abord à rédiger son code en pensant aux personnes qui vont le lire et le reproduire.
 
-La deuxième étape est de commenter son code. Les commentaires sont indispensables lorsque nous privilégions du code optimisé pour la performance mais qui peut parfois perdre en lisibilité (bien que nous verrons que l'on peut écrire du code simple à lire - et à comprendre - et optimisé). Certains commentaires peuvent être superflus si le code est bien rédigé et les objets et les fonctions bien nommés. Cela veut dire qu'il ne faut pas utiliser les commentaires pour expliquer un code mal rédigé, mais dès le début bien rédiger son code. Les commentaires sont utiles pour apporter des éléments de contexte (e.g., choix d'une méthode plutôt qu'une autre au regard de la littérature). La place des commentaires peut être en fin de ligne ou sur des lignes à part. 
+La deuxième étape consiste à commenter son code. Les commentaires sont indispensables lorsque nous visons un code optimisé mais qui peut parfois perdre en lisibilité (bien que nous verrons que l'on peut écrire du code simple à lire — et à comprendre — et optimisé). Certains commentaires peuvent être superflus si le code est bien rédigé et les objets et les fonctions bien nommés. Cela veut dire qu'il ne faut pas utiliser les commentaires pour expliquer un code mal rédigé, mais dès le début bien rédiger son code. Les commentaires permettent d'apporter des éléments de contexte (par exemple le choix d'une méthode plutôt qu'une autre au regard de la littérature). Les commentaires peuvent être placés en fin de ligne ou sur des lignes à part. 
 
-Pour un projet R il est indispensable que chaque script commence par une description de son contenu pour que nous puissions rapidement savoir de quoi il traite. C'est ce que nous avions fait au début de ce livre : 
+Dans le cadre d'un projet R, il est indispensable que chaque script commence par une description de son contenu pour que nous puissions rapidement savoir de quoi il traite. C'est ce que nous avions fait au début de l'ouvrage : 
 
 ```{r 018-gestproj-3, eval = FALSE}
 # ------------------------------------------------------------
@@ -84,7 +84,7 @@ nbrRep <- 5
 pi * nbrRep^2
 ```
 
-Ici les commentaires qui suivent l'en-tête ne sont pas nécessaires car le nom de l'objet se comprend de lui-même. Notre fichier devient :
+Ici, les commentaires qui suivent l'en-tête ne sont pas nécessaires car le nom de l'objet se comprend de lui-même. Notre fichier devient :
 
 ```{r 018-gestproj-4, eval = FALSE}
 # ------------------------------------------------------------
@@ -99,7 +99,7 @@ nbrRep <- 5
 pi * nbrRep^2
 ```
 
-Pour un gros projet avec de nombreuses fonctions destinées à être utilisées par d'autres usagers, il est préférable que la documentation du code soit à part, dans un fichier d'aide spécifique. C'est le cas de tous les packages R ! Pour gérer la documentation d'un package (et donc de toutes les fonctions), là encore il existe de nombreuses possibilités. La plus répandue consiste à utiliser le package R roxigen2. Sans entrer dans les détails, voici quelques exemples de documentations de package. 
+Lorsque le projet est complexe, avec de nombreuses fonctions destinées à être utilisées par d'autres usagers, il est préférable que la documentation du code soit consignée à part, dans un fichier d'aide spécifique. C'est le cas de tous les packages R ! Pour gérer la documentation d'un package (et donc de toutes les fonctions), là encore il existe de nombreuses possibilités. La plus répandue consiste à utiliser le package R roxigen2. Sans entrer dans les détails, voici quelques exemples de documentations de package. 
 
 ```{r 018-gestproj-5, eval = FALSE}
 #' Add together two numbers
@@ -128,13 +128,13 @@ add <- function(x, y) {
 sum <- function(..., na.rm = TRUE) {}
 ```
 
-Cela permet d'écrire la documentation de chaque fonction à côté de la fonction (contrairement à la fonction `prompt()` qui va créer un fichier de documentation pour un objet R qu'il faudra ensuite éditer manuellement). Le package roxigen2 va ensuite générer à partir de ces commentaires un document d'aide accessible avec la fonction `'?'`. A moins que nous écrivions un nouveau package, les commentaires simples suffiront, et le développement d'un package sort du cadre de ce livre. 
+Cela permet d'écrire la documentation de chaque fonction à côté de la fonction (contrairement à la fonction `prompt()` qui va créer un fichier de documentation pour un objet R qu'il faudra ensuite éditer manuellement). Le package roxigen2 va ensuite générer à partir de ces commentaires un document d'aide accessible avec la fonction `'?'`. À moins que nous n'écrivions un nouveau package, les commentaires simples suffiront, et le développement d'un package sort du cadre de ce livre. 
 
 ## Communiquer avec rmarkdown
 
 \index{rmarkdown}
 
-Les gestionnaires de version sur serveur sont très utiles car ils permettent à de multiples utilisateurs de contribuer à un même script. Ils constituent des outils collaboratifs très puissants. Cependant dans certains cas nous devons communiquer avec des collaborateurs non-initiés à R et ce en amont du processus de publication scientifique. Dans les cas où le code et les fichiers associés ne suffisent pas (même quand le code est lisible et reproductible), il peut être intéressant de passer par un document qui montrera le code et le résultat de son exécution dans un seul et même fichier. C’est ce que permet le package *rmarkdown* en permettant la génération de documents (eg HTML, PDF, Word) de manière dynamique (https://rmarkdown.rstudio.com/), et en assurant la reproductibilité des analyses. 
+Les gestionnaires de version sur serveur sont très utiles car ils permettent à de multiples utilisateurs de contribuer à un même script. Ils constituent des outils collaboratifs très puissants. Cependant, dans certains cas, nous devons communiquer avec des collaborateurs non initiés à R, et ce en amont du processus de publication scientifique. Dans les cas où le code et les fichiers associés ne suffisent pas (même lorsque le code est lisible et reproductible), il peut être intéressant de mettre en place un document qui rassemble le code et le résultat de son exécution dans un seul et même fichier. C’est ce que permet le package **rmarkdown** en permettant la génération de documents (par exemple, HTML, PDF, Word) de manière dynamique (https://rmarkdown.rstudio.com/), et en assurant la reproductibilité des analyses. 
 
 ```{r install-rmarkdown}
 pkgCheck <- function(x){ 
@@ -148,8 +148,8 @@ pkgCheck <- function(x){
 pkgCheck("rmarkdown")
 ```
 
-Les possibilités de *rmarkdown* sont immenses et sortent du cadre de ce livre. Deux ressources de référence couvrent tous les aspects de *rmarkdown* : le site web officiel (https://rmarkdown.rstudio.com) et le livre numérique de Yihui Xie, J. J. Allaire, Garrett Grolemund (R Markdown: The Definitive Guide ; https://bookdown.org/yihui/rmarkdown/). Pour aller plus loin, nous pourrons consulter le livre numérique de Yihui Xie (bookdown: Authoring Books and Technical Documents with R Markdown ; https://bookdown.org/yihui/bookdown/). Il existe d'autres possibilités comme `Sweave` qui permet d'introduire du code et des sorties R dans un document LaTeX (`?Sweave` ; F. Leisch et R-core 2002), ou encore `knitr` (https://yihui.org/knitr/) pour générer des rapports dynamiques (*rmarkdown* utilise le package `knitr`).
+Les possibilités de `rmarkdown` sont immenses et sortent du cadre de ce livre. Deux ressources de référence couvrent tous les aspects de `rmarkdown` : le site web officiel (https://rmarkdown.rstudio.com) et le livre numérique de Yihui Xie, J. J. Allaire, Garrett Grolemund : *R Markdown: The Definitive Guide* (https://bookdown.org/yihui/rmarkdown/). Pour aller plus loin, nous pourrons consulter le livre numérique de Yihui Xie : *bookdown: Authoring Books and Technical Documents with R Markdown* (https://bookdown.org/yihui/bookdown/). Il existe d'autres possibilités comme `Sweave` qui permet d'introduire du code et des sorties R dans un document LaTeX (`?Sweave` ; F. Leisch et R-core 2002), ou encore `knitr` (https://yihui.org/knitr/) pour générer des rapports dynamiques (`rmarkdown` utilise le package `knitr`).
 
-## Conclusion
+## En bref
 
-Félicitations ! Ce chapitre marque la fin de la première partie de ce livre. Nous avons désormais les bases pour mener à bien nos projets avec R. Dans la prochaine partie nous allons voir les graphiques et comment faire des figures dans le cadre d'articles scientifiques. 
+Félicitations ! Ce chapitre marque la fin de la première partie de ce livre. Nous disposons désormais des bases pour mener à bien nos projets avec R. Dans la prochaine partie nous allons considérer la réalisation des graphiques et des figures dans le cadre d'articles scientifiques. 
