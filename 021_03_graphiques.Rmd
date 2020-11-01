@@ -266,9 +266,9 @@ legend("topright", fill = my3col,
 
 `Plotly` est un package permettant de réaliser des graphiques interactifs et dynamiques (disponible pour **R**, mais aussi pour **python** et **JavaScript**). Cela peut s'avérer particulièrement utile dans le cas de résultats ayant vocation à être diffusées sur Internet. Le package s'installe comme tous les autres avec `install.packages("plotly")`. Il est gratuit et disponible en open source (sous license MIT -https://github.com/ropensci/plotly/blob/master/LICENSE.md-). 
 
-Cet exemple a été copié depuis le site web de plotly (https://plot.ly/r/animations/). Nous pouvons visualiser l’animation dans son format HTML depuis le site web de plotly. Lors du passage de la souris au-dessus des points, le nom du pays apparaît. En cliquant sur *PLAY*, une animation parcours l’ensemble des années ente 1952 et 2007. 
+Cet exemple a été copié depuis le site web de Plotly (https://plot.ly/r/animations/). Nous pouvons visualiser l’animation dans son format HTML depuis le site web de Plotly. Lors du passage de la souris au-dessus des points, le nom du pays apparaît. En cliquant sur *PLAY*, une animation parcours l’ensemble des années ente 1952 et 2007. 
 
-```{r 021-03-graphiques-6, echo = TRUE, message = FALSE, warning = FALSE, fig.width=11, fig.height=6, fig.cap="Graphique obtenu avec plotly (à visualiser en ligne)."}
+```{r 021-03-graphiques-6, echo = TRUE, message = FALSE, warning = FALSE, fig.width=11, fig.height=6, fig.cap="Graphique obtenu avec Plotly (à visualiser en ligne)."}
 pkgCheck <- function(packages){
   for(x in packages){
     try(if (!require(x, character.only = TRUE)){
@@ -303,4 +303,4 @@ p
 
 ## En bref
 
-Ce chapitre vous a permis de connaître d'autres options graphiques et en particulier les packages `ggplot2` et `plotly`. Des livres spécifiques (en anglais) couvrent tous les aspects de ces packages. Votre objectif est ici de savoir que ces options existent pour y avoir recours si besoin. Les sites web "*Data to Viz*" et "*r-graph gallery*" (https://www.data-to-viz.com ; https://www.r-graph-gallery.com/) vous permettront de vous faire une idée des possibilités offertes par R quant aux représentations graphiques. Le chapitre suivant traite des processus nécessaires à la transformation d'un graphique R en une figure publiable dans un article scientifique. 
+Ce chapitre vous a permis de connaître d'autres options graphiques et en particulier les packages `ggplot2` et `Plotly`. Des livres spécifiques (en anglais) couvrent tous les aspects de ces packages. Votre objectif est ici de savoir que ces options existent pour y avoir recours si besoin. Les sites web "*Data to Viz*" et "*r-graph gallery*" (https://www.data-to-viz.com ; https://www.r-graph-gallery.com/) vous permettront de vous faire une idée des possibilités offertes par R quant aux représentations graphiques. Le chapitre suivant traite des processus nécessaires à la transformation d'un graphique R en une figure publiable dans un article scientifique. 
