@@ -4,11 +4,11 @@
 
 \index{couleur}
 
-Nous avons vu différentes manières d'utiliser les couleurs : avec leur nom (e.g., `"salmon"`), avec un numéro de 1 à 8, avec la fonction `rgb()` (pour "red", "green", "blue"), et avec la fonction `colors()`. Il en existe d'autres mais celles-ci sont les principales.
+Nous avons vu différentes manières d'utiliser les couleurs : avec leur nom (par exemple `"salmon"`), avec un numéro de 1 à 8, avec la fonction `rgb()` (pour *red*, *green*, *blue*), et avec la fonction `colors()`. Il en existe d'autres mais celles-ci sont les principales.
 
-L'utilisation des numéros de 1 à 8 correspondait avant la version 4.0.0 au noir, rouge, vert, bleu, cyan, magenta, jaune et gris (`black`, `red`, `green`, `blue`, `cyan`, `magenta`, `yellow`, `grey`). Ce qui avait pour conséquence de produire des graphiques visuellement insuffisants (saturation, luminosité). Depuis la version 4.0.0, une nouvelle palette par défaut est disponible (voir `palette()`) et améliore un peu les graphiques (Figure \@ref(fig:021-02-graphiques-1)). Cette utilisation est pratique pour visualiser rapidement nos résultats mais ces couleurs restent plutôt à éviter pour communiquer nos graphiques.
+L'utilisation des numéros 1 à 8 correspondait avant la version 4.0.0 au noir, rouge, vert, bleu, cyan, magenta, jaune et gris (`black`, `red`, `green`, `blue`, `cyan`, `magenta`, `yellow`, `grey`). Ce qui avait pour conséquence de produire des graphiques visuellement insuffisants (saturation, luminosité). Depuis la version 4.0.0, une nouvelle palette par défaut est disponible (voir `palette()`) et améliore un peu les graphiques (Figure \@ref(fig:021-02-graphiques-1)). Cette palette permet de visualiser rapidement des résultats mais ces couleurs restent plutôt à éviter pour communiquer des graphiques.
 
-```{r 021-02-graphiques-1, out.width = '70%', fig.cap="Les nouvelles couleurs de R 4.x ; voir cahier en couleurs"}
+```{r 021-02-graphiques-1, out.width = '70%', fig.cap="Les nouvelles couleurs de R 4.x ; voir le cahier en couleurs."}
 par(mar = c(2, 0, 0, 0), mfrow = c(1, 2)) 
 barplot(
   matrix(rep(1, 8), ncol = 1),
@@ -25,19 +25,19 @@ text(x = rep(1, 8), y = 1:8 - 0.5, labels = 1:8,
   col = c("white", rep(1, 7)), cex = 2)
 ```
 
-## `colors()`
+## La fonction `colors()`
 
 \index{colors()}
 
-Pour choisir des couleurs plus agréables et mettant plus en avant nos résultats, une option consiste à les choisir dans la liste des couleurs préenregistrées dans R. Nous pouvons accéder à la liste des couleurs avec la fonction `colors()`.
+Pour choisir des couleurs plus agréables lors de la communication des résultats, une option consiste à les choisir dans la liste des couleurs préenregistrées dans R. Nous pouvons accéder à la liste des couleurs avec la fonction `colors()`.
 
 ```{r 021-02-graphiques-2}
 head(colors(), n = 20)
 ```
 
-Nous pouvons utiliser ces couleurs avec leur nom (e.g., "white", "azure3"), ou alors avec leur numéro (e.g., "white" = `colors()[1]`, "azure3" = `colors()[16]` ; Figure \@ref(fig:021-02-graphiques-3)). 
+Nous pouvons utiliser ces couleurs avec leur nom (par exemple, `white`, `azure3`), ou alors avec leur numéro (par exemple, `white` = `colors()[1]`, `azure3` = `colors()[16]` ; Figure \@ref(fig:021-02-graphiques-3)). 
 
-```{r 021-02-graphiques-3, fig.width=10, fig.height=6, fig.cap="La fonction colors() ; voir cahier en couleurs"}
+```{r 021-02-graphiques-3, fig.width=10, fig.height=6, fig.cap="La fonction colors() ; voir le cahier en couleurs."}
 # adapted from http://www.r-graph-gallery.com/42-colors-names/
 op <- par(no.readonly = TRUE)
 par(mar = c(0, 0, 0, 0))
@@ -68,11 +68,11 @@ text(
 par(op)
 ```
 
-## `rgb()`
+## La fonction `rgb()`
 
 \index{rgb()}
 
-Une autre option consiste à construire ses propres couleurs ave la fonction `rgb()` qui prend comme argument la quantité de rouge, de de vert, et de bleu. Par défaut ces valeurs sont comprises entre 0 et 1. Ce réglage par défaut peut être modifié avec l'argument `maxColorValue` pour par exemple avoir des valeurs entre 0 et 255 (`maxColorValue = 255` ; norme pour la représentation des couleurs RGB). Pour transformer une couleur de R en RGB, nous pouvons utiliser la fonction `col2rgb()`.
+Une autre option consiste à construire ses propres couleurs avec la fonction `rgb()` qui prend comme argument la quantité de rouge, de vert et de bleu. Par défaut, ces valeurs sont comprises entre 0 et 1. Ce réglage par défaut peut être modifié avec l'argument `maxColorValue` pour par exemple obtenir des valeurs entre 0 et 255 (`maxColorValue = 255` ; norme pour la représentation des couleurs RGB). Pour transformer une couleur de R en RGB, nous pouvons utiliser la fonction `col2rgb()`.
 
 ```{r 021-02-graphiques-4b}
 col2rgb(c("red", "green", "blue"))
@@ -80,7 +80,7 @@ col2rgb(c("red", "green", "blue"))
 
 Nous allons reprendre notre fonction permettant de représenter la distribution de points dans un nuage de points au moyen de `barplot` avec cette fois trois couleurs de points (rouge, vert, bleu), et des `barplot` dont la couleur correspondra à la quantité de chaque couleur avec la fonction `rgb()` (Figure \@ref(fig:021-02-graphiques-4)).
 
-```{r 021-02-graphiques-4, fig.cap="Graphique avec rgb() ; voir cahier en couleurs"}
+```{r 021-02-graphiques-4, fig.cap="Graphique avec rgb() ; voir le cahier en couleurs."}
 graphBarplotCol <- function(n){
   myX <- rnorm(n)
   myY <- rnorm(n)
@@ -123,15 +123,15 @@ graphBarplotCol <- function(n){
 graphBarplotCol(n = 50)
 ```
 
-Avec la fonction `rgb()` nous pouvons donc représenter `256^3` couleurs, soit 167 777 216 couleurs différentes. Notre objectif reste cependant de faire des graphiques agréables à lire et qui mettent bien en valeurs nos résultats scientifiques. Il faut donc choisir les couleurs adéquates au regard de notre objectif. C'est pour cela que nous allons utiliser des palettes.
+Avec la fonction `rgb()` il est possible de représenter `256^3` couleurs, soit 167 777 216 couleurs différentes. Notre objectif reste cependant de réaliser des graphiques agréables à lire et qui mettent bien en valeur les résultats scientifiques. Il est donc nécessaire de choisir des couleurs adaptées à l'objectif visé. C'est pour cela que nous allons utiliser des palettes.
 
-## Palettes
+## Les palettes
 
 \index{palette}
 
 Les palettes sont des jeux de couleurs représentées sous forme d'un `vector` avec les couleurs au format hexadécimal (valeur renvoyée par la fonction `rgb()` par exemple ; Figure \@ref(fig:021-02-graphiques-5)).
 
-```{r 021-02-graphiques-5, out.width = '70%', fig.cap="Exemple de palette ; voir cahier en couleurs"}
+```{r 021-02-graphiques-5, out.width = '70%', fig.cap="Exemple de palette ; voir le cahier en couleurs."}
 myPal <- c(
   rgb(0, 94, 255, maxColorValue = 255),  
   rgb(255, 0, 174, maxColorValue = 255),  
@@ -164,7 +164,7 @@ tr <- lapply(1:ncol(matJitterX), function(i){
 Il existe des palettes inclues dans R : `terrain.colors()`, `heat.colors()`, `topo.colors()`, 
 `cm.colors()` et `rainbow()` (Figure \@ref(fig:021-02-graphiques-6)). 
 
-```{r 021-02-graphiques-6, out.width = '90%', fig.cap="Palettes inclues dans R ; voir cahier en couleurs"}
+```{r 021-02-graphiques-6, out.width = '90%', fig.cap="Palettes inclues dans R ; voir le cahier en couleurs."}
 op <- par(no.readonly = TRUE)
 par(mfrow = c(1, 5), mar = c(0, 0, 2, 0))
 myPals <- list(terrain.colors(10), heat.colors(10), 
@@ -187,7 +187,7 @@ par(op)
 
 Il existe aussi une fonction `colorRampPalette()` qui permet de créer un dégradé de couleurs (Figure \@ref(fig:021-02-graphiques-7)).
 
-```{r 021-02-graphiques-7, out.width = '90%', fig.cap="La fonction colorRampPalette() ; voir cahier en couleurs"}
+```{r 021-02-graphiques-7, out.width = '90%', fig.cap="La fonction colorRampPalette() ; voir le cahier en couleurs."}
 op <- par(no.readonly = TRUE)
 par(mfrow = c(3, 1), mar = c(0, 0, 0, 0))
 boxplot(
@@ -207,11 +207,11 @@ boxplot(
 par(op)
 ```
 
-Nous pouvons aussi créer nos propres palettes en utilisant des sites web dédiés à la sélection des couleurs comme http://paletton.com/ ou https://coolors.co/ (il en existe bien d'autres), puis les utiliser dans R en recopiant dans un vecteur les valeurs hexadécimales ou rgb. 
+Il est également possible de créer ses propres palettes à partir de sites web dédiés à la sélection des couleurs comme http://paletton.com/ ou https://coolors.co/ (il en existe bien d'autres), puis de les utiliser dans R en recopiant dans un vecteur les valeurs hexadécimales ou RGB. 
 
-R est un langage de programmation très puissant. Nous pouvons imaginer de nombreuses façons de créer automatiquement des palettes en fonction de critères variés. Par exemple nous pouvons importer une image dont les teintes nous semblent pertinentes, puis extraire les informations de chacun des points pour ensuite sélectionner les couleurs dominantes via un regroupement par cluster. C'est ce que fait la fonction suivante.
+R est un langage de programmation très puissant. Nous pouvons imaginer de nombreuses façons de créer automatiquement des palettes en fonction de critères variés. Par exemple, il est possible d'importer une image dont les teintes semblent pertinentes, puis d'extraire les informations de chacun des points pour ensuite sélectionner les couleurs dominantes via un regroupement par cluster. C'est ce que fait la fonction suivante.
 
-Tout d'abord nous allons charger les packages `raster`, `rgdal` et `jpeg` qui vont nous servir à manipuler notre image sous R.
+Tout d'abord, nous allons charger les packages `raster`, `rgdal` et `jpeg` qui vont nous servir à manipuler notre image sous R.
 
 ```{r 021-02-graphiques-8, warning=FALSE, message=FALSE, linewidth=65}
 pkgCheck <- function(x){ 
@@ -228,9 +228,9 @@ pkgCheck("rgdal")
 pkgCheck("jpeg")
 ```
 
-Ensuite nous allons utiliser la fonction `kmeans()` pour effectuer des groupes de couleurs en utilisant les valeurs RGB de chacun des points de notre image. Ici nous avons deux méthodes possibles, la première utilise la fonction `kmeans()` pour les trois valeurs RGB, et la seconde utilise la fonction `kmeans()` pour chaque valeur RGB individuellement (cette seconde fonction donne une palette qui pourra être assez éloignée des couleurs de l'image de départ ; Figures \@ref(fig:021-02-graphiques-9) et \@ref(fig:021-02-graphiques-9b)).
+Ensuite, nous allons utiliser la fonction `kmeans()` pour former des groupes de couleurs en utilisant les valeurs RGB de chacun des points de notre image. Ici nous disposons de deux méthodes possibles, la première utilise la fonction `kmeans()` pour les trois valeurs RGB, et la seconde utilise la fonction `kmeans()` pour chaque valeur RGB individuellement (cette seconde fonction donne une palette qui pourra être assez éloignée des couleurs de l'image de départ ; Figures \@ref(fig:021-02-graphiques-9) et \@ref(fig:021-02-graphiques-9b)).
 
-```{r 021-02-graphiques-9, out.width = '70%', fig.cap="Palette depuis une image, méthode 1 ; voir cahier en couleurs"}
+```{r 021-02-graphiques-9, out.width = '70%', fig.cap="Palette depuis une image, méthode 1 ; voir le cahier en couleurs."}
 createPal <- function(photo, met = 1, graph = TRUE, k = 9){
   if(met == 1){
     colR <- getValues(raster(photo, band = 1))
@@ -313,7 +313,7 @@ myPalMet1 <- createPal(
   k = 5)
 ```
 
-```{r 021-02-graphiques-9b, out.width = '70%', fig.cap="Palette depuis une image, méthode 2 ; voir cahier en couleurs"}
+```{r 021-02-graphiques-9b, out.width = '70%', fig.cap="Palette depuis une image, méthode 2 ; voir le cahier en couleurs."}
 myPalMet2 <- createPal(
   photo = "./myFiles/photoKmeans.jpg", 
   met = 2, 
@@ -323,7 +323,7 @@ myPalMet2 <- createPal(
 
 La fonction nous renvoie les couleurs de la palette avec un graphique en barres représentant le nombre de points de l'image dans chacun des groupes de couleurs. Nous pouvons désormais utiliser notre nouvelle palette pour réaliser nos graphiques (Figure \@ref(fig:021-02-graphiques-10)). 
 
-```{r 021-02-graphiques-10, out.width = '90%', fig.cap="Utilisation d'une palette ; voir cahier en couleurs"}
+```{r 021-02-graphiques-10, out.width = '90%', fig.cap="Utilisation d'une palette ; voir le cahier en couleurs."}
 makeImpact <- function(
     myPal, 
     numP = 300, 
@@ -355,6 +355,6 @@ makeImpact(
 par(op)
 ```
 
-## Conclusion
+## En bref
 
-Félicitations ! C'est la fin de ce chapitre sur la gestion des couleurs. Nous savons désormais comment utiliser les couleurs et les palettes, et comment guider le choix des couleurs pour mettre en valeur nos résultats. Dans le prochain chapitre nous allons voir quelques exemples de packages graphiques et les dernières tendances comme les graphiques dynamiques. 
+Félicitations ! C'est la fin de ce chapitre sur la gestion des couleurs. Vous savez désormais utiliser les couleurs et les palettes et guider le choix des couleurs pour mettre en valeur vos résultats. Dans le prochain chapitre, nous allons voir quelques exemples de packages graphiques et les dernières tendances comme les graphiques dynamiques. 
