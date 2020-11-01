@@ -4,13 +4,13 @@
 
 \index{algorithmique}
 
-En consultant [Wikipedia](https://fr.wikipedia.org/wiki/Algorithmique), nous pouvons lire que *L'algorithmique est l'étude et la production de règles et techniques qui sont impliquées dans la définition et la conception d'algorithmes, c'est-à-dire de processus systématiques de résolution d'un problème permettant de décrire précisément des étapes pour résoudre un problème algorithmique*. Imaginons un problème simple consistant à trier des sportifs en fonction de leurs performances. Après la définition d'un seuil (par exemple courir le 100 m en moins de 12 secondes), notre règle consistera à dire que *si* le sportif court le 100 m en moins de 12 secondes, *alors* il est bien entraîné, *sinon* il doit encore s'entraîner. Dans ce chapitre nous allons voir comment formaliser ce type de problème en abordant les algorithmes les plus simples et les plus utiles. Cela nous permettra par la suite de consulter avec plus d'aisance les ouvrages spécifiques sur l'algorithmique avec R.
+En consultant [Wikipedia](https://fr.wikipedia.org/wiki/Algorithmique), nous pouvons lire que *L'algorithmique est l'étude et la production de règles et techniques qui sont impliquées dans la définition et la conception d'algorithmes, c'est-à-dire de processus systématiques de résolution d'un problème permettant de décrire précisément des étapes pour résoudre un problème algorithmique*. Imaginons un problème simple consistant à trier des sportifs en fonction de leurs performances. Après la définition d'un seuil (par exemple courir le 100 mètres en moins de 12 secondes), notre règle consistera à dire que **si** le sportif court le 100 mètres en moins de 12 secondes, **alors** il est bien entraîné, **sinon** il doit encore s'entraîner. Dans ce chapitre nous allons voir comment formaliser ce type de problème en abordant les algorithmes les plus simples et les plus utiles. Cela nous permettra par la suite de consulter avec plus d'aisance les ouvrages spécifiques sur l'algorithmique avec R.
 
-## Tests logiques avec `if` {#l17if}
+## Les tests logiques avec `if` {#l17if}
 
 \index{if()}
 
-Si nous voulons effectuer une opération différente en fonction d'une condition, nous pouvons mettre en place un test logique du type **SI** *ceci* **ALORS** *faire cela* **SINON** *faire cela*. Avec R cela va se traduire par la fonction `if(cond) cons.expr else alt.expr` comme indiqué dans l'aide de la fonction.
+Pour effectuer une opération différente en fonction d'une condition, nous pouvons mettre en place un test logique du type **SI** **ceci** **ALORS** **faire cela** **SINON** **faire cela**. Avec R cela va se traduire par la fonction `if(cond) cons.expr else alt.expr` comme l'indique l'aide de la fonction.
 
 ```{r 017-boucles-1}
 myVar <- 2
@@ -18,7 +18,7 @@ if(myVar < 3) print("myVar < 3")
 if(myVar < 3) print("myVar < 3") else print("myVar > 3")
 ```
 
-Lorsque il y a plusieurs lignes de codes à exécuter en fonction du test logique, ou simplement pour rendre le code plus facile à lire, nous allons utiliser plusieurs lignes avec les acolades `{}` et en utilisant l'indentation. Nous pouvons retenir comme règle de présentation qu'une ligne de code de plus de 80 caractères (voire 60) doit être découpée en plusieurs lignes. Les éditeurs de texte les plus communs permettent la visualisation d'une ligne verticale à 80 ou 60 caractères pour symboliser cette barrière.
+Lorsqu'il y a plusieurs lignes de codes à exécuter en fonction du test logique, ou simplement pour rendre le code plus facile à lire, nous utilisons plusieurs lignes avec les accolades `{}` et en employant l'indentation. Nous pouvons retenir comme règle de présentation qu'une ligne de code de plus de 80 caractères (voire 60) doit être découpée en plusieurs lignes. Les éditeurs de texte les plus communs permettent la visualisation d'une ligne verticale à 80 ou 60 caractères pour symboliser cette barrière.
 
 ```{r 017-boucles-2}
 myVar <- 2
@@ -33,9 +33,9 @@ if(myVar < 3){
 print(myResult)
 ```
 
-Dans cet exemple nous définissons une variable `myVar`. Si cette variable est inférieure à 3 alors la variable `myResult` prend comme valeur `myVar + 10`, et dans le cas contraire `myResult` prend comme valeur `myVar - 10`. 
+Dans cet exemple, nous définissons une variable `myVar`. Si cette variable est inférieure à 3 alors la variable `myResult` prend comme valeur `myVar + 10`, et dans le cas contraire `myResult` prend comme valeur `myVar - 10`. 
 
-Nous avions déjà vu l'utilisation du test logique `if` dans le [chapitre sur les fonctions](#l015function). Nous avions alors testé si la variable entrée comme argument dans notre fonction était bien de type `character`.
+Nous avons déjà vu l'utilisation du test logique `if` dans le [chapitre 5 sur les fonctions](#l015function). Nous avons alors testé si la variable entrée comme argument dans notre fonction était bien de type `character`.
 
 ```{r 017-boucles-3}
 myVar <- "qwerty"
@@ -65,7 +65,7 @@ if(is.character(myVar)){
 }
 ```
 
-Il est aussi possible de stipuler plusieurs conditions, comme nous l'avons vu lors du chapitre sur les [opérateurs de comparaison](#l011opcomp).
+Il est également possible de stipuler plusieurs conditions, comme nous l'avons vu lors du chapitre 1.2 sur les [opérateurs de comparaison](#l011opcomp).
 
 ```{r 017-boucles-5}
 myVar <- 2
@@ -74,7 +74,7 @@ if(myVar > 1 & myVar < 50){
 }
 ```
 
-Dans cet exemple `myVar` est au format `numeric` donc la première condition (`>1`), et la seconde condition (`<50`) sont toutes les deux vérifiables. Par contre si nous affectons une variable de type `character` à `myVar` alors R va transformer 0 et 10 en objets de type `character` et tester si `myVar > "1"` puis si `myVar < "50"` en se basant sur un tri par ordre alphabétique. Dans l'exemple suivant `"azerty"` n'est pas situé par ordre alphabétique entre `"1"` et `"50"`, par contre c'est le cas de `"2azerty"`. 
+Dans cet exemple, `myVar` est au format `numeric`, donc la première condition (`>1`) et la seconde condition (`<50`) sont toutes les deux vérifiables. En revanche, si nous affectons une variable de type `character` à `myVar` alors R va transformer 0 et 10 en objets de type `character` et tester si `myVar > "1"` puis si `myVar < "50"` en se basant sur un tri par ordre alphabétique. Dans l'exemple suivant `"azerty"` n'est pas situé par ordre alphabétique entre `"1"` et `"50"`, par contre c'est le cas de `"2azerty"`. 
 
 ```{r 017-boucles-6}
 myVar <- "azerty"
@@ -97,7 +97,7 @@ if(myVar > limInit & myVar < limEnd){
 }
 ```
 
-Donc ce que nous voudrions faire est de tester si `myVar` est bien au format `numeric` puis uniquement si c'est le cas de tester les conditions suivantes. 
+Nous souhaiterions donc tester si `myVar` est bien au format `numeric` puis, uniquement si c'est le cas, tester les conditions suivantes. 
 
 ```{r 017-boucles-7}
 myVar <- "2azerty"
@@ -114,7 +114,7 @@ if(is.numeric(myVar)){
 }
 ```
 
-Parfois, nous pouvons avoir besoin de tester une première condition puis une seconde condition uniquement si la première se vérifie dans un même test. Par exemple, pour un site nous voudrions savoir si il y a une seule espèce et tester si son abondance est supérieure à 10. Imaginons un jeu de données sous forme de vecteur des abondances. Nous allons tester le nombre d'espèces avec la fonction [`length()`](#l015length). 
+Nous pouvons parfois avoir besoin de tester une première condition puis une seconde condition uniquement si la première se vérifie dans un même test. Par exemple, pour un site naturel nous voudrions savoir s'il y a une seule espèce et vérifier que son abondance est supérieure à 10. Imaginons un jeu de données sous forme de vecteur des abondances. Nous allons tester le nombre d'espèces avec la fonction [`length()`](#l015length). 
 
 ```{r 017-boucles-8, eval = FALSE}
 mySpecies <- c(15, 14, 20, 12)
@@ -127,7 +127,7 @@ if(length(mySpecies) == 1 & mySpecies > 10){
 ##   element will be used
 ```
 
-R renvoie un avertissement car il ne peut pas au sein d'un test logique avec `if()` vérifier la seconde condition. En effet, `mySpecies > 10` renvoie `TRUE TRUE TRUE TRUE TRUE`. Nous pouvons séparer le code en deux conditions :
+R renvoie un avertissement car il ne peut pas, au sein d'un test logique avec `if()`, vérifier la seconde condition. En effet, `mySpecies > 10` renvoie `TRUE TRUE TRUE TRUE TRUE`. Nous pouvons séparer le code en deux conditions :
 
 ```{r 017-boucles-9}
 mySpecies <- c(15, 14, 20, 12)
@@ -138,7 +138,7 @@ if(length(mySpecies) == 1){
 }
 ```
 
-Une alternative plus élégante consiste à spécifier à R de vérifier la seconde condition uniquement si la première est vraie. Pour cela nous pouvons utiliser `&&` à la place de `&`.
+Une alternative plus élégante consiste à demander à R de vérifier la seconde condition uniquement si la première est vraie. Pour cela nous pouvons utiliser `&&` à la place de `&`.
 
 ```{r 017-boucles-10}
 mySpecies <- c(15, 14, 20, 12)
@@ -155,13 +155,13 @@ if(length(mySpecies) == 1 && mySpecies > 10){
 }
 ```
 
-Avec `&` R va vérifier toutes les conditions, et avec `&&` R va prendre chaque condition l'une après l'autre et poursuivre uniquement si elle se vérifie. Cela peut paraître anecdotique mais il est bon de connaître la différence entre `&` et `&&` car nous les rencontrons souvent dans les codes disponibles sur Internet ou dans les packages. 
+Avec `&`, R va vérifier toutes les conditions, et avec `&&`, R va prendre chaque condition l'une après l'autre et poursuivre uniquement si elle se vérifie. Cela peut paraître anecdotique mais il est bon de connaître la différence entre `&` et `&&` car nous les rencontrons régulièrement dans les codes mis à disposition par la communauté ou dans les packages. 
 
-## Tests logiques avec `switch` {#l17switch}
+## Les tests logiques avec `switch` {#l17switch}
 
 \index{switch()}
 
-La fonction `switch()` est une variante de `if()` qui est utile lorsque nous avons de nombreuses options possibles sur une même expression. L'exemple suivant montre comment transformer un code utilisant `if()` en `switch()`.
+La fonction `switch()` est une variante de `if()` qui est utile lorsque de nombreuses options sont possibles sur une même expression. L'exemple suivant montre comment transformer un code utilisant `if()` en `switch()`.
 
 ```{r 017-boucles-11}
 x <- "aa"
@@ -193,7 +193,7 @@ print(result)
 \index{for()}
 \index{boucle}
 
-En programmation, lorsque nous sommes amenés à répéter plusieurs fois la même ligne de code, c'est un signe indiquant qu'il faut utiliser une **boucle**. Une boucle est une manière d'itérer sur un ensemble d'objets (ou sur les éléments d'un objet), et de répéter une opération. Imaginons un `data.frame` avec des mesures de terrain à deux dates. 
+En programmation, le fait d'être amené à répéter plusieurs fois la même ligne de code indique qu'il faut utiliser une **boucle**. Une boucle est une manière d'itérer sur un ensemble d'objets (ou sur les éléments d'un objet), et de répéter une opération. Imaginons un `data.frame` avec des mesures de terrain à deux dates. 
 
 ```{r 017-boucles-12}
 bdd <- data.frame(date01 = rnorm(n = 100, mean = 10, sd = 1), 
@@ -201,7 +201,7 @@ bdd <- data.frame(date01 = rnorm(n = 100, mean = 10, sd = 1),
 print(head(bdd))
 ```
 
-Nous voudrions quantifier la différence entre la première et la deuxième date, puis mettre un indicateur pour savoir si cette différence est petite ou grande, par exemple avec un seuil arbitraire de 3. Donc pour chaque ligne nous pourrions faire :
+Nous souhaitons quantifier la différence entre la première et la deuxième date, puis mettre un indicateur pour savoir si cette différence est petite ou grande, par exemple avec un seuil arbitraire de 3. Donc pour chaque ligne nous pouvons faire :
 
 ```{r 017-boucles-13}
 bdd$dif <- NA
@@ -236,9 +236,9 @@ if(bdd$dif[100] > 3){
 }
 ```
 
-Cette façon de faire serait extrêmement fastidieuse à réaliser, et même presque impossible à réaliser si la table contenait 1000 ou 100000 lignes. Il pourrait sembler logique de vouloir itérer sur les lignes de notre `data.frame` pour obtenir les nouvelles colonnes. Nous allons le réaliser même si ce n'est pas la solution que nous allons retenir par la suite.
+Cette façon de faire serait extrêmement fastidieuse à réaliser, et même presque impossible à réaliser si la table contenait 1 000 ou 100 000 lignes. Il pourrait sembler logique d'itérer sur les lignes de notre `data.frame` pour obtenir les nouvelles colonnes. Nous allons le réaliser même si ce n'est pas la solution que nous allons retenir par la suite.
 
-Nous allons utiliser une boucle `for()`. La boucle `for()` va itérer sur les éléments d'un objet que nous allons donner en argument. Par exemple voici une boucle qui pour tous les chiffres de 3 à 9 va calculer leur valeur au carré. La valeur courante du chiffre est symbolisé par un objet qui peut prendre le nom que nous souhaitons (ici cela sera `i`).
+Nous allons utiliser une boucle `for()`. La boucle `for()` va itérer sur les éléments d'un objet que nous allons donner en argument. Par exemple, voici une boucle qui pour tous les nombres de 3 à 9 va calculer leur valeur au carré. La valeur courante du nombre est symbolisée par un objet qui peut prendre le nom que nous souhaitons (ici cela sera `i`).
 
 ```{r 017-boucles-14}
 for(i in c(3, 4, 5, 6, 7, 8, 9)){
@@ -287,7 +287,7 @@ for(i in 1:nrow(bdd)){
 print(head(bdd, n = 20))
 ```
 
-En pratique ce n'est pas la meilleure façon de réaliser cet exercice car il s'agit ici de simples calculs sur des vecteurs contenus dans un `data.frame`. R est particulièrement puissant pour effectuer des opérations sur des vecteurs. Lorsque cela est possible il faut donc toujours privilégier les opérations sur les vecteurs. Ici notre code devient :
+En pratique, ce n'est pas la meilleure façon de réaliser cet exercice car il s'agit ici de simples calculs sur des vecteurs contenus dans un `data.frame`. R est particulièrement puissant pour effectuer des opérations sur des vecteurs. Lorsque cela est possible il faut donc toujours privilégier les opérations sur les vecteurs. Ici notre code devient :
 
 ```{r 017-boucles-19}
 bdd$dif <- sqrt((bdd$date01 - bdd$date02)^2)
@@ -334,7 +334,7 @@ mean(trials)
 mean(sample(1:6, ntrials, replace = TRUE))
 ```
 
-C'est un bon exercice de parcourir les nombreux exemples disponibles sur Internet sur la boucle `for()` et de tenter de les transformer en opérations vectorielles. Cela nous permet d'acquérir les bons réflexes de programmation avec R. La boucle `for()` reste très utile pour par exemple lire plusieurs fichiers et traiter l'information qu'ils contiennent de la même façon, faire des graphiques, ou encore lorsque les opérations vectorielles deviennent fastidieuses. Imaginons une matrice de 10 colonnes et 100 lignes. Nous voulons la somme de chaque ligne (nous verrons plus loin comment faire avec la fonction `apply()`).
+L'exercice consistant à parcourir les nombreux exemples disponibles sur Internet sur la boucle `for()` et de tenter de les transformer en opérations vectorielles peut être riche d'enseignement. Cela nous permet d'acquérir les bons réflexes de programmation avec R. La boucle `for()` reste très utile pour par exemple lire plusieurs fichiers et traiter l'information qu'ils contiennent de la même façon, faire des graphiques, ou encore lorsque les opérations vectorielles deviennent fastidieuses. Imaginons une matrice de 10 colonnes et 100 lignes. Nous voulons obtenir la somme de chaque ligne (nous verrons plus loin comment faire avec la fonction `apply()`).
 
 ```{r 017-boucles-21}
 myMat <- matrix(
@@ -359,7 +359,7 @@ En conclusion, il est recommandé de ne pas utiliser la boucle `for()` avec R ch
 
 \index{while()}
 
-La boucle `while()`, contrairement à la boucle `for()`, signifie *TANT QUE*. Tant qu'une condition n'est pas remplie, la boucle va continuer à s'exécuter. Attention car en cas d'erreur, nous pouvons facilement programmer des boucles qui ne terminent jamais ! Cette boucle est moins courante que la boucle `for()`. Prenons un exemple :
+La boucle `while()`, contrairement à la boucle `for()`, signifie **tant que**. Tant qu'une condition n'est pas remplie, la boucle va continuer à s'exécuter. Attention, car en cas d'erreur, nous pouvons facilement programmer des boucles qui ne terminent jamais ! Cette boucle est moins courante que la boucle `for()`. Prenons un exemple :
 
 ```{r 017-boucles-22}
 i <- 0
@@ -369,9 +369,9 @@ while(i < 10){
 }
 ```
 
-Dans cet exemple, la variable `i` a comme valeur 0. TANT QUE `i < 10`, nous allons afficher `i`. Pour que cette boucle se termine, il ne faut pas oublier de modifier la valeur de `i`, c'est ce qui est fait avec la ligne `i <- i + 1`. Lorsque la condition `i < 10` ne se vérifie plus, la boucle s'arrête.
+Dans cet exemple, la variable `i` a comme valeur 0. **tant que** `i < 10`, nous allons afficher `i`. Pour que cette boucle se termine, il ne faut pas oublier de modifier la valeur de `i`, c'est ce qui est fait avec la ligne `i <- i + 1`. Lorsque la condition `i < 10` ne se vérifie plus, la boucle s'arrête.
 
-La boucle `while()` est très utile pour créer des scripts qui vont effectuer des calculs sur des variables dont la valeur évoluent dans le temps. Par exemple imaginons un nombre entre 0 et 10000 et un générateur aléatoire qui va essayer de déterminer la valeur de ce nombre. Si nous souhaitons limiter les tentatives de R à 2 secondes, nous pouvons écrire le script suivant (qui devrait marcher à tous les coups sur un ordinateur de bureau classique pouvant facilement effectuer plusieurs dizaines de milliers d'essais en 2 secondes) :
+La boucle `while()` est très utile pour créer des scripts qui vont effectuer des calculs sur des variables dont la valeur évolue dans le temps. Par exemple, imaginons un nombre entre 0 et 10 000 et un générateur aléatoire qui va essayer de déterminer la valeur de ce nombre. Si nous souhaitons limiter les tentatives de R à 2 secondes, nous pouvons écrire le script suivant (qui devrait fonctionner à tous les coups sur un ordinateur de bureau classique pouvant facilement effectuer plusieurs dizaines de milliers d'essais en 2 secondes) :
 
 ```{r 017-boucles-23}
 myNumber <- sample(x = 10000, size = 1)
@@ -393,15 +393,15 @@ while(Sys.time() - startTime < 2){
 }
 ```
 
-Dans ce script nous générons un nombre aléatoire à deviner avec la fonction `sample()`, et chaque essai avec la même fonction `sample()`. Ensuite nous utilisons la fonction `Sys.time()` (avec un S majuscule à `Sys`), pour connaître l'heure de début de la boucle. Tant que la différence entre chaque itération de la boucle et l'heure de démarrage est inférieure à 2 secondes, la boucle `while()` va vérifier si le bon nombre a été deviné dans le test logique avec `if()` puis si c'est le cas nous informer que le nombre a été trouvé, nous dire le temps restant avant les deux secondes, puis terminer la boucle avec le mot clef `break` sur lequel nous reviendrons. En bref, `break` permet de sortir d'une boucle. Si le nombre n'a pas été deviné, la boucle fait un autre essai avec la fonction `sample()`.
+Dans ce script nous générons un nombre aléatoire à deviner avec la fonction `sample()`, puis une première tentative de réponse avec la même fonction `sample()`. Ensuite nous utilisons la fonction `Sys.time()` (avec un S majuscule à `Sys`), pour connaître l'heure de début de la boucle. Tant que la différence entre chaque itération de la boucle et l'heure de démarrage est inférieure à 2 secondes, la boucle `while()` va vérifier si le bon nombre a été deviné dans le test logique avec `if()` puis si c'est le cas nous informer que le nombre a été trouvé, nous dire le temps restant avant les deux secondes, puis terminer la boucle avec le mot-clef `break` sur lequel nous reviendrons. En bref, `break` permet de sortir d'une boucle. Si le nombre n'a pas été deviné, la boucle fait un autre essai avec la fonction `sample()`.
 
-Plus concrètement nous pourrions imaginer des algorithmes pour explorer un espace de solutions face à un problème avec un temps limité pour y parvenir. La boucle `while()` peut aussi être pratique pour qu'un script ne s'exécute que lorsque un fichier issu d'un autre programme devient disponible... En pratique la boucle `while()` reste peu utilisée avec R, car ce genre de script qui manipule des informations système (temps, fichiers, …) est plus communément réalisé avec d’autres langages comme Python.
+Plus concrètement nous pourrions imaginer des algorithmes pour explorer un espace de solutions face à un problème avec un temps limité pour y parvenir. La boucle `while()` peut aussi être pratique pour qu'un script ne s'exécute que lorsqu'un fichier issu d'un autre programme devient disponible... En pratique la boucle `while()` reste peu utilisée avec R, car ce genre de script qui manipule des informations système (temps, fichiers ...) est plus communément réalisé avec d’autres langages comme Python.
 
 ## La boucle `repeat` {#l17repeat}
 
 \index{repeat()}
 
-La boucle `repeat()` permet de répéter une opération sans condition à vérifier. Pour sortir de cette boucle il faut donc obligatoirement utiliser le mot clef `break`.
+La boucle `repeat()` permet de répéter une opération sans condition à vérifier. Pour sortir de cette boucle il faut donc obligatoirement utiliser le mot-clef `break`.
 
 ```{r 017-boucles-24}
 i <- 1
@@ -414,7 +414,7 @@ repeat{
 }
 ```
 
-Si nous reprenons l'exemple précédent, nous pouvons utiliser une boucle `repeat()` pour le répéter 5 fois.
+Si nous reprenons l'exemple précédent, nous pouvons utiliser une boucle `repeat()` pour le répéter cinq fois.
 
 ```{r 017-boucles-25}
 numTry <- 0
@@ -440,14 +440,14 @@ repeat{
 }
 ```
 
-Comme la boucle `while()`, la boucle `repeat()` reste peu utilisée avec R, sauf dans certaines disciplines en lien avec des données courantes par exemple.
+À l'instar de la boucle `while()`, la boucle `repeat()` reste peu utilisée avec R, à l'exception de certaines disciplines en lien avec des données courantes par exemple.
 
 ## `next` et `break` {#l17spe}
 
 \index{next}
 \index{break}
 
-Nous avons déjà vu le mot clef `break` qui permet de sortir de la boucle en cours. Par exemple si nous cherchons le premier nombre après 111 qui soit divisible par 32 :
+Nous avons déjà vu le mot-clef `break` qui permet de sortir de la boucle en cours. Par exemple, si nous cherchons le premier nombre après 111 qui soit divisible par 32 :
 
 ```{r 017-boucles-26}
 myVars <- 111:1000
@@ -459,7 +459,7 @@ for(myVar in myVars){
 }
 ```
 
-Même si nous avons vu que dans la pratique nous pouvons éviter la boucle `for()` avec une opération sur les vecteurs. Avec une opération sur les vecteurs nous pourrions facilement calculer tous les nombres entre 111 et 1000 qui sont divisibles par 32.
+Nous avons également vu que, dans la pratique, il es possible d'éviter la boucle `for()` avec une opération sur les vecteurs. Avec une opération sur les vecteurs nous pourrions facilement calculer tous les nombres entre 111 et 1 000 qui sont divisibles par 32.
 
 ```{r 017-boucles-27}
 (111:1000)[111:1000 %% 32 == 0]
@@ -471,7 +471,7 @@ Le premier est 128, que nous pouvons récupérer avec `[1]`.
 (111:1000)[111:1000 %% 32 == 0][1]
 ```
 
-Le mot clef `next` permet quant à lui de passer à l'itération suivante d'une boucle si une certaine condition est remplie. Par exemple si nous voulons imprimer les lettres de l'alphabet sans les voyelles :
+Le mot-clef `next` permet quant à lui de passer à l'itération suivante d'une boucle si une certaine condition est remplie. Par exemple si nous voulons imprimer les lettres de l'alphabet sans les voyelles :
 
 ```{r 017-boucles-28}
 for(myLetter in letters){
@@ -488,15 +488,15 @@ Encore une fois nous pourrions éviter la boucle `for()` avec :
 letters[! letters %in% c("a", "e", "i", "o", "u", "y")]
 ```
 
-En conclusion, si nous utilisons les boucles, alors les mots clefs `next` et `break` sont souvent très utiles, mais chaque fois que cela est possible il vaut mieux avoir recours à des opérations sur les vecteurs. Lorsque cela n'est pas possible de travailler sur les vecteurs, il est préférable d'utiliser les boucles de la famille `apply` qui sont le sujet de la prochaine section.
+En conclusion, si nous utilisons les boucles, alors les mots-clefs `next` et `break` sont souvent très utiles, mais, chaque fois que cela est possible, il vaut mieux avoir recours à des opérations sur les vecteurs. Lorsqu'il n'est pas possible de travailler sur les vecteurs, il est préférable d'utiliser les boucles de la famille `apply` qui sont le sujet de la prochaine section.
 
 ## Les boucles de la famille `apply` {#l17applyfamily}
 
 \index{apply()}
 
-### `apply` {#l17apply}
+### La fonction `apply` {#l17apply}
 
-La fonction `apply()` permet d'appliquer une fonction à tous les éléments d'un `array` ou d'une `matrix`. Par exemple si nous souhaitons connaître la somme de chaque ligne d'une `matrix` de 10 colonnes et 100 lignes :
+La fonction `apply()` permet d'appliquer une fonction à tous les éléments d'un `array` ou d'une `matrix`. Par exemple, si nous souhaitons connaître la somme de chaque ligne d'une `matrix` de 10 colonnes et 100 lignes :
 
 ```{r 017-boucles-30}
 myMat <- matrix(
@@ -511,7 +511,7 @@ Si nous souhaitons connaître la médiane de chaque colonne, l'expression devien
 apply(X = myMat, MARGIN = 2, FUN = median)
 ```
 
-L'argument `X` correspond à l'objet sur lequel la boucle `apply` va itérer. L'argument `MARGIN` correspond à la dimension à prendre en compte (1 pour les lignes, et 2 pour les colonnes). L'argument `FUN` correspond à la fonction à appliquer. Sur un objet de type `array`, l'argument `MARGIN` peut prendre autant de valeurs que de dimensions. Dans cet exemple `MARGIN = 1` correspond à la moyenne de chaque ligne - dimension 1 - (toutes dimensions confondues), `MARGIN = 2` correspond à la moyenne de chaque colonne - dimension 2 - (toutes dimensions confondues), et `MARGIN = 3` correspond à la moyenne de chaque dimension 3. Ci-dessous chaque calcul est réalisé de deux manières différentes pour en expliciter le fonctionnement.
+L'argument `X` correspond à l'objet sur lequel la boucle `apply` va itérer. L'argument `MARGIN` correspond à la dimension à prendre en compte (1 pour les lignes et 2 pour les colonnes). L'argument `FUN` correspond à la fonction à appliquer. Sur un objet de type `array`, l'argument `MARGIN` peut prendre autant de valeurs que de dimensions. Dans cet exemple `MARGIN = 1` correspond à la moyenne de chaque ligne — dimension 1 — (toutes dimensions confondues), `MARGIN = 2` correspond à la moyenne de chaque colonne — dimension 2 — (toutes dimensions confondues), et `MARGIN = 3` correspond à la moyenne de chaque dimension 3. Ci-après chaque calcul est réalisé de deux manières différentes pour en expliciter le fonctionnement.
 
 ```{r 017-boucles-32}
 # création de la matrix
@@ -543,7 +543,7 @@ Nous pouvons aussi calculer la moyenne pour chaque valeur de ligne et de colonne
 apply(X = myArr, MARGIN = c(1, 2), FUN = mean)
 ```
 
-### `lapply` {#l17sapply}
+### La fonction `lapply` {#l17sapply}
 
 \index{lapply()}
 
@@ -572,7 +572,7 @@ for(i in 1:length(myList)){
 }
 ```
 
-Cependant, la boucle `for()` ne renvoie pas de résultat. Pour l’obtenir, nous devons au préalable créer un objet qui va contenir notre résultat. A chaque itération de la boucle `for()`, le résultat sera affecté à l’élément correspondant de notre objet.
+Cependant, la boucle `for()` ne renvoie pas de résultat. Pour l’obtenir, nous devons au préalable créer un objet qui va contenir notre résultat. À chaque itération de la boucle `for()`, le résultat sera affecté à l’élément correspondant au sein de notre objet.
 
 ```{r 017-boucles-34c}
 myResult <- list(a = NULL, b = NULL, c = NULL, 
@@ -583,9 +583,9 @@ for(i in 1:length(myList)){
 print(myResult)
 ```
 
-Nous comprenons alors que la fonction `lapply()` est bien plus performante car elle va à la fois permettre de procéder à notre tâche tout en fournissant un résultat qui peut être stocké directement dans un objet (ou pas comme c’est le cas ici).
+Nous comprenons alors que la fonction `lapply()` est bien plus performante car elle va à la fois permettre de procéder à notre tâche tout en fournissant un résultat qui peut être stocké directement dans un objet (ou non, comme c’est le cas ici).
 
-Comme pour la fonction `apply()`, nous pouvons passer des arguments supplémentaires à la fonction `lapply()` en les ajoutant à la suite de la fonction. C'est par exemple utile si notre `list` contient ces valeurs manquantes `NA` et que nous voulons les ignorer pour le calcul des moyennes (avec l'argument `na.rm = TRUE`).
+Comme dans le cas de la fonction `apply()`, nous pouvons ajouter des arguments supplémentaires à la fonction `lapply()` en les ajoutant à la suite de la fonction. C'est par exemple utile si notre `list` contient ces valeurs manquantes `NA` et que nous voulons les ignorer pour le calcul des moyennes (avec l'argument `na.rm = TRUE`).
 
 ```{r 017-boucles-35}
 # Création de l'objet myList
@@ -609,7 +609,7 @@ lapply(myList, FUN = function(i){
 })
 ```
 
-Par exemple si nous souhaitons obtenir `i^2` si la moyenne est supérieure à 3, et `i^3` sinon : 
+Par exemple, si nous souhaitons obtenir `i^2` si la moyenne est supérieure à 3, et `i^3` sinon : 
 
 ```{r 017-boucles-37}
 lapply(myList, FUN = function(i){
@@ -622,7 +622,7 @@ lapply(myList, FUN = function(i){
 })
 ```
 
-### `sapply` {#l17lapply}
+### La fonction `sapply` {#l17lapply}
 
 \index{sapply()}
 
@@ -637,17 +637,17 @@ sapply(myList, FUN = function(i){
 })
 ```
 
-La fonction `sapply()` est intéressante pour récupérer par exemple le nième élément de chacun des éléments d'une `list`. La fonction qui est appelée pour faire cela est `'[['`.
+La fonction `sapply()` est intéressante pour récupérer par exemple le n-ième élément de chacun des éléments d'une `list`. La fonction qui est appelée pour faire cela est `'[['`.
 
 ```{r 017-boucles-39}
 sapply(myList, FUN = '[[', 2)
 ```
 
-### `tapply` {#l17tapply}
+### La fonction `tapply` {#l17tapply}
 
 \index{tapply()}
 
-La fonction `tapply()` permet d'appliquer une fonction en prenant comme élément à itérer une variable existante. Imaginons des informations sur des espèces représentées par des lettres majuscules (e.g., A, B, C) et des valeurs de performances à différentes localisations.
+La fonction `tapply()` permet d'appliquer une fonction en choisissant comme élément à itérer une variable existante. Imaginons des informations sur des espèces représentées par des lettres majuscules (par exemple, A, B, C) et des valeurs de performances à différentes localisations.
 
 ```{r 017-boucles-40}
 species <- sample(LETTERS[1:10], size = 1000, replace = TRUE)
@@ -682,7 +682,7 @@ for(i in 2:4){
 }
 ```
 
-Et si nous voulons le résultat sous forme d'un `data.frame`, le code devient beaucoup plus long et fastidieux (le code suivant correspond à une solution parmi d'autres). Là encore nous voyons toute la puissance des boucles de la famille `apply`.
+Et si nous voulons obtenir le résultat sous la forme d'un `data.frame`, le code devient beaucoup plus long et fastidieux (le code suivant correspond à une solution parmi d'autres). Là encore nous voyons toute la puissance des boucles de la famille `apply`.
 
 ```{r 017-boucles-42c}
 for(i in 2:4){
@@ -701,11 +701,11 @@ print(myDF)
 
 Depuis la version 4.0.0 de R, les colonnes contenant des données de type `character` ne sont plus automatiquement transformées en type `factor` lors de la création d'un `data.frame`. Pour les versions antérieures à celle-ci, il faudra utiliser `levels()` à la place de `unique()`.
 
-### `mapply` {#l17mapply}
+### La fonction `mapply` {#l17mapply}
 
 \index{mapply()}
 
-La fonction `mapply()` est une version de la fonction `sapply()`qui utilise de multiples arguments. Par exemple si nous avons une liste de deux éléments `1:5` et `5:1` et que nous souhaitons ajouter `10` au premier élément et `100` au deuxième élément :
+La fonction `mapply()` est une version de la fonction `sapply()`qui utilise de multiples arguments. Par exemple, si nous avons une liste de deux éléments `1:5` et `5:1` et que nous souhaitons ajouter `10` au premier élément et `100` au deuxième élément :
 
 ```{r 017-boucles-43}
 mapply(
@@ -714,6 +714,6 @@ mapply(
   j = c(10, 100))
 ```
 
-## Conclusion
+## En bref
 
-Félicitations, nous sommes arrivés au bout de ce chapitre sur l'algorithmique. Retenons ce message clef : dès qu'une opération doit être réalisée plus de deux fois dans un script en répétant du code qui a été déjà écrit, c'est un signe qui doit nous conduire à l'utilisation d'une boucle. Pour autant, chaque fois que cela est possible, il est recommandé de ne pas utiliser les boucles traditionnelles `for()`, `while()`, et `repeat()`, mais de préférer les opérations sur les vecteurs ou encore les boucles de la famille `apply`. Cela peut être assez difficile à intégrer au début mais nous verrons que nos scripts seront plus faciles à maintenir et à lire, et beaucoup plus performants si nous suivons ces habitudes. 
+Félicitations ! Vous êtes arrivé au terme de ce chapitre sur l'algorithmique. Retenons ce message clef : dès qu'une opération doit être réalisée plus de deux fois dans un script en répétant du code qui a été déjà écrit, il est temps d'utiliser une boucle. Pour autant, chaque fois que cela est possible, il est recommandé de ne pas utiliser les boucles traditionnelles `for()`, `while()`, et `repeat()`, mais de préférer les opérations sur les vecteurs ou encore les boucles de la famille `apply`. Cela peut être assez difficile à intégrer au début mais nous verrons que les scripts seront plus faciles à maintenir et à lire, et beaucoup plus performants si nous suivons ces habitudes. 
