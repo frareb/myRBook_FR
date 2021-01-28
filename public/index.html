@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>R pour les scientifiques : Mise en œuvre de projets et valorisation des résultats</title>
   <meta name="description" content="Un guide pour acquérir les bases de la programmation avec R et conduire efficacement la gestion et l’analyse de ses données." />
-  <meta name="generator" content="bookdown 0.18 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.20 and GitBook 2.6.7" />
 
   <meta property="og:title" content="R pour les scientifiques : Mise en œuvre de projets et valorisation des résultats" />
   <meta property="og:type" content="book" />
@@ -31,7 +31,7 @@
   
   
 
-<link rel="next" href="premiersPas.html"/>
+<link rel="next" href="studyCase002.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -49,6 +49,7 @@
 
 
 
+<script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
 <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-124666641-2"></script>
 <script>
@@ -61,9 +62,9 @@
 
 
 <style type="text/css">
-a.sourceLine { display: inline-block; line-height: 1.25; }
-a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
-a.sourceLine:empty { height: 1.2em; }
+code.sourceCode > span { display: inline-block; line-height: 1.25; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode { white-space: pre; position: relative; }
 pre.sourceCode { margin: 0; }
@@ -72,14 +73,16 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 code.sourceCode { white-space: pre-wrap; }
-a.sourceLine { text-indent: -1em; padding-left: 1em; }
+code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
-pre.numberSource a.sourceLine
-  { position: relative; left: -4em; }
-pre.numberSource a.sourceLine::before
-  { content: attr(data-line-number);
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
     position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; pointer-events: all; display: inline-block;
+    border: none; display: inline-block;
     -webkit-touch-callout: none; -webkit-user-select: none;
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
@@ -88,9 +91,9 @@ pre.numberSource a.sourceLine::before
   }
 pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
 div.sourceCode
-  {  }
+  {   }
 @media screen {
-a.sourceLine::before { text-decoration: underline; }
+code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
@@ -139,25 +142,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><a href="./">R pour les scientifiques</a></li>
 
 <li class="divider"></li>
-<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Contenu additionnel en ligne</a></li>
-<li class="part"><span><b>I Scripts utilisés dans le livre</b></span></li>
-<li class="chapter" data-level="2" data-path="premiersPas.html"><a href="premiersPas.html"><i class="fa fa-check"></i><b>2</b> Premiers pas</a><ul>
-<li class="chapter" data-level="2.1" data-path="premiersPas.html"><a href="premiersPas.html#installation-de-r"><i class="fa fa-check"></i><b>2.1</b> Installation de R</a></li>
-<li class="chapter" data-level="2.2" data-path="premiersPas.html"><a href="premiersPas.html#r-comme-calculatrice"><i class="fa fa-check"></i><b>2.2</b> R comme calculatrice</a><ul>
-<li class="chapter" data-level="2.2.1" data-path="premiersPas.html"><a href="premiersPas.html#les-opérateurs-arithmétiques"><i class="fa fa-check"></i><b>2.2.1</b> Les opérateurs arithmétiques</a></li>
-<li class="chapter" data-level="2.2.2" data-path="premiersPas.html"><a href="premiersPas.html#les-opérateurs-de-comparaison"><i class="fa fa-check"></i><b>2.2.2</b> Les opérateurs de comparaison</a></li>
-<li class="chapter" data-level="2.2.3" data-path="premiersPas.html"><a href="premiersPas.html#les-opérateurs-logiques"><i class="fa fa-check"></i><b>2.2.3</b> Les opérateurs logiques</a></li>
-<li class="chapter" data-level="2.2.4" data-path="premiersPas.html"><a href="premiersPas.html#aide-sur-les-opérateurs"><i class="fa fa-check"></i><b>2.2.4</b> Aide sur les opérateurs</a></li>
-</ul></li>
-<li class="chapter" data-level="2.3" data-path="premiersPas.html"><a href="premiersPas.html#la-notion-dobjet"><i class="fa fa-check"></i><b>2.3</b> La notion d’objet</a></li>
-<li class="chapter" data-level="2.4" data-path="premiersPas.html"><a href="premiersPas.html#les-scripts"><i class="fa fa-check"></i><b>2.4</b> Les scripts</a><ul>
-<li class="chapter" data-level="2.4.1" data-path="premiersPas.html"><a href="premiersPas.html#créer-un-script-et-le-documenter"><i class="fa fa-check"></i><b>2.4.1</b> Créer un script et le documenter</a></li>
-<li class="chapter" data-level="2.4.2" data-path="premiersPas.html"><a href="premiersPas.html#exécuter-un-script"><i class="fa fa-check"></i><b>2.4.2</b> Exécuter un script</a></li>
-</ul></li>
-<li class="chapter" data-level="2.5" data-path="premiersPas.html"><a href="premiersPas.html#conclusion"><i class="fa fa-check"></i><b>2.5</b> Conclusion</a></li>
-</ul></li>
-<li class="part"><span><b>II annexes supplémentaires</b></span></li>
-<li class="chapter" data-level="3" data-path="studyCase002.html"><a href="studyCase002.html"><i class="fa fa-check"></i><b>3</b> Internet, manipuler des URLs</a></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Parution : février 2021</a></li>
+<li class="part"><span><b>I annexes supplémentaires</b></span></li>
+<li class="chapter" data-level="2" data-path="studyCase002.html"><a href="studyCase002.html"><i class="fa fa-check"></i><b>2</b> Internet, manipuler des URLs</a></li>
 </ul>
 
       </nav>
@@ -178,10 +165,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="header">
 <h1 class="title">R pour les scientifiques : Mise en œuvre de projets et valorisation des résultats</h1>
 <p class="author"><em>François Rebaudo</em></p>
-<p class="date"><em>2020-06-23 22:11:22</em></p>
+<p class="date"><em>2021-01-28 20:56:34</em></p>
 </div>
-<div id="contenu-additionnel-en-ligne" class="section level1">
-<h1><span class="header-section-number"> 1</span> Contenu additionnel en ligne</h1>
+<div id="parution-février-2021" class="section level1">
+<h1><span class="header-section-number"> 1</span> Parution : février 2021</h1>
+<p>Rendez-vous sur <a href="https://www.dunod.com/sciences-techniques/r-pour-scientifiques-mise-en-oeuvre-projets-et-valorisation-resultats">Dunod.com</a> !</p>
+<p><a href="https://www.dunod.com/sciences-techniques/r-pour-scientifiques-mise-en-oeuvre-projets-et-valorisation-resultats"><img src="myFigures/covDunod.jpeg" alt="dunod.com" /></a></p>
 
 </div>
 
@@ -193,7 +182,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
         </div>
       </div>
 
-<a href="premiersPas.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="studyCase002.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -235,7 +224,7 @@ gitbook.start({
 "link": null,
 "text": null
 },
-"download": ["myRBook_FR.pdf"],
+"download": null,
 "toc": {
 "collapse": "section"
 }
